@@ -1,1 +1,1 @@
-# Concordia_Navigator
+# Concordia Campus Guide
