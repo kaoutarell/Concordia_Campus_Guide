@@ -38,3 +38,7 @@ yarn-error.*
 app-example
 
 package-lock.json
+
+**/node_modules
+
+**/.env
