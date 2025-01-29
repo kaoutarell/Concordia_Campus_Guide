@@ -54,17 +54,13 @@ To set up and run the project locally, follow the instructions below.
    ```bash
    git clone git@github.com:kaoutarell/Concordia_Campus_Guide.git
    cd Concordia_Campus_Guide/ccg_backend/
-   
-2. **Create a .env file in the ccg_backend/ directory and the following (change <ipv4> with your local ip address)**:    
-   ```bash
-   ALLOWED_HOSTS=<ipv4>,127.0.0.1
 
-3. **Set Up the Database with Docker**:
+2. **Set Up the Database with Docker**:
    ```bash
    cd docker_configs
    docker-compose up -d
 
-4. **Issues : In case the image is not pulled try adding this to docker engine config**
+3. **Issues : In case the image is not pulled try adding this to docker engine config**
    
    ```bash
      "experimental": false,
@@ -72,7 +68,7 @@ To set up and run the project locally, follow the instructions below.
     "https://dockerhub.azk8s.cn"
      ]   
 
-5.**Create the Python Environment**:
+4.**Create the Python Environment**:
    - Use the provided environment.yml file to create a Conda environment:
      ```bash
      conda env create -f environment.yml
@@ -96,7 +92,7 @@ To set up and run the project locally, follow the instructions below.
    >>> import gdal # in python
    ```
 
-6.**Run the Python Backend**:
+5.**Run the Python Backend**:
    - python migration
      ```bash
      pip install python-decouple
@@ -108,7 +104,7 @@ To set up and run the project locally, follow the instructions below.
    - run python
      ```bash
      python manage.py createsuperuser
-     python manage.py runserver <ipv4>:8000 # change <ipv4> to your local ip address
+     python manage.py runserver 0.0.0.0:8000
 
    -  http://<ipv4>:8000/admin
    -  http://<ipv4>:8000/api/buildings
