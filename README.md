@@ -71,6 +71,7 @@ To set up and run the project locally, follow the instructions below.
      ```bash
         python manage.py makemigrations
         python manage.py migrate
+        python manage.py loaddata buildings.json  # Do that for all files inside fixtures folder
    - run python
      ```bash
         python manage.py runserver ip:8000
