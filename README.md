@@ -136,3 +136,11 @@ cd ccg_backend
 run_backend.bat
 # For Mac/Linux
 ./run_backend.sh
+````
+#### Frontend
+```bash
+cd ccg_frontend\ccg_mobile
+# If ip address changed, edit .env
+# EXPO_PUBLIC_BASE_URL=http://<ip>:8000/api/
+npm start
+````
