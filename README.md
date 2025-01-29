@@ -99,6 +99,7 @@ To set up and run the project locally, follow the instructions below.
 6.**Run the Python Backend**:
    - python migration
      ```bash
+     pip install python-decouple
      python manage.py makemigrations
      python manage.py migrate
      python manage.py loaddata buildings.json
