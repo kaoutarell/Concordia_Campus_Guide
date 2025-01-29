@@ -1,0 +1,11 @@
+[
+    {
+        "model": "mapengine.route",
+        "pk": 1,
+        "fields": {
+            "name": "Route A",
+            "path": "LINESTRING(-73.567256 45.501690, -73.569806 45.497253)",
+            "mode_of_travel": "walking"
+        }
+    }
+]

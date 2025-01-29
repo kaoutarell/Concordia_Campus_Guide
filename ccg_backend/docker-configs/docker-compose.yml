@@ -1,0 +1,18 @@
+services:
+  postgisdb:
+    image: postgis/postgis
+    restart: always
+    environment:
+      POSTGRES_DB: gis_db
+      POSTGRES_USER: dev_experts
+      POSTGRES_PASSWORD: soen390
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - gis_network
+
+networks:
+  gis_network:
+    driver: bridge
