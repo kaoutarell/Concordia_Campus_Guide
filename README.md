@@ -7,6 +7,7 @@ This project is a full-stack map-based application with a Python backend and a R
 - [Getting Started](#getting-started)
 - [Backend Setup](#backend-setup)
 - [Frontend Setup](#frontend-setup)
+- [Running the project](#running-the-project)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -124,3 +125,14 @@ To set up and run the project locally, follow the instructions below.
       ```bash
       npm start
 
+### Running the project
+
+#### Backend
+Run the following:
+```bash
+conda activate myenv
+cd ccg_backend
+# For Windows
+run_backend.bat
+# For Mac/Linux
+./run_backend.sh
