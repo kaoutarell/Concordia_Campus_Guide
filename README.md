@@ -43,26 +43,26 @@ To set up and run the project locally, follow the instructions below.
    git clone git@github.com:kaoutarell/Concordia_Campus_Guide.git
    cd Concordia_Campus_Guide/ccg_backend/
    
-2.Create a .env file in the ccg_backend/ directory:    
+2. **Create a .env file in the ccg_backend/ directory and the following**:    
    ```bash
-   ALLOWED_HOSTS=<ipv4>,127.0.0.1
+         ALLOWED_HOSTS=<ipv4>,127.0.0.1
 
-3. Set Up the Database with Docker:
+3. **Set Up the Database with Docker**:
    ```bash
       cd docker_configs
       docker-compose up -d
    - In case the image is not pulled try adding this to docker engine config
-   ```
+   ```bash
      "experimental": false,
      "registry-mirrors": [
        "https://dockerhub.azk8s.cn"
      ]   
-4.Create the Python Environment:
+4.**Create the Python Environment**:
    - Use the provided environment.yml file to create a Conda environment:
      ```bash
         conda env create -f environment.yml
         conda activate myenv
-5.Run the Python Backend:
+5.**Run the Python Backend**:
    - python migration
      ```bash
         python manage.py makemigrations
