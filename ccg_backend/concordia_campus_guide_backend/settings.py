@@ -2,6 +2,7 @@
 
 from pathlib import Path
 from decouple import config
+from socket import gethostname, gethostbyname 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -150,6 +151,6 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+ALLOWED_HOSTS = [ gethostbyname(gethostname()), ]
 
