@@ -26,6 +26,7 @@ Ensure you have the following tools installed for the frontend:
 - **React**: A JavaScript library for building user interfaces.
 - **Expo**: A framework and platform for universal React applications.
 - **React Native**: For building native mobile applications.
+- **Expo App**: Install the expo app in your device.
 
 ---
 
@@ -40,4 +41,34 @@ To set up and run the project locally, follow the instructions below.
 1. **Clone the Repository**:
    ```bash
    git clone git@github.com:kaoutarell/Concordia_Campus_Guide.git
+   cd Concordia_Campus_Guide/ccg_backend/
    
+2.Create a .env file in the ccg_backend/ directory:    
+   ```bash
+   ALLOWED_HOSTS=<ipv4>,127.0.0.1
+
+3. Set Up the Database with Docker:
+   ```bash
+      cd docker_configs
+      docker-compose up -d
+   - In case the image is not pulled try adding this to docker engine config
+   ```
+     "experimental": false,
+     "registry-mirrors": [
+       "https://dockerhub.azk8s.cn"
+     ]   
+4.Create the Python Environment:
+   - Use the provided environment.yml file to create a Conda environment:
+     ```bash
+        conda env create -f environment.yml
+        conda activate myenv
+5.Run the Python Backend:
+   - python migration
+     ```bash
+        python manage.py makemigrations
+        python manage.py migrate
+   - run python
+     ```bash
+        python manage.py runserver ip:8000
+
+        
