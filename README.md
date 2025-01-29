@@ -74,5 +74,7 @@ To set up and run the project locally, follow the instructions below.
         python manage.py loaddata buildings.json  # Do that for all files inside fixtures folder
    - run python
      ```bash
+        python manage.py createsuperuser
         python manage.py runserver ip:8000
-        
+
+   -  http://ip:8000/admin    
