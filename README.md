@@ -52,7 +52,7 @@ To set up and run the project locally, follow the instructions below.
       cd docker_configs
       docker-compose up -d
 
--In case the image is not pulled try adding this to docker engine config
+0. **Issues : In case the image is not pulled try adding this to docker engine config**
    
    ```bash
         "experimental": false,
@@ -65,6 +65,7 @@ To set up and run the project locally, follow the instructions below.
      ```bash
         conda env create -f environment.yml
         conda activate myenv
+
 5.**Run the Python Backend**:
    - python migration
      ```bash
