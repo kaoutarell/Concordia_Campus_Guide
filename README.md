@@ -51,12 +51,15 @@ To set up and run the project locally, follow the instructions below.
    ```bash
       cd docker_configs
       docker-compose up -d
+
 -In case the image is not pulled try adding this to docker engine config
+   
    ```bash
         "experimental": false,
         "registry-mirrors": [
        "https://dockerhub.azk8s.cn"
         ]   
+
 4.**Create the Python Environment**:
    - Use the provided environment.yml file to create a Conda environment:
      ```bash
