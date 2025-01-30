@@ -53,12 +53,12 @@ To set up and run the project locally, follow the instructions below.
 
 1. **Clone the Repository**:
    ```bash
-   git clone git@github.com:kaoutarell/Concordia_Campus_Guide.git
+   git clone https://github.com/kaoutarell/Concordia_Campus_Guide
    cd Concordia_Campus_Guide/ccg_backend/
 
 2. **Set Up the Database with Docker**:
    ```bash
-   cd docker_configs
+   cd docker-configs
    docker-compose up -d
 
 3. **Issues : In case the image is not pulled try adding this to docker engine config**
@@ -72,34 +72,28 @@ To set up and run the project locally, follow the instructions below.
 4.**Create the Python Environment**:
    - Use the provided environment.yml file to create a Conda environment:
      ```bash
-     conda env create -f environment.yml
+	 # For Windows 10/11
+     conda env create -f environment-win.yml
+	 # For MacOS
+	 conda env create -f environment-mac.yml
      
-   - Before activating the environment, you may need to run this command for Windows 10/11:
+   - Before activating the environment, you may need to run the following command for Windows 10/11:
      ```bash
        %conda_root_directory%/Library/bin/conda.bat init cmd.exe
-       # OR
+       # AND/OR
        %conda_root_directory%/Library/bin/conda.bat init powershell
+	   # For MacOS
+	   conda init zsh
     
     
    - Activate the environment:
      ``` bash
      conda activate myenv
-     conda config --env --add channels conda-forge
-     conda config --env --set channel_priority strict 
-
-
-**IMPORTANT: For Mac Users, you will need to run the following commands to install GDAL:**
-   ```bash
-   brew install gdal
-   pip install gdal
-   python
-   >>> import gdal # in python
-   ```
+	 ```
 
 5.**Run the Python Backend**:
    - python migration
      ```bash
-     pip install python-decouple
      python manage.py makemigrations
      python manage.py migrate
      python manage.py loaddata buildings.json
@@ -121,9 +115,11 @@ To set up and run the project locally, follow the instructions below.
    1. **Create a .env file in ccg_mobile/ directory and add the following (change <ipv4> with your local ip address):**
       ```bash
       EXPO_PUBLIC_BASE_URL=http://<ipv4>:8000/api/
+	  ```
    2. **Install dependencies:**
       ```bash
       npm install
+	  ```
    3. **Run frontend**
       ```bash
       npm start

@@ -2,7 +2,8 @@
 
 from pathlib import Path
 from decouple import config
-from socket import gethostname, gethostbyname 
+import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -128,8 +129,28 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GDAL_LIBRARY_PATH = r"./local_lib/gdal.dll"
+### Set GDAL
 
+conda_prefix = os.getenv("CONDA_PREFIX", "")
+
+if conda_prefix:
+    if sys.platform == "win32":
+        gdal_lib_name = "gdal.dll"
+    elif sys.platform == "darwin":  # macOS
+        gdal_lib_name = "libgdal.dylib"
+    else:  # Linux/Unix
+        gdal_lib_name = "libgdal.so"
+
+    GDAL_LIBRARY_PATH = os.path.join(conda_prefix, "Library", "bin", gdal_lib_name) if sys.platform == "win32" \
+        else os.path.join(conda_prefix, "lib", gdal_lib_name)
+
+    GDAL_LIBRARY_PATH = os.path.normpath(GDAL_LIBRARY_PATH)  # Normalize the path
+
+    print("GDAL_LIBRARY_PATH:", GDAL_LIBRARY_PATH)
+else:
+    print("Error: CONDA_PREFIX is not set. Ensure Conda environment is activated.")
+
+###
 
 CORS_ALLOW_METHODS = [
     "GET",
@@ -151,6 +172,5 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
-ALLOWED_HOSTS = [ gethostbyname(gethostname()), ]
+ALLOWED_HOSTS = ["*"]
 
