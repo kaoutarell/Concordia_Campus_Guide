@@ -1,0 +1,18 @@
+[
+    {
+        "model": "mapengine.building",
+        "pk": 1,
+        "fields": {
+            "name": "Main Campus",
+            "location": "POINT(-73.567256 45.501690)"
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 2,
+        "fields": {
+            "name": "Library Building",
+            "location": "POINT(-73.569806 45.497253)"
+        }
+    }
+]
