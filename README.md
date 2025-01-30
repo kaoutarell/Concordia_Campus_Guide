@@ -85,7 +85,8 @@ To set up and run the project locally, follow the instructions below.
      ``` bash
      conda activate myenv
      conda config --env --add channels conda-forge
-     conda config --env --set channel_priority strict 
+     conda config --env --set channel_priority strict
+     conda install gdal
 
 
 **IMPORTANT: For Mac Users, you will need to run the following commands to install GDAL:**
