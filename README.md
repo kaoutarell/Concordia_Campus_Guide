@@ -77,8 +77,9 @@ To set up and run the project locally, follow the instructions below.
 	 # For MacOS
 	 conda env create -f environment-mac.yml
      
-   - Before activating the environment, you may need to run the following command for Windows 10/11:
+   - Before activating the environment, you may need to run the following command:
      ```bash
+       # For Windows 10/11
        %conda_root_directory%/Library/bin/conda.bat init cmd.exe
        # AND/OR
        %conda_root_directory%/Library/bin/conda.bat init powershell
