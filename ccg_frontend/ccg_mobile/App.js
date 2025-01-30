@@ -1,20 +1,6 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import MapScreen from './screens/MapScreen';
+import React from "react";
+import AppNavigator from "./navigation/AppNavigator";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <MapScreen />
-    </View>
-  );
+  return <AppNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

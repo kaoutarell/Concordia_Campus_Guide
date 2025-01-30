@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Dimensions, View, ActivityIndicator, Text } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Dimensions, View, ActivityIndicator, Text, SafeAreaView, Platform, StatusBar } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
-// Get screen dimensions for responsiveness
-const { width, height } = Dimensions.get('window');
+// Get screen width and height dynamically
+const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({ locations, initialRegion }) => {
-
-
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -17,7 +15,8 @@ const MapViewComponent = ({ locations, initialRegion }) => {
     }, [locations]);
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            {/* Loading Indicator */}
             {isLoading ? (
                 <View style={styles.loadingContainer}>
                     <ActivityIndicator size="large" color="blue" />
@@ -43,29 +42,31 @@ const MapViewComponent = ({ locations, initialRegion }) => {
                     ))}
                 </MapView>
             )}
-        </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Avoids overlapping with status bar
     },
     map: {
-        width: width,
-        height: height,
+        flex: 1, // Takes full available space
+        width: "100%", // Ensures full width
+        height: "100%", // Ensures full height
     },
     loadingContainer: {
-        position: 'absolute',
-        top: '50%',
-        alignItems: 'center',
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: [{ translateX: -50 }, { translateY: -50 }],
+        alignItems: "center",
     },
     loadingText: {
         marginTop: 10,
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: "bold",
     },
 });
 
