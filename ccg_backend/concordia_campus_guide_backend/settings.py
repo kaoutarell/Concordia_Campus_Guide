@@ -146,7 +146,7 @@ if conda_prefix:
 
     GDAL_LIBRARY_PATH = os.path.normpath(GDAL_LIBRARY_PATH)  # Normalize the path
 
-    print("GDAL_LIBRARY_PATH:", GDAL_LIBRARY_PATH)
+    #print("GDAL_LIBRARY_PATH:", GDAL_LIBRARY_PATH)
 else:
     print("Error: CONDA_PREFIX is not set. Ensure Conda environment is activated.")
 
