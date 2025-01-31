@@ -36,8 +36,8 @@ const MapScreen = () => {
 
     // Initial region for Concordia SGW Campus
     const initialRegion = {
-        latitude: 45.50169,
-        longitude: -73.567256,
+        latitude: 45.495654,
+        longitude: -73.579219,
         latitudeDelta: 0.010,
         longitudeDelta: 0.010,
     };

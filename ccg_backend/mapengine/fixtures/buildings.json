@@ -3,16 +3,24 @@
         "model": "mapengine.building",
         "pk": 1,
         "fields": {
-            "name": "Main Campus",
-            "location": "POINT(-73.567256 45.501690)"
+            "name": "EV Building",
+            "location": "POINT(-73.5783 45.4955)"
         }
     },
     {
         "model": "mapengine.building",
         "pk": 2,
         "fields": {
-            "name": "Library Building",
-            "location": "POINT(-73.569806 45.497253)"
+            "name": "LB Building",
+            "location": "POINT(-73.57804 45.49687)"
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 3,
+        "fields": {
+            "name": "JMSB Building",
+            "location": "POINT(-73.5792 45.4953)"
         }
     }
 ]
