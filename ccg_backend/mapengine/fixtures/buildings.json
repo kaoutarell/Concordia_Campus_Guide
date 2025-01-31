@@ -3,24 +3,1463 @@
         "model": "mapengine.building",
         "pk": 1,
         "fields": {
-            "name": "EV Building",
-            "location": "POINT(-73.5783 45.4955)"
+            "name": "PERFORM Centre",
+            "building_code": "PC",
+            "location": "POINT(-73.637 45.457)",
+            "civic_address": "7200 Sherbrooke St. W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"School of Health\",\"linkPath\":\"/content/concordia/en/schoolofhealth.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
         }
     },
     {
         "model": "mapengine.building",
         "pk": 2,
         "fields": {
-            "name": "LB Building",
-            "location": "POINT(-73.57804 45.49687)"
+            "name": "Applied Science Hub",
+            "building_code": "HU",
+            "location": "POINT(-73.641795 45.458559)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
         }
     },
     {
         "model": "mapengine.building",
         "pk": 3,
         "fields": {
-            "name": "JMSB Building",
-            "location": "POINT(-73.5792 45.4953)"
+            "name": "K Annex",
+            "building_code": "K",
+            "location": "POINT(-73.57955 45.4978)",
+            "civic_address": "2150 Bishop",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Concordia Coop Bookstore\",\"linkPath\":\"https://www.co-opbookstore.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUPFA\",\"linkPath\":\"https://cupfa.org/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 4,
+        "fields": {
+            "name": "St. Ignatius of Loyola Church",
+            "building_code": "SI",
+            "location": "POINT(-73.6424 45.4578)",
+            "civic_address": "4455 Broadway",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 5,
+        "fields": {
+            "name": "P Annex",
+            "building_code": "P",
+            "location": "POINT(-73.5792 45.4967)",
+            "civic_address": "2020 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 6,
+        "fields": {
+            "name": "Visual Arts Building",
+            "building_code": "VA",
+            "location": "POINT(-73.5736 45.4956)",
+            "civic_address": "1395 René Lévesque W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"VAV Art Gallery\",\"linkPath\":\"http://vavgallery.concordia.ca/\",\"itemClass\":\"\",\"linkTarget\":true}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Art Education\",\"linkPath\":\"/content/concordia/en/finearts/art-education\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Art History\",\"linkPath\":\"/content/concordia/en/finearts/art-history.html\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Creative Arts Therapies\",\"linkPath\":\"/content/concordia/en/finearts/creative-arts-therapies\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Studio Arts\",\"linkPath\":\"/content/concordia/en/finearts/studio-arts.html\",\"itemClass\":\"\",\"linkTarget\":true}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 7,
+        "fields": {
+            "name": "Engineering, Computer Science and Visual Arts Integrated Complex",
+            "building_code": "EV",
+            "location": "POINT(-73.5783 45.4955)",
+            "civic_address": "1515 St. Catherine W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"FOFA Gallery\",\"linkPath\":\"/content/concordia/en/finearts/about/galleries-venues/fofa-gallery.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"LeGym\",\"linkPath\":\"/content/concordia/en/campus-life/recreation/facilities/le-gym.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Art Education\",\"linkPath\":\"/content/concordia/en/finearts/art-education.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Art History\",\"linkPath\":\"/content/concordia/en/finearts/art-history.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Building, Civil and Environmental Engineering\",\"linkPath\":\"/content/concordia/en/ginacody/building-civil-environmental-eng.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for Composites (CONCOM)\",\"linkPath\":\"/content/concordia/en/research/composites.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for Pattern Recognition and Machine Intelligence (CENPARMI)\",\"linkPath\":\"/content/concordia/en/research/cenparmi.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Chemical and Materials Engineering\",\"linkPath\":\"/content/concordia/en/ginacody/chemical-materials-eng.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Contemporary Dance\",\"linkPath\":\"/content/concordia/en/finearts/dance.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Design and Computation Arts\",\"linkPath\":\"/content/concordia/en/finearts/design.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Electrical and Computer Engineering\",\"linkPath\":\"/content/concordia/en/ginacody/electrical-computer-eng.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Faculty of Fine Arts\",\"linkPath\":\"/content/concordia/en/finearts.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Gina Cody School of Engineering and Computer Science\",\"linkPath\":\"/content/concordia/en/ginacody.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Mechanical, Industrial and Aerospace Engineering\",\"linkPath\":\"/content/concordia/en/ginacody/mechanical-industrial-aerospace-eng.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Recreation and Athletics\",\"linkPath\":\"/content/concordia/en/campus-life/recreation.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Studio Arts\",\"linkPath\":\"/content/concordia/en/finearts/studio-arts.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Zero Energy Building Studies, Centre for\",\"linkPath\":\"/content/concordia/en/research/zero-energy-building.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 8,
+        "fields": {
+            "name": "CI Annex",
+            "building_code": "CI",
+            "location": "POINT(-73.58 45.4974)",
+            "civic_address": "2149 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"School of Community and Public Affairs\",\"linkPath\":\"/content/concordia/en/artsci/scpa.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 9,
+        "fields": {
+            "name": "Oscar Peterson Concert Hall",
+            "building_code": "PT",
+            "location": "POINT(-73.6389 45.4593)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Oscar Peterson Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 10,
+        "fields": {
+            "name": "X Annex",
+            "building_code": "X",
+            "location": "POINT(-73.5797 45.4969)",
+            "civic_address": "2080 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Concordia International\",\"linkPath\":\"/content/concordia/en/offices/ci.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 11,
+        "fields": {
+            "name": "Hingston Hall, wing HC",
+            "building_code": "HC",
+            "location": "POINT(-73.642 45.4596)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Student Residence\",\"linkPath\":\"/content/concordia/en/students/housing/residences/loyola-residences\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 12,
+        "fields": {
+            "name": "Recreation and Athletics Complex",
+            "building_code": "RA",
+            "location": "POINT(-73.6374 45.4566)",
+            "civic_address": "7200 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Ed Meagher Arena\",\"linkPath\":\"/content/concordia/en/campus-life/recreation/facilities/arena.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Gymnasium\",\"linkPath\":\"/content/concordia/en/campus-life/recreation/facilities/athletic-complex.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 13,
+        "fields": {
+            "name": "Loyola Jesuit Hall and Conference Centre",
+            "building_code": "RF",
+            "location": "POINT(-73.6411 45.4585)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Conference services\",\"linkPath\":\"/content/concordia/en/hospitality.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Loyola Jesuit Hall and Conference Centre\",\"linkPath\":\"/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 14,
+        "fields": {
+            "name": "Henry F. Hall Building",
+            "building_code": "H",
+            "location": "POINT(-73.579 45.4973)",
+            "civic_address": "1455 De Maisonneuve Blvd. W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Campus Safety and Prevention Services\",\"linkPath\":\"/content/concordia/en/campus-life/security\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Career and Planning Services\",\"linkPath\":\"/content/concordia/en/students/success/career-planning-services\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Student Union\",\"linkPath\":\"https://www.csu.qc.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Theatre\",\"linkPath\":\"/content/concordia/en/arts/venues/db-clarke-theatre.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Dean of Students\",\"linkPath\":\"/content/concordia/en/students/life\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"First Year Experience\",\"linkPath\":\"/content/concordia/en/students/new.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"IT Service Desk\",\"linkPath\":\"/content/concordia/en/it\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Mail Services\",\"linkPath\":\"/content/concordia/en/offices/facilities.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"NouLa student lounge\",\"linkPath\":\"/content/concordia/en/students/noula.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Otsenhákta Student Centre\",\"linkPath\":\"/content/concordia/en/students/otsenhakta\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Student Success Centre\",\"linkPath\":\"/content/concordia/en/students/success\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Welcome Crew Office\",\"linkPath\":\"/content/concordia/en/students/new/mentoring.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Geography, Planning and Environment\",\"linkPath\":\"/content/concordia/en/artsci/geography-planning-environment\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Political Science, Sociology and Anthropology, Economics\",\"linkPath\":\"/content/concordia/en/artsci/programs/departments.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"School of Irish Studies\",\"linkPath\":\"/content/concordia/en/artsci/irish-studies\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 15,
+        "fields": {
+            "name": "EN Annex",
+            "building_code": "EN",
+            "location": "POINT(-73.5797 45.4968)",
+            "civic_address": "2070 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 16,
+        "fields": {
+            "name": "Q Annex",
+            "building_code": "Q",
+            "location": "POINT(-73.5791 45.4966)",
+            "civic_address": "2010 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 17,
+        "fields": {
+            "name": "Learning Square (LS Building)",
+            "building_code": "LS",
+            "location": "POINT(-73.5795 45.4961)",
+            "civic_address": "1535 De Maisonneuve Blvd. W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"IT Services — 1st floor\",\"linkPath\":\"/content/concordia/en/it/services/classroom-support/sir-george-williamscampus/SGW-LS-1\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"IT Services — 2nd floor\",\"linkPath\":\"/content/concordia/en/it/services/classroom-support/sir-george-williamscampus/SGW-LS-2\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 18,
+        "fields": {
+            "name": "Communication Studies and Journalism Building",
+            "building_code": "CJ",
+            "location": "POINT(-73.6404 45.4573)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Campus Retail Stores\",\"linkPath\":\"https://www.bkstr.com/concordiastore/home\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Communication Studies\",\"linkPath\":\"/content/concordia/en/artsci/coms\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Journalism\",\"linkPath\":\"/content/concordia/en/artsci/journalism\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 19,
+        "fields": {
+            "name": "Samuel Bronfman Building",
+            "building_code": "SB",
+            "location": "POINT(-73.5862 45.4966)",
+            "civic_address": "1590 Docteur Penfield",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Arts and Science Research Groups\",\"linkPath\":\"/content/concordia/en/artsci/research/centres.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 20,
+        "fields": {
+            "name": "Faubourg Ste-Catherine Building",
+            "building_code": "FG",
+            "location": "POINT(-73.5792 45.4938)",
+            "civic_address": "1610 St. Catherine W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Classrooms\",\"linkPath\":\"\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"RMA Research Room and Vault\",\"linkPath\":\"/content/concordia/en/offices/archives\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Education\",\"linkPath\":\"/content/concordia/en/artsci/education\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 21,
+        "fields": {
+            "name": "Grey Nuns Garden",
+            "building_code": "",
+            "location": "POINT(-73.5770269316224 45.49457661407999)",
+            "civic_address": "Entrance on 1200 Guy St.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 22,
+        "fields": {
+            "name": "MI Annex",
+            "building_code": "MI",
+            "location": "POINT(-73.5793 45.4977)",
+            "civic_address": "2130 Bishop",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"ACUMAE\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#acumae\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"SCOMM\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#scomm-sgw\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUSSU\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cussu\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUUSS-TS\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cuuss-ts\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CULEU\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#culeu\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUPEU\",\"linkPath\":\"http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cupeu\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUCEPTFU\",\"linkPath\":\"\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 23,
+        "fields": {
+            "name": "PR Annex",
+            "building_code": "PR",
+            "location": "POINT(-73.5799 45.497)",
+            "civic_address": "2100 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 24,
+        "fields": {
+            "name": "V Annex",
+            "building_code": "V",
+            "location": "POINT(-73.58 45.497)",
+            "civic_address": "2110 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Centre 2110\",\"linkPath\":\"http://www.centre2110.org/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUTV\",\"linkPath\":\"https://www.cutvmontreal.org/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 25,
+        "fields": {
+            "name": "Vanier Library Building",
+            "building_code": "VL",
+            "location": "POINT(-73.6386 45.4591)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Library\",\"linkPath\":\"/content/concordia/en/library\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 26,
+        "fields": {
+            "name": "Centre for Structural and Functional Genomics",
+            "building_code": "GE",
+            "location": "POINT(-73.6404 45.4569)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Centre for Structural and Functional Genomics\",\"linkPath\":\"/content/concordia/en/research/genomics\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 27,
+        "fields": {
+            "name": "Hingston Hall, wing HA",
+            "building_code": "HA",
+            "location": "POINT(-73.6412 45.4594)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Student Residence\",\"linkPath\":\"/content/concordia/en/students/housing/residences/loyola-residences\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 28,
+        "fields": {
+            "name": "John Molson Building",
+            "building_code": "MB",
+            "location": "POINT(-73.5792 45.4953)",
+            "civic_address": "1450 Guy",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Career Management Services\",\"linkPath\":\"/content/concordia/en/jmsb/career\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"John Molson Executive Centre\",\"linkPath\":\"/content/concordia/en/jmsb/programs/executive-centre\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Performing Arts Facilities\",\"linkPath\":\"/content/concordia/en/finearts/shops-studios/performing-arts\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Accountancy\",\"linkPath\":\"/content/concordia/en/jmsb/about/departments/accountancy\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Contemporary Dance\",\"linkPath\":\"/content/concordia/en/finearts/dance\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Executive MBA Program\",\"linkPath\":\"/content/concordia/en/jmsb/emba\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Finance\",\"linkPath\":\"/content/concordia/en/jmsb/about/departments/finance\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Goodman Institute of Investment Management\",\"linkPath\":\"/content/concordia/en/jmsb/mba-cfa\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Management\",\"linkPath\":\"/content/concordia/en/jmsb/about/departments/management\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Marketing\",\"linkPath\":\"/content/concordia/en/jmsb/about/departments/marketing\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Music\",\"linkPath\":\"/content/concordia/en/finearts/music\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Supply Chain & Business Technology Management\",\"linkPath\":\"/content/concordia/en/jmsb/about/departments/supply-chain-business-technology-management\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Theatre\",\"linkPath\":\"/content/concordia/en/finearts/theatre\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 29,
+        "fields": {
+            "name": "Solar House",
+            "building_code": "SH",
+            "location": "POINT(-73.6426 45.4595)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 30,
+        "fields": {
+            "name": "Administration Building",
+            "building_code": "AD",
+            "location": "POINT(-73.6399 45.4579)",
+            "civic_address": "7141 Sherbrooke St. W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Access Centre for Students with Disabilities\",\"linkPath\":\"/content/concordia/en/students/accessibility\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for Teaching & Learning\",\"linkPath\":\"/content/concordia/en/ctl.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Counselling and Psychological Services\",\"linkPath\":\"/content/concordia/en/health/mental-health/counselling\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Dean of Students\",\"linkPath\":\"/content/concordia/en/students/life.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Health Services\",\"linkPath\":\"/content/concordia/en/health/medical/clinic\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Loyola International College\",\"linkPath\":\"/content/concordia/en/artsci/loyola-college-diversity-sustainability.html \",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Loyola Landing\",\"linkPath\":\"/content/concordia/en/students/services/loyola\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Provost and VP, Academic\",\"linkPath\":\"/content/concordia/en/provost.html \",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Welcome Crew Office\",\"linkPath\":\"/content/concordia/en/students/new/mentoring.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Faculty of Arts & Science\",\"linkPath\":\"/content/concordia/en/artsci.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 31,
+        "fields": {
+            "name": "Physical Services Building",
+            "building_code": "PS",
+            "location": "POINT(-73.6398 45.4597)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Environmental Health and Safety\",\"linkPath\":\"/content/concordia/en/campus-life/safety\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Facilities Management\",\"linkPath\":\"/content/concordia/en/offices/facilities\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 32,
+        "fields": {
+            "name": "Richard J. Renaud Science Complex",
+            "building_code": "SP",
+            "location": "POINT(-73.6418 45.4576)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Café\",\"linkPath\":\"\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Campus Safety and Prevention Services\",\"linkPath\":\"https://www.concordia.ca/campus-life/security.html\",\"itemClass\":\"\",\"linkTarget\":false}",
+                "{\"linkText\":\"Science College\",\"linkPath\":\"/content/concordia/en/artsci/science-college\",\"itemClass\":\"\",\"linkTarget\":false}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Biology\",\"linkPath\":\"/content/concordia/en/artsci/biology\",\"itemClass\":\"\",\"linkTarget\":false}",
+                "{\"linkText\":\"Centre for Biological Applications of Mass Spectrometry\",\"linkPath\":\"/content/concordia/en/research/mass-spec\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for NanoScience Research\",\"linkPath\":\"/content/concordia/en/research/nanoscience\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for Research in Molecular Modeling\",\"linkPath\":\"/content/concordia/en/research/molecular-modeling\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for Studies in Behavioral Neurobiology\",\"linkPath\":\"/content/concordia/en/research/neuroscience\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Chemistry and Biochemistry\",\"linkPath\":\"/content/concordia/en/artsci/chemistry\",\"itemClass\":\"\",\"linkTarget\":false}",
+                "{\"linkText\":\"Health, Kinesiology & Applied Physiology\",\"linkPath\":\"/content/concordia/en/artsci/health-kinesiology-physiology\",\"itemClass\":\"\",\"linkTarget\":false}",
+                "{\"linkText\":\"Physics\",\"linkPath\":\"/content/concordia/en/artsci/physics\",\"itemClass\":\"\",\"linkTarget\":false}",
+                "{\"linkText\":\"Psychology\",\"linkPath\":\"/content/concordia/en/artsci/psychology\",\"itemClass\":\"\",\"linkTarget\":false}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 33,
+        "fields": {
+            "name": "Faubourg Building",
+            "building_code": "FB",
+            "location": "POINT(-73.5776 45.4946)",
+            "civic_address": "1250 Guy",
+            "campus": "SGW",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Enrolment Services / Office of the Registrar / Student Recruitment\",\"linkPath\":\"/content/concordia/en/offices/registrar\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Environmental Health and Safety\",\"linkPath\":\"/content/concordia/en/campus-life/safety\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Examinations Office\",\"linkPath\":\"/content/concordia/en/students/exams\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Human Resources\",\"linkPath\":\"/content/concordia/en/hr\",\"itemClass\":\"\",\"linkTarget\":true}",
+                "{\"linkText\":\"Office of Sustainability\",\"linkPath\":\"/content/concordia/en/sustainability\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Records Management and Archives (RMA) Office\",\"linkPath\":\"/content/concordia/en/offices/archives\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Senior non-credit program\",\"linkPath\":\"/content/concordia/en/lifelong-learning/seniors\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"STUDY HUB\",\"linkPath\":\"/content/concordia/en/students/success/superb-study-spots-at-concordia.html#study-spots\",\"linkTarget\":false,\"itemClass\":\"/content/concordia/en/students/success/superb-study-spots-at-concordia.html#study-spots\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Classics, Modern Languages & Linguistics\",\"linkPath\":\"/content/concordia/en/artsci/cmll\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Continuing Education\",\"linkPath\":\"/content/concordia/en/cce\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"District 3 Innovation Center\",\"linkPath\":\"/content/concordia/en/research/d3center\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Mel Hoppenheim School of Cinema\",\"linkPath\":\"/content/concordia/en/finearts/cinema\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 34,
+        "fields": {
+            "name": "Quadrangle",
+            "building_code": "QA",
+            "location": "POINT(-73.64007 45.4586406)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+
+    {
+        "model": "mapengine.building",
+        "pk": 36,
+        "fields": {
+            "name": "Guy-De Maisonneuve Building",
+            "building_code": "GM",
+            "location": "POINT(-73.5789 45.4959)",
+            "civic_address": "1550 De Maisonneuve W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Access Centre for Students with Disabilities\",\"linkPath\":\"/content/concordia/en/students/accessibility\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Facilities Management\",\"linkPath\":\"/content/concordia/en/offices/facilities\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Financial Aid & Awards Office\",\"linkPath\":\"/content/concordia/en/students/financial.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Financial Services\",\"linkPath\":\"/content/concordia/en/financial-services\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Graduate Studies\",\"linkPath\":\"/content/concordia/en/sgs.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Health Services\",\"linkPath\":\"/content/concordia/en/health/medical/clinic\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Institute for Co-operative Education\",\"linkPath\":\"/content/concordia/en/academics/co-op.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"International Students Office\",\"linkPath\":\"/content/concordia/en/students/international\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of the Chief Communications Officer\",\"linkPath\":\"/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of the President\",\"linkPath\":\"/content/concordia/en/about/administration-governance/president.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of the Provost & VP, Academic\",\"linkPath\":\"/content/concordia/en/provost.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of Rights and Responsibilities\",\"linkPath\":\"/content/concordia/en/conduct/behavioural-integrity/rights-responsibilities.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of the VP, Research & Graduate Studies\",\"linkPath\":\"/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Office of the VP, Services and Sustainability\",\"linkPath\":\"/content/concordia/en/about/administration-governance/office-vp-services-sustainability\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Ombuds Office\",\"linkPath\":\"/content/concordia/en/offices/ombuds.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"University Advancement\",\"linkPath\":\"/content/concordia/en/about/administration-governance/office-vp-advancement.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"University Communications Services\",\"linkPath\":\"/content/concordia/en/about/administration-governance/office-chief-communications-officer\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Contemporary Dance\",\"linkPath\":\"/content/concordia/en/finearts/dance\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Music\",\"linkPath\":\"/content/concordia/en/finearts/music\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Theatre\",\"linkPath\":\"/content/concordia/en/finearts/theatre\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 37,
+        "fields": {
+            "name": "T Annex",
+            "building_code": "T",
+            "location": "POINT(-73.5793 45.4967)",
+            "civic_address": "2030 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Graduate Students Association\",\"linkPath\":\"http://gsaconcordia.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 38,
+        "fields": {
+            "name": "Vanier Extension",
+            "building_code": "VE",
+            "location": "POINT(-73.6386 45.4587)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": true,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Library\",\"linkPath\":\"http://library.concordia.ca/index.php\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Applied Human Sciences\",\"linkPath\":\"http://ahsc.concordia.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 39,
+        "fields": {
+            "name": "F. C. Smith Building",
+            "building_code": "FC",
+            "location": "POINT(-73.6392 45.4584)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Cazalet Theater\",\"linkPath\":\"/content/concordia/en/arts/venues/cazalet\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Multi-Faith and Spirituality Centre\",\"linkPath\":\"/content/concordia/en/students/spirituality\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"F.C. Smith Auditorium\",\"linkPath\":\"/content/concordia/en/arts/venues/fc-smith-auditorium\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 40,
+        "fields": {
+            "name": "D Annex",
+            "building_code": "D",
+            "location": "POINT(-73.5794 45.4977)",
+            "civic_address": "2140 Bishop",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Theological Studies\",\"linkPath\":\"/content/concordia/en/artsci/theology.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 41,
+        "fields": {
+            "name": "Jesuit Residence",
+            "building_code": "JR",
+            "location": "POINT(-73.6433 45.4584)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Student Residence\",\"linkPath\":\"/content/concordia/en/students/housing/residences/jesuit-residence\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 42,
+        "fields": {
+            "name": "Terrebonne Building",
+            "building_code": "TA",
+            "location": "POINT(-73.6409 45.46)",
+            "civic_address": "7079 Terrebonne",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Centre for the Arts in Human Development (CAHD)\",\"linkPath\":\"/content/concordia/en/finearts/research-creation/cahd\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 43,
+        "fields": {
+            "name": "Grey Nuns Building",
+            "building_code": "GN",
+            "location": "POINT(-73.576057 45.494197)",
+            "civic_address": "1190 Guy St. (main entrance) | 1175 St-Mathieu St. | 1185 St-Mathieu St.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Class Entrance: 1175 St-Mathieu St.\",\"linkPath\":\"/content/concordia/en/maps/sgw-campus.html?building=GN-classes\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUSP: 1175 St-Mathieu St. (temporary)\",\"linkPath\":\"/content/concordia/en/students/student-parents-centre.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Daycare Centre: 1185 St-Mathieu St.\",\"linkPath\":\"/content/concordia/en/campus-life/daycares.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Grey Nuns Library (Reading Room and Group Study Rooms)\",\"linkPath\":\"/content/concordia/en/maps/buildings/gn\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Residences\",\"linkPath\":\"/content/concordia/en/students/housing/residences/grey-nuns.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Summer Accommodation\",\"linkPath\":\"/content/concordia/en/summer/accommodations.html/greynunsresidence/\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Dept. of Philosophy: 1175 St-Mathieu St. (temporary)\",\"linkPath\":\"/content/concordia/en/artsci/philosophy.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 44,
+        "fields": {
+            "name": "BB Annex",
+            "building_code": "BB",
+            "location": "POINT(-73.6393 45.4598)",
+            "civic_address": "3502 Belmore",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"CPE Les P'tits Profs Daycare\",\"linkPath\":\"http://lesptitsprofs.wordpress.com/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 45,
+        "fields": {
+            "name": "ER Building",
+            "building_code": "ER",
+            "location": "POINT(-73.58016 45.49650)",
+            "civic_address": "2155 Guy St.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Computer Science and Software Engineering\",\"linkPath\":\"/content/concordia/en/ginacody/computer-science-software-eng.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Department of Creative Arts Therapies\",\"linkPath\":\"/content/concordia/en/finearts/creative-arts-therapies\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"engAGE: Centre for Research on Aging\",\"linkPath\":\"/content/concordia/en/research/aging.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Next-Generation Cities Institute\",\"linkPath\":\"/content/concordia/en/research/cities-institute.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Simone de Beauvoir Institute\",\"linkPath\":\"/content/concordia/en/artsci/sdbi\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Sustainability in the Digital Age\",\"linkPath\":\"https://sustainabilitydigitalage.org/who-we-are/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Urban Studies\",\"linkPath\":\"/content/concordia/en/academics/undergraduate/urban-planning-urban-studies.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 46,
+        "fields": {
+            "name": "LD Building",
+            "building_code": "LD",
+            "location": "POINT(-73.57730 45.49689)",
+            "civic_address": "1424 Bishop Street",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"CSU Daycare & Nursery\",\"linkPath\":\"mailto:infocsudaycare@csu.qc.ca\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 47,
+        "fields": {
+            "name": "Psychology Building",
+            "building_code": "PY",
+            "location": "POINT(-73.6405 45.4589)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Centre for clinical research in health (CCRH)\",\"linkPath\":\"/content/concordia/en/research/clinical-research-health.html\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Psychology\",\"linkPath\":\"/content/concordia/en/artsci/psychology.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 48,
+        "fields": {
+            "name": "Student Centre",
+            "building_code": "SC",
+            "location": "POINT(-73.6392 45.4591)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Cafeteria\",\"linkPath\":\"\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Café\",\"linkPath\":\"\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Campus Centre\",\"linkPath\":\"\",\"linkTarget\":false,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Food Services\",\"linkPath\":\"/content/concordia/en/students/housing/residences\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 49,
+        "fields": {
+            "name": "Stinger Dome (seasonal)",
+            "building_code": "DO",
+            "location": "POINT(-73.635 45.4579)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Stingers.ca\",\"linkPath\":\"http://stingers.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 50,
+        "fields": {
+            "name": "R Annex",
+            "building_code": "R",
+            "location": "POINT(-73.5794 45.4968)",
+            "civic_address": "2050 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Religions and Cultures\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 51,
+        "fields": {
+            "name": "M Annex",
+            "building_code": "M",
+            "location": "POINT(-73.5798 45.4974)",
+            "civic_address": "2135 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 52,
+        "fields": {
+            "name": "Central Building",
+            "building_code": "CC",
+            "location": "POINT(-73.640417 45.458361)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Concordia Student Union\",\"linkPath\":\"https://www.csu.qc.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Loyola College for Diversity and Sustainability and Loyola\",\"linkPath\":\"/content/concordia/en/artsci/loyola-college-diversity-sustainability.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 53,
+        "fields": {
+            "name": "Z Annex",
+            "building_code": "Z",
+            "location": "POINT(-73.5798 45.4969)",
+            "civic_address": "2090 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Multi-Faith and Spirituality Centre\",\"linkPath\":\"/content/concordia/en/students/spirituality\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Sustainable Concordia\",\"linkPath\":\"http://sustainableconcordia.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 54,
+        "fields": {
+            "name": "GS Building",
+            "building_code": "GS",
+            "location": "POINT(-73.581136 45.496570)",
+            "civic_address": "1538 Sherbrooke St. W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 55,
+        "fields": {
+            "name": "RR Annex",
+            "building_code": "RR",
+            "location": "POINT(-73.5794 45.4967)",
+            "civic_address": "2040 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Liberal Arts College\",\"linkPath\":\"/content/concordia/en/artsci/liberal-arts-college\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 56,
+        "fields": {
+            "name": "FA Annex",
+            "building_code": "FA",
+            "location": "POINT(-73.5795 45.4968)",
+            "civic_address": "2060 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Religions and Cultures, Department of\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 57,
+        "fields": {
+            "name": "Grey Nuns Annex",
+            "building_code": "GA",
+            "location": "POINT(-73.5787589 45.4935115)",
+            "civic_address": "1211-1215 St-Mathieu St.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Department of Education\",\"linkPath\":\"http://doe.concordia.ca/\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 58,
+        "fields": {
+            "name": "B Annex",
+            "building_code": "B",
+            "location": "POINT(-73.5795 45.4978)",
+            "civic_address": "2160 Bishop",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Engineering and Computer Science Association\",\"linkPath\":\"http://ecaconcordia.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 59,
+        "fields": {
+            "name": "Toronto-Dominion Building",
+            "building_code": "TD",
+            "location": "POINT(-73.5788 45.4947)",
+            "civic_address": "1410 Guy",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": true,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 60,
+        "fields": {
+            "name": "S Annex",
+            "building_code": "S",
+            "location": "POINT(-73.5799 45.4974)",
+            "civic_address": "2145 Mackay",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": [
+                "{\"linkText\":\"Department of Philosophy\",\"linkPath\":\"/content/concordia/en/artsci/philosophy\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 61,
+        "fields": {
+            "name": "J.W. McConnell Building",
+            "building_code": "LB",
+            "location": "POINT(-73.57804 45.49687 )",
+            "civic_address": "1400 De Maisonneuve Blvd. W.",
+            "campus": "SGW",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": true,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"4TH SPACE\",\"linkPath\":\"/content/concordia/en/next-gen/4th-space\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Birks Student Service Centre\",\"linkPath\":\"/content/concordia/en/students/birks\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Book Stop\",\"linkPath\":\"https://www.bkstr.com/concordiastore\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Concordia Print Services\",\"linkPath\":\"/content/concordia/en/print\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Instructional & Information Technology Services (IITS)\",\"linkPath\":\"/content/concordia/en/it\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"J.A. De Sève Cinema\",\"linkPath\":\"/content/concordia/en/it/services/cinemas\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Leonard and Bina Ellen Art Gallery\",\"linkPath\":\"http://ellengallery.concordia.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"R. Howard Webster Library\",\"linkPath\":\"/content/concordia/en/library\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Sexual Assault Resource Centre (SARC)\",\"linkPath\":\"/content/concordia/en/conduct/sexual-assault\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"SHIFT Centre for Social Transformation\",\"linkPath\":\"/content/concordia/en/about/shift.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Welcome Centre\",\"linkPath\":\"/content/concordia/en/admissions/undergraduate/welcometours.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": [
+                "{\"linkText\":\"Centre for Interdisciplinary Studies in Society and Culture (CISSC)\",\"linkPath\":\"/content/concordia/en/artsci/cissc.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Centre for the Study of Learning and Performance\",\"linkPath\":\"/content/concordia/en/research/learning-performance\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Education\",\"linkPath\":\"/content/concordia/en/artsci/education.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"English\",\"linkPath\":\"/content/concordia/en/artsci/english.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Études françaises\",\"linkPath\":\"/content/concordia/fr/arts-sciences/francais\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"History\",\"linkPath\":\"/content/concordia/en/artsci/history.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Mathematics and Statistics\",\"linkPath\":\"/content/concordia/en/artsci/math-stats.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ]
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 62,
+        "fields": {
+            "name": "Grey Nuns Building, Classroom entrance",
+            "building_code": "GN-classes",
+            "location": "POINT(-73.57701367444221 45.49266605058586)",
+            "civic_address": "1175 Rue St Mathieu, Montréal, QC H3H 2P7",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 63,
+        "fields": {
+            "name": "BH Annex",
+            "building_code": "BH",
+            "location": "POINT(-73.6391 45.4597)",
+            "civic_address": "3500 Belmore",
+            "campus": "LOY",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"CPE Les P'tits Profs Daycare\",\"linkPath\":\"http://lesptitsprofs.wordpress.com/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 64,
+        "fields": {
+            "name": "Pavillon Des Soeurs Grises",
+            "building_code": "",
+            "location": "POINT(-73.576057 45.494197)",
+            "civic_address": "1190 Guy Street",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Daycare Centre\",\"linkPath\":\"http://deanofstudents.concordia.ca/childcare/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Residences\",\"linkPath\":\"http://www.concordia.ca/admissions/housing/residences/grey-nuns/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"Summer Accommodation\",\"linkPath\":\"http://vpservices.concordia.ca/summerhousing/greynunsresidence/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 65,
+        "fields": {
+            "name": "MU Annex",
+            "building_code": "MU",
+            "location": "POINT(-73.5796 45.4979)",
+            "civic_address": "2170 Bishop",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": false,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"\",\"linkPath\":\"\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 66,
+        "fields": {
+            "name": "CL Annex",
+            "building_code": "CL",
+            "location": "POINT(-73.5793 45.4943)",
+            "civic_address": "1665 Ste-Catherine St. W.",
+            "campus": "SGW",
+            "parking_lot": false,
+            "accessibility": true,
+            "atm": true,
+            "bikerack": false,
+            "infokiosk": true,
+            "services_links": [
+                "{\"linkText\":\"Concordia Continuing Education\",\"linkPath\":\"/content/concordia/en/cce\",\"linkTarget\":false,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
+        }
+    },
+    {
+        "model": "mapengine.building",
+        "pk": 67,
+        "fields": {
+            "name": "Hingston Hall, wing HB",
+            "building_code": "HB",
+            "location": "POINT(-73.6419 45.4591)",
+            "civic_address": "7141 Sherbrooke W.",
+            "campus": "LOY",
+            "parking_lot": true,
+            "accessibility": true,
+            "atm": false,
+            "bikerack": false,
+            "infokiosk": false,
+            "services_links": [
+                "{\"linkText\":\"Student Residence\",\"linkPath\":\"/content/concordia/en/students/housing/residences/hingston-hall-hb\",\"linkTarget\":true,\"itemClass\":\"\"}",
+                "{\"linkText\":\"CUFA\",\"linkPath\":\"http://www.cufa.net/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+            ],
+            "departments_links": []
         }
     }
 ]
