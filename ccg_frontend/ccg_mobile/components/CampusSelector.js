@@ -4,22 +4,22 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
-const CampusSelector = ({ selectedCampus = "SGW Campus", onCampusSelect }) => {
-    const [campus, setCampus] = useState(selectedCampus);
+const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
+    // const [campus, setCampus] = useState(selectedCampus);
 
-    useEffect(() => {
-        toggleCampus(); // Set the initial campus
-    }, []);
+    // useEffect(() => {
+    //     toggleCampus(); // Set the initial campus
+    // }, []);
 
     const toggleCampus = () => {
-        const newCampus = campus === "SGW Campus" ? "Loyola Campus" : "SGW Campus";
-        setCampus(newCampus);
+        const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
+        // setCampus(newCampus);
         onCampusSelect(newCampus); // Call the callback when campus changes
     };
 
     return (
         <TouchableOpacity style={styles.campusButton} onPress={toggleCampus}>
-            <Text style={styles.campusText}>{campus}</Text>
+            <Text style={styles.campusText}>{selectedCampus}</Text>
             <FontAwesome name="chevron-down" size={14} color="white" style={styles.icon} />
         </TouchableOpacity>
     );
