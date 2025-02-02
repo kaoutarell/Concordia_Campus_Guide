@@ -18,10 +18,15 @@ const MapScreen = () => {
     const [searchText, setSearchText] = useState("");
     const [isIndoor, setIsIndoor] = useState(false);
 
+    const getRegion = () => {
+        return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
+    };
 
     useEffect(() => {
-        fetchLocations();
-    }, []);
+        if (selectedCampus) {
+            fetchLocations();
+        }
+    }, [selectedCampus]);
 
     const onCampusSelect = async (campus) => {
         setSelectedCampus(campus);
@@ -48,7 +53,7 @@ const MapScreen = () => {
             <HeaderBar selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} searchText={searchText} setSearchText={setSearchText} />
 
             {/* Map */}
-            <MapViewComponent locations={locations} initialRegion={selectedCampus === 'LOY' ? initialRegionLoyola : initialRegionSGW} />
+            <MapViewComponent locations={locations} region={getRegion()} />
 
             <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
 

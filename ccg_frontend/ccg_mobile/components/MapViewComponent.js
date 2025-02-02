@@ -5,7 +5,7 @@ import MapView, { Marker } from "react-native-maps";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({ locations, initialRegion }) => {
+const MapViewComponent = ({ locations, region }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const MapViewComponent = ({ locations, initialRegion }) => {
             ) : (
                 <MapView
                     style={styles.map}
-                    initialRegion={initialRegion}
+                    region={region}
                     showsUserLocation={true}
                 >
                     {/* Markers for locations */}
@@ -36,9 +36,12 @@ const MapViewComponent = ({ locations, initialRegion }) => {
                                 latitude: location.location.latitude,
                                 longitude: location.location.longitude,
                             }}
+                            description="Description"
                             title={location.name}
                             pinColor="red"
+
                         />
+
                     ))}
                 </MapView>
             )}
