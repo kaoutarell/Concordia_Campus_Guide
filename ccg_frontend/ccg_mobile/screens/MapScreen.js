@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { getBuildings } from '../api/dataService';
+import { getBuildingByCampus } from '../api/dataService';
 
 import MapViewComponent from '../components/MapViewComponent';
 import NavigationToggle from '../components/NavigationToggle';
 
 import { View, StyleSheet } from "react-native";
+
+import { initialRegionSGW, initialRegionLoyola } from '../constants/initialRegions';
 
 
 import HeaderBar from '../components/HeaderBar';
@@ -12,35 +14,31 @@ import HeaderBar from '../components/HeaderBar';
 const MapScreen = () => {
 
     const [locations, setLocations] = useState([]);
-    const [selectedCampus, setSelectedCampus] = useState(null);
+    const [selectedCampus, setSelectedCampus] = useState("SGW");
     const [searchText, setSearchText] = useState("");
     const [isIndoor, setIsIndoor] = useState(false);
 
 
     useEffect(() => {
-        const fetchLocations = async () => {
-            try {
-                const data = await getBuildings();
-                setLocations(data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
         fetchLocations();
     }, []);
 
-    const onCampusSelect = (campus) => {
+    const onCampusSelect = async (campus) => {
         setSelectedCampus(campus);
+        await fetchLocations();
     };
 
-    // Initial region for Concordia SGW Campus
-    const initialRegion = {
-        latitude: 45.495654,
-        longitude: -73.579219,
-        latitudeDelta: 0.010,
-        longitudeDelta: 0.010,
+    const fetchLocations = async () => {
+        try {
+
+            const data = await getBuildingByCampus(selectedCampus);
+            setLocations(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
+
+
 
     return (
 
@@ -50,7 +48,7 @@ const MapScreen = () => {
             <HeaderBar selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} searchText={searchText} setSearchText={setSearchText} />
 
             {/* Map */}
-            <MapViewComponent locations={locations} initialRegion={initialRegion} />
+            <MapViewComponent locations={locations} initialRegion={selectedCampus === 'LOY' ? initialRegionLoyola : initialRegionSGW} />
 
             <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
 

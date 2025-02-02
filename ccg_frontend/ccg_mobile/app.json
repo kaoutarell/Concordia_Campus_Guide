@@ -12,6 +12,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow the app to access your location at all times.",
+          "locationWhenInUsePermission": "Allow the app to access your location while using the app."
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true
     },
