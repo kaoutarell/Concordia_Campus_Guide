@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Dimensions, View, ActivityIndicator, Text, SafeAreaView, Platform, StatusBar } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-
+import locationService from "../services/LocationService.js";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({ locations, region }) => {
     const [isLoading, setIsLoading] = useState(true);
+    const [currentLocation, setCurrentLocation] = useState(null);
 
     useEffect(() => {
         if (locations.length > 0) {
             setIsLoading(false);
         }
     }, [locations]);
+    useEffect(() => {
+        const fetchLocation = async () => {
+            try {
+                await locationService.startTrackingLocation();
+                const location = locationService.getCurrentLocation();
+                setCurrentLocation(location);
+            } catch (error) {
+                console.log("Error fetching location:", error);
+            }
+        };
+        fetchLocation();
+
+        return () => {
+            locationService.stopTrackingLocation();
+        };
+    }, []);
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -27,6 +45,7 @@ const MapViewComponent = ({ locations, region }) => {
                     style={styles.map}
                     region={region}
                     showsUserLocation={true}
+                    followsUserLocation={true}
                 >
                     {/* Markers for locations */}
                     {locations.map((location) => (
@@ -43,6 +62,16 @@ const MapViewComponent = ({ locations, region }) => {
                         />
 
                     ))}
+                    {currentLocation && (
+                        <Marker
+                            coordinate={{
+                                latitude: currentLocation.coords.latitude,
+                                longitude: currentLocation.coords.longitude,
+                            }}
+                            title="Current Location"
+                            pinColor="blue"
+                        />
+                    )}
                 </MapView>
             )}
         </SafeAreaView>

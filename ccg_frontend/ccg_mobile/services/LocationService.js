@@ -1,4 +1,3 @@
-// LocationService.js
 import * as Location from 'expo-location';
 
 class LocationService {
@@ -8,63 +7,43 @@ class LocationService {
   locationPermissionAccess = false;
 
   constructor() {
-    if (LocationService.instance) {
-      return LocationService.instance;
+    if (!LocationService.instance) {
+      LocationService.instance = this;
     }
-    LocationService.instance = this;
+    return LocationService.instance;
   }
-  
+
   // Request permission and start tracking location
   async startTrackingLocation() {
-    // Request permission for location access
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
-      locationPermissionAccess = false
-      this.currentLocation = null
-      console.log("LocationService: Permission to access location was denied")
+      this.locationPermissionAccess = false;
+      this.currentLocation = null;
+      console.log("LocationService: Permission to access location was denied");
       throw new Error('Permission to access location was denied');
     }
-    locationPermissionAccess = true
-    // Start tracking location
+    this.locationPermissionAccess = true;
+
     this.locationListener = await Location.watchPositionAsync(
       {
-        accuracy: Location.Accuracy.BestForNavigation, // Track with high accuracy
-        timeInterval: 1000, // Update every 1 second
-        distanceInterval: 1, // Update when the device moves by 1 meter
+        accuracy: Location.Accuracy.BestForNavigation,
+        timeInterval: 1000,
+        distanceInterval: 1,
       },
       (location) => {
         this.currentLocation = location;
-        //console.log('Updated Location:', location); // For debugging
       }
     );
   }
 
-  // Get the current location
-  // Output Format:
-  // {
-  //   "coords": {
-  //         "accuracy",
-  //         "altitude",
-  //         "altitudeAccuracy",
-  //         "heading",
-  //         "latitude",
-  //         "longitude",
-  //         "speed"
-  //   },
-  //   "mocked",
-  //   "timestamp"
-  // }
   getCurrentLocation() {
     return this.currentLocation;
   }
 
-  // Check if location was granted/denied
-  isLocationPermissionAllowed(){
+  isLocationPermissionAllowed() {
     return this.locationPermissionAccess;
   }
 
-
-  // Stop tracking location
   async stopTrackingLocation() {
     if (this.locationListener) {
       await this.locationListener.remove();
@@ -73,5 +52,6 @@ class LocationService {
   }
 }
 
+// Export as a singleton
 const locationService = new LocationService();
 export default locationService;
