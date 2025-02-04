@@ -73,11 +73,7 @@ const MapViewComponent = ({ locations, region }) => {
                         {locations.map((location) => (
                             <CustomMarker
                                 key={location.id}
-                                coordinate={{
-                                    latitude: location.location.latitude,
-                                    longitude: location.location.longitude,
-                                }}
-                                value={location.building_code}
+                                value={location}
                                 onPress={() => handleMarkerPress(location)}
 
                             />

@@ -43,10 +43,7 @@ const MapScreen = () => {
         }
     };
 
-
-
     return (
-
 
         <View style={styles.container}>
 

@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { } from "react";
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
-    // const [campus, setCampus] = useState(selectedCampus);
-
-    // useEffect(() => {
-    //     toggleCampus(); // Set the initial campus
-    // }, []);
 
     const toggleCampus = () => {
         const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
-        // setCampus(newCampus);
-        onCampusSelect(newCampus); // Call the callback when campus changes
+        onCampusSelect(newCampus);
     };
 
     return (

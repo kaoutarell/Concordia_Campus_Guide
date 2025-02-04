@@ -2,13 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Marker } from "react-native-maps";
 
-const CustomMarker = ({ coordinate, value, onPress }) => {
+const CustomMarker = ({ value, onPress }) => {
     return (
         <Marker
-            coordinate={coordinate}
+            coordinate={{
+                latitude: value.location.latitude,
+                longitude: value.location.longitude,
+            }}
             onPress={() => {
-                console.log("Marker Pressed:", value);
-                onPress(); // Ensure the callback is called
+                console.log("Marker Pressed:", value.building_code);
+                onPress();
             }}>
             <View style={styles.markerContainer}>
                 <Image
@@ -16,7 +19,7 @@ const CustomMarker = ({ coordinate, value, onPress }) => {
                     style={styles.markerImage}
                 />
                 <View style={styles.valueContainer}>
-                    <Text style={styles.valueText}>{value}</Text>
+                    <Text style={styles.valueText}>{value.building_code}</Text>
                 </View>
             </View>
         </Marker>
