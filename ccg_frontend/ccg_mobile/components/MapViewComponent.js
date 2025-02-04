@@ -94,9 +94,6 @@ const MapViewComponent = ({ locations, region }) => {
                 </View>
             )}
 
-            {/* Display current location marker only if available */}
-
-            {console.log("Rendering InfoPopup with value:", selectedMarker)}
             {/* Display Info Popup when a marker is selected */}
             {selectedMarker !== null && (
                 console.log("Rendering InfoPopup with value:", selectedMarker), // ✅ Ensure it logs
