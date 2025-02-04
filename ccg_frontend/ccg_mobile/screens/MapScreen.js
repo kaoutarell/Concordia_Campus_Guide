@@ -3,35 +3,22 @@ import { getBuildings } from "../api/dataService";
 
 import MapViewComponent from "../components/MapViewComponent";
 import NavigationToggle from "../components/NavigationToggle";
-import CampusSelector from "../components/CampusSelector"; // ✅ Import CampusSelector
+import {
+  initialRegionSGW,
+  initialRegionLoyola,
+} from "../constants/initialRegions";
 
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from "../components/HeaderBar";
 
-const campusLocations = {
-  "SGW Campus": {
-    latitude: 45.495654,
-    longitude: -73.579219,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
-  },
-  "Loyola Campus": {
-    latitude: 45.458297458031716,
-    longitude: -73.63905090080746,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
-  },
-};
-
 const MapScreen = () => {
   const [locations, setLocations] = useState([]);
-  const [selectedCampus, setSelectedCampus] = useState("SGW Campus");
+  const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [searchText, setSearchText] = useState("");
   const [isIndoor, setIsIndoor] = useState(false);
-  const [selectedCampusLocation, setSelectedCampusLocation] = useState(
-    campusLocations["SGW Campus"]
-  );
+  const [selectedCampusLocation, setSelectedCampusLocation] =
+    useState(initialRegionSGW);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -48,9 +35,14 @@ const MapScreen = () => {
 
   const onCampusSelect = (campus) => {
     setSelectedCampus(campus);
-    setSelectedCampusLocation(campusLocations[campus]); // ✅ Now updates the map correctly
+    setSelectedCampusLocation(
+      campus === "SGW" ? initialRegionSGW : initialRegionLoyola
+    ); // updates map
     console.log("Updated Campus:", campus);
-    console.log("Updated Location:", campusLocations[campus]);
+    console.log(
+      "Updated Location:",
+      campus === "SGW" ? initialRegionSGW : initialRegionLoyola
+    );
   };
 
   return (
@@ -63,10 +55,7 @@ const MapScreen = () => {
       />
 
       {/* Map */}
-      <MapViewComponent
-        locations={locations}
-        initialRegion={selectedCampusLocation}
-      />
+      <MapViewComponent locations={locations} region={selectedCampusLocation} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
     </View>

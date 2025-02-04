@@ -6,8 +6,7 @@ const { width } = Dimensions.get("window");
 
 const CampusSelector = ({ selectedCampus, onCampusSelect }) => {
   const toggleCampus = () => {
-    const newCampus =
-      selectedCampus === "SGW Campus" ? "Loyola Campus" : "SGW Campus";
+    const newCampus = selectedCampus === "SGW" ? "Loyola" : "SGW";
     onCampusSelect(newCampus); // Notify MapScreen
   };
 
