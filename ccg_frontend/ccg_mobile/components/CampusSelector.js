@@ -4,49 +4,47 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
-const CampusSelector = ({ selectedCampus = "SGW Campus", onCampusSelect }) => {
-    const [campus, setCampus] = useState(selectedCampus);
+const CampusSelector = ({ selectedCampus, onCampusSelect }) => {
+  const toggleCampus = () => {
+    const newCampus = selectedCampus === "SGW" ? "Loyola" : "SGW";
+    onCampusSelect(newCampus); // Notify MapScreen
+  };
 
-    useEffect(() => {
-        toggleCampus(); // Set the initial campus
-    }, []);
-
-    const toggleCampus = () => {
-        const newCampus = campus === "SGW Campus" ? "Loyola Campus" : "SGW Campus";
-        setCampus(newCampus);
-        onCampusSelect(newCampus); // Call the callback when campus changes
-    };
-
-    return (
-        <TouchableOpacity style={styles.campusButton} onPress={toggleCampus}>
-            <Text style={styles.campusText}>{campus}</Text>
-            <FontAwesome name="chevron-down" size={14} color="white" style={styles.icon} />
-        </TouchableOpacity>
-    );
+  return (
+    <TouchableOpacity style={styles.campusButton} onPress={toggleCampus}>
+      <Text style={styles.campusText}>{selectedCampus}</Text>
+      <FontAwesome
+        name="chevron-down"
+        size={14}
+        color="white"
+        style={styles.icon}
+      />
+    </TouchableOpacity>
+  );
 };
 
 const styles = StyleSheet.create({
-    campusButton: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        backgroundColor: "#8B1D3B",
-        color: "white",
-        borderRadius: 25,
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        marginTop: 10,
-        width: width * 0.8, // Responsive width
-        alignSelf: "center",
-    },
-    campusText: {
-        color: "white",
-        fontSize: 16,
-        fontWeight: "bold",
-    },
-    icon: {
-        marginLeft: 10,
-    },
+  campusButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#8B1D3B",
+    color: "white",
+    borderRadius: 25,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    width: width * 0.8, // Responsive width
+    alignSelf: "center",
+  },
+  campusText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  icon: {
+    marginLeft: 10,
+  },
 });
 
 export default CampusSelector;
