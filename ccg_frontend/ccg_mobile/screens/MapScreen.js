@@ -12,11 +12,12 @@ import HeaderBar from '../components/HeaderBar';
 const MapScreen = () => {
 
     const [locations, setLocations] = useState([]);
-    const [selectedCampus, setSelectedCampus] = useState(null);
+    const [selectedCampus, setSelectedCampus] = useState(null);//possible values=> "SGW Campus", "Loyola Campus"
     const [searchText, setSearchText] = useState("");
     const [isIndoor, setIsIndoor] = useState(false);
+    
 
-
+    
     useEffect(() => {
         const fetchLocations = async () => {
             try {
@@ -32,15 +33,29 @@ const MapScreen = () => {
 
     const onCampusSelect = (campus) => {
         setSelectedCampus(campus);
+        console.log(selectedCampus)
     };
 
-    // Initial region for Concordia SGW Campus
-    const initialRegion = {
-        latitude: 45.495654,
-        longitude: -73.579219,
-        latitudeDelta: 0.010,
-        longitudeDelta: 0.010,
+    const campusLocations = {
+        SGW:{
+            latitude: 45.495654,
+            longitude: -73.579219,
+            latitudeDelta: 0.010,
+            longitudeDelta: 0.010,
+        },
+        Loyola:{
+            latitude: 45.458297458031716,
+            longitude: -73.63905090080746,
+            latitudeDelta: 0.010,
+            longitudeDelta: 0.010,
+        }
+
     };
+
+    const [selectedCampusLocation, setSelectedCampusLocation] = useState(campusLocations.SGW);
+
+    // Initial region for Concordia SGW Campus
+    
 
     return (
 
@@ -50,7 +65,7 @@ const MapScreen = () => {
             <HeaderBar selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} searchText={searchText} setSearchText={setSearchText} />
 
             {/* Map */}
-            <MapViewComponent locations={locations} initialRegion={initialRegion} />
+            <MapViewComponent locations={locations} initialRegion={selectedCampusLocation} />
 
             <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
 
