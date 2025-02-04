@@ -1,19 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { StyleSheet, Dimensions, View, ActivityIndicator, Text, SafeAreaView, Platform, StatusBar } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../services/LocationService.js";
+import CustomMarker from "./CustomMarker.js";
+import InfoPopup from "./InfoPopUp.js";
+
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({ locations, region }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [currentLocation, setCurrentLocation] = useState(null);
+    const [selectedMarker, setSelectedMarker] = useState(null);
+
+
+    const handleMarkerPress = (location) => {
+        // Force React to update state asynchronously
+        setTimeout(() => {
+            setSelectedMarker((prev) => (prev === location ? null : location));
+        }, 0);
+    };
+
+    const onGoToLocation = (location) => {
+        console.log("Let's go to :", location.name);
+    };
 
     useEffect(() => {
         if (locations.length > 0) {
             setIsLoading(false);
         }
     }, [locations]);
+
     useEffect(() => {
         const fetchLocation = async () => {
             try {
@@ -31,6 +48,10 @@ const MapViewComponent = ({ locations, region }) => {
         };
     }, []);
 
+    useEffect(() => {
+
+    }, [selectedMarker]);
+
 
     return (
         <SafeAreaView style={styles.container}>
@@ -41,38 +62,51 @@ const MapViewComponent = ({ locations, region }) => {
                     <Text style={styles.loadingText}>Loading locations...</Text>
                 </View>
             ) : (
-                <MapView
-                    style={styles.map}
-                    region={region}
-                    showsUserLocation={true}
-                    followsUserLocation={true}
-                >
-                    {/* Markers for locations */}
-                    {locations.map((location) => (
-                        <Marker
-                            key={location.id}
-                            coordinate={{
-                                latitude: location.location.latitude,
-                                longitude: location.location.longitude,
-                            }}
-                            description="Description"
-                            title={location.name}
-                            pinColor="red"
+                <View style={styles.mapContainer}>
+                    <MapView
+                        style={styles.map}
+                        region={region}
+                        showsUserLocation={true}
+                        onPress={() => setSelectedMarker(null)}
+                    >
+                        {/* Markers for locations */}
+                        {locations.map((location) => (
+                            <CustomMarker
+                                key={location.id}
+                                coordinate={{
+                                    latitude: location.location.latitude,
+                                    longitude: location.location.longitude,
+                                }}
+                                value={location.building_code}
+                                onPress={() => handleMarkerPress(location)}
 
-                        />
+                            />
+                        ))}
 
-                    ))}
-                    {currentLocation && (
-                        <Marker
-                            coordinate={{
-                                latitude: currentLocation.coords.latitude,
-                                longitude: currentLocation.coords.longitude,
-                            }}
-                            title="Current Location"
-                            pinColor="blue"
-                        />
-                    )}
-                </MapView>
+                        {/* Display current location marker only if available */}
+                        {currentLocation?.coords && (
+                            <Marker
+                                coordinate={{
+                                    latitude: currentLocation.coords.latitude,
+                                    longitude: currentLocation.coords.longitude,
+                                }}
+                                title="Current Location"
+                                pinColor="blue"
+                            />
+                        )}
+                    </MapView>
+                </View>
+            )}
+
+            {/* Display current location marker only if available */}
+
+            {console.log("Rendering InfoPopup with value:", selectedMarker)}
+            {/* Display Info Popup when a marker is selected */}
+            {selectedMarker !== null && (
+                console.log("Rendering InfoPopup with value:", selectedMarker), // ✅ Ensure it logs
+                <View style={styles.popupWrapper}>
+                    <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
+                </View>
             )}
         </SafeAreaView>
     );
@@ -81,18 +115,19 @@ const MapViewComponent = ({ locations, region }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Avoids overlapping with status bar
+    },
+    mapContainer: {
+        flex: 1,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Avoid overlapping with the status bar
     },
     map: {
-        flex: 1, // Takes full available space
-        width: "100%", // Ensures full width
-        height: "100%", // Ensures full height
+        flex: 1,
+        width: "100%",
+        height: "100%",
     },
     loadingContainer: {
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: [{ translateX: -50 }, { translateY: -50 }],
+        flex: 1,
+        justifyContent: "center",
         alignItems: "center",
     },
     loadingText: {
@@ -100,6 +135,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
     },
+    popupWrapper: {
+        position: "absolute",
+        bottom: 300, // Ensure it's above the bottom navigation (if any)
+        left: 20,
+        right: 20,
+        borderRadius: 10,
+        padding: 10,
+        elevation: 5, // For Android shadow
+
+    },
+
 });
 
 export default MapViewComponent;
