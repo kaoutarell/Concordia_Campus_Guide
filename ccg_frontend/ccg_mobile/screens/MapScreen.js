@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getBuildingByCampus } from '../api/dataService';
 
-import MapViewComponent from '../components/MapViewComponent';
-import NavigationToggle from '../components/NavigationToggle';
+import MapViewComponent from "../components/MapViewComponent";
+import NavigationToggle from "../components/NavigationToggle";
+import {
+  initialRegionSGW,
+  initialRegionLoyola,
+} from "../constants/initialRegions";
 
 import { View, StyleSheet } from "react-native";
 
@@ -10,66 +14,87 @@ import { initialRegionSGW, initialRegionLoyola } from '../constants/initialRegio
 
 
 import HeaderBar from '../components/HeaderBar';
+import HeaderBar from "../components/HeaderBar";
 
 const MapScreen = () => {
 
-    const [locations, setLocations] = useState([]);
-    const [selectedCampus, setSelectedCampus] = useState("SGW");
-    const [searchText, setSearchText] = useState("");
-    const [isIndoor, setIsIndoor] = useState(false);
 
-    const getRegion = () => {
-        return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
-    };
+  const [locations, setLocations] = useState([]);
+  const [selectedCampus, setSelectedCampus] = useState("SGW");
+  const [searchText, setSearchText] = useState("");
+  const [isIndoor, setIsIndoor] = useState(false);
 
-    useEffect(() => {
-        if (selectedCampus) {
-            fetchLocations();
-        }
-    }, [selectedCampus]);
+  const getRegion = () => {
+    return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
+  };
 
-    const onCampusSelect = async (campus) => {
-        setSelectedCampus(campus);
-        await fetchLocations();
-    };
+  useEffect(() => {
+    if (selectedCampus) {
+      fetchLocations();
+    }
+  }, [selectedCampus]);
 
-    const fetchLocations = async () => {
-        try {
+  const onCampusSelect = async (campus) => {
+    setSelectedCampus(campus);
+    await fetchLocations();
+  };
 
-            const data = await getBuildingByCampus(selectedCampus);
-            setLocations(data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    };
+  const fetchLocations = async () => {
+    try {
 
-    return (
+      const data = await getBuildingByCampus(selectedCampus);
+      setLocations(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-        <View style={styles.container}>
+  return (
 
-            <HeaderBar selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} searchText={searchText} setSearchText={setSearchText} />
+    <View style={styles.container}>
 
-            {/* Map */}
-            <MapViewComponent locations={locations} region={getRegion()} />
+      <HeaderBar
+        selectedCampus={selectedCampus}
+        onCampusSelect={onCampusSelect}
+        searchText={searchText}
+        setSearchText={setSearchText} />
 
-            <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
+      {/* Map */}
+      <MapViewComponent locations={locations} region={getRegion()} />
 
-        </View>
-    );
+      <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
+
+    </View>
+  );
 };
 
+
+
 const styles = StyleSheet.create({
-    container: { flex: 1 },
-    menuButton: { position: "absolute", top: 40, left: 20, zIndex: 1 },
-    menuText: { fontSize: 30 },
-    title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginTop: 50 },
-    campusSelector: { backgroundColor: "#8B1D3B", padding: 10, borderRadius: 10, alignSelf: "center", marginTop: 10 },
-    campusText: { color: "white", fontWeight: "bold" },
-    map: { flex: 1 },
-    switchContainer: { flexDirection: "row", justifyContent: "space-around", padding: 10 },
-    switchButton: { padding: 10, backgroundColor: "#eee", borderRadius: 10 },
+  container: { flex: 1 },
+  menuButton: { position: "absolute", top: 40, left: 20, zIndex: 1 },
+  menuText: { fontSize: 30 },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 50,
+  },
+  campusSelector: {
+    backgroundColor: "#8B1D3B",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  campusText: { color: "white", fontWeight: "bold" },
+  map: { flex: 1 },
+  switchContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10,
+  },
+  switchButton: { padding: 10, backgroundColor: "#eee", borderRadius: 10 },
 });
 
 export default MapScreen;
-
-
