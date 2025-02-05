@@ -14,7 +14,6 @@ import { initialRegionSGW, initialRegionLoyola } from '../constants/initialRegio
 
 
 import HeaderBar from '../components/HeaderBar';
-import HeaderBar from "../components/HeaderBar";
 
 const MapScreen = () => {
 
@@ -67,7 +66,6 @@ const MapScreen = () => {
     </View>
   );
 };
-
 
 
 const styles = StyleSheet.create({
