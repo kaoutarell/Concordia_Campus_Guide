@@ -7,8 +7,7 @@ if [ "$CONDA_DEFAULT_ENV" == "myenv" ]; then
     cd ..
     sleep 5
     python manage.py makemigrations
-    python manage.py migrate
-    python manage.py loaddata buildings.json routes.json shuttle_stops.json
+    python manage.py loaddata campus_buildings.json routes.json
     python manage.py runserver 0.0.0.0:8000
 else
     echo 'Please run "conda activate myenv"'
