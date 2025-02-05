@@ -114,9 +114,7 @@ To set up and run the project locally, follow the instructions below.
   ```bash
   python manage.py makemigrations
   python manage.py migrate
-  python manage.py loaddata buildings.json
-  python manage.py loaddata routes.json
-  python manage.py loaddata shuttle_stops.json
+  python manage.py loaddata campus_buildings.json
   ```
 - run python
 
@@ -127,9 +125,8 @@ To set up and run the project locally, follow the instructions below.
   ```
 
 - http://<ipv4>:8000/admin
-- http://<ipv4>:8000/api/buildings
-- http://<ipv4>:8000/api/routes
-- http://<ipv4>:8000/api/shuttle-stops
+- http://<ipv4>:8000/api/buildings-by-campus/?campus=LOY
+- http://<ipv4>:8000/api/buildings-by-campus/?campus=SGW
 
 ---
 
