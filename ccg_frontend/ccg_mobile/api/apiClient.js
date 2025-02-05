@@ -15,7 +15,7 @@ export const fetchDataByEndpoint = async (endpoint) => {
     return response.data;
 
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error('Error fetching data:', error.stack);
     throw error;
   }
 };
@@ -25,7 +25,7 @@ export const postDataToEndpoint = async (endpoint, data) => {
     const response = await apiClient.post(endpoint, data);
     return response.data;
   } catch (error) {
-    console.error("Error posting data:", error);
+    console.error('Error posting data:', error.stack);
     throw error;
   }
 };

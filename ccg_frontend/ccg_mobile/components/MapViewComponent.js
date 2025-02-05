@@ -4,6 +4,7 @@ import MapView, { Marker } from "react-native-maps";
 import locationService from "../services/LocationService.js";
 import CustomMarker from "./CustomMarker.js";
 import InfoPopup from "./InfoPopUp.js";
+import BuildingHighlight from "./BuildingHighlight";
 
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
@@ -90,6 +91,8 @@ const MapViewComponent = ({ locations, region }) => {
                                 pinColor="blue"
                             />
                         )}
+
+                        <BuildingHighlight/>
                     </MapView>
                 </View>
             )}
