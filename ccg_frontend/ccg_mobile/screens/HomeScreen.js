@@ -1,14 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import locationService from '../services/LocationService.js';
+
 
 export default function HomeScreen() {
     const navigation = useNavigation();
-
-    // Start Tracking Location
-    locationService.startTrackingLocation();
-    
 
     return (
         <View style={styles.container}>

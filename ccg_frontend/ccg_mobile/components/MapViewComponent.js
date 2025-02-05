@@ -96,7 +96,6 @@ const MapViewComponent = ({ locations, region }) => {
 
             {/* Display Info Popup when a marker is selected */}
             {selectedMarker !== null && (
-                console.log("Rendering InfoPopup with value:", selectedMarker), // ✅ Ensure it logs
                 <View style={styles.popupWrapper}>
                     <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
                 </View>
