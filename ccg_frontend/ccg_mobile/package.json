@@ -19,7 +19,9 @@
     "axios": "^1.7.9",
     "expo": "~52.0.28",
     "expo-linking": "^7.0.5",
+    "expo-location": "~18.0.5",
     "expo-status-bar": "~2.0.1",
+    "metro-config": "^0.81.1",
     "react": "18.3.1",
     "react-native": "0.76.6",
     "react-native-gesture-handler": "~2.20.2",
@@ -31,7 +33,8 @@
     "react-native-vector-icons": "^10.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@expo/ngrok": "^4.1.3"
   },
   "private": true
 }

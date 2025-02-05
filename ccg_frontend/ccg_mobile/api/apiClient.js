@@ -12,7 +12,6 @@ export const apiClient = axios.create({
 export const fetchDataByEndpoint = async (endpoint) => {
   try {
     const response = await apiClient.get(endpoint);
-    console.log(response.data);
     return response.data;
 
   } catch (error) {

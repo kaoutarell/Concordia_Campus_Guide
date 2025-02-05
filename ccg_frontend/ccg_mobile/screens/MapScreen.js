@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getBuildings } from "../api/dataService";
+import React, { useEffect, useState } from 'react';
+import { getBuildingByCampus } from '../api/dataService';
 
 import MapViewComponent from "../components/MapViewComponent";
 import NavigationToggle from "../components/NavigationToggle";
@@ -10,57 +10,65 @@ import {
 
 import { View, StyleSheet } from "react-native";
 
+import { initialRegionSGW, initialRegionLoyola } from '../constants/initialRegions';
+
+
+import HeaderBar from '../components/HeaderBar';
 import HeaderBar from "../components/HeaderBar";
 
 const MapScreen = () => {
+
+
   const [locations, setLocations] = useState([]);
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [searchText, setSearchText] = useState("");
   const [isIndoor, setIsIndoor] = useState(false);
-  const [selectedCampusLocation, setSelectedCampusLocation] =
-    useState(initialRegionSGW);
+
+  const getRegion = () => {
+    return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
+  };
 
   useEffect(() => {
-    const fetchLocations = async () => {
-      try {
-        const data = await getBuildings();
-        setLocations(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    if (selectedCampus) {
+      fetchLocations();
+    }
+  }, [selectedCampus]);
 
-    fetchLocations();
-  }, []);
-
-  const onCampusSelect = (campus) => {
+  const onCampusSelect = async (campus) => {
     setSelectedCampus(campus);
-    setSelectedCampusLocation(
-      campus === "SGW" ? initialRegionSGW : initialRegionLoyola
-    ); // updates map
-    console.log("Updated Campus:", campus);
-    console.log(
-      "Updated Location:",
-      campus === "SGW" ? initialRegionSGW : initialRegionLoyola
-    );
+    await fetchLocations();
+  };
+
+  const fetchLocations = async () => {
+    try {
+
+      const data = await getBuildingByCampus(selectedCampus);
+      setLocations(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   return (
+
     <View style={styles.container}>
+
       <HeaderBar
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         searchText={searchText}
-        setSearchText={setSearchText}
-      />
+        setSearchText={setSearchText} />
 
       {/* Map */}
-      <MapViewComponent locations={locations} region={selectedCampusLocation} />
+      <MapViewComponent locations={locations} region={getRegion()} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
+
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: { flex: 1 },

@@ -1,8 +1,8 @@
 from django.urls import path
-import mapengine.views as views
+from mapengine.views.building_views import get_buildings_by_campus
+from mapengine.views.route_views import route_list_create
 
 urlpatterns = [
-    path('buildings/', views.building_list_create, name='building-list'),
-    path('shuttle-stops/', views.shuttlestop_list_create, name='shuttle-stop-list'),
-    path('routes/', views.route_list_create, name='route-list'),
+    path('buildings-by-campus/', get_buildings_by_campus, name='buildings-by-campus'),
+    path('routes/', route_list_create, name='route-list'),
 ]
