@@ -10,7 +10,6 @@ const CustomMarker = ({ value, onPress }) => {
                 longitude: value.location.longitude,
             }}
             onPress={() => {
-                console.log("Marker Pressed:", value.building_code);
                 onPress();
             }}>
             <View style={styles.markerContainer}>

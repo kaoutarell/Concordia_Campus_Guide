@@ -10,9 +10,6 @@ import {
 
 import { View, StyleSheet } from "react-native";
 
-import { initialRegionSGW, initialRegionLoyola } from '../constants/initialRegions';
-
-
 import HeaderBar from '../components/HeaderBar';
 
 const MapScreen = () => {
