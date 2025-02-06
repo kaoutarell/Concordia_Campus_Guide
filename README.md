@@ -9,6 +9,7 @@ This project is a full-stack map-based application with a Python backend and a R
 - [Backend Setup](#backend-setup)
 - [Frontend Setup](#frontend-setup)
 - [Running the project](#running-the-project)
+- [Unit Test Prerequisites](#unit-test-prerequisites)
 - [Contributing](#contributing)
 - [License](#license)
 
