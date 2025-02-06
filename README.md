@@ -144,6 +144,10 @@ To set up and run the project locally, follow the instructions below.
     ```bash
     npm start
     ```
+Error fix (start not found , try npm run) command :
+```bash
+npm install -g expo-cli
+``` 
 
 ### Running the project
 
