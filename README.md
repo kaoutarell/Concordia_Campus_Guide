@@ -187,7 +187,7 @@ Run the following command to install:
 #### Frontend
 Make sure you have the following tools installed for the frontend:
 
-- **Pytest 8.3.4**: Required for running the backend unit tests.
+- **Jest**: Required for running the backend unit tests.
 
 Run the following command to install:
     ```bash
