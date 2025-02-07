@@ -1,10 +1,20 @@
-import React, { } from "react";
+import React from "react";
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
+    const getCampusName = (campus) => {
+        switch (campus) {
+            case "SGW":
+                return "Sir George Williams";
+            case "LOY":
+                return "Loyola";
+            default:
+                return campus; // in case the value is unexpected
+        }
+    };
 
     const toggleCampus = () => {
         const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
