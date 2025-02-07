@@ -8,7 +8,7 @@ import InfoPopup from "./InfoPopUp.js";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({ locations, region }) => {
+const MapViewComponent = ({ locations, region, destination }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [currentLocation, setCurrentLocation] = useState(null);
     const [selectedMarker, setSelectedMarker] = useState(null);
@@ -75,8 +75,15 @@ const MapViewComponent = ({ locations, region }) => {
                         showsUserLocation={true}
                         onPress={() => setSelectedMarker(null)}
                     >
-                        {/* Markers for locations */}
-                        {locations.map((location) => (
+                        {destination ?
+                            <CustomMarker
+                                key={destination.id}
+                                value={destination}
+                                destination={true}
+                                onPress={() => handleMarkerPress(destination)}
+
+                            />
+                            : locations.map((location) => (
                             <CustomMarker
                                 key={location.id}
                                 value={location}

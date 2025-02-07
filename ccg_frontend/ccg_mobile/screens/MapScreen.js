@@ -62,7 +62,7 @@ const MapScreen = () => {
       />
 
       {/* Map */}
-      <MapViewComponent locations={locations} region={getRegion()} />
+      <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
 
