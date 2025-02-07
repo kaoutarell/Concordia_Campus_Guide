@@ -32,6 +32,7 @@ jobs:
           cd ccg_backend
           conda env create -f environment.yml
           conda init bash
+          source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
           conda list
 
