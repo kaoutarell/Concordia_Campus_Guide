@@ -1,0 +1,68 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  backend-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql postgis
+          sudo apt-get install -y docker-compose
+          conda --version
+          python --version
+          docker --version
+          docker-compose --version
+
+      - name: Set up Conda environment
+        run: |
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          export PATH="$HOME/miniconda/bin:$PATH"
+          conda init bash
+          conda env create -f ccg_backend/environment-mac.yml
+          conda activate myenv
+          conda list
+
+      - name: Start backend services
+        run: |
+          cd ccg_backend/docker-configs
+          docker-compose up -d
+          cd ..
+          python manage.py makemigrations
+          python manage.py migrate
+          python manage.py loaddata campus_buildings.json
+          python manage.py runserver &
+
+  frontend-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js and dependencies
+        uses: actions/setup-node@v4
+
+      - name: Install frontend dependencies
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npm install -g expo-cli
+          npm install
+          npm --version
+          expo --version
