@@ -12,9 +12,9 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
     };
 
     return (
-        <TouchableOpacity style={styles.campusButton} onPress={toggleCampus}>
+        <TouchableOpacity style={styles.campusButton} onPress={toggleCampus} testID="campus-button">
             <Text style={styles.campusText}>{selectedCampus}</Text>
-            <FontAwesome name="chevron-down" size={14} color="white" style={styles.icon} />
+            <FontAwesome name="chevron-down" size={14} color="white" style={styles.icon} testID="chevron-icon" />
         </TouchableOpacity>
     );
 };
