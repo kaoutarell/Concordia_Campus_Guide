@@ -13,6 +13,12 @@ const MapViewComponent = ({ locations, region }) => {
     const [currentLocation, setCurrentLocation] = useState(null);
     const [selectedMarker, setSelectedMarker] = useState(null);
 
+    const [isSearching, setIsSearching] = useState(false);
+    const [hasSelectedBuilding, setHasSelectedBuilding] = useState({
+        hasSelected: true,
+        building: {}
+    })
+
 
     const handleMarkerPress = (location) => {
         // Force React to update state asynchronously

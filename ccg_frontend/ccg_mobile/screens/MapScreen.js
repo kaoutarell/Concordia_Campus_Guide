@@ -45,6 +45,7 @@ const MapScreen = () => {
     }
   };
 
+
   return (
 
     <View style={styles.container}>
@@ -52,6 +53,7 @@ const MapScreen = () => {
       <HeaderBar
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
+        locations={locations}
         searchText={searchText}
         setSearchText={setSearchText} />
 

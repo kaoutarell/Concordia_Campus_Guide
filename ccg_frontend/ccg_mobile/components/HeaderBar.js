@@ -6,7 +6,7 @@ import CampusSelector from "./CampusSelector";
 
 const { width } = Dimensions.get("window");
 
-const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect }) => {
+const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect, locations }) => {
     return (
         <View style={styles.headerContainer}>
 
@@ -15,8 +15,10 @@ const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect }
                 <MenuButton />
                 <View style={styles.topColumn}>
 
-                    <SearchBar searchText={searchText} setSearchText={setSearchText} />
+                    <SearchBar searchText={searchText} setSearchText={setSearchText} locations={locations} />
+                    {(!searchText &&
                     <CampusSelector selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
+                    )}
                 </View>
 
             </View>
