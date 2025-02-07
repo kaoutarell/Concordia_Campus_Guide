@@ -5,7 +5,7 @@
         "fields": {
             "name": "PERFORM Centre",
             "building_code": "PC",
-            "location": "POINT(-73.637 45.457)",
+            "location": "POINT(-73.63732331971879 45.45696416140123)",
             "civic_address": "7200 Sherbrooke St. W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -25,7 +25,7 @@
         "fields": {
             "name": "Applied Science Hub",
             "building_code": "HU",
-            "location": "POINT(-73.641795 45.458559)",
+            "location": "POINT(-73.6419572077827 45.45921245764123)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -64,7 +64,7 @@
         "fields": {
             "name": "St. Ignatius of Loyola Church",
             "building_code": "SI",
-            "location": "POINT(-73.6424 45.4578)",
+            "location": "POINT(-73.64234288999249 45.45787487261296)",
             "civic_address": "4455 Broadway",
             "campus": "LOY",
             "parking_lot": false,
@@ -182,7 +182,7 @@
         "fields": {
             "name": "Oscar Peterson Concert Hall",
             "building_code": "PT",
-            "location": "POINT(-73.6389 45.4593)",
+            "location": "POINT(-73.63895545135512 45.4593322247874)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -224,7 +224,7 @@
         "fields": {
             "name": "Hingston Hall, wing HC",
             "building_code": "HC",
-            "location": "POINT(-73.642 45.4596)",
+            "location": "POINT(-73.64208886796608 45.459655593425964)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -244,7 +244,7 @@
         "fields": {
             "name": "Recreation and Athletics Complex",
             "building_code": "RA",
-            "location": "POINT(-73.6374 45.4566)",
+            "location": "POINT(-73.63763557297789 45.456735555078126)",
             "civic_address": "7200 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -265,7 +265,7 @@
         "fields": {
             "name": "Loyola Jesuit Hall and Conference Centre",
             "building_code": "RF",
-            "location": "POINT(-73.6411 45.4585)",
+            "location": "POINT(-73.64103401066905 45.458597012420455)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -378,7 +378,7 @@
         "fields": {
             "name": "Communication Studies and Journalism Building",
             "building_code": "CJ",
-            "location": "POINT(-73.6404 45.4573)",
+            "location": "POINT(-73.64042486586584 45.45746077302391)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -527,7 +527,7 @@
         "fields": {
             "name": "Vanier Library Building",
             "building_code": "VL",
-            "location": "POINT(-73.6386 45.4591)",
+            "location": "POINT(-73.6384110982496 45.45906620855598)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -547,7 +547,7 @@
         "fields": {
             "name": "Centre for Structural and Functional Genomics",
             "building_code": "GE",
-            "location": "POINT(-73.6404 45.4569)",
+            "location": "POINT(-73.64048026891871 45.45699321323383)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -567,7 +567,7 @@
         "fields": {
             "name": "Hingston Hall, wing HA",
             "building_code": "HA",
-            "location": "POINT(-73.6412 45.4594)",
+            "location": "POINT(-73.64121455145408 45.459466736476855)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -620,7 +620,7 @@
         "fields": {
             "name": "Solar House",
             "building_code": "SH",
-            "location": "POINT(-73.6426 45.4595)",
+            "location": "POINT(-73.64252937653863 45.459270713737396)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -638,7 +638,7 @@
         "fields": {
             "name": "Administration Building",
             "building_code": "AD",
-            "location": "POINT(-73.6399 45.4579)",
+            "location": "POINT(-73.63981903924673 45.45800797133174)",
             "civic_address": "7141 Sherbrooke St. W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -668,7 +668,7 @@
         "fields": {
             "name": "Physical Services Building",
             "building_code": "PS",
-            "location": "POINT(-73.6398 45.4597)",
+            "location": "POINT(-73.63976575664564 45.45966323888774)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -689,7 +689,7 @@
         "fields": {
             "name": "Richard J. Renaud Science Complex",
             "building_code": "SP",
-            "location": "POINT(-73.6418 45.4576)",
+            "location": "POINT(-73.64157897027349 45.45769584101109)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -753,7 +753,7 @@
         "fields": {
             "name": "Quadrangle",
             "building_code": "QA",
-            "location": "POINT(-73.64007 45.4586406)",
+            "location": "POINT(-73.64006038193703 45.458599123014665)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -832,7 +832,7 @@
         "fields": {
             "name": "Vanier Extension",
             "building_code": "VE",
-            "location": "POINT(-73.6386 45.4587)",
+            "location": "POINT(-73.63866596071557 45.45881829671856)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -854,7 +854,7 @@
         "fields": {
             "name": "F. C. Smith Building",
             "building_code": "FC",
-            "location": "POINT(-73.6392 45.4584)",
+            "location": "POINT(-73.63938628412444 45.45851602654267)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -896,7 +896,7 @@
         "fields": {
             "name": "Jesuit Residence",
             "building_code": "JR",
-            "location": "POINT(-73.6433 45.4584)",
+            "location": "POINT(-73.64323963783235 45.45842817203118)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": true,
@@ -916,7 +916,7 @@
         "fields": {
             "name": "Terrebonne Building",
             "building_code": "TA",
-            "location": "POINT(-73.6409 45.46)",
+            "location": "POINT(-73.64088873717289 45.459982290850064)",
             "civic_address": "7079 Terrebonne",
             "campus": "LOY",
             "parking_lot": true,
@@ -963,7 +963,7 @@
         "fields": {
             "name": "BB Annex",
             "building_code": "BB",
-            "location": "POINT(-73.6393 45.4598)",
+            "location": "POINT(-73.63917814309688 45.45975712708969)",
             "civic_address": "3502 Belmore",
             "campus": "LOY",
             "parking_lot": false,
@@ -1029,7 +1029,7 @@
         "fields": {
             "name": "Psychology Building",
             "building_code": "PY",
-            "location": "POINT(-73.6405 45.4589)",
+            "location": "POINT(-73.64057490452393 45.45889810232404)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -1050,7 +1050,7 @@
         "fields": {
             "name": "Student Centre",
             "building_code": "SC",
-            "location": "POINT(-73.6392 45.4591)",
+            "location": "POINT(-73.63919117037831 45.459178495843645)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -1073,7 +1073,7 @@
         "fields": {
             "name": "Stinger Dome (seasonal)",
             "building_code": "DO",
-            "location": "POINT(-73.635 45.4579)",
+            "location": "POINT(-73.63616897074088 45.457650637219075)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -1131,7 +1131,7 @@
         "fields": {
             "name": "Central Building",
             "building_code": "CC",
-            "location": "POINT(-73.640417 45.458361)",
+            "location": "POINT(-73.64036977258155 45.45822877634575)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": false,
@@ -1365,7 +1365,7 @@
         "fields": {
             "name": "BH Annex",
             "building_code": "BH",
-            "location": "POINT(-73.6391 45.4597)",
+            "location": "POINT(-73.63909680674313 45.459727604060134)",
             "civic_address": "3500 Belmore",
             "campus": "LOY",
             "parking_lot": false,
@@ -1447,7 +1447,7 @@
         "fields": {
             "name": "Hingston Hall, wing HB",
             "building_code": "HB",
-            "location": "POINT(-73.6419 45.4591)",
+            "location": "POINT(-73.64195973685871 45.45921485188069)",
             "civic_address": "7141 Sherbrooke W.",
             "campus": "LOY",
             "parking_lot": true,
