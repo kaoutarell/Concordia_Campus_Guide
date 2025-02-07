@@ -199,7 +199,7 @@ conda env update --file environment.yml --prune
 Activate the environment:
 
 ```bash
-conda activate your_env_name
+conda activate myenv
 ```
 
 ## Running Tests
