@@ -174,15 +174,48 @@ cd ccg_frontend\ccg_mobile
 npm start
 ```
 ### Unit Test Prerequisites
-#### Backend
+# Backend
+
 Make sure you have the following tools installed for the backend:
 
-- **Pytest 8.3.4**: Required for running the backend unit tests.
+- **Pytest 8.3.4**: Required for running backend unit tests.  
+- **Pytest-Cov 6.0.0**: Generates test coverage reports.  
+- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.  
 
-Run the following command to install:
-    ```bash
-    pip install -U pytest
-    ```
+## Installation
+
+To ensure you have the correct dependencies, set up your Conda environment using the `environment.yml` file:
+
+```bash
+conda env create -f environment.yml
+```
+
+If the environment is already created, update it using:
+
+```bash
+conda env update --file environment.yml --prune
+```
+
+Activate the environment:
+
+```bash
+conda activate your_env_name
+```
+
+## Running Tests
+
+Once the environment is set up, you can run the tests using:
+
+```bash
+pytest
+```
+
+To check test coverage, run:
+
+```bash
+pytest --cov=mapengine --cov-report=term-missing
+```
+
 
 #### Frontend
 Make sure you have the following tools installed for the frontend:
