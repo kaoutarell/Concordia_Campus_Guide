@@ -1,12 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons"; // Icons for better UX
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+
 
 const InfoPopup = ({ value, onClose, onGo }) => {
 
 
     return (
         <View style={styles.popupContainer}>
+            {/* ❌ Close Button (X Icon) */}
+            <TouchableOpacity onPress={onClose} style={styles.closeIcon}>
+                <Ionicons name="close" size={24} color="black" />
+            </TouchableOpacity>
+
             {/* 🔥 Building Name */}
             <Text style={styles.title}>{value.name}</Text>
             <Text style={styles.subtitle}>Building Code: {value.building_code}</Text>
@@ -40,82 +47,80 @@ const InfoPopup = ({ value, onClose, onGo }) => {
                 </View>
             </View>
 
-            {/* 🔘 Buttons */}
+            {/* 🔘 Go Button */}
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={onClose} style={[styles.button, styles.closeButton]}>
-                    <Text style={styles.buttonText}>Close</Text>
-                </TouchableOpacity>
-
                 <TouchableOpacity onPress={() => onGo(value)} style={[styles.button, styles.goButton]}>
-                    <Text style={styles.buttonText}>Go</Text>
+                    <View style={styles.row}>
+                        <FontAwesome5 name="directions" size={24} color="white" />
+                        <Text style={styles.buttonText}>Directions</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
+
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+const styles = {
     popupContainer: {
-        width: 250,
+        position: "relative",
         backgroundColor: "white",
-        padding: 15,
-        borderRadius: 12,
-        elevation: 10,
-        alignItems: "center",
+        padding: 20,
+        borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
+        shadowOpacity: 0.2,
         shadowRadius: 4,
+        elevation: 5,
+    },
+    closeIcon: {
+        position: "absolute",
+        top: 10,
+        right: 10,
+        padding: 5,
+        zIndex: 10,
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
-        color: "#333",
-        textAlign: "center",
+        marginBottom: 5,
     },
     subtitle: {
-        fontSize: 14,
-        fontWeight: "600",
+        fontSize: 16,
         color: "#666",
         marginBottom: 10,
     },
+
     row: {
         flexDirection: "row",
         alignItems: "center",
-        marginVertical: 2,
+        gap: 8
     },
     text: {
-        fontSize: 14,
-        color: "#555",
-        marginLeft: 8,
+        marginLeft: 5,
+        fontSize: 16,
     },
     amenitiesContainer: {
         flexDirection: "row",
         justifyContent: "space-around",
-        width: "100%",
         marginVertical: 10,
     },
     amenity: {
         alignItems: "center",
     },
     amenityText: {
-        fontSize: 12,
-        color: "#555",
+        fontSize: 14,
+        marginTop: 2,
     },
     buttonContainer: {
         flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
+        justifyContent: "center",
+        marginTop: 15,
     },
     button: {
-        flex: 1,
         paddingVertical: 10,
-        marginHorizontal: 5,
-        borderRadius: 8,
-        alignItems: "center",
-    },
-    closeButton: {
-        backgroundColor: "#FF3B30",
+        paddingHorizontal: 15,
+        borderRadius: 5,
     },
     goButton: {
         backgroundColor: "#007AFF",
@@ -124,6 +129,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
     },
-});
+};
+
 
 export default InfoPopup;
