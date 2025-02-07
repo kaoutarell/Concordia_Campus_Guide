@@ -2,9 +2,6 @@ name: myenv
 channels:
   - conda-forge
   - defaults
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
-  - https://repo.anaconda.com/pkgs/msys2
 dependencies:
   - _libavif_api=1.1.1
   - aom=3.9.1
@@ -89,9 +86,6 @@ dependencies:
   - tzdata=2025a
   - ucrt=10.0.22621.0
   - uriparser=0.9.8
-  - vc=14.3
-  - vc14_runtime=14.42.34433
-  - vs2015_runtime=14.42.34433
   - wheel=0.45.1
   - x265=3.5
   - xerces-c=3.2.5
