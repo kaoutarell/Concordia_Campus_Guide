@@ -8,19 +8,21 @@ import {
   initialRegionLoyola,
 } from "../constants/initialRegions";
 
+import { useNavigation } from "@react-navigation/native";
+
+
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from '../components/HeaderBar';
 
 const MapScreen = () => {
-
+  const navigation = useNavigation();
 
   const [locations, setLocations] = useState([]);
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
   const [destinationLocation, setDestinationLocation] = useState(null);
   const [startPoint, setStartLocation] = useState(null);
-
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
@@ -47,20 +49,28 @@ const MapScreen = () => {
     }
   };
 
+
+  const handleViewNavigation = (start,destination) => {
+    console.log("Start: ", start.civic_address);
+    console.log("Destination: ", destination.civic_address);
+          navigation.navigate("Navigation", {
+              start,
+              destination,
+          });
+  }
+
   //TODO: start and destination objects are here
-  console.log(destinationLocation, startPoint)
-  return (
-
+  //
+  return ( 
     <View style={styles.container}>
-
-      <HeaderBar
-        selectedCampus={selectedCampus}
-        onCampusSelect={onCampusSelect}
-        locations={locations}
-        setStartLocation={setStartLocation}
-        setDestinationLocation={setDestinationLocation}
-      />
-
+        <HeaderBar
+          selectedCampus={selectedCampus}
+          onCampusSelect={onCampusSelect}
+          locations={locations}
+          setStartLocation={setStartLocation}
+          setDestinationLocation={setDestinationLocation}
+          handleViewNavigation={handleViewNavigation}
+        />
       {/* Map */}
       <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
 

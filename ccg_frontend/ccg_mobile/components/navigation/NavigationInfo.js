@@ -9,14 +9,10 @@ const NavigationInfo = ({ startAddress, destinationAddress, totalDuration, total
             <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
                 <Ionicons name="arrow-back" size={24} color="black" />
             </TouchableOpacity>
-            <Text style={styles.label}>Start Address:</Text>
-            <Text style={styles.value}>{startAddress}</Text>
-            <Text style={styles.label}>Destination Address:</Text>
-            <Text style={styles.value}>{destinationAddress}</Text>
-            <Text style={styles.label}>Total Duration:</Text>
-            <Text style={styles.value}>{totalDuration}</Text>
-            <Text style={styles.label}>Total Distance:</Text>
-            <Text style={styles.value}>{totalDistance}</Text>
+            <Text style={styles.label}>Start Address: {startAddress}</Text>
+            <Text style={styles.label}>Destination Address:{destinationAddress}</Text>
+            <Text style={styles.label}>Total Duration: {totalDuration}</Text>
+            <Text style={styles.label}>Total Distance: {totalDistance}</Text>
         </View>
     );
 };
@@ -24,6 +20,7 @@ const NavigationInfo = ({ startAddress, destinationAddress, totalDuration, total
 const styles = StyleSheet.create({
     container: {
         padding: 20,
+        paddingTop: 40, // Added padding at the top
         backgroundColor: '#fff',
         borderRadius: 10,
         shadowColor: '#000',
