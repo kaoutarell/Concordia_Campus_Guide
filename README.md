@@ -220,9 +220,9 @@ pytest --cov=mapengine --cov-report=term-missing
 #### Frontend
 Make sure you have the following tools installed for the frontend:
 
-- **"jest" ~29.7.0"** : Jest is required for running frontend unit tests.
-- **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.
- -**"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.
+- **"jest" ~29.7.0"** : Jest is required for running frontend unit tests.  
+- **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.    
+- **"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.  
 
 ## Installation
 
