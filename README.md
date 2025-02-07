@@ -220,9 +220,28 @@ pytest --cov=mapengine --cov-report=term-missing
 #### Frontend
 Make sure you have the following tools installed for the frontend:
 
-- **Jest **: Required for running the backend unit tests.
+- **"jest" ~29.7.0"** : Jest is required for running frontend unit tests.  
+- **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.    
+- **"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.  
 
-Run the following command to install:
-    ```bash
-    npm install --save-dev jest
-    ```
+## Installation
+
+To ensure you have the correct dependencies,  get them from package.json or install them using npm:
+
+```bash
+  npm i 
+```
+or 
+
+```bash
+  npm install --save-dev @testing-library/react-native@^13.0.1
+  npm i  jest jest-expo@~52.0.3
+```
+## Running Tests
+
+Once all dependencies are installed run :
+
+```bash
+ npm run test
+```
+
