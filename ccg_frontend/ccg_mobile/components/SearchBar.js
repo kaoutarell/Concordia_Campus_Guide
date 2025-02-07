@@ -1,5 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, TextInput, StyleSheet, Dimensions, Animated, TouchableOpacity, FlatList, Text } from "react-native";
+import {
+    View,
+    TextInput,
+    StyleSheet,
+    Dimensions,
+    Animated,
+    TouchableOpacity,
+    FlatList,
+    Text,
+    Keyboard
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -101,6 +111,7 @@ const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestination
             setStartPoint(location);
         }
         setFilteredLocations([]);
+        Keyboard.dismiss();
         setFocusedInput(null);
     };
 
@@ -134,6 +145,7 @@ const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestination
                     <FlatList
                         data={filteredLocations}
                         keyExtractor={(item) => item}
+                        keyboardShouldPersistTaps="always"
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => handleSelect(item, "start")} style={styles.suggestion}>
                                 <Text>{item}</Text>
@@ -160,6 +172,7 @@ const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestination
                     <FlatList
                         data={filteredLocations}
                         keyExtractor={(item) => item}
+                        keyboardShouldPersistTaps="always"
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => handleSelect(item, "destination")} style={styles.suggestion}>
                                 <Text>{item}</Text>
