@@ -17,8 +17,10 @@ const MapScreen = () => {
 
   const [locations, setLocations] = useState([]);
   const [selectedCampus, setSelectedCampus] = useState("SGW");
-  const [searchText, setSearchText] = useState("");
   const [isIndoor, setIsIndoor] = useState(false);
+  const [destinationLocation, setDestinationLocation] = useState(null);
+  const [startPoint, setStartLocation] = useState(null);
+
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
@@ -45,7 +47,8 @@ const MapScreen = () => {
     }
   };
 
-
+  //TODO: start and destination objects are here
+  console.log(destinationLocation, startPoint)
   return (
 
     <View style={styles.container}>
@@ -54,8 +57,9 @@ const MapScreen = () => {
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         locations={locations}
-        searchText={searchText}
-        setSearchText={setSearchText} />
+        setStartLocation={setStartLocation}
+        setDestinationLocation={setDestinationLocation}
+      />
 
       {/* Map */}
       <MapViewComponent locations={locations} region={getRegion()} />
