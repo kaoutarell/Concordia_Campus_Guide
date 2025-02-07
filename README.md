@@ -105,6 +105,12 @@ If the environment is already created, update it using:
 conda env update --file environment.yml --prune
 ```
 
+Note if you add a library in the backend make sure to add it to file:
+
+```
+ conda env export --no-builds > environment.yml
+```
+
 Activate the environment:
 
 ```bash
