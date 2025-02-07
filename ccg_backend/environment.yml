@@ -3,7 +3,6 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - _libavif_api=1.1.1
   - aom=3.9.1
   - asgiref=3.8.1
   - blosc=1.21.6
