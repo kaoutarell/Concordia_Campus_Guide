@@ -34,9 +34,14 @@ const MapScreen = () => {
     }
   }, [selectedCampus]);
 
-  const onCampusSelect = async (campus) => {
-    setSelectedCampus(campus);
-    await fetchLocations();
+  const onCampusSelect = (campus) => {
+    setSelectedCampus((prevCampus) => {
+      if (prevCampus !== campus) {
+      return campus;
+      }
+      return prevCampus;
+    });
+    // await fetchLocations();
   };
 
   const fetchLocations = async () => {
