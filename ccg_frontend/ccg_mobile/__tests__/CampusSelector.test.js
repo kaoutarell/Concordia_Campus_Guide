@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import CampusSelector from "../components/CampusSelector"; // Adjust path as needed
+import CampusSelector from "../components/CampusSelector";
 
 describe("CampusSelector", () => {
     const mockOnCampusSelect = jest.fn();

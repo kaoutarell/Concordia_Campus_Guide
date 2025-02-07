@@ -35,3 +35,4 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 **/__pycache__
+node_modules/
