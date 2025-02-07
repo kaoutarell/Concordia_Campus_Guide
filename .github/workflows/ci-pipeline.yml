@@ -38,6 +38,8 @@ jobs:
 
       - name: Run backend tests
         run: |
+          cd ccg_backend
+          conda activate myenv
           pytest 
 
   frontend-check:
