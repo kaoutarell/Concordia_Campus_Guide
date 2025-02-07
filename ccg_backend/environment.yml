@@ -3,24 +3,27 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - libavif
   - aom=3.9.1
   - asgiref=3.8.1
   - blosc=1.21.6
   - bzip2=1.0.8
   - ca-certificates=2024.12.14
+  - colorama=0.4.6
+  - coverage=7.6.10
   - dav1d=1.2.1
   - django=5.1.5
   - djangorestframework=3.15.2
+  - exceptiongroup=1.2.2
   - freexl=2.0.0
   - gdal=3.10.1
   - geos=3.13.0
   - geotiff=1.7.3
   - icu=75.1
-  - intel-openmp
+  - iniconfig=2.0.0
   - krb5=1.21.3
   - lerc=4.0.0
   - libarchive=3.7.7
+  - libavif=1.1.1
   - libavif16=1.1.1
   - libblas=3.9.0
   - libcblas=3.9.0
@@ -51,14 +54,19 @@ dependencies:
   - lz4-c=1.10.0
   - lzo=2.10
   - minizip=4.0.7
-  - mkl
+  - mkl=2024.2.2
   - numpy=2.2.2
   - openssl=3.4.0
+  - packaging=24.2
   - pcre2=10.44
   - pip=25.0
+  - pluggy=1.5.0
   - postgresql=17.2
   - proj=9.5.1
   - psycopg2=2.9.9
+  - pytest=8.3.4
+  - pytest-cov=6.0.0
+  - pytest-django=4.9.0
   - python=3.10.16
   - python_abi=3.10
   - rav1e=0.6.6
@@ -69,6 +77,8 @@ dependencies:
   - svt-av1=2.3.0
   - tbb=2021.13.0
   - tk=8.6.13
+  - toml=0.10.2
+  - tomli=2.2.1
   - typing_extensions=4.12.2
   - tzdata=2025a
   - uriparser=0.9.8
