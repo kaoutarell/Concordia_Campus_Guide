@@ -83,14 +83,34 @@ To set up and run the project locally, follow the instructions below.
 
 4.**Create the Python Environment**:
 
-- Use the provided environment.yml file to create a Conda environment:
-  ```bash
-  # For Windows 10/11
-  conda env create -f environment-win.yml
-  # For MacOS
-  conda env create -f environment-mac.yml
+# Backend
 
-  ```
+Make sure you have the following tools installed for the backend:
+
+- **Pytest 8.3.4**: Required for running backend unit tests.  
+- **Pytest-Cov 6.0.0**: Generates test coverage reports.  
+- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.  
+
+## Installation
+
+To ensure you have the correct dependencies, set up your Conda environment using the `environment.yml` file:
+
+```bash
+conda env create -f environment.yml
+```
+
+If the environment is already created, update it using:
+
+```bash
+conda env update --file environment.yml --prune
+```
+
+Activate the environment:
+
+```bash
+conda activate myenv
+```
+
 - Before activating the environment, you may need to run the following command (conda_root_directory is the directory where you installed conda):
 
   ```bash
