@@ -20,15 +20,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Update
         run: |
           sudo apt-get update
-          sudo apt-get install -y postgresql postgis
-          sudo apt-get install -y docker-compose
-          conda --version
-          python --version
-          docker --version
-          docker-compose --version
 
       - name: Set up Conda environment
         run: |
@@ -36,19 +30,14 @@ jobs:
           bash miniconda.sh -b -p $HOME/miniconda
           export PATH="$HOME/miniconda/bin:$PATH"
           conda init bash
-          conda env create -f ccg_backend/environment.yml
+          cd ccg_backend
+          conda env create -f environment.yml
           conda activate myenv
           conda list
 
-      - name: Start backend services
+      - name: Run backend tests
         run: |
-          cd ccg_backend/docker-configs
-          docker-compose up -d
-          cd ..
-          python manage.py makemigrations
-          python manage.py migrate
-          python manage.py loaddata campus_buildings.json
-          python manage.py runserver &
+          pytest 
 
   frontend-check:
     runs-on: ubuntu-latest
@@ -63,6 +52,5 @@ jobs:
         run: |
           cd ccg_frontend/ccg_mobile
           npm install -g expo-cli
-          npm install
-          npm --version
-          expo --version
+          npm install --legacy-peer-deps
+          npm run test
