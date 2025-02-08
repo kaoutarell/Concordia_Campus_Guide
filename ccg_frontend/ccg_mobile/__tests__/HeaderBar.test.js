@@ -25,14 +25,30 @@ jest.mock("../components/CampusSelector", () => {
 });
 
 describe("HeaderBar Component", () => {
+    //Test case 1:
     it("renders correctly with all child components", () => {
         const { getByTestId } = render(
-            <HeaderBar searchText="" setSearchText={jest.fn()} selectedCampus="Campus A" onCampusSelect={jest.fn()} />
+            <HeaderBar searchText="" setSearchText={jest.fn()} selectedCampus="SGW" onCampusSelect={jest.fn()} />
         );
 
         // Check if all mocked components are rendered
         expect(getByTestId("menu-button")).toBeTruthy();
         expect(getByTestId("search-bar")).toBeTruthy();
         expect(getByTestId("campus-selector")).toBeTruthy();
+    });
+
+    //Test case 2: 
+    it("calls setSearchText when search text changes", () => {
+        const mockSetSearchText = jest.fn();
+
+        const { getByTestId } = render(
+            <HeaderBar searchText="" setSearchText={mockSetSearchText} selectedCampus="SGW" onCampusSelect={jest.fn()} />
+        );
+
+        // Simulate user interacting with SearchBar
+        fireEvent(getByTestId("search-bar"), "touchStart");
+
+        // Verify setSearchText is called
+        expect(mockSetSearchText).toHaveBeenCalledWith("New Search");
     });
 });
