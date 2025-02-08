@@ -53,46 +53,47 @@ const MapViewComponent = ({ locations, region }) => {
     }, [selectedMarker]);
 
 
-    return (
-        <SafeAreaView style={styles.container}>
-            {/* Loading Indicator */}
-            {isLoading ? (
-                <View style={styles.loadingContainer}>
-                    <ActivityIndicator size="large" color="blue" />
-                    <Text style={styles.loadingText}>Loading locations...</Text>
-                </View>
-            ) : (
-                <View style={styles.mapContainer}>
-                    <MapView
-                        style={styles.map}
-                        region={region}
-                        showsUserLocation={true}
-                        onPress={() => setSelectedMarker(null)}
-                    >
-                        {/* Markers for locations */}
-                        {locations.map((location) => (
-                            <CustomMarker
-                                key={location.id}
-                                value={location}
-                                onPress={() => handleMarkerPress(location)}
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* Loading Indicator */}
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="blue" />
+          <Text style={styles.loadingText}>Loading locations...</Text>
+        </View>
+      ) : (
+        <View style={styles.mapContainer}>
+          <MapView
+            testID="map-view" // added to enable getting the map by testID
+            style={styles.map}
+            region={region}
+            showsUserLocation={true}
+            onPress={() => setSelectedMarker(null)}
+          >
+            {/* Markers for locations */}
+            {locations.map((location) => (
+              <CustomMarker
+                key={location.id}
+                value={location}
+                onPress={() => handleMarkerPress(location)}
+              />
+            ))}
 
-                            />
-                        ))}
-
-                        {/* Display current location marker only if available */}
-                        {currentLocation?.coords && (
-                            <Marker
-                                coordinate={{
-                                    latitude: currentLocation.coords.latitude,
-                                    longitude: currentLocation.coords.longitude,
-                                }}
-                                title="Current Location"
-                                pinColor="blue"
-                            />
-                        )}
-                    </MapView>
-                </View>
+            {/* Display current location marker only if available */}
+            {currentLocation?.coords && (
+              <Marker
+                coordinate={{
+                  latitude: currentLocation.coords.latitude,
+                  longitude: currentLocation.coords.longitude,
+                }}
+                title="Current Location"
+                pinColor="blue"
+                testID="current-location-marker" // added for tests
+              />
             )}
+          </MapView>
+        </View>
+      )}
 
             {/* Display Info Popup when a marker is selected */}
             {selectedMarker !== null && (
