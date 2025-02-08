@@ -12,11 +12,11 @@ const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect }
 
             <View style={styles.topRow}>
 
-                <MenuButton />
+                <MenuButton testID="menu-button"/>
                 <View style={styles.topColumn}>
 
-                    <SearchBar searchText={searchText} setSearchText={setSearchText} />
-                    <CampusSelector selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
+                    <SearchBar testID="search-bar" searchText={searchText} setSearchText={setSearchText} />
+                    <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
                 </View>
 
             </View>
