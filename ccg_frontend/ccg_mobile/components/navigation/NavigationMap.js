@@ -45,7 +45,7 @@ const NavigationMap = ({start, destination, pathCoordinates})=>{
             <Polyline
                 coordinates={coordinates}
                 strokeColor="#000"
-                strokeWidth={6}
+                strokeWidth={3}
             />
         </MapView>
     )

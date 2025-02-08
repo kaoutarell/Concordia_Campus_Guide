@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect} from "react";
 import { View, Text, StyleSheet, Button } from 'react-native';
 import MapView from 'react-native-maps';
 
 import NavigationModes from '../components/navigation/NavigationModes';
 import NavigationInfo from '../components/navigation/NavigationInfo';
 import NavigationMap from '../components/navigation/NavigationMap';
+import { getDirections } from '../api/dataService';
+
 const NavigationScreen = ({ navigation, route }) => {
     const startPoint = route.params.start;
     const destinationPoint = route.params.destination;
+    const [direction, setDirection] = useState(null);
+
+    const fetchDirections = async()=>{
+      try{
+        const data = await getDirections("foot-walking", [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
+        setDirection(data);
+      }catch (error){
+        console.error("Error fetching direction data: ", error);
+      }
+    };
+
+    fetchDirections();
 
     const dumyData={
         "total_distance": 6406.1,
@@ -76,7 +90,7 @@ const NavigationScreen = ({ navigation, route }) => {
             onBackPress={() => navigation.goBack()}
             />
             {/*<MapView style={styles.map} />*/}
-            <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={dumyData.steps}/>
+            {direction!=null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps}/>}
             <NavigationModes />
         </View>
     );
