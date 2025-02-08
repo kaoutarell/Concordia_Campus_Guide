@@ -11,7 +11,6 @@ const NavigationScreen = ({ navigation, route }) => {
     const startPoint = route.params.start;
     const destinationPoint = route.params.destination;
     const [direction, setDirection] = useState(null);
-
     const fetchDirections = async()=>{
       try{
         const data = await getDirections("foot-walking", [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
@@ -21,7 +20,9 @@ const NavigationScreen = ({ navigation, route }) => {
       }
     };
 
-    fetchDirections();
+    useEffect(()=>{
+      fetchDirections();
+    }, [startPoint, destinationPoint]);
 
     const dumyData={
         "total_distance": 6406.1,
