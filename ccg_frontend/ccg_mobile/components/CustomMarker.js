@@ -12,7 +12,7 @@ const CustomMarker = ({ value, onPress }) => {
             onPress={() => {
                 onPress();
             }}>
-            <View style={styles.markerContainer}>
+            <View testID="marker-container" style={styles.markerContainer}>
                 <Image
                     source={require("../assets/marker-1.png")} // Your marker image
                     style={styles.markerImage}
