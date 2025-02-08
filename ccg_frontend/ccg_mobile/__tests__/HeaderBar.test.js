@@ -20,7 +20,7 @@ jest.mock("../components/SearchBar", () => {
 jest.mock("../components/CampusSelector", () => {
     return ({ onCampusSelect }) => {
         const { View } = require("react-native"); //Import inside the function
-        return <View testID="campus-selector" onTouchStart={() => onCampusSelect("New Campus")} />;
+        return <View testID="campus-selector" onTouchStart={() => onCampusSelect("LOY")} />;
     };
 });
 
@@ -50,5 +50,20 @@ describe("HeaderBar Component", () => {
 
         // Verify setSearchText is called
         expect(mockSetSearchText).toHaveBeenCalledWith("New Search");
+    });
+    
+    //Test case 3:
+    it("calls onCampusSelect when a campus is selected", () => {
+        const mockOnCampusSelect = jest.fn();
+
+        const { getByTestId } = render(
+            <HeaderBar searchText="" setSearchText={jest.fn()} selectedCampus="SGW" onCampusSelect={mockOnCampusSelect} />
+        );
+
+        // Simulate user interacting with CampusSelector
+        fireEvent(getByTestId("campus-selector"), "touchStart");
+
+        // Verify onCampusSelect is called with new value
+        expect(mockOnCampusSelect).toHaveBeenCalledWith("LOY");
     });
 });
