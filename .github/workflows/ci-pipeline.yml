@@ -28,7 +28,7 @@ jobs:
         run: |
           cd ccg_backend
           conda init bash
-          source ~/miniconda/etc/profile.d/conda.sh
+          source ~/miniconda3/etc/profile.d/conda.sh
           conda activate myenv
           pytest 
 
