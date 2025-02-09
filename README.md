@@ -1,4 +1,4 @@
-# MapView Application
+# Concordia Campus Guide
 
 This project is a full-stack map-based application with a Python backend and a React Native frontend using Expo. It provides location-based functionality with real-time rendering.
 
