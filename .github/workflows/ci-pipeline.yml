@@ -27,6 +27,7 @@ jobs:
       - name: Run backend tests
         run: |
           cd ccg_backend
+	  conda env create -f environment.yml
           conda init bash
           source /usr/share/miniconda/etc/profile.d/conda.sh
           conda activate myenv
