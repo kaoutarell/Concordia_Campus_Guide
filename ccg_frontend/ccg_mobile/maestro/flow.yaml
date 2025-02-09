@@ -1,6 +1,11 @@
 appId: ccg_mobile
 ---
 - launchApp
+- assertVisible:
+    text: "Welcome to"
+- assertVisible:
+    text: "ConU CG"
+- tapOn: "Continue to map ➤"
 - assertVisible: "campus-button"
 - assertVisible: "SGW"
 - tapOn: "campus-button"
