@@ -39,7 +39,7 @@ const NavigationScreen = ({ navigation, route }) => {
                 </View>
 
             {/* Footer Section (NavigationInfo) */}
-            <NavigationInfo totalDistance={direction.total_distance} totalDuration={direction.total_duration}/>
+            {direction!=null && <NavigationInfo totalDistance={direction.total_distance} totalDuration={direction.total_duration}/>}
             
         </View>
     );

@@ -68,8 +68,6 @@ const MapScreen = () => {
 
 
   const handleViewNavigation = (start,destination) => {
-    console.log("Start: ", start.civic_address);
-    console.log("Destination: ", destination.civic_address);
           navigation.navigate("Navigation", {
               start,
               destination,
