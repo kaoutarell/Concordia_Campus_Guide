@@ -1,5 +1,5 @@
 import React from "react";
-import { render, waitFor, act } from "@testing-library/react-native";
+import { render, waitFor, screen } from "@testing-library/react-native";
 import MapViewComponent from "../components/MapViewComponent";
 import locationService from "../services/LocationService";
 
@@ -8,6 +8,7 @@ jest.mock("../services/LocationService", () => ({
   getCurrentLocation: jest.fn(),
   stopTrackingLocation: jest.fn(),
 }));
+
 describe("MapViewComponent - Location Tests", () => {
   afterEach(() => {
     jest.clearAllMocks();
@@ -162,5 +163,33 @@ describe("MapViewComponent - Location Tests", () => {
 
     // make sure onGoToLocation was called with the correct location
     expect(onGoToLocation).toHaveBeenCalledWith(mockLocation);
+  });
+
+  test("should display loading indicator when locations are loading", () => {
+    render(<MapViewComponent locations={[]} region={{}} />);
+
+    // Check if the loading screen is rendered
+    const loadingText = screen.getByText("Loading locations...");
+    expect(loadingText).toBeTruthy();
+  });
+
+  test("should set isLoading to false when locations are provided", async () => {
+    const locations = [
+      {
+        id: 1,
+        name: "Location 1",
+        location: {
+          latitude: 37.7749,
+          longitude: -122.4194,
+        },
+      },
+    ];
+
+    render(<MapViewComponent locations={locations} region={{}} />);
+
+    // Wait for the effect to run and isLoading to be set to false
+    await waitFor(() => {
+      expect(screen.queryByText("Loading locations...")).toBeNull();
+    });
   });
 });
