@@ -35,7 +35,7 @@ jobs:
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
           pip install flake8
-          flake8 flake8 --config=ccg_backend/.flake8 ccg_backend/
+          flake8 --config=ccg_backend/.flake8 ccg_backend/
 
       - name: Run backend tests
         run: |
