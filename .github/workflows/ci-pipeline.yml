@@ -61,12 +61,12 @@ jobs:
           npm install --legacy-peer-deps
           npm run test
 
-      - name: Install ESLint and Required Packages
+      - name: Install StyleLint
         run: |
           cd ccg_frontend/ccg_mobile
-          npm install --save-dev eslint @eslint/js eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser
+          npm install --save-dev stylelint stylelint-config-standard stylelint-config-recommended-react-native
 
-      - name: Run ESLint
+      - name: Run StyleLint
         run: |
           cd ccg_frontend/ccg_mobile
-          npx eslint .
+          npx stylelint .
