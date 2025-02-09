@@ -1,25 +1,21 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb",
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+import js from "@eslint/js";
+import react from "eslint-plugin-react";
+import ts from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+
+export default [
+  js.configs.recommended,
+  react.configs.recommended,
+  {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parser: tsParser,
+      sourceType: "module",
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    plugins: { react, ts },
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "no-console": "warn",
+    },
   },
-  plugins: ["react", "@typescript-eslint"],
-  rules: {
-    "react/react-in-jsx-scope": "off",
-    "no-console": "warn",
-  },
-};
+];
