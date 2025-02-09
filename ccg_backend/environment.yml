@@ -57,7 +57,6 @@ dependencies:
   - liblzma=5.6.3
   - libnghttp2=1.64.0
   - libntlm=1.8
-  - libopenblas=0.3.28
   - libpng=1.6.46
   - libpq=17.2
   - librttopo=1.1.0
