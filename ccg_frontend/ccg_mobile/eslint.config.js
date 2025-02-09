@@ -12,7 +12,10 @@ module.exports = [
       parser: tsParser,
       sourceType: "module",
     },
-    plugins: { react, ts },
+    plugins: {
+      react,
+      ts,
+    },
     rules: {
       "react/react-in-jsx-scope": "off",
       "no-console": "warn",
