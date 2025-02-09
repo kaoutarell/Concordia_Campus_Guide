@@ -1,9 +1,9 @@
-import js from "@eslint/js";
-import react from "eslint-plugin-react";
-import ts from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
+const js = require("@eslint/js");
+const react = require("eslint-plugin-react");
+const ts = require("@typescript-eslint/eslint-plugin");
+const tsParser = require("@typescript-eslint/parser");
 
-export default [
+module.exports = [
   js.configs.recommended,
   react.configs.recommended,
   {
