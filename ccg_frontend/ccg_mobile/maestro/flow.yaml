@@ -1,4 +1,4 @@
-appId: ccg_mobile
+appId: com.example.ccg_mobile
 ---
 - launchApp
 - assertVisible:
