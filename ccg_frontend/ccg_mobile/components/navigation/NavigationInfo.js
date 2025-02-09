@@ -20,11 +20,11 @@ const NavigationInfo = ({ onStartNavigation, totalDuration, totalDistance }) => 
                 <View style={styles.infoBand}>
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="clock" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDuration ? totalDuration : 'Duration not available'}</Text>
+                        <Text style={styles.infoText}>{totalDuration ? parseFloat(totalDuration/60).toFixed(2)+" minutes" : 'Duration not available'}</Text>
                     </View>
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="road" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDistance ? totalDistance : 'Distance not available'}</Text>
+                        <Text style={styles.infoText}>{totalDistance ? parseFloat(totalDistance/1000).toFixed(2)+" km" : 'Distance not available'}</Text>
                     </View>
                 </View>
                 <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
