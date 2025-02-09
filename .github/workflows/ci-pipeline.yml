@@ -35,7 +35,7 @@ jobs:
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
           pip install flake8
-          flake8 ccg_backend/
+          flake8 flake8 --config=ccg_backend/.flake8 ccg_backend/
 
       - name: Run backend tests
         run: |
@@ -61,12 +61,8 @@ jobs:
           npm install --legacy-peer-deps
           npm run test
 
-      - name: Install StyleLint
-        run: |
-          cd ccg_frontend/ccg_mobile
-          npm install --save-dev stylelint stylelint-config-standard stylelint-config-recommended-react-native
-
       - name: Run StyleLint
         run: |
           cd ccg_frontend/ccg_mobile
+          npm install --save-dev stylelint stylelint-config-recommended
           npx stylelint .
