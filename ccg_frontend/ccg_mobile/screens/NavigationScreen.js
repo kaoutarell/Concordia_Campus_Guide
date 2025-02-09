@@ -1,22 +1,61 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import MapView from 'react-native-maps';
-
+import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import NavigationModes from '../components/navigation/NavigationModes';
 import NavigationInfo from '../components/navigation/NavigationInfo';
-const NavigationScreen = ({ navigation, route }) => {
-    const startPoint = route.params.start;
-    const destinationPoint = route.params.destination;
 
-    // TODO: Implement the navigation logic. API call to backend for directions
+const NavigationScreen = ({ navigation, route }) => {
+    // Données bidons pour les coordonnées
+    const startPoint = {
+        coordinates: {
+            latitude: 48.8566,  // Paris
+            longitude: 2.3522
+        },
+        civic_address: "Paris, France"
+    };
+    const destinationPoint = {
+        coordinates: {
+            latitude: 51.5074,  // Londres
+            longitude: -0.1278
+        },
+        civic_address: "London, United Kingdom"
+    };
+
+    const startLatitude = startPoint.coordinates.latitude;
+    const startLongitude = startPoint.coordinates.longitude;
+    const destinationLatitude = destinationPoint.coordinates.latitude;
+    const destinationLongitude = destinationPoint.coordinates.longitude;
 
     return (
         <View style={styles.container}>
-            <NavigationInfo startAddress={startPoint.civic_address} destinationAddress={destinationPoint.civic_address} 
-            onBackPress={() => navigation.goBack()}
+            {/* Header Section (NavigationModes) */}
+            <NavigationModes 
+                startAddress={startPoint.civic_address} 
+                destinationAddress={destinationPoint.civic_address} 
+                onBackPress={() => navigation.goBack()}
             />
-            <MapView style={styles.map} />
-            <NavigationModes />
+
+            {/* Map Container (Center) */}
+            <View style={styles.mapContainer}>
+                <MapView
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: startLatitude,
+                        longitude: startLongitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                >
+                    {/* Marqueur de départ */}
+                    <Marker coordinate={{ latitude: startLatitude, longitude: startLongitude }} title="Point de départ" description={startPoint.civic_address} />
+
+                    {/* Marqueur de destination */}
+                    <Marker coordinate={{ latitude: destinationLatitude, longitude: destinationLongitude }} title="Destination" description={destinationPoint.civic_address} />
+                </MapView>
+            </View>
+
+            {/* Footer Section (NavigationInfo) */}
+            <NavigationInfo />
         </View>
     );
 };
@@ -24,20 +63,15 @@ const NavigationScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 16,
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, // Gérer le padding pour Android
     },
-    header: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 16,
+    mapContainer: {
+        height: '58%', // Ajustez la hauteur de la carte selon vos besoins
+        width: '100%',
     },
     map: {
-        flex: 1,
-        marginBottom: 16,
-    },
-    navigationModes: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        flex: 1, 
+        width: '100%',
     },
 });
 
