@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
+import NavigationScreen from "../screens/NavigationScreen";
 import Sidebar from "../components/SideBar";
 
 const Drawer = createDrawerNavigator();
@@ -15,6 +16,7 @@ const StackNavigator = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Map" component={MapScreen} />
+            <Stack.Screen name="Navigation" component={NavigationScreen} />
         </Stack.Navigator>
     );
 };

@@ -17,7 +17,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 const { width } = Dimensions.get("window");
 
-const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestinationLocation }) => {
+const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestinationLocation, handleViewNavigation}) => {
     const [isTyping, setIsTyping] = useState(false);
     const startInputOpacity = useRef(new Animated.Value(0)).current;
     const startInputTranslateY = useRef(new Animated.Value(10)).current;
@@ -116,8 +116,9 @@ const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestination
     };
 
     const handleSetLocations = () => {
-        setDestinationLocation(locations.find(location => location.name === destination))
-        setStartLocation(locations.find(location => location.name === startPoint))
+        // setDestinationLocation(locations.find(location => location.name === destination))
+        // setStartLocation(locations.find(location => location.name === startPoint))
+        handleViewNavigation(locations.find(location => location.name === startPoint),locations.find(location => location.name === destination));
     };
 
     return (

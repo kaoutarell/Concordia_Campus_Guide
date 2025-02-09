@@ -7,7 +7,7 @@ import CampusSelector from "./CampusSelector";
 const { width } = Dimensions.get("window");
 
 
-const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation, setDestinationLocation }) => {
+const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation, setDestinationLocation, handleViewNavigation }) => {
     const [isSearching, setIsSearching] = useState(false);
     const campusOpacity = useRef(new Animated.Value(1)).current; // Default to visible
     const campusTranslateY = useRef(new Animated.Value(0)).current;
@@ -51,7 +51,7 @@ const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation,
                 <MenuButton />
                 <View style={styles.topColumn}>
 
-                    <SearchBar setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} />
+                    <SearchBar setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation}/>
                     <Animated.View style={{
                         opacity: campusOpacity,
                         transform: [{ translateY: campusTranslateY }],

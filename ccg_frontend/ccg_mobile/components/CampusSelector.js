@@ -7,7 +7,9 @@ const { width } = Dimensions.get("window");
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
 
     const toggleCampus = () => {
+        console.log("Toggling campus");
         const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
+        console.log("New campus:", newCampus);
         onCampusSelect(newCampus);
     };
 
