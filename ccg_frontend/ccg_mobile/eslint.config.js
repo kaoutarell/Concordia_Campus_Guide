@@ -13,8 +13,8 @@ module.exports = [
       sourceType: "module",
     },
     plugins: {
-      react,
-      ts,
+      react: pluginObject,
+      ts: pluginObject,
     },
     rules: {
       "react/react-in-jsx-scope": "off",
