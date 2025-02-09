@@ -1,0 +1,49 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  backend-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update
+        run: |
+          sudo apt-get update
+
+      - name: Run backend tests
+        run: |
+          cd ccg_backend
+          conda init bash
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          pytest 
+
+  frontend-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js and dependencies
+        uses: actions/setup-node@v4
+
+      - name: Install frontend dependencies
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npm install -g expo-cli
+          npm install --legacy-peer-deps
+          npm run test

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { getBuildingByCampus } from '../api/dataService';
+import React, { useEffect, useState } from "react";
+import { getBuildingByCampus } from "../api/dataService";
 
 import MapViewComponent from "../components/MapViewComponent";
 import NavigationToggle from "../components/NavigationToggle";
@@ -14,8 +14,6 @@ import HeaderBar from '../components/HeaderBar';
 import {store} from "../redux/reducers";
 
 const MapScreen = () => {
-
-
   const [locations, setLocations] = useState([]);
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [searchText, setSearchText] = useState("");
@@ -39,7 +37,6 @@ const MapScreen = () => {
 
   const fetchLocations = async () => {
     try {
-
       const data = await getBuildingByCampus(selectedCampus);
       setLocations(data);
     } catch (error) {
@@ -48,24 +45,21 @@ const MapScreen = () => {
   };
 
   return (
-
     <View style={styles.container}>
-
       <HeaderBar
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         searchText={searchText}
-        setSearchText={setSearchText} />
+        setSearchText={setSearchText}
+      />
 
       {/* Map */}
       <MapViewComponent locations={locations} region={getRegion()} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
-
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
