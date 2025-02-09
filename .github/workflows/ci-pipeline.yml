@@ -30,14 +30,20 @@ jobs:
           export PATH="$HOME/miniconda/bin:$PATH"
           conda env create -f ccg_backend/environment.yml
 
+      - name: Run Flake8 Linter
+        run: |
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          pip install flake8
+          flake8 ccg_backend/
+
       - name: Run backend tests
         run: |
           cd ccg_backend
           conda init bash
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
-          pytest 
-
+          pytest
 
   frontend-check:
     runs-on: ubuntu-latest
@@ -54,3 +60,8 @@ jobs:
           npm install -g expo-cli
           npm install --legacy-peer-deps
           npm run test
+
+      - name: Run ESLint
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npx eslint src/ --max-warnings=0
