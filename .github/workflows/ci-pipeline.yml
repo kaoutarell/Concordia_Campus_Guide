@@ -30,7 +30,7 @@ jobs:
           export PATH="$HOME/miniconda/bin:$PATH"
           conda env create -f ccg_backend/environment.yml
 
-      - name: Run Flake8 Linter
+      - name: Run Flake8
         run: |
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
@@ -61,8 +61,9 @@ jobs:
           npm install --legacy-peer-deps
           npm run test
 
-      - name: Run StyleLint
+      - name: Run ESLint
         run: |
           cd ccg_frontend/ccg_mobile
           npm install --save-dev eslint@8
+          npm install eslint-plugin-react@latest --save-dev
           npx eslint .
