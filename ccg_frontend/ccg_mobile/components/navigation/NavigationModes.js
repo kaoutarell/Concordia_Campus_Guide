@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; 
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, ScrollView } from 'react-native'; 
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { modes } from '../../constants/TransportModes';
 
 const { width } = Dimensions.get("window");
 
@@ -12,13 +13,7 @@ const NavigationModes = ({
 }) => { 
   const [selectedMode, setSelectedMode] = useState('Walking');
 
-  const modes = [
-    { mode: 'Walking', icon: <Ionicons name="walk" size={20} color="#800020" /> },
-    { mode: 'Bicycle', icon: <MaterialCommunityIcons name="bike" size={20} color="#800020" /> },
-    { mode: 'Driving', icon: <Ionicons name="car" size={20} color="#800020" /> },
-    { mode: 'Public Transport', icon: <Ionicons name="bus" size={20} color="#800020" /> },
-    { mode: 'Concordia Shuttle', icon: <Ionicons name="school" size={20} color="#800020" /> },
-  ];
+  
 
   const handleModeChange = (mode) => {
     setSelectedMode(mode);

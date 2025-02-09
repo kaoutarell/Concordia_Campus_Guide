@@ -1,8 +1,9 @@
-export const modes = [
-    { name: 'Walking', icon: 'walk' , profile: "foot-walking"},
-    { name: 'Bicycle', icon: 'bicycle', profile: "cycling-regular" },
-    { name: 'Driving', icon: 'car', profile: "driving-car" },
-    { name: 'Public Transport', icon: 'bus', profile: "public-transport" },
-    { name: 'Concordia Shuttle', icon: 'school', profile: "shuttle-bus" },
-];
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'; 
 
+export const modes = [
+    { mode: 'Walking', icon: <Ionicons name="walk" size={20} color="#800020" /> },
+    { mode: 'Bicycle', icon: <MaterialCommunityIcons name="bike" size={20} color="#800020" /> },
+    { mode: 'Driving', icon: <Ionicons name="car" size={20} color="#800020" /> },
+    { mode: 'Public Transport', icon: <Ionicons name="bus" size={20} color="#800020" /> },
+    { mode: 'Concordia Shuttle', icon: <Ionicons name="school" size={20} color="#800020" /> },
+  ];
