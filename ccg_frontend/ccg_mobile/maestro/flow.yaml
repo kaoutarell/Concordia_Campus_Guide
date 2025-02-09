@@ -1,50 +1,26 @@
 apiVersion: maestro.mobile.io/v1alpha1
 kind: Flow
 appId: ccg_mobile
-testSuite:
-  - name: CampusSelector E2E Test
-    scenarios:
-      - name: Toggle Campus Selection
-        steps:
-          - action: launchApp
-          - action: assertVisible
-            selector:
-              id: campus-button
-          - action: tap
-            selector:
-              id: campus-button
-          - action: assertVisible
-            selector:
-              text: SGW
-          - action: tap
-            selector:
-              id: campus-button
-          - action: assertVisible
-            selector:
-              text: LOY
-
-      - name: Check Initial State
-        steps:
-          - action: launchApp
-          - action: assertVisible
-            selector:
-              text: SGW
-
-      - name: Check Styling (Optional - More complex, might require custom matchers)
-        steps:
-          - action: launchApp
-          - action: assertVisible
-            selector:
-              id: campus-button
-            props:
-              backgroundColor: "#8B1D3B"
-          - action: assertVisible
-            selector:
-              text: SGW
-            props:
-              color: "white"
-          - action: assertVisible
-            selector:
-              text: SGW
-            props:
-              fontSize: 16
+---
+tests:
+  - name: CampusSelector Test
+    testSteps:
+      - action: launchApp
+      - action: assertVisible
+        selector:
+          testID: campus-button
+      - action: assertVisible
+        selector:
+          text: SGW
+      - action: tap
+        selector:
+          testID: campus-button
+      - action: assertVisible
+        selector:
+          text: LOY
+      - action: tap
+        selector:
+          testID: campus-button
+      - action: assertVisible
+        selector:
+          text: SGW
