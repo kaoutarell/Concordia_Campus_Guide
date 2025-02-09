@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
 
@@ -12,7 +13,7 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       case "LOY":
         return "Loyola";
       default:
-        return campus; // in case the value is unexpected
+        return "Error: Unknown Campus"; // in case the value is unexpected
     }
   };
 
@@ -27,7 +28,7 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       onPress={toggleCampus}
       testID="campus-button"
     >
-      <Text style={styles.campusText}>{selectedCampus}</Text>
+      <Text style={styles.campusText}>{getCampusName(selectedCampus)}</Text>
       <FontAwesome
         name="chevron-down"
         size={14}
@@ -36,6 +37,12 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       />
     </TouchableOpacity>
   );
+};
+
+// prop validation
+CampusSelector.propTypes = {
+  selectedCampus: PropTypes.string.isRequired, // Must be a string
+  onCampusSelect: PropTypes.func.isRequired, // Must be a function
 };
 
 const styles = StyleSheet.create({
