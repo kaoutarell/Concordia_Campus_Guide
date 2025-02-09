@@ -64,5 +64,5 @@ jobs:
       - name: Run StyleLint
         run: |
           cd ccg_frontend/ccg_mobile
-          npm install --save-dev stylelint stylelint-config-recommended
-          npx stylelint .
+          npm install --save-dev eslint@8
+          npx eslint .
