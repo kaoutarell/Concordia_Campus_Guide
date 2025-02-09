@@ -1,26 +1,9 @@
-apiVersion: maestro.mobile.io/v1alpha1
-kind: Flow
 appId: ccg_mobile
 ---
-tests:
-  - name: CampusSelector Test
-    testSteps:
-      - action: launchApp
-      - action: assertVisible
-        selector:
-          testID: campus-button
-      - action: assertVisible
-        selector:
-          text: SGW
-      - action: tap
-        selector:
-          testID: campus-button
-      - action: assertVisible
-        selector:
-          text: LOY
-      - action: tap
-        selector:
-          testID: campus-button
-      - action: assertVisible
-        selector:
-          text: SGW
+- launchApp
+- assertVisible: "campus-button"
+- assertVisible: "SGW"
+- tapOn: "campus-button"
+- assertVisible: "LOY"
+- tapOn: "campus-button"
+- assertVisible: "SGW"
