@@ -46,8 +46,6 @@ dependencies:
   - libexpat=2.6.4
   - libffi=3.4.2
   - libgdal-core=3.10.1
-  - libgfortran=5.0.0
-  - libgfortran5=13.2.0
   - libheif=1.19.5
   - libhwloc=2.11.2
   - libiconv=1.17
@@ -57,7 +55,6 @@ dependencies:
   - liblzma=5.6.3
   - libnghttp2=1.64.0
   - libntlm=1.8
-  - libopenblas=0.3.28
   - libpng=1.6.46
   - libpq=17.2
   - librttopo=1.1.0
@@ -87,6 +84,9 @@ dependencies:
   - pycparser=2.22
   - pynacl=1.5.0
   - pysocks=1.7.1
+  - pytest=8.3.4
+  - pytest-cov=6.0.0
+  - pytest-django=4.9.0
   - python=3.10.16
   - python_abi=3.10
   - pywin32-on-windows=0.1.0
@@ -117,4 +117,4 @@ dependencies:
       - django-cors-headers==4.6.0
       - django-environ==0.12.0
       - python-decouple==3.8
-prefix: /Users/kaoutarel/miniforge3/envs/myenv
+

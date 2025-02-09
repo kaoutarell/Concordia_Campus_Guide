@@ -10,7 +10,8 @@ import {
 
 import { View, StyleSheet } from "react-native";
 
-import HeaderBar from "../components/HeaderBar";
+import HeaderBar from '../components/HeaderBar';
+import {store} from "../redux/reducers";
 
 const MapScreen = () => {
   const [locations, setLocations] = useState([]);
@@ -24,6 +25,7 @@ const MapScreen = () => {
 
   useEffect(() => {
     if (selectedCampus) {
+      store.dispatch({ type: "UPDATE_CAMPUS", payload: selectedCampus === 'SGW' });
       fetchLocations();
     }
   }, [selectedCampus]);
@@ -38,7 +40,7 @@ const MapScreen = () => {
       const data = await getBuildingByCampus(selectedCampus);
       setLocations(data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching buildings by campus:', error.stack);
     }
   };
 
