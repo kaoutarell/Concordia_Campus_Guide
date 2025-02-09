@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f8f8f8',
-    marginTop: 60, 
+    marginTop: "6%", 
   },
   searchContainer: {
     paddingHorizontal: 20,
