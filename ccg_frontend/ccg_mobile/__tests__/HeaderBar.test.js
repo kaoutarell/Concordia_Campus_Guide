@@ -1,17 +1,20 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import HeaderBar from "../components/HeaderBar"; // Adjust path if needed
-import { View } from "react-native";
 
 //Define mock components with View inside the mock function
 jest.mock("../components/MenuButton", () => {
   return () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
     return <View testID="menu-button" />;
   };
 });
 
 jest.mock("../components/SearchBar", () => {
   return ({ setSearchText }) => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
     return (
       <View
         testID="search-bar"
@@ -22,6 +25,8 @@ jest.mock("../components/SearchBar", () => {
 });
 
 jest.mock("../components/CampusSelector", () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
   return ({ onCampusSelect }) => {
     return (
       <View
