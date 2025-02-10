@@ -18,7 +18,9 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    "react/react-in-jsx-scope": "off", // Not needed in React Native
-    "no-console": "warn", // Warns for console.log but doesn’t fail
+    "react/react-in-jsx-scope": "off",
+    "no-console": "warn",
+    "react/prop-types": "off",
+    "no-undef": "off",
   },
 };
