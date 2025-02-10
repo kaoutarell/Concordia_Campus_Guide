@@ -32,14 +32,20 @@ jobs:
           cd ccg_backend
           conda env create -f environment.yml
 
+      - name: Run Flake8
+        run: |
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          pip install flake8
+          flake8 --config=ccg_backend/.flake8 ccg_backend/
+
       - name: Run backend tests
         run: |
           cd ccg_backend
           conda init bash
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
-          pytest 
-
+          pytest
 
   frontend-check:
     runs-on: ubuntu-latest
@@ -56,3 +62,11 @@ jobs:
           npm install -g expo-cli
           npm install --legacy-peer-deps
           npm run test
+
+      - name: Run ESLint
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npm install --save-dev eslint@8
+          npm install eslint-plugin-react@latest --save-dev
+          npm install @typescript-eslint/eslint-plugin@latest --save-dev
+          npx eslint .
