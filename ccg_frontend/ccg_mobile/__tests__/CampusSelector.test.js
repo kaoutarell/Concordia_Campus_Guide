@@ -2,12 +2,16 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import CampusSelector from "../components/CampusSelector";
 
+jest.mock("@expo/vector-icons", () => ({
+  FontAwesome: ({ name }) => <>{name}</>,
+}));
+
 describe("CampusSelector", () => {
   const mockOnCampusSelect = jest.fn();
 
   it("renders the campus name and toggles campus on button press", () => {
     // Render the component with the default campus 'SGW'
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CampusSelector
         selectedCampus="SGW"
         onCampusSelect={mockOnCampusSelect}
@@ -15,7 +19,7 @@ describe("CampusSelector", () => {
     );
 
     // Check if the campus name 'SGW' is displayed
-    expect(getByText("Sir George Williams")).toBeTruthy();
+    expect(getByTestId("campus-name").props.children).toBe("Sir George Williams");
 
     // Simulate pressing the button to toggle campus
     fireEvent.press(getByTestId("campus-button"));
@@ -33,7 +37,7 @@ describe("CampusSelector", () => {
     );
 
     // Initial campus should be 'SGW'
-    expect(getByText("Sir George Williams")).toBeTruthy();
+    expect(getByTestId("campus-name").props.children).toBe("Sir George Williams");
 
     // Simulate pressing the button
     fireEvent.press(getByTestId("campus-button"));
@@ -51,7 +55,7 @@ describe("CampusSelector", () => {
     );
 
     // Initial campus should be 'LOY'
-    expect(getByText("Loyola")).toBeTruthy();
+    expect(getByTestId("campus-name").props.children).toBe("Loyola");
 
     // Simulate pressing the button
     fireEvent.press(getByTestId("campus-button"));

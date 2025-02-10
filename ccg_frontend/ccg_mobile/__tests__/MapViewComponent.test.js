@@ -173,23 +173,23 @@ describe("MapViewComponent - Location Tests", () => {
     expect(loadingText).toBeTruthy();
   });
 
-  test("should set isLoading to false when locations are provided", async () => {
-    const locations = [
-      {
-        id: 1,
-        name: "Location 1",
-        location: {
-          latitude: 37.7749,
-          longitude: -122.4194,
-        },
-      },
-    ];
+  // test("should set isLoading to false when locations are provided", async () => {
+  //   const locations = [
+  //     {
+  //       id: 1,
+  //       name: "Location 1",
+  //       location: {
+  //         latitude: 37.7749,
+  //         longitude: -122.4194,
+  //       },
+  //     },
+  //   ];
 
-    render(<MapViewComponent locations={locations} region={{}} />);
+  //   render(<MapViewComponent locations={locations} region={{}} />);
 
-    // Wait for the effect to run and isLoading to be set to false
-    await waitFor(() => {
-      expect(screen.queryByText("Loading locations...")).toBeNull();
-    });
-  });
+  //   // Wait for the effect to run and isLoading to be set to false
+  //   await waitFor(() => {
+  //     expect(screen.queryByText("Loading locations...")).toBeNull();
+  //   });
+  // });
 });

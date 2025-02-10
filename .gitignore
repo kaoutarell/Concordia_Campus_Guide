@@ -45,6 +45,10 @@ package-lock.json
 
 **/.idea
 **/__pycache__/
+
+# python migrations
+ccg_backend/mapengine/migrations
+=======
 **/.pytest_cache/
 *.pyc
 *.pyo
