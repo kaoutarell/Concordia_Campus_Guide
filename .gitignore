@@ -48,3 +48,8 @@ package-lock.json
 
 # python migrations
 ccg_backend/mapengine/migrations
+=======
+**/.pytest_cache/
+*.pyc
+*.pyo
+*.pyd

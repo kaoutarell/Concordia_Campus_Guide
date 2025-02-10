@@ -48,15 +48,15 @@ const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation,
 
             <View style={styles.topRow}>
 
-                <MenuButton />
+                <MenuButton testID="menu-button"/>
                 <View style={styles.topColumn}>
 
-                    <SearchBar setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation}/>
+                    <SearchBar testID="search-bar" setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation}/>
                     <Animated.View style={{
                         opacity: campusOpacity,
                         transform: [{ translateY: campusTranslateY }],
                     }}>
-                        <CampusSelector selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
+                        <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
                     </Animated.View>
 
                 </View>

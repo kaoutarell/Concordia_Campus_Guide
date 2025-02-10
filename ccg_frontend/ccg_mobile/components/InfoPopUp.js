@@ -5,8 +5,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 
 const InfoPopup = ({ value, onClose, onGo }) => {
-
-
+ 
     return (
         <View style={styles.popupContainer}>
             {/* ❌ Close Button (X Icon) */}
@@ -57,8 +56,28 @@ const InfoPopup = ({ value, onClose, onGo }) => {
                 </TouchableOpacity>
             </View>
 
-        </View>
-    );
+      {/* 🔘 Buttons */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={onClose}
+          style={[styles.button, styles.closeButton]}
+          accessibilityRole="button" //test fails bcs of this
+          accessibilityLabel="Close"
+        >
+          <Text style={styles.buttonText}>Close</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => onGo(value)}
+          style={[styles.button, styles.goButton]}
+          accessibilityRole="button"
+          accessibilityLabel="Go"
+        >
+          <Text style={styles.buttonText}>Go</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
 
 const styles = {

@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from '../components/HeaderBar';
+import {store} from "../redux/reducers";
 
 const MapScreen = () => {
   const navigation = useNavigation();
@@ -31,6 +32,7 @@ const MapScreen = () => {
 
   useEffect(() => {
     if (selectedCampus) {
+      store.dispatch({ type: "UPDATE_CAMPUS", payload: selectedCampus === 'SGW' });
       fetchLocations();
       fetchAllLocations();
     }
@@ -49,11 +51,10 @@ const MapScreen = () => {
 
   const fetchLocations = async () => {
     try {
-
       const data = await getBuildingByCampus(selectedCampus);
       setLocations(data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching buildings by campus:', error.stack);
     }
   };
 
@@ -90,11 +91,9 @@ const MapScreen = () => {
       <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
-
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: { flex: 1 },

@@ -3,30 +3,47 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - libavif
   - aom=3.9.1
   - asgiref=3.8.1
+  - bcrypt=4.2.1
   - blosc=1.21.6
+  - brotli-python=1.1.0
   - bzip2=1.0.8
-  - ca-certificates=2024.12.14
+  - c-ares=1.34.4
+  - ca-certificates=2025.1.31
+  - certifi=2024.12.14
+  - cffi=1.17.1
+  - charset-normalizer=3.4.1
+  - cryptography=44.0.0
+  - cyrus-sasl=2.1.27
   - dav1d=1.2.1
   - django=5.1.5
   - djangorestframework=3.15.2
+  - docker-py=7.1.0
   - freexl=2.0.0
   - gdal=3.10.1
   - geos=3.13.0
   - geotiff=1.7.3
+  - giflib=5.2.2
+  - h2=4.2.0
+  - hpack=4.1.0
+  - hyperframe=6.1.0
   - icu=75.1
-  - intel-openmp
+  - idna=3.10
+  - json-c=0.18
   - krb5=1.21.3
   - lerc=4.0.0
   - libarchive=3.7.7
+  - libavif=1.1.1
   - libavif16=1.1.1
   - libblas=3.9.0
   - libcblas=3.9.0
   - libcurl=8.11.1
+  - libcxx=19.1.7
   - libde265=1.0.15
   - libdeflate=1.23
+  - libedit=3.1.20250104
+  - libev=4.33
   - libexpat=2.6.4
   - libffi=3.4.2
   - libgdal-core=3.10.1
@@ -37,9 +54,12 @@ dependencies:
   - libkml=1.3.0
   - liblapack=3.9.0
   - liblzma=5.6.3
+  - libnghttp2=1.64.0
+  - libntlm=1.8
   - libpng=1.6.46
   - libpq=17.2
   - librttopo=1.1.0
+  - libsodium=1.0.20
   - libspatialite=5.1.0
   - libsqlite=3.48.0
   - libssh2=1.11.1
@@ -59,10 +79,20 @@ dependencies:
   - postgresql=17.2
   - proj=9.5.1
   - psycopg2=2.9.9
+  - pycparser=2.22
+  - pynacl=1.5.0
+  - pysocks=1.7.1
+  - pytest=8.3.4
+  - pytest-cov=6.0.0
+  - pytest-django=4.9.0
   - python=3.10.16
   - python_abi=3.10
+  - pywin32-on-windows=0.1.0
   - rav1e=0.6.6
+  - readline=8.2
+  - requests=2.32.3
   - setuptools=75.8.0
+  - six=1.17.0
   - snappy=1.2.1
   - sqlite=3.48.0
   - sqlparse=0.5.3
@@ -70,8 +100,11 @@ dependencies:
   - tbb=2021.13.0
   - tk=8.6.13
   - typing_extensions=4.12.2
+  - tzcode=2025a
   - tzdata=2025a
   - uriparser=0.9.8
+  - urllib3=2.3.0
+  - websocket-client=1.8.0
   - wheel=0.45.1
   - x265=3.5
   - xerces-c=3.2.5

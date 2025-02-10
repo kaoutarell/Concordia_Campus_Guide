@@ -11,6 +11,7 @@ const MenuButton = () => {
         <TouchableOpacity
             style={styles.menuButton}
             onPress={() => navigation?.openDrawer && navigation.openDrawer()}
+            testID="menu-button"
         >
             <FontAwesome name="bars" size={24} color="#8B1D3B" />
         </TouchableOpacity>

@@ -83,7 +83,7 @@ DATABASES = {
         'USER': 'dev_experts',
         'PASSWORD': 'soen390',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
