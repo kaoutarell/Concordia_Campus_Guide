@@ -1,12 +1,48 @@
-import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import React, {useEffect, useRef, useState} from "react";
+import {View, StyleSheet, Dimensions, Animated} from "react-native";
 import MenuButton from "./MenuButton";
 import SearchBar from "./SearchBar";
 import CampusSelector from "./CampusSelector";
 
 const { width } = Dimensions.get("window");
 
-const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect }) => {
+
+const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation, setDestinationLocation, handleViewNavigation }) => {
+    const [isSearching, setIsSearching] = useState(false);
+    const campusOpacity = useRef(new Animated.Value(1)).current; // Default to visible
+    const campusTranslateY = useRef(new Animated.Value(0)).current;
+
+    useEffect(() => {
+        if (isSearching) {
+            Animated.parallel([
+                Animated.timing(campusOpacity, {
+                    toValue: 0,
+                    duration: 300,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(campusTranslateY, {
+                    toValue: -10,
+                    duration: 300,
+                    useNativeDriver: true,
+                }),
+            ]).start();
+        } else {
+            // Show animation
+            Animated.parallel([
+                Animated.timing(campusOpacity, {
+                    toValue: 1,
+                    duration: 300,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(campusTranslateY, {
+                    toValue: 0,
+                    duration: 300,
+                    useNativeDriver: true,
+                }),
+            ]).start();
+        }
+    }, [isSearching]);
+
     return (
         <View style={styles.headerContainer}>
 
@@ -15,8 +51,14 @@ const HeaderBar = ({ searchText, setSearchText, selectedCampus, onCampusSelect }
                 <MenuButton testID="menu-button"/>
                 <View style={styles.topColumn}>
 
-                    <SearchBar testID="search-bar" searchText={searchText} setSearchText={setSearchText} />
-                    <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
+                    <SearchBar testID="search-bar" setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation}/>
+                    <Animated.View style={{
+                        opacity: campusOpacity,
+                        transform: [{ translateY: campusTranslateY }],
+                    }}>
+                        <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
+                    </Animated.View>
+
                 </View>
 
             </View>

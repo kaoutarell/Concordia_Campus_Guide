@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
-
+ 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
   const getCampusName = (campus) => {
     switch (campus) {
@@ -17,10 +17,12 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
     }
   };
 
-  const toggleCampus = () => {
-    const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
-    onCampusSelect(newCampus);
-  };
+    const toggleCampus = () => {
+        console.log("Toggling campus");
+        const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
+        console.log("New campus:", newCampus);
+        onCampusSelect(newCampus);
+    };
 
   return (
     <TouchableOpacity
@@ -28,7 +30,7 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       onPress={toggleCampus}
       testID="campus-button"
     >
-      <Text style={styles.campusText}>{getCampusName(selectedCampus)}</Text>
+      <Text style={styles.campusText} testID="campus-name">{getCampusName(selectedCampus)}</Text>
       <FontAwesome
         name="chevron-down"
         size={14}

@@ -17,3 +17,12 @@ def get_buildings_by_campus(request):
     serializer = BuildingSerializer(buildings, many=True)
 
     return Response(serializer.data)
+
+@api_view(['GET'])
+@csrf_exempt
+def get_buildings(request):
+
+    buildings = Building.objects
+    serializer = BuildingSerializer(buildings, many=True)
+
+    return Response(serializer.data)

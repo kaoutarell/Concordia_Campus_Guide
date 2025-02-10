@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Marker } from "react-native-maps";
 
-const CustomMarker = ({ value, onPress }) => {
+const CustomMarker = ({ value, onPress, destination }) => {
     return (
         <Marker
             coordinate={{
@@ -15,7 +15,7 @@ const CustomMarker = ({ value, onPress }) => {
             <View testID="marker-container" style={styles.markerContainer}>
                 <Image
                     source={require("../assets/marker-1.png")} // Your marker image
-                    style={styles.markerImage}
+                    style={!destination ? styles.markerImage : styles.destinationMarker}
                 />
                 <View style={styles.valueContainer}>
                     <Text style={styles.valueText}>{value.building_code}</Text>
@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     markerContainer: {
         alignItems: "center",
         justifyContent: "center",
+    },
+    destinationMarker: {
+        width: 100,
+        height: 100,
+        resizeMode: "contain",
     },
     markerImage: {
         width: 50,

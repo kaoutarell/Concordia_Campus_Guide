@@ -57,7 +57,6 @@ const MapViewComponent = ({ locations, region }) => {
     };
   }, []);
 
-  useEffect(() => {}, [selectedMarker]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -84,7 +83,6 @@ const MapViewComponent = ({ locations, region }) => {
                 onPress={() => handleMarkerPress(location)}
               />
             ))}
-
 
                         {/* Display current location marker only if available */}
                         {currentLocation?.coords && (
