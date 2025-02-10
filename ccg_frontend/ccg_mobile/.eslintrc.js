@@ -23,5 +23,6 @@ module.exports = {
     "react/prop-types": "off",
     "no-undef": "off",
     "@typescript-eslint/no-unused-vars": "off",
+    "react/display-name": "off",
   },
 };
