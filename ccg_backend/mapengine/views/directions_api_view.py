@@ -56,12 +56,12 @@ def extract_route_info(geojson_data):
         if not features:
             raise ValueError("No features found in GeoJSON data")
         route = {
-                 "profile": geojson_data.get("metadata", {}).get("query", {}).get("profile"),
-                 "startingCoordinates": features[0]["geometry"]["coordinates"][0],
-                 "destinationCoordinates": features[0]["geometry"]["coordinates"][-1],
-                 "total_distance": features[0]["properties"]["segments"][0]["distance"],
-                 "total_duration": features[0]["properties"]["segments"][0]["duration"]
-                 }
+            "profile": geojson_data.get("metadata", {}).get("query", {}).get("profile"),
+            "startingCoordinates": features[0]["geometry"]["coordinates"][0],
+            "destinationCoordinates": features[0]["geometry"]["coordinates"][-1],
+            "total_distance": features[0]["properties"]["segments"][0]["distance"],
+            "total_duration": features[0]["properties"]["segments"][0]["duration"]
+        }
 
         steps = features[0]["properties"]["segments"][0]["steps"]
         coordinates = features[0]["geometry"]["coordinates"]
@@ -73,7 +73,7 @@ def extract_route_info(geojson_data):
             "duration": step["duration"],
             "instruction": step["instruction"],
             "type": step["type"],
-            "coordinates": coordinates[step["way_points"][0] : step["way_points"][1] + 1],
+            "coordinates": coordinates[step["way_points"][0]: step["way_points"][1] + 1],
             })
 
         route["steps"] = route_info
