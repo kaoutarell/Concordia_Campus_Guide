@@ -17,7 +17,7 @@ describe("SearchBar Component", () => {
       <SearchBar locations={locations} />
     );
     // Check if the placeholder and value are correctly rendered
-    const input = await waitFor(() => getByPlaceholderText("Where to ?"));
+    const input = await waitFor(() => getByPlaceholderText("Where to?"));
     expect(input.props.value).toBe("New York");
   });
 
@@ -27,7 +27,7 @@ describe("SearchBar Component", () => {
       <SearchBar locations={locations} />
     );
 
-    const input = await waitFor(() => getByPlaceholderText("Where to ?"));
+    const input = await waitFor(() => getByPlaceholderText("Where to?"));
 
     // Simulate text change
     fireEvent.changeText(input, "Los Angeles");
