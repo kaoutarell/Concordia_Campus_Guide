@@ -2,6 +2,11 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import SearchBar from "../components/SearchBar";
 
+jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+jest.mock("react-native-reanimated", () =>
+  require("react-native-reanimated/mock")
+);
+
 // Mock location data
 const locations = [
   { name: "New York" },
@@ -12,31 +17,25 @@ const locations = [
 ];
 
 describe("SearchBar Component", () => {
-  it("should render SearchBar with correct initial searchText", () => {
-
-    // this component is using animations that are interfering with the test
-
-    // const { getByPlaceholderText } = render(
-    //   <SearchBar locations={locations}/>
-    // );
-
+  it("should render SearchBar with correct initial searchText", async () => {
+    const { getByPlaceholderText } = render(
+      <SearchBar locations={locations} />
+    );
     // Check if the placeholder and value are correctly rendered
-    //const input = getByPlaceholderText("Where to ?");
-//    expect(input.props.value).toBe("New York");
+    const input = await waitFor(() => getByPlaceholderText("Where to ?"));
+    expect(input.props.value).toBe("New York");
   });
 
-  // it("should call setSearchText when text changes", () => {
-  //   const setSearchText = jest.fn();
-  //   const { getByPlaceholderText } = render(
-  //     <SearchBar />
-  //   );
+  it("should call setSearchText when text changes", async () => {
+    const setSearchText = jest.fn();
+    const { getByPlaceholderText } = render(<SearchBar />);
 
-  //   const input = getByPlaceholderText("Where to ?");
+    const input = await waitFor(() => getByPlaceholderText("Where to ?"));
 
-  //   // Simulate text change
-  //   fireEvent.changeText(input, "Los Angeles");
+    // Simulate text change
+    fireEvent.changeText(input, "Los Angeles");
 
-  //   // Ensure setSearchText is called with the new value
-  //   expect(setSearchText).toHaveBeenCalledWith("Los Angeles");
-  // });
+    // Ensure setSearchText is called with the new value
+    expect(setSearchText).toHaveBeenCalledWith("Los Angeles");
+  });
 });
