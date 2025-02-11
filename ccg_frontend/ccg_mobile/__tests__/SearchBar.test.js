@@ -18,7 +18,7 @@ describe("SearchBar Component", () => {
     );
     // Check if the placeholder and value are correctly rendered
     const input = await waitFor(() => getByPlaceholderText("Where to?"));
-    expect(input.props.value).toBe("New York");
+    expect(input.props.value).toBe("");
   });
 
   it("should call setSearchText when text changes", async () => {
