@@ -2,11 +2,6 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import SearchBar from "../components/SearchBar";
 
-jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
-jest.mock("react-native-reanimated", () =>
-  require("react-native-reanimated/mock")
-);
-
 // Mock location data
 const locations = [
   { name: "New York" },
