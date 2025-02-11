@@ -21,8 +21,8 @@ This project is a full-stack map-based application with a Python backend and a R
 
 Make sure you have the following tools installed for the backend:
 
-- **Python 3**: Required for running the backend code.
 - **MiniConda**: For managing Python environments and dependencies.
+  - MiniConda comes with a python3 version that must be used, not another manually installed python version.
 - **PostGIS**: A spatial database extender for PostgreSQL, used for geospatial data storage and queries.
 - **Docker**: For containerizing and running the backend services.
 
