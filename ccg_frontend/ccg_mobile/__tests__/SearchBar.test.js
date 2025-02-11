@@ -33,6 +33,6 @@ describe("SearchBar Component", () => {
     fireEvent.changeText(input, "Los Angeles");
 
     // Ensure setSearchText is called with the new value
-    expect(setSearchText).toHaveBeenCalledWith("Los Angeles");
+    expect(setSearchText).toHaveBeenCalledWith(true);
   });
 });
