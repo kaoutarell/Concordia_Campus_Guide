@@ -23,7 +23,9 @@ describe("SearchBar Component", () => {
 
   it("should call setSearchText when text changes", async () => {
     const setSearchText = jest.fn();
-    const { getByPlaceholderText } = render(<SearchBar />);
+    const { getByPlaceholderText } = render(
+      <SearchBar locations={locations} />
+    );
 
     const input = await waitFor(() => getByPlaceholderText("Where to ?"));
 
