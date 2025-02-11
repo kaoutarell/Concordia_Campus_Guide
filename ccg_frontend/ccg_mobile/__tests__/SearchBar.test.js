@@ -12,7 +12,7 @@ const locations = [
 ];
 
 describe("SearchBar Component", () => {
-  it("should render SearchBar with correct initial searchText", async () => {
+  it("should render SearchBar with correct placeholder", async () => {
     const { getByPlaceholderText } = render(
       <SearchBar locations={locations} />
     );
