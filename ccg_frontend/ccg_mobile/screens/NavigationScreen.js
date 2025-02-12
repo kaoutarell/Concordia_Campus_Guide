@@ -1,46 +1,105 @@
-import React, { useState, useEffect} from "react";
-import { View, Text, StyleSheet, Button, Platform, StatusBar } from 'react-native';
-import MapView from 'react-native-maps';
-import NavigationModes from '../components/navigation/NavigationModes';
-import NavigationInfo from '../components/navigation/NavigationInfo';
-import NavigationMap from '../components/navigation/NavigationMap';
-import { getDirections } from '../api/dataService';
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Platform, StatusBar } from "react-native";
+import NavigationModes from "../components/navigation/NavigationModes";
+import NavigationInfo from "../components/navigation/NavigationInfo";
+import NavigationMap from "../components/navigation/NavigationMap";
+import { getDirections } from "../api/dataService";
+import busLocationService from "../services/BusLocationService";
+import {BusNavigationInfo} from "../components/navigation/BusNavigationInfo";
+
 
 const NavigationScreen = ({ navigation, route }) => {
     const startPoint = route.params.start;
     const destinationPoint = route.params.destination;
+    const [selectedMode, setSelectedMode] = useState("Walking");
     const [direction, setDirection] = useState(null);
-    const fetchDirections = async()=>{
-      try{
-        const data = await getDirections("foot-walking", [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
-        setDirection(data);
-      }catch (error){
-        console.error("Error fetching direction data: ", error);
-      }
+    const [busLocations, setBusLocations] = useState([]);
+
+    const fetchDirections = async () => {
+        try {
+            const modeMapping = {
+                Walking: "foot-walking",
+                Bicycle: "cycling",
+                Driving: "driving",
+                "Public Transport": "transit",
+                'Concordia Shuttle': "shuttle",
+            };
+            const modeParam = modeMapping[selectedMode] || "foot-walking";
+            const data = await getDirections(
+                modeParam,
+                [startPoint.location.longitude, startPoint.location.latitude],
+                [destinationPoint.location.longitude, destinationPoint.location.latitude]
+            );
+            setDirection(data);
+        } catch (error) {
+            console.error("Error fetching direction data: ", error);
+        }
     };
 
-    useEffect(()=>{
-      fetchDirections();
-    }, [startPoint, destinationPoint]);
+    // When the selected mode changes (and is not shuttle), fetch directions, afterward we'll also fetch directions for shuttle
+    useEffect(() => {
+        if (selectedMode !== "Concordia Shuttle") {
+            fetchDirections();
+        }
+    }, [startPoint, destinationPoint, selectedMode]);
+
+    // When shuttle mode is selected, start live tracking of bus locations.
+    useEffect(() => {
+        if (selectedMode === "Concordia Shuttle") {
+            busLocationService.startTracking(5000);
+            const interval = setInterval(() => {
+                setBusLocations(busLocationService.getBusLocations());
+            }, 5000);
+            return () => {
+                busLocationService.stopTracking();
+                clearInterval(interval);
+            };
+        }
+    }, [selectedMode]);
+
+    const handleModeChange = (mode) => {
+        setSelectedMode(mode);
+    };
 
     return (
         <View style={styles.container}>
-            {/* Header Section (NavigationModes) */}
-            <NavigationModes 
-                startAddress={startPoint.civic_address} 
-                destinationAddress={destinationPoint.civic_address}
-                 
+            <NavigationModes
+                startAddress={
+                    selectedMode === "Concordia Shuttle"
+                        ? "Shuttle Bus SGW Stop"
+                        : startPoint?.civic_address
+                }
+                destinationAddress={
+                    selectedMode === "Concordia Shuttle"
+                        ? "Shuttle Bus LOY Stop"
+                        : destinationPoint?.civic_address
+                }
+                onModeChange={handleModeChange}
                 onBackPress={() => navigation.goBack()}
             />
-
-            {/* Map Container (Center) */}
             <View style={styles.mapContainer}>
-            {direction!=null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps}/>}
-                </View>
-
-            {/* Footer Section (NavigationInfo) */}
-            {direction!=null && <NavigationInfo totalDistance={direction.total_distance} totalDuration={direction.total_duration}/>}
-            
+                { direction != null && (
+                        <NavigationMap
+                            start={startPoint}
+                            destination={destinationPoint}
+                            busLocations={busLocations}
+                            pathCoordinates={direction.steps}
+                            isShuttle={ selectedMode === "Concordia Shuttle" }
+                        />
+                    )
+                }
+            </View>
+            {selectedMode === "Concordia Shuttle" ? (
+                <BusNavigationInfo />
+            ) : (
+                direction != null && (
+                    <NavigationInfo
+                        totalDistance={direction.total_distance}
+                        totalDuration={direction.total_duration}
+                        onStartNavigation={() => {}}
+                    />
+                )
+            )}
         </View>
     );
 };
