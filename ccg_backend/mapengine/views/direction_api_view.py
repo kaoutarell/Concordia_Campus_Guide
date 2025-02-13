@@ -1,34 +1,41 @@
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, require_GET
 from ..utils.direction_api_utils import ors_directions, otp_directions
 from django.urls import reverse
 
 @api_view(['GET'])
+@require_GET
 def foot_walking_directions(request):
     return get_directions(request, 'foot-walking')
 
 @api_view(['GET'])
+@require_GET
 def cycling_regular_directions(request):
     return get_directions(request, 'cycling-regular')
 
 @api_view(['GET'])
+@require_GET
 def driving_car_directions(request):
     return get_directions(request, 'driving-car')
 
 @api_view(['GET'])
+@require_GET
 def wheelchair_directions(request):
     return get_directions(request, 'wheelchair')
 
 @api_view(['GET'])
+@require_GET
 def public_transport_directions(request):
     return get_directions(request, 'public-transport')
 
 @api_view(['GET'])
+@require_GET
 def shuttle_bus_directions(request):
     return get_directions(request, 'concordia-shuttle')
 
 @api_view(['GET'])
-def get_profiles(request):
+@require_GET
+def get_profiles(_):
     return JsonResponse({
         "profiles": [
             "foot-walking",
