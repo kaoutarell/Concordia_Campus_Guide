@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
 import {LOYOLA_STOP, SGW_STOP} from "../../constants";
+import Bus_Marker from "../../assets/bus-marker.png";
 
 const NavigationMap = ({start, destination, pathCoordinates, busLocations, isShuttle = false})=>{
     const region = isShuttle ?
@@ -81,7 +82,7 @@ const NavigationMap = ({start, destination, pathCoordinates, busLocations, isShu
                         }}
                         title={`Shuttle ${bus.id}`}
                         pinColor="red"
-                        image={require("../../assets/bus-marker.png")}
+                        image={Bus_Marker}
                     />
                 ))}
         </MapView>
