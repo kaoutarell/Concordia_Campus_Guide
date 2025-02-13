@@ -1,5 +1,6 @@
-ORS_BASE_URL = "http://34.95.61.49/ors/v2/directions"
-OTP_BASE_URL = "http://34.95.61.49/otp/transmodel/v3"
+from decouple import config
+ORS_BASE_URL = config("ORS_BASE_URL")
+OTP_BASE_URL = config("OTP_BASE_URL")
 OTP_HEADER = {"Content-Type": "application/json"}
 OTP_AVG_WALKING_SPEED = 1.385
 def OTP_QUERY(start, end, wheelchair_accessible, num_trip_patterns):
