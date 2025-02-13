@@ -16,7 +16,7 @@ const CustomMarker = ({ value, onPress, destination }) => {
     >
       <View testID="marker-container" style={styles.markerContainer}>
         <Image
-          source={{ uri: markerImage }} // Your marker image
+          source={markerImage} // Your marker image
           style={!destination ? styles.markerImage : styles.destinationMarker}
         />
         <View style={styles.valueContainer}>
