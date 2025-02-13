@@ -5,7 +5,8 @@ import NavigationInfo from "../components/navigation/NavigationInfo";
 import NavigationMap from "../components/navigation/NavigationMap";
 import { getDirections } from "../api/dataService";
 import busLocationService from "../services/BusLocationService";
-import {BusNavigationInfo} from "../components/navigation/BusNavigationInfo";
+import {LOYOLA_STOP, SGW_STOP} from "../constants";
+import BusNavigationInfo from "../components/navigation/BusNavigationInfo";
 
 
 const NavigationScreen = ({ navigation, route }) => {
@@ -19,16 +20,18 @@ const NavigationScreen = ({ navigation, route }) => {
         try {
             const modeMapping = {
                 Walking: "foot-walking",
-                Bicycle: "cycling",
-                Driving: "driving",
-                "Public Transport": "transit",
-                'Concordia Shuttle': "shuttle",
+                Bicycle: "cycling-regular",
+                Driving: "driving-car",
+                "Public Transport": "public-transport",
+                'Concordia Shuttle': "concordia-shuttle",
             };
-            const modeParam = modeMapping[selectedMode] || "foot-walking";
+            const modeParam = modeMapping[selectedMode] || "foot-walking"; // to be used once direction api is done
+            const start = selectedMode === "Concordia Shuttle" ? [SGW_STOP.longitude, SGW_STOP.latitude] : [startPoint.location.longitude, startPoint.location.latitude];
+            const destination = selectedMode === "Concordia Shuttle" ? [LOYOLA_STOP.longitude, LOYOLA_STOP.latitude] : [destinationPoint.location.longitude, destinationPoint.location.latitude];
             const data = await getDirections(
-                modeParam,
-                [startPoint.location.longitude, startPoint.location.latitude],
-                [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                "foot-walking",
+                start,
+                destination
             );
             setDirection(data);
         } catch (error) {
@@ -36,20 +39,17 @@ const NavigationScreen = ({ navigation, route }) => {
         }
     };
 
-    // When the selected mode changes (and is not shuttle), fetch directions, afterward we'll also fetch directions for shuttle
     useEffect(() => {
-        if (selectedMode !== "Concordia Shuttle") {
-            fetchDirections();
-        }
+        setDirection(null);
+        fetchDirections();
     }, [startPoint, destinationPoint, selectedMode]);
 
-    // When shuttle mode is selected, start live tracking of bus locations.
     useEffect(() => {
         if (selectedMode === "Concordia Shuttle") {
-            busLocationService.startTracking(5000);
+            busLocationService.startTracking(500);
             const interval = setInterval(() => {
                 setBusLocations(busLocationService.getBusLocations());
-            }, 5000);
+            }, 500);
             return () => {
                 busLocationService.stopTracking();
                 clearInterval(interval);
@@ -66,12 +66,12 @@ const NavigationScreen = ({ navigation, route }) => {
             <NavigationModes
                 startAddress={
                     selectedMode === "Concordia Shuttle"
-                        ? "Shuttle Bus SGW Stop"
+                        ? "SGW Shuttle Stop"
                         : startPoint?.civic_address
                 }
                 destinationAddress={
                     selectedMode === "Concordia Shuttle"
-                        ? "Shuttle Bus LOY Stop"
+                        ? "LOY Shuttle Stop"
                         : destinationPoint?.civic_address
                 }
                 onModeChange={handleModeChange}
@@ -89,17 +89,18 @@ const NavigationScreen = ({ navigation, route }) => {
                     )
                 }
             </View>
-            {selectedMode === "Concordia Shuttle" ? (
-                <BusNavigationInfo />
-            ) : (
-                direction != null && (
-                    <NavigationInfo
-                        totalDistance={direction.total_distance}
-                        totalDuration={direction.total_duration}
-                        onStartNavigation={() => {}}
-                    />
-                )
-            )}
+            {direction && selectedMode === "Concordia Shuttle" ? (
+                <BusNavigationInfo
+                    totalDistance={direction.total_distance}
+                    totalDuration={direction.total_duration}
+                />
+            ) : direction ? (
+                <NavigationInfo
+                    totalDistance={direction.total_distance}
+                    totalDuration={direction.total_duration}
+                    onStartNavigation={() => {}}
+                />
+            ) : null}
         </View>
     );
 };
