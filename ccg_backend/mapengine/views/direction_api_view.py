@@ -1,6 +1,7 @@
 from django.http import JsonResponse
-from rest_framework.decorators import api_view, csrf_exempt
+from rest_framework.decorators import api_view
 from ..utils.direction_api_utils import ors_directions, otp_directions
+from django.views.decorators.csrf import csrf_exempt
 
 @api_view(['GET'])
 @csrf_exempt
