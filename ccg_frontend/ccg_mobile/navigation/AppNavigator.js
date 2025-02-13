@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
 import NavigationScreen from "../screens/NavigationScreen";
 import Sidebar from "../components/SideBar";
+import IndoorScreen from "../screens/IndoorScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -14,6 +15,7 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Indoor" component={IndoorScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Map" component={MapScreen} />
             <Stack.Screen name="Navigation" component={NavigationScreen} />
