@@ -116,14 +116,6 @@ def parse_otp_directions(json, start, end):
     # To avoid trip patterns with only foot walking, select the first one with more than one leg
     tripPattern = next((pattern for pattern in tripPatterns if len(pattern["legs"]) > 1), tripPatterns[0])
 
-    route = {
-        "profile": "public-transport",
-        "startingCoordinates": [float(coord) for coord in start],
-        "destinationCoordinates": [float(coord) for coord in end],
-        "total_distance": tripPattern["distance"],
-        "total_duration": tripPattern["duration"],
-        "bbox": []
-    }
     allSteps = []
     for leg in tripPattern["legs"]:
         allSteps.extend(parse_leg(leg))
@@ -135,7 +127,17 @@ def parse_otp_directions(json, start, end):
         "type": -1,
         "coordinates": [[float(coord) for coord in end]]
     })
-    route["steps"] = allSteps
+
+    route = {
+        "profile": "public-transport",
+        "startingCoordinates": [float(coord) for coord in start],
+        "destinationCoordinates": [float(coord) for coord in end],
+        "total_distance": tripPattern["distance"],
+        "total_duration": tripPattern["duration"],
+        "bbox": bounding_box(get_all_coordinates(allSteps)),
+        "steps": allSteps
+    }
+
     return route
 
 def find_closest_point(step, path):
@@ -192,3 +194,13 @@ def parse_leg(leg):
         }
         result.append(step_data)
     return result
+
+def bounding_box(points):
+    x_coordinates, y_coordinates = zip(*points)
+    return [min(x_coordinates), min(y_coordinates), max(x_coordinates), max(y_coordinates)]
+
+def get_all_coordinates(steps):
+    all_coordinates = []
+    for step in steps:
+        all_coordinates.extend(step["coordinates"])
+    return all_coordinates
