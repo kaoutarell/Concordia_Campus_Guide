@@ -1,40 +1,40 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
+from django.views.decorators.http import require_http_methods
 from ..utils.direction_api_utils import ors_directions, otp_directions
-from django.views.decorators.csrf import csrf_exempt
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def foot_walking_directions(request):
     return get_directions(request, 'foot-walking')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def cycling_regular_directions(request):
     return get_directions(request, 'cycling-regular')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def driving_car_directions(request):
     return get_directions(request, 'driving-car')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def wheelchair_directions(request):
     return get_directions(request, 'wheelchair')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def public_transport_directions(request):
     return get_directions(request, 'public-transport')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def shuttle_bus_directions(request):
     return get_directions(request, 'concordia-shuttle')
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def get_profiles(_):
     return JsonResponse({
         "profiles": [
