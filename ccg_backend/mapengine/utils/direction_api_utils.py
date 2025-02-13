@@ -2,7 +2,7 @@ import requests
 import polyline
 from geopy.distance import geodesic
 import numpy as np
-from ..constants import ORS_BASE_URL, OTP_BASE_URL, OTP_HEADER, OTP_AVG_WALKING_SPEED, OTP_QUERY
+from ..constants import ORS_BASE_URL, OTP_BASE_URL, OTP_HEADER, OTP_AVG_WALKING_SPEED, otp_query
 
 
 def ors_directions(start, end, profile):
@@ -44,23 +44,23 @@ def otp_directions(start, end):
     start = start.split(",")
     end = end.split(",")
 
-    response = requests.post(OTP_BASE_URL, headers=OTP_HEADER, json=OTP_QUERY(start, end, True, 3))
+    response = requests.post(OTP_BASE_URL, headers=OTP_HEADER, json=otp_query(start, end, True, 3))
 
     return parse_otp_directions(response.json(), start, end)
 
 def parse_otp_directions(json, start, end):
-    tripPatterns = json["data"]["trip"]["tripPatterns"]
+    trip_patterns = json["data"]["trip"]["tripPatterns"]
     # To avoid trip patterns with only foot walking, select the first one with more than one leg
-    if len(tripPatterns) >= 1:
-        tripPattern = next((pattern for pattern in tripPatterns if len(pattern["legs"]) > 1), tripPatterns[0])
+    if len(trip_patterns) >= 1:
+        tripPattern = next((pattern for pattern in trip_patterns if len(pattern["legs"]) > 1), trip_patterns[0])
     else:
         return {"error": "No trip patterns found"}, 400
 
-    allSteps = []
+    all_steps = []
     for leg in tripPattern["legs"]:
-        allSteps.extend(parse_leg(leg))
+        all_steps.extend(parse_leg(leg))
     # Add last destination step
-    allSteps.append({
+    all_steps.append({
         "distance": 0,
         "duration": 0,
         "instruction": "Arrived at destination",
@@ -74,8 +74,8 @@ def parse_otp_directions(json, start, end):
         "destinationCoordinates": [float(coord) for coord in end],
         "total_distance": tripPattern["distance"],
         "total_duration": tripPattern["duration"],
-        "bbox": bounding_box(get_all_coordinates(allSteps)),
-        "steps": allSteps
+        "bbox": bounding_box(get_all_coordinates(all_steps)),
+        "steps": all_steps
     }
 
     return route, 200
@@ -121,7 +121,6 @@ def parse_leg(leg):
 
         if leg["mode"] == "foot":
             instruction = f"Head {steps[i]['heading']} on {steps[i]['streetName']}"
-            type = -1
         else:
             # Add get on/off instructions for metro/bus
             if i == 0:
@@ -130,12 +129,11 @@ def parse_leg(leg):
                 instruction = f"Get off {leg['mode'].capitalize()} {leg['line']['publicCode']} {leg['line']['name']} at {steps[i]['name']}"
             else:
                 instruction = f"Stay in {leg['mode'].capitalize()} {leg['line']['publicCode']} {leg['line']['name']}: {steps[i]['name']}"
-            type = -1
         step_data = {
             "distance": steps[i].get("distance", 0),
             "duration": steps[i].get("distance", 0) / OTP_AVG_WALKING_SPEED,
             "instruction": instruction,
-            "type": type,
+            "type": 0,
             "coordinates": [[lon, lat] for lat, lon in path[start_idx:end_idx + 1]]
         }
         result.append(step_data)
