@@ -52,12 +52,12 @@ def parse_otp_directions(json, start, end):
     trip_patterns = json["data"]["trip"]["tripPatterns"]
     # To avoid trip patterns with only foot walking, select the first one with more than one leg
     if len(trip_patterns) >= 1:
-        tripPattern = next((pattern for pattern in trip_patterns if len(pattern["legs"]) > 1), trip_patterns[0])
+        trip_patterns = next((pattern for pattern in trip_patterns if len(pattern["legs"]) > 1), trip_patterns[0])
     else:
         return {"error": "No trip patterns found"}, 400
 
     all_steps = []
-    for leg in tripPattern["legs"]:
+    for leg in trip_patterns["legs"]:
         all_steps.extend(parse_leg(leg))
     # Add last destination step
     all_steps.append({
@@ -72,8 +72,8 @@ def parse_otp_directions(json, start, end):
         "profile": "public-transport",
         "startingCoordinates": [float(coord) for coord in start],
         "destinationCoordinates": [float(coord) for coord in end],
-        "total_distance": tripPattern["distance"],
-        "total_duration": tripPattern["duration"],
+        "total_distance": trip_patterns["distance"],
+        "total_duration": trip_patterns["duration"],
         "bbox": bounding_box(get_all_coordinates(all_steps)),
         "steps": all_steps
     }
