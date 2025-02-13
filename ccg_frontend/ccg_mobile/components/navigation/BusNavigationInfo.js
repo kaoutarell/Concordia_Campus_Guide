@@ -37,6 +37,15 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        Animated.timing(fadeIn, {
+            toValue: 1,
+            duration: 600,
+            useNativeDriver: true,
+        }).start();
+    }, []);
+
+
     // Determine which campus is closer.
     const getCampusFromUserLocation = (loc) => {
         if (!loc) return 'LOY';
