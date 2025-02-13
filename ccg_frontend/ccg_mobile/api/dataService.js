@@ -12,3 +12,7 @@ export const getBuildingByCampus = async (campus) => {
 export const getDirections = async (profile, start, destination) => {
   return await fetchDataByEndpoint("directions/"+profile+"?start=" + start + "&end=" + destination);
 }
+
+export const getIndoorDirections = async (profile, start, destination) => {
+  return await fetchDataByEndpoint("directions/indoor");
+}

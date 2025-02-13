@@ -1,12 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, Image, StyleSheet } from 'react-native';
 import Hall8 from './Hall-8.png';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import Svg, {Path} from 'react-native-svg';
+import {getIndoorDirections} from '../../api/dataService';
 
 
 
 const IndoorMap = ()=>{
+  const [path, setPath] = useState("");
+  const start = "H845";
+  const destination = "H831";
+
+  const fetchPath = async() =>{
+    try{
+      const data = await getIndoorDirections("foot-walking", start, destination);
+      setPath(data);
+    }catch(error){
+      console.error("Error fetching path data: ", error);
+    }
+  }
+
+  useEffect(()=>{
+        fetchPath();
+      }, [start, destination]);
+
 
   return (
     <View style={styles.container}>
@@ -26,12 +44,12 @@ const IndoorMap = ()=>{
             source={Hall8}
           />
           <Svg style={styles.svg}>
-        <Path
-          d="M 50,150 L 150,50 350,50 450,150"
+        {path!=""&&<Path
+          d={path.path_data}
           fill="transparent"
           stroke="red"
           strokeWidth="5"
-        /></Svg>
+        />}</Svg>
         </ReactNativeZoomableView>
       </View>
     </View>

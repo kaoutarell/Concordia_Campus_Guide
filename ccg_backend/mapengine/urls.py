@@ -4,6 +4,7 @@ from mapengine.views.directions_api_view import foot_walking_directions, cycling
     wheelchair_directions, public_transport_directions, shuttle_bus_directions
 from mapengine.views.building_views import get_buildings_by_campus, get_buildings
 from mapengine.views.route_views import route_list_create
+from mapengine.views.indoor_directions import get_indoor_directions
 
 urlpatterns = [
     path('buildings-by-campus/', get_buildings_by_campus, name='buildings-by-campus'),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('directions/wheelchair', wheelchair_directions, name='wheelchair'),
     path('directions/public-transport', public_transport_directions, name='public-transport'),
     path('directions/shuttle-bus', shuttle_bus_directions, name='shuttle-bus'),
+    path('directions/indoor', get_indoor_directions, name='indoor'),
 ]
