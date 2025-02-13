@@ -40,6 +40,8 @@ jobs:
           flake8 --config=ccg_backend/.flake8 ccg_backend/
 
       - name: Run backend tests
+        env:
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           cd ccg_backend
           conda init bash
