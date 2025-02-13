@@ -8,11 +8,9 @@ from ..constants import ORS_BASE_URL, OTP_BASE_URL, OTP_HEADER, OTP_AVG_WALKING_
 def ors_directions(start, end, profile):
     url = f"{ORS_BASE_URL}/{profile}?start={start}&end={end}"
     response = requests.get(url)
-    
     if response.status_code != 200:
         ors_error = response.json().get("error", "Unknown error")
         return {"error": "Failed to get directions", "ors_error": ors_error}, 400
-    
     return parse_ors_directions(response.json()), 200
 
 def parse_ors_directions(geojson_data):
@@ -92,11 +90,13 @@ def find_closest_point(step, path):
 def match_steps_to_path(steps, path, mode):
     """Matches navigation steps to the closest points in the path and links coordinates."""
     matched_indices = []
-    if mode != "foot": matched_indices.append(0)
+    if mode != "foot":
+        matched_indices.append(0)
     for step in steps:
         closest_idx = find_closest_point(step, path)
         matched_indices.append(closest_idx)
-    if mode != "foot": matched_indices.append(len(path)-1)
+    if mode != "foot":
+        matched_indices.append(len(path) - 1)
     return matched_indices
 
 def parse_leg(leg):
@@ -110,10 +110,10 @@ def parse_leg(leg):
     for i in range(len(steps)):
         start_idx = matched_indices[i]
         # if last step, end_idx is the last point in the path
-        if i == len(steps)-1:
-            end_idx = len(path)-1
+        if i == len(steps) - 1:
+            end_idx = len(path) - 1
         else:
-            end_idx = matched_indices[i+1]
+            end_idx = matched_indices[i + 1]
 
         # If the step is only one point, skip it
         # if start_idx == end_idx:
@@ -126,17 +126,17 @@ def parse_leg(leg):
             # Add get on/off instructions for metro/bus
             if i == 0:
                 instruction = f"Get on {leg['mode'].capitalize()} {leg['line']['publicCode']} {leg['line']['name']}: {steps[i]['name']}"
-            elif i == len(steps)-1:
+            elif i == len(steps) - 1:
                 instruction = f"Get off {leg['mode'].capitalize()} {leg['line']['publicCode']} {leg['line']['name']} at {steps[i]['name']}"
-            else:     
+            else:
                 instruction = f"Stay in {leg['mode'].capitalize()} {leg['line']['publicCode']} {leg['line']['name']}: {steps[i]['name']}"
             type = -1
         step_data = {
             "distance": steps[i].get("distance", 0),
             "duration": steps[i].get("distance", 0) / OTP_AVG_WALKING_SPEED,
-            "instruction": instruction,  
+            "instruction": instruction,
             "type": type,
-            "coordinates": [[lon, lat] for lat, lon in path[start_idx:end_idx+1]]
+            "coordinates": [[lon, lat] for lat, lon in path[start_idx:end_idx + 1]]
         }
         result.append(step_data)
     return result
