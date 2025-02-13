@@ -1,103 +1,46 @@
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
 import requests
 import polyline
 from geopy.distance import geodesic
 import numpy as np
 from ..constants import ORS_BASE_URL, OTP_BASE_URL, OTP_HEADER, OTP_AVG_WALKING_SPEED, OTP_QUERY
 
-@api_view(['GET'])
-def foot_walking_directions(request):
-    return get_directions(request, 'foot-walking')
-
-@api_view(['GET'])
-def cycling_regular_directions(request):
-    return get_directions(request, 'cycling-regular')
-
-@api_view(['GET'])
-def driving_car_directions(request):
-    return get_directions(request, 'driving-car')
-
-@api_view(['GET'])
-def wheelchair_directions(request):
-    return get_directions(request, 'wheelchair')
-
-@api_view(['GET'])
-def public_transport_directions(request):
-    return get_directions(request, 'public-transport')
-
-@api_view(['GET'])
-def shuttle_bus_directions(request):
-    return get_directions(request, 'concordia-shuttle')
-
-@api_view(['GET'])
-def get_profiles(request):
-    return JsonResponse({
-        "profiles": [
-            "foot-walking",
-            "cycling-regular",
-            "driving-car",
-            "wheelchair",
-            "public-transport",
-            "concordia-shuttle"
-        ]
-    })
-
-def get_directions(request, profile):
-    start = request.GET.get('start')
-    end = request.GET.get('end')
-
-    if not start or not end:
-        return JsonResponse({"error": "Missing start or end parameter"}, status=400)
-    
-    if profile in ['foot-walking', 'cycling-regular', 'driving-car', 'wheelchair', 'concordia-shuttle']:
-        route_info = ors_directions(start, end, profile)
-    else:
-        route_info = otp_directions(start, end)
-    
-    return JsonResponse(route_info)
 
 def ors_directions(start, end, profile):
     url = f"{ORS_BASE_URL}/{profile}?start={start}&end={end}"
     response = requests.get(url)
-
+    
     if response.status_code != 200:
         ors_error = response.json().get("error", "Unknown error")
-        return JsonResponse({"error": "Failed to get directions", "ors_error": ors_error}, status=400)
-
-    return parse_ors_directions(response.json())
+        return {"error": "Failed to get directions", "ors_error": ors_error}, 400
+    
+    return parse_ors_directions(response.json()), 200
 
 def parse_ors_directions(geojson_data):
-    try:
-        features = geojson_data.get("features", [])
-        if not features:
-            raise ValueError("No features found in GeoJSON data")
-        route = {
-            "profile": geojson_data.get("metadata", {}).get("query", {}).get("profile"),
-            "startingCoordinates": features[0]["geometry"]["coordinates"][0],
-            "destinationCoordinates": features[0]["geometry"]["coordinates"][-1],
-            "total_distance": features[0]["properties"]["segments"][0]["distance"],
-            "total_duration": features[0]["properties"]["segments"][0]["duration"],
-            "bbox": geojson_data.get("bbox", []),
-        }
+    features = geojson_data.get("features", [])
+    route = {
+        "profile": geojson_data.get("metadata", {}).get("query", {}).get("profile"),
+        "startingCoordinates": features[0]["geometry"]["coordinates"][0],
+        "destinationCoordinates": features[0]["geometry"]["coordinates"][-1],
+        "total_distance": features[0]["properties"]["segments"][0]["distance"],
+        "total_duration": features[0]["properties"]["segments"][0]["duration"],
+        "bbox": geojson_data.get("bbox", []),
+    }
 
-        steps = features[0]["properties"]["segments"][0]["steps"]
-        coordinates = features[0]["geometry"]["coordinates"]
-        route_info = []
+    steps = features[0]["properties"]["segments"][0]["steps"]
+    coordinates = features[0]["geometry"]["coordinates"]
+    route_info = []
 
-        for step in steps:
-            route_info.append({
-                "distance": step["distance"],
-                "duration": step["duration"],
-                "instruction": step["instruction"],
-                "type": step["type"],
-                "coordinates": coordinates[step["way_points"][0]: step["way_points"][1] + 1],
-            })
+    for step in steps:
+        route_info.append({
+            "distance": step["distance"],
+            "duration": step["duration"],
+            "instruction": step["instruction"],
+            "type": step["type"],
+            "coordinates": coordinates[step["way_points"][0]: step["way_points"][1] + 1],
+        })
 
-        route["steps"] = route_info
-        return route
-    except Exception as e:
-        return {"error": str(e)}
+    route["steps"] = route_info
+    return route
 
 def otp_directions(start, end):
     start = start.split(",")
@@ -105,16 +48,15 @@ def otp_directions(start, end):
 
     response = requests.post(OTP_BASE_URL, headers=OTP_HEADER, json=OTP_QUERY(start, end, True, 3))
 
-    if response.status_code != 200:
-        otp_error = response.json().get("errors", "Unknown error")
-        return JsonResponse({"error": "Failed to get directions", "otp_error": otp_error}, status=400)
-
     return parse_otp_directions(response.json(), start, end)
 
 def parse_otp_directions(json, start, end):
     tripPatterns = json["data"]["trip"]["tripPatterns"]
     # To avoid trip patterns with only foot walking, select the first one with more than one leg
-    tripPattern = next((pattern for pattern in tripPatterns if len(pattern["legs"]) > 1), tripPatterns[0])
+    if len(tripPatterns) >= 1:
+        tripPattern = next((pattern for pattern in tripPatterns if len(pattern["legs"]) > 1), tripPatterns[0])
+    else:
+        return {"error": "No trip patterns found"}, 400
 
     allSteps = []
     for leg in tripPattern["legs"]:
@@ -138,7 +80,7 @@ def parse_otp_directions(json, start, end):
         "steps": allSteps
     }
 
-    return route
+    return route, 200
 
 def find_closest_point(step, path):
     """Finds the index of the closest path point to a given step."""
@@ -172,7 +114,11 @@ def parse_leg(leg):
             end_idx = len(path)-1
         else:
             end_idx = matched_indices[i+1]
-        
+
+        # If the step is only one point, skip it
+        # if start_idx == end_idx:
+        #     continue
+
         if leg["mode"] == "foot":
             instruction = f"Head {steps[i]['heading']} on {steps[i]['streetName']}"
             type = -1

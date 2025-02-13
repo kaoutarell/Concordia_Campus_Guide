@@ -1,6 +1,6 @@
 from django.urls import path
 
-from mapengine.views.directions_api_view import foot_walking_directions, cycling_regular_directions, driving_car_directions, \
+from mapengine.views.direction_api_view import foot_walking_directions, cycling_regular_directions, driving_car_directions, \
     wheelchair_directions, public_transport_directions, shuttle_bus_directions, get_profiles
 from mapengine.views.building_views import get_buildings_by_campus, get_buildings
 from mapengine.views.route_views import route_list_create
@@ -15,5 +15,5 @@ urlpatterns = [
     path('directions/wheelchair', wheelchair_directions, name='wheelchair'),
     path('directions/public-transport', public_transport_directions, name='public-transport'),
     path('directions/concordia-shuttle', shuttle_bus_directions, name='concordia-shuttle'),
-    path('directions', get_profiles, name='profiles')
+    path('directions/', get_profiles, name='profiles')
 ]
