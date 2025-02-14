@@ -10,11 +10,10 @@ import {
   StatusBar,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import locationService from "../services/LocationService.js";
-import CustomMarker from "./CustomMarker.js";
-import InfoPopup from "./InfoPopUp.js";
-import BuildingHighlight from "./BuildingHighlight";
-
+import locationService from "../../../services/LocationService.js";
+import CustomMarker from "../elements/CustomMarker.js";
+import InfoPopup from "../elements/InfoPopUp.js";
+// import BuildingHighlight from "../elements/BuildingHighlight";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
@@ -84,20 +83,20 @@ const MapViewComponent = ({ locations, region }) => {
               />
             ))}
 
-                        {/* Display current location marker only if available */}
-                        {currentLocation?.coords && (
-                            <Marker
-                                coordinate={{
-                                    latitude: currentLocation.coords.latitude,
-                                    longitude: currentLocation.coords.longitude,
-                                }}
-                                title="Current Location"
-                                pinColor="blue"
-                                testID="current-location-marker" // added for tests
-                            />
-                        )}
-
-                        <BuildingHighlight/>
+            {/* Display current location marker only if available */}
+            {currentLocation?.coords && (
+              <Marker
+                coordinate={{
+                  latitude: currentLocation.coords.latitude,
+                  longitude: currentLocation.coords.longitude,
+                }}
+                title="Current Location"
+                pinColor="blue"
+                testID="current-location-marker" // added for tests
+              />
+            )}
+            {/* 
+            <BuildingHighlight /> */}
 
           </MapView>
         </View>

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react-native";
-import InfoPopup from "../components/InfoPopUp.js";
+import InfoPopup from "../components/map-screen-ui/elements/InfoPopUp.js";
 // Mock Ionicons
 jest.mock("@expo/vector-icons", () => ({
   Ionicons: ({ name }) => <>{name}</>,

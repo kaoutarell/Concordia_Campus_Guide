@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { getBuildingByCampus, getBuildings } from '../api/dataService';
+import { getBuildingByCampus, getBuildings } from '../../api/dataService';
 
-import MapViewComponent from "../components/MapViewComponent";
-import NavigationToggle from "../components/NavigationToggle";
+import MapViewComponent from "./sections/MapViewComponent";
+import NavigationToggle from "./sections/NavigationToggle";
 import {
   initialRegionSGW,
   initialRegionLoyola,
-} from "../constants/initialRegions";
+} from "../../constants/initialRegions";
 
 import { useNavigation } from "@react-navigation/native";
 
 
 import { View, StyleSheet } from "react-native";
 
-import HeaderBar from '../components/HeaderBar';
-import {store} from "../redux/reducers";
+import HeaderBar from './sections/HeaderBar';
+// import { store } from "../redux/reducers";
 
 const MapScreen = () => {
   const navigation = useNavigation();
@@ -31,10 +31,20 @@ const MapScreen = () => {
   };
 
   useEffect(() => {
+
+    const setData = async () => {
+      try {
+
+        await fetchLocations();
+        await fetchAllLocations();
+        console.log("Data fetched successfully.");
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
     if (selectedCampus) {
-      store.dispatch({ type: "UPDATE_CAMPUS", payload: selectedCampus === 'SGW' });
-      fetchLocations();
-      fetchAllLocations();
+      setData();
     }
   }, [selectedCampus]);
 
@@ -42,7 +52,7 @@ const MapScreen = () => {
 
     setSelectedCampus((prevCampus) => {
       if (prevCampus !== campus) {
-      return campus;
+        return campus;
       }
       return prevCampus;
     });
@@ -59,34 +69,32 @@ const MapScreen = () => {
   };
 
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
-    try{
+    try {
       const data = await getBuildings();
       setAllLocations(data);
-    }catch (error){
+    } catch (error) {
       console.error("Error fetching data:", error)
     }
   }
-
-
-  const handleViewNavigation = (start,destination) => {
-          navigation.navigate("Navigation", {
-              start,
-              destination,
-          });
+  const handleViewNavigation = (start, destination) => {
+    navigation.navigate("Navigation", {
+      start,
+      destination,
+    });
   }
 
   //TODO: start and destination objects are here
   //
-  return ( 
+  return (
     <View style={styles.container}>
-        <HeaderBar
-          selectedCampus={selectedCampus}
-          onCampusSelect={onCampusSelect}
-          locations={allLocations}
-          setStartLocation={setStartLocation}
-          setDestinationLocation={setDestinationLocation}
-          handleViewNavigation={handleViewNavigation}
-        />
+      <HeaderBar
+        selectedCampus={selectedCampus}
+        onCampusSelect={onCampusSelect}
+        locations={allLocations}
+        setStartLocation={setStartLocation}
+        setDestinationLocation={setDestinationLocation}
+        handleViewNavigation={handleViewNavigation}
+      />
       {/* Map */}
       <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
 

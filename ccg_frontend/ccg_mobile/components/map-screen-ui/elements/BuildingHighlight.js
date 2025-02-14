@@ -1,8 +1,8 @@
 import React from "react";
 import { Polygon } from "react-native-maps";
-import SGWCoord from "../constants/sgwGeoJson.json";
-import LOYCoord from "../constants/loyGeoJson.json";
-import { store } from "../redux/reducers";
+import SGWCoord from "../../../constants/sgwGeoJson.json";
+import LOYCoord from "../../../constants/loyGeoJson.json";
+import { store } from "../../../redux/reducers";
 import uuid from "react-native-uuid";
 
 const BuildingHighlight = () => {

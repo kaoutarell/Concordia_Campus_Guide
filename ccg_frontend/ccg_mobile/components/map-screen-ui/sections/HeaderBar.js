@@ -1,13 +1,13 @@
-import React, {useEffect, useRef, useState} from "react";
-import {View, StyleSheet, Dimensions, Animated} from "react-native";
-import MenuButton from "./MenuButton";
-import SearchBar from "./SearchBar";
-import CampusSelector from "./CampusSelector";
+import React, { useEffect, useRef, useState } from "react";
+import { View, StyleSheet, Dimensions, Animated } from "react-native";
+import MenuButton from "../elements/MenuButton";
+import SearchBar from "../elements/SearchBar";
+import CampusSelector from "../elements/CampusSelector";
 
 const { width } = Dimensions.get("window");
 
 
-const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation, setDestinationLocation, handleViewNavigation }) => {
+const HeaderBar = ({ selectedCampus, onCampusSelect, locations, setStartLocation, setDestinationLocation, handleViewNavigation }) => {
     const [isSearching, setIsSearching] = useState(false);
     const campusOpacity = useRef(new Animated.Value(1)).current; // Default to visible
     const campusTranslateY = useRef(new Animated.Value(0)).current;
@@ -48,10 +48,10 @@ const HeaderBar = ({selectedCampus, onCampusSelect, locations, setStartLocation,
 
             <View style={styles.topRow}>
 
-                <MenuButton testID="menu-button"/>
+                <MenuButton testID="menu-button" />
                 <View style={styles.topColumn}>
 
-                    <SearchBar testID="search-bar" setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation}/>
+                    <SearchBar testID="search-bar" setIsSearching={setIsSearching} setStartLocation={setStartLocation} setDestinationLocation={setDestinationLocation} locations={locations} handleViewNavigation={handleViewNavigation} />
                     <Animated.View style={{
                         opacity: campusOpacity,
                         transform: [{ translateY: campusTranslateY }],
