@@ -119,3 +119,6 @@ dependencies:
       - python-decouple==3.8
       - requests==2.32.3
       - urllib3==2.3.0
+      - polyline==2.0.2
+      - geopy==2.4.1
+      
