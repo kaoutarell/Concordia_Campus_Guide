@@ -1,49 +1,50 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
 
-const NavigationMap = ({start, destination, pathCoordinates})=>{
-    let coordinates=[];
-    pathCoordinates.forEach(element => {
-        element.coordinates.forEach(cord =>{
+const NavigationMap = ({ start, destination, pathCoordinates }) => {
+
+    let coordinates = [];
+    pathCoordinates?.forEach(element => {
+        element.coordinates.forEach(cord => {
             coordinates.push({
-                latitude:cord[1],
-                longitude:cord[0]
+                latitude: cord[1],
+                longitude: cord[0]
             })
         })
     });
 
     console.log(coordinates)
 
-    return(
+    return (
         <MapView
             style={style.map}
             showsUserLocation={true}
             region={{
-                latitude: (start.location.latitude+destination.location.latitude)/2,
-                longitude: (start.location.longitude+destination.location.longitude)/2,
+                latitude: (start?.location?.latitude + destination?.location?.latitude) / 2,
+                longitude: (start?.location?.longitude + destination?.location?.longitude) / 2,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
             }}
         >
             <Marker
                 coordinate={{
-                    latitude: start.location.latitude,
-                    longitude: start.location.longitude,
+                    latitude: start.location?.latitude,
+                    longitude: start?.location?.longitude,
                 }}
-                title={start.building_code}
+                title={start?.building_code}
                 pinColor="red"
             />
             <Marker
                 coordinate={{
-                    latitude: destination.location.latitude,
-                    longitude: destination.location.longitude,
+                    latitude: destination?.location?.latitude,
+                    longitude: destination?.location?.longitude,
                 }}
-                title={destination.building_code}
+                title={destination?.building_code}
                 pinColor="red"
             />
             <Polyline
-                coordinates={coordinates}
+                coordinates={coordinates?.length > 0 ? coordinates : []}
                 strokeColor="navy"
                 strokeWidth={3}
             />

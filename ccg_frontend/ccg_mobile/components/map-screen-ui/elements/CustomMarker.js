@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Marker } from "react-native-maps";
-import markerImage from "../assets/marker-1.png";
+import markerImage from "../../../assets/marker-1.png";
 
 const CustomMarker = ({ value, onPress, destination }) => {
   return (

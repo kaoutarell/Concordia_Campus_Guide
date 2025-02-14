@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
-import SearchBar from "../components/SearchBar";
+import SearchBar from "../components/map-screen-ui/elements/SearchBar";
 
 // Mock location data
 const locations = [

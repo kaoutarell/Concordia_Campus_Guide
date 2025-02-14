@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import MenuButton from '../components/MenuButton';
+import MenuButton from '../components/map-screen-ui/elements/MenuButton';
 import { useNavigation } from '@react-navigation/native';
 
 jest.mock('@react-navigation/native');

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, waitFor, screen } from "@testing-library/react-native";
-import MapViewComponent from "../components/MapViewComponent";
+import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 
 jest.mock("../services/LocationService", () => ({
@@ -64,7 +64,7 @@ describe("MapViewComponent - Location Tests", () => {
       .mockRejectedValue(new Error("Location error"));
     locationService.getCurrentLocation = jest.fn().mockReturnValue(null);
 
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {}); // Suppress error logs in test output
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => { }); // Suppress error logs in test output
 
     render(
       <MapViewComponent
