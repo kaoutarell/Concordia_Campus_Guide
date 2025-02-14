@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
-import BuildingHighlight from "../components/BuildingHighlight";
+import BuildingHighlight from "../components/map-screen-ui/elements/BuildingHighlight";
 import { store } from "../redux/reducers";
 import uuid from "react-native-uuid";
 
