@@ -21,6 +21,13 @@ const MapViewComponent = ({ locations, region }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [showMarkers, setShowMarkers] = useState(false);
+
+  const handleRegionChange = (region) => {
+    const zoomThreshold = 0.006; // Adjust this value as needed
+    setShowMarkers(region.latitudeDelta < zoomThreshold);
+    console.log("Region changed:", region.latitudeDelta);
+  };
 
   const handleMarkerPress = (location) => {
     // Force React to update state asynchronously
@@ -73,9 +80,10 @@ const MapViewComponent = ({ locations, region }) => {
             region={region}
             showsUserLocation={true}
             onPress={() => setSelectedMarker(null)}
+            onRegionChangeComplete={handleRegionChange}
           >
             {/* Markers for locations */}
-            {locations.map((location) => (
+            {showMarkers && locations.map((location) => (
               <CustomMarker
                 key={location.id}
                 value={location}
@@ -95,8 +103,8 @@ const MapViewComponent = ({ locations, region }) => {
                 testID="current-location-marker" // added for tests
               />
             )}
-            {/* 
-            <BuildingHighlight /> */}
+            
+            {/* <BuildingHighlight /> */}
 
           </MapView>
         </View>
