@@ -137,10 +137,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
               />
             )}
             
-            {/* TODO: this is crashing on iOS */}
-            {
-              Platform.OS == "android" && <BuildingHighlight />
-            }
+            <BuildingHighlight />
 
           </MapView>
         </View>

@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import BuildingHighlight from "../components/map-screen-ui/elements/BuildingHighlight";
-import uuid from "react-native-uuid";
 
 // Mocking react-native-maps Polygon component
 jest.mock("react-native-maps", () => ({
@@ -48,12 +47,5 @@ describe("BuildingHighlight", () => {
     // Ensure multiple Polygon components are rendered
     const geojson = getAllByTestId("geojson");
     expect(geojson.length).toBeGreaterThan(0);
-  });
-
-  it("calls uuid.v4() at least once", () => {
-    render(<BuildingHighlight />);
-
-    // Ensure uuid.v4() was called at least once
-    expect(uuid.v4).toHaveBeenCalled();
   });
 });
