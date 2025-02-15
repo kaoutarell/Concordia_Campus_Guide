@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -17,7 +17,8 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({ locations, region }) => {
+const MapViewComponent = ({ locations, region, maxBounds }) => {
+  const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -26,7 +27,6 @@ const MapViewComponent = ({ locations, region }) => {
   const handleRegionChange = (region) => {
     const zoomThreshold = 0.006; // Adjust this value as needed
     setShowMarkers(region.latitudeDelta < zoomThreshold);
-    console.log("Region changed:", region.latitudeDelta);
   };
 
   const handleMarkerPress = (location) => {
@@ -46,7 +46,22 @@ const MapViewComponent = ({ locations, region }) => {
     }
   }, [locations]);
 
+  // Set Map boundaries. Only supported on Google Maps
+  if (Platform.OS == "android") {
+    useEffect(() => {
+      // set Map boundaries. Only 
+      if (mapRef.current) {
+        // Set the map boundaries after the map has loaded
+        mapRef.current.setMapBoundaries(
+          maxBounds.northeast,
+          maxBounds.southwest
+        );
+      }
+    }, [maxBounds,mapRef.current]);
+  }
+
   useEffect(() => {
+
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
@@ -78,13 +93,28 @@ const MapViewComponent = ({ locations, region }) => {
             testID="map-view" // added to enable getting the map by testID
             style={styles.map}
             region={region}
+            maxBounds={maxBounds}
             showsUserLocation={true}
             onPress={() => setSelectedMarker(null)}
             onRegionChangeComplete={handleRegionChange}
             toolbarEnabled={false}
+            ref={mapRef}
+            {...(Platform.OS == "android" && {
+              // Set the min and max zoom levels. Only supported on Android.
+              maxZoomLevel: 20,
+              minZoomLevel: 16,
+            })}
+            {...(Platform.OS == "ios" && {
+              // Set the camera zoom range. Only supported on iOS 13+.
+              cameraZoomRange: {
+                minCenterCoordinateDistance: 500,
+                maxCenterCoordinateDistance: 3000,
+                animated: true,
+              }
+            })}
           >
             {/* Markers for locations */}
-            {showMarkers && locations.map((location) => (
+            {locations.map((location) => (
               <CustomMarker
                 key={location.id}
                 value={location}
@@ -105,6 +135,7 @@ const MapViewComponent = ({ locations, region }) => {
               />
             )}
             
+            {/* TODO: this is crashing on iOS */}
             <BuildingHighlight />
 
           </MapView>

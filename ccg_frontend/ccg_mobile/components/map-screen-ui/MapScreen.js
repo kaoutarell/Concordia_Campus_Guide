@@ -6,6 +6,8 @@ import NavigationToggle from "./sections/NavigationToggle";
 import {
   initialRegionSGW,
   initialRegionLoyola,
+  maxBoundsSGW,
+  maxBoundsLoyola,
 } from "../../constants/initialRegions";
 
 import { useNavigation } from "@react-navigation/native";
@@ -28,6 +30,10 @@ const MapScreen = () => {
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
+  };
+
+  const getMaxBounds = () => {
+    return selectedCampus === "SGW" ? maxBoundsSGW : maxBoundsLoyola;
   };
 
   useEffect(() => {
@@ -96,7 +102,7 @@ const MapScreen = () => {
         handleViewNavigation={handleViewNavigation}
       />
       {/* Map */}
-      <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
+      <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} maxBounds={getMaxBounds()}/>
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
     </View>
