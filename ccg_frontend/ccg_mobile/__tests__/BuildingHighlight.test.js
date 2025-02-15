@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import BuildingHighlight from "../components/map-screen-ui/elements/BuildingHighlight";
-import { store } from "../redux/reducers";
 import uuid from "react-native-uuid";
 
 // Mocking react-native-maps Polygon component
@@ -41,26 +40,8 @@ jest.mock("../constants/loyGeoJson.json", () => ({
   ],
 }));
 
-// Mocking store state
-const mockStore = (state) => {
-  store.getState = jest.fn(() => state);
-};
-
 describe("BuildingHighlight", () => {
-  it("renders polygons for SGW coordinates when isSGW is true", () => {
-    const state = { isSGW: true };
-    mockStore(state);
-
-    const { getAllByTestId } = render(<BuildingHighlight />);
-
-    // Ensure multiple Polygon components are rendered
-    const polygons = getAllByTestId("polygon");
-    expect(polygons.length).toBeGreaterThan(0);
-  });
-
-  it("renders polygons for LOY coordinates when isSGW is false", () => {
-    const state = { isSGW: false };
-    mockStore(state);
+  it("renders polygons for SGW and LOY", () => {
 
     const { getAllByTestId } = render(<BuildingHighlight />);
 
@@ -70,9 +51,6 @@ describe("BuildingHighlight", () => {
   });
 
   it("calls uuid.v4() at least once for the polygons", () => {
-    const state = { isSGW: true };
-    mockStore(state);
-
     render(<BuildingHighlight />);
 
     // Ensure uuid.v4() was called at least once
