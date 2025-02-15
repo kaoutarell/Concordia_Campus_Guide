@@ -24,27 +24,22 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
 
-  // const handleRegionChange = (region) => {
+  // Function to check if the region is within the bounds
+  const isWithinBounds = (region) => {
+    return (
+      region.latitude <= maxBounds.northeast.latitude &&
+      region.latitude >= maxBounds.southwest.latitude &&
+      region.longitude <= maxBounds.northeast.longitude &&
+      region.longitude >= maxBounds.southwest.longitude
+    );
+  };
 
-  // };
-
-    // Function to check if the region is within the bounds
-    const isWithinBounds = (region) => {
-      return (
-        region.latitude <= maxBounds.northeast.latitude &&
-        region.latitude >= maxBounds.southwest.latitude &&
-        region.longitude <= maxBounds.northeast.longitude &&
-        region.longitude >= maxBounds.southwest.longitude
-      );
-    };
-  
     // Function to handle region changes and restrict panning
     const handleRegionChange = (region) => {
       if (Platform.OS == "android") {
         const zoomThreshold = 0.006; // Adjust this value as needed
         setShowMarkers(region.latitudeDelta < zoomThreshold);
-      }else{
-        if (!isWithinBounds(region)) {
+      }else if (!isWithinBounds(region)) {
           // Snap back to the last valid region
           mapRef.current.animateToRegion({
             latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
@@ -53,7 +48,6 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
           });
         }
-      }
     };
 
   const handleMarkerPress = (location) => {
