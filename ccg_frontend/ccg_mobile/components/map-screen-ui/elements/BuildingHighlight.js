@@ -2,13 +2,16 @@ import React from "react";
 import { Polygon } from "react-native-maps";
 import SGWCoord from "../../../constants/sgwGeoJson.json";
 import LOYCoord from "../../../constants/loyGeoJson.json";
-import { store } from "../../../redux/reducers";
+// import { store } from "../../../redux/reducers";
 import uuid from "react-native-uuid";
 
 const BuildingHighlight = () => {
-  return store.getState().isSGW
-    ? renderGeoJsonPolygons(SGWCoord)
-    : renderGeoJsonPolygons(LOYCoord);
+  return (
+    <>
+      {renderGeoJsonPolygons(SGWCoord)}
+      {renderGeoJsonPolygons(LOYCoord)}
+    </>
+  );
 };
 
 const renderGeoJsonPolygons = (coords) => {

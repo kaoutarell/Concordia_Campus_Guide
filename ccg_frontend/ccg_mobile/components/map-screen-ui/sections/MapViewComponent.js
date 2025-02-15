@@ -13,7 +13,7 @@ import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService.js";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
-// import BuildingHighlight from "../elements/BuildingHighlight";
+import BuildingHighlight from "../elements/BuildingHighlight";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
@@ -104,7 +104,7 @@ const MapViewComponent = ({ locations, region }) => {
               />
             )}
             
-            {/* <BuildingHighlight /> */}
+            <BuildingHighlight />
 
           </MapView>
         </View>

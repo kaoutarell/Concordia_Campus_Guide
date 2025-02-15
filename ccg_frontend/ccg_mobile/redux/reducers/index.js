@@ -12,16 +12,16 @@ import { createStore } from "redux";
  * Subscriber - listens for state change to update the ui  
  */
 
-const initialState = {
-  isSGW: false
-  }
-  const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'UPDATE_CAMPUS':
-            return {isSGW: action.payload }
-    }
-    return state;
-  }
-  export const store = createStore(reducer);
+// const initialState = {
+//   isSGW: false
+//   }
+//   const reducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case 'UPDATE_CAMPUS':
+//             return {isSGW: action.payload }
+//     }
+//     return state;
+//   }
+//   export const store = createStore(reducer);
   
  
