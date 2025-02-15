@@ -81,6 +81,7 @@ const MapViewComponent = ({ locations, region }) => {
             showsUserLocation={true}
             onPress={() => setSelectedMarker(null)}
             onRegionChangeComplete={handleRegionChange}
+            toolbarEnabled={false}
           >
             {/* Markers for locations */}
             {showMarkers && locations.map((location) => (
