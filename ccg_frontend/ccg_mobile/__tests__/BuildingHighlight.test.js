@@ -5,7 +5,7 @@ import uuid from "react-native-uuid";
 
 // Mocking react-native-maps Polygon component
 jest.mock("react-native-maps", () => ({
-  Polygon: "Polygon", // Simple mock for Polygon component
+  Geojson: "Geojson", // Simple mock for Polygon component
 }));
 
 // Mocking UUID to return a predictable value
@@ -41,16 +41,16 @@ jest.mock("../constants/loyGeoJson.json", () => ({
 }));
 
 describe("BuildingHighlight", () => {
-  it("renders polygons for SGW and LOY", () => {
+  it("renders geojson for SGW and LOY", () => {
 
     const { getAllByTestId } = render(<BuildingHighlight />);
 
     // Ensure multiple Polygon components are rendered
-    const polygons = getAllByTestId("polygon");
-    expect(polygons.length).toBeGreaterThan(0);
+    const geojson = getAllByTestId("geojson");
+    expect(geojson.length).toBeGreaterThan(0);
   });
 
-  it("calls uuid.v4() at least once for the polygons", () => {
+  it("calls uuid.v4() at least once", () => {
     render(<BuildingHighlight />);
 
     // Ensure uuid.v4() was called at least once

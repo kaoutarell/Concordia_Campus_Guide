@@ -25,8 +25,10 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
   const [showMarkers, setShowMarkers] = useState(false);
 
   const handleRegionChange = (region) => {
-    const zoomThreshold = 0.006; // Adjust this value as needed
-    setShowMarkers(region.latitudeDelta < zoomThreshold);
+    if (Platform.OS == "android") {
+      const zoomThreshold = 0.006; // Adjust this value as needed
+      setShowMarkers(region.latitudeDelta < zoomThreshold);
+    }
   };
 
   const handleMarkerPress = (location) => {
@@ -114,7 +116,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             })}
           >
             {/* Markers for locations */}
-            {locations.map((location) => (
+            {(showMarkers != (Platform.OS =="ios")) && locations.map((location) => (
               <CustomMarker
                 key={location.id}
                 value={location}
@@ -136,7 +138,9 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             )}
             
             {/* TODO: this is crashing on iOS */}
-            <BuildingHighlight />
+            {
+              Platform.OS == "android" && <BuildingHighlight />
+            }
 
           </MapView>
         </View>

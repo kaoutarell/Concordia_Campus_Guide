@@ -1,11 +1,12 @@
 import React from "react";
-import { Polygon } from "react-native-maps";
+import { Geojson, Polygon } from "react-native-maps";
 import SGWCoord from "../../../constants/sgwGeoJson.json";
 import LOYCoord from "../../../constants/loyGeoJson.json";
 // import { store } from "../../../redux/reducers";
 import uuid from "react-native-uuid";
 
 const BuildingHighlight = () => {
+  // console.log(SGWCoord);
   return (
     <>
       {renderGeoJsonPolygons(SGWCoord)}
@@ -15,23 +16,17 @@ const BuildingHighlight = () => {
 };
 
 const renderGeoJsonPolygons = (coords) => {
-  return coords.features.map((building) => {
     return (
-      <Polygon
+      <Geojson
+        testID="geojson"
         key={uuid.v4()}
-        testID="polygon"
-        coordinates={building.geometry.coordinates.map((coord) => {
-          return {
-            latitude: coord[1],
-            longitude: coord[0],
-          };
-        })}
+        geojson={coords}
         strokeColor="#5a6366"
         fillColor="#b5e7ec"
         strokeWidth={1}
+        zIndex={2}
       />
     );
-  });
 };
 
 export default BuildingHighlight;
