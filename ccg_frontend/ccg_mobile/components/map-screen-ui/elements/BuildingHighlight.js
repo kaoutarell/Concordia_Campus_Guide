@@ -1,29 +1,18 @@
 import React from "react";
-import { Geojson, Polygon } from "react-native-maps";
-import SGWCoord from "../../../constants/sgwGeoJson.json";
-import LOYCoord from "../../../constants/loyGeoJson.json";
+import { Geojson } from "react-native-maps";
+import concordiaGeoJson from "../../../constants/concordiaGeoJson.json";
 
 const BuildingHighlight = () => {
-  // console.log(SGWCoord);
   return (
-    <>
-      {renderGeoJsonPolygons(SGWCoord)}
-      {renderGeoJsonPolygons(LOYCoord)}
-    </>
-  );
-};
-
-const renderGeoJsonPolygons = (coords) => {
-    return (
-      <Geojson
+    <Geojson
         testID="geojson"
-        geojson={coords}
+        geojson={concordiaGeoJson}
         strokeColor="#5a6366"
         fillColor="#b5e7ec"
         strokeWidth={1}
         zIndex={100}
       />
-    );
+  );
 };
 
 export default BuildingHighlight;

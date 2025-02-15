@@ -48,19 +48,16 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
     }
   }, [locations]);
 
-  // Set Map boundaries. Only supported on Google Maps
-  if (Platform.OS == "android") {
-    useEffect(() => {
-      // set Map boundaries. Only 
-      if (mapRef.current) {
-        // Set the map boundaries after the map has loaded
-        mapRef.current.setMapBoundaries(
-          maxBounds.northeast,
-          maxBounds.southwest
-        );
-      }
-    }, [maxBounds,mapRef.current]);
-  }
+  useEffect(() => {
+    // set Map boundaries. Only 
+    if (Platform.OS == "android" && mapRef.current) {
+      // Set the map boundaries after the map has loaded
+      mapRef.current.setMapBoundaries(
+        maxBounds.northeast,
+        maxBounds.southwest
+      );
+    }
+  }, [maxBounds,mapRef.current]);
 
   useEffect(() => {
 
@@ -103,7 +100,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             ref={mapRef}
             {...(Platform.OS == "android" && {
               // Set the min and max zoom levels. Only supported on Android.
-              maxZoomLevel: 20,
+              maxZoomLevel: 19,
               minZoomLevel: 16,
             })}
             {...(Platform.OS == "ios" && {

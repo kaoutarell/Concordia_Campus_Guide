@@ -13,7 +13,7 @@ jest.mock("react-native-uuid", () => ({
 }));
 
 // Mocking the geoJson data (SGWCoord and LOYCoord)
-jest.mock("../constants/sgwGeoJson.json", () => ({
+jest.mock("../constants/concordiaGeoJson.json", () => ({
   features: [
     {
       geometry: {
@@ -23,11 +23,6 @@ jest.mock("../constants/sgwGeoJson.json", () => ({
         ],
       },
     },
-  ],
-}));
-
-jest.mock("../constants/loyGeoJson.json", () => ({
-  features: [
     {
       geometry: {
         coordinates: [
@@ -38,6 +33,7 @@ jest.mock("../constants/loyGeoJson.json", () => ({
     },
   ],
 }));
+
 
 describe("BuildingHighlight", () => {
   it("renders geojson for SGW and LOY", () => {
