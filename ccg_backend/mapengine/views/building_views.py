@@ -3,10 +3,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from ..models.building import Building
 from ..serializers.building_serializer import BuildingSerializer
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def get_buildings_by_campus(request):
     campus_name = request.GET.get('campus')
 
@@ -19,7 +19,7 @@ def get_buildings_by_campus(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-@csrf_exempt
+@require_http_methods(['GET'])
 def get_buildings(request):
 
     buildings = Building.objects

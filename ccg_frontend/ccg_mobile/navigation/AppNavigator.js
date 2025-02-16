@@ -21,12 +21,14 @@ const StackNavigator = () => {
     );
 };
 
+const drawerContent = (props) => <Sidebar {...props} />;
+
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {
     return (
         <NavigationContainer>
             <Drawer.Navigator
-                drawerContent={(props) => <Sidebar {...props} />}
+                drawerContent={drawerContent}
                 screenOptions={{ headerShown: false }}
             >
                 <Drawer.Screen name="Main" component={StackNavigator} />
