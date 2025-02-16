@@ -25,6 +25,7 @@ const MapScreen = () => {
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
   const [destinationLocation, setDestinationLocation] = useState(null);
+  const [startLocation, setStartLocation] = useState(null);
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
