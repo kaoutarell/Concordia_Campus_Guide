@@ -30,18 +30,40 @@ const NavigationScreen = ({ navigation, route }) => {
 
         try {
             const data = await getDirectionProfiles();
-            const profiles = data.profiles
-            const directions = {}
-            for (let i = 0; i < profiles.length; i++){
-                directions[profiles[i]] = await getDirections(profiles[i], [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
-//                console.log("Fetched successfully directions for "+profiles[i])
+            const profiles = data.profiles;
+            const directions = {};
+        
+            // Fetch first profile synchronously
+            if (profiles.includes("foot-walking")) {
+                directions["foot-walking"] = await getDirections(
+                    "foot-walking",
+                    [startPoint.location.longitude, startPoint.location.latitude],
+                    [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                );
+                setDirection(directions["foot-walking"]);
             }
-            console.log(directions)
+        
+            // Fetch other profiles asynchronously
+            const promises = profiles
+                .filter(profile => profile !== "foot-walking") // Exclude the first one
+                .map(async profile => {
+                    directions[profile] = await getDirections(
+                        profile,
+                        [startPoint.location.longitude, startPoint.location.latitude],
+                        [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                    );
+                });
+        
+            // Wait for all async fetches to complete
+            await Promise.all(promises);
+        
+            console.log(directions);
             setDirectionProfiles(directions);
         } catch (error) {
             setDirection([]);
             console.error("Error fetching direction data: ", error);
         }
+        
 
     };
 
