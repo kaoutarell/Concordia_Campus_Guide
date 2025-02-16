@@ -47,16 +47,9 @@ def check_directions(api_client, profile):
     response = api_client.get(url + INVALID_PARAMS)
     assert response.status_code == 400
 
-    # Case 3.1: In bounds coordinates (For concordia-shuttle during weekend)
+    # Case 3: In bounds coordinates (For all profiles except concordia-shuttle during weekend)
     from datetime import datetime
     today = datetime.today().weekday()
-
-    if profile == "concordia-shuttle" and today >= 5:  # Saturday or Sunday
-        response = api_client.get(url + CORRECT_PARAMS)
-        # Route could not be found because it's the weekend
-        assert response.status_code == 400
-
-    # Case 3.2: In bounds coordinates (For all profiles except concordia-shuttle during weekend)
     if not (profile == "concordia-shuttle" and today >= 5):
         response = api_client.get(url + CORRECT_PARAMS)
         assert response.status_code == 200

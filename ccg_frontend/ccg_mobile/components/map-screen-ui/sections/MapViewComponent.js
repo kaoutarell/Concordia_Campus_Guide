@@ -14,6 +14,7 @@ import locationService from "../../../services/LocationService.js";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import BuildingHighlight from "../elements/BuildingHighlight";
+import PropTypes from 'prop-types';
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
@@ -206,5 +207,23 @@ const styles = StyleSheet.create({
     elevation: 5, // For Android shadow
   },
 });
+
+MapViewComponent.propTypes = {
+  locations: PropTypes.array.isRequired,
+  region: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+  }).isRequired,
+  maxBounds: PropTypes.shape({
+    northeast: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }).isRequired,
+    southwest: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MapViewComponent;
