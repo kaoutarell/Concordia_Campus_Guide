@@ -213,6 +213,8 @@ MapViewComponent.propTypes = {
   region: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
+    latitudeDelta: PropTypes.number.isRequired,
+    longitudeDelta: PropTypes.number.isRequired,
   }).isRequired,
   maxBounds: PropTypes.shape({
     northeast: PropTypes.shape({
