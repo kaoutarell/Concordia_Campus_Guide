@@ -26,6 +26,8 @@ const MapScreen = () => {
   const [destinationLocation, setDestinationLocation] = useState(null);
   const [startPoint, setStartLocation] = useState(null);
 
+  const [targetLocation, setTargetLocation] = useState({});
+
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
   };
@@ -83,11 +85,10 @@ const MapScreen = () => {
     });
   }
 
-  //TODO: start and destination objects are here
-  //
   return (
     <View style={styles.container}>
       <HeaderBar
+        setTargetLocation={setTargetLocation}
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
@@ -96,7 +97,7 @@ const MapScreen = () => {
         handleViewNavigation={handleViewNavigation}
       />
       {/* Map */}
-      <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} />
+      <MapViewComponent target={targetLocation} locations={locations} region={getRegion()} />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
     </View>
