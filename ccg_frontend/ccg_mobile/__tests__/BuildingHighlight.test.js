@@ -1,12 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import BuildingHighlight from "../components/map-screen-ui/elements/BuildingHighlight";
-import { store } from "../redux/reducers";
-import uuid from "react-native-uuid";
 
 // Mocking react-native-maps Polygon component
 jest.mock("react-native-maps", () => ({
-  Polygon: "Polygon", // Simple mock for Polygon component
+  Geojson: "Geojson", // Simple mock for Polygon component
 }));
 
 // Mocking UUID to return a predictable value
@@ -15,7 +13,7 @@ jest.mock("react-native-uuid", () => ({
 }));
 
 // Mocking the geoJson data (SGWCoord and LOYCoord)
-jest.mock("../constants/sgwGeoJson.json", () => ({
+jest.mock("../constants/concordiaGeoJson.json", () => ({
   features: [
     {
       geometry: {
@@ -25,11 +23,6 @@ jest.mock("../constants/sgwGeoJson.json", () => ({
         ],
       },
     },
-  ],
-}));
-
-jest.mock("../constants/loyGeoJson.json", () => ({
-  features: [
     {
       geometry: {
         coordinates: [
@@ -41,41 +34,14 @@ jest.mock("../constants/loyGeoJson.json", () => ({
   ],
 }));
 
-// Mocking store state
-const mockStore = (state) => {
-  store.getState = jest.fn(() => state);
-};
 
 describe("BuildingHighlight", () => {
-  it("renders polygons for SGW coordinates when isSGW is true", () => {
-    const state = { isSGW: true };
-    mockStore(state);
+  it("renders geojson for SGW and LOY", () => {
 
     const { getAllByTestId } = render(<BuildingHighlight />);
 
     // Ensure multiple Polygon components are rendered
-    const polygons = getAllByTestId("polygon");
-    expect(polygons.length).toBeGreaterThan(0);
-  });
-
-  it("renders polygons for LOY coordinates when isSGW is false", () => {
-    const state = { isSGW: false };
-    mockStore(state);
-
-    const { getAllByTestId } = render(<BuildingHighlight />);
-
-    // Ensure multiple Polygon components are rendered
-    const polygons = getAllByTestId("polygon");
-    expect(polygons.length).toBeGreaterThan(0);
-  });
-
-  it("calls uuid.v4() at least once for the polygons", () => {
-    const state = { isSGW: true };
-    mockStore(state);
-
-    render(<BuildingHighlight />);
-
-    // Ensure uuid.v4() was called at least once
-    expect(uuid.v4).toHaveBeenCalled();
+    const geojson = getAllByTestId("geojson");
+    expect(geojson.length).toBeGreaterThan(0);
   });
 });

@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Sidebar from '../components/map-screen-ui/sections/SideBar';
-import { useNavigation } from '@react-navigation/native';
 
 
 // Mocking the useNavigation hook from React Navigation to simulate navigation behavior in the test

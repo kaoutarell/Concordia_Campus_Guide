@@ -1,4 +1,4 @@
-import { fetchDataByEndpoint, postDataToEndpoint } from "./apiClient";
+import { fetchDataByEndpoint } from "./apiClient";
 
 // buildings endpoint
 export const getBuildings = async () => {
