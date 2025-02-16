@@ -16,7 +16,6 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from './sections/HeaderBar';
-// import { store } from "../redux/reducers";
 
 const MapScreen = () => {
   const navigation = useNavigation();
@@ -26,7 +25,6 @@ const MapScreen = () => {
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
   const [destinationLocation, setDestinationLocation] = useState(null);
-  const [startPoint, setStartLocation] = useState(null);
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
@@ -62,7 +60,6 @@ const MapScreen = () => {
       }
       return prevCampus;
     });
-    // await fetchLocations();
   };
 
   const fetchLocations = async () => {
@@ -89,8 +86,6 @@ const MapScreen = () => {
     });
   }
 
-  //TODO: start and destination objects are here
-  //
   return (
     <View style={styles.container}>
       <HeaderBar
