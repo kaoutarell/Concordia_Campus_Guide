@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import NavigationInfo from './sections/NavigationInfo';
 import NavigationMap from './sections/NavigationMap';
-import { getDirections } from '../../api/dataService';
+import { getDirections, getDirectionProfiles } from '../../api/dataService';
 
 import NavigationHeader from "./sections/NavigationHeader";
 
@@ -13,6 +13,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [startPoint, setStartPoint] = useState(params.start || {});
     const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
+    const [directionProfiles, setDirectionProfiles] = useState({});
 
     const [direction, setDirection] = useState(null);
 
@@ -21,14 +22,22 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
+        setDirection(directionProfiles)
     };
 
     const fetchDirections = async () => {
 
 
         try {
-            const data = await getDirections(selectedMode, [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
-            setDirection(data);
+            const data = await getDirectionProfiles();
+            const profiles = data.profiles
+            const directions = {}
+            for (let i = 0; i < profiles.length; i++){
+                directions[profiles[i]] = await getDirections(profiles[i], [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
+//                console.log("Fetched successfully directions for "+profiles[i])
+            }
+            console.log(directions)
+            setDirectionProfiles(directions);
         } catch (error) {
             setDirection([]);
             console.error("Error fetching direction data: ", error);
@@ -39,6 +48,11 @@ const NavigationScreen = ({ navigation, route }) => {
     useEffect(() => {
         fetchDirections();
     }, [startPoint, destinationPoint]);
+
+    useEffect(() => {
+        setDirection(directionProfiles[selectedMode])
+//        console.log(direction)
+    }, [selectedMode])
 
     return (
         <View style={styles.container}>
