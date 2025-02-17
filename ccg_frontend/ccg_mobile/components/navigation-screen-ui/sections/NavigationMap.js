@@ -32,7 +32,7 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
                     longitude: start?.location?.longitude,
                 }}
                 title={start?.building_code}
-                pinColor="red"
+                pinColor="blue"
             />
             <Marker
                 coordinate={{

@@ -77,7 +77,6 @@ const MapScreen = () => {
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
     try {
       const data = await getBuildings();
-      console.log(allLocations)
       setAllLocations(data);
     } catch (error) {
       console.error("Error fetching data:", error)
