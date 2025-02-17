@@ -1,8 +1,7 @@
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
 
-const NavigationMap = ({ start, destination, pathCoordinates }) => {
-
+const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
     let coordinates = [];
     pathCoordinates?.forEach(element => {
         element.coordinates.forEach(cord => {
@@ -13,18 +12,19 @@ const NavigationMap = ({ start, destination, pathCoordinates }) => {
         })
     });
 
-    console.log(coordinates)
+   // console.log(coordinates)
 
     return (
         <MapView
             style={style.map}
             showsUserLocation={true}
             region={{
-                latitude: (start?.location?.latitude + destination?.location?.latitude) / 2,
-                longitude: (start?.location?.longitude + destination?.location?.longitude) / 2,
-                latitudeDelta: 0.01,
-                longitudeDelta: 0.01,
+                latitude: (bbox[1] + bbox[3]) / 2,
+                longitude: (bbox[0] + bbox[2]) / 2,
+                latitudeDelta: Math.abs(bbox[3] - bbox[1]) * 1.2,  // Add some padding
+                longitudeDelta: Math.abs(bbox[2] - bbox[0]) * 1.2, // Add some padding
             }}
+            
         >
             <Marker
                 coordinate={{
