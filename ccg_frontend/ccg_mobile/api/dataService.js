@@ -1,4 +1,4 @@
-import { fetchDataByEndpoint, postDataToEndpoint } from "./apiClient";
+import { fetchDataByEndpoint } from "./apiClient";
 
 // buildings endpoint
 export const getBuildings = async () => {
@@ -11,4 +11,8 @@ export const getBuildingByCampus = async (campus) => {
 
 export const getDirections = async (profile, start, destination) => {
   return await fetchDataByEndpoint("directions/"+profile+"?start=" + start + "&end=" + destination);
+}
+
+export const getDirectionProfiles = async () => {
+  return await fetchDataByEndpoint("directions")
 }

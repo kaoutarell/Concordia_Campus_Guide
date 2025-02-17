@@ -16,8 +16,13 @@ function Sidebar() {
                     <Text style={styles.menuItem}>🏠 Home</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.menuButton}>
+                <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Map")}>
                     <Text style={styles.menuItem}>🏛 Explore All Buildings</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Navigation")}>
+                    <Text style={styles.menuItem}>🚶‍♂️ Navigate</Text>
+
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.menuButton}>

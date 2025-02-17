@@ -2,11 +2,11 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "../screens/HomeScreen";
-import MapScreen from "../screens/MapScreen";
-import NavigationScreen from "../screens/NavigationScreen";
-import Sidebar from "../components/SideBar";
+import HomeScreen from "../components/home-screen-ui/HomeScreen";
+import MapScreen from "../components/map-screen-ui/MapScreen";
+import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
+import Sidebar from "../components/map-screen-ui/sections/SideBar";
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -21,12 +21,14 @@ const StackNavigator = () => {
     );
 };
 
+const drawerContent = (props) => <Sidebar {...props} />;
+
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {
     return (
         <NavigationContainer>
             <Drawer.Navigator
-                drawerContent={(props) => <Sidebar {...props} />}
+                drawerContent={drawerContent}
                 screenOptions={{ headerShown: false }}
             >
                 <Drawer.Screen name="Main" component={StackNavigator} />

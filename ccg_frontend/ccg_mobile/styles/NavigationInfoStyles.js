@@ -4,16 +4,18 @@ const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'flex-end',
-        backgroundColor: '#800020',  
+        height: '15%', // Ajustez la hauteur de la carte selon vos besoins
+        width: '100%',
+        // backgroundColor: '#800020',
     },
     container: {
         position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#800020',  
+        backgroundColor: '#800020',
         paddingVertical: 12,
         paddingHorizontal: 20,
         borderTopLeftRadius: 15,
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
     },
     infoBand: {
         width: '100%',
-        marginBottom: 10,
+        // marginBottom: 10,
     },
     infoItem: {
         flexDirection: 'row',
@@ -38,12 +40,12 @@ const styles = StyleSheet.create({
     infoText: {
         fontSize: 14,
         fontWeight: '500',
-        color: '#fff',  
+        color: '#fff',
         marginLeft: 8,
         maxWidth: width - 80,
     },
     startButton: {
-        backgroundColor: '#fff',  
+        backgroundColor: '#fff',
         paddingVertical: 10,
         paddingHorizontal: 30,
         borderRadius: 30,
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     startButtonText: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#800020',  
+        color: '#800020',
     },
 });
 
