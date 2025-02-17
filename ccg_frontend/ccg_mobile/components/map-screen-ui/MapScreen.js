@@ -6,6 +6,8 @@ import NavigationToggle from "./sections/NavigationToggle";
 import {
   initialRegionSGW,
   initialRegionLoyola,
+  maxBoundsSGW,
+  maxBoundsLoyola,
 } from "../../constants/initialRegions";
 
 import { useNavigation } from "@react-navigation/native";
@@ -14,7 +16,6 @@ import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from './sections/HeaderBar';
-// import { store } from "../redux/reducers";
 
 const MapScreen = () => {
   const navigation = useNavigation();
@@ -24,12 +25,16 @@ const MapScreen = () => {
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
   const [destinationLocation, setDestinationLocation] = useState(null);
-  const [startPoint, setStartLocation] = useState(null);
+  const [startLocation, setStartLocation] = useState(null);
 
   const [targetLocation, setTargetLocation] = useState({});
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
+  };
+
+  const getMaxBounds = () => {
+    return selectedCampus === "SGW" ? maxBoundsSGW : maxBoundsLoyola;
   };
 
   useEffect(() => {
@@ -58,7 +63,6 @@ const MapScreen = () => {
       }
       return prevCampus;
     });
-    // await fetchLocations();
   };
 
   const fetchLocations = async () => {
@@ -103,6 +107,7 @@ const MapScreen = () => {
           target={targetLocation}
           locations={locations}
           region={getRegion()}
+          maxBounds={getMaxBounds()}
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />

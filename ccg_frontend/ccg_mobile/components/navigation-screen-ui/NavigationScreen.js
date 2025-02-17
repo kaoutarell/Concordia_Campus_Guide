@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import NavigationInfo from './sections/NavigationInfo';
 import NavigationMap from './sections/NavigationMap';
-import { getDirections } from '../../api/dataService';
+import { getDirections, getDirectionProfiles } from '../../api/dataService';
 
 import NavigationHeader from "./sections/NavigationHeader";
 
@@ -13,6 +13,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [startPoint, setStartPoint] = useState(params.start || {});
     const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
+    const [directionProfiles, setDirectionProfiles] = useState({});
 
     const [direction, setDirection] = useState(null);
 
@@ -21,24 +22,62 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
+        
+        // setDirection(directionProfiles)
+        // console.log(direction.bbox)
+        //console.log(JSON.stringify(direction.profile, null, 2))
     };
     console.log("starttt", startPoint)
 
     const fetchDirections = async () => {
 
         try {
-            const data = await getDirections(selectedMode, [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);
-            setDirection(data);
+            const data = await getDirectionProfiles();
+            const profiles = data.profiles;
+            const directions = {};
+        
+            // Fetch first profile synchronously
+            if (profiles.includes("foot-walking")) {
+                directions["foot-walking"] = await getDirections(
+                    "foot-walking",
+                    [startPoint.location.longitude, startPoint.location.latitude],
+                    [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                );
+                setDirection(directions["foot-walking"]);
+            }
+        
+            // Fetch other profiles asynchronously
+            const promises = profiles
+                .filter(profile => profile !== "foot-walking") // Exclude the first one
+                .map(async profile => {
+                    directions[profile] = await getDirections(
+                        profile,
+                        [startPoint.location.longitude, startPoint.location.latitude],
+                        [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                    );
+                });
+        
+            // Wait for all async fetches to complete
+            await Promise.all(promises);
+        
+            //console.log(directions);
+            setDirectionProfiles(directions);
         } catch (error) {
             setDirection([]);
             console.error("Error fetching direction data: ", error);
         }
+        
 
     };
 
     useEffect(() => {
         fetchDirections();
     }, [startPoint, destinationPoint]);
+
+    useEffect(() => {
+        setDirection(directionProfiles[selectedMode])
+//        console.log(direction)
+    }, [selectedMode])
 
     return (
         <View style={styles.container}>
@@ -53,7 +92,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
             {/* Map Container (Center) */}
             <View style={styles.mapContainer}>
-                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} />}
+                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
             </View>
 
             {/* Footer Section (NavigationInfo) */}

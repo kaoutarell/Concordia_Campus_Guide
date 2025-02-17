@@ -29,7 +29,7 @@ describe("CampusSelector", () => {
   });
 
   it("toggles campus correctly when 'SGW' is selected", () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CampusSelector
         selectedCampus="SGW"
         onCampusSelect={mockOnCampusSelect}
@@ -47,7 +47,7 @@ describe("CampusSelector", () => {
   });
 
   it("toggles campus correctly when 'LOY' is selected", () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CampusSelector
         selectedCampus="LOY"
         onCampusSelect={mockOnCampusSelect}
