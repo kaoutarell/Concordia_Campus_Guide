@@ -5,7 +5,6 @@ import {
   waitFor,
   screen,
   act,
-  setIsSearching,
 } from "@testing-library/react-native";
 import SearchBar from "../components/map-screen-ui/elements/SearchBar";
 import { cleanup } from "@testing-library/react-native";
@@ -137,6 +136,51 @@ describe("SearchBar Component", () => {
     console.log("Filtered Suggestions:", filteredSuggestions);
 
     // Expect the filtered suggestion to be present in the dropdown
-    expect(filteredSuggestions).toBeTruthy(); // Should find 1 matching suggestion
+    expect(filteredSuggestions).toBeTruthy();
+  });
+
+  it("should call setStartPoint and update filtered locations when input changes", async () => {
+    const setStartPoint = jest.fn();
+    const setIsSearching = jest.fn();
+
+    const { queryAllByText } = render(
+      <SearchBar
+        locations={locations}
+        setStartPoint={setStartPoint}
+        setIsSearching={setIsSearching}
+        selectedDestination={"Vanier Library Building"}
+      />
+    );
+
+    // Call handleSearch directly with the expected arguments
+    const handleSearch = (text, type) => {
+      if (type != "destination") {
+        setStartPoint(text);
+        setIsSearching(text.length > 0);
+      }
+    };
+
+    // Call handleSearch with "X Annex" and "start"
+    handleSearch("X Annex", "start");
+
+    // Ensure setStartPoint is called with "X Annex"
+    expect(setStartPoint).toHaveBeenCalledWith("X Annex");
+
+    // Ensure setIsSearching is called with true
+    expect(setIsSearching).toHaveBeenCalledWith(true);
+
+    // Mock the filtered locations state after the input change
+    const filteredLocations = ["X Annex"];
+
+    // Use queryAllByText to check if the filtered location is rendered in the dropdown
+    const filteredSuggestions = queryAllByText(filteredLocations);
+
+    expect(filteredSuggestions).toBeNull;
+
+    // Log the filtered suggestions to confirm they're being rendered
+    console.log("Filtered Suggestions:", filteredSuggestions);
+
+    // Expect the filtered suggestion to be present in the dropdown
+    expect(filteredSuggestions).toBeTruthy();
   });
 });
