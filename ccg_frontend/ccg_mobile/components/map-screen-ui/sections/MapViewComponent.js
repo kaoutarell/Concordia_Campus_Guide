@@ -21,10 +21,12 @@ import PropTypes from 'prop-types';
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({handleViewNavigation, target, locations, region,  maxBounds }) => {
+  const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
+
 
   // Function to check if the region is within the bounds
   const isWithinBounds = (region) => {
@@ -56,47 +58,45 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   const [targetRegion, setTargetRegion] = useState(region);
 
   const startTemp =  {
-    "accessibility": false,
+    "accessibility": true,
     "atm": false,
     "bikerack": false,
-    "building_code": "K",
-    "campus": "SGW",
-    "civic_address": "2150 Bishop",
+    "building_code": "RF",
+    "campus": "LOY",
+    "civic_address": "7141 Sherbrooke W.",
     "departments_links": [],
-    "id": 3,
+    "id": 13,
     "infokiosk": false,
     "location": {
-      "latitude": 45.47833,
-      "longitude": -73.57955
+      "latitude": 45.458597012420455,
+      "longitude": -73.64103401066905
     },
-    "name": "K Annex",
+    "name": "Loyola Jesuit Hall and Conference Centre",
     "parking_lot": false,
     "services_links": [
-      "{\"linkText\":\"Concordia Coop Bookstore\",\"linkPath\":\"https://www.co-opbookstore.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
-      "{\"linkText\":\"CUPFA\",\"linkPath\":\"https://cupfa.org/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+      "{\"linkText\":\"Conference services\",\"linkPath\":\"/content/concordia/en/hospitality.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
+      "{\"linkText\":\"Loyola Jesuit Hall and Conference Centre\",\"linkPath\":\"/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
     ]
   }
   const destTemp =  {
-    "accessibility": true,
-        "atm": false,
-        "bikerack": false,
-        "building_code": "PT",
-        "campus": "LOY",
-        "civic_address": "7141 Sherbrooke W.",
-        "departments_links": [
-      "{\"linkText\":\"Oscar Peterson Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+    "accessibility": false,
+    "atm": false,
+    "bikerack": false,
+    "building_code": "R",
+    "campus": "SGW",
+    "civic_address": "2050 Mackay",
+    "departments_links": [
+      "{\"linkText\":\"Religions and Cultures\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
     ],
-        "id": 9,
-        "infokiosk": false,
-        "location": {
-      "latitude": 45.4977,
-          "longitude": -73.5793
+    "id": 50,
+    "infokiosk": false,
+    "location": {
+      "latitude": 45.4968,
+      "longitude": -73.5794
     },
-    "name": "Oscar Peterson Concert Hall",
-        "parking_lot": false,
-        "services_links": [
-      "{\"linkText\":\"Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
-    ]
+    "name": "R Annex",
+    "parking_lot": false,
+    "services_links": []
   }
 
 
@@ -109,10 +109,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   };
 
   const onGoToLocation = (destination) => {
-    console.log("Let's go to :", destination.civic_address);
-    console.log("dest ", destination);
 
-    console.log("hereee", locations)
     handleViewNavigation(destTemp, locations.find(location => location.id === destination.id));
     // handleViewNavigation(startTemp, locations.find(location => location.id === destination.id));
   };
@@ -121,6 +118,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     if (locations.length > 0) {
       setIsLoading(false);
     }
+
   }, [locations]);
 
   useEffect(() => {
@@ -140,7 +138,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-       setCurrentLocation(transformCurrentLoc(location));
+       if(location) setCurrentLocation(transformCurrentLoc(location));
       } catch (error) {
         console.log("Error fetching location:", error);
       }
@@ -152,7 +150,6 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     };
   }, []);
 
-  const mapRef = useRef(null);
 
   useEffect(() => {
     if (target?.id) {
@@ -165,7 +162,6 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
       });
       setSelectedMarker((prev) => (prev === target ? null : target));
     } else setTargetRegion(region)
-    console.log("Region updated:", targetRegion);
 
   }, [target]);
 

@@ -1,4 +1,5 @@
 const transformLocation = (currentLocation) => {
+
     if (!currentLocation?.coords) {
         console.error("Invalid location object:", currentLocation);
         return null;
