@@ -3,9 +3,9 @@ import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import NavigationInfo from './sections/NavigationInfo';
 import NavigationMap from './sections/NavigationMap';
 import { getDirections, getDirectionProfiles } from '../../api/dataService';
-import busLocationService from "../services/BusLocationService";
-import {LOYOLA_STOP, SGW_STOP} from "../constants";
-import BusNavigationInfo from "../components/navigation/BusNavigationInfo";
+import busLocationService from "../../services/BusLocationService";
+import {LOYOLA_STOP, SGW_STOP} from "../../constants";
+import BusNavigationInfo from "./sections/BusNavigationInfo";
 import NavigationHeader from "./sections/NavigationHeader";
 
 const NavigationScreen = ({ navigation, route }) => {

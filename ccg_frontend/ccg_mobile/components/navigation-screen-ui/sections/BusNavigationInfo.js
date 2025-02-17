@@ -9,8 +9,8 @@ import {
     ScrollView,
 } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import styles from '../../styles/NavigationInfoStyles';
-import locationService from '../../services/LocationService';
+import styles from '../../../styles/NavigationInfoStyles';
+import locationService from '../../../services/LocationService';
 import {
     SGW_STOP,
     LOYOLA_STOP,
@@ -18,8 +18,8 @@ import {
     LOY_SCHEDULE_MTH,
     SGW_SCHEDULE_MTH,
     SGW_SCHEDULE_FRIDAY
-} from '../../constants';
-import {formatDuration, getDistance} from "../../utils";
+} from '../../../constants';
+import {formatDuration, getDistance} from "../../../utils";
 
 const SHEET_HEIGHT = 300;
 const INITIAL_SHEET_POSITION = SHEET_HEIGHT;

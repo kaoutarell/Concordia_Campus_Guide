@@ -1,6 +1,6 @@
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
-import {LOYOLA_STOP, SGW_STOP} from "../../constants";
+import {LOYOLA_STOP, SGW_STOP} from "../../../constants";
 
 
 const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations, displayShuttle = false }) => {
