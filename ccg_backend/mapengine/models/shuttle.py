@@ -9,7 +9,7 @@ class ShuttleStop(models.Model):
         return self.name
 
 class ShuttleSchedule(models.Model):
-    stop = models.ForeignKey(ShuttleStop, on_delete=models.CASCADE)
+    campus = models.CharField(max_length=100)
     day_of_week = models.IntegerField(choices=[(i, i) for i in range(7)])
     time = models.TimeField(default="00:00:00")
 

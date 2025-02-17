@@ -12,7 +12,7 @@
         "model": "mapengine.shuttlestop",
         "pk": 2,
         "fields": {
-            "name": "Loyola",
+            "name": "LOY",
             "latitude": 45.45841608855384,
             "longitude": -73.63828201677715
         }

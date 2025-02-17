@@ -3,7 +3,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 1,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "09:30:00"
         }
@@ -12,7 +12,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 2,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "09:45:00"
         }
@@ -21,7 +21,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 3,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "10:00:00"
         }
@@ -30,7 +30,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 4,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "10:15:00"
         }
@@ -39,7 +39,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 5,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "10:30:00"
         }
@@ -48,7 +48,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 6,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "10:45:00"
         }
@@ -57,7 +57,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 7,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "11:00:00"
         }
@@ -66,7 +66,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 8,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "11:15:00"
         }
@@ -75,7 +75,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 9,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "11:30:00"
         }
@@ -84,7 +84,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 10,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "11:45:00"
         }
@@ -93,7 +93,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 11,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "12:00:00"
         }
@@ -102,7 +102,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 12,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "12:15:00"
         }
@@ -111,7 +111,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 13,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "12:30:00"
         }
@@ -120,7 +120,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 14,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "12:45:00"
         }
@@ -129,7 +129,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 15,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "13:00:00"
         }
@@ -138,7 +138,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 16,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "13:15:00"
         }
@@ -147,7 +147,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 17,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "13:30:00"
         }
@@ -156,7 +156,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 18,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "13:45:00"
         }
@@ -165,7 +165,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 19,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "14:00:00"
         }
@@ -174,7 +174,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 20,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "14:15:00"
         }
@@ -183,7 +183,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 21,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "14:30:00"
         }
@@ -192,7 +192,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 22,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "14:45:00"
         }
@@ -201,7 +201,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 23,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "15:00:00"
         }
@@ -210,7 +210,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 24,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "15:15:00"
         }
@@ -219,7 +219,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 25,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "15:30:00"
         }
@@ -228,7 +228,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 26,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "15:45:00"
         }
@@ -237,7 +237,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 27,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "16:00:00"
         }
@@ -246,7 +246,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 28,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "16:15:00"
         }
@@ -255,7 +255,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 29,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "16:30:00"
         }
@@ -264,7 +264,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 30,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "16:45:00"
         }
@@ -273,7 +273,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 31,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "17:00:00"
         }
@@ -282,7 +282,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 32,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "17:15:00"
         }
@@ -291,7 +291,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 33,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "17:30:00"
         }
@@ -300,7 +300,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 34,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "17:45:00"
         }
@@ -309,7 +309,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 35,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "18:00:00"
         }
@@ -318,7 +318,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 36,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "18:15:00"
         }
@@ -327,7 +327,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 37,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 1,
             "time": "18:30:00"
         }
@@ -336,7 +336,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 38,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "09:30:00"
         }
@@ -345,7 +345,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 39,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "09:45:00"
         }
@@ -354,7 +354,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 40,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "10:00:00"
         }
@@ -363,7 +363,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 41,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "10:15:00"
         }
@@ -372,7 +372,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 42,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "10:30:00"
         }
@@ -381,7 +381,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 43,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "10:45:00"
         }
@@ -390,7 +390,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 44,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "11:00:00"
         }
@@ -399,7 +399,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 45,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "11:15:00"
         }
@@ -408,7 +408,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 46,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "11:30:00"
         }
@@ -417,7 +417,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 47,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "11:45:00"
         }
@@ -426,7 +426,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 48,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "12:00:00"
         }
@@ -435,7 +435,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 49,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "12:15:00"
         }
@@ -444,7 +444,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 50,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "12:30:00"
         }
@@ -453,7 +453,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 51,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "12:45:00"
         }
@@ -462,7 +462,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 52,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "13:00:00"
         }
@@ -471,7 +471,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 53,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "13:15:00"
         }
@@ -480,7 +480,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 54,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "13:30:00"
         }
@@ -489,7 +489,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 55,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "13:45:00"
         }
@@ -498,7 +498,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 56,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "14:00:00"
         }
@@ -507,7 +507,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 57,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "14:15:00"
         }
@@ -516,7 +516,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 58,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "14:30:00"
         }
@@ -525,7 +525,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 59,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "14:45:00"
         }
@@ -534,7 +534,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 60,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "15:00:00"
         }
@@ -543,7 +543,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 61,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "15:15:00"
         }
@@ -552,7 +552,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 62,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "15:30:00"
         }
@@ -561,7 +561,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 63,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "15:45:00"
         }
@@ -570,7 +570,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 64,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "16:00:00"
         }
@@ -579,7 +579,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 65,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "16:15:00"
         }
@@ -588,7 +588,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 66,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "16:30:00"
         }
@@ -597,7 +597,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 67,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "16:45:00"
         }
@@ -606,7 +606,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 68,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "17:00:00"
         }
@@ -615,7 +615,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 69,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "17:15:00"
         }
@@ -624,7 +624,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 70,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "17:30:00"
         }
@@ -633,7 +633,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 71,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "17:45:00"
         }
@@ -642,7 +642,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 72,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "18:00:00"
         }
@@ -651,7 +651,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 73,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "18:15:00"
         }
@@ -660,7 +660,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 74,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 2,
             "time": "18:30:00"
         }
@@ -669,7 +669,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 75,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "09:30:00"
         }
@@ -678,7 +678,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 76,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "09:45:00"
         }
@@ -687,7 +687,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 77,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "10:00:00"
         }
@@ -696,7 +696,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 78,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "10:15:00"
         }
@@ -705,7 +705,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 79,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "10:30:00"
         }
@@ -714,7 +714,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 80,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "10:45:00"
         }
@@ -723,7 +723,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 81,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "11:00:00"
         }
@@ -732,7 +732,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 82,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "11:15:00"
         }
@@ -741,7 +741,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 83,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "11:30:00"
         }
@@ -750,7 +750,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 84,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "11:45:00"
         }
@@ -759,7 +759,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 85,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "12:00:00"
         }
@@ -768,7 +768,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 86,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "12:15:00"
         }
@@ -777,7 +777,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 87,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "12:30:00"
         }
@@ -786,7 +786,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 88,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "12:45:00"
         }
@@ -795,7 +795,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 89,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "13:00:00"
         }
@@ -804,7 +804,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 90,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "13:15:00"
         }
@@ -813,7 +813,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 91,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "13:30:00"
         }
@@ -822,7 +822,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 92,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "13:45:00"
         }
@@ -831,7 +831,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 93,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "14:00:00"
         }
@@ -840,7 +840,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 94,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "14:15:00"
         }
@@ -849,7 +849,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 95,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "14:30:00"
         }
@@ -858,7 +858,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 96,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "14:45:00"
         }
@@ -867,7 +867,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 97,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "15:00:00"
         }
@@ -876,7 +876,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 98,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "15:15:00"
         }
@@ -885,7 +885,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 99,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "15:30:00"
         }
@@ -894,7 +894,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 100,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "15:45:00"
         }
@@ -903,7 +903,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 101,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "16:00:00"
         }
@@ -912,7 +912,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 102,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "16:15:00"
         }
@@ -921,7 +921,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 103,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "16:30:00"
         }
@@ -930,7 +930,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 104,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "16:45:00"
         }
@@ -939,7 +939,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 105,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "17:00:00"
         }
@@ -948,7 +948,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 106,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "17:15:00"
         }
@@ -957,7 +957,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 107,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "17:30:00"
         }
@@ -966,7 +966,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 108,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "17:45:00"
         }
@@ -975,7 +975,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 109,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "18:00:00"
         }
@@ -984,7 +984,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 110,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "18:15:00"
         }
@@ -993,7 +993,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 111,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 3,
             "time": "18:30:00"
         }
@@ -1002,7 +1002,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 112,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "09:30:00"
         }
@@ -1011,7 +1011,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 113,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "09:45:00"
         }
@@ -1020,7 +1020,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 114,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "10:00:00"
         }
@@ -1029,7 +1029,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 115,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "10:15:00"
         }
@@ -1038,7 +1038,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 116,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "10:30:00"
         }
@@ -1047,7 +1047,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 117,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "10:45:00"
         }
@@ -1056,7 +1056,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 118,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "11:00:00"
         }
@@ -1065,7 +1065,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 119,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "11:15:00"
         }
@@ -1074,7 +1074,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 120,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "11:30:00"
         }
@@ -1083,7 +1083,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 121,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "11:45:00"
         }
@@ -1092,7 +1092,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 122,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "12:00:00"
         }
@@ -1101,7 +1101,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 123,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "12:15:00"
         }
@@ -1110,7 +1110,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 124,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "12:30:00"
         }
@@ -1119,7 +1119,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 125,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "12:45:00"
         }
@@ -1128,7 +1128,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 126,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "13:00:00"
         }
@@ -1137,7 +1137,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 127,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "13:15:00"
         }
@@ -1146,7 +1146,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 128,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "13:30:00"
         }
@@ -1155,7 +1155,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 129,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "13:45:00"
         }
@@ -1164,7 +1164,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 130,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "14:00:00"
         }
@@ -1173,7 +1173,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 131,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "14:15:00"
         }
@@ -1182,7 +1182,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 132,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "14:30:00"
         }
@@ -1191,7 +1191,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 133,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "14:45:00"
         }
@@ -1200,7 +1200,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 134,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "15:00:00"
         }
@@ -1209,7 +1209,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 135,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "15:15:00"
         }
@@ -1218,7 +1218,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 136,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "15:30:00"
         }
@@ -1227,7 +1227,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 137,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "15:45:00"
         }
@@ -1236,7 +1236,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 138,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "16:00:00"
         }
@@ -1245,7 +1245,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 139,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "16:15:00"
         }
@@ -1254,7 +1254,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 140,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "16:30:00"
         }
@@ -1263,7 +1263,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 141,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "16:45:00"
         }
@@ -1272,7 +1272,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 142,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "17:00:00"
         }
@@ -1281,7 +1281,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 143,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "17:15:00"
         }
@@ -1290,7 +1290,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 144,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "17:30:00"
         }
@@ -1299,7 +1299,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 145,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "17:45:00"
         }
@@ -1308,7 +1308,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 146,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "18:00:00"
         }
@@ -1317,7 +1317,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 147,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "18:15:00"
         }
@@ -1326,7 +1326,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 148,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 4,
             "time": "18:30:00"
         }
@@ -1335,7 +1335,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 149,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "09:30:00"
         }
@@ -1344,7 +1344,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 150,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "09:45:00"
         }
@@ -1353,7 +1353,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 151,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "10:00:00"
         }
@@ -1362,7 +1362,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 152,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "10:15:00"
         }
@@ -1371,7 +1371,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 153,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "10:30:00"
         }
@@ -1380,7 +1380,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 154,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "10:45:00"
         }
@@ -1389,7 +1389,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 155,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "11:00:00"
         }
@@ -1398,7 +1398,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 156,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "11:15:00"
         }
@@ -1407,7 +1407,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 157,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "11:30:00"
         }
@@ -1416,7 +1416,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 158,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "11:45:00"
         }
@@ -1425,7 +1425,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 159,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "12:00:00"
         }
@@ -1434,7 +1434,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 160,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "12:15:00"
         }
@@ -1443,7 +1443,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 161,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "12:30:00"
         }
@@ -1452,7 +1452,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 162,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "12:45:00"
         }
@@ -1461,7 +1461,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 163,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "13:00:00"
         }
@@ -1470,7 +1470,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 164,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "13:15:00"
         }
@@ -1479,7 +1479,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 165,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "13:30:00"
         }
@@ -1488,7 +1488,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 166,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "13:45:00"
         }
@@ -1497,7 +1497,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 167,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "14:00:00"
         }
@@ -1506,7 +1506,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 168,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "14:15:00"
         }
@@ -1515,7 +1515,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 169,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "14:30:00"
         }
@@ -1524,7 +1524,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 170,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "14:45:00"
         }
@@ -1533,7 +1533,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 171,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "15:00:00"
         }
@@ -1542,7 +1542,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 172,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "15:15:00"
         }
@@ -1551,7 +1551,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 173,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "15:30:00"
         }
@@ -1560,7 +1560,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 174,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "15:45:00"
         }
@@ -1569,7 +1569,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 175,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "16:00:00"
         }
@@ -1578,7 +1578,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 176,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "16:15:00"
         }
@@ -1587,7 +1587,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 177,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "16:30:00"
         }
@@ -1596,7 +1596,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 178,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "16:45:00"
         }
@@ -1605,7 +1605,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 179,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "17:00:00"
         }
@@ -1614,7 +1614,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 180,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "17:15:00"
         }
@@ -1623,7 +1623,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 181,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "17:30:00"
         }
@@ -1632,7 +1632,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 182,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "17:45:00"
         }
@@ -1641,7 +1641,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 183,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "18:00:00"
         }
@@ -1650,7 +1650,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 184,
         "fields": {
-            "stop": 1,
+            "campus": "SGW",
             "day_of_week": 5,
             "time": "18:15:00"
         }
@@ -1659,7 +1659,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 185,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "09:15:00"
         }
@@ -1668,7 +1668,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 186,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "09:30:00"
         }
@@ -1677,7 +1677,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 187,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "09:45:00"
         }
@@ -1686,7 +1686,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 188,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "10:00:00"
         }
@@ -1695,7 +1695,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 189,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "10:15:00"
         }
@@ -1704,7 +1704,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 190,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "10:30:00"
         }
@@ -1713,7 +1713,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 191,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "10:45:00"
         }
@@ -1722,7 +1722,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 192,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "11:00:00"
         }
@@ -1731,7 +1731,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 193,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "11:15:00"
         }
@@ -1740,7 +1740,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 194,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "11:30:00"
         }
@@ -1749,7 +1749,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 195,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "11:45:00"
         }
@@ -1758,7 +1758,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 196,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "12:00:00"
         }
@@ -1767,7 +1767,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 197,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "12:15:00"
         }
@@ -1776,7 +1776,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 198,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "12:30:00"
         }
@@ -1785,7 +1785,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 199,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "12:45:00"
         }
@@ -1794,7 +1794,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 200,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "13:00:00"
         }
@@ -1803,7 +1803,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 201,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "13:15:00"
         }
@@ -1812,7 +1812,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 202,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "13:30:00"
         }
@@ -1821,7 +1821,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 203,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "13:45:00"
         }
@@ -1830,7 +1830,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 204,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "14:00:00"
         }
@@ -1839,7 +1839,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 205,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "14:15:00"
         }
@@ -1848,7 +1848,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 206,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "14:30:00"
         }
@@ -1857,7 +1857,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 207,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "14:45:00"
         }
@@ -1866,7 +1866,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 208,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "15:00:00"
         }
@@ -1875,7 +1875,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 209,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "15:15:00"
         }
@@ -1884,7 +1884,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 210,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "15:30:00"
         }
@@ -1893,7 +1893,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 211,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "15:45:00"
         }
@@ -1902,7 +1902,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 212,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "16:00:00"
         }
@@ -1911,7 +1911,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 213,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "16:15:00"
         }
@@ -1920,7 +1920,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 214,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "16:30:00"
         }
@@ -1929,7 +1929,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 215,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "16:45:00"
         }
@@ -1938,7 +1938,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 216,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "17:00:00"
         }
@@ -1947,7 +1947,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 217,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "17:15:00"
         }
@@ -1956,7 +1956,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 218,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "17:30:00"
         }
@@ -1965,7 +1965,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 219,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "17:45:00"
         }
@@ -1974,7 +1974,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 220,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "18:00:00"
         }
@@ -1983,7 +1983,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 221,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "18:15:00"
         }
@@ -1992,7 +1992,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 222,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 1,
             "time": "18:30:00"
         }
@@ -2001,7 +2001,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 223,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "09:15:00"
         }
@@ -2010,7 +2010,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 224,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "09:30:00"
         }
@@ -2019,7 +2019,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 225,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "09:45:00"
         }
@@ -2028,7 +2028,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 226,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "10:00:00"
         }
@@ -2037,7 +2037,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 227,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "10:15:00"
         }
@@ -2046,7 +2046,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 228,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "10:30:00"
         }
@@ -2055,7 +2055,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 229,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "10:45:00"
         }
@@ -2064,7 +2064,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 230,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "11:00:00"
         }
@@ -2073,7 +2073,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 231,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "11:15:00"
         }
@@ -2082,7 +2082,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 232,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "11:30:00"
         }
@@ -2091,7 +2091,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 233,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "11:45:00"
         }
@@ -2100,7 +2100,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 234,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "12:00:00"
         }
@@ -2109,7 +2109,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 235,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "12:15:00"
         }
@@ -2118,7 +2118,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 236,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "12:30:00"
         }
@@ -2127,7 +2127,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 237,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "12:45:00"
         }
@@ -2136,7 +2136,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 238,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "13:00:00"
         }
@@ -2145,7 +2145,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 239,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "13:15:00"
         }
@@ -2154,7 +2154,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 240,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "13:30:00"
         }
@@ -2163,7 +2163,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 241,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "13:45:00"
         }
@@ -2172,7 +2172,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 242,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "14:00:00"
         }
@@ -2181,7 +2181,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 243,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "14:15:00"
         }
@@ -2190,7 +2190,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 244,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "14:30:00"
         }
@@ -2199,7 +2199,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 245,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "14:45:00"
         }
@@ -2208,7 +2208,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 246,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "15:00:00"
         }
@@ -2217,7 +2217,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 247,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "15:15:00"
         }
@@ -2226,7 +2226,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 248,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "15:30:00"
         }
@@ -2235,7 +2235,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 249,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "15:45:00"
         }
@@ -2244,7 +2244,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 250,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "16:00:00"
         }
@@ -2253,7 +2253,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 251,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "16:15:00"
         }
@@ -2262,7 +2262,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 252,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "16:30:00"
         }
@@ -2271,7 +2271,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 253,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "16:45:00"
         }
@@ -2280,7 +2280,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 254,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "17:00:00"
         }
@@ -2289,7 +2289,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 255,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "17:15:00"
         }
@@ -2298,7 +2298,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 256,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "17:30:00"
         }
@@ -2307,7 +2307,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 257,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "17:45:00"
         }
@@ -2316,7 +2316,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 258,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "18:00:00"
         }
@@ -2325,7 +2325,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 259,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "18:15:00"
         }
@@ -2334,7 +2334,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 260,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 2,
             "time": "18:30:00"
         }
@@ -2343,7 +2343,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 261,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "09:15:00"
         }
@@ -2352,7 +2352,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 262,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "09:30:00"
         }
@@ -2361,7 +2361,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 263,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "09:45:00"
         }
@@ -2370,7 +2370,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 264,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "10:00:00"
         }
@@ -2379,7 +2379,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 265,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "10:15:00"
         }
@@ -2388,7 +2388,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 266,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "10:30:00"
         }
@@ -2397,7 +2397,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 267,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "10:45:00"
         }
@@ -2406,7 +2406,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 268,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "11:00:00"
         }
@@ -2415,7 +2415,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 269,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "11:15:00"
         }
@@ -2424,7 +2424,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 270,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "11:30:00"
         }
@@ -2433,7 +2433,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 271,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "11:45:00"
         }
@@ -2442,7 +2442,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 272,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "12:00:00"
         }
@@ -2451,7 +2451,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 273,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "12:15:00"
         }
@@ -2460,7 +2460,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 274,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "12:30:00"
         }
@@ -2469,7 +2469,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 275,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "12:45:00"
         }
@@ -2478,7 +2478,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 276,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "13:00:00"
         }
@@ -2487,7 +2487,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 277,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "13:15:00"
         }
@@ -2496,7 +2496,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 278,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "13:30:00"
         }
@@ -2505,7 +2505,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 279,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "13:45:00"
         }
@@ -2514,7 +2514,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 280,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "14:00:00"
         }
@@ -2523,7 +2523,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 281,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "14:15:00"
         }
@@ -2532,7 +2532,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 282,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "14:30:00"
         }
@@ -2541,7 +2541,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 283,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "14:45:00"
         }
@@ -2550,7 +2550,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 284,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "15:00:00"
         }
@@ -2559,7 +2559,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 285,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "15:15:00"
         }
@@ -2568,7 +2568,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 286,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "15:30:00"
         }
@@ -2577,7 +2577,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 287,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "15:45:00"
         }
@@ -2586,7 +2586,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 288,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "16:00:00"
         }
@@ -2595,7 +2595,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 289,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "16:15:00"
         }
@@ -2604,7 +2604,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 290,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "16:30:00"
         }
@@ -2613,7 +2613,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 291,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "16:45:00"
         }
@@ -2622,7 +2622,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 292,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "17:00:00"
         }
@@ -2631,7 +2631,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 293,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "17:15:00"
         }
@@ -2640,7 +2640,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 294,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "17:30:00"
         }
@@ -2649,7 +2649,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 295,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "17:45:00"
         }
@@ -2658,7 +2658,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 296,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "18:00:00"
         }
@@ -2667,7 +2667,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 297,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "18:15:00"
         }
@@ -2676,7 +2676,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 298,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 3,
             "time": "18:30:00"
         }
@@ -2685,7 +2685,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 299,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "09:15:00"
         }
@@ -2694,7 +2694,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 300,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "09:30:00"
         }
@@ -2703,7 +2703,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 301,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "09:45:00"
         }
@@ -2712,7 +2712,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 302,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "10:00:00"
         }
@@ -2721,7 +2721,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 303,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "10:15:00"
         }
@@ -2730,7 +2730,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 304,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "10:30:00"
         }
@@ -2739,7 +2739,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 305,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "10:45:00"
         }
@@ -2748,7 +2748,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 306,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "11:00:00"
         }
@@ -2757,7 +2757,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 307,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "11:15:00"
         }
@@ -2766,7 +2766,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 308,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "11:30:00"
         }
@@ -2775,7 +2775,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 309,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "11:45:00"
         }
@@ -2784,7 +2784,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 310,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "12:00:00"
         }
@@ -2793,7 +2793,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 311,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "12:15:00"
         }
@@ -2802,7 +2802,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 312,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "12:30:00"
         }
@@ -2811,7 +2811,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 313,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "12:45:00"
         }
@@ -2820,7 +2820,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 314,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "13:00:00"
         }
@@ -2829,7 +2829,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 315,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "13:15:00"
         }
@@ -2838,7 +2838,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 316,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "13:30:00"
         }
@@ -2847,7 +2847,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 317,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "13:45:00"
         }
@@ -2856,7 +2856,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 318,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "14:00:00"
         }
@@ -2865,7 +2865,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 319,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "14:15:00"
         }
@@ -2874,7 +2874,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 320,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "14:30:00"
         }
@@ -2883,7 +2883,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 321,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "14:45:00"
         }
@@ -2892,7 +2892,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 322,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "15:00:00"
         }
@@ -2901,7 +2901,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 323,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "15:15:00"
         }
@@ -2910,7 +2910,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 324,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "15:30:00"
         }
@@ -2919,7 +2919,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 325,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "15:45:00"
         }
@@ -2928,7 +2928,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 326,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "16:00:00"
         }
@@ -2937,7 +2937,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 327,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "16:15:00"
         }
@@ -2946,7 +2946,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 328,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "16:30:00"
         }
@@ -2955,7 +2955,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 329,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "16:45:00"
         }
@@ -2964,7 +2964,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 330,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "17:00:00"
         }
@@ -2973,7 +2973,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 331,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "17:15:00"
         }
@@ -2982,7 +2982,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 332,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "17:30:00"
         }
@@ -2991,7 +2991,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 333,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "17:45:00"
         }
@@ -3000,7 +3000,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 334,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "18:00:00"
         }
@@ -3009,7 +3009,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 335,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "18:15:00"
         }
@@ -3018,7 +3018,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 336,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 4,
             "time": "18:30:00"
         }
@@ -3027,7 +3027,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 337,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "09:15:00"
         }
@@ -3036,7 +3036,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 338,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "09:30:00"
         }
@@ -3045,7 +3045,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 339,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "09:45:00"
         }
@@ -3054,7 +3054,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 340,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "10:00:00"
         }
@@ -3063,7 +3063,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 341,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "10:15:00"
         }
@@ -3072,7 +3072,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 342,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "10:30:00"
         }
@@ -3081,7 +3081,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 343,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "10:45:00"
         }
@@ -3090,7 +3090,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 344,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "11:00:00"
         }
@@ -3099,7 +3099,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 345,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "11:15:00"
         }
@@ -3108,7 +3108,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 346,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "11:30:00"
         }
@@ -3117,7 +3117,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 347,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "11:45:00"
         }
@@ -3126,7 +3126,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 348,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "12:00:00"
         }
@@ -3135,7 +3135,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 349,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "12:15:00"
         }
@@ -3144,7 +3144,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 350,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "12:30:00"
         }
@@ -3153,7 +3153,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 351,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "12:45:00"
         }
@@ -3162,7 +3162,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 352,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "13:00:00"
         }
@@ -3171,7 +3171,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 353,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "13:15:00"
         }
@@ -3180,7 +3180,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 354,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "13:30:00"
         }
@@ -3189,7 +3189,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 355,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "13:45:00"
         }
@@ -3198,7 +3198,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 356,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "14:00:00"
         }
@@ -3207,7 +3207,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 357,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "14:15:00"
         }
@@ -3216,7 +3216,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 358,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "14:30:00"
         }
@@ -3225,7 +3225,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 359,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "14:45:00"
         }
@@ -3234,7 +3234,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 360,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "15:00:00"
         }
@@ -3243,7 +3243,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 361,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "15:15:00"
         }
@@ -3252,7 +3252,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 362,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "15:30:00"
         }
@@ -3261,7 +3261,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 363,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "15:45:00"
         }
@@ -3270,7 +3270,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 364,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "16:00:00"
         }
@@ -3279,7 +3279,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 365,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "16:15:00"
         }
@@ -3288,7 +3288,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 366,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "16:30:00"
         }
@@ -3297,7 +3297,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 367,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "16:45:00"
         }
@@ -3306,7 +3306,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 368,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "17:00:00"
         }
@@ -3315,7 +3315,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 369,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "17:15:00"
         }
@@ -3324,7 +3324,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 370,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "17:30:00"
         }
@@ -3333,7 +3333,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 371,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "17:45:00"
         }
@@ -3342,7 +3342,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 372,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "18:00:00"
         }
@@ -3351,7 +3351,7 @@
         "model": "mapengine.shuttleschedule",
         "pk": 373,
         "fields": {
-            "stop": 2,
+            "campus": "LOY",
             "day_of_week": 5,
             "time": "18:15:00"
         }
