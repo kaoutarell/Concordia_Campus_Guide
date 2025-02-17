@@ -84,7 +84,10 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
     }, [destination]);
 
     const handleSearch = (text, type) => {
-        if (text === "") setIsSearching(false);
+        if (text === ""){
+            setTargetLocation({})
+            setIsSearching(false);
+        }
         else setIsSearching(true);
 
         if (type === "destination") {
@@ -106,7 +109,6 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
 
     const handleSelect = (loc) => {
         setDestination(loc)
-        console.log(locations)
         setTargetLocation(locations.find(location => location.name === loc));
         setFilteredLocations([]);
         Keyboard.dismiss();

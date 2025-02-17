@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, {useState, useEffect, use, useRef} from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -21,6 +21,10 @@ const MapViewComponent = ({ target, locations, region }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
+
+  const [mapKey, setMapKey] = useState(0);
+  const [targetRegion, setTargetRegion] = useState(region);
+
 
   const handleMarkerPress = (location) => {
     // Force React to update state asynchronously
@@ -56,7 +60,45 @@ const MapViewComponent = ({ target, locations, region }) => {
     };
   }, []);
 
-console.log(target)
+  const mapRef = useRef(null);
+
+  const zoomIn = () => {
+    if (!mapRef.current) return;
+
+    if (target?.latitude && target?.longitude) {
+      console.log("Smoothly zooming into:", target);
+
+      mapRef.current.animateCamera(
+          {
+            center: {
+              latitude: target.latitude,
+              longitude: target.longitude,
+            },
+            zoom: 15, // Higher zoom for a closer view
+            heading: 45, // No rotation
+            pitch: 30, // Slight tilt for a better effect
+          },
+          { duration: 1500 } // Smooth transition duration (1.5 seconds)
+      );
+    }
+  };
+
+
+  useEffect(() => {
+    if (target?.id) {
+      setMapKey(prevKey => prevKey + 1);
+      setTargetRegion({
+        latitude: target.location.latitude,
+        longitude: target.location.longitude,
+        latitudeDelta: 0.005, // Adjust for zoom level
+        longitudeDelta: 0.005,
+      });
+    }
+    console.log("Region updated:", targetRegion);
+
+  }, [target]);
+
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Loading Indicator */}
@@ -68,11 +110,16 @@ console.log(target)
       ) : (
         <View style={styles.mapContainer}>
           <MapView
+            key={mapKey}
+            ref={mapRef}
             testID="map-view" // added to enable getting the map by testID
             style={styles.map}
-            region={region}
+            region={targetRegion}
             showsUserLocation={true}
             onPress={() => setSelectedMarker(null)}
+            onMapReady={() => {
+              mapRef.current?.fitToSuppliedMarkers([], { animated: false });
+            }}
           >
             {(target.id) ?
                 <CustomMarker
