@@ -22,7 +22,10 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
-        setDirection(directionProfiles)
+        
+        // setDirection(directionProfiles)
+        // console.log(direction.bbox)
+        //console.log(JSON.stringify(direction.profile, null, 2))
     };
 
     const fetchDirections = async () => {
@@ -57,7 +60,7 @@ const NavigationScreen = ({ navigation, route }) => {
             // Wait for all async fetches to complete
             await Promise.all(promises);
         
-            console.log(directions);
+            //console.log(directions);
             setDirectionProfiles(directions);
         } catch (error) {
             setDirection([]);
@@ -89,7 +92,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
             {/* Map Container (Center) */}
             <View style={styles.mapContainer}>
-                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} />}
+                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
             </View>
 
             {/* Footer Section (NavigationInfo) */}

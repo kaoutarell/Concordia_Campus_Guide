@@ -12,18 +12,19 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
         })
     });
 
-    console.log(coordinates)
+   // console.log(coordinates)
 
     return (
         <MapView
             style={style.map}
             showsUserLocation={true}
-            // region={{
-            //     latitude: (bbox[1] + bbox[3]) / 2,
-            //     longitude: (bbox[0] + bbox[2]) / 2,
-            //     latitudeDelta: 0.01,
-            //     longitudeDelta: 0.01,
-            // }}
+            region={{
+                latitude: (bbox[1] + bbox[3]) / 2,
+                longitude: (bbox[0] + bbox[2]) / 2,
+                latitudeDelta: Math.abs(bbox[3] - bbox[1]) * 1.2,  // Add some padding
+                longitudeDelta: Math.abs(bbox[2] - bbox[0]) * 1.2, // Add some padding
+            }}
+            
         >
             <Marker
                 coordinate={{
