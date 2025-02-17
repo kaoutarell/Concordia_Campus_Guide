@@ -1,7 +1,9 @@
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
+import {LOYOLA_STOP, SGW_STOP} from "../../../constants";
 
-const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
+
+const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations, displayShuttle = false }) => {
     let coordinates = [];
     pathCoordinates?.forEach(element => {
         element.coordinates.forEach(cord => {
@@ -27,26 +29,53 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
             
         >
             <Marker
-                coordinate={{
-                    latitude: start.location?.latitude,
-                    longitude: start?.location?.longitude,
-                }}
-                title={start?.building_code}
-                pinColor="red"
-            />
-            <Marker
-                coordinate={{
-                    latitude: destination?.location?.latitude,
-                    longitude: destination?.location?.longitude,
-                }}
-                title={destination?.building_code}
-                pinColor="red"
-            />
+                            coordinate={ displayShuttle ?
+                                {
+                                    latitude: SGW_STOP.latitude,
+                                    longitude: SGW_STOP.longitude,
+                                }
+                                :
+                                {
+                                    latitude: start.location.latitude,
+                                    longitude: start.location.longitude,
+                                }
+                        }
+                            title={displayShuttle ? 'SGW' : start.building_code}
+                            pinColor="red"
+                        />
+                        <Marker
+                            coordinate={ displayShuttle ?
+                                {
+                                    latitude: LOYOLA_STOP.latitude,
+                                    longitude: LOYOLA_STOP.longitude,
+                                }
+                                :
+                                {
+                                    latitude: destination.location.latitude,
+                                    longitude: destination.location.longitude,
+                                }
+                            }
+                            title={displayShuttle ? 'LOY' : destination.building_code}
+                            pinColor="red"
+                        />
             <Polyline
                 coordinates={coordinates?.length > 0 ? coordinates : []}
                 strokeColor="navy"
                 strokeWidth={3}
             />
+            {busLocations && displayShuttle &&
+                            busLocations.map((bus) => (
+                                <Marker
+                                    key={bus.id}
+                                    coordinate={{
+                                        latitude: bus.latitude,
+                                        longitude: bus.longitude,
+                                    }}
+                                    title={`Shuttle ${bus.id}`}
+                                    pinColor="red"
+                                    image={Bus_Marker}
+                                />
+                            ))}
         </MapView>
     )
 }

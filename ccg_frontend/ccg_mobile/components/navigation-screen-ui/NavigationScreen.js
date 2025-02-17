@@ -3,7 +3,9 @@ import { View, StyleSheet, Platform, StatusBar } from 'react-native';
 import NavigationInfo from './sections/NavigationInfo';
 import NavigationMap from './sections/NavigationMap';
 import { getDirections, getDirectionProfiles } from '../../api/dataService';
-
+import busLocationService from "../../services/BusLocationService";
+import {LOYOLA_STOP, SGW_STOP} from "../../constants";
+import BusNavigationInfo from "./sections/BusNavigationInfo";
 import NavigationHeader from "./sections/NavigationHeader";
 
 const NavigationScreen = ({ navigation, route }) => {
@@ -16,6 +18,7 @@ const NavigationScreen = ({ navigation, route }) => {
     const [directionProfiles, setDirectionProfiles] = useState({});
 
     const [direction, setDirection] = useState(null);
+    const [busLocations, setBusLocations] = useState([]);
 
     const [selectedMode, setSelectedMode] = useState("foot-walking");
 
@@ -75,6 +78,16 @@ const NavigationScreen = ({ navigation, route }) => {
     }, [startPoint, destinationPoint]);
 
     useEffect(() => {
+        if (selectedMode === "Concordia Shuttle") {
+            busLocationService.startTracking(500);
+            const interval = setInterval(() => {
+                setBusLocations(busLocationService.getBusLocations());
+            }, 500);
+            return () => {
+                busLocationService.stopTracking();
+                clearInterval(interval);
+            };
+        }
         setDirection(directionProfiles[selectedMode])
 //        console.log(direction)
     }, [selectedMode])
@@ -83,8 +96,16 @@ const NavigationScreen = ({ navigation, route }) => {
         <View style={styles.container}>
 
             <NavigationHeader
-                startAddress={startPoint.civic_address}
-                destinationAddress={destinationPoint.civic_address}
+                startAddress={
+                    selectedMode === "Concordia Shuttle"
+                        ? "SGW Shuttle Stop"
+                        : startPoint?.civic_address
+                }
+                destinationAddress={
+                    selectedMode === "Concordia Shuttle"
+                        ? "LOY Shuttle Stop"
+                        : destinationPoint?.civic_address
+                }
                 onSelectedMode={onSelectedMode}
                 onBackPress={() => navigation.goBack()}
                 selectedMode={selectedMode}
@@ -92,11 +113,22 @@ const NavigationScreen = ({ navigation, route }) => {
 
             {/* Map Container (Center) */}
             <View style={styles.mapContainer}>
-                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
+                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} displayShuttle={selectedMode === "Concordia Shuttle"} />}
             </View>
 
             {/* Footer Section (NavigationInfo) */}
-            {direction != null && <NavigationInfo totalDistance={direction?.total_distance} totalDuration={direction?.total_duration} />}
+            {direction && selectedMode === "Concordia Shuttle" ? (
+                            <BusNavigationInfo
+                                totalDistance={direction.total_distance}
+                                totalDuration={direction.total_duration}
+                            />
+                        ) : direction ? (
+                            <NavigationInfo
+                                totalDistance={direction.total_distance}
+                                totalDuration={direction.total_duration}
+                                onStartNavigation={() => {}}
+                            />
+                        ) : null}
 
         </View>
     );
