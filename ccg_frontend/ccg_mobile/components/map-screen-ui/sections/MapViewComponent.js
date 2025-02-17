@@ -13,17 +13,63 @@ import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService.js";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
+import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 // import BuildingHighlight from "../elements/BuildingHighlight";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({ target, locations, region }) => {
+const MapViewComponent = ({handleViewNavigation, target, locations, region }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
 
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
+
+  const startTemp =  {
+    "accessibility": false,
+    "atm": false,
+    "bikerack": false,
+    "building_code": "K",
+    "campus": "SGW",
+    "civic_address": "2150 Bishop",
+    "departments_links": [],
+    "id": 3,
+    "infokiosk": false,
+    "location": {
+      "latitude": 45.47833,
+      "longitude": -73.57955
+    },
+    "name": "K Annex",
+    "parking_lot": false,
+    "services_links": [
+      "{\"linkText\":\"Concordia Coop Bookstore\",\"linkPath\":\"https://www.co-opbookstore.ca/\",\"linkTarget\":true,\"itemClass\":\"\"}",
+      "{\"linkText\":\"CUPFA\",\"linkPath\":\"https://cupfa.org/\",\"linkTarget\":true,\"itemClass\":\"\"}"
+    ]
+  }
+  const destTemp =  {
+    "accessibility": true,
+        "atm": false,
+        "bikerack": false,
+        "building_code": "PT",
+        "campus": "LOY",
+        "civic_address": "7141 Sherbrooke W.",
+        "departments_links": [
+      "{\"linkText\":\"Oscar Peterson Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":false,\"itemClass\":\"\"}"
+    ],
+        "id": 9,
+        "infokiosk": false,
+        "location": {
+      "latitude": 45.4977,
+          "longitude": -73.5793
+    },
+    "name": "Oscar Peterson Concert Hall",
+        "parking_lot": false,
+        "services_links": [
+      "{\"linkText\":\"Concert Hall\",\"linkPath\":\"/content/concordia/en/arts/venues/oscar-peterson.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
+    ]
+  }
+
 
 
   const handleMarkerPress = (location) => {
@@ -33,8 +79,13 @@ const MapViewComponent = ({ target, locations, region }) => {
     }, 0);
   };
 
-  const onGoToLocation = (location) => {
-    console.log("Let's go to :", location.name);
+  const onGoToLocation = (destination) => {
+    console.log("Let's go to :", destination.civic_address);
+    console.log("dest ", destination);
+
+    console.log("hereee", locations)
+    handleViewNavigation(destTemp, locations.find(location => location.id === destination.id));
+    // handleViewNavigation(startTemp, locations.find(location => location.id === destination.id));
   };
 
   useEffect(() => {
@@ -43,12 +94,13 @@ const MapViewComponent = ({ target, locations, region }) => {
     }
   }, [locations]);
 
+
   useEffect(() => {
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-        setCurrentLocation(location);
+       setCurrentLocation(transformCurrentLoc(location));
       } catch (error) {
         console.log("Error fetching location:", error);
       }
@@ -62,38 +114,17 @@ const MapViewComponent = ({ target, locations, region }) => {
 
   const mapRef = useRef(null);
 
-  const zoomIn = () => {
-    if (!mapRef.current) return;
-
-    if (target?.latitude && target?.longitude) {
-      console.log("Smoothly zooming into:", target);
-
-      mapRef.current.animateCamera(
-          {
-            center: {
-              latitude: target.latitude,
-              longitude: target.longitude,
-            },
-            zoom: 15, // Higher zoom for a closer view
-            heading: 45, // No rotation
-            pitch: 30, // Slight tilt for a better effect
-          },
-          { duration: 1500 } // Smooth transition duration (1.5 seconds)
-      );
-    }
-  };
-
-
   useEffect(() => {
     if (target?.id) {
       setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
-        latitude: target.location.latitude,
+        latitude: target.location.latitude+0.0009,
         longitude: target.location.longitude,
         latitudeDelta: 0.005, // Adjust for zoom level
         longitudeDelta: 0.005,
       });
-    }
+      setSelectedMarker((prev) => (prev === target ? null : target));
+    } else setTargetRegion(region)
     console.log("Region updated:", targetRegion);
 
   }, [target]);

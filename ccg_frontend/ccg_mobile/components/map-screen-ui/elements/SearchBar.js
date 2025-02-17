@@ -115,11 +115,11 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
         setFocusedInput(null);
     };
 
-    const handleSetLocations = () => {
-        // setDestinationLocation(locations.find(location => location.name === destination))
-        // setStartLocation(locations.find(location => location.name === startPoint))
-        handleViewNavigation(locations.find(location => location.name === startPoint),locations.find(location => location.name === destination));
-    };
+    // const handleSetLocations = () => {
+    //     // setDestinationLocation(locations.find(location => location.name === destination))
+    //     // setStartLocation(locations.find(location => location.name === startPoint))
+    //     handleViewNavigation(locations.find(location => location.name === startPoint),locations.find(location => location.name === destination));
+    // };
 
     return (
         <>

@@ -22,9 +22,9 @@ const NavigationScreen = ({ navigation, route }) => {
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
     };
+    console.log("starttt", startPoint)
 
     const fetchDirections = async () => {
-
 
         try {
             const data = await getDirections(selectedMode, [startPoint.location.longitude, startPoint.location.latitude], [destinationPoint.location.longitude, destinationPoint.location.latitude]);

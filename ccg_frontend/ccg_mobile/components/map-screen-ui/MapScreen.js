@@ -65,6 +65,7 @@ const MapScreen = () => {
     try {
       const data = await getBuildingByCampus(selectedCampus);
       setLocations(data);
+      console.log(locations)
     } catch (error) {
       console.error('Error fetching buildings by campus:', error.stack);
     }
@@ -97,7 +98,12 @@ const MapScreen = () => {
         handleViewNavigation={handleViewNavigation}
       />
       {/* Map */}
-      <MapViewComponent target={targetLocation} locations={locations} region={getRegion()} />
+      <MapViewComponent
+          handleViewNavigation={handleViewNavigation}
+          target={targetLocation}
+          locations={locations}
+          region={getRegion()}
+      />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
     </View>

@@ -76,6 +76,7 @@ const styles = {
         position: "relative",
         backgroundColor: "white",
         padding: 20,
+        paddingBottom: 0,
         borderRadius: 10,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
