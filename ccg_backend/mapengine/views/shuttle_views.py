@@ -30,7 +30,7 @@ def get_upcoming_sheduled_shuttle(request):
 
     if len(schedule) > 3:
         schedule = schedule[:3]
-    
+
     upcoming_shuttles = []
     for shuttle in schedule:
         departure_time = datetime.combine(datetime.now().date(), shuttle.time)
@@ -43,4 +43,3 @@ def get_upcoming_sheduled_shuttle(request):
     return JsonResponse({
         "upcoming_shuttles": upcoming_shuttles
     })
-    
