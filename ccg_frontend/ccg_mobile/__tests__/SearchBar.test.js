@@ -175,11 +175,6 @@ describe("SearchBar Component", () => {
     // Use queryAllByText to check if the filtered location is rendered in the dropdown
     const filteredSuggestions = queryAllByText(filteredLocations);
 
-    expect(filteredSuggestions).toBeNull;
-
-    // Log the filtered suggestions to confirm they're being rendered
-    console.log("Filtered Suggestions:", filteredSuggestions);
-
     // Expect the filtered suggestion to be present in the dropdown
     expect(filteredSuggestions).toBeTruthy();
   });
