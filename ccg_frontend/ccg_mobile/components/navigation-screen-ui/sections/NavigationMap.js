@@ -1,9 +1,9 @@
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
-import {LOYOLA_STOP, SGW_STOP} from "../../../constants";
+import Bus_Marker from "../../../assets/bus-marker.png";
 
 
-const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations, displayShuttle = false }) => {
+const NavigationMap = ({ start, destination, bbox, pathCoordinates, shuttleLocations, shuttleStops, displayShuttle = false }) => {
     let coordinates = [];
     pathCoordinates?.forEach(element => {
         element.coordinates.forEach(cord => {
@@ -31,8 +31,8 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations
             <Marker
                             coordinate={ displayShuttle ?
                                 {
-                                    latitude: SGW_STOP.latitude,
-                                    longitude: SGW_STOP.longitude,
+                                    latitude: shuttleStops[0].latitude,
+                                    longitude: shuttleStops[0].longitude,
                                 }
                                 :
                                 {
@@ -46,8 +46,8 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations
                         <Marker
                             coordinate={ displayShuttle ?
                                 {
-                                    latitude: LOYOLA_STOP.latitude,
-                                    longitude: LOYOLA_STOP.longitude,
+                                    latitude: shuttleStops[1].latitude,
+                                    longitude: shuttleStops[1].longitude,
                                 }
                                 :
                                 {
@@ -63,8 +63,8 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates, busLocations
                 strokeColor="navy"
                 strokeWidth={3}
             />
-            {busLocations && displayShuttle &&
-                            busLocations.map((bus) => (
+            {shuttleLocations && displayShuttle &&
+                            shuttleLocations.map((bus) => (
                                 <Marker
                                     key={bus.id}
                                     coordinate={{
