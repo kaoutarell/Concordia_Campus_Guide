@@ -16,3 +16,11 @@ export const getDirections = async (profile, start, destination) => {
 export const getDirectionProfiles = async () => {
   return await fetchDataByEndpoint("directions")
 }
+
+export const getShuttleStops = async () => {
+  return await fetchDataByEndpoint("shuttle_stops");
+}
+
+export const getUpcomingShuttles = async (lat, long) => {
+  return await fetchDataByEndpoint("upcoming_shuttle?lat=" + lat + "&long=" + long);
+}
