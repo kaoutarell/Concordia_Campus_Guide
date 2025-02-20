@@ -28,8 +28,13 @@ const NavigationScreen = ({ navigation, route }) => {
         setSelectedMode(mode);
     };
 
-    const onModifyAddress = (type, address) => {
-        console.log(type, address)
+    const onModifyAddress = (type, location) => {
+        if (type === "destination"){
+            setDestinationPoint(location)
+        }
+        else {
+            setStartPoint(location)
+        }
     }
 
     const fetchDirections = async () => {

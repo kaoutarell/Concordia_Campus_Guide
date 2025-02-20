@@ -1,5 +1,16 @@
-import React, { useState, useEffect, useCallback } from "react";
-import {View, StyleSheet, Platform, StatusBar, Button, FlatList, TouchableOpacity, TextInput, Text} from 'react-native';
+import React, {useState, useEffect, useCallback, useRef} from "react";
+import {
+    View,
+    StyleSheet,
+    Platform,
+    StatusBar,
+    Button,
+    FlatList,
+    TouchableOpacity,
+    TextInput,
+    Text,
+    Keyboard
+} from 'react-native';
 import CustomButton from "./elements/CustomButton";
 import { Ionicons } from "@expo/vector-icons";
 import {getBuildings} from "../../api/dataService";
@@ -11,11 +22,11 @@ const CustomNavSearch = ({ navigation, route }) => {
 
     const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
 
-
     const fetchAllLocations = async () => {
         try {
             const data = await getBuildings();
             setAllLocations(data);
+            setFilteredLocations(data);
         } catch (error) {
             console.error("Error fetching data:", error)
         }
@@ -30,6 +41,8 @@ const CustomNavSearch = ({ navigation, route }) => {
 
     const [searchText, setSearchText] = useState("");
     const [filteredLocations, setFilteredLocations] = useState([]);
+
+    const inputRef = useRef(null);
 
     const handleSearch = (text) => {
         setSearchText(text);
@@ -48,34 +61,42 @@ const CustomNavSearch = ({ navigation, route }) => {
 
     // Handle selecting a location
     const handleSelectLocation = (location) => {
+        Keyboard.dismiss();
         setSearchText(location.name);
 
         if (onGoBack) {
-            onGoBack(location.civic_address); // Send selected location back to previous screen
+            onGoBack(location);
         }
 
-        navigation.goBack(); // Go back to previous screen
+        navigation.goBack();
     };
+
+    useEffect(() => {
+        if(inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
 
 
     return (
         <View style={styles.container}>
-            {/* Input Container with Back Button */}
             <View style={styles.inputContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                     <Ionicons name="arrow-back" size={24} color="#800020" />
                 </TouchableOpacity>
 
                 <TextInput
+                    ref={inputRef}
                     style={styles.input}
                     placeholder={type==="destination" ? "Choose destination" : "Choose start"}
                     value={searchText}
+                    returnKeyType="done"
                     onChangeText={handleSearch}
                 />
             </View>
 
-            {/* Autocomplete list */}
             <FlatList
+                keyboardShouldPersistTaps="handled"
                 data={filteredLocations}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
@@ -94,7 +115,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "white",
-        paddingTop: 50, // Push content below status bar
+        paddingTop: 50,
         paddingHorizontal: 20,
     },
     inputContainer: {
