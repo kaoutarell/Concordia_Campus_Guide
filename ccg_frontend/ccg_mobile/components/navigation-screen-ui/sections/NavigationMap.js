@@ -28,7 +28,7 @@ const NavigationMap = ({ start, destination, bbox, pathCoordinates }) => {
         >
             <Marker
                 coordinate={{
-                    latitude: start.location?.latitude,
+                    latitude: start?.location?.latitude,
                     longitude: start?.location?.longitude,
                 }}
                 title={start?.building_code}

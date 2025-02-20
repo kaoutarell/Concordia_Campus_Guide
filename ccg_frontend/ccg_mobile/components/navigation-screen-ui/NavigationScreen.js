@@ -28,6 +28,7 @@ const NavigationScreen = ({ navigation, route }) => {
         setSelectedMode(mode);
     };
 
+
     const onModifyAddress = (type, location) => {
         if (type === "destination"){
             setDestinationPoint(location)
@@ -35,6 +36,8 @@ const NavigationScreen = ({ navigation, route }) => {
         else {
             setStartPoint(location)
         }
+        console.log("destt", startPoint.civic_address, destinationPoint.civic_address)
+
     }
 
     const fetchDirections = async () => {
@@ -87,16 +90,20 @@ const NavigationScreen = ({ navigation, route }) => {
 //        console.log(direction)
     }, [selectedMode])
 
+    console.log(startPoint, destinationPoint)
+
+
     return (
         <View style={styles.container}>
 
             <NavigationHeader
-                startAddress={startPoint.civic_address}
-                destinationAddress={destinationPoint.civic_address}
+                startAddress={startPoint?.civic_address}
+                destinationAddress={destinationPoint?.civic_address}
                 onSelectedMode={onSelectedMode}
                 onModifyAddress={onModifyAddress}
                 onBackPress={() => navigation.goBack()}
                 selectedMode={selectedMode}
+                allLocations={params.allLocations}
             />
 
             {/* Map Container (Center) */}

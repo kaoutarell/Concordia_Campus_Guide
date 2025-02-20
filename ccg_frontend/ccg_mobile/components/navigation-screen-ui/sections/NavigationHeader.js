@@ -18,6 +18,7 @@ const NavigationHeader = ({
     onSelectedMode,
     onModifyAddress,
     selectedMode,
+    allLocations,
     onBackPress,
 }) => {
 
@@ -41,6 +42,7 @@ const NavigationHeader = ({
                 onModifyAddress={onModifyAddress}
                 destinationAddress={destinationAddress}
                 onBackPress={onBackPress}
+                allLocations={allLocations}
 
             />
             {/* Navigation Modes at the top */}

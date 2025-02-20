@@ -80,12 +80,14 @@ const MapScreen = () => {
       setAllLocations(data);
     } catch (error) {
       console.error("Error fetching data:", error)
+
     }
   }
   const handleViewNavigation = (start, destination) => {
     navigation.navigate("Navigation", {
       start,
       destination,
+      allLocations,
     });
   }
 

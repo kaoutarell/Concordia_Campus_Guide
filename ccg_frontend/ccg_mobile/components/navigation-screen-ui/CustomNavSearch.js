@@ -18,29 +18,12 @@ import {useFocusEffect} from "@react-navigation/native";
 
 const CustomNavSearch = ({ navigation, route }) => {
 
-    const {type, onGoBack} = route.params || {};
+    const {type, onGoBack, allLocations} = route.params || {};
 
-    const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
-
-    const fetchAllLocations = async () => {
-        try {
-            const data = await getBuildings();
-            setAllLocations(data);
-            setFilteredLocations(data);
-        } catch (error) {
-            console.error("Error fetching data:", error)
-        }
-    }
-
-    useFocusEffect(
-        useCallback(() => {
-            fetchAllLocations();
-        }, [])
-    )
-
+    const [allBuildings, setAllBuildings] = useState(allLocations);
 
     const [searchText, setSearchText] = useState("");
-    const [filteredLocations, setFilteredLocations] = useState([]);
+    const [filteredLocations, setFilteredLocations] = useState(allLocations);
 
     const inputRef = useRef(null);
 
@@ -48,7 +31,7 @@ const CustomNavSearch = ({ navigation, route }) => {
         setSearchText(text);
 
         if (text.length > 0) {
-            const filtered = allLocations.filter(
+            const filtered = allBuildings.filter(
                 (loc) =>
                     loc.name.toLowerCase().includes(text.toLowerCase()) ||
                     loc.civic_address.toLowerCase().includes(text.toLowerCase())

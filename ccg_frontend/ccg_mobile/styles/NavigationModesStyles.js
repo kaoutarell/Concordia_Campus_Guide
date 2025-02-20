@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f8f8f8',
     marginTop: "12%",
-    height: '22%', // Ajustez la hauteur de la carte selon vos besoins
+    height: '22%',
     width: '100%',
   },
   searchContainer: {
@@ -14,23 +14,44 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     zIndex: 1,
   },
+  inputSwapContainer: {
+    position: "relative", // Ensures correct positioning for swap button
+  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,
+    marginBottom: 10,
     borderColor: '#ccc',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 10,
     paddingLeft: 10,
+    backgroundColor: '#fff',
+    height: 45, // Ensures a good clickable area
   },
   icon: {
-    marginRight: 1,
+    marginRight: 5,
   },
   input: {
-    width: '100%',
-    height: 40,
+    flex: 1,
     fontSize: 16,
     paddingVertical: 0,
+  },
+  swapButtonContainer: {
+    position: "absolute",
+    alignSelf: "center",
+    top: "50%",
+    right:"auto",
+    zIndex: 2,
+    transform: [{ translateY: -25 }],
+  },
+  swapButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#800020",
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
   },
   navModesContainer: {
     flexDirection: 'row',
@@ -40,12 +61,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'transparent',
     padding: 5,
-    // position: 'absolute',
-    // top: 100,
-    // left: 0,
-    // right: 0,
-    // zIndex: 100,
-    // paddingHorizontal: 10,
   },
   navMode: {
     alignItems: 'center',
@@ -64,13 +79,12 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: '#800020', // Burgundy
+    backgroundColor: '#800020',
     borderRadius: 5,
     alignItems: 'center',
     color: 'white',
     fontSize: 14,
   },
-
 });
 
 export default styles;

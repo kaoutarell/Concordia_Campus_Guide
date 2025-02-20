@@ -84,7 +84,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     "bikerack": false,
     "building_code": "R",
     "campus": "SGW",
-    "civic_address": "Your Location",
+    "civic_address": "2050 Mackay",
     "departments_links": [
       "{\"linkText\":\"Religions and Cultures\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
     ],
