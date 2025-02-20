@@ -16,6 +16,7 @@ const NavigationHeader = ({
     startAddress,
     destinationAddress,
     onSelectedMode,
+    onModifyAddress,
     selectedMode,
     onBackPress,
 }) => {
@@ -37,6 +38,7 @@ const NavigationHeader = ({
             <NavigationSearch
                 startAddress={startAddress}
                 onStartNavigation={onStartNavigation}
+                onModifyAddress={onModifyAddress}
                 destinationAddress={destinationAddress}
                 onBackPress={onBackPress}
 

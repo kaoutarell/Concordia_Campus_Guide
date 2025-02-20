@@ -84,7 +84,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     "bikerack": false,
     "building_code": "R",
     "campus": "SGW",
-    "civic_address": "2050 Mackay",
+    "civic_address": "Your Location",
     "departments_links": [
       "{\"linkText\":\"Religions and Cultures\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
     ],
@@ -111,7 +111,6 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   const onGoToLocation = (destination) => {
 
     handleViewNavigation(destTemp, locations.find(location => location.id === destination.id));
-    // handleViewNavigation(startTemp, locations.find(location => location.id === destination.id));
   };
 
   useEffect(() => {

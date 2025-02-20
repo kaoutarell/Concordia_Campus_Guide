@@ -14,6 +14,10 @@ const NavigationScreen = ({ navigation, route }) => {
     const [startPoint, setStartPoint] = useState(params.start || {});
     const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
     const [directionProfiles, setDirectionProfiles] = useState({});
+    // const [onModifyAddress, setOnModifyAddress] = useState({
+    //     direction: "",
+    //     address:""
+    // })
 
     const [direction, setDirection] = useState(null);
 
@@ -22,12 +26,11 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
-        
-        // setDirection(directionProfiles)
-        // console.log(direction.bbox)
-        //console.log(JSON.stringify(direction.profile, null, 2))
     };
-    console.log("starttt", startPoint)
+
+    const onModifyAddress = (type, address) => {
+        console.log(type, address)
+    }
 
     const fetchDirections = async () => {
 
@@ -86,13 +89,14 @@ const NavigationScreen = ({ navigation, route }) => {
                 startAddress={startPoint.civic_address}
                 destinationAddress={destinationPoint.civic_address}
                 onSelectedMode={onSelectedMode}
+                onModifyAddress={onModifyAddress}
                 onBackPress={() => navigation.goBack()}
                 selectedMode={selectedMode}
             />
 
             {/* Map Container (Center) */}
             <View style={styles.mapContainer}>
-                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
+                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction?.bbox} />}
             </View>
 
             {/* Footer Section (NavigationInfo) */}
