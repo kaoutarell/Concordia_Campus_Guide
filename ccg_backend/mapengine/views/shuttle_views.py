@@ -33,7 +33,6 @@ def get_upcoming_sheduled_shuttle(request):
         latitude = ShuttleStop.objects.get(name="SGW").latitude
         longitude = ShuttleStop.objects.get(name="SGW").longitude
 
-
     # find the closest shuttle stop
     closest_stop = ShuttleStop.objects.annotate(distance=Power(F('latitude') - latitude, 2) + Power(F('longitude') - longitude, 2)).order_by('distance').first()
 
