@@ -5,6 +5,9 @@ from ..models.shuttle import ShuttleStop, ShuttleSchedule
 from datetime import datetime
 from django.db.models import F
 from django.db.models.functions import Power
+from pytz import timezone
+
+tz = timezone('America/New_York')
 
 @api_view(['GET'])
 @require_http_methods(['GET'])
@@ -34,20 +37,23 @@ def get_upcoming_sheduled_shuttle(request):
     # find the closest shuttle stop
     closest_stop = ShuttleStop.objects.annotate(distance=Power(F('latitude') - latitude, 2) + Power(F('longitude') - longitude, 2)).order_by('distance').first()
 
-    day_of_week = datetime.today().weekday()
-    current_time = datetime.now().time()
+    now = datetime.now(tz)
+    day_of_week = now.weekday()
+    current_time = now.time()
 
-    schedule = ShuttleSchedule.objects.filter(campus=closest_stop.name, day_of_week=day_of_week, time__gte=current_time).order_by('time')
-
-    if len(schedule) > 3:
-        schedule = schedule[:3]
+    # Get the next 5 upcoming shuttles from the closest stop
+    schedule = (
+        ShuttleSchedule.objects
+        .filter(campus=closest_stop.name, day_of_week=day_of_week, time__gte=current_time)
+        .order_by('time')[:5]
+    )
 
     upcoming_shuttles = []
     for shuttle in schedule:
-        departure_time = datetime.combine(datetime.now().date(), shuttle.time)
-        time_to_departure = round((departure_time - datetime.now()).total_seconds() / 60)
+        departure_time = tz.localize(datetime.combine(now.date(), shuttle.time))
+        time_to_departure = round((departure_time - now).total_seconds() / 60)
         upcoming_shuttles.append({
-            "scheduled_time": shuttle.time.strftime("%H:%M:%S"),
+            "scheduled_time": shuttle.time.strftime("%H:%M"),
             "time_to_departure": time_to_departure
         })
 
