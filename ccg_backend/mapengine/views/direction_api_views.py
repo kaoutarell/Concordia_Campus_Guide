@@ -63,7 +63,6 @@ def get_directions(request, profile):
         route_info, code = otp_directions(start, end)
     return JsonResponse(route_info, status=code)
 
-
 def multi_modal_shuttle_directions(request):
     """
     Builds a multi-modal route by:
@@ -148,14 +147,14 @@ def multi_modal_shuttle_directions(request):
         return JsonResponse({"error": "Error fetching walking directions for leg 3."}, status=code3)
 
     total_distance = (
-            leg1_response.get("total_distance", 0) +
-            leg2_response.get("total_distance", 0) +
-            leg3_response.get("total_distance", 0)
+        leg1_response.get("total_distance", 0) +
+        leg2_response.get("total_distance", 0) +
+        leg3_response.get("total_distance", 0)
     )
     total_duration = (
-            leg1_response.get("total_duration", 0) +
-            leg2_response.get("total_duration", 0) +
-            leg3_response.get("total_duration", 0)
+        leg1_response.get("total_duration", 0) +
+        leg2_response.get("total_duration", 0) +
+        leg3_response.get("total_duration", 0)
     )
 
     combined_steps = []
