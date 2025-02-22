@@ -1,0 +1,28 @@
+appId: host.exp.Exponent
+---
+- launchApp:
+    appId: host.exp.Exponent
+    clearState: true
+    stopApp: true
+    permissions: { all: allow }
+#Startup Page
+- extendedWaitUntil:
+    visible: "Welcome to"
+    timeout: 10000 #timeout to allow for slow emulator response
+- assertVisible: "ConU CG"
+- assertVisible: "Continue to map ➤"
+- tapOn: "Continue to map ➤"
+- runFlow:
+    when:
+      visible: "While using the app"
+      platform: android
+    file: ./location_permission_android.yaml
+
+#Sidebar
+#- runFow: ./sidebar.yaml
+
+# Run Feature 1 - Explore the Campus Map
+- runFlow: ./feature_1.yaml
+
+# Feature 2 - Outdoor Directions
+- runFlow: ./feature_2.yaml

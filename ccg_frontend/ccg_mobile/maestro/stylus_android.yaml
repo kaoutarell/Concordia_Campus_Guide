@@ -1,0 +1,4 @@
+appId: host.exp.Exponent
+---
+- assertVisible: "Cancel"
+- tapOn: "Cancel"

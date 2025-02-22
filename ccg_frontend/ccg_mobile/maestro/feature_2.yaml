@@ -1,0 +1,31 @@
+appId: host.exp.Exponent
+---
+# Feature 2.1 - Navigate to a destination
+- tapOn: "Where to?"
+- inputText:
+    text: "Engineering, Computer Science and Visual Arts Integrated Complex"
+    into: "Where to?"
+- runFlow:
+    when:
+      visible: "Try out your stylus"
+      platform: android
+    file: ./stylus_android.yaml
+- tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
+- tapOn: "Starting Point"
+- inputText:
+    text: "Henry F. Hall Building"
+    into: "Starting Point"
+- tapOn: "Henry F. Hall Building"
+- tapOn: "Take me there"
+- assertVisible: "Google Map"
+- assertVisible: "1455 De Maisonneuve Blvd. W."
+- assertVisible: "1515 St. Catherine W."
+- assertVisible: "Google Map"
+- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "H"
+- assertVisible: "EV"
+- assertVisible: "Back"
+- tapOn: "Back"
+- assertVisible:
+    id: "map-view"

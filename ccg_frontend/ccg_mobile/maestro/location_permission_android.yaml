@@ -1,0 +1,4 @@
+appId: host.exp.Exponent
+---
+- assertVisible: "While using the app"
+- tapOn: "While using the app"
