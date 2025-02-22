@@ -8,12 +8,12 @@ const NavigationMap = ({
   destination,
   bbox,
   pathCoordinates,
+  legs,
   shuttleLocations,
   shuttleStops,
   displayShuttle = false,
 }) => {
-  // Memoize computed polyline coordinates for performance.
-  const coordinates = useMemo(() => {
+  const fallbackCoordinates = useMemo(() => {
     if (!pathCoordinates) return [];
     return pathCoordinates.flatMap((element) =>
       element.coordinates.map((cord) => ({
@@ -23,50 +23,126 @@ const NavigationMap = ({
     );
   }, [pathCoordinates]);
 
-  // Memoize region calculation based on the bounding box.
+  // Combine all leg coordinates into a single array for shuttle mode,
+  // or use fallback coordinates for non-shuttle mode
+  const allCoordinates = useMemo(() => {
+    if (displayShuttle && legs) {
+      return Object.values(legs).reduce((acc, leg) => {
+        if (leg.steps && Array.isArray(leg.steps)) {
+          leg.steps.forEach((step) => {
+            if (step.coordinates && Array.isArray(step.coordinates)) {
+              const stepPoints = step.coordinates.map((cord) => ({
+                latitude: cord[1],
+                longitude: cord[0],
+              }));
+              acc = acc.concat(stepPoints);
+            }
+          });
+        }
+        return acc;
+      }, []);
+    }
+    return fallbackCoordinates;
+  }, [legs, displayShuttle, fallbackCoordinates]);
+
   const region = useMemo(
     () => ({
       latitude: (bbox[1] + bbox[3]) / 2,
       longitude: (bbox[0] + bbox[2]) / 2,
-      latitudeDelta: Math.abs(bbox[3] - bbox[1]) * 1.2, // add padding
-      longitudeDelta: Math.abs(bbox[2] - bbox[0]) * 1.2, // add padding
+      latitudeDelta: Math.abs(bbox[3] - bbox[1]) * 1.2,
+      longitudeDelta: Math.abs(bbox[2] - bbox[0]) * 1.2,
     }),
     [bbox]
   );
 
-  // Define start and end markers based on the displayShuttle flag.
-  const startMarker = displayShuttle && shuttleStops && shuttleStops.length >= 1
-    ? { latitude: shuttleStops[0].latitude, longitude: shuttleStops[0].longitude }
-    : { latitude: start?.location?.latitude, longitude: start?.location?.longitude };
+  const startMarker = { latitude: start?.location?.latitude, longitude: start?.location?.longitude };
+  const endMarker = { latitude: destination?.location?.latitude, longitude: destination?.location?.longitude };
 
-  const endMarker = displayShuttle && shuttleStops && shuttleStops.length >= 2
-    ? { latitude: shuttleStops[1].latitude, longitude: shuttleStops[1].longitude }
-    : { latitude: destination?.location?.latitude, longitude: destination?.location?.longitude };
+  const startTitle = displayShuttle ? (start?.campus || "Start") : start?.building_code;
+  const endTitle = displayShuttle ? (destination?.campus || "End") : destination?.building_code;
 
-  const startTitle = displayShuttle ? "SGW" : start?.building_code;
-  const endTitle = displayShuttle ? "LOY" : destination?.building_code;
+  const intermediateMarkers = useMemo(() => {
+    if (!legs || !displayShuttle) return [];
+
+    // Convert legs object to an array and filter out legs with no distance.
+    const legsArray = Object.values(legs).filter(leg => leg.total_distance !== 0);
+    if (legsArray.length === 0) return [];
+
+    const markers = [];
+
+    // Get the first leg's end coordinate.
+    const firstLeg = legsArray[0];
+    if (firstLeg.steps && firstLeg.steps.length > 0) {
+      const firstLegLastStep = firstLeg.steps[firstLeg.steps.length - 1];
+      const endCoord = firstLegLastStep.coordinates?.slice(-1)[0];
+      if (endCoord) {
+        markers.push({
+          latitude: endCoord[1],
+          longitude: endCoord[0],
+          title: "First Leg End",
+        });
+      }
+    }
+
+    // Get the last leg's beginning coordinate.
+    const lastLeg = legsArray[legsArray.length - 1];
+    if (lastLeg.steps && lastLeg.steps.length > 0) {
+      const lastLegFirstStep = lastLeg.steps[0];
+      const startCoord = lastLegFirstStep.coordinates?.[0];
+      if (startCoord) {
+        markers.push({
+          latitude: startCoord[1],
+          longitude: startCoord[0],
+          title: "Last Leg Start",
+        });
+      }
+    }
+
+    return markers;
+  }, [legs, displayShuttle]);
+
 
   return (
     <MapView style={styles.map} showsUserLocation region={region}>
+
       <Marker coordinate={startMarker} title={startTitle} pinColor="red" />
       <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
+
+
+      {intermediateMarkers.map((marker, index) => (
+        <Marker key={`marker-${index}`} coordinate={marker} title={marker.title} pinColor="blue" />
+      ))}
+
+      {/* Render a single polyline for all coordinates */}
       <Polyline
-        coordinates={coordinates}
+        coordinates={allCoordinates}
         strokeColor="navy"
         strokeWidth={3}
       />
-      {shuttleLocations &&
-        displayShuttle &&
-        shuttleLocations.map((bus) => (
-          <Marker
-            key={bus.id}
-            coordinate={{ latitude: bus.latitude, longitude: bus.longitude }}
-            title={`Shuttle ${bus.id}`}
-            pinColor="red"
-            image={BusMarker}
-          />
-        ))}
+
+      <BusTrackingMarkers
+        shuttleLocations={shuttleLocations}
+        displayShuttle={displayShuttle}
+      />
     </MapView>
+  );
+};
+
+const BusTrackingMarkers = ({ shuttleLocations, displayShuttle }) => {
+  if (!shuttleLocations || !displayShuttle) return null;
+
+  return (
+    <>
+      {shuttleLocations.map((bus) => (
+        <Marker
+          key={bus.id}
+          coordinate={{ latitude: bus.latitude, longitude: bus.longitude }}
+          title={`Shuttle ${bus.id}`}
+          pinColor="red"
+          image={BusMarker}
+        />
+      ))}
+    </>
   );
 };
 

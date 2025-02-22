@@ -35,7 +35,6 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
         location.coords.longitude
       );
       setUpcomingSchedule(schedule);
-      console.log('schedule:', schedule);
     } catch (error) {
       console.error('Error fetching location or schedule:', error);
     }
@@ -106,7 +105,7 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
           </TouchableOpacity>
         </View>
         <ScrollView style={sheetStyles.scrollContainer}>
-          {!upcomingSchedule?.upcoming_shuttles ? (
+          {!upcomingSchedule?.upcoming_shuttles.length ? (
             <Text style={sheetStyles.scheduleText}>No bus service available.</Text>
           ) : (
             <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, Platform, StatusBar } from "react-native";
 import NavigationHeader from "./sections/NavigationHeader";
 import NavigationMap from "./sections/NavigationMap";
@@ -6,6 +6,8 @@ import NavigationInfo from "./sections/NavigationInfo";
 import BusNavigationInfo from "./sections/BusNavigationInfo";
 import { getDirections, getDirectionProfiles, getShuttleStops } from "../../api/dataService";
 import busLocationService from "../../services/BusLocationService";
+
+let cachedShuttleStops = null;
 
 const NavigationScreen = ({ navigation, route }) => {
   const { start = {}, destination = {} } = route.params || {};
@@ -15,6 +17,8 @@ const NavigationScreen = ({ navigation, route }) => {
   const [direction, setDirection] = useState(null);
   const [shuttleLocations, setShuttleLocations] = useState([]);
   const [selectedMode, setSelectedMode] = useState("foot-walking");
+
+  const intervalRef = useRef(null);
 
   const handleModeSelect = (mode) => {
     setSelectedMode(mode);
@@ -54,41 +58,60 @@ const NavigationScreen = ({ navigation, route }) => {
     }
   };
 
-  // Fetch shuttle stops once when the component mounts.
+  // Fetch shuttle stops only once throughout the application lifetime
   useEffect(() => {
     const fetchStops = async () => {
-      try {
-        const shuttle = await getShuttleStops();
-        setShuttleStops(shuttle?.stops || []);
-      } catch (error) {
-        console.error("Error fetching shuttle stops:", error);
+      if (!cachedShuttleStops) {
+        try {
+          const shuttle = await getShuttleStops();
+          cachedShuttleStops = shuttle?.stops || [];
+        } catch (error) {
+          console.error("Error fetching shuttle stops:", error);
+          cachedShuttleStops = [];
+        }
       }
+      setShuttleStops(cachedShuttleStops);
     };
 
     fetchStops();
   }, []);
 
-  // Fetch directions once start, destination, and shuttle stops are available.
+  // Fetch directions once start and destination are available.
   useEffect(() => {
-    if (start.location && destination.location && shuttleStops.length > 0) {
+    if (start.location && destination.location) {
       fetchDirections();
     }
-  }, [start, destination, shuttleStops]);
+  }, [start, destination]);
 
-  // Handle shuttle tracking and update current direction based on selected mode.
   useEffect(() => {
-    let intervalId;
     if (selectedMode === "concordia-shuttle") {
-      busLocationService.startTracking(500);
-      intervalId = setInterval(() => {
+      busLocationService.startTracking(2000);
+
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+
+      intervalRef.current = setInterval(() => {
         setShuttleLocations(busLocationService.getBusLocations());
-      }, 500);
+      }, 2000);
+
+    } else {
+      // Clear interval when not in shuttle mode
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     }
+
     setDirection(directionProfiles[selectedMode] || null);
+
     return () => {
       if (selectedMode === "concordia-shuttle") {
         busLocationService.stopTracking();
-        clearInterval(intervalId);
+      }
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
   }, [selectedMode, directionProfiles]);
@@ -96,16 +119,8 @@ const NavigationScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <NavigationHeader
-        startAddress={
-          selectedMode === "concordia-shuttle"
-            ? "SGW Shuttle Stop"
-            : start.civic_address
-        }
-        destinationAddress={
-          selectedMode === "concordia-shuttle"
-            ? "LOY Shuttle Stop"
-            : destination.civic_address
-        }
+        startAddress={start.civic_address}
+        destinationAddress={destination.civic_address}
         onSelectedMode={handleModeSelect}
         onBackPress={() => navigation.goBack()}
         selectedMode={selectedMode}
@@ -118,6 +133,7 @@ const NavigationScreen = ({ navigation, route }) => {
             destination={destination}
             pathCoordinates={direction.steps}
             bbox={direction.bbox}
+            legs={direction?.legs}
             displayShuttle={selectedMode === "concordia-shuttle"}
             shuttleLocations={shuttleLocations}
             shuttleStops={shuttleStops}
