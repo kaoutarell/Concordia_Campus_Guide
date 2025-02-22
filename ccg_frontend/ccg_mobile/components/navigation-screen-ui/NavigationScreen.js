@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Platform, StatusBar } from 'react-native';
+import { View, StyleSheet, Platform, StatusBar,  ActivityIndicator,Text } from 'react-native';
 import NavigationInfo from './sections/NavigationInfo';
 import NavigationMap from './sections/NavigationMap';
 import { getDirections, getDirectionProfiles } from '../../api/dataService';
@@ -19,49 +19,33 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [selectedMode, setSelectedMode] = useState("foot-walking");
 
+    const [loading, setLoading] = useState(true);
+
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
         
-        // setDirection(directionProfiles)
-        // console.log(direction.bbox)
-        //console.log(JSON.stringify(direction.profile, null, 2))
+        
     };
 
     const fetchDirections = async () => {
 
+        setLoading(true);
 
         try {
-            const data = await getDirectionProfiles();
-            const profiles = data.profiles;
-            const directions = {};
+            
+
+            const data  = await getDirections(
+                selectedMode,
+                            [startPoint.location.longitude, startPoint.location.latitude],
+                            [destinationPoint.location.longitude, destinationPoint.location.latitude]
+                        );
+
+            setDirection(data);
+
+            setLoading(false);
         
-            // Fetch first profile synchronously
-            if (profiles.includes("foot-walking")) {
-                directions["foot-walking"] = await getDirections(
-                    "foot-walking",
-                    [startPoint.location.longitude, startPoint.location.latitude],
-                    [destinationPoint.location.longitude, destinationPoint.location.latitude]
-                );
-                setDirection(directions["foot-walking"]);
-            }
-        
-            // Fetch other profiles asynchronously
-            const promises = profiles
-                .filter(profile => profile !== "foot-walking") // Exclude the first one
-                .map(async profile => {
-                    directions[profile] = await getDirections(
-                        profile,
-                        [startPoint.location.longitude, startPoint.location.latitude],
-                        [destinationPoint.location.longitude, destinationPoint.location.latitude]
-                    );
-                });
-        
-            // Wait for all async fetches to complete
-            await Promise.all(promises);
-        
-            //console.log(directions);
-            setDirectionProfiles(directions);
+           
         } catch (error) {
             setDirection([]);
             console.error("Error fetching direction data: ", error);
@@ -72,12 +56,9 @@ const NavigationScreen = ({ navigation, route }) => {
 
     useEffect(() => {
         fetchDirections();
-    }, [startPoint, destinationPoint]);
+    }, [startPoint, destinationPoint,selectedMode]);
 
-    useEffect(() => {
-        setDirection(directionProfiles[selectedMode])
-//        console.log(direction)
-    }, [selectedMode])
+
 
     return (
         <View style={styles.container}>
@@ -91,9 +72,19 @@ const NavigationScreen = ({ navigation, route }) => {
             />
 
             {/* Map Container (Center) */}
-            <View style={styles.mapContainer}>
+
+            {loading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="blue" />
+          <Text style={styles.loadingText}>Loading locations...</Text>
+        </View>
+      ) :
+      (
+<View style={styles.mapContainer}>
                 {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
             </View>
+      )}
+            
 
             {/* Footer Section (NavigationInfo) */}
             {direction != null && <NavigationInfo totalDistance={direction?.total_distance} totalDuration={direction?.total_duration} />}
@@ -115,6 +106,11 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      },
 });
 
 export default NavigationScreen;
