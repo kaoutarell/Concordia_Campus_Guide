@@ -116,7 +116,8 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             showsUserLocation={true}
             onPress={() => setSelectedMarker(null)}
             onRegionChangeComplete={handleRegionChange}
-            toolbarEnabled={false}
+            zoomControlEnabled={true}
+            showsMyLocationButton={true}
             ref={mapRef}
             {...(Platform.OS == "android" && {
               // Set the min and max zoom levels. Only supported on Android.
