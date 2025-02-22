@@ -1,5 +1,12 @@
 appId: host.exp.Exponent
 ---
+#Feature 2.2 - Show User's Current Location
+- setLocation:
+    latitude: 45.497660
+    longitude: -73.579162
+- scroll #scroll vertically
+- tapOn: "My Location"
+- assertVisible: "Current Location. "
 # Feature 2.1 - Navigate to a destination
 - tapOn: "Where to?"
 - inputText:
@@ -9,7 +16,7 @@ appId: host.exp.Exponent
     when:
       visible: "Try out your stylus"
       platform: android
-    file: ./stylus_android.yaml
+    file: ./stylus_android.flow.yaml
 - tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
 - tapOn: "Starting Point"
 - inputText:
@@ -23,8 +30,8 @@ appId: host.exp.Exponent
 - assertVisible: "Google Map"
 - assertVisible: "My Location"
 - assertVisible: "Start Navigation"
-- assertVisible: "H"
-- assertVisible: "EV"
+- assertVisible: "H. "
+- assertVisible: "EV. "
 - assertVisible: "Back"
 - tapOn: "Back"
 - assertVisible:
