@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, Platform, StatusBar } from "react-native";
+import PropTypes from "prop-types";
 import NavigationHeader from "./sections/NavigationHeader";
 import NavigationMap from "./sections/NavigationMap";
 import NavigationInfo from "./sections/NavigationInfo";
@@ -58,7 +59,7 @@ const NavigationScreen = ({ navigation, route }) => {
     }
   };
 
-  // Fetch shuttle stops only once throughout the application lifetime
+  // Fetch shuttle stops once throughout the application lifetime.
   useEffect(() => {
     const fetchStops = async () => {
       if (!cachedShuttleStops) {
@@ -76,7 +77,7 @@ const NavigationScreen = ({ navigation, route }) => {
     fetchStops();
   }, []);
 
-  // Fetch directions once start and destination are available.
+  // Fetch directions when start and destination are available.
   useEffect(() => {
     if (start.location && destination.location) {
       fetchDirections();
@@ -86,21 +87,16 @@ const NavigationScreen = ({ navigation, route }) => {
   useEffect(() => {
     if (selectedMode === "concordia-shuttle") {
       busLocationService.startTracking(2000);
-
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
-
       intervalRef.current = setInterval(() => {
         setShuttleLocations(busLocationService.getBusLocations());
       }, 2000);
-
-    } else {
-      // Clear interval when not in shuttle mode
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
+    }
+    if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
 
     setDirection(directionProfiles[selectedMode] || null);
@@ -156,6 +152,16 @@ const NavigationScreen = ({ navigation, route }) => {
         ))}
     </View>
   );
+};
+
+NavigationScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      start: PropTypes.object,
+      destination: PropTypes.object,
+    }),
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({

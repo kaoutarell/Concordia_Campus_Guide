@@ -9,7 +9,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import globalStyles from '../../../styles/NavigationInfoStyles'; // renamed for clarity
+import PropTypes from 'prop-types';
+import globalStyles from '../../../styles/NavigationInfoStyles';
 import locationService from '../../../services/LocationService';
 import { formatDuration } from '../../../utils';
 import { getUpcomingShuttles } from '../../../api/dataService';
@@ -22,14 +23,11 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
   const fadeIn = useRef(new Animated.Value(0)).current;
   const sheetAnim = useRef(new Animated.Value(INITIAL_SHEET_POSITION)).current;
 
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [userLocation, setUserLocation] = useState(null);
   const [upcomingSchedule, setUpcomingSchedule] = useState(null);
 
   const updateLocation = useCallback(async () => {
     try {
       const location = await locationService.getCurrentLocation();
-      setUserLocation(location);
       const schedule = await getUpcomingShuttles(
         location.coords.latitude,
         location.coords.longitude
@@ -59,7 +57,7 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
       toValue: 0,
       duration: 300,
       useNativeDriver: true,
-    }).start(() => setIsSheetOpen(true));
+    }).start();
   };
 
   const closeScheduleSheet = () => {
@@ -67,7 +65,7 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
       toValue: INITIAL_SHEET_POSITION,
       duration: 300,
       useNativeDriver: true,
-    }).start(() => setIsSheetOpen(false));
+    }).start();
   };
 
   const sheetTransformStyle = { transform: [{ translateY: sheetAnim }] };
@@ -85,7 +83,9 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
           <View style={globalStyles.infoItem}>
             <FontAwesome5 name="road" size={20} color="#fff" />
             <Text style={globalStyles.infoText}>
-              {totalDistance ? (totalDistance / 1000).toFixed(2) + ' km' : 'Distance not available'}
+              {totalDistance
+                ? (totalDistance / 1000).toFixed(2) + ' km'
+                : 'Distance not available'}
             </Text>
           </View>
         </View>
@@ -114,8 +114,11 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
                 <Text style={sheetStyles.tableHeaderText}>In</Text>
               </View>
               <View style={sheetStyles.tableBody}>
-                {upcomingSchedule.upcoming_shuttles.map((item, index) => (
-                  <View key={index} style={sheetStyles.tableRow}>
+                {upcomingSchedule.upcoming_shuttles.map((item) => (
+                  <View
+                    key={`${item.scheduled_time}-${item.time_to_departure}`}
+                    style={sheetStyles.tableRow}
+                  >
                     <Text style={sheetStyles.tableCell}>{item.scheduled_time}</Text>
                     <Text style={sheetStyles.tableCell}>
                       {item.time_to_departure < 1
@@ -131,6 +134,11 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
       </Animated.View>
     </SafeAreaView>
   );
+};
+
+BusNavigationInfo.propTypes = {
+  totalDuration: PropTypes.number.isRequired,
+  totalDistance: PropTypes.number.isRequired,
 };
 
 const sheetStyles = StyleSheet.create({

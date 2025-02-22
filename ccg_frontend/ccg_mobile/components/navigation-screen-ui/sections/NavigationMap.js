@@ -1,7 +1,16 @@
 import React, { useMemo } from "react";
+import PropTypes from "prop-types";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import { StyleSheet } from "react-native";
 import BusMarker from "../../../assets/bus-marker.png";
+
+const convertCoordinate = (cord) => ({
+  latitude: cord[1],
+  longitude: cord[0],
+});
+
+const convertCoordinates = (coordinatesArray) =>
+  coordinatesArray.map(convertCoordinate);
 
 const NavigationMap = ({
   start,
@@ -16,25 +25,17 @@ const NavigationMap = ({
   const fallbackCoordinates = useMemo(() => {
     if (!pathCoordinates) return [];
     return pathCoordinates.flatMap((element) =>
-      element.coordinates.map((cord) => ({
-        latitude: cord[1],
-        longitude: cord[0],
-      }))
+      convertCoordinates(element.coordinates)
     );
   }, [pathCoordinates]);
 
-  // Combine all leg coordinates into a single array for shuttle mode,
-  // or use fallback coordinates for non-shuttle mode
   const allCoordinates = useMemo(() => {
     if (displayShuttle && legs) {
       return Object.values(legs).reduce((acc, leg) => {
         if (leg.steps && Array.isArray(leg.steps)) {
           leg.steps.forEach((step) => {
             if (step.coordinates && Array.isArray(step.coordinates)) {
-              const stepPoints = step.coordinates.map((cord) => ({
-                latitude: cord[1],
-                longitude: cord[0],
-              }));
+              const stepPoints = convertCoordinates(step.coordinates);
               acc = acc.concat(stepPoints);
             }
           });
@@ -55,17 +56,28 @@ const NavigationMap = ({
     [bbox]
   );
 
-  const startMarker = { latitude: start?.location?.latitude, longitude: start?.location?.longitude };
-  const endMarker = { latitude: destination?.location?.latitude, longitude: destination?.location?.longitude };
+  const startMarker = {
+    latitude: start?.location?.latitude,
+    longitude: start?.location?.longitude,
+  };
+  const endMarker = {
+    latitude: destination?.location?.latitude,
+    longitude: destination?.location?.longitude,
+  };
 
-  const startTitle = displayShuttle ? (start?.campus || "Start") : start?.building_code;
-  const endTitle = displayShuttle ? (destination?.campus || "End") : destination?.building_code;
+  const startTitle = displayShuttle
+    ? start?.campus || "Start"
+    : start?.building_code;
+  const endTitle = displayShuttle
+    ? destination?.campus || "End"
+    : destination?.building_code;
 
   const intermediateMarkers = useMemo(() => {
     if (!legs || !displayShuttle) return [];
 
-    // Convert legs object to an array and filter out legs with no distance.
-    const legsArray = Object.values(legs).filter(leg => leg.total_distance !== 0);
+    const legsArray = Object.values(legs).filter(
+      (leg) => leg.total_distance !== 0
+    );
     if (legsArray.length === 0) return [];
 
     const markers = [];
@@ -77,8 +89,7 @@ const NavigationMap = ({
       const endCoord = firstLegLastStep.coordinates?.slice(-1)[0];
       if (endCoord) {
         markers.push({
-          latitude: endCoord[1],
-          longitude: endCoord[0],
+          ...convertCoordinate(endCoord),
           title: "First Leg End",
         });
       }
@@ -91,8 +102,7 @@ const NavigationMap = ({
       const startCoord = lastLegFirstStep.coordinates?.[0];
       if (startCoord) {
         markers.push({
-          latitude: startCoord[1],
-          longitude: startCoord[0],
+          ...convertCoordinate(startCoord),
           title: "Last Leg Start",
         });
       }
@@ -101,24 +111,21 @@ const NavigationMap = ({
     return markers;
   }, [legs, displayShuttle]);
 
-
   return (
     <MapView style={styles.map} showsUserLocation region={region}>
-
       <Marker coordinate={startMarker} title={startTitle} pinColor="red" />
       <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
 
-
-      {intermediateMarkers.map((marker, index) => (
-        <Marker key={`marker-${index}`} coordinate={marker} title={marker.title} pinColor="blue" />
+      {intermediateMarkers.map((marker) => (
+        <Marker
+          key={`${marker.title}-${marker.latitude}-${marker.longitude}`}
+          coordinate={marker}
+          title={marker.title}
+          pinColor="blue"
+        />
       ))}
 
-      {/* Render a single polyline for all coordinates */}
-      <Polyline
-        coordinates={allCoordinates}
-        strokeColor="navy"
-        strokeWidth={3}
-      />
+      <Polyline coordinates={allCoordinates} strokeColor="navy" strokeWidth={3} />
 
       <BusTrackingMarkers
         shuttleLocations={shuttleLocations}
@@ -126,6 +133,43 @@ const NavigationMap = ({
       />
     </MapView>
   );
+};
+
+NavigationMap.propTypes = {
+  start: PropTypes.shape({
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }).isRequired,
+    campus: PropTypes.string,
+    building_code: PropTypes.string,
+  }).isRequired,
+  destination: PropTypes.shape({
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }).isRequired,
+    campus: PropTypes.string,
+    building_code: PropTypes.string,
+  }).isRequired,
+  bbox: PropTypes.arrayOf(PropTypes.number).isRequired,
+  pathCoordinates: PropTypes.arrayOf(
+    PropTypes.shape({
+      coordinates: PropTypes.arrayOf(
+        PropTypes.arrayOf(PropTypes.number)
+      ).isRequired,
+    })
+  ),
+  legs: PropTypes.object,
+  shuttleLocations: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    })
+  ),
+  shuttleStops: PropTypes.array,
+  displayShuttle: PropTypes.bool,
 };
 
 const BusTrackingMarkers = ({ shuttleLocations, displayShuttle }) => {
@@ -144,6 +188,17 @@ const BusTrackingMarkers = ({ shuttleLocations, displayShuttle }) => {
       ))}
     </>
   );
+};
+
+BusTrackingMarkers.propTypes = {
+  shuttleLocations: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    })
+  ),
+  displayShuttle: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
