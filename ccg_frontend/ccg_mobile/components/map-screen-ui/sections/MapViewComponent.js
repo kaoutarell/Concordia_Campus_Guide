@@ -23,6 +23,7 @@ const { width, height } = Dimensions.get("window");
 const MapViewComponent = ({ locations, region, maxBounds }) => {
 
   const navigation = useNavigation();
+
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
