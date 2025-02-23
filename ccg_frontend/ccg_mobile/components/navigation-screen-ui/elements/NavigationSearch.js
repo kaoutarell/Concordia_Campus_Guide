@@ -27,8 +27,10 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
             rotateAnim.setValue(0);
         });
 
+        console.log("starrtt", startAddress, destinationAddress)
+
         onModifyAddress("start", allLocations.find(location => location.civic_address === destinationAddress));
-        onModifyAddress("destination", allLocations.find(location => location.civic_address === startAddress));
+        onModifyAddress("destination", startAddress === "Current Location" ? null : allLocations.find(location => location.civic_address === startAddress));
     };
 
     return (
@@ -106,9 +108,25 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        height: 40,
+        height: 45,
         fontSize: 16,
         paddingVertical: 0,
     },
-
+    swapButtonContainer: {
+        position: "absolute",
+        alignSelf: "center",
+        top: "50%",
+        right:"auto",
+        zIndex: 2,
+        transform: [{ translateY: -25 }],
+    },
+    swapButton: {
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: "#800020",
+        justifyContent: "center",
+        alignItems: "center",
+        elevation: 5,
+    },
 });

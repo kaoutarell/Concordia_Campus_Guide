@@ -14,7 +14,6 @@ import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import transformCurrentLoc from "../../../utils/transformCurrentLoc";
-// import BuildingHighlight from "../elements/BuildingHighlight";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from 'prop-types';
 
@@ -61,29 +60,6 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-  const destTemp =  {
-    "accessibility": false,
-    "atm": false,
-    "bikerack": false,
-    "building_code": "R",
-    "campus": "SGW",
-    "civic_address": "2050 Mackay",
-    "departments_links": [
-      "{\"linkText\":\"Religions and Cultures\",\"linkPath\":\"/content/concordia/en/artsci/religions-cultures\",\"linkTarget\":true,\"itemClass\":\"\"}"
-    ],
-    "id": 50,
-    "infokiosk": false,
-    "location": {
-      "latitude": 45.4968,
-      "longitude": -73.5794
-    },
-    "name": "R Annex",
-    "parking_lot": false,
-    "services_links": []
-  }
-
-
-
   const handleMarkerPress = (location) => {
     // Force React to update state asynchronously
     setTimeout(() => {
@@ -91,9 +67,13 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     }, 0);
   };
 
-  const onGoToLocation = (destination) => {
-
-    handleViewNavigation(destTemp, locations.find(location => location.id === destination.id));
+  const onGoToLocation = (location) => {
+    console.log("locss", locations)
+      navigation.navigate("Navigation", {
+        start: null,
+        destination: location,
+        locations
+      })
   };
 
   useEffect(() => {

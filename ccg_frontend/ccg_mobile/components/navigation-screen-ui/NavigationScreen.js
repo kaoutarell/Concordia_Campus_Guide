@@ -23,8 +23,8 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const params = route.params || {};
 
-    const [startPoint, setStartPoint] = useState(params.start || {});
-    const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
+    const [startPoint, setStartPoint] = useState(params.start || null);
+    const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
     const [direction, setDirection] = useState(null);
 
@@ -115,9 +115,6 @@ const NavigationScreen = ({ navigation, route }) => {
                 [startPoint?.location.longitude, startPoint?.location.latitude],
                 [destinationPoint?.location.longitude, destinationPoint?.location.latitude]
             );
-
-
-
             setDirection(data);
             setSearchText({
                 startAddress: startPoint?.civic_address,
@@ -168,6 +165,7 @@ const NavigationScreen = ({ navigation, route }) => {
             if (startPoint == null) {
                 currentLocation = await getMyCurrentLocation();
                 setStartPoint(currentLocation);
+                console.log("startPodd", startPoint)
                 setSearchText(prev => ({
                     ...prev,
                     startAddress: currentLocation.civic_address
@@ -236,7 +234,7 @@ const NavigationScreen = ({ navigation, route }) => {
                     startAddress={searchText.startAddress}
                     destinationAddress={searchText.destinationAddress}
                     onSelectedMode={handleModeSelect}
-                    allLocations={params.allLocations}
+                    allLocations={params.locations}
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
                     onModifyAddress={onModifyAddress}

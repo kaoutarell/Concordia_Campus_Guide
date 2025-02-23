@@ -164,7 +164,7 @@ const NavigationMap = ({
                 pinColor="red"
             />
             <Polyline
-                coordinates={coordinates?.length > 0 ? coordinates : []}
+                coordinates={allCoordinates}
                 strokeColor="navy"
                 strokeWidth={3}
             />
