@@ -281,8 +281,9 @@ Once all dependencies are installed run :
 
 ## Prerequisites
 
-- Install maestro : https://docs.maestro.dev/getting-started/installing-maestro
-- Backend and frontend are running on an emulator.
+- Install maestro: https://docs.maestro.dev/getting-started/installing-maestro
+- Backend is running.
+- Frontend is running on an emulator.
 
 ## Maestro Studio
 
