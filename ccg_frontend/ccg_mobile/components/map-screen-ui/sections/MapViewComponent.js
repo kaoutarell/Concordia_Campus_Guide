@@ -68,7 +68,6 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   };
 
   const onGoToLocation = (location) => {
-    console.log("locss", locations)
       navigation.navigate("Navigation", {
         start: null,
         destination: location,

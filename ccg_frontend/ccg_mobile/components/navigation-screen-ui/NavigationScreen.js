@@ -25,6 +25,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [startPoint, setStartPoint] = useState(params.start || null);
     const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
+    const [isGoingToCurrentLoc, setIsGoingToCurrentLoc] = useState(false)
 
     const [direction, setDirection] = useState(null);
 
@@ -82,9 +83,13 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
 
-    const onModifyAddress = (type, location) => {
+    const onModifyAddress = async (type, location) => {
+        const currentLocation = await getMyCurrentLocation();
         if (type === "destination"){
-            setDestinationPoint(location)
+            if(location === null){
+                setDestinationPoint(currentLocation)
+            }
+            else setDestinationPoint(location)
         }
         else {
             setStartPoint(location)
@@ -165,13 +170,17 @@ const NavigationScreen = ({ navigation, route }) => {
             if (startPoint == null) {
                 currentLocation = await getMyCurrentLocation();
                 setStartPoint(currentLocation);
-                console.log("startPodd", startPoint)
                 setSearchText(prev => ({
                     ...prev,
                     startAddress: currentLocation.civic_address
                 }));
             }
             if (destinationPoint == null) {
+                currentLocation = await getMyCurrentLocation();
+                console.log("curr", currentLocation)
+                if(isGoingToCurrentLoc){
+                    setDestinationPoint(currentLocation)
+                }
                 defaultDestination = getDefaultDestination();
                 setDestinationPoint(defaultDestination);
                 setSearchText(prev => ({
