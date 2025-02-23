@@ -1,9 +1,9 @@
 import React from "react";
-import { TouchableOpacity ,Text} from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
 
-import styles from '../../../styles/NavigationModesStyles';
 
-const NavigationMode = ({ mode, selectedMode, onModeChange, icon,name }) => {
+
+const NavigationMode = ({ mode, selectedMode, onModeChange, icon, name }) => {
 
     return (
         <TouchableOpacity
@@ -11,7 +11,7 @@ const NavigationMode = ({ mode, selectedMode, onModeChange, icon,name }) => {
             onPress={() => onModeChange(mode)}
         >
             {React.cloneElement(icon, { color: selectedMode === mode ? '#fff' : '#800020' })}
-<Text style={[styles.text, { color: selectedMode === mode ? '#fff' : 'black' }]}>{name}</Text>
+            <Text style={[styles.text, { color: selectedMode === mode ? '#fff' : 'black' }]}>{name}</Text>
 
         </TouchableOpacity>
 
@@ -19,4 +19,32 @@ const NavigationMode = ({ mode, selectedMode, onModeChange, icon,name }) => {
 };
 
 export default NavigationMode;
+
+const { width } = Dimensions.get("window");
+
+const styles = StyleSheet.create({
+
+    navMode: {
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        elevation: 5,
+        width: width * 0.14,
+    },
+    activeMode: {
+        backgroundColor: '#800020',
+    },
+
+    text: {
+        fontSize: 12,
+    }
+
+});
+
+
 

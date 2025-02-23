@@ -1,7 +1,7 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, StyleSheet, Dimensions } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import styles from '../../../styles/NavigationModesStyles';
+
 
 const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }) => {
     return (
@@ -30,3 +30,53 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
 };
 
 export default NavigationSearch;
+
+
+const { width } = Dimensions.get("window");
+
+const styles = StyleSheet.create({
+
+    searchContainer: {
+
+        width: '80%',
+        marginBottom: 10,
+        zIndex: 1,
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 4,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 10,
+    },
+    icon: {
+        marginRight: 1,
+    },
+    input: {
+        width: '100%',
+        height: 40,
+        fontSize: 16,
+        paddingVertical: 0,
+    },
+    navModesContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor: 'transparent',
+        borderBottomWidth: 1,
+        borderBottomColor: 'transparent',
+        padding: 5,
+    },
+
+    button: {
+        padding: 10,
+        backgroundColor: '#800020', // Burgundy
+        borderRadius: 5,
+        alignItems: 'center',
+        color: 'white',
+        fontSize: 14,
+    },
+
+});

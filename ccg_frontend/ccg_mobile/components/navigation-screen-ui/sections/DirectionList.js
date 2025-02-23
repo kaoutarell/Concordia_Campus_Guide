@@ -16,8 +16,6 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
  */
 export default function DirectionsList({ steps }) {
 
-
-
     const formatDistance = (distance) => {
 
         if (distance >= 1000) {
@@ -44,7 +42,7 @@ export default function DirectionsList({ steps }) {
         <View style={styles.container}>
             <Text style={styles.header}>Directions</Text>
             <FlatList
-                data={steps}
+                data={steps != null ? steps : []}
                 keyExtractor={(_, index) => index.toString()}
                 renderItem={renderStep}
                 contentContainerStyle={styles.listContent}

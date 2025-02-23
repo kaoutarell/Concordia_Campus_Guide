@@ -177,7 +177,7 @@ const NavigationScreen = ({ navigation, route }) => {
                         <Button title="←" onPress={() => setShowDirections(false)} />
                     </View>
 
-                    <DirectionsList steps={direction.steps} />
+                    <DirectionsList steps={direction?.steps} />
                 </View>
             </Modal>
 
