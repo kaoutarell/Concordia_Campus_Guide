@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   searchContainer: {
-    paddingHorizontal: 15,
+    // paddingHorizontal: 60,
+    width: '80%',
     marginBottom: 10,
     zIndex: 1,
   },
@@ -70,6 +71,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
   },
+
+  rowContainer: {
+    flexDirection : 'row',
+    justifyContent:'space-betwwen',
+  }
 
 });
 

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Animated, SafeAreaView } from 'react-nati
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from "../../../styles/NavigationInfoStyles";
 
-const NavigationInfo = ({ onStartNavigation, totalDuration, totalDistance }) => {
+const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) => {
     const [fadeIn] = React.useState(new Animated.Value(0));
 
     React.useEffect(() => {
@@ -35,4 +35,4 @@ const NavigationInfo = ({ onStartNavigation, totalDuration, totalDistance }) => 
     );
 };
 
-export default NavigationInfo;
+export default NavigationFooter;
