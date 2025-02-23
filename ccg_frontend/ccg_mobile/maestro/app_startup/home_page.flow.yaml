@@ -1,8 +1,7 @@
 appId: host.exp.Exponent
+name: "Home Page"
 ---
-- launchApp:
-  clearState: "true"
-#Startup Page
+# Home Page
 - extendedWaitUntil:
     visible: "Welcome to"
     timeout: 10000 #timeout to allow for slow emulator response
@@ -12,22 +11,16 @@ appId: host.exp.Exponent
 - setLocation:
     latitude: 45.497660
     longitude: -73.579162
+# specify location permission when necessary
+# android
 - runFlow:
     when:
       visible: "While using the app"
       platform: android
     file: ./subflows/location_permission_android.flow.yaml
+# ios
 - runFlow:
     when:
       visible: "Allow While Using App"
       platform: ios
     file: ./subflows/location_permission_ios.flow.yaml
-
-#Sidebar
-- runFlow: ./subflows/sidebar.flow.yaml
-
-# Run Feature 1 - Explore the Campus Map
-- runFlow: ./subflows/feature_1.flow.yaml
-
-# Feature 2 - Outdoor Directions
-- runFlow: ./subflows/feature_2.flow.yaml

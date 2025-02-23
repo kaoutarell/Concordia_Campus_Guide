@@ -1,4 +1,5 @@
 appId: host.exp.Exponent
+name: "Feature 2 - Outdoor Directions"
 ---
 #Feature 2.2 - Show User's Current Location
 - setLocation:
@@ -6,9 +7,8 @@ appId: host.exp.Exponent
     longitude: -73.579162
 - scroll #scroll vertically
 - assertVisible: "My Location"
-- tapOn:
-    id: "My Location"
-    label: "Tap on Current Location button"
+- tapOn: "My Location"
+- assertVisible: "H"
 # Feature 2.1 - Navigate to a destination
 - tapOn: "Where to?"
 - inputText:
@@ -18,13 +18,21 @@ appId: host.exp.Exponent
     when:
       visible: "Try out your stylus"
       platform: android
-    file: ./stylus_android.flow.yaml
+    file: ./subflows/stylus_android.flow.yaml
+- extendedWaitUntil:
+    visible: "Engineering, Computer Science and Visual Arts Integrated Complex"
+    timeout: 50000
 - tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
 - tapOn: "Starting Point"
 - inputText:
     text: "Henry F. Hall Building"
     into: "Starting Point"
-- tapOn: "Henry F. Hall Building"
+- extendedWaitUntil:
+    visible: "Henry F. Hall Building"
+    timeout: 50000
+- tapOn:
+    text: "Henry F. Hall Building"
+    index: 1
 - tapOn: "Take me there"
 - assertVisible: "Google Map"
 - assertVisible: "1455 De Maisonneuve Blvd. W."
