@@ -11,7 +11,8 @@ const NavigationMode = ({ mode, selectedMode, onModeChange, icon,name }) => {
             onPress={() => onModeChange(mode)}
         >
             {React.cloneElement(icon, { color: selectedMode === mode ? '#fff' : '#800020' })}
-            <Text style={styles.text}>{name}</Text>
+<Text style={[styles.text, { color: selectedMode === mode ? '#fff' : 'black' }]}>{name}</Text>
+
         </TouchableOpacity>
 
     );
