@@ -10,10 +10,11 @@ const NavigationHeader = ({
   startAddress,
   destinationAddress,
   onSelectedMode,
-  selectedMode,
   onBackPress,
+  selectedMode,
   onStartSearching,
 }) => {
+
 
   const handleModeChange = (mode) => {
     onSelectedMode(mode);

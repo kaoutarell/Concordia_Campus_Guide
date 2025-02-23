@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }) => {
+
     return (
         <View style={styles.searchContainer}>
             <View style={styles.inputContainer}>
