@@ -4,7 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const { width } = Dimensions.get("window"); // Get device dimensions
 
-const NavigationInfos = ({ totalDuration, totalDistance, onExit, onAllDirections }) => {
+const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirections }) => {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.infoRow}>
@@ -30,13 +30,13 @@ const NavigationInfos = ({ totalDuration, totalDistance, onExit, onAllDirections
 
                 {/* Buttons */}
                 <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.allButton} onPress={onAllDirections}>
+                    <TouchableOpacity style={styles.allButton} onPress={onShowDirections}>
                         <Text style={styles.allButtonText}>DIR</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.exitButton} onPress={onExit}>
                         <Text style={styles.exitButtonText}>Exit</Text>
                     </TouchableOpacity>
-                   
+
                 </View>
             </View>
         </SafeAreaView>

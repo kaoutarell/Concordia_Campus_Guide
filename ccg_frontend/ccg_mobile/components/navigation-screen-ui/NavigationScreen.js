@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Platform, StatusBar, ActivityIndicator, Text } from 'react-native';
+import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
 import NavigationFooter from './sections/NavigationFooter';
 import NavigationMap from './sections/NavigationMap';
 import { getDirections } from '../../api/dataService';
@@ -7,6 +7,7 @@ import { getDirections } from '../../api/dataService';
 import NavigationHeader from "./sections/NavigationHeader";
 import NavigationDirection from "./sections/NavigationDirection";
 import NavigationInfos from "./sections/NavigationInfos";
+import DirectionsList from "./sections/DirectionList";
 
 import locationService from "../../services/LocationService";
 
@@ -35,6 +36,8 @@ const NavigationScreen = ({ navigation, route }) => {
         startAddress: "",
         destinationAddress: ""
     });
+
+    const [showDirections, setShowDirections] = useState(false);
 
     const [userLocation, setUserLocation] = useState(null);
 
@@ -163,6 +166,21 @@ const NavigationScreen = ({ navigation, route }) => {
     return (
         <View style={styles.container}>
 
+            <Modal
+                visible={showDirections}
+                animationType="slide"
+                onRequestClose={() => setShowDirections(false)}
+            >
+                <View style={{ flex: 1 }}>
+                    {/* Absolutely positioned button in the top-left corner */}
+                    <View style={styles.closeButtonContainer}>
+                        <Button title="←" onPress={() => setShowDirections(false)} />
+                    </View>
+
+                    <DirectionsList steps={direction.steps} />
+                </View>
+            </Modal>
+
             {!isNavigating ?
                 (<NavigationHeader
                     startAddress={searchText.startAddress}
@@ -196,6 +214,7 @@ const NavigationScreen = ({ navigation, route }) => {
                                 isNavigating={isNavigating}
                             />}
                     </View>
+
                 )}
 
             {!isNavigating ?
@@ -212,6 +231,7 @@ const NavigationScreen = ({ navigation, route }) => {
                         totalDistance={direction?.total_distance}
                         totalDuration={direction?.total_duration}
                         onExit={onExitNavigation}
+                        onShowDirections={() => setShowDirections(true)}
                     />
                 )
             }
@@ -236,6 +256,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+    },
+    closeButtonContainer: {
+        position: 'absolute',
+        fontSize: 94,
+        top: 50,     // adjust for your needs, or use SafeAreaView on iOS
+        left: 16,
+        zIndex: 999, // ensure the button stays on top of other content
     },
 });
 
