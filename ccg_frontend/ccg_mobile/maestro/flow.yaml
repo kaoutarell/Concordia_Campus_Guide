@@ -17,6 +17,11 @@ appId: host.exp.Exponent
       visible: "While using the app"
       platform: android
     file: ./subflows/location_permission_android.flow.yaml
+- runFlow:
+    when:
+      visible: "Allow While Using App"
+      platform: ios
+    file: ./subflows/location_permission_ios.flow.yaml
 
 #Sidebar
 - runFlow: ./subflows/sidebar.flow.yaml

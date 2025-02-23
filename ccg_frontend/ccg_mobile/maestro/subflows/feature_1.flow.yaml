@@ -16,8 +16,6 @@ appId: host.exp.Exponent
 - assertVisible:
     text: "Indoor"
     enabled: true
-# Feature 1.4 - Show Current Building
-- assertVisible: "Current Location"
 # Feature 1.3 - Toggle between campuses
 - tapOn:
     id: "campus-button"

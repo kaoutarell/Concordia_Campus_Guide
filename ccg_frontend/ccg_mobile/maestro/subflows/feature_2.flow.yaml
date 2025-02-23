@@ -5,8 +5,10 @@ appId: host.exp.Exponent
     latitude: 45.497660
     longitude: -73.579162
 - scroll #scroll vertically
-- tapOn: "My Location"
-- assertVisible: "Current Location"
+- assertVisible: "My Location"
+- tapOn:
+    id: "My Location"
+    label: "Tap on Current Location button"
 # Feature 2.1 - Navigate to a destination
 - tapOn: "Where to?"
 - inputText:

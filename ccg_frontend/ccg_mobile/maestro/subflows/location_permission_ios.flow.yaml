@@ -1,0 +1,4 @@
+appId: host.exp.Exponent
+---
+- assertVisible: "Allow While Using App"
+- tapOn: "Allow While Using App"
