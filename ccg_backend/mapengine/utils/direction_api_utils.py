@@ -148,3 +148,19 @@ def get_all_coordinates(steps):
     for step in steps:
         all_coordinates.extend(step["coordinates"])
     return all_coordinates
+
+def compute_bbox_from_steps(steps):
+    """
+    Given a list of steps (each step having a "coordinates" key with a list of [lon, lat] points),
+    compute and return a single bbox [min_lon, min_lat, max_lon, max_lat].
+    """
+    all_coords = []
+    for step in steps:
+        coords = step.get("coordinates", [])
+        if coords:
+            all_coords.extend(coords)
+    if all_coords:
+        lons = [pt[0] for pt in all_coords]
+        lats = [pt[1] for pt in all_coords]
+        return [min(lons), min(lats), max(lons), max(lats)]
+    return []

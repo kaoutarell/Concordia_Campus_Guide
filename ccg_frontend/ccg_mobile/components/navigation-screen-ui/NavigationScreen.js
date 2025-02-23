@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
+import PropTypes from "prop-types";
 import NavigationFooter from './sections/NavigationFooter';
 import NavigationMap from './sections/NavigationMap';
 import { getDirections } from '../../api/dataService';
 
 import NavigationHeader from "./sections/NavigationHeader";
 import NavigationDirection from "./sections/NavigationDirection";
+import BusNavigationInfo from "./sections/BusNavigationInfo";
 import NavigationInfos from "./sections/NavigationInfos";
 import DirectionsList from "./sections/DirectionList";
+import busLocationService from "../../services/BusLocationService";
 
 import locationService from "../../services/LocationService";
 
@@ -22,7 +25,6 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [startPoint, setStartPoint] = useState(params.start || {});
     const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
-    const [directionProfiles, setDirectionProfiles] = useState({});
 
     const [direction, setDirection] = useState(null);
 
@@ -38,8 +40,10 @@ const NavigationScreen = ({ navigation, route }) => {
     });
 
     const [showDirections, setShowDirections] = useState(false);
+    const [shuttleLocations, setShuttleLocations] = useState([]);
 
     const [userLocation, setUserLocation] = useState(null);
+    const intervalRef = useRef(null);
 
 
     useEffect(() => {
@@ -73,7 +77,7 @@ const NavigationScreen = ({ navigation, route }) => {
     const { instruction, distance } = useRouteInstruction(direction, userLocation);
 
 
-    const onSelectedMode = (mode) => {
+    const handleModeSelect = (mode) => {
         setSelectedMode(mode);
     };
 
@@ -128,6 +132,34 @@ const NavigationScreen = ({ navigation, route }) => {
 
     };
 
+    useEffect(() => {
+        if (selectedMode === "concordia-shuttle") {
+            busLocationService.startTracking(2000);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+            intervalRef.current = setInterval(() => {
+                setShuttleLocations(busLocationService.getBusLocations());
+            }, 2000);
+        }
+        if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
+
+        fetchDirections();
+
+        return () => {
+            if (selectedMode === "concordia-shuttle") {
+                busLocationService.stopTracking();
+            }
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+        };
+    }, [selectedMode]);
+
     const setDefaultStartAndDestination = async () => {
         try {
 
@@ -157,6 +189,30 @@ const NavigationScreen = ({ navigation, route }) => {
 
     };
 
+    const renderNavigationInfo = () => {
+        return direction && selectedMode === "concordia-shuttle" ? (
+            <BusNavigationInfo
+                totalDistance={direction.total_distance}
+                totalDuration={direction.total_duration}
+            />
+        ) : !isNavigating ?
+            (
+                <NavigationFooter
+                    totalDistance={direction?.total_distance}
+                    totalDuration={direction?.total_duration}
+                    onStartNavigation={startNavigation} />
+            )
+            :
+            (
+                <NavigationInfos
+                    totalDistance={direction?.total_distance}
+                    totalDuration={direction?.total_duration}
+                    onExit={onExitNavigation}
+                    onShowDirections={() => setShowDirections(true)}
+                />
+            )
+    }
+
     return (
         <View style={styles.container}>
 
@@ -179,7 +235,7 @@ const NavigationScreen = ({ navigation, route }) => {
                 (<NavigationHeader
                     startAddress={searchText.startAddress}
                     destinationAddress={searchText.destinationAddress}
-                    onSelectedMode={onSelectedMode}
+                    onSelectedMode={handleModeSelect}
                     allLocations={params.allLocations}
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
@@ -194,71 +250,68 @@ const NavigationScreen = ({ navigation, route }) => {
             {/* Map Container (Center) */}
 
             {loading ? (
-                <View style={styles.loadingContainer}>
-                    <ActivityIndicator size="large" color="blue" />
-                    <Text style={styles.loadingText}>Loading locations...</Text>
-                </View>
-            ) :
+                    <View style={styles.loadingContainer}>
+                        <ActivityIndicator size="large" color="blue" />
+                        <Text style={styles.loadingText}>Loading locations...</Text>
+                    </View>
+                ) :
                 (
                     <View style={styles.mapContainer(isNavigating)}>
                         {direction != null &&
                             <NavigationMap start={startPoint}
-                                destination={destinationPoint}
-                                pathCoordinates={direction.steps}
-                                bbox={direction.bbox}
-                                isNavigating={isNavigating}
+                                           destination={destinationPoint}
+                                           pathCoordinates={direction.steps}
+                                           bbox={direction.bbox}
+                                           isNavigating={isNavigating}
+                                           legs={direction?.legs}
+                                           displayShuttle={selectedMode === "concordia-shuttle"}
+                                           shuttleLocations={shuttleLocations}
                             />}
                     </View>
 
                 )}
 
-            {!isNavigating ?
-
-                (
-                    <NavigationFooter
-                        totalDistance={direction?.total_distance}
-                        totalDuration={direction?.total_duration}
-                        onStartNavigation={startNavigation} />
-                )
-                :
-                (
-                    <NavigationInfos
-                        totalDistance={direction?.total_distance}
-                        totalDuration={direction?.total_duration}
-                        onExit={onExitNavigation}
-                        onShowDirections={() => setShowDirections(true)}
-                    />
-                )
-            }
+            {renderNavigationInfo()}
         </View>
     );
 };
 
+
+NavigationScreen.propTypes = {
+    navigation: PropTypes.object.isRequired,
+    route: PropTypes.shape({
+        params: PropTypes.shape({
+            start: PropTypes.object,
+            destination: PropTypes.object,
+        }),
+    }).isRequired,
+};
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    },
-    mapContainer: (isNavigating) => ({
-        height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
-        width: '100%',
-    }),
-    map: {
-        flex: 1,
-        width: '100%',
-    },
-    loadingContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    closeButtonContainer: {
-        position: 'absolute',
-        fontSize: 94,
-        top: 50,     // adjust for your needs, or use SafeAreaView on iOS
-        left: 16,
-        zIndex: 999, // ensure the button stays on top of other content
-    },
+        container: {
+            flex: 1,
+            paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        },
+        mapContainer: (isNavigating) => ({
+            height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
+            width: '100%',
+        }),
+        map: {
+            flex: 1,
+            width: '100%',
+        },
+        loadingContainer: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+        },
+        closeButtonContainer: {
+            position: 'absolute',
+            fontSize: 94,
+            top: 50,     // adjust for your needs, or use SafeAreaView on iOS
+            left: 16,
+            zIndex: 999, // ensure the button stays on top of other content
+        },
 });
 
 export default NavigationScreen;
