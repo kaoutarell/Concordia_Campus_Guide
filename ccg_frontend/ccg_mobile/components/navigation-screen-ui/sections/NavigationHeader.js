@@ -39,10 +39,10 @@ const NavigationHeader = ({
 
             {/* Navigation Modes at the top */}
             <View style={styles.navModesContainer}>
-                {modes.map(({ mode, icon }) => (
+                {modes.map(({ mode, name, icon }) => (
                     <NavigationMode
-                        key={mode}
-                        mode={mode}
+                        key={name}
+                        mode={name}
                         icon={icon}
                         selectedMode={selectedMode}
                         onModeChange={handleModeChange}
