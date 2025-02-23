@@ -60,6 +60,10 @@ jobs:
             sleep 3
           done
           echo "PostGIS is ready!"
+      
+      - name: Enable PostGIS Extension
+        run: |
+          PGPASSWORD=test_password psql -h localhost -U test_user -d test_db -c "CREATE EXTENSION IF NOT EXISTS postgis;"
 
       - name: Run backend tests
         env:
