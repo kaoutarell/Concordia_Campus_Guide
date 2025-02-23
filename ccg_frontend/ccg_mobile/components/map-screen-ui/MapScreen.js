@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getBuildingByCampus, getBuildings } from '../../api/dataService';
+import {getBuildings } from '../../api/dataService';
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
@@ -20,7 +20,7 @@ import HeaderBar from './sections/HeaderBar';
 const MapScreen = () => {
   const navigation = useNavigation();
 
-  const [locations, setLocations] = useState([]); //Only gets the buildings in the selected campus
+  
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
@@ -40,7 +40,7 @@ const MapScreen = () => {
     const setData = async () => {
       try {
 
-        await fetchLocations();
+        
         await fetchAllLocations();
         console.log("Data fetched successfully.");
       } catch (error) {
@@ -51,7 +51,7 @@ const MapScreen = () => {
     if (selectedCampus) {
       setData();
     }
-  }, [selectedCampus]);
+  }, []);
 
   const onCampusSelect = (campus) => {
 
@@ -63,14 +63,7 @@ const MapScreen = () => {
     });
   };
 
-  const fetchLocations = async () => {
-    try {
-      const data = await getBuildingByCampus(selectedCampus);
-      setLocations(data);
-    } catch (error) {
-      console.error('Error fetching buildings by campus:', error.stack);
-    }
-  };
+
 
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
     try {
@@ -97,8 +90,14 @@ const MapScreen = () => {
         setDestinationLocation={setDestinationLocation}
         handleViewNavigation={handleViewNavigation}
       />
+
       {/* Map */}
-      <MapViewComponent destination={destinationLocation} locations={locations} region={getRegion()} maxBounds={getMaxBounds()}/>
+      <MapViewComponent 
+        destination={destinationLocation} 
+        locations={allLocations} 
+        region={getRegion()} 
+        maxBounds={getMaxBounds()}
+      />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
     </View>
