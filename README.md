@@ -202,9 +202,9 @@ cd ccg_frontend\ccg_mobile
 npm start
 ```
 
-### Unit Test Prerequisites
+## Unit Test Prerequisites
 
-# Backend
+## Backend
 
 Make sure you have the following tools installed for the backend:
 
@@ -212,7 +212,7 @@ Make sure you have the following tools installed for the backend:
 - **Pytest-Cov 6.0.0**: Generates test coverage reports.
 - **Pytest-Django 4.9.0**: Provides Django-specific test utilities.
 
-## Installation
+### Installation
 
 To ensure you have the correct dependencies, set up your Conda environment using the `environment.yml` file:
 
@@ -232,7 +232,7 @@ Activate the environment:
 conda activate myenv
 ```
 
-## Running Tests
+### Running Tests
 
 Once the environment is set up, you can run the tests using:
 
@@ -246,7 +246,7 @@ To check test coverage, run:
 pytest --cov=mapengine --cov-report=term-missing
 ```
 
-#### Frontend
+## Frontend
 
 Make sure you have the following tools installed for the frontend:
 
@@ -254,7 +254,7 @@ Make sure you have the following tools installed for the frontend:
 - **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.
 - **"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.
 
-## Installation
+### Installation
 
 To ensure you have the correct dependencies, get them from package.json or install them using npm:
 
@@ -269,7 +269,7 @@ or
   npm i  jest jest-expo@~52.0.3
 ```
 
-## Running Tests
+### Running Tests
 
 Once all dependencies are installed run :
 
@@ -277,15 +277,15 @@ Once all dependencies are installed run :
  npm run test
 ```
 
-### End-to-End Testing
+## End-to-End Testing
 
-## Prerequisites
+### Prerequisites
 
 - Install maestro: https://docs.maestro.dev/getting-started/installing-maestro
 - Backend is running.
 - Frontend is running on an emulator.
 
-## Maestro Studio
+### Maestro Studio
 
 To start the Maestro Studio webapp:
 
@@ -295,9 +295,9 @@ cd ccg_frontend/ccg_mobile/maestro
 maestro studio
 ```
 
-## Run Tests
+### Run Tests
 
-To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and also include in command below.
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
 
 ```bash
 cd ccg_frontend/ccg_mobile/maestro
@@ -305,7 +305,9 @@ cd ccg_frontend/ccg_mobile/maestro
  maestro test --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
 ```
 
-## Generate report:
+### Generate report:
+
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
 
 ```bash
 cd ccg_frontend/ccg_mobile/maestro
