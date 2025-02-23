@@ -63,23 +63,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingVertical: 0,
     },
-    navModesContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        borderBottomWidth: 1,
-        borderBottomColor: 'transparent',
-        padding: 5,
-    },
-
-    button: {
-        padding: 10,
-        backgroundColor: '#800020', // Burgundy
-        borderRadius: 5,
-        alignItems: 'center',
-        color: 'white',
-        fontSize: 14,
-    },
 
 });

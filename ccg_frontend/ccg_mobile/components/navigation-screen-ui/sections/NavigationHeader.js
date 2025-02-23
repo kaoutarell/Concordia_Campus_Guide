@@ -60,30 +60,7 @@ const styles = StyleSheet.create({
     height: '20%', // Ajustez la hauteur de la carte selon vos besoins
     width: '100%',
   },
-  searchContainer: {
-    // paddingHorizontal: 60,
-    width: '80%',
-    marginBottom: 10,
-    zIndex: 1,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 4,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 10,
-  },
-  icon: {
-    marginRight: 1,
-  },
-  input: {
-    width: '100%',
-    height: 40,
-    fontSize: 16,
-    paddingVertical: 0,
-  },
+
   navModesContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -92,12 +69,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'transparent',
     padding: 5,
-    // position: 'absolute',
-    // top: 100,
-    // left: 0,
-    // right: 0,
-    // zIndex: 100,
-    // paddingHorizontal: 10,
   },
   navMode: {
     alignItems: 'center',
