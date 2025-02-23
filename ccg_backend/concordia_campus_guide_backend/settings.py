@@ -76,16 +76,29 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis_db',
-        'USER': 'dev_experts',
-        'PASSWORD': config('DB_PASSWORD', default=os.getenv('DB_PASSWORD')),
-        'HOST': 'localhost',
-        'PORT': '5433',
+
+if config('IS_IN_CI', default=False, cast=bool):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': os.getenv('TEST_DB_NAME'),
+            'USER': os.getenv('TEST_DB_USER'),
+            'PASSWORD': os.getenv('TEST_DB_PASSWORD'),
+            'HOST': os.getenv('TEST_DB_HOST'),
+            'PORT': os.getenv('TEST_DB_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'gis_db',
+            'USER': 'dev_experts',
+            'PASSWORD': config('DB_PASSWORD', default=os.getenv('DB_PASSWORD')),
+            'HOST': 'localhost',
+            'PORT': '5433',
+        }
+    }
 
 
 # Password validation
