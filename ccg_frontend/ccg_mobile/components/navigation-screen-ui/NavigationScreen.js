@@ -8,8 +8,12 @@ import NavigationHeader from "./sections/NavigationHeader";
 import NavigationDirection from "./sections/NavigationDirection";
 import NavigationInfos from "./sections/NavigationInfos";
 
+import locationService from "../../services/LocationService";
 
-import { getMyCyrrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
+import { useRouteInstruction } from "../../hooks/useRouteInstruction";
+
+
+import { getMyCurrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
 
 const NavigationScreen = ({ navigation, route }) => {
 
@@ -32,14 +36,48 @@ const NavigationScreen = ({ navigation, route }) => {
         destinationAddress: ""
     });
 
+    const [userLocation, setUserLocation] = useState(null);
+
+
+    useEffect(() => {
+        if (startPoint != null && destinationPoint != null)
+            fetchDirections();
+        else
+            setDefaultStartAndDestination();
+    }, [startPoint, destinationPoint, selectedMode, isNavigating]);
+
+    useEffect(() => {
+        // Start tracking location using the service
+        locationService.startTrackingLocation().catch((err) => {
+            setErrorMsg(err.message);
+        });
+
+        // Subscribe to location updates
+        const handleLocationUpdate = (location) => {
+            setUserLocation([location.coords.longitude, location.coords.latitude]);
+        };
+
+        locationService.subscribe(handleLocationUpdate);
+
+        // Clean up on unmount: unsubscribe and stop tracking
+        return () => {
+            locationService.unsubscribe(handleLocationUpdate);
+            locationService.stopTrackingLocation();
+        };
+    }, []);
+
+
+    const { instruction, distance } = useRouteInstruction(direction, userLocation);
+
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
     };
 
+    // needs to check destination point but we need to implement the search bar first
     const startNavigation = async () => {
         // when navigating, set the start point to the current location
-        const currentLocation = await getMyCyrrentLocation();
+        const currentLocation = await getMyCurrentLocation();
         setStartPoint(currentLocation);
         setIsNavigating(true);
     }
@@ -58,6 +96,8 @@ const NavigationScreen = ({ navigation, route }) => {
                 [startPoint?.location.longitude, startPoint?.location.latitude],
                 [destinationPoint?.location.longitude, destinationPoint?.location.latitude]
             );
+
+
 
             setDirection(data);
             setSearchText({
@@ -79,7 +119,7 @@ const NavigationScreen = ({ navigation, route }) => {
             let currentLocation;
             let defaultDestination;
             if (startPoint == null) {
-                currentLocation = await getMyCyrrentLocation();
+                currentLocation = await getMyCurrentLocation();
                 setStartPoint(currentLocation);
                 setSearchText(prev => ({
                     ...prev,
@@ -118,12 +158,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
     };
 
-    useEffect(() => {
-        if (startPoint != null && destinationPoint != null)
-            fetchDirections();
-        else
-            setDefaultStartAndDestination();
-    }, [startPoint, destinationPoint, selectedMode, isNavigating]);
+
 
     return (
         <View style={styles.container}>
@@ -139,8 +174,8 @@ const NavigationScreen = ({ navigation, route }) => {
                 />) :
                 (
                     <NavigationDirection
-                        distance={2}
-                        instruction={"Keep left onto Rue Sherbrooke Ouest"}
+                        distance={distance}
+                        instruction={instruction}
                     />
                 )}
             {/* Map Container (Center) */}
@@ -153,7 +188,13 @@ const NavigationScreen = ({ navigation, route }) => {
             ) :
                 (
                     <View style={styles.mapContainer(isNavigating)}>
-                        {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
+                        {direction != null &&
+                            <NavigationMap start={startPoint}
+                                destination={destinationPoint}
+                                pathCoordinates={direction.steps}
+                                bbox={direction.bbox}
+                                isNavigating={isNavigating}
+                            />}
                     </View>
                 )}
 

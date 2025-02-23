@@ -1,6 +1,6 @@
 import locationService from "../services/LocationService";
 
-export const getMyCyrrentLocation = async () => {
+export const getMyCurrentLocation = async () => {
 
     locationService.startTrackingLocation();
     const currentLocation = locationService.getCurrentLocation();

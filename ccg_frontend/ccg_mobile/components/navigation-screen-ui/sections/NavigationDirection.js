@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const NavigationDirection = ({ distance, instruction }) => {
-  const getDirectionIcon = (instruction) => { 
+
+  const getDirectionIcon = (instruction) => {
+
     if (instruction.toLowerCase().includes("keep left")) return "↖"; // Diagonal left arrow
     if (instruction.toLowerCase().includes("keep right")) return "↗"; // Diagonal right arrow
     if (instruction.toLowerCase().includes("left")) return "←"; // Thicker left arrow
     if (instruction.toLowerCase().includes("right")) return "→"; // Thicker right arrow
     if (instruction.toLowerCase().includes("straight")) return "↑"; // Thicker straight arrow
-   
+
     return "↑"; // Default to straight if no match
   };
 
@@ -18,7 +20,7 @@ const NavigationDirection = ({ distance, instruction }) => {
     <View style={styles.container}>
       <Text style={styles.icon}>{arrowIcon}</Text>
       <Text style={styles.text}>
-        In {distance} meters, {instruction}!
+        In {distance.toFixed(1)} meters, {instruction}!
       </Text>
     </View>
   );
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap', // Allow text to wrap when needed
     width: '80%', // Control the width for wrapping (you can adjust the percentage)
   }
-  
+
 });
 
 export default NavigationDirection;
