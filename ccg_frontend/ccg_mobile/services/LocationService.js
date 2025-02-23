@@ -54,4 +54,5 @@ class LocationService {
 
 // Export as a singleton
 const locationService = new LocationService();
+
 export default locationService;
