@@ -145,17 +145,17 @@ const NavigationScreen = ({ navigation, route }) => {
 
     };
 
-    const onStartSearching = (text) => {
+    const onStartSearching = (text, s) => {
 
-        if (text.startAddress !== undefined) {
+        if (s === "S") {
             setSearchText((prev) => ({
                 ...prev,
-                startAddress: text.startAddress,
+                startAddress: text,
             }));
-        } else if (text.destinationAddress !== undefined) {
+        } else if (s === "D") {
             setSearchText((prev) => ({
                 ...prev,
-                destinationAddress: text.destinationAddress,
+                destinationAddress: text,
             }));
         }
 
@@ -189,6 +189,7 @@ const NavigationScreen = ({ navigation, route }) => {
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
                     onStartSearching={onStartSearching}
+
                 />) :
                 (
                     <NavigationDirection

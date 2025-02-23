@@ -12,7 +12,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Start Address"
                     value={startAddress}
-                    onChangeText={(text) => onStartSearching({ startAddress: text })}
+                    onChangeText={(text) => onStartSearching(text, "S")}
                 />
             </View>
 
@@ -22,7 +22,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Destination Address"
                     value={destinationAddress}
-                    onChangeText={(text) => onStartSearching({ destinationAddress: text })}
+                    onChangeText={(text) => onStartSearching(text, "D")}
                 />
             </View>
         </View>
