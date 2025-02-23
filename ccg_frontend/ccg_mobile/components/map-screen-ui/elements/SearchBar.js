@@ -102,6 +102,7 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
                     ? locationNames.filter(name => name.toLowerCase().includes(text.toLowerCase()))
                     : []
             );
+
         }
     };
 
@@ -135,7 +136,7 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
                         keyExtractor={(item) => item}
                         keyboardShouldPersistTaps="always"
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleSelect(item, "destination")} style={styles.suggestion}>
+                            <TouchableOpacity onPress={() => handleSelect(item)} style={styles.suggestion}>
                                 <Text>{item}</Text>
                             </TouchableOpacity>
                         )}
