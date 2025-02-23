@@ -79,12 +79,14 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 
 if config('IS_IN_CI', default=False, cast=bool):
     DATABASES = {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': os.getenv('TEST_DB_NAME'),
-        'USER': os.getenv('TEST_DB_USER'),
-        'PASSWORD': os.getenv('TEST_DB_PASSWORD'),
-        'HOST': os.getenv('TEST_DB_HOST'),
-        'PORT': os.getenv('TEST_DB_PORT'),
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': os.getenv('TEST_DB_NAME'),
+            'USER': os.getenv('TEST_DB_USER'),
+            'PASSWORD': os.getenv('TEST_DB_PASSWORD'),
+            'HOST': os.getenv('TEST_DB_HOST'),
+            'PORT': os.getenv('TEST_DB_PORT'),
+        }
     }
 else:
     DATABASES = {
