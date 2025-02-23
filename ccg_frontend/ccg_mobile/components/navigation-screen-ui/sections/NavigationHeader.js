@@ -29,9 +29,8 @@ const NavigationHeader = ({
 
         <NavigationSearch
           startAddress={startAddress}
-          onStartSearching={onStartSearching}
           destinationAddress={destinationAddress}
-          onBackPress={onBackPress}
+          onStartSearching={onStartNavigation}
           style={styles.searchContainer}
         />
       </View>
