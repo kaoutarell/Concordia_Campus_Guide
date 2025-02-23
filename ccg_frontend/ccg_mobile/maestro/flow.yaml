@@ -1,10 +1,7 @@
 appId: host.exp.Exponent
 ---
-#- launchApp:
-#   appId: host.exp.Exponent
-#  clearState: true
-# stopApp: true
-#permissions: { all: allow }
+- launchApp:
+  clearState: "true"
 #Startup Page
 - extendedWaitUntil:
     visible: "Welcome to"
@@ -16,13 +13,13 @@ appId: host.exp.Exponent
     when:
       visible: "While using the app"
       platform: android
-    file: ./location_permission_android.flow.yaml
+    file: ./subflows/location_permission_android.flow.yaml
 
 #Sidebar
-- runFlow: ./sidebar.flow.yaml
+- runFlow: ./subflows/sidebar.flow.yaml
 
 # Run Feature 1 - Explore the Campus Map
-- runFlow: ./feature_1.flow.yaml
+- runFlow: ./subflows/feature_1.flow.yaml
 
 # Feature 2 - Outdoor Directions
-- runFlow: ./feature_2.flow.yaml
+- runFlow: ./subflows/feature_2.flow.yaml
