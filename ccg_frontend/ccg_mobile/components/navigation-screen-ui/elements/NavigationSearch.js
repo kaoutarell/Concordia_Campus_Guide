@@ -3,18 +3,8 @@ import { View, TextInput, StyleSheet, Dimensions } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 
-const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }) => {
+const NavigationSearch = ({ startAddress, destinationAddress }) => {
 
-
-    const handleOnSearch = (text, s) => {
-
-        if (s === "S") {
-            onStartSearching(text, "S");
-        } else if (s === "D") {
-            onStartSearching(text, "D");
-        }
-
-    };
 
 
     return (
@@ -25,7 +15,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Start Address"
                     value={startAddress}
-                    onChangeText={(text) => handleOnSearch(text, "S")}
+
                 />
             </View>
 
@@ -35,7 +25,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Destination Address"
                     value={destinationAddress}
-                    onChangeText={(text) => handleOnSearch(text, "D")}
+
                 />
             </View>
         </View>

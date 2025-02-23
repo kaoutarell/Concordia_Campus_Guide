@@ -12,7 +12,6 @@ const NavigationHeader = ({
   onSelectedMode,
   onBackPress,
   selectedMode,
-  onStartSearching,
 }) => {
 
 
@@ -31,7 +30,6 @@ const NavigationHeader = ({
         <NavigationSearch
           startAddress={startAddress}
           destinationAddress={destinationAddress}
-          onStartSearching={onStartSearching}
         />
       </View>
 

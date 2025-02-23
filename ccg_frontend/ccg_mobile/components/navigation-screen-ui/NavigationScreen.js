@@ -145,22 +145,6 @@ const NavigationScreen = ({ navigation, route }) => {
 
     };
 
-    const onStartSearching = (text, s) => {
-
-        if (s === "S") {
-            setSearchText((prev) => ({
-                ...prev,
-                startAddress: text,
-            }));
-        } else if (s === "D") {
-            setSearchText((prev) => ({
-                ...prev,
-                destinationAddress: text,
-            }));
-        }
-
-    };
-
 
 
     return (
@@ -188,7 +172,6 @@ const NavigationScreen = ({ navigation, route }) => {
                     onSelectedMode={onSelectedMode}
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
-                    onStartSearching={onStartSearching}
 
                 />) :
                 (
