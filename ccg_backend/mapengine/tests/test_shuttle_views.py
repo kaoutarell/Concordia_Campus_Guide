@@ -54,7 +54,6 @@ class ShuttleViewsTestCase(TestCase):
     def test_get_upcoming_sheduled_shuttle_sgw_at_end_of_day(self):
         # Change the mock date to February 9, 2025 (Sunday)
         self.mock_datetime.now.return_value = datetime(2025, 2, 10, 17, 45, tzinfo=self.tz)
-        
         response = self.client.get(reverse('upcoming-shuttle'), {'long': -73.579, 'lat': 45.4973})
         self.assertEqual(response.status_code, 200)
         # print(response.json())
@@ -64,9 +63,7 @@ class ShuttleViewsTestCase(TestCase):
         # Change the mock date to February 9, 2025 (Sunday)
         self.mock_datetime.now.return_value = datetime(2025, 2, 9, 14, 0, 0, tzinfo=self.tz)
         self.mock_datetime.today.return_value = datetime(2025, 2, 9)
-        
         response = self.client.get(reverse('upcoming-shuttle'), {'long': -73.579, 'lat': 45.4973})
         self.assertEqual(response.status_code, 200)
         print(response.json())
         self.assertEqual(len(response.json()['upcoming_shuttles']), 0)
-    

@@ -81,8 +81,8 @@ def check_directions(api_client, profile):
 @pytest.mark.django_db
 def test_concordia_shuttle_directions(api_client):
     # Setup mock data
-    Building.objects.create(name="Hall Building", location=Point(-73.579,45.4973), campus="SGW")
-    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496,45.45906620855598), campus="LOY")
+    Building.objects.create(name="Hall Building", location=Point(-73.579, 45.4973), campus="SGW")
+    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496, 45.45906620855598), campus="LOY")
 
     ShuttleStop.objects.create(name="SGW", latitude=45.497129019513835, longitude=-73.57852460612132)
     ShuttleStop.objects.create(name="LOY", latitude=45.45841608855384, longitude=-73.63828201677715)
@@ -140,8 +140,8 @@ def test_concordia_shuttle_directions(api_client):
 @pytest.mark.django_db
 def test_concordia_shuttle_same_campus(api_client):
     # Mock data
-    Building.objects.create(name="Hall Building", location=Point(-73.579,45.4973), campus="SGW")
-    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496,45.45906620855598), campus="LOY")
+    Building.objects.create(name="Hall Building", location=Point(-73.579, 45.4973), campus="SGW")
+    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496, 45.45906620855598), campus="LOY")
 
     # Test the API
     url = reverse("concordia-shuttle")
