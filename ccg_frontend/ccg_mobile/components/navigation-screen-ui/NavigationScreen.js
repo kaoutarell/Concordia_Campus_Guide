@@ -1,178 +1,308 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, Platform, StatusBar } from "react-native";
+import React, {useState, useEffect, useRef} from "react";
+import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
 import PropTypes from "prop-types";
+import NavigationFooter from './sections/NavigationFooter';
+import NavigationMap from './sections/NavigationMap';
+import { getDirections } from '../../api/dataService';
+
 import NavigationHeader from "./sections/NavigationHeader";
-import NavigationMap from "./sections/NavigationMap";
-import NavigationInfo from "./sections/NavigationInfo";
+import NavigationDirection from "./sections/NavigationDirection";
 import BusNavigationInfo from "./sections/BusNavigationInfo";
-import { getDirections, getDirectionProfiles, getShuttleStops } from "../../api/dataService";
+import NavigationInfos from "./sections/NavigationInfos";
+import DirectionsList from "./sections/DirectionList";
 import busLocationService from "../../services/BusLocationService";
 
-let cachedShuttleStops = null;
+import locationService from "../../services/LocationService";
+
+import { useRouteInstruction } from "../../hooks/useRouteInstruction";
+
+
+import { getMyCurrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
 
 const NavigationScreen = ({ navigation, route }) => {
-  const { start = {}, destination = {} } = route.params || {};
 
-  const [directionProfiles, setDirectionProfiles] = useState({});
-  const [shuttleStops, setShuttleStops] = useState([]);
-  const [direction, setDirection] = useState(null);
-  const [shuttleLocations, setShuttleLocations] = useState([]);
-  const [selectedMode, setSelectedMode] = useState("foot-walking");
+    const params = route.params || {};
 
-  const intervalRef = useRef(null);
+    const [startPoint, setStartPoint] = useState(params.start || null);
 
-  const handleModeSelect = (mode) => {
-    setSelectedMode(mode);
-  };
+    const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
-  const fetchDirections = async () => {
-    try {
-      const { profiles } = await getDirectionProfiles();
-      const directions = {};
+    const [direction, setDirection] = useState(null);
+    
+    const [selectedMode, setSelectedMode] = useState("foot-walking");
 
-      // Fetch "foot-walking" direction synchronously if available.
-      if (profiles.includes("foot-walking")) {
-        directions["foot-walking"] = await getDirections(
-          "foot-walking",
-          [start.location.longitude, start.location.latitude],
-          [destination.location.longitude, destination.location.latitude]
-        );
-        setDirection(directions["foot-walking"]);
-      }
+    const [loading, setLoading] = useState(true);
 
-      // Fetch other profiles in parallel.
-      const fetchPromises = profiles
-        .filter((profile) => profile !== "foot-walking")
-        .map(async (profile) => {
-          directions[profile] = await getDirections(
-            profile,
-            [start.location.longitude, start.location.latitude],
-            [destination.location.longitude, destination.location.latitude]
-          );
+    const [isNavigating, setIsNavigating] = useState(false);
+
+    const [searchText, setSearchText] = useState({
+        startAddress: "",
+        destinationAddress: ""
+    });
+
+    const [showDirections, setShowDirections] = useState(false);
+    const [shuttleLocations, setShuttleLocations] = useState([]);
+
+    const [userLocation, setUserLocation] = useState(null);
+    const intervalRef = useRef(null);
+
+
+    useEffect(() => {
+        if (startPoint != null && destinationPoint != null)
+            fetchDirections();
+        else
+            setDefaultStartAndDestination();
+    }, [startPoint, destinationPoint, selectedMode, isNavigating]);
+
+    useEffect(() => {
+        // Start tracking location using the service
+        locationService.startTrackingLocation().catch((err) => {
+            setErrorMsg(err.message);
         });
 
-      await Promise.all(fetchPromises);
-      setDirectionProfiles(directions);
-    } catch (error) {
-      console.error("Error fetching direction data:", error);
-      setDirection(null);
-    }
-  };
+        // Subscribe to location updates
+        const handleLocationUpdate = (location) => {
+            setUserLocation([location.coords.longitude, location.coords.latitude]);
+        };
 
-  // Fetch shuttle stops once throughout the application lifetime.
-  useEffect(() => {
-    const fetchStops = async () => {
-      if (!cachedShuttleStops) {
+        locationService.subscribe(handleLocationUpdate);
+
+        // Clean up on unmount: unsubscribe and stop tracking
+        return () => {
+            locationService.unsubscribe(handleLocationUpdate);
+            locationService.stopTrackingLocation();
+        };
+    }, []);
+
+
+    const { instruction, distance } = useRouteInstruction(direction, userLocation);
+
+
+    const handleModeSelect = (mode) => {
+        setSelectedMode(mode);
+    };
+
+    // needs to check destination point but we need to implement the search bar first
+    const startNavigation = async () => {
+        // when navigating, set the start point to the current location
+        const currentLocation = await getMyCurrentLocation();
+        setStartPoint(currentLocation);
+        setIsNavigating(true);
+    }
+
+
+    const onExitNavigation = () => {
+        setIsNavigating(false);
+    }
+
+    const fetchDirections = async () => {
+
+        setLoading(true);
         try {
-          const shuttle = await getShuttleStops();
-          cachedShuttleStops = shuttle?.stops || [];
+            const data = await getDirections(
+                selectedMode,
+                [startPoint?.location.longitude, startPoint?.location.latitude],
+                [destinationPoint?.location.longitude, destinationPoint?.location.latitude]
+            );
+
+
+
+            setDirection(data);
+            setSearchText({
+                startAddress: startPoint?.civic_address,
+                destinationAddress: destinationPoint?.civic_address
+            });
+            setLoading(false);
+
         } catch (error) {
-          console.error("Error fetching shuttle stops:", error);
-          cachedShuttleStops = [];
+            setDirection([]);
+            console.error("Error fetching: ", error);
         }
-      }
-      setShuttleStops(cachedShuttleStops);
+
     };
 
-    fetchStops();
-  }, []);
+    useEffect(() => {
+        if (selectedMode === "concordia-shuttle") {
+            busLocationService.startTracking(2000);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+            intervalRef.current = setInterval(() => {
+                setShuttleLocations(busLocationService.getBusLocations());
+            }, 2000);
+        }
+        if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
 
-  // Fetch directions when start and destination are available.
-  useEffect(() => {
-    if (start.location && destination.location) {
-      fetchDirections();
-    }
-  }, [start, destination]);
+        fetchDirections();
 
-  useEffect(() => {
-    if (selectedMode === "concordia-shuttle") {
-      busLocationService.startTracking(2000);
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-      intervalRef.current = setInterval(() => {
-        setShuttleLocations(busLocationService.getBusLocations());
-      }, 2000);
-    }
-    if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
+        return () => {
+            if (selectedMode === "concordia-shuttle") {
+                busLocationService.stopTracking();
+            }
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+        };
+    }, [selectedMode]);
 
-    setDirection(directionProfiles[selectedMode] || null);
+    const setDefaultStartAndDestination = async () => {
+        try {
 
-    return () => {
-      if (selectedMode === "concordia-shuttle") {
-        busLocationService.stopTracking();
-      }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
+            let currentLocation;
+            let defaultDestination;
+            if (startPoint == null) {
+                currentLocation = await getMyCurrentLocation();
+                setStartPoint(currentLocation);
+                setSearchText(prev => ({
+                    ...prev,
+                    startAddress: currentLocation.civic_address
+                }));
+            }
+            if (destinationPoint == null) {
+                defaultDestination = getDefaultDestination();
+                setDestinationPoint(defaultDestination);
+                setSearchText(prev => ({
+                    ...prev,
+                    destinationAddress: defaultDestination.civic_address
+                }));
+            }
+
+
+        } catch (error) {
+            console.error("Error setting default location: ", error);
+        }
+
     };
-  }, [selectedMode, directionProfiles]);
 
-  return (
-    <View style={styles.container}>
-      <NavigationHeader
-        startAddress={start.civic_address}
-        destinationAddress={destination.civic_address}
-        onSelectedMode={handleModeSelect}
-        onBackPress={() => navigation.goBack()}
-        selectedMode={selectedMode}
-      />
-
-      <View style={styles.mapContainer}>
-        {direction && (
-          <NavigationMap
-            start={start}
-            destination={destination}
-            pathCoordinates={direction.steps}
-            bbox={direction.bbox}
-            legs={direction?.legs}
-            displayShuttle={selectedMode === "concordia-shuttle"}
-            shuttleLocations={shuttleLocations}
-            shuttleStops={shuttleStops}
-          />
-        )}
-      </View>
-
-      {direction &&
-        (selectedMode === "concordia-shuttle" ? (
-          <BusNavigationInfo
-            totalDistance={direction.total_distance}
-            totalDuration={direction.total_duration}
-          />
+    const renderNavigationInfo = () => {
+        return direction && selectedMode === "concordia-shuttle" ? (
+            <BusNavigationInfo
+                totalDistance={direction.total_distance}
+                totalDuration={direction.total_duration}
+            />
         ) : (
-          <NavigationInfo
-            totalDistance={direction.total_distance}
-            totalDuration={direction.total_duration}
-            onStartNavigation={() => {}}
-          />
-        ))}
-    </View>
-  );
+            <NavigationInfos
+                totalDistance={direction?.total_distance}
+                totalDuration={direction?.total_duration}
+                onExit={onExitNavigation}
+                onShowDirections={() => setShowDirections(true)}
+            />
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+
+            <Modal
+                visible={showDirections}
+                animationType="slide"
+                onRequestClose={() => setShowDirections(false)}
+            >
+                <View style={{ flex: 1 }}>
+                    {/* Absolutely positioned button in the top-left corner */}
+                    <View style={styles.closeButtonContainer}>
+                        <Button title="←" onPress={() => setShowDirections(false)} />
+                    </View>
+
+                    <DirectionsList steps={direction?.steps} />
+                </View>
+            </Modal>
+
+            {!isNavigating ?
+                (<NavigationHeader
+                    startAddress={searchText.startAddress}
+                    destinationAddress={searchText.destinationAddress}
+                    onSelectedMode={onSelectedMode}
+                    onBackPress={() => navigation.goBack()}
+                    selectedMode={handleModeSelect}
+
+                />) :
+                (
+                    <NavigationDirection
+                        distance={distance}
+                        instruction={instruction}
+                    />
+                )}
+            {/* Map Container (Center) */}
+
+            {loading ? (
+                    <View style={styles.loadingContainer}>
+                        <ActivityIndicator size="large" color="blue" />
+                        <Text style={styles.loadingText}>Loading locations...</Text>
+                    </View>
+                ) :
+                (
+                    <View style={styles.mapContainer(isNavigating)}>
+                        {direction != null &&
+                            <NavigationMap start={startPoint}
+                                           destination={destinationPoint}
+                                           pathCoordinates={direction.steps}
+                                           bbox={direction.bbox}
+                                           isNavigating={isNavigating}
+                                           legs={direction?.legs}
+                                           displayShuttle={selectedMode === "concordia-shuttle"}
+                                           shuttleLocations={shuttleLocations}
+                            />}
+                    </View>
+
+                )}
+
+            {!isNavigating ?
+                (
+                    <NavigationFooter
+                        totalDistance={direction?.total_distance}
+                        totalDuration={direction?.total_duration}
+                        onStartNavigation={startNavigation} />
+                )
+                :
+                (
+                    renderNavigationInfo()
+                )
+            }
+        </View>
+    );
 };
 
+
 NavigationScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  route: PropTypes.shape({
-    params: PropTypes.shape({
-      start: PropTypes.object,
-      destination: PropTypes.object,
-    }),
-  }).isRequired,
+    navigation: PropTypes.object.isRequired,
+    route: PropTypes.shape({
+        params: PropTypes.shape({
+            start: PropTypes.object,
+            destination: PropTypes.object,
+        }),
+    }).isRequired,
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  mapContainer: {
-    height: "60%",
-    width: "100%",
-  },
+        container: {
+            flex: 1,
+            paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        },
+        mapContainer: (isNavigating) => ({
+            height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
+            width: '100%',
+        }),
+        map: {
+            flex: 1,
+            width: '100%',
+        },
+        loadingContainer: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+        },
+        closeButtonContainer: {
+            position: 'absolute',
+            fontSize: 94,
+            top: 50,     // adjust for your needs, or use SafeAreaView on iOS
+            left: 16,
+            zIndex: 999, // ensure the button stays on top of other content
+        },
 });
 
 export default NavigationScreen;

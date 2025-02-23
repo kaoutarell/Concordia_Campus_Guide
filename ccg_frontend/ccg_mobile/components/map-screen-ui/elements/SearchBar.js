@@ -17,7 +17,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 const { width } = Dimensions.get("window");
 
-const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestinationLocation, handleViewNavigation}) => {
+const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestinationLocation, handleViewNavigation }) => {
+
     const [isTyping, setIsTyping] = useState(false);
     const startInputOpacity = useRef(new Animated.Value(0)).current;
     const startInputTranslateY = useRef(new Animated.Value(10)).current;
@@ -118,83 +119,83 @@ const SearchBar = ({ locations, setIsSearching, setStartLocation, setDestination
     const handleSetLocations = () => {
         // setDestinationLocation(locations.find(location => location.name === destination))
         // setStartLocation(locations.find(location => location.name === startPoint))
-        handleViewNavigation(locations.find(location => location.name === startPoint),locations.find(location => location.name === destination));
+        handleViewNavigation(locations.find(location => location.name === startPoint), locations.find(location => location.name === destination));
     };
 
     return (
         <>
-        <View style={styles.container}>
-            {isTyping && (
-                <Animated.View style={[styles.searchContainer, {
-                    opacity: startInputOpacity,
-                    transform: [{ translateY: startInputTranslateY }]
-                }]}>
-                    <MaterialCommunityIcons name="target" size={20} color="#8B1D3B" style={styles.icon} />
+            <View style={styles.container}>
+                {isTyping && (
+                    <Animated.View style={[styles.searchContainer, {
+                        opacity: startInputOpacity,
+                        transform: [{ translateY: startInputTranslateY }]
+                    }]}>
+                        <MaterialCommunityIcons name="target" size={20} color="#8B1D3B" style={styles.icon} />
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="Starting Point"
+                            placeholderTextColor="#555"
+                            value={startPoint}
+                            onChangeText={(text) => handleSearch(text, "start")}
+                            onFocus={() => setFocusedInput("start")}
+                        />
+                    </Animated.View>
+                )}
+
+                {focusedInput === "start" && filteredLocations.length > 0 && (
+                    <View style={styles.dropdown}>
+                        <FlatList
+                            data={filteredLocations}
+                            keyExtractor={(item) => item}
+                            keyboardShouldPersistTaps="always"
+                            renderItem={({ item }) => (
+                                <TouchableOpacity onPress={() => handleSelect(item, "start")} style={styles.suggestion}>
+                                    <Text>{item}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                )}
+
+                <View style={styles.searchContainer}>
+                    <FontAwesome name="map-marker" size={20} color="#8B1D3B" style={styles.icon} />
                     <TextInput
                         style={styles.searchInput}
-                        placeholder="Starting Point"
+                        placeholder="Where to?"
                         placeholderTextColor="#555"
-                        value={startPoint}
-                        onChangeText={(text) => handleSearch(text, "start")}
-                        onFocus={() => setFocusedInput("start")}
+                        value={destination}
+                        onChangeText={(text) => handleSearch(text, "destination")}
+                        onFocus={() => setFocusedInput("destination")}
                     />
+                </View>
+
+                {focusedInput === "destination" && filteredLocations.length > 0 && (
+                    <View style={styles.dropdown}>
+                        <FlatList
+                            data={filteredLocations}
+                            keyExtractor={(item) => item}
+                            keyboardShouldPersistTaps="always"
+                            renderItem={({ item }) => (
+                                <TouchableOpacity onPress={() => handleSelect(item, "destination")} style={styles.suggestion}>
+                                    <Text>{item}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                )}
+            </View>
+            {isTyping && (
+                <Animated.View style={[{
+                    opacity: buttonOpacity,
+                    transform: [{ translateY: buttonTranslateY }]
+                }]}>
+                    <TouchableOpacity style={styles.button} onPress={handleSetLocations}>
+                        <Text style={styles.buttonText}>Take me there</Text>
+                        <AntDesign style={styles.goIcon} name="arrowright" size={24} color="white" />
+                    </TouchableOpacity>
                 </Animated.View>
             )}
-
-            {focusedInput === "start" && filteredLocations.length > 0 && (
-                <View style={styles.dropdown}>
-                    <FlatList
-                        data={filteredLocations}
-                        keyExtractor={(item) => item}
-                        keyboardShouldPersistTaps="always"
-                        renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleSelect(item, "start")} style={styles.suggestion}>
-                                <Text>{item}</Text>
-                            </TouchableOpacity>
-                        )}
-                    />
-                </View>
-            )}
-
-            <View style={styles.searchContainer}>
-                <FontAwesome name="map-marker" size={20} color="#8B1D3B" style={styles.icon} />
-                <TextInput
-                    style={styles.searchInput}
-                    placeholder="Where to?"
-                    placeholderTextColor="#555"
-                    value={destination}
-                    onChangeText={(text) => handleSearch(text, "destination")}
-                    onFocus={() => setFocusedInput("destination")}
-                />
-            </View>
-
-            {focusedInput === "destination" && filteredLocations.length > 0 && (
-                <View style={styles.dropdown}>
-                    <FlatList
-                        data={filteredLocations}
-                        keyExtractor={(item) => item}
-                        keyboardShouldPersistTaps="always"
-                        renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleSelect(item, "destination")} style={styles.suggestion}>
-                                <Text>{item}</Text>
-                            </TouchableOpacity>
-                        )}
-                    />
-                </View>
-            )}
-        </View>
-    {isTyping && (
-        <Animated.View style={[{
-            opacity: buttonOpacity,
-            transform: [{ translateY: buttonTranslateY }]
-        }]}>
-            <TouchableOpacity style={styles.button} onPress={handleSetLocations}>
-                <Text style={styles.buttonText}>Take me there</Text>
-                <AntDesign style={styles.goIcon} name="arrowright" size={24} color="white" />
-            </TouchableOpacity>
-        </Animated.View>
-    )}
-    </>
+        </>
     );
 };
 
