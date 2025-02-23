@@ -75,18 +75,27 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const setDefaultStartAndDestination = async () => {
         try {
-            if (startPoint == null || destinationPoint == null) {
 
-                const currentLocation = await getMyCyrrentLocation();
+            let currentLocation;
+            let defaultDestination;
+            if (startPoint == null) {
+                currentLocation = await getMyCyrrentLocation();
                 setStartPoint(currentLocation);
-                const defaultDestination = getDefaultDestination();
-                setDestinationPoint(defaultDestination);
-
-                setSearchText({
-                    startAddress: currentLocation.civic_address,
-                    destinationAddress: defaultDestination.civic_address
-                });
+                setSearchText(prev => ({
+                    ...prev,
+                    startAddress: currentLocation.civic_address
+                }));
             }
+            if (destinationPoint == null) {
+                defaultDestination = getDefaultDestination();
+                setDestinationPoint(defaultDestination);
+                setSearchText(prev => ({
+                    ...prev,
+                    destinationAddress: defaultDestination.civic_address
+                }));
+            }
+
+
         } catch (error) {
             console.error("Error setting default location: ", error);
         }

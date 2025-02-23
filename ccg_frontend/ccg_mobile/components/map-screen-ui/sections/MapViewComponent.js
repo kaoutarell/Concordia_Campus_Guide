@@ -15,10 +15,14 @@ import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from 'prop-types';
+
+import { useNavigation } from "@react-navigation/native";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({ locations, region, maxBounds }) => {
+
+  const navigation = useNavigation();
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -59,7 +63,12 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
   };
 
   const onGoToLocation = (location) => {
-    console.log("Let's go to :", location.name);
+
+    navigation.navigate("Navigation", {
+      start: null,
+      destination: location,
+    });
+
   };
 
   useEffect(() => {
