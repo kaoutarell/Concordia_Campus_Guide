@@ -5,6 +5,18 @@ import { Ionicons } from '@expo/vector-icons';
 
 const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }) => {
 
+
+    const handleOnSearch = (text, s) => {
+
+        if (s === "S") {
+            onStartSearching(text, "S");
+        } else if (s === "D") {
+            onStartSearching(text, "D");
+        }
+
+    };
+
+
     return (
         <View style={styles.searchContainer}>
             <View style={styles.inputContainer}>
@@ -13,7 +25,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Start Address"
                     value={startAddress}
-                    onChangeText={(text) => onStartSearching(text, "S")}
+                    onChangeText={(text) => handleOnSearch(text, "S")}
                 />
             </View>
 
@@ -23,7 +35,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onStartSearching }
                     style={styles.input}
                     placeholder="Destination Address"
                     value={destinationAddress}
-                    onChangeText={(text) => onStartSearching(text, "D")}
+                    onChangeText={(text) => handleOnSearch(text, "D")}
                 />
             </View>
         </View>
