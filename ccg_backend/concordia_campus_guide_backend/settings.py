@@ -78,7 +78,6 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 #     }
 # }
 
-# TODO: override DATABASES if DATABASE_URL is set. This will only be used in CI pipeline
 if config('IS_IN_CI', default=False, cast=bool):
     DATABASES = {
         'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))

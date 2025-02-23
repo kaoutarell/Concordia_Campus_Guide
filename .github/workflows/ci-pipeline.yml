@@ -61,14 +61,6 @@ jobs:
           done
           echo "PostGIS is ready!"
 
-      - name: Run migrations
-        env:
-          DATABASE_URL: "postgres://test_user:test_password@localhost:5432/test_db"
-        run: |
-          cd ccg_backend
-          python manage.py makemigrations
-          python manage.py migrate
-
       - name: Run backend tests
         env:
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
@@ -81,6 +73,8 @@ jobs:
           ~/miniconda/bin/conda init bash
           source ~/miniconda/etc/profile.d/conda.sh
           ~/miniconda/bin/conda activate myenv
+          python manage.py makemigrations
+          python manage.py migrate
           pytest
 
   frontend-check:
