@@ -106,6 +106,8 @@ def multi_modal_shuttle_directions(request):
         .first()
     )
 
+    print(origin_building, destination_building)
+
     if not origin_building or not destination_building:
         return JsonResponse(
             {"error": "No nearby building found for origin or destination."},

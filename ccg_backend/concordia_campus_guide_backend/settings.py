@@ -4,6 +4,7 @@ from pathlib import Path
 from decouple import config
 import os
 import sys
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,16 +77,23 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis_db',
-        'USER': 'dev_experts',
-        'PASSWORD': config('DB_PASSWORD', default=os.getenv('DB_PASSWORD')),
-        'HOST': 'localhost',
-        'PORT': '5433',
+
+# TODO: override DATABASES if DATABASE_URL is set. This will only be used in CI pipeline
+if config('IS_IN_CI', default=False, cast=bool):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'gis_db',
+            'USER': 'dev_experts',
+            'PASSWORD': config('DB_PASSWORD', default=os.getenv('DB_PASSWORD')),
+            'HOST': 'localhost',
+            'PORT': '5433',
+        }
+    }
 
 
 # Password validation

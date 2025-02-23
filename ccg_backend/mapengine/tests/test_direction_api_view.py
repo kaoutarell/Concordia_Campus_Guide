@@ -1,13 +1,21 @@
+from mapengine.models.shuttle import ShuttleStop
+from mapengine.models.building import Building
 import pytest
 from rest_framework.test import APIClient
 from django.urls import reverse
+from django.contrib.gis.geos import Point
 
-MOCK_CORRECT_START = "-73.57814443759847,45.49475992981652"
-MOCK_CORRECT_END = "-73.63745344267659,45.459191116866684"
-MOCK_SAME_CAMPUS_START = "-73.63732331971879,45.45696416140123"
-MOCK_SAME_CAMPUS_END = "-73.6419572077827,45.45921245764123"
-SAME_CAMPUS_PARAMS = f"?start={MOCK_SAME_CAMPUS_START}&end={MOCK_SAME_CAMPUS_END}"
-CORRECT_PARAMS = f"?start={MOCK_CORRECT_START}&end={MOCK_CORRECT_END}"
+# Hall Building
+MOCK_H_BUILDING = "-73.579,45.4973"
+# Vanier Library
+MOCK_VL_BUILDING = "-73.6384110982496,45.45906620855598"
+# EV Building
+MOCK_EV_BUILDING = "-73.5783,45.4955"
+
+# Hall Building to EV Building
+SAME_CAMPUS_PARAMS = f"?start={MOCK_H_BUILDING}&end={MOCK_EV_BUILDING}"
+# Hall Building to Vanier Library
+CORRECT_PARAMS = f"?start={MOCK_H_BUILDING}&end={MOCK_VL_BUILDING}"
 INVALID_PARAMS = "?start=0,0&end=0,0"
 
 @pytest.fixture
@@ -70,8 +78,16 @@ def check_directions(api_client, profile):
             for coord in step["coordinates"]:
                 assert len(coord) == 2
 
-
+@pytest.mark.django_db
 def test_concordia_shuttle_directions(api_client):
+    # Setup mock data
+    Building.objects.create(name="Hall Building", location=Point(-73.579,45.4973), campus="SGW")
+    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496,45.45906620855598), campus="LOY")
+
+    ShuttleStop.objects.create(name="SGW", latitude=45.497129019513835, longitude=-73.57852460612132)
+    ShuttleStop.objects.create(name="LOY", latitude=45.45841608855384, longitude=-73.63828201677715)
+
+    # Test the API
     url = reverse("concordia-shuttle")
 
     # Case 1: Missing start or end parameter
@@ -81,6 +97,7 @@ def test_concordia_shuttle_directions(api_client):
 
     # Case 2: Invalid coordinates
     response = api_client.get(url + INVALID_PARAMS)
+    print(response.json())
     assert response.status_code == 400
 
     # Case 3: Valid coordinates
@@ -120,10 +137,16 @@ def test_concordia_shuttle_directions(api_client):
     assert "origin_campus" in json
     assert "destination_campus" in json
 
-
+@pytest.mark.django_db
 def test_concordia_shuttle_same_campus(api_client):
+    # Mock data
+    Building.objects.create(name="Hall Building", location=Point(-73.579,45.4973), campus="SGW")
+    Building.objects.create(name="Vanier Library", location=Point(-73.6384110982496,45.45906620855598), campus="LOY")
+
+    # Test the API
     url = reverse("concordia-shuttle")
     response = api_client.get(url + SAME_CAMPUS_PARAMS)
+    print(response.json())
     assert response.status_code == 200
     json = response.json()
     # Should fall back to walking directions
