@@ -61,17 +61,17 @@ jobs:
           done
           echo "PostGIS is ready!"
       
-      - name: Enable PostGIS Extension
-        run: |
-          PGPASSWORD=test_password psql -h localhost -U test_user -d test_db -c "CREATE EXTENSION IF NOT EXISTS postgis;"
-
       - name: Run backend tests
         env:
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
           ORS_BASE_URL: ${{ secrets.ORS_BASE_URL }}
           OTP_BASE_URL: ${{ secrets.OTP_BASE_URL }}
           IS_IN_CI: 1
-          DATABASE_URL: "postgres://test_user:test_password@localhost:5432/test_db"
+          TEST_DB_NAME: test_db
+          TEST_DB_USER: test_user
+          TEST_DB_PASSWORD: test_password
+          TEST_DB_HOST: localhost
+          TEST_DB_PORT: 5432
         run: |
           cd ccg_backend
           conda init bash

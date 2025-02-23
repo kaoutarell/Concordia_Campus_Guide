@@ -4,7 +4,6 @@ from pathlib import Path
 from decouple import config
 import os
 import sys
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,7 +79,12 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 
 if config('IS_IN_CI', default=False, cast=bool):
     DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.getenv('TEST_DB_NAME'),
+        'USER': os.getenv('TEST_DB_USER'),
+        'PASSWORD': os.getenv('TEST_DB_PASSWORD'),
+        'HOST': os.getenv('TEST_DB_HOST'),
+        'PORT': os.getenv('TEST_DB_PORT'),
     }
 else:
     DATABASES = {
