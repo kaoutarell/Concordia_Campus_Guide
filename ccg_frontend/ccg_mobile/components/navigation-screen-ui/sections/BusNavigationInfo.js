@@ -7,16 +7,17 @@ import {
   Animated,
   SafeAreaView,
   ScrollView,
+  Dimensions
 } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import globalStyles from '../../../styles/NavigationInfoStyles';
 import locationService from '../../../services/LocationService';
 import { formatDuration } from '../../../utils';
 import { getUpcomingShuttles } from '../../../api/dataService';
 
 const SHEET_HEIGHT = 300;
 const INITIAL_SHEET_POSITION = SHEET_HEIGHT;
+const { width } = Dimensions.get("window");
 
 const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
   // Animated values using refs to prevent unnecessary re-renders.
@@ -71,26 +72,26 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
   const sheetTransformStyle = { transform: [{ translateY: sheetAnim }] };
 
   return (
-    <SafeAreaView style={globalStyles.safeArea}>
-      <Animated.View style={[globalStyles.container, { opacity: fadeIn }]}>
-        <View style={globalStyles.infoBand}>
-          <View style={globalStyles.infoItem}>
+    <SafeAreaView style={sheetStyles.safeArea}>
+      <Animated.View style={[sheetStyles.container, { opacity: fadeIn }]}>
+        <View style={sheetStyles.infoBand}>
+          <View style={sheetStyles.infoItem}>
             <FontAwesome5 name="clock" size={20} color="#fff" />
-            <Text style={globalStyles.infoText}>
+            <Text style={sheetStyles.infoText}>
               {totalDuration ? formatDuration(totalDuration) : 'Duration not available'}
             </Text>
           </View>
-          <View style={globalStyles.infoItem}>
+          <View style={sheetStyles.infoItem}>
             <FontAwesome5 name="road" size={20} color="#fff" />
-            <Text style={globalStyles.infoText}>
+            <Text style={sheetStyles.infoText}>
               {totalDistance
                 ? (totalDistance / 1000).toFixed(2) + ' km'
                 : 'Distance not available'}
             </Text>
           </View>
         </View>
-        <TouchableOpacity style={globalStyles.startButton} onPress={openScheduleSheet}>
-          <Text style={globalStyles.startButtonText}>View Bus Schedule</Text>
+        <TouchableOpacity style={sheetStyles.startButton} onPress={openScheduleSheet}>
+          <Text style={sheetStyles.startButtonText}>View Bus Schedule</Text>
         </TouchableOpacity>
       </Animated.View>
 
@@ -209,6 +210,63 @@ const sheetStyles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginTop: 20,
+  },
+  safeArea: {
+    // flex: 1,
+    justifyContent: 'flex-end',
+    height: '15%', // Ajustez la hauteur de la carte selon vos besoins
+    width: '100%',
+    // backgroundColor: '#800020',
+  },
+  container: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#800020',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  infoBand: {
+    width: '100%',
+    // marginBottom: 10,
+  },
+  infoItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 6,
+    justifyContent: 'flex-start',
+  },
+  infoText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#fff',
+    marginLeft: 8,
+    maxWidth: width - 80,
+  },
+  startButton: {
+    backgroundColor: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 30,
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 280,
+    marginTop: 10,
+    marginBottom: 30,
+  },
+  startButtonText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#800020',
   },
 });
 

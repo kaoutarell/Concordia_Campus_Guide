@@ -184,14 +184,22 @@ const NavigationScreen = ({ navigation, route }) => {
                 totalDistance={direction.total_distance}
                 totalDuration={direction.total_duration}
             />
-        ) : (
-            <NavigationInfos
-                totalDistance={direction?.total_distance}
-                totalDuration={direction?.total_duration}
-                onExit={onExitNavigation}
-                onShowDirections={() => setShowDirections(true)}
-            />
-        );
+        ) : !isNavigating ?
+            (
+                <NavigationFooter
+                    totalDistance={direction?.total_distance}
+                    totalDuration={direction?.total_duration}
+                    onStartNavigation={startNavigation} />
+            )
+            :
+            (
+                <NavigationInfos
+                    totalDistance={direction?.total_distance}
+                    totalDuration={direction?.total_duration}
+                    onExit={onExitNavigation}
+                    onShowDirections={() => setShowDirections(true)}
+                />
+            )
     }
 
     return (
@@ -216,9 +224,9 @@ const NavigationScreen = ({ navigation, route }) => {
                 (<NavigationHeader
                     startAddress={searchText.startAddress}
                     destinationAddress={searchText.destinationAddress}
-                    onSelectedMode={onSelectedMode}
+                    onSelectedMode={handleModeSelect}
                     onBackPress={() => navigation.goBack()}
-                    selectedMode={handleModeSelect}
+                    selectedMode={selectedMode}
 
                 />) :
                 (
@@ -251,18 +259,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
                 )}
 
-            {!isNavigating ?
-                (
-                    <NavigationFooter
-                        totalDistance={direction?.total_distance}
-                        totalDuration={direction?.total_duration}
-                        onStartNavigation={startNavigation} />
-                )
-                :
-                (
-                    renderNavigationInfo()
-                )
-            }
+            {renderNavigationInfo()}
         </View>
     );
 };
