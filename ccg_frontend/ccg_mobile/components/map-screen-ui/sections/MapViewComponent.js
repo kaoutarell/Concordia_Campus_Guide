@@ -10,15 +10,20 @@ import {
   StatusBar,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import locationService from "../../../services/LocationService.js";
+import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from 'prop-types';
+
+import { useNavigation } from "@react-navigation/native";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({ locations, region, maxBounds }) => {
+
+  const navigation = useNavigation();
+
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -35,21 +40,21 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
     );
   };
 
-    // Function to handle region changes and restrict panning
-    const handleRegionChange = (region) => {
-      if (Platform.OS == "android") {
-        const zoomThreshold = 0.006; // Adjust this value as needed
-        setShowMarkers(region.latitudeDelta < zoomThreshold);
-      }else if (!isWithinBounds(region)) {
-          // Snap back to the last valid region
-          mapRef.current.animateToRegion({
-            latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
-            longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
-            latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
-            longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
-          });
-        }
-    };
+  // Function to handle region changes and restrict panning
+  const handleRegionChange = (region) => {
+    if (Platform.OS == "android") {
+      const zoomThreshold = 0.006; // Adjust this value as needed
+      setShowMarkers(region.latitudeDelta < zoomThreshold);
+    } else if (!isWithinBounds(region)) {
+      // Snap back to the last valid region
+      mapRef.current.animateToRegion({
+        latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
+        longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
+        latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
+        longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
+      });
+    }
+  };
 
   const handleMarkerPress = (location) => {
     // Force React to update state asynchronously
@@ -59,7 +64,12 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
   };
 
   const onGoToLocation = (location) => {
-    console.log("Let's go to :", location.name);
+
+    navigation.navigate("Navigation", {
+      start: null,
+      destination: location,
+    });
+
   };
 
   useEffect(() => {
@@ -77,7 +87,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
         maxBounds.southwest
       );
     }
-  }, [maxBounds,mapRef.current]);
+  }, [maxBounds, mapRef.current]);
 
   useEffect(() => {
 
@@ -134,7 +144,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
             })}
           >
             {/* Markers for locations */}
-            {(showMarkers != (Platform.OS =="ios")) && locations.map((location) => (
+            {(showMarkers != (Platform.OS == "ios")) && locations.map((location) => (
               <CustomMarker
                 key={location.id}
                 value={location}
@@ -154,7 +164,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
                 testID="current-location-marker" // added for tests
               />
             )}
-            
+
             <BuildingHighlight />
 
           </MapView>

@@ -3,6 +3,8 @@ import { render, waitFor, screen } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 
+import { NavigationContainer } from '@react-navigation/native';
+
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
   getCurrentLocation: jest.fn(),
@@ -17,15 +19,17 @@ describe("MapViewComponent - Location Tests", () => {
   // test to make sure that the tracking is started on mount
   test("should start tracking location on mount", async () => {
     render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          locations={[]}
+          region={{
+            latitude: 0,
+            longitude: 0,
+            latitudeDelta: 1,
+            longitudeDelta: 1,
+          }}
+        />
+      </NavigationContainer>
     );
     expect(locationService.startTrackingLocation).toHaveBeenCalled();
   });
@@ -67,15 +71,17 @@ describe("MapViewComponent - Location Tests", () => {
     const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => { }); // Suppress error logs in test output
 
     render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          locations={[]}
+          region={{
+            latitude: 0,
+            longitude: 0,
+            latitudeDelta: 1,
+            longitudeDelta: 1,
+          }}
+        />
+      </NavigationContainer>
     );
 
     await waitFor(() => {
@@ -91,15 +97,17 @@ describe("MapViewComponent - Location Tests", () => {
   // test to check is tracking is stopped on unmount
   test("should stop tracking location on unmount", () => {
     const { unmount } = render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          locations={[]}
+          region={{
+            latitude: 0,
+            longitude: 0,
+            latitudeDelta: 1,
+            longitudeDelta: 1,
+          }}
+        />
+      </NavigationContainer>
     );
     unmount();
     expect(locationService.stopTrackingLocation).toHaveBeenCalled();
@@ -166,7 +174,14 @@ describe("MapViewComponent - Location Tests", () => {
   });
 
   test("should display loading indicator when locations are loading", () => {
-    render(<MapViewComponent locations={[]} region={{}} />);
+    render(
+      <NavigationContainer>
+        <MapViewComponent locations={[]} region={{}} />
+
+      </NavigationContainer>
+
+
+    );
 
     // Check if the loading screen is rendered
     const loadingText = screen.getByText("Loading locations...");

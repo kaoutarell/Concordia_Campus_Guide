@@ -1,103 +1,224 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Platform, StatusBar } from 'react-native';
-import NavigationInfo from './sections/NavigationInfo';
+import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
+import NavigationFooter from './sections/NavigationFooter';
 import NavigationMap from './sections/NavigationMap';
-import { getDirections, getDirectionProfiles } from '../../api/dataService';
+import { getDirections } from '../../api/dataService';
 
 import NavigationHeader from "./sections/NavigationHeader";
+import NavigationDirection from "./sections/NavigationDirection";
+import NavigationInfos from "./sections/NavigationInfos";
+import DirectionsList from "./sections/DirectionList";
+
+import locationService from "../../services/LocationService";
+
+import { useRouteInstruction } from "../../hooks/useRouteInstruction";
+
+
+import { getMyCurrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
 
 const NavigationScreen = ({ navigation, route }) => {
 
     const params = route.params || {};
 
+    const [startPoint, setStartPoint] = useState(params.start || null);
 
-    const [startPoint, setStartPoint] = useState(params.start || {});
-    const [destinationPoint, setDestinationPoint] = useState(params.destination || {});
-    const [directionProfiles, setDirectionProfiles] = useState({});
+    const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
     const [direction, setDirection] = useState(null);
 
     const [selectedMode, setSelectedMode] = useState("foot-walking");
 
+    const [loading, setLoading] = useState(true);
+
+    const [isNavigating, setIsNavigating] = useState(false);
+
+    const [searchText, setSearchText] = useState({
+        startAddress: "",
+        destinationAddress: ""
+    });
+
+    const [showDirections, setShowDirections] = useState(false);
+
+    const [userLocation, setUserLocation] = useState(null);
+
+
+    useEffect(() => {
+        if (startPoint != null && destinationPoint != null)
+            fetchDirections();
+        else
+            setDefaultStartAndDestination();
+    }, [startPoint, destinationPoint, selectedMode, isNavigating]);
+
+    useEffect(() => {
+        // Start tracking location using the service
+        locationService.startTrackingLocation().catch((err) => {
+            setErrorMsg(err.message);
+        });
+
+        // Subscribe to location updates
+        const handleLocationUpdate = (location) => {
+            setUserLocation([location.coords.longitude, location.coords.latitude]);
+        };
+
+        locationService.subscribe(handleLocationUpdate);
+
+        // Clean up on unmount: unsubscribe and stop tracking
+        return () => {
+            locationService.unsubscribe(handleLocationUpdate);
+            locationService.stopTrackingLocation();
+        };
+    }, []);
+
+
+    const { instruction, distance } = useRouteInstruction(direction, userLocation);
+
 
     const onSelectedMode = (mode) => {
         setSelectedMode(mode);
-        
-        // setDirection(directionProfiles)
-        // console.log(direction.bbox)
-        //console.log(JSON.stringify(direction.profile, null, 2))
     };
+
+    // needs to check destination point but we need to implement the search bar first
+    const startNavigation = async () => {
+        // when navigating, set the start point to the current location
+        const currentLocation = await getMyCurrentLocation();
+        setStartPoint(currentLocation);
+        setIsNavigating(true);
+    }
+
+
+    const onExitNavigation = () => {
+        setIsNavigating(false);
+    }
 
     const fetchDirections = async () => {
 
-
+        setLoading(true);
         try {
-            const data = await getDirectionProfiles();
-            const profiles = data.profiles;
-            const directions = {};
-        
-            // Fetch first profile synchronously
-            if (profiles.includes("foot-walking")) {
-                directions["foot-walking"] = await getDirections(
-                    "foot-walking",
-                    [startPoint.location.longitude, startPoint.location.latitude],
-                    [destinationPoint.location.longitude, destinationPoint.location.latitude]
-                );
-                setDirection(directions["foot-walking"]);
-            }
-        
-            // Fetch other profiles asynchronously
-            const promises = profiles
-                .filter(profile => profile !== "foot-walking") // Exclude the first one
-                .map(async profile => {
-                    directions[profile] = await getDirections(
-                        profile,
-                        [startPoint.location.longitude, startPoint.location.latitude],
-                        [destinationPoint.location.longitude, destinationPoint.location.latitude]
-                    );
-                });
-        
-            // Wait for all async fetches to complete
-            await Promise.all(promises);
-        
-            //console.log(directions);
-            setDirectionProfiles(directions);
+            const data = await getDirections(
+                selectedMode,
+                [startPoint?.location.longitude, startPoint?.location.latitude],
+                [destinationPoint?.location.longitude, destinationPoint?.location.latitude]
+            );
+
+
+
+            setDirection(data);
+            setSearchText({
+                startAddress: startPoint?.civic_address,
+                destinationAddress: destinationPoint?.civic_address
+            });
+            setLoading(false);
+
         } catch (error) {
             setDirection([]);
-            console.error("Error fetching direction data: ", error);
+            console.error("Error fetching: ", error);
         }
-        
 
     };
 
-    useEffect(() => {
-        fetchDirections();
-    }, [startPoint, destinationPoint]);
+    const setDefaultStartAndDestination = async () => {
+        try {
 
-    useEffect(() => {
-        setDirection(directionProfiles[selectedMode])
-//        console.log(direction)
-    }, [selectedMode])
+            let currentLocation;
+            let defaultDestination;
+            if (startPoint == null) {
+                currentLocation = await getMyCurrentLocation();
+                setStartPoint(currentLocation);
+                setSearchText(prev => ({
+                    ...prev,
+                    startAddress: currentLocation.civic_address
+                }));
+            }
+            if (destinationPoint == null) {
+                defaultDestination = getDefaultDestination();
+                setDestinationPoint(defaultDestination);
+                setSearchText(prev => ({
+                    ...prev,
+                    destinationAddress: defaultDestination.civic_address
+                }));
+            }
+
+
+        } catch (error) {
+            console.error("Error setting default location: ", error);
+        }
+
+    };
+
+
 
     return (
         <View style={styles.container}>
 
-            <NavigationHeader
-                startAddress={startPoint.civic_address}
-                destinationAddress={destinationPoint.civic_address}
-                onSelectedMode={onSelectedMode}
-                onBackPress={() => navigation.goBack()}
-                selectedMode={selectedMode}
-            />
+            <Modal
+                visible={showDirections}
+                animationType="slide"
+                onRequestClose={() => setShowDirections(false)}
+            >
+                <View style={{ flex: 1 }}>
+                    {/* Absolutely positioned button in the top-left corner */}
+                    <View style={styles.closeButtonContainer}>
+                        <Button title="←" onPress={() => setShowDirections(false)} />
+                    </View>
 
+                    <DirectionsList steps={direction?.steps} />
+                </View>
+            </Modal>
+
+            {!isNavigating ?
+                (<NavigationHeader
+                    startAddress={searchText.startAddress}
+                    destinationAddress={searchText.destinationAddress}
+                    onSelectedMode={onSelectedMode}
+                    onBackPress={() => navigation.goBack()}
+                    selectedMode={selectedMode}
+
+                />) :
+                (
+                    <NavigationDirection
+                        distance={distance}
+                        instruction={instruction}
+                    />
+                )}
             {/* Map Container (Center) */}
-            <View style={styles.mapContainer}>
-                {direction != null && <NavigationMap start={startPoint} destination={destinationPoint} pathCoordinates={direction.steps} bbox={direction.bbox} />}
-            </View>
 
-            {/* Footer Section (NavigationInfo) */}
-            {direction != null && <NavigationInfo totalDistance={direction?.total_distance} totalDuration={direction?.total_duration} />}
+            {loading ? (
+                <View style={styles.loadingContainer}>
+                    <ActivityIndicator size="large" color="blue" />
+                    <Text style={styles.loadingText}>Loading locations...</Text>
+                </View>
+            ) :
+                (
+                    <View style={styles.mapContainer(isNavigating)}>
+                        {direction != null &&
+                            <NavigationMap start={startPoint}
+                                destination={destinationPoint}
+                                pathCoordinates={direction.steps}
+                                bbox={direction.bbox}
+                                isNavigating={isNavigating}
+                            />}
+                    </View>
 
+                )}
+
+            {!isNavigating ?
+
+                (
+                    <NavigationFooter
+                        totalDistance={direction?.total_distance}
+                        totalDuration={direction?.total_duration}
+                        onStartNavigation={startNavigation} />
+                )
+                :
+                (
+                    <NavigationInfos
+                        totalDistance={direction?.total_distance}
+                        totalDuration={direction?.total_duration}
+                        onExit={onExitNavigation}
+                        onShowDirections={() => setShowDirections(true)}
+                    />
+                )
+            }
         </View>
     );
 };
@@ -107,13 +228,25 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
-    mapContainer: {
-        height: '60%', // Ajustez la hauteur de la carte selon vos besoins
+    mapContainer: (isNavigating) => ({
+        height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
         width: '100%',
-    },
+    }),
     map: {
         flex: 1,
         width: '100%',
+    },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    closeButtonContainer: {
+        position: 'absolute',
+        fontSize: 94,
+        top: 50,     // adjust for your needs, or use SafeAreaView on iOS
+        left: 16,
+        zIndex: 999, // ensure the button stays on top of other content
     },
 });
 
