@@ -9,6 +9,9 @@ appId: host.exp.Exponent
 - assertVisible: "ConU CG"
 - assertVisible: "Continue to map ➤"
 - tapOn: "Continue to map ➤"
+- setLocation:
+    latitude: 45.497660
+    longitude: -73.579162
 - runFlow:
     when:
       visible: "While using the app"

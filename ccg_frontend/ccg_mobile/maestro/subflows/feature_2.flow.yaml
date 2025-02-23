@@ -6,7 +6,7 @@ appId: host.exp.Exponent
     longitude: -73.579162
 - scroll #scroll vertically
 - tapOn: "My Location"
-- assertVisible: "Current Location. "
+- assertVisible: "Current Location"
 # Feature 2.1 - Navigate to a destination
 - tapOn: "Where to?"
 - inputText:
@@ -30,8 +30,8 @@ appId: host.exp.Exponent
 - assertVisible: "Google Map"
 - assertVisible: "My Location"
 - assertVisible: "Start Navigation"
-- assertVisible: "H. "
-- assertVisible: "EV. "
+- assertVisible: "H"
+- assertVisible: "EV"
 - assertVisible: "Back"
 - tapOn: "Back"
 - assertVisible:
