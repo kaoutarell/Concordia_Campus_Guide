@@ -31,7 +31,6 @@ const NavigationHeader = ({
           startAddress={startAddress}
           destinationAddress={destinationAddress}
           onStartSearching={onStartSearching}
-          style={styles.searchContainer}
         />
       </View>
 
