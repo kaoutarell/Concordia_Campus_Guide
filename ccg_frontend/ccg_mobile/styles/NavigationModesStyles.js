@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection : 'row',
     justifyContent:'space-betwwen',
+  },
+  text:{
+    fontSize: 12,
   }
 
 });

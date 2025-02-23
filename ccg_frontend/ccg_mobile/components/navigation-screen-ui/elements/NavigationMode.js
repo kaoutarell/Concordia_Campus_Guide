@@ -3,7 +3,7 @@ import { TouchableOpacity ,Text} from "react-native";
 
 import styles from '../../../styles/NavigationModesStyles';
 
-const NavigationMode = ({ mode, selectedMode, onModeChange, icon }) => {
+const NavigationMode = ({ mode, selectedMode, onModeChange, icon,name }) => {
 
     return (
         <TouchableOpacity
@@ -11,7 +11,7 @@ const NavigationMode = ({ mode, selectedMode, onModeChange, icon }) => {
             onPress={() => onModeChange(mode)}
         >
             {React.cloneElement(icon, { color: selectedMode === mode ? '#fff' : '#800020' })}
-            <Text>{mode}</Text>
+            <Text style={styles.text}>{name}</Text>
         </TouchableOpacity>
 
     );

@@ -42,7 +42,8 @@ const NavigationHeader = ({
                 {modes.map(({ mode, name, icon }) => (
                     <NavigationMode
                         key={name}
-                        mode={name}
+                        mode={mode}
+                        name={name}
                         icon={icon}
                         selectedMode={selectedMode}
                         onModeChange={handleModeChange}
@@ -59,8 +60,8 @@ const { width } = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#f8f8f8',
-      marginTop: "12%",
-      height: '22%', // Ajustez la hauteur de la carte selon vos besoins
+      marginTop: "15%",
+      height: '20%', // Ajustez la hauteur de la carte selon vos besoins
       width: '100%',
     },
     searchContainer: {
