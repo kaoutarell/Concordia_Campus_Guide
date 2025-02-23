@@ -70,9 +70,9 @@ jobs:
           DATABASE_URL: "postgres://test_user:test_password@localhost:5432/test_db"
         run: |
           cd ccg_backend
-          ~/miniconda/bin/conda init bash
+          conda init bash
           source ~/miniconda/etc/profile.d/conda.sh
-          ~/miniconda/bin/conda activate myenv
+          conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
           pytest
