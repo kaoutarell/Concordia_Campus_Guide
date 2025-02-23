@@ -1,18 +1,13 @@
-
-import React, { } from 'react';
-import { View, } from 'react-native';
-
+import React from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import { modes } from '../../../constants/TransportModes';
 import styles from '../../../styles/NavigationModesStyles';
 
 import NavigationSearch from '../elements/NavigationSearch';
-
 import CustomButton from "../elements/CustomButton";
 import NavigationMode from '../elements/NavigationMode';
 
 const NavigationHeader = ({
-
-    // onStartNavigation,
     startAddress,
     destinationAddress,
     onSelectedMode,
@@ -22,39 +17,36 @@ const NavigationHeader = ({
     onBackPress,
 }) => {
 
-    const handleModeChange = (mode) => {
-        onSelectedMode(mode);
-    };
-
-    const onStartNavigation = (text) => {
-        console.log(text);
-    };
-
+  const handleModeChange = (mode) => {
+    onSelectedMode(mode);
+  };
 
     return (
         <View style={styles.container}>
 
-            <CustomButton title="Back" onPress={onBackPress} />
+      <View style={styles.rowContainer}>
+        <CustomButton title="←" onPress={onBackPress} style={styles.button} />
 
             <NavigationSearch
                 startAddress={startAddress}
-                onStartNavigation={onStartNavigation}
-                onModifyAddress={onModifyAddress}
                 destinationAddress={destinationAddress}
                 onBackPress={onBackPress}
+                onModifyAddress={onModifyAddress}
                 allLocations={allLocations}
-
             />
+      </View>
+
             {/* Navigation Modes at the top */}
             <View style={styles.navModesContainer}>
                 {modes.map(({ mode, icon }) => (
-
                     <NavigationMode
-                        key={mode}
+                        key={name}
                         mode={mode}
+                        name={name}
                         icon={icon}
                         selectedMode={selectedMode}
                         onModeChange={handleModeChange}
+                        style={[styles.navMode, selectedMode === mode ? styles.activeMode : null]} // Conditionally apply active style
                     />
                 ))}
             </View>

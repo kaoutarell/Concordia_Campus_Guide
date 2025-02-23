@@ -102,7 +102,6 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
                     ? locationNames.filter(name => name.toLowerCase().includes(text.toLowerCase()))
                     : []
             );
-
         }
     };
 

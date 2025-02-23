@@ -10,23 +10,27 @@ import {
   StatusBar,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import locationService from "../../../services/LocationService.js";
+import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 // import BuildingHighlight from "../elements/BuildingHighlight";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from 'prop-types';
+
+import { useNavigation } from "@react-navigation/native";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
 const MapViewComponent = ({handleViewNavigation, target, locations, region,  maxBounds }) => {
+
+  const navigation = useNavigation();
+
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
-
 
   // Function to check if the region is within the bounds
   const isWithinBounds = (region) => {
@@ -38,46 +42,25 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     );
   };
 
-    // Function to handle region changes and restrict panning
-    const handleRegionChange = (region) => {
-      if (Platform.OS == "android") {
-        const zoomThreshold = 0.006; // Adjust this value as needed
-        setShowMarkers(region.latitudeDelta < zoomThreshold);
-      }else if (!isWithinBounds(region)) {
-          // Snap back to the last valid region
-          mapRef.current.animateToRegion({
-            latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
-            longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
-            latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
-            longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
-          });
-        }
-    };
+  // Function to handle region changes and restrict panning
+  const handleRegionChange = (region) => {
+    if (Platform.OS == "android") {
+      const zoomThreshold = 0.006; // Adjust this value as needed
+      setShowMarkers(region.latitudeDelta < zoomThreshold);
+    } else if (!isWithinBounds(region)) {
+      // Snap back to the last valid region
+      mapRef.current.animateToRegion({
+        latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
+        longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
+        latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
+        longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
+      });
+    }
+  };
 
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-  const startTemp =  {
-    "accessibility": true,
-    "atm": false,
-    "bikerack": false,
-    "building_code": "RF",
-    "campus": "LOY",
-    "civic_address": "7141 Sherbrooke W.",
-    "departments_links": [],
-    "id": 13,
-    "infokiosk": false,
-    "location": {
-      "latitude": 45.458597012420455,
-      "longitude": -73.64103401066905
-    },
-    "name": "Loyola Jesuit Hall and Conference Centre",
-    "parking_lot": false,
-    "services_links": [
-      "{\"linkText\":\"Conference services\",\"linkPath\":\"/content/concordia/en/hospitality.html\",\"linkTarget\":true,\"itemClass\":\"\"}",
-      "{\"linkText\":\"Loyola Jesuit Hall and Conference Centre\",\"linkPath\":\"/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html\",\"linkTarget\":true,\"itemClass\":\"\"}"
-    ]
-  }
   const destTemp =  {
     "accessibility": false,
     "atm": false,
@@ -117,11 +100,10 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     if (locations.length > 0) {
       setIsLoading(false);
     }
-
   }, [locations]);
 
   useEffect(() => {
-    // set Map boundaries. Only
+    // set Map boundaries. Only 
     if (Platform.OS == "android" && mapRef.current) {
       // Set the map boundaries after the map has loaded
       mapRef.current.setMapBoundaries(
@@ -184,20 +166,22 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
+            zoomControlEnabled={true}
+            showsMyLocationButton={true}
             toolbarEnabled={false}
             onPress={() => setSelectedMarker(null)}
             {...(Platform.OS == "android" && {
-                // Set the min and max zoom levels. Only supported on Android.
-                maxZoomLevel: 19,
-                minZoomLevel: 16,
+              // Set the min and max zoom levels. Only supported on Android.
+              maxZoomLevel: 19,
+              minZoomLevel: 16,
             })}
             {...(Platform.OS == "ios" && {
-                // Set the camera zoom range. Only supported on iOS 13+.
-                cameraZoomRange: {
-                    minCenterCoordinateDistance: 500,
-                    maxCenterCoordinateDistance: 3000,
-                    animated: true,
-                }
+              // Set the camera zoom range. Only supported on iOS 13+.
+              cameraZoomRange: {
+                minCenterCoordinateDistance: 500,
+                maxCenterCoordinateDistance: 3000,
+                animated: true,
+              }
             })}
           >
             {(target.id) ?
@@ -227,7 +211,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
                 testID="current-location-marker" // added for tests
               />
             )}
-
+            
             <BuildingHighlight />
 
           </MapView>
