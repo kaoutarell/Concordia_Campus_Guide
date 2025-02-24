@@ -83,7 +83,6 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
 
     const handleSearch = (text, type) => {
         if (text === ""){
-            setTargetLocation({})
             setIsSearching(false);
         }
         else setIsSearching(true);
