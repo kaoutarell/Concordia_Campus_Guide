@@ -20,7 +20,6 @@ import HeaderBar from './sections/HeaderBar';
 const MapScreen = () => {
   const navigation = useNavigation();
 
-  const [locations, setLocations] = useState([]); //Only gets the buildings in the selected campus
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
@@ -42,7 +41,6 @@ const MapScreen = () => {
     const setData = async () => {
       try {
 
-        await fetchLocations();
         await fetchAllLocations();
         console.log("Data fetched successfully.");
       } catch (error) {
@@ -53,7 +51,7 @@ const MapScreen = () => {
     if (selectedCampus) {
       setData();
     }
-  }, [selectedCampus]);
+  }, []);
 
   const onCampusSelect = (campus) => {
 
@@ -65,22 +63,12 @@ const MapScreen = () => {
     });
   };
 
-  const fetchLocations = async () => {
-    try {
-      const data = await getBuildingByCampus(selectedCampus);
-      setLocations(data);
-    } catch (error) {
-      console.error('Error fetching buildings by campus:', error.stack);
-    }
-  };
-
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
     try {
       const data = await getBuildings();
       setAllLocations(data);
     } catch (error) {
       console.error("Error fetching data:", error)
-
     }
   }
   const handleViewNavigation = (start, destination) => {
@@ -109,6 +97,7 @@ const MapScreen = () => {
           target={targetLocation}
           region={getRegion()}
           maxBounds={getMaxBounds()}
+          destination={destinationLocation}
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
