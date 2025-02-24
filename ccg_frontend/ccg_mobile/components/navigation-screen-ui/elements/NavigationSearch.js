@@ -36,7 +36,7 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
     return (
         <View style={styles.searchContainer}>
             <View style={styles.inputContainer}>
-                <Ionicons name="location-outline" size={20} color="#800020" style={styles.icon} />
+                <Ionicons name="chevron-down-circle-outline" size={20} color="#800020" style={styles.icon} />
                 <TextInput
                     style={styles.input}
                     placeholder="Start Address"
