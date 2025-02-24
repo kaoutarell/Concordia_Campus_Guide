@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
 import PropTypes from "prop-types";
 import NavigationFooter from './sections/NavigationFooter';
@@ -24,11 +24,11 @@ const NavigationScreen = ({ navigation, route }) => {
     const params = route.params || {};
 
     const [startPoint, setStartPoint] = useState(params.start || null);
-
     const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
+    const [isGoingToCurrentLoc, setIsGoingToCurrentLoc] = useState(false)
 
     const [direction, setDirection] = useState(null);
-    
+
     const [selectedMode, setSelectedMode] = useState("foot-walking");
 
     const [loading, setLoading] = useState(true);
@@ -82,6 +82,22 @@ const NavigationScreen = ({ navigation, route }) => {
         setSelectedMode(mode);
     };
 
+
+    const onModifyAddress = async (type, location) => {
+        const currentLocation = await getMyCurrentLocation();
+        if (type === "destination"){
+            if(location === null){
+                setDestinationPoint(currentLocation)
+            }
+            else setDestinationPoint(location)
+        }
+        else {
+            setStartPoint(location)
+        }
+        console.log("destt", startPoint.civic_address, destinationPoint.civic_address)
+
+    }
+
     // needs to check destination point but we need to implement the search bar first
     const startNavigation = async () => {
         // when navigating, set the start point to the current location
@@ -104,9 +120,6 @@ const NavigationScreen = ({ navigation, route }) => {
                 [startPoint?.location.longitude, startPoint?.location.latitude],
                 [destinationPoint?.location.longitude, destinationPoint?.location.latitude]
             );
-
-
-
             setDirection(data);
             setSearchText({
                 startAddress: startPoint?.civic_address,
@@ -163,6 +176,11 @@ const NavigationScreen = ({ navigation, route }) => {
                 }));
             }
             if (destinationPoint == null) {
+                currentLocation = await getMyCurrentLocation();
+                console.log("curr", currentLocation)
+                if(isGoingToCurrentLoc){
+                    setDestinationPoint(currentLocation)
+                }
                 defaultDestination = getDefaultDestination();
                 setDestinationPoint(defaultDestination);
                 setSearchText(prev => ({
@@ -225,9 +243,10 @@ const NavigationScreen = ({ navigation, route }) => {
                     startAddress={searchText.startAddress}
                     destinationAddress={searchText.destinationAddress}
                     onSelectedMode={handleModeSelect}
+                    allLocations={params.locations}
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
-
+                    onModifyAddress={onModifyAddress}
                 />) :
                 (
                     <NavigationDirection
@@ -239,7 +258,7 @@ const NavigationScreen = ({ navigation, route }) => {
 
             {loading ? (
                     <View style={styles.loadingContainer}>
-                        <ActivityIndicator size="large" color="blue" />
+                        <ActivityIndicator size="large" color="#800020" />
                         <Text style={styles.loadingText}>Loading locations...</Text>
                     </View>
                 ) :

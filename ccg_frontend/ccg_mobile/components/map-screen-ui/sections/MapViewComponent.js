@@ -13,6 +13,7 @@ import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
+import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from 'prop-types';
 
@@ -20,7 +21,7 @@ import { useNavigation } from "@react-navigation/native";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({ locations, region, maxBounds }) => {
+const MapViewComponent = ({handleViewNavigation, target, locations, region,  maxBounds }) => {
 
   const navigation = useNavigation();
 
@@ -56,6 +57,9 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
     }
   };
 
+  const [mapKey, setMapKey] = useState(0);
+  const [targetRegion, setTargetRegion] = useState(region);
+
   const handleMarkerPress = (location) => {
     // Force React to update state asynchronously
     setTimeout(() => {
@@ -64,12 +68,11 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
   };
 
   const onGoToLocation = (location) => {
-
-    navigation.navigate("Navigation", {
-      start: null,
-      destination: location,
-    });
-
+      navigation.navigate("Navigation", {
+        start: null,
+        destination: location,
+        locations
+      })
   };
 
   useEffect(() => {
@@ -87,7 +90,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
         maxBounds.southwest
       );
     }
-  }, [maxBounds, mapRef.current]);
+  }, [maxBounds,mapRef.current]);
 
   useEffect(() => {
 
@@ -95,7 +98,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-        setCurrentLocation(location);
+       if(location) setCurrentLocation(transformCurrentLoc(location));
       } catch (error) {
         console.log("Error fetching location:", error);
       }
@@ -106,6 +109,21 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
       locationService.stopTrackingLocation();
     };
   }, []);
+
+
+  useEffect(() => {
+    if (target?.id) {
+      setMapKey(prevKey => prevKey + 1);
+      setTargetRegion({
+        latitude: target.location.latitude+0.0009,
+        longitude: target.location.longitude,
+        latitudeDelta: 0.005, // Adjust for zoom level
+        longitudeDelta: 0.005,
+      });
+      setSelectedMarker((prev) => (prev === target ? null : target));
+    } else setTargetRegion(region)
+
+  }, [target]);
 
 
   return (
@@ -119,16 +137,18 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
       ) : (
         <View style={styles.mapContainer}>
           <MapView
+            key={mapKey}
+            ref={mapRef}
             testID="map-view" // added to enable getting the map by testID
             style={styles.map}
-            region={region}
+            region={targetRegion}
             maxBounds={maxBounds}
             showsUserLocation={true}
-            onPress={() => setSelectedMarker(null)}
             onRegionChangeComplete={handleRegionChange}
             zoomControlEnabled={true}
             showsMyLocationButton={true}
-            ref={mapRef}
+            toolbarEnabled={false}
+            onPress={() => setSelectedMarker(null)}
             {...(Platform.OS == "android" && {
               // Set the min and max zoom levels. Only supported on Android.
               maxZoomLevel: 19,
@@ -143,8 +163,14 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
               }
             })}
           >
-            {/* Markers for locations */}
-            {(showMarkers != (Platform.OS == "ios")) && locations.map((location) => (
+            {(target.id) ?
+                <CustomMarker
+                    key={target.id}
+                    value={target}
+                    onPress={() => handleMarkerPress(target)}
+                />
+                :
+                (showMarkers != (Platform.OS =="ios")) && locations.map((location) => (
               <CustomMarker
                 key={location.id}
                 value={location}
@@ -164,7 +190,7 @@ const MapViewComponent = ({ locations, region, maxBounds }) => {
                 testID="current-location-marker" // added for tests
               />
             )}
-
+            
             <BuildingHighlight />
 
           </MapView>

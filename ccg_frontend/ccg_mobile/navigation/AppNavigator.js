@@ -7,6 +7,7 @@ import MapScreen from "../components/map-screen-ui/MapScreen";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
+import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const StackNavigator = () => {
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Map" component={MapScreen} />
             <Stack.Screen name="Navigation" component={NavigationScreen} />
+            <Stack.Screen name="Search" component={CustomNavSearch} />
         </Stack.Navigator>
     );
 };

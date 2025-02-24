@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {getBuildings } from '../../api/dataService';
+import { getBuildingByCampus, getBuildings } from '../../api/dataService';
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
@@ -20,12 +20,13 @@ import HeaderBar from './sections/HeaderBar';
 const MapScreen = () => {
   const navigation = useNavigation();
 
-  
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
   const [destinationLocation, setDestinationLocation] = useState(null);
   const [startLocation, setStartLocation] = useState(null);
+
+  const [targetLocation, setTargetLocation] = useState({});
 
   const getRegion = () => {
     return selectedCampus === "SGW" ? initialRegionSGW : initialRegionLoyola;
@@ -40,7 +41,6 @@ const MapScreen = () => {
     const setData = async () => {
       try {
 
-        
         await fetchAllLocations();
         console.log("Data fetched successfully.");
       } catch (error) {
@@ -54,16 +54,14 @@ const MapScreen = () => {
   }, []);
 
   const onCampusSelect = (campus) => {
-
     setSelectedCampus((prevCampus) => {
       if (prevCampus !== campus) {
         return campus;
       }
       return prevCampus;
     });
+    setTargetLocation({});
   };
-
-
 
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
     try {
@@ -77,12 +75,14 @@ const MapScreen = () => {
     navigation.navigate("Navigation", {
       start,
       destination,
+      allLocations,
     });
   }
 
   return (
     <View style={styles.container}>
       <HeaderBar
+        setTargetLocation={setTargetLocation}
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
@@ -90,13 +90,14 @@ const MapScreen = () => {
         setDestinationLocation={setDestinationLocation}
         handleViewNavigation={handleViewNavigation}
       />
-
       {/* Map */}
-      <MapViewComponent 
-        destination={destinationLocation} 
-        locations={allLocations} 
-        region={getRegion()} 
-        maxBounds={getMaxBounds()}
+      <MapViewComponent
+          locations={allLocations}
+          handleViewNavigation={handleViewNavigation}
+          target={targetLocation}
+          region={getRegion()}
+          maxBounds={getMaxBounds()}
+          destination={destinationLocation}
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
