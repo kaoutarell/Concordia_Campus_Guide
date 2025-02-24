@@ -54,13 +54,13 @@ const MapScreen = () => {
   }, []);
 
   const onCampusSelect = (campus) => {
-
     setSelectedCampus((prevCampus) => {
       if (prevCampus !== campus) {
         return campus;
       }
       return prevCampus;
     });
+    setTargetLocation({});
   };
 
   const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
