@@ -21,5 +21,5 @@ urlpatterns = [
     path('shuttle_stops/', get_shuttle_stops, name='shuttle-stops'),
     path('upcoming_shuttle/', get_upcoming_sheduled_shuttle, name='upcoming-shuttle'),
     path('poi/', get_points_of_interest, name='points-of-interest'),
-    path('poi-categories/', get_all_categories, name='categories')
+    path('poi-categories/', get_all_categories, name='poi-categories')
 ]

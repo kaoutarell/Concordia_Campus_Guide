@@ -5,7 +5,6 @@ from ..serializers import PointOfInterestSerializer
 from rest_framework.decorators import api_view
 from django.views.decorators.http import require_http_methods
 
-
 @api_view(['GET'])
 @require_http_methods(['GET'])
 def get_points_of_interest(request):
