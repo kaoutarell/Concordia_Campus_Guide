@@ -1,0 +1,5 @@
+appId: host.exp.Exponent
+name: "Location Permission: iOS"
+---
+- assertVisible: "Allow While Using App"
+- tapOn: "Allow While Using App"

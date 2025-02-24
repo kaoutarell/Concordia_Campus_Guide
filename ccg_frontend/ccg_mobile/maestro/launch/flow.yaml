@@ -1,0 +1,5 @@
+appId: host.exp.Exponent
+name: "Launch App"
+---
+- launchApp:
+  clearState: "true"

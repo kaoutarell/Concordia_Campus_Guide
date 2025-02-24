@@ -10,6 +10,7 @@ const CustomMarker = ({ value, onPress, destination }) => {
         latitude: value.location.latitude,
         longitude: value.location.longitude,
       }}
+      title={value.building_code} //to allow end-to-end testing
       onPress={() => {
         onPress();
       }}
