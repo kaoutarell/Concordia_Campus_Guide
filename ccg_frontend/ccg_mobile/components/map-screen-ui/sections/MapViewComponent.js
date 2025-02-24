@@ -21,7 +21,7 @@ import { useNavigation } from "@react-navigation/native";
 // Get screen width and height dynamically
 const { width, height } = Dimensions.get("window");
 
-const MapViewComponent = ({handleViewNavigation, target, locations, region,  maxBounds }) => {
+const MapViewComponent = ({ handleViewNavigation, target, locations, region, maxBounds }) => {
 
   const navigation = useNavigation();
 
@@ -68,11 +68,11 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
   };
 
   const onGoToLocation = (location) => {
-      navigation.navigate("Navigation", {
-        start: null,
-        destination: location,
-        locations
-      })
+    navigation.navigate("Navigation", {
+      start: null,
+      destination: location,
+      allLocations: locations
+    })
   };
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
         maxBounds.southwest
       );
     }
-  }, [maxBounds,mapRef.current]);
+  }, [maxBounds, mapRef.current]);
 
   useEffect(() => {
 
@@ -98,7 +98,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-       if(location) setCurrentLocation(transformCurrentLoc(location));
+        if (location) setCurrentLocation(transformCurrentLoc(location));
       } catch (error) {
         console.log("Error fetching location:", error);
       }
@@ -115,7 +115,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
     if (target?.id) {
       setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
-        latitude: target.location.latitude+0.0009,
+        latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
         latitudeDelta: 0.005, // Adjust for zoom level
         longitudeDelta: 0.005,
@@ -164,19 +164,19 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
             })}
           >
             {(target.id) ?
-                <CustomMarker
-                    key={target.id}
-                    value={target}
-                    onPress={() => handleMarkerPress(target)}
-                />
-                :
-                (showMarkers != (Platform.OS =="ios")) && locations.map((location) => (
               <CustomMarker
-                key={location.id}
-                value={location}
-                onPress={() => handleMarkerPress(location)}
+                key={target.id}
+                value={target}
+                onPress={() => handleMarkerPress(target)}
               />
-            ))}
+              :
+              (showMarkers != (Platform.OS == "ios")) && locations.map((location) => (
+                <CustomMarker
+                  key={location.id}
+                  value={location}
+                  onPress={() => handleMarkerPress(location)}
+                />
+              ))}
 
             {/* Display current location marker only if available */}
             {currentLocation?.coords && (
@@ -190,7 +190,7 @@ const MapViewComponent = ({handleViewNavigation, target, locations, region,  max
                 testID="current-location-marker" // added for tests
               />
             )}
-            
+
             <BuildingHighlight />
 
           </MapView>

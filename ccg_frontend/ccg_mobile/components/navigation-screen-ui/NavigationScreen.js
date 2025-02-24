@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text,
 import PropTypes from "prop-types";
 import NavigationFooter from './sections/NavigationFooter';
 import NavigationMap from './sections/NavigationMap';
-import { getDirections } from '../../api/dataService';
+import { getDirections, getBuildings } from '../../api/dataService';
 
 import NavigationHeader from "./sections/NavigationHeader";
 import NavigationDirection from "./sections/NavigationDirection";
@@ -18,6 +18,7 @@ import { useRouteInstruction } from "../../hooks/useRouteInstruction";
 
 
 import { getMyCurrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
+import { all } from "axios";
 
 const NavigationScreen = ({ navigation, route }) => {
 
@@ -26,6 +27,8 @@ const NavigationScreen = ({ navigation, route }) => {
     const [startPoint, setStartPoint] = useState(params.start || null);
     const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
     const [isGoingToCurrentLoc, setIsGoingToCurrentLoc] = useState(false)
+
+    const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets the buildings in both campus
 
     const [direction, setDirection] = useState(null);
 
@@ -48,6 +51,9 @@ const NavigationScreen = ({ navigation, route }) => {
 
 
     useEffect(() => {
+        if (allLocations.length === 0) {
+            fetchAllLocations();
+        }
         if (startPoint != null && destinationPoint != null)
             fetchDirections();
         else
@@ -82,11 +88,19 @@ const NavigationScreen = ({ navigation, route }) => {
         setSelectedMode(mode);
     };
 
+    const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
+        try {
+            const data = await getBuildings();
+            setAllLocations(data);
+        } catch (error) {
+            console.error("Error fetching data:", error)
+        }
+    }
 
     const onModifyAddress = async (type, location) => {
         const currentLocation = await getMyCurrentLocation();
-        if (type === "destination"){
-            if(location === null){
+        if (type === "destination") {
+            if (location === null) {
                 setDestinationPoint(currentLocation)
             }
             else setDestinationPoint(location)
@@ -135,6 +149,9 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     useEffect(() => {
+
+
+
         if (selectedMode === "concordia-shuttle") {
             busLocationService.startTracking(2000);
             if (intervalRef.current) {
@@ -149,7 +166,11 @@ const NavigationScreen = ({ navigation, route }) => {
             intervalRef.current = null;
         }
 
-        fetchDirections();
+        if (startPoint != null && destinationPoint != null) {
+            fetchDirections();
+        }
+
+
 
         return () => {
             if (selectedMode === "concordia-shuttle") {
@@ -178,7 +199,7 @@ const NavigationScreen = ({ navigation, route }) => {
             if (destinationPoint == null) {
                 currentLocation = await getMyCurrentLocation();
                 console.log("curr", currentLocation)
-                if(isGoingToCurrentLoc){
+                if (isGoingToCurrentLoc) {
                     setDestinationPoint(currentLocation)
                 }
                 defaultDestination = getDefaultDestination();
@@ -243,7 +264,7 @@ const NavigationScreen = ({ navigation, route }) => {
                     startAddress={searchText.startAddress}
                     destinationAddress={searchText.destinationAddress}
                     onSelectedMode={handleModeSelect}
-                    allLocations={params.locations}
+                    allLocations={allLocations}
                     onBackPress={() => navigation.goBack()}
                     selectedMode={selectedMode}
                     onModifyAddress={onModifyAddress}
@@ -257,22 +278,22 @@ const NavigationScreen = ({ navigation, route }) => {
             {/* Map Container (Center) */}
 
             {loading ? (
-                    <View style={styles.loadingContainer}>
-                        <ActivityIndicator size="large" color="#800020" />
-                        <Text style={styles.loadingText}>Loading locations...</Text>
-                    </View>
-                ) :
+                <View style={styles.loadingContainer}>
+                    <ActivityIndicator size="large" color="#800020" />
+                    <Text style={styles.loadingText}>Loading locations...</Text>
+                </View>
+            ) :
                 (
                     <View style={styles.mapContainer(isNavigating)}>
                         {direction != null &&
                             <NavigationMap start={startPoint}
-                                           destination={destinationPoint}
-                                           pathCoordinates={direction.steps}
-                                           bbox={direction.bbox}
-                                           isNavigating={isNavigating}
-                                           legs={direction?.legs}
-                                           displayShuttle={selectedMode === "concordia-shuttle"}
-                                           shuttleLocations={shuttleLocations}
+                                destination={destinationPoint}
+                                pathCoordinates={direction.steps}
+                                bbox={direction.bbox}
+                                isNavigating={isNavigating}
+                                legs={direction?.legs}
+                                displayShuttle={selectedMode === "concordia-shuttle"}
+                                shuttleLocations={shuttleLocations}
                             />}
                     </View>
 
@@ -295,30 +316,30 @@ NavigationScreen.propTypes = {
 };
 
 const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        },
-        mapContainer: (isNavigating) => ({
-            height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
-            width: '100%',
-        }),
-        map: {
-            flex: 1,
-            width: '100%',
-        },
-        loadingContainer: {
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        closeButtonContainer: {
-            position: 'absolute',
-            fontSize: 94,
-            top: 50,     // adjust for your needs, or use SafeAreaView on iOS
-            left: 16,
-            zIndex: 999, // ensure the button stays on top of other content
-        },
+    container: {
+        flex: 1,
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+    mapContainer: (isNavigating) => ({
+        height: isNavigating ? '70%' : '60%', // Dynamic height based on isNavigating
+        width: '100%',
+    }),
+    map: {
+        flex: 1,
+        width: '100%',
+    },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    closeButtonContainer: {
+        position: 'absolute',
+        fontSize: 94,
+        top: 50,     // adjust for your needs, or use SafeAreaView on iOS
+        left: 16,
+        zIndex: 999, // ensure the button stays on top of other content
+    },
 });
 
 export default NavigationScreen;
