@@ -46,7 +46,6 @@ const NavigationScreen = ({ navigation, route }) => {
     const [shuttleLocations, setShuttleLocations] = useState([]);
 
     const [userLocation, setUserLocation] = useState(null);
-    const intervalRef = useRef(null);
 
 
     useEffect(() => {
@@ -148,39 +147,22 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     useEffect(() => {
-
-
-
         if (selectedMode === "concordia-shuttle") {
             busLocationService.startTracking(2000);
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-            intervalRef.current = setInterval(() => {
+            const intervalId = setInterval(() => {
                 setShuttleLocations(busLocationService.getBusLocations());
             }, 2000);
-        }
-        if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
+            return () => {
+                clearInterval(intervalId);
+                busLocationService.stopTracking();
+            };
         }
 
         if (startPoint != null && destinationPoint != null) {
             fetchDirections();
         }
 
-
-
-        return () => {
-            if (selectedMode === "concordia-shuttle") {
-                busLocationService.stopTracking();
-            }
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-                intervalRef.current = null;
-            }
-        };
-    }, [selectedMode]);
+    }, [selectedMode, startPoint, destinationPoint]);
 
     const setDefaultStartAndDestination = async () => {
         try {
@@ -291,6 +273,7 @@ const NavigationScreen = ({ navigation, route }) => {
                                 isNavigating={isNavigating}
                                 legs={direction?.legs}
                                 displayShuttle={selectedMode === "concordia-shuttle"}
+                                shuttleLocations={shuttleLocations}
                             />}
                     </View>
 

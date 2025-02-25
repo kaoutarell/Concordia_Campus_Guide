@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, useState } from "react";
+import React, {useRef, useEffect, useMemo} from "react";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
@@ -20,7 +20,7 @@ const NavigationMap = ({
     pathCoordinates,
     legs,
     isNavigating,
-
+    shuttleLocations,
     displayShuttle = false,
 }) => {
     const mapRef = useRef(null);
@@ -78,6 +78,7 @@ const NavigationMap = ({
         }),
         [bbox]
     );
+
     const startMarker = {
         latitude: start?.location?.latitude,
         longitude: start?.location?.longitude,
@@ -134,39 +135,24 @@ const NavigationMap = ({
     }, [legs, displayShuttle]);
 
     return (
-        <MapView
-            ref={mapRef}
-            style={styles.map}
-            showsUserLocation={true}
+        <MapView style={styles.map} showsUserLocation region={region} ref={mapRef}>
+            <Marker coordinate={startMarker} title={startTitle} pinColor="red" />
+            <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
 
-            region={{
-                latitude: (bbox[1] + bbox[3]) / 2,
-                longitude: (bbox[0] + bbox[2]) / 2,
-                latitudeDelta: Math.abs(bbox[3] - bbox[1]) * 1.2,  // Add some padding
-                longitudeDelta: Math.abs(bbox[2] - bbox[0]) * 1.2, // Add some padding
-            }}
+            {intermediateMarkers.map((marker) => (
+                <Marker
+                    key={`${marker.title}-${marker.latitude}-${marker.longitude}`}
+                    coordinate={marker}
+                    title={marker.title}
+                    pinColor="blue"
+                />
+            ))}
 
-        >
-            <Marker
-                coordinate={{
-                    latitude: start?.location?.latitude,
-                    longitude: start?.location?.longitude,
-                }}
-                title={start?.building_code}
-                pinColor="blue"
-            />
-            <Marker
-                coordinate={{
-                    latitude: destination?.location?.latitude,
-                    longitude: destination?.location?.longitude,
-                }}
-                title={destination?.building_code}
-                pinColor="red"
-            />
-            <Polyline
-                coordinates={allCoordinates}
-                strokeColor="navy"
-                strokeWidth={3}
+            <Polyline coordinates={allCoordinates} strokeColor="navy" strokeWidth={3} />
+
+            <BusTrackingMarkers
+                shuttleLocations={shuttleLocations}
+                displayShuttle={displayShuttle}
             />
         </MapView>
     );
