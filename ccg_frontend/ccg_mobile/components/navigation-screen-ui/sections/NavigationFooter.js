@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet } from 'react-native';
 import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
+import PropTypes from 'prop-types';
 
 const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) => {
     const [fadeIn] = React.useState(new Animated.Value(0));
@@ -23,6 +24,12 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) =
             </Animated.View>
         </SafeAreaView>
     );
+};
+
+NavigationFooter.propTypes = {
+    totalDuration: PropTypes.number,
+    totalDistance: PropTypes.number,
+    onStartNavigation: PropTypes.func.isRequired,
 };
 
 export default NavigationFooter;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
+import PropTypes from 'prop-types';
 
 const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirections }) => {
     return (
@@ -20,6 +21,13 @@ const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirection
             </View>
         </SafeAreaView>
     );
+};
+
+NavigationInfos.propTypes = {
+    totalDuration: PropTypes.number,
+    totalDistance: PropTypes.number,
+    onExit: PropTypes.func.isRequired,
+    onShowDirections: PropTypes.func.isRequired,
 };
 
 export default NavigationInfos;

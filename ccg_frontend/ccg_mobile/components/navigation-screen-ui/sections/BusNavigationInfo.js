@@ -124,8 +124,8 @@ const BusNavigationInfo = ({ totalDuration, totalDistance, onStartNavigation }) 
 };
 
 BusNavigationInfo.propTypes = {
-  totalDuration: PropTypes.number.isRequired,
-  totalDistance: PropTypes.number.isRequired,
+  totalDuration: PropTypes.number,
+  totalDistance: PropTypes.number,
   onStartNavigation: PropTypes.func.isRequired,
 };
 
