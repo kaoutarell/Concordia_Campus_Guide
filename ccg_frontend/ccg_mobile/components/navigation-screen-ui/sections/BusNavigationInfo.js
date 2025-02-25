@@ -19,7 +19,7 @@ const SHEET_HEIGHT = 300;
 const INITIAL_SHEET_POSITION = SHEET_HEIGHT;
 const { width } = Dimensions.get("window");
 
-const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
+const BusNavigationInfo = ({ totalDuration, totalDistance, onStartNavigation }) => {
   // Animated values using refs to prevent unnecessary re-renders.
   const fadeIn = useRef(new Animated.Value(0)).current;
   const sheetAnim = useRef(new Animated.Value(INITIAL_SHEET_POSITION)).current;
@@ -90,6 +90,9 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
             </Text>
           </View>
         </View>
+        <TouchableOpacity style={sheetStyles.startButton} onPress={onStartNavigation}>
+          <Text style={sheetStyles.startButtonText}>Start Navigation</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={sheetStyles.startButton} onPress={openScheduleSheet}>
           <Text style={sheetStyles.startButtonText}>View Bus Schedule</Text>
         </TouchableOpacity>
@@ -140,6 +143,7 @@ const BusNavigationInfo = ({ totalDuration, totalDistance }) => {
 BusNavigationInfo.propTypes = {
   totalDuration: PropTypes.number.isRequired,
   totalDistance: PropTypes.number.isRequired,
+  onStartNavigation: PropTypes.func.isRequired,
 };
 
 const sheetStyles = StyleSheet.create({
@@ -234,6 +238,7 @@ const sheetStyles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 5,
+    paddingBottom: 40,
   },
   infoBand: {
     width: '100%',
@@ -261,7 +266,7 @@ const sheetStyles = StyleSheet.create({
     width: '100%',
     maxWidth: 280,
     marginTop: 10,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   startButtonText: {
     fontSize: 14,

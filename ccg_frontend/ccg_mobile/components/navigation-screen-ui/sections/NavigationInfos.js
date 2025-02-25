@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import {formatDuration} from "../../../utils";
 
 const { width } = Dimensions.get("window"); // Get device dimensions
 
@@ -13,16 +14,14 @@ const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirection
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="clock" size={20} color="#fff" />
                         <Text style={styles.infoText}>
-                            {totalDuration
-                                ? parseFloat(totalDuration / 60).toFixed(2) + " minutes"
-                                : 'Duration not available'}
+                            {totalDuration ? formatDuration(totalDuration) : 'Duration not available'}
                         </Text>
                     </View>
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="road" size={20} color="#fff" />
                         <Text style={styles.infoText}>
                             {totalDistance
-                                ? parseFloat(totalDistance / 1000).toFixed(2) + " km"
+                                ? (totalDistance / 1000).toFixed(2) + ' km'
                                 : 'Distance not available'}
                         </Text>
                     </View>

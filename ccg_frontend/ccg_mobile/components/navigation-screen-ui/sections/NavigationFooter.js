@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, Dimensions } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import {formatDuration} from "../../../utils";
 
 const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) => {
     const [fadeIn] = React.useState(new Animated.Value(0));
@@ -19,11 +20,17 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) =
                 <View style={styles.infoBand}>
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="clock" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDuration ? parseFloat(totalDuration / 60).toFixed(2) + " minutes" : 'Duration not available'}</Text>
+                        <Text style={styles.infoText}>
+                            {totalDuration ? formatDuration(totalDuration) : 'Duration not available'}
+                        </Text>
                     </View>
                     <View style={styles.infoItem}>
                         <FontAwesome5 name="road" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDistance ? parseFloat(totalDistance / 1000).toFixed(2) + " km" : 'Distance not available'}</Text>
+                        <Text style={styles.infoText}>
+                            {totalDistance
+                            ? (totalDistance / 1000).toFixed(2) + ' km'
+                            : 'Distance not available'}
+                        </Text>
                     </View>
                 </View>
                 <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>

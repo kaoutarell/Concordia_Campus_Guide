@@ -197,12 +197,15 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     const renderNavigationInfo = () => {
-        return direction && selectedMode === "concordia-shuttle" ? (
-            <BusNavigationInfo
-                totalDistance={direction.total_distance}
-                totalDuration={direction.total_duration}
-            />
-        ) : !isNavigating ?
+        return !isNavigating ?
+            direction && selectedMode === "concordia-shuttle" ? (
+                    <BusNavigationInfo
+                        totalDistance={direction.total_distance}
+                        totalDuration={direction.total_duration}
+                        onStartNavigation={startNavigation}
+                    />
+            )
+            :
             (
                 <NavigationFooter
                     totalDistance={direction?.total_distance}
