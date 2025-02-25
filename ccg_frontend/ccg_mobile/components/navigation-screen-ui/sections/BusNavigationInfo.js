@@ -7,17 +7,15 @@ import {
   Animated,
   SafeAreaView,
   ScrollView,
-  Dimensions
 } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import locationService from '../../../services/LocationService';
 import { formatDuration } from '../../../utils';
 import { getUpcomingShuttles } from '../../../api/dataService';
+import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
 
 const SHEET_HEIGHT = 300;
 const INITIAL_SHEET_POSITION = SHEET_HEIGHT;
-const { width } = Dimensions.get("window");
 
 const BusNavigationInfo = ({ totalDuration, totalDistance, onStartNavigation }) => {
   // Animated values using refs to prevent unnecessary re-renders.
@@ -74,22 +72,7 @@ const BusNavigationInfo = ({ totalDuration, totalDistance, onStartNavigation }) 
   return (
     <SafeAreaView style={sheetStyles.safeArea}>
       <Animated.View style={[sheetStyles.container, { opacity: fadeIn }]}>
-        <View style={sheetStyles.infoBand}>
-          <View style={sheetStyles.infoItem}>
-            <FontAwesome5 name="clock" size={20} color="#fff" />
-            <Text style={sheetStyles.infoText}>
-              {totalDuration ? formatDuration(totalDuration) : 'Duration not available'}
-            </Text>
-          </View>
-          <View style={sheetStyles.infoItem}>
-            <FontAwesome5 name="road" size={20} color="#fff" />
-            <Text style={sheetStyles.infoText}>
-              {totalDistance
-                ? (totalDistance / 1000).toFixed(2) + ' km'
-                : 'Distance not available'}
-            </Text>
-          </View>
-        </View>
+        <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
         <TouchableOpacity style={sheetStyles.startButton} onPress={onStartNavigation}>
           <Text style={sheetStyles.startButtonText}>Start Navigation</Text>
         </TouchableOpacity>
@@ -239,23 +222,6 @@ const sheetStyles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 5,
     paddingBottom: 40,
-  },
-  infoBand: {
-    width: '100%',
-    // marginBottom: 10,
-  },
-  infoItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 6,
-    justifyContent: 'flex-start',
-  },
-  infoText: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#fff',
-    marginLeft: 8,
-    maxWidth: width - 80,
   },
   startButton: {
     backgroundColor: '#fff',
