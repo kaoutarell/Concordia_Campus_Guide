@@ -7,7 +7,8 @@ import MapScreen from "../components/map-screen-ui/MapScreen";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
-import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";import IndoorScreen from "../screens/IndoorScreen";
+import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
+import IndoorScreen from "../screens/IndoorScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();

@@ -19,6 +19,6 @@ urlpatterns = [
     path('directions/concordia-shuttle', shuttle_bus_directions, name='concordia-shuttle'),
     path('directions/', get_profiles, name='profiles'),
     path('shuttle_stops/', get_shuttle_stops, name='shuttle-stops'),
-    path('upcoming_shuttle/', get_upcoming_sheduled_shuttle, name='upcoming-shuttle')
-    path('directions/indoor', get_indoor_directions, name='indoor'),
+    path('upcoming_shuttle/', get_upcoming_sheduled_shuttle, name='upcoming-shuttle'),
+    path('directions/indoor', get_indoor_directions, name='indoor')
 ]
