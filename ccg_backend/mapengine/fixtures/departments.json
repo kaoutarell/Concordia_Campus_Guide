@@ -1,0 +1,722 @@
+[
+    {
+        "model": "mapengine.department",
+        "pk": 1,
+        "fields": {
+            "building": 6,
+            "link_text": "Art Education",
+            "link_path": "/content/concordia/en/finearts/art-education"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 2,
+        "fields": {
+            "building": 6,
+            "link_text": "Art History",
+            "link_path": "/content/concordia/en/finearts/art-history.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 3,
+        "fields": {
+            "building": 6,
+            "link_text": "Creative Arts Therapies",
+            "link_path": "/content/concordia/en/finearts/creative-arts-therapies"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 4,
+        "fields": {
+            "building": 6,
+            "link_text": "Studio Arts",
+            "link_path": "/content/concordia/en/finearts/studio-arts.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 5,
+        "fields": {
+            "building": 7,
+            "link_text": "Art Education",
+            "link_path": "/content/concordia/en/finearts/art-education.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 6,
+        "fields": {
+            "building": 7,
+            "link_text": "Art History",
+            "link_path": "/content/concordia/en/finearts/art-history.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 7,
+        "fields": {
+            "building": 7,
+            "link_text": "Building, Civil and Environmental Engineering",
+            "link_path": "/content/concordia/en/ginacody/building-civil-environmental-eng.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 8,
+        "fields": {
+            "building": 7,
+            "link_text": "Centre for Composites (CONCOM)",
+            "link_path": "/content/concordia/en/research/composites.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 9,
+        "fields": {
+            "building": 7,
+            "link_text": "Centre for Pattern Recognition and Machine Intelligence (CENPARMI)",
+            "link_path": "/content/concordia/en/research/cenparmi.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 10,
+        "fields": {
+            "building": 7,
+            "link_text": "Chemical and Materials Engineering",
+            "link_path": "/content/concordia/en/ginacody/chemical-materials-eng.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 11,
+        "fields": {
+            "building": 7,
+            "link_text": "Contemporary Dance",
+            "link_path": "/content/concordia/en/finearts/dance.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 12,
+        "fields": {
+            "building": 7,
+            "link_text": "Design and Computation Arts",
+            "link_path": "/content/concordia/en/finearts/design.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 13,
+        "fields": {
+            "building": 7,
+            "link_text": "Electrical and Computer Engineering",
+            "link_path": "/content/concordia/en/ginacody/electrical-computer-eng.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 14,
+        "fields": {
+            "building": 7,
+            "link_text": "Faculty of Fine Arts",
+            "link_path": "/content/concordia/en/finearts.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 15,
+        "fields": {
+            "building": 7,
+            "link_text": "Gina Cody School of Engineering and Computer Science",
+            "link_path": "/content/concordia/en/ginacody.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 16,
+        "fields": {
+            "building": 7,
+            "link_text": "Mechanical, Industrial and Aerospace Engineering",
+            "link_path": "/content/concordia/en/ginacody/mechanical-industrial-aerospace-eng.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 17,
+        "fields": {
+            "building": 7,
+            "link_text": "Recreation and Athletics",
+            "link_path": "/content/concordia/en/campus-life/recreation.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 18,
+        "fields": {
+            "building": 7,
+            "link_text": "Studio Arts",
+            "link_path": "/content/concordia/en/finearts/studio-arts.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 19,
+        "fields": {
+            "building": 7,
+            "link_text": "Zero Energy Building Studies, Centre for",
+            "link_path": "/content/concordia/en/research/zero-energy-building.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 20,
+        "fields": {
+            "building": 8,
+            "link_text": "School of Community and Public Affairs",
+            "link_path": "/content/concordia/en/artsci/scpa.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 21,
+        "fields": {
+            "building": 9,
+            "link_text": "Oscar Peterson Concert Hall",
+            "link_path": "/content/concordia/en/arts/venues/oscar-peterson.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 22,
+        "fields": {
+            "building": 14,
+            "link_text": "Geography, Planning and Environment",
+            "link_path": "/content/concordia/en/artsci/geography-planning-environment"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 23,
+        "fields": {
+            "building": 14,
+            "link_text": "Political Science, Sociology and Anthropology, Economics",
+            "link_path": "/content/concordia/en/artsci/programs/departments.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 24,
+        "fields": {
+            "building": 14,
+            "link_text": "School of Irish Studies",
+            "link_path": "/content/concordia/en/artsci/irish-studies"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 25,
+        "fields": {
+            "building": 18,
+            "link_text": "Communication Studies",
+            "link_path": "/content/concordia/en/artsci/coms"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 26,
+        "fields": {
+            "building": 18,
+            "link_text": "Journalism",
+            "link_path": "/content/concordia/en/artsci/journalism"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 27,
+        "fields": {
+            "building": 20,
+            "link_text": "Education",
+            "link_path": "/content/concordia/en/artsci/education"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 28,
+        "fields": {
+            "building": 28,
+            "link_text": "Accountancy",
+            "link_path": "/content/concordia/en/jmsb/about/departments/accountancy"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 29,
+        "fields": {
+            "building": 28,
+            "link_text": "Contemporary Dance",
+            "link_path": "/content/concordia/en/finearts/dance"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 30,
+        "fields": {
+            "building": 28,
+            "link_text": "Executive MBA Program",
+            "link_path": "/content/concordia/en/jmsb/emba"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 31,
+        "fields": {
+            "building": 28,
+            "link_text": "Finance",
+            "link_path": "/content/concordia/en/jmsb/about/departments/finance"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 32,
+        "fields": {
+            "building": 28,
+            "link_text": "Goodman Institute of Investment Management",
+            "link_path": "/content/concordia/en/jmsb/mba-cfa"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 33,
+        "fields": {
+            "building": 28,
+            "link_text": "Management",
+            "link_path": "/content/concordia/en/jmsb/about/departments/management"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 34,
+        "fields": {
+            "building": 28,
+            "link_text": "Marketing",
+            "link_path": "/content/concordia/en/jmsb/about/departments/marketing"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 35,
+        "fields": {
+            "building": 28,
+            "link_text": "Music",
+            "link_path": "/content/concordia/en/finearts/music"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 36,
+        "fields": {
+            "building": 28,
+            "link_text": "Supply Chain & Business Technology Management",
+            "link_path": "/content/concordia/en/jmsb/about/departments/supply-chain-business-technology-management"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 37,
+        "fields": {
+            "building": 28,
+            "link_text": "Theatre",
+            "link_path": "/content/concordia/en/finearts/theatre"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 38,
+        "fields": {
+            "building": 30,
+            "link_text": "Faculty of Arts & Science",
+            "link_path": "/content/concordia/en/artsci.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 39,
+        "fields": {
+            "building": 32,
+            "link_text": "Biology",
+            "link_path": "/content/concordia/en/artsci/biology"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 40,
+        "fields": {
+            "building": 32,
+            "link_text": "Centre for Biological Applications of Mass Spectrometry",
+            "link_path": "/content/concordia/en/research/mass-spec"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 41,
+        "fields": {
+            "building": 32,
+            "link_text": "Centre for NanoScience Research",
+            "link_path": "/content/concordia/en/research/nanoscience"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 42,
+        "fields": {
+            "building": 32,
+            "link_text": "Centre for Research in Molecular Modeling",
+            "link_path": "/content/concordia/en/research/molecular-modeling"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 43,
+        "fields": {
+            "building": 32,
+            "link_text": "Centre for Studies in Behavioral Neurobiology",
+            "link_path": "/content/concordia/en/research/neuroscience"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 44,
+        "fields": {
+            "building": 32,
+            "link_text": "Chemistry and Biochemistry",
+            "link_path": "/content/concordia/en/artsci/chemistry"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 45,
+        "fields": {
+            "building": 32,
+            "link_text": "Health, Kinesiology & Applied Physiology",
+            "link_path": "/content/concordia/en/artsci/health-kinesiology-physiology"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 46,
+        "fields": {
+            "building": 32,
+            "link_text": "Physics",
+            "link_path": "/content/concordia/en/artsci/physics"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 47,
+        "fields": {
+            "building": 32,
+            "link_text": "Psychology",
+            "link_path": "/content/concordia/en/artsci/psychology"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 48,
+        "fields": {
+            "building": 33,
+            "link_text": "Classics, Modern Languages & Linguistics",
+            "link_path": "/content/concordia/en/artsci/cmll"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 49,
+        "fields": {
+            "building": 33,
+            "link_text": "Concordia Continuing Education",
+            "link_path": "/content/concordia/en/cce"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 50,
+        "fields": {
+            "building": 33,
+            "link_text": "District 3 Innovation Center",
+            "link_path": "/content/concordia/en/research/d3center"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 51,
+        "fields": {
+            "building": 33,
+            "link_text": "Mel Hoppenheim School of Cinema",
+            "link_path": "/content/concordia/en/finearts/cinema"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 52,
+        "fields": {
+            "building": 35,
+            "link_text": "Contemporary Dance",
+            "link_path": "/content/concordia/en/finearts/dance"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 53,
+        "fields": {
+            "building": 35,
+            "link_text": "Music",
+            "link_path": "/content/concordia/en/finearts/music"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 54,
+        "fields": {
+            "building": 35,
+            "link_text": "Theatre",
+            "link_path": "/content/concordia/en/finearts/theatre"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 55,
+        "fields": {
+            "building": 37,
+            "link_text": "Applied Human Sciences",
+            "link_path": "http://ahsc.concordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 56,
+        "fields": {
+            "building": 39,
+            "link_text": "Theological Studies",
+            "link_path": "/content/concordia/en/artsci/theology.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 57,
+        "fields": {
+            "building": 41,
+            "link_text": "Centre for the Arts in Human Development (CAHD)",
+            "link_path": "/content/concordia/en/finearts/research-creation/cahd"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 58,
+        "fields": {
+            "building": 42,
+            "link_text": "Dept. of Philosophy: 1175 St-Mathieu St. (temporary)",
+            "link_path": "/content/concordia/en/artsci/philosophy.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 59,
+        "fields": {
+            "building": 44,
+            "link_text": "Computer Science and Software Engineering",
+            "link_path": "/content/concordia/en/ginacody/computer-science-software-eng.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 60,
+        "fields": {
+            "building": 44,
+            "link_text": "Department of Creative Arts Therapies",
+            "link_path": "/content/concordia/en/finearts/creative-arts-therapies"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 61,
+        "fields": {
+            "building": 44,
+            "link_text": "engAGE: Centre for Research on Aging",
+            "link_path": "/content/concordia/en/research/aging.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 62,
+        "fields": {
+            "building": 44,
+            "link_text": "Next-Generation Cities Institute",
+            "link_path": "/content/concordia/en/research/cities-institute.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 63,
+        "fields": {
+            "building": 44,
+            "link_text": "Simone de Beauvoir Institute",
+            "link_path": "/content/concordia/en/artsci/sdbi"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 64,
+        "fields": {
+            "building": 44,
+            "link_text": "Sustainability in the Digital Age",
+            "link_path": "https://sustainabilitydigitalage.org/who-we-are/"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 65,
+        "fields": {
+            "building": 44,
+            "link_text": "Urban Studies",
+            "link_path": "/content/concordia/en/academics/undergraduate/urban-planning-urban-studies.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 66,
+        "fields": {
+            "building": 46,
+            "link_text": "Centre for clinical research in health (CCRH)",
+            "link_path": "/content/concordia/en/research/clinical-research-health.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 67,
+        "fields": {
+            "building": 46,
+            "link_text": "Psychology",
+            "link_path": "/content/concordia/en/artsci/psychology.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 68,
+        "fields": {
+            "building": 48,
+            "link_text": "Stingers.ca",
+            "link_path": "http://stingers.ca/"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 69,
+        "fields": {
+            "building": 49,
+            "link_text": "Religions and Cultures",
+            "link_path": "/content/concordia/en/artsci/religions-cultures"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 70,
+        "fields": {
+            "building": 54,
+            "link_text": "Liberal Arts College",
+            "link_path": "/content/concordia/en/artsci/liberal-arts-college"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 71,
+        "fields": {
+            "building": 55,
+            "link_text": "Religions and Cultures, Department of",
+            "link_path": "/content/concordia/en/artsci/religions-cultures"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 72,
+        "fields": {
+            "building": 56,
+            "link_text": "Department of Education",
+            "link_path": "http://doe.concordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 73,
+        "fields": {
+            "building": 59,
+            "link_text": "Department of Philosophy",
+            "link_path": "/content/concordia/en/artsci/philosophy"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 74,
+        "fields": {
+            "building": 60,
+            "link_text": "Centre for Interdisciplinary Studies in Society and Culture (CISSC)",
+            "link_path": "/content/concordia/en/artsci/cissc.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 75,
+        "fields": {
+            "building": 60,
+            "link_text": "Centre for the Study of Learning and Performance",
+            "link_path": "/content/concordia/en/research/learning-performance"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 76,
+        "fields": {
+            "building": 60,
+            "link_text": "Education",
+            "link_path": "/content/concordia/en/artsci/education.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 77,
+        "fields": {
+            "building": 60,
+            "link_text": "English",
+            "link_path": "/content/concordia/en/artsci/english.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 78,
+        "fields": {
+            "building": 60,
+            "link_text": "Études françaises",
+            "link_path": "/content/concordia/fr/arts-sciences/francais"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 79,
+        "fields": {
+            "building": 60,
+            "link_text": "History",
+            "link_path": "/content/concordia/en/artsci/history.html"
+        }
+    },
+    {
+        "model": "mapengine.department",
+        "pk": 80,
+        "fields": {
+            "building": 60,
+            "link_text": "Mathematics and Statistics",
+            "link_path": "/content/concordia/en/artsci/math-stats.html"
+        }
+    }
+]
