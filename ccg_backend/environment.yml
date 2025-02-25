@@ -39,11 +39,8 @@ dependencies:
   - libblas=3.9.0
   - libcblas=3.9.0
   - libcurl=8.11.1
-  - libcxx=19.1.7
   - libde265=1.0.15
   - libdeflate=1.23
-  - libedit=3.1.20250104
-  - libev=4.33
   - libexpat=2.6.4
   - libffi=3.4.2
   - libgdal-core=3.10.1
@@ -55,7 +52,6 @@ dependencies:
   - liblapack=3.9.0
   - liblzma=5.6.3
   - libnghttp2=1.64.0
-  - libntlm=1.8
   - libpng=1.6.46
   - libpq=17.2
   - librttopo=1.1.0
@@ -89,7 +85,6 @@ dependencies:
   - python_abi=3.10
   - pywin32-on-windows=0.1.0
   - rav1e=0.6.6
-  - readline=8.2
   - requests=2.32.3
   - setuptools=75.8.0
   - six=1.17.0
@@ -100,7 +95,6 @@ dependencies:
   - tbb=2021.13.0
   - tk=8.6.13
   - typing_extensions=4.12.2
-  - tzcode=2025a
   - tzdata=2025a
   - uriparser=0.9.8
   - urllib3=2.3.0
