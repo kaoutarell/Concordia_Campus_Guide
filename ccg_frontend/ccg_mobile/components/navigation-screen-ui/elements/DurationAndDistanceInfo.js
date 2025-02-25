@@ -28,26 +28,25 @@ export default function DurationAndDistanceInfo({ duration, distance }) {
 }
 
 DurationAndDistanceInfo.propTypes = {
-    duration: PropTypes.number.isRequired,
-    distance: PropTypes.number.isRequired,
+    duration: PropTypes.number,
+    distance: PropTypes.number,
 };
 
 const styles = StyleSheet.create({
     infoBand: {
-        width: '100%',
-        // marginBottom: 10,
+        flex: 1,
+        alignSelf: 'flex-start',
     },
     infoItem: {
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 6,
-        justifyContent: 'flex-start',
     },
     infoText: {
         fontSize: 14,
         fontWeight: '500',
         color: '#fff',
         marginLeft: 8,
-        maxWidth: width - 80,
+        maxWidth: width - 200,
     },
 });

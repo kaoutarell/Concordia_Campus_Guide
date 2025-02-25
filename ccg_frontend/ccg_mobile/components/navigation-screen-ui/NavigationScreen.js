@@ -197,31 +197,35 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     const renderNavigationInfo = () => {
-        return !isNavigating ?
-            direction && selectedMode === "concordia-shuttle" ? (
+        if (!isNavigating) {
+            if (direction && selectedMode === "concordia-shuttle") {
+                return (
                     <BusNavigationInfo
                         totalDistance={direction.total_distance}
                         totalDuration={direction.total_duration}
                         onStartNavigation={startNavigation}
                     />
-            )
-            :
-            (
-                <NavigationFooter
-                    totalDistance={direction?.total_distance}
-                    totalDuration={direction?.total_duration}
-                    onStartNavigation={startNavigation} />
-            )
-            :
-            (
+                );
+            } else {
+                return (
+                    <NavigationFooter
+                        totalDistance={direction?.total_distance}
+                        totalDuration={direction?.total_duration}
+                        onStartNavigation={startNavigation}
+                    />
+                );
+            }
+        } else {
+            return (
                 <NavigationInfos
                     totalDistance={direction?.total_distance}
                     totalDuration={direction?.total_duration}
                     onExit={onExitNavigation}
                     onShowDirections={() => setShowDirections(true)}
                 />
-            )
-    }
+            );
+        }
+    };
 
     return (
         <View style={styles.container}>
