@@ -16,6 +16,20 @@ on:
 jobs:
   backend-check:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgis/postgis:15-3.3
+        env:
+          POSTGRES_DB: test_db
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test_user -d test_db"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,14 +53,32 @@ jobs:
           pip install flake8
           flake8 --config=ccg_backend/.flake8 ccg_backend/
 
+      - name: Wait for PostGIS to be ready
+        run: |
+          until PGPASSWORD=test_password psql -h localhost -U test_user -d test_db -c "SELECT 1" &>/dev/null; do
+            echo "Waiting for PostGIS..."
+            sleep 3
+          done
+          echo "PostGIS is ready!"
+      
       - name: Run backend tests
         env:
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          ORS_BASE_URL: ${{ secrets.ORS_BASE_URL }}
+          OTP_BASE_URL: ${{ secrets.OTP_BASE_URL }}
+          IS_IN_CI: 1
+          TEST_DB_NAME: test_db
+          TEST_DB_USER: test_user
+          TEST_DB_PASSWORD: test_password
+          TEST_DB_HOST: localhost
+          TEST_DB_PORT: 5432
         run: |
           cd ccg_backend
           conda init bash
           source ~/miniconda/etc/profile.d/conda.sh
           conda activate myenv
+          python manage.py makemigrations
+          python manage.py migrate
           pytest
 
   frontend-check:

@@ -1,7 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import CustomMarker from "../components/CustomMarker"; 
-import { Marker } from "react-native-maps";
+import CustomMarker from "../components/map-screen-ui/elements/CustomMarker";
 
 // Mock `react-native-maps` to avoid issues during testing
 jest.mock("react-native-maps", () => {
@@ -23,7 +22,7 @@ describe("CustomMarker Component", () => {
     it("renders correctly with given value", () => {
         // Render the component with mock data and a dummy onPress function
         const { getByText } = render(<CustomMarker value={mockValue} onPress={jest.fn()} />);
-        
+
         // Check if the text "B123" (building code) is displayed
         expect(getByText("EV")).toBeTruthy();
     });
