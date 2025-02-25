@@ -8,8 +8,7 @@ class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Building
         fields = ['id', 'name', 'building_code', 'location', 'civic_address', 'campus',
-                  'parking_lot', 'accessibility', 'atm', 'bikerack', 'infokiosk', 'image'
-                 ]
+                  'parking_lot', 'accessibility', 'atm', 'bikerack', 'infokiosk', 'image']
 
     def get_location(self, obj):
         """Return location as a dictionary with latitude and longitude."""
