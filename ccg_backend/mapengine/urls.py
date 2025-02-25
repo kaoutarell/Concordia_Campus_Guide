@@ -5,6 +5,7 @@ from mapengine.views.direction_api_views import foot_walking_directions, cycling
 from mapengine.views.building_views import get_buildings_by_campus, get_buildings
 from mapengine.views.route_views import route_list_create
 from mapengine.views.shuttle_views import get_shuttle_stops, get_upcoming_sheduled_shuttle
+from mapengine.views.point_of_interest_views import get_points_of_interest, get_all_categories
 
 urlpatterns = [
     path('buildings-by-campus/', get_buildings_by_campus, name='buildings-by-campus'),
@@ -18,5 +19,7 @@ urlpatterns = [
     path('directions/concordia-shuttle', shuttle_bus_directions, name='concordia-shuttle'),
     path('directions/', get_profiles, name='profiles'),
     path('shuttle_stops/', get_shuttle_stops, name='shuttle-stops'),
-    path('upcoming_shuttle/', get_upcoming_sheduled_shuttle, name='upcoming-shuttle')
+    path('upcoming_shuttle/', get_upcoming_sheduled_shuttle, name='upcoming-shuttle'),
+    path('poi/', get_points_of_interest, name='points-of-interest'),
+    path('poi-categories/', get_all_categories, name='poi-categories')
 ]
