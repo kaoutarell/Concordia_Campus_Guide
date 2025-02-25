@@ -24,3 +24,18 @@ export const getShuttleStops = async () => {
 export const getUpcomingShuttles = async (lat, long) => {
   return await fetchDataByEndpoint("upcoming_shuttle?lat=" + lat + "&long=" + long);
 }
+
+export const getPointOfInterests = async (category = null, campus = null) => {
+  let endpoint = "poi";
+  if (category) {
+    endpoint += `?category=${category}`;
+  }
+  if (campus) {
+    endpoint += category ? `&campus=${campus}` : `?campus=${campus}`;
+  }
+  return await fetchDataByEndpoint(endpoint);
+}
+
+export const getPointOfInterestsCategories = async () => {
+  return await fetchDataByEndpoint("poi-categories");
+}
