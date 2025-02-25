@@ -1,24 +1,19 @@
-import React, {useState, useEffect, useCallback, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
     View,
     StyleSheet,
-    Platform,
-    StatusBar,
-    Button,
     FlatList,
     TouchableOpacity,
     TextInput,
     Text,
     Keyboard
 } from 'react-native';
-import CustomButton from "./elements/CustomButton";
 import { Ionicons } from "@expo/vector-icons";
-import {getBuildings} from "../../api/dataService";
-import {useFocusEffect} from "@react-navigation/native";
+import { getBuildings } from "../../api/dataService";
 
 const CustomNavSearch = ({ navigation, route }) => {
 
-    const {type, onGoBack, allLocations} = route.params || {};
+    const { type, onGoBack, allLocations } = route.params || {};
 
     const [allBuildings, setAllBuildings] = useState(allLocations);
 
@@ -54,8 +49,17 @@ const CustomNavSearch = ({ navigation, route }) => {
         navigation.goBack();
     };
 
+    const fetchBuildings = async () => {
+        const buildings = await getBuildings();
+        setAllBuildings(buildings);
+        setFilteredLocations(buildings);
+    }
+
     useEffect(() => {
-        if(inputRef.current) {
+        if (allLocations.length === 0) {
+            fetchBuildings();
+        }
+        if (inputRef.current) {
             inputRef.current.focus();
         }
     }, []);
@@ -71,7 +75,7 @@ const CustomNavSearch = ({ navigation, route }) => {
                 <TextInput
                     ref={inputRef}
                     style={styles.input}
-                    placeholder={type==="destination" ? "Choose destination" : "Choose start"}
+                    placeholder={type === "destination" ? "Choose destination" : "Choose start"}
                     value={searchText}
                     returnKeyType="done"
                     onChangeText={handleSearch}
