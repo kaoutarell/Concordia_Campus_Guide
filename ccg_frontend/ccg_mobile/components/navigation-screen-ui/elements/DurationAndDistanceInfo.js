@@ -1,8 +1,10 @@
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View, Dimensions} from "react-native";
 import {FontAwesome5} from "@expo/vector-icons";
 import {formatDuration} from "../../../utils";
 import React from "react";
 import PropTypes from 'prop-types';
+
+const { width } = Dimensions.get("window");
 
 export default function DurationAndDistanceInfo({ duration, distance }) {
     return (
