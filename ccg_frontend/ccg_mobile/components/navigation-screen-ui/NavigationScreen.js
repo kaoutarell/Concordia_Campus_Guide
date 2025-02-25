@@ -18,7 +18,7 @@ import { useRouteInstruction } from "../../hooks/useRouteInstruction";
 
 
 import { getMyCurrentLocation, getDefaultDestination } from "../../utils/defaultLocations";
-import { all } from "axios";
+
 
 const NavigationScreen = ({ navigation, route }) => {
 
@@ -26,7 +26,6 @@ const NavigationScreen = ({ navigation, route }) => {
 
     const [startPoint, setStartPoint] = useState(params.start || null);
     const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
-    const [isGoingToCurrentLoc, setIsGoingToCurrentLoc] = useState(false)
 
     const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets the buildings in both campus
 
@@ -199,9 +198,7 @@ const NavigationScreen = ({ navigation, route }) => {
             if (destinationPoint == null) {
                 currentLocation = await getMyCurrentLocation();
                 console.log("curr", currentLocation)
-                if (isGoingToCurrentLoc) {
-                    setDestinationPoint(currentLocation)
-                }
+
                 defaultDestination = getDefaultDestination();
                 setDestinationPoint(defaultDestination);
                 setSearchText(prev => ({
@@ -286,14 +283,14 @@ const NavigationScreen = ({ navigation, route }) => {
                 (
                     <View style={styles.mapContainer(isNavigating)}>
                         {direction != null &&
-                            <NavigationMap start={startPoint}
+                            <NavigationMap
+                                start={startPoint}
                                 destination={destinationPoint}
                                 pathCoordinates={direction.steps}
                                 bbox={direction.bbox}
                                 isNavigating={isNavigating}
                                 legs={direction?.legs}
                                 displayShuttle={selectedMode === "concordia-shuttle"}
-                                shuttleLocations={shuttleLocations}
                             />}
                     </View>
 

@@ -15,8 +15,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const { width } = Dimensions.get("window");
 
-const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocation, setDestinationLocation, handleViewNavigation}) => {
-    const [isTyping, setIsTyping] = useState(false);
+const SearchBar = ({ locations, setIsSearching, setTargetLocation }) => {
     const startInputOpacity = useRef(new Animated.Value(0)).current;
     const startInputTranslateY = useRef(new Animated.Value(10)).current;
 
@@ -24,7 +23,6 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
     const buttonTranslateY = useRef(new Animated.Value(10)).current;
 
     const [destination, setDestination] = useState("");
-    const [startPoint, setStartPoint] = useState("");
     const [filteredLocations, setFilteredLocations] = useState([]);
     const [focusedInput, setFocusedInput] = useState(null);
 
@@ -32,7 +30,6 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
 
     useEffect(() => {
         if (destination.length > 0) {
-            setIsTyping(true);
             Animated.parallel([
                 Animated.timing(startInputOpacity, {
                     toValue: 1,
@@ -77,12 +74,12 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
                     duration: 200,
                     useNativeDriver: true,
                 }),
-            ]).start(() => setIsTyping(false));
+            ]).start();
         }
     }, [destination]);
 
     const handleSearch = (text, type) => {
-        if (text === ""){
+        if (text === "") {
             setIsSearching(false);
         }
         else setIsSearching(true);
@@ -95,7 +92,7 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
                     : []
             );
         } else {
-            setStartPoint(text);
+
             setFilteredLocations(
                 text.length > 0
                     ? locationNames.filter(name => name.toLowerCase().includes(text.toLowerCase()))
@@ -114,35 +111,35 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation, setStartLocat
 
     return (
         <>
-        <View style={styles.container}>
-            <View style={styles.searchContainer}>
-                <FontAwesome name="map-marker" size={20} color="#8B1D3B" style={styles.icon} />
-                <TextInput
-                    style={styles.searchInput}
-                    placeholder="Where to?"
-                    placeholderTextColor="#555"
-                    value={destination}
-                    onChangeText={(text) => handleSearch(text, "destination")}
-                    onFocus={() => setFocusedInput("destination")}
-                />
-            </View>
-
-            {focusedInput === "destination" && filteredLocations.length > 0 && (
-                <View style={styles.dropdown}>
-                    <FlatList
-                        data={filteredLocations}
-                        keyExtractor={(item) => item}
-                        keyboardShouldPersistTaps="always"
-                        renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => handleSelect(item)} style={styles.suggestion}>
-                                <Text>{item}</Text>
-                            </TouchableOpacity>
-                        )}
+            <View style={styles.container}>
+                <View style={styles.searchContainer}>
+                    <FontAwesome name="map-marker" size={20} color="#8B1D3B" style={styles.icon} />
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder="Where to?"
+                        placeholderTextColor="#555"
+                        value={destination}
+                        onChangeText={(text) => handleSearch(text, "destination")}
+                        onFocus={() => setFocusedInput("destination")}
                     />
                 </View>
-            )}
-        </View>
-    </>
+
+                {focusedInput === "destination" && filteredLocations.length > 0 && (
+                    <View style={styles.dropdown}>
+                        <FlatList
+                            data={filteredLocations}
+                            keyExtractor={(item) => item}
+                            keyboardShouldPersistTaps="always"
+                            renderItem={({ item }) => (
+                                <TouchableOpacity onPress={() => handleSelect(item)} style={styles.suggestion}>
+                                    <Text>{item}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </View>
+                )}
+            </View>
+        </>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getBuildingByCampus, getBuildings } from '../../api/dataService';
+import { getBuildings } from '../../api/dataService';
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
@@ -10,21 +10,17 @@ import {
   maxBoundsLoyola,
 } from "../../constants/initialRegions";
 
-import { useNavigation } from "@react-navigation/native";
-
-
 import { View, StyleSheet } from "react-native";
 
 import HeaderBar from './sections/HeaderBar';
 
 const MapScreen = () => {
-  const navigation = useNavigation();
+
 
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
-  const [destinationLocation, setDestinationLocation] = useState(null);
-  const [startLocation, setStartLocation] = useState(null);
+
 
   const [targetLocation, setTargetLocation] = useState({});
 
@@ -71,13 +67,6 @@ const MapScreen = () => {
       console.error("Error fetching data:", error)
     }
   }
-  const handleViewNavigation = (start, destination) => {
-    navigation.navigate("Navigation", {
-      start,
-      destination,
-      allLocations,
-    });
-  }
 
   return (
     <View style={styles.container}>
@@ -86,18 +75,13 @@ const MapScreen = () => {
         selectedCampus={selectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
-        setStartLocation={setStartLocation}
-        setDestinationLocation={setDestinationLocation}
-        handleViewNavigation={handleViewNavigation}
       />
       {/* Map */}
       <MapViewComponent
-          locations={allLocations}
-          handleViewNavigation={handleViewNavigation}
-          target={targetLocation}
-          region={getRegion()}
-          maxBounds={getMaxBounds()}
-          destination={destinationLocation}
+        locations={allLocations}
+        target={targetLocation}
+        region={getRegion()}
+        maxBounds={getMaxBounds()}
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />

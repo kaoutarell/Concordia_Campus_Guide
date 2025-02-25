@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useMemo, useState} from "react";
+import React, { useRef, useEffect, useMemo, useState } from "react";
 import MapView, { Marker, Polyline } from "react-native-maps";
 import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
@@ -14,15 +14,15 @@ const convertCoordinates = (coordinatesArray) =>
     coordinatesArray.map(convertCoordinate);
 
 const NavigationMap = ({
-                           start,
-                           destination,
-                           bbox,
-                           pathCoordinates,
-                           legs,
-                           shuttleLocations,
-                           isNavigating,
-                           displayShuttle = false,
-                       }) => {
+    start,
+    destination,
+    bbox,
+    pathCoordinates,
+    legs,
+    isNavigating,
+
+    displayShuttle = false,
+}) => {
     const mapRef = useRef(null);
 
     const fallbackCoordinates = useMemo(() => {
@@ -239,11 +239,11 @@ NavigationMap.propTypes = {
 };
 
 const styles = StyleSheet.create({
-        map: {
-            flex: 1,
-            width: "100%",
-            height: "100%",
-        },
-    })
+    map: {
+        flex: 1,
+        width: "100%",
+        height: "100%",
+    },
+})
 
 export default NavigationMap;
