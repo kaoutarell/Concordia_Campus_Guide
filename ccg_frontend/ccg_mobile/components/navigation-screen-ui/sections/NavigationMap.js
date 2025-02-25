@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { StyleSheet } from "react-native";
 import { getMyCurrentLocation } from "../../../utils/defaultLocations";
 import BusMarker from "../../../assets/bus-marker.png";
+import BusStop from "../../../assets/bus-stop.png";
 
 const convertCoordinate = (cord) => ({
     latitude: cord[1],
@@ -95,7 +96,7 @@ const NavigationMap = ({
         ? destination?.campus || "End"
         : destination?.building_code;
 
-    const intermediateMarkers = useMemo(() => {
+    const busStops = useMemo(() => {
         if (!legs || !displayShuttle) return [];
 
         const legsArray = Object.values(legs).filter(
@@ -139,12 +140,12 @@ const NavigationMap = ({
             <Marker coordinate={startMarker} title={startTitle} pinColor="red" />
             <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
 
-            {intermediateMarkers.map((marker) => (
+            {busStops.map((marker) => (
                 <Marker
                     key={`${marker.title}-${marker.latitude}-${marker.longitude}`}
                     coordinate={marker}
                     title={marker.title}
-                    pinColor="blue"
+                    image={BusStop}
                 />
             ))}
 
@@ -195,7 +196,7 @@ NavigationMap.propTypes = {
         }).isRequired,
         campus: PropTypes.string,
         building_code: PropTypes.string,
-    }).isRequired,
+    }),
     destination: PropTypes.shape({
         location: PropTypes.shape({
             latitude: PropTypes.number.isRequired,
@@ -203,7 +204,7 @@ NavigationMap.propTypes = {
         }).isRequired,
         campus: PropTypes.string,
         building_code: PropTypes.string,
-    }).isRequired,
+    }),
     bbox: PropTypes.arrayOf(PropTypes.number).isRequired,
     pathCoordinates: PropTypes.arrayOf(
         PropTypes.shape({
