@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, Dimensions } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet } from 'react-native';
+import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
+import PropTypes from 'prop-types';
 
 const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) => {
     const [fadeIn] = React.useState(new Animated.Value(0));
@@ -16,16 +17,7 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) =
     return (
         <SafeAreaView style={styles.safeArea}>
             <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-                <View style={styles.infoBand}>
-                    <View style={styles.infoItem}>
-                        <FontAwesome5 name="clock" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDuration ? parseFloat(totalDuration / 60).toFixed(2) + " minutes" : 'Duration not available'}</Text>
-                    </View>
-                    <View style={styles.infoItem}>
-                        <FontAwesome5 name="road" size={20} color="#fff" />
-                        <Text style={styles.infoText}>{totalDistance ? parseFloat(totalDistance / 1000).toFixed(2) + " km" : 'Distance not available'}</Text>
-                    </View>
-                </View>
+                <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
                 <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
                     <Text style={styles.startButtonText}>Start Navigation</Text>
                 </TouchableOpacity>
@@ -34,9 +26,13 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) =
     );
 };
 
-export default NavigationFooter;
+NavigationFooter.propTypes = {
+    totalDuration: PropTypes.number,
+    totalDistance: PropTypes.number,
+    onStartNavigation: PropTypes.func.isRequired,
+};
 
-const { width } = Dimensions.get("window");
+export default NavigationFooter;
 
 const styles = StyleSheet.create({
     safeArea: {
@@ -60,23 +56,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 8,
         elevation: 5,
-    },
-    infoBand: {
-        width: '100%',
-        // marginBottom: 10,
-    },
-    infoItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 6,
-        justifyContent: 'flex-start',
-    },
-    infoText: {
-        fontSize: 14,
-        fontWeight: '500',
-        color: '#fff',
-        marginLeft: 8,
-        maxWidth: width - 80,
     },
     startButton: {
         backgroundColor: '#fff',

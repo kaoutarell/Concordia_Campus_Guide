@@ -1,33 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
-
-const { width } = Dimensions.get("window"); // Get device dimensions
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
+import PropTypes from 'prop-types';
 
 const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirections }) => {
     return (
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.infoRow}>
-                {/* Duration and Distance */}
-                <View style={styles.infoItems}>
-                    <View style={styles.infoItem}>
-                        <FontAwesome5 name="clock" size={20} color="#fff" />
-                        <Text style={styles.infoText}>
-                            {totalDuration
-                                ? parseFloat(totalDuration / 60).toFixed(2) + " minutes"
-                                : 'Duration not available'}
-                        </Text>
-                    </View>
-                    <View style={styles.infoItem}>
-                        <FontAwesome5 name="road" size={20} color="#fff" />
-                        <Text style={styles.infoText}>
-                            {totalDistance
-                                ? parseFloat(totalDistance / 1000).toFixed(2) + " km"
-                                : 'Distance not available'}
-                        </Text>
-                    </View>
-                </View>
-
+                <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
                 {/* Buttons */}
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.allButton} onPress={onShowDirections}>
@@ -41,6 +21,13 @@ const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirection
             </View>
         </SafeAreaView>
     );
+};
+
+NavigationInfos.propTypes = {
+    totalDuration: PropTypes.number,
+    totalDistance: PropTypes.number,
+    onExit: PropTypes.func.isRequired,
+    onShowDirections: PropTypes.func.isRequired,
 };
 
 export default NavigationInfos;
@@ -59,22 +46,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 10,
-    },
-    infoItems: {
-        flex: 1,
-        marginRight: 10,
-    },
-    infoItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 6,
-    },
-    infoText: {
-        fontSize: 14,
-        fontWeight: '500',
-        color: '#fff',
-        marginLeft: 8,
-        maxWidth: width - 200,
     },
     buttonContainer: {
         flexDirection: 'row',
