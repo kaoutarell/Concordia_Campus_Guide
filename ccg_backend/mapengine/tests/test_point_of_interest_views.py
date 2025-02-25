@@ -33,7 +33,7 @@ class PointOfInterestViewsTests(APITestCase):
         self.assertEqual(len(response.data), 2)
         self.assertEqual(response.data[0]['campus'], 'SGW')
         self.assertEqual(response.data[1]['campus'], 'SGW')
-    
+
     def test_get_points_of_interest_by_category_and_campus(self):
         url = reverse('points-of-interest')
         response = self.client.get(url, {'category': 'cafe', 'campus': 'SGW'})
