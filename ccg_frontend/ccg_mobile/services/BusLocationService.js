@@ -96,7 +96,7 @@ class BusLocationService {
    * @param {number} intervalMs - Interval between refreshes in milliseconds. Default is 5000 (5 seconds).
    */
   startTracking(intervalMs = 5000) {
-    if (this.intervalId) return;
+    this.stopTracking();
 
     this.fetchBusData();
     this.intervalId = setInterval(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Platform, Button, StatusBar, ActivityIndicator, Text, Modal } from 'react-native';
 import PropTypes from "prop-types";
 import NavigationFooter from './sections/NavigationFooter';
@@ -46,7 +46,6 @@ const NavigationScreen = ({ navigation, route }) => {
     const [shuttleLocations, setShuttleLocations] = useState([]);
 
     const [userLocation, setUserLocation] = useState(null);
-    const intervalRef = useRef(null);
 
 
     useEffect(() => {
@@ -148,39 +147,22 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     useEffect(() => {
-
-
-
         if (selectedMode === "concordia-shuttle") {
             busLocationService.startTracking(2000);
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-            intervalRef.current = setInterval(() => {
+            const intervalId = setInterval(() => {
                 setShuttleLocations(busLocationService.getBusLocations());
             }, 2000);
-        }
-        if (selectedMode !== "concordia-shuttle" && intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
+            return () => {
+                clearInterval(intervalId);
+                busLocationService.stopTracking();
+            };
         }
 
         if (startPoint != null && destinationPoint != null) {
             fetchDirections();
         }
 
-
-
-        return () => {
-            if (selectedMode === "concordia-shuttle") {
-                busLocationService.stopTracking();
-            }
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-                intervalRef.current = null;
-            }
-        };
-    }, [selectedMode]);
+    }, [selectedMode, startPoint, destinationPoint]);
 
     const setDefaultStartAndDestination = async () => {
         try {
@@ -215,28 +197,35 @@ const NavigationScreen = ({ navigation, route }) => {
     };
 
     const renderNavigationInfo = () => {
-        return direction && selectedMode === "concordia-shuttle" ? (
-            <BusNavigationInfo
-                totalDistance={direction.total_distance}
-                totalDuration={direction.total_duration}
-            />
-        ) : !isNavigating ?
-            (
-                <NavigationFooter
-                    totalDistance={direction?.total_distance}
-                    totalDuration={direction?.total_duration}
-                    onStartNavigation={startNavigation} />
-            )
-            :
-            (
+        if (!isNavigating) {
+            if (direction && selectedMode === "concordia-shuttle") {
+                return (
+                    <BusNavigationInfo
+                        totalDistance={direction.total_distance}
+                        totalDuration={direction.total_duration}
+                        onStartNavigation={startNavigation}
+                    />
+                );
+            } else {
+                return (
+                    <NavigationFooter
+                        totalDistance={direction?.total_distance}
+                        totalDuration={direction?.total_duration}
+                        onStartNavigation={startNavigation}
+                    />
+                );
+            }
+        } else {
+            return (
                 <NavigationInfos
                     totalDistance={direction?.total_distance}
                     totalDuration={direction?.total_duration}
                     onExit={onExitNavigation}
                     onShowDirections={() => setShowDirections(true)}
                 />
-            )
-    }
+            );
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -291,6 +280,7 @@ const NavigationScreen = ({ navigation, route }) => {
                                 isNavigating={isNavigating}
                                 legs={direction?.legs}
                                 displayShuttle={selectedMode === "concordia-shuttle"}
+                                shuttleLocations={shuttleLocations}
                             />}
                     </View>
 
