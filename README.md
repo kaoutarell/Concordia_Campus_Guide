@@ -103,7 +103,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Note if you add a library in the backend make sure to add it to file:
@@ -223,7 +223,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Activate the environment:
