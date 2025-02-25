@@ -19,6 +19,6 @@ def get_departments_by_building(request):
     building_id = request.GET.get('building_id')
     if not building_id:
         return Response({"error": "Missing building_id parameter"}, status=400)
-    departments = Department.objects.filter(building=building_id)
+    departments = Department.objects.filter(building__iexact=building_id)
     serializer = DepartmentSerializer(departments, many=True)
     return Response(serializer.data)
