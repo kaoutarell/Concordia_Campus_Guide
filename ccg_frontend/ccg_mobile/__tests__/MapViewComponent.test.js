@@ -16,18 +16,34 @@ describe("MapViewComponent - Location Tests", () => {
     jest.clearAllMocks();
   });
 
+  // Define default props that all tests can use
+  const defaultProps = {
+    target: {},
+    locations: [],
+    region: {
+      latitude: 45.4973,
+      longitude: -73.5789,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    },
+    maxBounds: {
+      northeast: {
+        latitude: 45.5200,
+        longitude: -73.5600,
+      },
+      southwest: {
+        latitude: 45.4800,
+        longitude: -73.5900,
+      },
+    }
+  };
+
   // test to make sure that the tracking is started on mount
   test("should start tracking location on mount", async () => {
     render(
       <NavigationContainer>
         <MapViewComponent
-          locations={[]}
-          region={{
-            latitude: 0,
-            longitude: 0,
-            latitudeDelta: 1,
-            longitudeDelta: 1,
-          }}
+          {...defaultProps}
         />
       </NavigationContainer>
     );
@@ -73,13 +89,7 @@ describe("MapViewComponent - Location Tests", () => {
     render(
       <NavigationContainer>
         <MapViewComponent
-          locations={[]}
-          region={{
-            latitude: 0,
-            longitude: 0,
-            latitudeDelta: 1,
-            longitudeDelta: 1,
-          }}
+          {...defaultProps}
         />
       </NavigationContainer>
     );
@@ -99,13 +109,7 @@ describe("MapViewComponent - Location Tests", () => {
     const { unmount } = render(
       <NavigationContainer>
         <MapViewComponent
-          locations={[]}
-          region={{
-            latitude: 0,
-            longitude: 0,
-            latitudeDelta: 1,
-            longitudeDelta: 1,
-          }}
+          {...defaultProps}
         />
       </NavigationContainer>
     );
@@ -176,11 +180,11 @@ describe("MapViewComponent - Location Tests", () => {
   test("should display loading indicator when locations are loading", () => {
     render(
       <NavigationContainer>
-        <MapViewComponent locations={[]} region={{}} />
-
+        <MapViewComponent 
+          {...defaultProps}
+          locations={[]} // Empty locations will trigger loading state
+        />
       </NavigationContainer>
-
-
     );
 
     // Check if the loading screen is rendered
@@ -188,6 +192,7 @@ describe("MapViewComponent - Location Tests", () => {
     expect(loadingText).toBeTruthy();
   });
 
+  // Commented out test that could be enabled later if needed
   // test("should set isLoading to false when locations are provided", async () => {
   //   const locations = [
   //     {
@@ -200,7 +205,11 @@ describe("MapViewComponent - Location Tests", () => {
   //     },
   //   ];
 
-  //   render(<MapViewComponent locations={locations} region={{}} />);
+  //   render(
+  //     <NavigationContainer>
+  //       <MapViewComponent {...defaultProps} locations={locations} />
+  //     </NavigationContainer>
+  //   );
 
   //   // Wait for the effect to run and isLoading to be set to false
   //   await waitFor(() => {
