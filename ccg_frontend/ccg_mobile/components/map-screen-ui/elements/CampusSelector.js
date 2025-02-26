@@ -1,108 +1,116 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import PropTypes from "prop-types";
+import { render, fireEvent } from "@testing-library/react-native";
+import CampusSelector from "../components/map-screen-ui/elements/CampusSelector";
 
-const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
-  const getCampusName = (campus) => {
-    switch (campus) {
-      case "SGW":
-        return "Sir George Williams";
-      case "LOY":
-        return "Loyola";
-      default:
-        return "Error: Unknown Campus";
-    }
-  };
+jest.mock("@expo/vector-icons", () => ({
+  FontAwesome: ({ name }) => <>{name}</>,
+}));
 
-  const toggleCampus = () => {
-    const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
-    onCampusSelect(newCampus);
-  };
+describe("CampusSelector", () => {
+  const mockOnCampusSelect = jest.fn();
 
-  if (compact) {
-    return (
-      <TouchableOpacity
-      style={styles.campusToggle}
-      onPress={toggleCampus}
-      testID="campus-button"
-      accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
-    >
-      {/* SGW Side */}
-      <View style={[styles.toggleOption, selectedCampus === "SGW" && styles.activeCampus]}>
-        <Text style={[styles.campusText, selectedCampus === "SGW" && styles.activeText]}>SGW</Text>
-      </View>
-
-      {/* LOY Side */}
-      <View style={[styles.toggleOption, selectedCampus === "LOY" && styles.activeCampus]}>
-        <Text style={[styles.campusText, selectedCampus === "LOY" && styles.activeText]}>LOY</Text>
-      </View>
-    </TouchableOpacity>
-    );
-  }
-
-  return (
-    <TouchableOpacity
-      style={styles.campusButton}
-      onPress={toggleCampus}
-      testID="campus-button"
-    >
-      <Text style={styles.campusText} testID="campus-name">
-        {getCampusName(selectedCampus)}
-      </Text>
-      <FontAwesome
-        name="exchange"
-        size={14}
-        color="white"
-        style={styles.icon}
+  it("renders the campus name and toggles campus on button press", () => {
+    // Render the component with the default campus 'SGW'
+    const { getByTestId } = render(
+      <CampusSelector
+        selectedCampus="SGW"
+        onCampusSelect={mockOnCampusSelect}
       />
-    </TouchableOpacity>
-  );
-};
+    );
 
-// prop validation
-CampusSelector.propTypes = {
-  selectedCampus: PropTypes.string.isRequired,
-  onCampusSelect: PropTypes.func.isRequired,
-  compact: PropTypes.bool,
-};
+    // Check if the campus name 'SGW' is displayed
+    expect(getByTestId("campus-name").props.children).toBe("Sir George Williams");
 
-const styles = StyleSheet.create({
-  campusToggle: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "white",
-    borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: "#eee",
-    height: 55,
-    padding: 3,
-    width: 100,
-    alignSelf: "center",
-  },
-  toggleOption: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 12,
-    borderRadius: 20,
-  },
-  activeCampus: {
-    backgroundColor: "#8B1D3B",
-  },
-  campusText: {
-    color: "#8B1D3B",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  activeText: {
-    color: "white",
-  },
+    // Simulate pressing the button to toggle campus
+    fireEvent.press(getByTestId("campus-button"));
+
+    // Check if the mock function was called
+    expect(mockOnCampusSelect).toHaveBeenCalledWith("LOY");
+  });
+
+  it("toggles campus correctly when 'SGW' is selected", () => {
+    const { getByTestId } = render(
+      <CampusSelector
+        selectedCampus="SGW"
+        onCampusSelect={mockOnCampusSelect}
+      />
+    );
+
+    // Initial campus should be 'SGW'
+    expect(getByTestId("campus-name").props.children).toBe("Sir George Williams");
+
+    // Simulate pressing the button
+    fireEvent.press(getByTestId("campus-button"));
+
+    // Check if the 'LOY' campus is passed to onCampusSelect
+    expect(mockOnCampusSelect).toHaveBeenCalledWith("LOY");
+  });
+
+  it("toggles campus correctly when 'LOY' is selected", () => {
+    const { getByTestId } = render(
+      <CampusSelector
+        selectedCampus="LOY"
+        onCampusSelect={mockOnCampusSelect}
+      />
+    );
+
+    // Initial campus should be 'LOY'
+    expect(getByTestId("campus-name").props.children).toBe("Loyola");
+
+    // Simulate pressing the button
+    fireEvent.press(getByTestId("campus-button"));
+
+    // Check if the 'SGW' campus is passed to onCampusSelect
+    expect(mockOnCampusSelect).toHaveBeenCalledWith("SGW");
+  });
+
+  it("checks if value is unexpected returns selectedCampus value", () => {
+    const { getByText } = render(
+      <CampusSelector
+        selectedCampus="unknown"
+        onCampusSelect={mockOnCampusSelect}
+      />
+    );
+    expect(getByText("Error: Unknown Campus")).toBeTruthy();
+  });
+
+  it("should render in compact mode when compact prop is true", () => {
+    const { getByTestId, getAllByText } = render(
+      <CampusSelector
+        selectedCampus="SGW"
+        onCampusSelect={mockOnCampusSelect}
+        compact={true}
+      />
+    );
+    
+    // Check that both SGW and LOY are visible in compact mode
+    const sgwElements = getAllByText("SGW");
+    const loyElements = getAllByText("LOY");
+    
+    expect(sgwElements.length).toBeGreaterThan(0);
+    expect(loyElements.length).toBeGreaterThan(0);
+    
+    // Test clicking toggles to LOY
+    fireEvent.press(getByTestId("campus-button"));
+    expect(mockOnCampusSelect).toHaveBeenCalledWith("LOY");
+  });
+
+  it("should properly show active state in compact mode for LOY campus", () => {
+    const { getAllByText } = render(
+      <CampusSelector
+        selectedCampus="LOY"
+        onCampusSelect={mockOnCampusSelect}
+        compact={true}
+      />
+    );
+    
+    const sgwElements = getAllByText("SGW");
+    const loyElements = getAllByText("LOY");
+    
+    expect(sgwElements.length).toBeGreaterThan(0);
+    expect(loyElements.length).toBeGreaterThan(0);
+  });
+
+  // This test is removed since the implementation in CampusSelector doesn't actually show "??" in the UI
+  // Even though getCampusInitials returns "??" for unknown campus
 });
-
-export default CampusSelector;
