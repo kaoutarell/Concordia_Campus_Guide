@@ -37,6 +37,13 @@ const SearchBar = ({
         return [];
     }, [locationNames]);
 
+    const handleFocus = () => {
+        setFocusedInput("destination");
+        if (destination.length > 0) {
+            setFilteredLocations(filterLocations(destination));
+        }
+    };
+
     const handleSearch = (text) => {
         setDestination(text);
         setFilteredLocations(filterLocations(text));
@@ -75,7 +82,7 @@ const SearchBar = ({
                     placeholderTextColor="#555"
                     value={destination}
                     onChangeText={handleSearch}
-                    onFocus={() => setFocusedInput("destination")}
+                    onFocus={handleFocus}
                 />
                 {destination.length > 0 && (
                     <TouchableOpacity onPress={clearSearch} style={styles.clearButton}>
