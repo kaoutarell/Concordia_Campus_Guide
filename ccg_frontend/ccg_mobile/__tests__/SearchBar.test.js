@@ -23,14 +23,40 @@ const locations = [
 ];
 
 describe("SearchBar Component", () => {
+  // Default props for all tests
+  const defaultProps = {
+    locations,
+    setTargetLocation: jest.fn(),
+    setSelectedCampus: jest.fn(),
+  };
+  
+  // Helper function to render SearchBar with default props
+  const renderSearchBar = (props = {}) => {
+    return render(<SearchBar {...defaultProps} {...props} />);
+  };
+  
+  // Helper function to get input and trigger text change
+  const typeInSearchBar = async (renderResult, text, shouldFocus = true) => {
+    const input = renderResult.getByPlaceholderText("Where to?");
+    
+    if (shouldFocus) {
+      fireEvent(input, 'focus');
+    }
+    
+    await act(async () => {
+      fireEvent.changeText(input, text);
+    });
+    
+    return input;
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render SearchBar with correct placeholder", async () => {
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={jest.fn()}
-        setSelectedCampus={jest.fn()}
-      />
-    );
+    const { getByPlaceholderText } = renderSearchBar();
+    
     // Check if the placeholder and value are correctly rendered
     const input = await waitFor(() => getByPlaceholderText("Where to?"), {
       timeout: 3000, // Wait for up to 3 seconds
@@ -38,140 +64,56 @@ describe("SearchBar Component", () => {
     expect(input.props.value).toBe("");
   });
 
-  it("should call setTargetLocation when text changes", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-
-    const input = await waitFor(() => getByPlaceholderText("Where to?"), {
-      timeout: 3000, // Wait for the input to be rendered
-    });
-
-    // Simulate text change; wrapped inside act to avoid ReferenceError
-    await act(async () => {
-      fireEvent.changeText(input, "X Annex");
-    });
-
-    // Mock handleSelect function behavior
-    const expectedLocation = locations.find(loc => loc.name === "X Annex");
+  it("should update input value when text changes", async () => {
+    const { getByPlaceholderText } = renderSearchBar();
+    const input = await typeInSearchBar({ getByPlaceholderText }, "X Annex");
     
-    // We're not directly testing setTargetLocation here since it's only called in handleSelect
-    // Instead, we'll test that the input value changes correctly
+    // Verify input value updates correctly
     expect(input.props.value).toBe("X Annex");
   });
 
-  it("should not search anything if there is no text input", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-    const input = await waitFor(() => getByPlaceholderText("Where to?"), {
-      timeout: 3000, // Wait for input to appear
-    });
-
-    // wrapped inside act to avoid ReferenceError
+  it("should clear input when empty text is entered", async () => {
+    const { getByPlaceholderText } = renderSearchBar();
+    
+    // First type something
+    const input = await typeInSearchBar({ getByPlaceholderText }, "X Annex");
+    expect(input.props.value).toBe("X Annex");
+    
+    // Then clear it
     await act(async () => {
       fireEvent.changeText(input, "");
     });
-
+    
     // Ensure input is cleared
     expect(input.props.value).toBe("");
   });
 
-  it("should update filtered locations based on input", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-
-    const input = getByPlaceholderText("Where to?");
-    
-    // Trigger focus and then text change to show suggestions
-    fireEvent(input, 'focus');
-    fireEvent.changeText(input, "Vanier L");
-
-    // Check input value is updated correctly
-    expect(input.props.value).toBe("Vanier L");
-  });
-
   it("should not show Vanier Extension when 'Vanier L' is typed", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-
-    const input = getByPlaceholderText("Where to?");
+    const { getByPlaceholderText } = renderSearchBar();
+    await typeInSearchBar({ getByPlaceholderText }, "Vanier L");
     
-    // Trigger focus and then text change to show suggestions
-    fireEvent(input, 'focus');
-    fireEvent.changeText(input, "Vanier L");
-
+    // Verify non-existent location is not shown
     const vanierExtension = screen.queryByText("Vanier Extension");
     expect(vanierExtension).toBeNull();
   });
 
-  it("should call setTargetLocation when a location is selected", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar 
-        locations={locations} 
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-
-    const input = getByPlaceholderText("Where to?");
+  it("should update input correctly when typing 'Vanier L'", async () => {
+    const renderResult = renderSearchBar();
+    const input = await typeInSearchBar(renderResult, "Vanier L");
     
-    // Trigger focus and then text change to show suggestions
-    fireEvent(input, 'focus');
-    fireEvent.changeText(input, "Vanier L");
-
     // Verify input text is updated
     expect(input.props.value).toBe("Vanier L");
   });
-
-  it("should update filtered locations and show the correct suggestions", async () => {
-    const setTargetLocation = jest.fn();
-    const setSelectedCampus = jest.fn();
-    const { getByPlaceholderText, queryByText } = render(
-      <SearchBar
-        locations={locations}
-        setTargetLocation={setTargetLocation}
-        setSelectedCampus={setSelectedCampus}
-      />
-    );
-
-    // Get the search input
-    const destinationInput = getByPlaceholderText("Where to?");
-    
-    // Trigger focus and then text change to show suggestions
-    fireEvent(destinationInput, 'focus');
-    fireEvent.changeText(destinationInput, "Vanier L");
-
-    // Since we can't directly test the internal state, we'll just verify
-    // that the input value is updated correctly
-    expect(destinationInput.props.value).toBe("Vanier L");
+  
+  // Test variations with different search terms
+  const searchTerms = ["Vanier L", "X Annex", "Samuel B"];
+  searchTerms.forEach(term => {
+    it(`should correctly update input value when searching for "${term}"`, async () => {
+      const renderResult = renderSearchBar();
+      const input = await typeInSearchBar(renderResult, term);
+      
+      // Verify input value matches search term
+      expect(input.props.value).toBe(term);
+    });
   });
 });
