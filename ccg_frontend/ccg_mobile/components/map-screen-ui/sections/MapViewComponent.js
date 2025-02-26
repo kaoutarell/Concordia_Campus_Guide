@@ -4,7 +4,6 @@ import {
   View,
   ActivityIndicator,
   Text,
-  SafeAreaView,
   Platform,
   StatusBar,
 } from "react-native";
@@ -14,15 +13,11 @@ import CustomMarker from "../elements/CustomMarker.js";
 import InfoPopup from "../elements/InfoPopUp.js";
 import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 import BuildingHighlight from "../elements/BuildingHighlight";
-import PropTypes from 'prop-types';
-
+import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-
 const MapViewComponent = ({ target, locations, region, maxBounds }) => {
-
   const navigation = useNavigation();
-
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -31,7 +26,6 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-  // Function to check if the region is within the bounds
   const isWithinBounds = (region) => {
     return (
       region.latitude <= maxBounds.northeast.latitude &&
@@ -41,26 +35,27 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     );
   };
 
-  // Function to handle region changes and restrict panning
   const handleRegionChange = (region) => {
     if (Platform.OS == "android") {
-      const zoomThreshold = 0.006; // Adjust this value as needed
+      const zoomThreshold = 0.006;
       setShowMarkers(region.latitudeDelta < zoomThreshold);
     } else if (!isWithinBounds(region)) {
-      // Snap back to the last valid region
       mapRef.current.animateToRegion({
-        latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
-        longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
-        latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
-        longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
+        latitude:
+          (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
+        longitude:
+          (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
+        latitudeDelta: Math.abs(
+          maxBounds.northeast.latitude - maxBounds.southwest.latitude
+        ),
+        longitudeDelta: Math.abs(
+          maxBounds.northeast.longitude - maxBounds.southwest.longitude
+        ),
       });
     }
   };
 
-
-
   const handleMarkerPress = (location) => {
-    // Force React to update state asynchronously
     setTimeout(() => {
       setSelectedMarker((prev) => (prev === location ? null : location));
     }, 0);
@@ -70,8 +65,8 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     navigation.navigate("Navigation", {
       start: null,
       destination: location,
-      allLocations: locations
-    })
+      allLocations: locations,
+    });
   };
 
   useEffect(() => {
@@ -81,18 +76,12 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   }, [locations]);
 
   useEffect(() => {
-    // set Map boundaries. Only 
     if (Platform.OS == "android" && mapRef.current) {
-      // Set the map boundaries after the map has loaded
-      mapRef.current.setMapBoundaries(
-        maxBounds.northeast,
-        maxBounds.southwest
-      );
+      mapRef.current.setMapBoundaries(maxBounds.northeast, maxBounds.southwest);
     }
   }, [maxBounds, mapRef.current]);
 
   useEffect(() => {
-
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
@@ -109,25 +98,21 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     };
   }, []);
 
-
   useEffect(() => {
     if (target?.id) {
-      setMapKey(prevKey => prevKey + 1);
+      setMapKey((prevKey) => prevKey + 1);
       setTargetRegion({
         latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
-        latitudeDelta: 0.005, // Adjust for zoom level
+        latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
       setSelectedMarker((prev) => (prev === target ? null : target));
-    } else setTargetRegion(region)
-
+    } else setTargetRegion(region);
   }, [target]);
 
-
   return (
-    <SafeAreaView style={styles.container}>
-      {/* Loading Indicator */}
+    <View style={styles.container}>
       {isLoading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color="blue" />
@@ -138,7 +123,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
           <MapView
             key={mapKey}
             ref={mapRef}
-            testID="map-view" // added to enable getting the map by testID
+            testID="map-view"
             style={styles.map}
             region={targetRegion}
             maxBounds={maxBounds}
@@ -149,35 +134,34 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
             toolbarEnabled={false}
             onPress={() => setSelectedMarker(null)}
             {...(Platform.OS == "android" && {
-              // Set the min and max zoom levels. Only supported on Android.
               maxZoomLevel: 19,
               minZoomLevel: 16,
             })}
             {...(Platform.OS == "ios" && {
-              // Set the camera zoom range. Only supported on iOS 13+.
               cameraZoomRange: {
                 minCenterCoordinateDistance: 500,
                 maxCenterCoordinateDistance: 3000,
                 animated: true,
-              }
+              },
             })}
           >
-            {(target.id) ?
+            {target.id ? (
               <CustomMarker
                 key={target.id}
                 value={target}
                 onPress={() => handleMarkerPress(target)}
               />
-              :
-              (showMarkers != (Platform.OS == "ios")) && locations.map((location) => (
+            ) : (
+              showMarkers !== (Platform.OS == "ios") &&
+              locations.map((location) => (
                 <CustomMarker
                   key={location.id}
                   value={location}
                   onPress={() => handleMarkerPress(location)}
                 />
-              ))}
+              ))
+            )}
 
-            {/* Display current location marker only if available */}
             {currentLocation?.coords && (
               <Marker
                 coordinate={{
@@ -186,17 +170,15 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
                 }}
                 title="Current Location"
                 pinColor="blue"
-                testID="current-location-marker" // added for tests
+                testID="current-location-marker"
               />
             )}
 
             <BuildingHighlight />
-
           </MapView>
         </View>
       )}
 
-      {/* Display Info Popup when a marker is selected */}
       {selectedMarker !== null && (
         <View style={styles.popupWrapper}>
           <InfoPopup
@@ -206,20 +188,20 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
           />
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1, // the parent container takes the full screen space - improvement
+    backgroundColor: "transparent", // no background color interferes - improvement
   },
   mapContainer: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, // Avoid overlapping with the status bar
+    flex: 1, // ensures the map container fills the entire parent container - improvement
   },
   map: {
-    flex: 1,
+    flex: 1, // ensures map takes the full size of the container - improvement
     width: "100%",
     height: "100%",
   },
@@ -235,12 +217,12 @@ const styles = StyleSheet.create({
   },
   popupWrapper: {
     position: "absolute",
-    bottom: 300, // Ensure it's above the bottom navigation (if any)
+    bottom: 300,
     left: 20,
     right: 20,
     borderRadius: 10,
     padding: 10,
-    elevation: 5, // For Android shadow
+    elevation: 5,
   },
 });
 

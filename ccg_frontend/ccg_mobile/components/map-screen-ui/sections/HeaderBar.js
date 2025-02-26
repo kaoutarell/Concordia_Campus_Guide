@@ -6,87 +6,93 @@ import CampusSelector from "../elements/CampusSelector";
 
 const { width } = Dimensions.get("window");
 
+const HeaderBar = ({
+  selectedCampus,
+  onCampusSelect,
+  locations,
+  setTargetLocation,
+}) => {
+  const [isSearching, setIsSearching] = useState(false);
+  const campusOpacity = useRef(new Animated.Value(1)).current;
+  const campusTranslateY = useRef(new Animated.Value(0)).current;
 
-const HeaderBar = ({ selectedCampus, onCampusSelect, locations, setTargetLocation }) => {
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(campusOpacity, {
+        toValue: isSearching ? 0 : 1,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+      Animated.timing(campusTranslateY, {
+        toValue: isSearching ? -10 : 0,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [isSearching]);
 
-    const [isSearching, setIsSearching] = useState(false);
-    const campusOpacity = useRef(new Animated.Value(1)).current; // Default to visible
-    const campusTranslateY = useRef(new Animated.Value(0)).current;
-
-    useEffect(() => {
-        if (isSearching) {
-            Animated.parallel([
-                Animated.timing(campusOpacity, {
-                    toValue: 0,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(campusTranslateY, {
-                    toValue: -10,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-            ]).start();
-        } else {
-            // Show animation
-            Animated.parallel([
-                Animated.timing(campusOpacity, {
-                    toValue: 1,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(campusTranslateY, {
-                    toValue: 0,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-            ]).start();
-        }
-    }, [isSearching]);
-
-    return (
-        <View style={styles.headerContainer}>
-
-            <View style={styles.topRow}>
-
-                <MenuButton testID="menu-button" />
-                <View style={styles.topColumn}>
-
-                    <SearchBar testID="search-bar" setTargetLocation={setTargetLocation} setIsSearching={setIsSearching} locations={locations} />
-                    <Animated.View style={{
-                        opacity: campusOpacity,
-                        transform: [{ translateY: campusTranslateY }],
-                    }}>
-                        <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
-                    </Animated.View>
-
-                </View>
-
-            </View>
-
+  return (
+    <View style={styles.container}>
+      <View style={styles.topRow}>
+        <MenuButton testID="menu-button" />
+        <View style={styles.topColumn}>
+          <SearchBar
+            testID="search-bar"
+            setTargetLocation={setTargetLocation}
+            setIsSearching={setIsSearching}
+            locations={locations}
+            style={styles.inputField}
+          />
+          <Animated.View
+            style={[
+              styles.inputField,
+              {
+                opacity: campusOpacity,
+                transform: [{ translateY: campusTranslateY }],
+              },
+            ]}
+          >
+            <CampusSelector
+              testID="campus-selector"
+              selectedCampus={selectedCampus}
+              onCampusSelect={onCampusSelect}
+            />
+          </Animated.View>
         </View>
-    );
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    headerContainer: {
-
-        paddingTop: 60,
-        paddingBottom: 10,
-        backgroundColor: "white",
-        width: "100%",
-    },
-    topColumn: {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: width * 0.9, // Responsive width
-    },
-
-    topRow: {
-        flexDirection: "row",
-        width: width * 0.9, // Responsive width
-    },
+  container: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    width: "100%",
+    height: "100%",
+  },
+  topRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 16,
+  },
+  topColumn: {
+    flexDirection: "column",
+    alignItems: "stretch", // align items to stretch after reducing the campus-selector button
+    justifyContent: "flex-start",
+    width: "100%",
+    paddingHorizontal: 16, // prevent overflow on the sides
+    marginTop: 50,
+  },
+  inputField: {
+    width: "100%",
+    marginBottom: 5,
+  },
 });
 
 export default HeaderBar;

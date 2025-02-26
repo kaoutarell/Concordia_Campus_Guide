@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
- 
+
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
   const getCampusName = (campus) => {
     switch (campus) {
@@ -17,12 +17,12 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
     }
   };
 
-    const toggleCampus = () => {
-        console.log("Toggling campus");
-        const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
-        console.log("New campus:", newCampus);
-        onCampusSelect(newCampus);
-    };
+  const toggleCampus = () => {
+    console.log("Toggling campus");
+    const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
+    console.log("New campus:", newCampus);
+    onCampusSelect(newCampus);
+  };
 
   return (
     <TouchableOpacity
@@ -30,9 +30,11 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       onPress={toggleCampus}
       testID="campus-button"
     >
-      <Text style={styles.campusText} testID="campus-name">{getCampusName(selectedCampus)}</Text>
+      <Text style={styles.campusText} testID="campus-name">
+        {getCampusName(selectedCampus)}
+      </Text>
       <FontAwesome
-        name="chevron-down"
+        name="exchange" // this icon is more meaninful since we have only 2 options - improvement
         size={14}
         color="white"
         style={styles.icon}
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     marginTop: 10,
-    width: width * 0.8, // Responsive width
+    width: width * 0.7,
     alignSelf: "center",
   },
   campusText: {
