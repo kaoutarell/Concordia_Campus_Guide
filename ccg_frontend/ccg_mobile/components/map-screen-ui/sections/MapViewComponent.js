@@ -46,15 +46,21 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     if (Platform.OS == "android") {
       const zoomThreshold = 0.006; // Adjust this value as needed
       setShowMarkers(region.latitudeDelta < zoomThreshold);
-    } else if (!isWithinBounds(region)) {
-      // Snap back to the last valid region
-      mapRef.current.animateToRegion({
-        latitude: (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
-        longitude: (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
-        latitudeDelta: Math.abs(maxBounds.northeast.latitude - maxBounds.southwest.latitude),
-        longitudeDelta: Math.abs(maxBounds.northeast.longitude - maxBounds.southwest.longitude),
-      });
     }
+    // else if (!isWithinBounds(region)) {
+    //   mapRef.current.animateToRegion({
+    //     latitude:
+    //       (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
+    //     longitude:
+    //       (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
+    //     latitudeDelta: Math.abs(
+    //       maxBounds.northeast.latitude - maxBounds.southwest.latitude
+    //     ),
+    //     longitudeDelta: Math.abs(
+    //       maxBounds.northeast.longitude - maxBounds.southwest.longitude
+    //     ),
+    //   });
+    // }
   };
 
 
@@ -79,17 +85,6 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
       setIsLoading(false);
     }
   }, [locations]);
-
-  useEffect(() => {
-    // set Map boundaries. Only 
-    if (Platform.OS == "android" && mapRef.current) {
-      // Set the map boundaries after the map has loaded
-      mapRef.current.setMapBoundaries(
-        maxBounds.northeast,
-        maxBounds.southwest
-      );
-    }
-  }, [maxBounds, mapRef.current]);
 
   useEffect(() => {
 
@@ -144,8 +139,8 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
-            zoomControlEnabled={true}
-            showsMyLocationButton={true}
+            zoomControlEnabled={false}
+            showsMyLocationButton={false}
             toolbarEnabled={false}
             onPress={() => setSelectedMarker(null)}
             {...(Platform.OS == "android" && {
