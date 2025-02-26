@@ -7,13 +7,15 @@ import numpy as np
 
 @api_view(['GET'])
 def get_indoor_directions(request):
-    print(get_node_sequence("H867", "H827"))
+    with open('mapengine/fixtures/h8.json', 'r') as file:
+        map_data=json.load(file)
+    sequence=get_node_sequence(map_data, "H867", "H827")
+    print(get_path_coordinates(map_data, sequence))
     path = {"path_data": "M50,150 C150,50 350,50 450,150"}
     return JsonResponse(path)
 
-def get_node_sequence(start, destination):
-    with open('mapengine/fixtures/h8.json', 'r') as file:
-        map_data=json.load(file)
+def get_node_sequence(map_data, start, destination):
+    
     if start not in map_data or destination not in map_data:
         return None
     
@@ -35,11 +37,11 @@ def get_node_sequence(start, destination):
 
 #this function returns the closest point in the hallway to the class in order to connect the two graphically
 def get_hallway_class_point(map_data, room):
-    corner1=map_data[room]["connections"][1]
-    corner2=map_data[room]["connections"][2]
-    A=(map_data[corner1]["coordinate"]["x"], map_data[room]["coordinate"]["y"])
-    B=(map_data[corner2]["coordinate"]["x"], map_data[room]["coordinate"]["y"])
-    P=(map_data[room]["coordinate"]["x"], map_data[room]["coordinate"]["y"])
+    corner1=map_data[room]["connections"][0]
+    corner2=map_data[room]["connections"][1]
+    A=(map_data[corner1]["coords"]["x"], map_data[corner1]["coords"]["y"])
+    B=(map_data[corner2]["coords"]["x"], map_data[corner2]["coords"]["y"])
+    P=(map_data[room]["coords"]["x"], map_data[room]["coords"]["y"])
     
     A = np.array(A)
     B = np.array(B)
@@ -52,3 +54,24 @@ def get_hallway_class_point(map_data, room):
     Q = A + t * AB  # Compute closest point
 
     return tuple(Q)
+
+#returns the list of coordinates for the path between two rooms
+def get_path_coordinates(map_data, path):
+    coords=[]
+    coords.append(map_data[path[0]]["coords"])
+    if map_data[path[1]]["type"]=="room":
+        coords.append(map_data[path[1]]["coords"])
+        return coords
+    else:
+        p = get_hallway_class_point(map_data, path[0])
+        coords.append({"x":int(p[0]), "y":int(p[1])})
+        i=2
+        while map_data[path[i]]["type"] != "room":
+            if map_data[path[i+1]]["type"] == "room":
+                p = get_hallway_class_point(map_data, path[i+1])
+                coords.append({"x":int(p[0]), "y":int(p[1])})
+            else:
+                coords.append(map_data[path[i]]["coords"])
+            i=i+1
+        coords.append(map_data[path[i]]["coords"])
+        return coords
