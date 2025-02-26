@@ -154,7 +154,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
               showMarkers !== (Platform.OS == "ios") &&
               locations.map((location) => (
                 <CustomMarker
-                  key={location.id}
+                  key={`${location.id}-${location.building_code}`}
                   value={location}
                   onPress={() => handleMarkerPress(location)}
                 />
