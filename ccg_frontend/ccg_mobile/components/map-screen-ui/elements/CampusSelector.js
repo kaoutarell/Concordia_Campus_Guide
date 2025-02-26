@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Dimensions, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
@@ -36,15 +36,21 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
   if (compact) {
     return (
       <TouchableOpacity
-        style={styles.campusCircle}
-        onPress={toggleCampus}
-        testID="campus-button"
-        accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
-      >
-        <Text style={styles.campusInitials} testID="campus-name">
-          {getCampusInitials(selectedCampus)}
-        </Text>
-      </TouchableOpacity>
+      style={styles.campusToggle}
+      onPress={toggleCampus}
+      testID="campus-button"
+      accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
+    >
+      {/* SGW Side */}
+      <View style={[styles.toggleOption, selectedCampus === "SGW" && styles.activeCampus]}>
+        <Text style={[styles.campusText, selectedCampus === "SGW" && styles.activeText]}>SGW</Text>
+      </View>
+
+      {/* LOY Side */}
+      <View style={[styles.toggleOption, selectedCampus === "LOY" && styles.activeCampus]}>
+        <Text style={[styles.campusText, selectedCampus === "LOY" && styles.activeText]}>LOY</Text>
+      </View>
+    </TouchableOpacity>
     );
   }
 
@@ -75,44 +81,40 @@ CampusSelector.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  campusButton: {
+  campusToggle: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#8B1D3B",
-    color: "white",
+    backgroundColor: "white",
     borderRadius: 25,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    marginTop: 10,
-    width: width * 0.7,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+    borderWidth: 1,
+    borderColor: "#eee",
+    height: 55,
+    padding: 3,
+    width: 100,
     alignSelf: "center",
   },
-  campusText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  icon: {
-    marginLeft: 10,
-  },
-  campusCircle: {
-    backgroundColor: "#8B1D3B",
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+  toggleOption: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    paddingVertical: 12,
+    borderRadius: 20,
   },
-  campusInitials: {
-    color: "white",
-    fontSize: 16,
+  activeCampus: {
+    backgroundColor: "#8B1D3B",
+  },
+  campusText: {
+    color: "#8B1D3B",
+    fontSize: 14,
     fontWeight: "bold",
+  },
+  activeText: {
+    color: "white",
   },
 });
 
