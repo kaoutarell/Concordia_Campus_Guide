@@ -87,7 +87,7 @@ jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
 jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
   return function MockCustomMarker({ value, onPress }) {
     return (
-      <div data-testid="custom-marker" onClick={() => onPress && onPress()}>
+      <div data-testid="custom-marker" onClick={() => onPress && onPress()} onKeyDown={(e) => e.key === 'Enter' && onPress && onPress()}>
         <span>{value.id}</span>
       </div>
     );
