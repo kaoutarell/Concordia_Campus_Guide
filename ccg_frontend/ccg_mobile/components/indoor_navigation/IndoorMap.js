@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, ImageBackground } from 'react-native';
 import Hall8 from './Hall-8.png';
 import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
 import Svg, {Path} from 'react-native-svg';
@@ -33,23 +33,26 @@ const IndoorMap = ()=>{
         {/* New component that allows us to zoom and pan the image */}
         <ReactNativeZoomableView
           maxZoom={10}
-          minZoom={1}
+          minZoom={0.3}
           zoomStep={0.5}
           bindToBorders={true}
-          contentWidth={300}
-          contentHeight={150}
+          contentWidth={1024}
+          contentHeight={1024}
+          initialZoom={0.3}
         >
-          <Image
-            style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
+          <ImageBackground
+            style={{ width: 1024, height: 1024, resizeMode: 'contain' }}
             source={Hall8}
-          />
-          <Svg style={styles.svg}>
-        {path!=""&&<Path
-          d={path.path_data}
-          fill="transparent"
-          stroke="red"
-          strokeWidth="5"
-        />}</Svg>
+          >
+            <Svg style={styles.svg}>
+              {path!=""&&<Path
+                d={path.path_data}
+                fill="transparent"
+                stroke="black"
+                strokeWidth="5"
+              />}</Svg>
+          </ImageBackground>
+          
         </ReactNativeZoomableView>
       </View>
     </View>
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     width: "100%", // Match the image width
-    height: 300, // Match the image height
+    height: "100%", // Match the image height
   },
 });
 

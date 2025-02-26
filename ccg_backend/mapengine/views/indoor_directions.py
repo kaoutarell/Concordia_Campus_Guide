@@ -10,8 +10,10 @@ def get_indoor_directions(request):
     with open('mapengine/fixtures/h8.json', 'r') as file:
         map_data=json.load(file)
     sequence=get_node_sequence(map_data, "H867", "H827")
-    print(get_path_coordinates(map_data, sequence))
-    path = {"path_data": "M50,150 C150,50 350,50 450,150"}
+    coords=get_path_coordinates(map_data, sequence)
+    path = {"path_data": convert_coords_to_output(coords)}
+    print(path)
+    print(coords)
     return JsonResponse(path)
 
 def get_node_sequence(map_data, start, destination):
@@ -37,21 +39,26 @@ def get_node_sequence(map_data, start, destination):
 
 #this function returns the closest point in the hallway to the class in order to connect the two graphically
 def get_hallway_class_point(map_data, room):
-    corner1=map_data[room]["connections"][0]
-    corner2=map_data[room]["connections"][1]
-    A=(map_data[corner1]["coords"]["x"], map_data[corner1]["coords"]["y"])
-    B=(map_data[corner2]["coords"]["x"], map_data[corner2]["coords"]["y"])
-    P=(map_data[room]["coords"]["x"], map_data[room]["coords"]["y"])
-    
-    A = np.array(A)
-    B = np.array(B)
-    P = np.array(P)
+    corner1 = map_data[room]["connections"][0]
+    corner2 = map_data[room]["connections"][1]
 
-    AB = B - A  # Direction vector of line
-    AP = P - A  # Vector from A to P
+    A = (map_data[corner1]["coords"]["x"], map_data[corner1]["coords"]["y"])
+    B = (map_data[corner2]["coords"]["x"], map_data[corner2]["coords"]["y"])
+    P = (map_data[room]["coords"]["x"], map_data[room]["coords"]["y"])
 
-    t = np.dot(AP, AB) / np.dot(AB, AB)  # Projection scalar
-    Q = A + t * AB  # Compute closest point
+    A, B, P = np.array(A, dtype=float), np.array(B, dtype=float), np.array(P, dtype=float)
+
+    AB = B - A
+    AP = P - A
+
+    AB_squared = np.dot(AB, AB)
+    if AB_squared == 0:
+        print("Degenerate line segment:", A)
+        return tuple(A)
+
+    t = np.dot(AP, AB) / AB_squared
+    t = max(0, min(1, t))
+    Q = A + t * AB  
 
     return tuple(Q)
 
@@ -67,11 +74,22 @@ def get_path_coordinates(map_data, path):
         coords.append({"x":int(p[0]), "y":int(p[1])})
         i=2
         while map_data[path[i]]["type"] != "room":
-            if map_data[path[i+1]]["type"] == "room":
-                p = get_hallway_class_point(map_data, path[i+1])
+            if map_data[path[i]]["type"] == "room":
+                p = get_hallway_class_point(map_data, path[i])
                 coords.append({"x":int(p[0]), "y":int(p[1])})
             else:
                 coords.append(map_data[path[i]]["coords"])
             i=i+1
+        p = get_hallway_class_point(map_data, path[i])
+        coords.append({"x":int(p[0]), "y":int(p[1])})
         coords.append(map_data[path[i]]["coords"])
         return coords
+    
+def convert_coords_to_output(coords):
+    output="M"+str(coords[0]["x"])+" "+str(coords[0]["y"])
+    output+=" L"+str(coords[1]["x"])+" "+str(coords[1]["y"])
+    i=2
+    while i<len(coords):
+        output+=" L"+str(coords[i]["x"])+" "+str(coords[i]["y"])
+        i+=1
+    return output
