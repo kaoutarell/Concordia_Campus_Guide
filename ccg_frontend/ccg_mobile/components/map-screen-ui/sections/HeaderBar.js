@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 10,
     width: "100%",
-    height: "100%",
+    paddingTop: 50,
   },
   topRow: {
     flexDirection: "row",
@@ -83,11 +83,13 @@ const styles = StyleSheet.create({
   },
   topColumn: {
     flexDirection: "column",
-    alignItems: "stretch", // align items to stretch after reducing the campus-selector button
+    alignItems: "stretch",
     justifyContent: "flex-start",
     width: "100%",
-    paddingHorizontal: 16, // prevent overflow on the sides
-    marginTop: 50,
+    paddingHorizontal: 12, //
+    marginTop: 10,
+    position: "relative",
+    left: -10,
   },
   inputField: {
     width: "100%",

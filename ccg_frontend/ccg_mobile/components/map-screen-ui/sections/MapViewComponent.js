@@ -194,7 +194,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // the parent container takes the full screen space - improvement
+    flex: 1, // the parent container takes the full screen space
     backgroundColor: "transparent", // no background color interferes - improvement
   },
   mapContainer: {
