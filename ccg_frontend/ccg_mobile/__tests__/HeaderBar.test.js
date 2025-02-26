@@ -12,12 +12,12 @@ jest.mock("../components/map-screen-ui/elements/MenuButton", () => {
 });
 
 jest.mock("../components/map-screen-ui/elements/SearchBar", () => {
-  return ({ setSearchText }) => {
+  return ({ setTargetLocation }) => {
     const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
     return (
       <View
         testID="search-bar"
-        onTouchStart={() => setSearchText("New Search")}
+        onTouchStart={() => setTargetLocation({ name: "Test Location" })}
       />
     );
   };
@@ -36,14 +36,21 @@ jest.mock("../components/map-screen-ui/elements/CampusSelector", () => {
 });
 
 describe("HeaderBar Component", () => {
+  // Mock locations data
+  const mockLocations = [
+    { id: '1', name: 'Building A', campus: 'SGW' },
+    { id: '2', name: 'Building B', campus: 'LOY' }
+  ];
+
   //Test case 1:
   it("renders correctly with all child components", () => {
     const { getByTestId } = render(
       <HeaderBar
-        searchText=""
-        setSearchText={jest.fn()}
         selectedCampus="SGW"
         onCampusSelect={jest.fn()}
+        setSelectedCampus={jest.fn()}
+        locations={mockLocations}
+        setTargetLocation={jest.fn()}
       />
     );
 
@@ -55,16 +62,17 @@ describe("HeaderBar Component", () => {
 
 
 
-  //Test case 3:
+  //Test case 2:
   it("calls onCampusSelect when a campus is selected", () => {
     const mockOnCampusSelect = jest.fn();
 
     const { getByTestId } = render(
       <HeaderBar
-        searchText=""
-        setSearchText={jest.fn()}
         selectedCampus="SGW"
         onCampusSelect={mockOnCampusSelect}
+        setSelectedCampus={jest.fn()}
+        locations={mockLocations}
+        setTargetLocation={jest.fn()}
       />
     );
 
