@@ -1,67 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Dimensions, Animated } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import MenuButton from "../elements/MenuButton";
 import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
-
-const { width } = Dimensions.get("window");
+import PropTypes from "prop-types";
 
 const HeaderBar = ({
   selectedCampus,
   onCampusSelect,
+  setSelectedCampus,
   locations,
   setTargetLocation,
 }) => {
-  const [isSearching, setIsSearching] = useState(false);
-  const campusOpacity = useRef(new Animated.Value(1)).current;
-  const campusTranslateY = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(campusOpacity, {
-        toValue: isSearching ? 0 : 1,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-      Animated.timing(campusTranslateY, {
-        toValue: isSearching ? -10 : 0,
-        duration: 300,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [isSearching]);
-
   return (
     <View style={styles.container}>
-      <View style={styles.topRow}>
+      <View style={styles.headerRow}>
         <MenuButton testID="menu-button" />
-        <View style={styles.topColumn}>
-          <SearchBar
-            testID="search-bar"
-            setTargetLocation={setTargetLocation}
-            setIsSearching={setIsSearching}
-            locations={locations}
-            style={styles.inputField}
+        <SearchBar
+          testID="search-bar"
+          setTargetLocation={setTargetLocation}
+          locations={locations}
+          setSelectedCampus={setSelectedCampus}
+        />
+          <CampusSelector
+            testID="campus-selector"
+            selectedCampus={selectedCampus}
+            onCampusSelect={onCampusSelect}
+            compact={true}
           />
-          <Animated.View
-            style={[
-              styles.inputField,
-              {
-                opacity: campusOpacity,
-                transform: [{ translateY: campusTranslateY }],
-              },
-            ]}
-          >
-            <CampusSelector
-              testID="campus-selector"
-              selectedCampus={selectedCampus}
-              onCampusSelect={onCampusSelect}
-            />
-          </Animated.View>
-        </View>
       </View>
     </View>
   );
+};
+
+HeaderBar.propTypes = {
+  selectedCampus: PropTypes.string.isRequired,
+  onCampusSelect: PropTypes.func.isRequired,
+  setSelectedCampus: PropTypes.func.isRequired,
+  locations: PropTypes.array.isRequired,
+  setTargetLocation: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -74,26 +51,17 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 50,
   },
-  topRow: {
+  headerRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "100%",
-    paddingHorizontal: 16,
-  },
-  topColumn: {
-    flexDirection: "column",
-    alignItems: "stretch",
-    justifyContent: "flex-start",
-    width: "100%",
-    paddingHorizontal: 12, //
-    marginTop: 10,
-    position: "relative",
-    left: -10,
-  },
-  inputField: {
-    width: "100%",
-    marginBottom: 5,
+    paddingHorizontal: 10,
+    marginHorizontal: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
 
