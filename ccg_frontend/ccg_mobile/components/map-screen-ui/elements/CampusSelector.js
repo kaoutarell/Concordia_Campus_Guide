@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
 
-const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
+const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
   const getCampusName = (campus) => {
     switch (campus) {
       case "SGW":
@@ -13,16 +13,40 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
       case "LOY":
         return "Loyola";
       default:
-        return "Error: Unknown Campus"; // in case the value is unexpected
+        return "Error: Unknown Campus";
+    }
+  };
+
+  const getCampusInitials = (campus) => {
+    switch (campus) {
+      case "SGW":
+        return "SGW";
+      case "LOY":
+        return "LOY";
+      default:
+        return "??";
     }
   };
 
   const toggleCampus = () => {
-    console.log("Toggling campus");
     const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
-    console.log("New campus:", newCampus);
     onCampusSelect(newCampus);
   };
+
+  if (compact) {
+    return (
+      <TouchableOpacity
+        style={styles.campusCircle}
+        onPress={toggleCampus}
+        testID="campus-button"
+        accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
+      >
+        <Text style={styles.campusInitials} testID="campus-name">
+          {getCampusInitials(selectedCampus)}
+        </Text>
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <TouchableOpacity
@@ -34,7 +58,7 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
         {getCampusName(selectedCampus)}
       </Text>
       <FontAwesome
-        name="exchange" // this icon is more meaninful since we have only 2 options - improvement
+        name="exchange"
         size={14}
         color="white"
         style={styles.icon}
@@ -45,8 +69,9 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect }) => {
 
 // prop validation
 CampusSelector.propTypes = {
-  selectedCampus: PropTypes.string.isRequired, // Must be a string
-  onCampusSelect: PropTypes.func.isRequired, // Must be a function
+  selectedCampus: PropTypes.string.isRequired,
+  onCampusSelect: PropTypes.func.isRequired,
+  compact: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
@@ -70,6 +95,24 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: 10,
+  },
+  campusCircle: {
+    backgroundColor: "#8B1D3B",
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  campusInitials: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 

@@ -5,7 +5,6 @@ import {
   ActivityIndicator,
   Text,
   Platform,
-  StatusBar,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
@@ -227,6 +226,7 @@ const styles = StyleSheet.create({
 });
 
 MapViewComponent.propTypes = {
+  target: PropTypes.object,
   locations: PropTypes.array.isRequired,
   region: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
