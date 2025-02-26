@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import NavigationMap from '../components/navigation-screen-ui/sections/NavigationMap';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import HeaderBar from "../components/map-screen-ui/sections/HeaderBar"; // Adjust path if needed

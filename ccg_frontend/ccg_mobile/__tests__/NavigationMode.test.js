@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import NavigationMode from '../components/navigation-screen-ui/elements/NavigationMode';

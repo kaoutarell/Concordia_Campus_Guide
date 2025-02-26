@@ -126,3 +126,4 @@ class BusLocationService {
 
 const busLocationService = BusLocationService.getInstance();
 export default busLocationService;
+export { BusLocationService };

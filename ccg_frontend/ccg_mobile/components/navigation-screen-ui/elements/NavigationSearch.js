@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet, Dimensions, Animated } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
@@ -84,7 +84,8 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
 export default NavigationSearch;
 
 
-const { width } = Dimensions.get("window");
+// Get dimensions for responsive styling
+Dimensions.get("window");
 
 const styles = StyleSheet.create({
 
