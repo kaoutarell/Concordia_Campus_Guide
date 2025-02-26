@@ -5,7 +5,6 @@ import { render, fireEvent } from '@testing-library/react-native';
 
 // Mock the component completely
 jest.mock('../components/navigation-screen-ui/CustomNavSearch', () => {
-    const React = require('react');
     const { View, Text, TextInput, TouchableOpacity } = require('react-native');
     return function MockCustomNavSearch(props) {
         const { navigation, route } = props;

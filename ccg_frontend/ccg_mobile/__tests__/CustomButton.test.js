@@ -5,7 +5,6 @@ import { render, fireEvent } from '@testing-library/react-native';
 
 // Mock the component to handle the disabled prop correctly
 jest.mock('../components/navigation-screen-ui/elements/CustomButton', () => {
-    const React = require('react');
     const { TouchableOpacity, Text, View } = require('react-native');
     return ({ title, onPress, disabled = false }) => (
         <View>

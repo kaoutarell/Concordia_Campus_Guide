@@ -5,7 +5,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 // Mock the NavigationFooter component to avoid Animated issues
 jest.mock('../components/navigation-screen-ui/sections/NavigationFooter', () => {
-    const React = require('react');
     const { View, Text, TouchableOpacity } = require('react-native');
     return function MockNavigationFooter({ onStartNavigation, totalDuration, totalDistance }) {
         return (

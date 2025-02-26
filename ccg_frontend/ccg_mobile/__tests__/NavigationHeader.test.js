@@ -11,13 +11,11 @@ jest.mock('@expo/vector-icons', () => ({
 
 // Mock the nested components
 jest.mock('../components/navigation-screen-ui/elements/NavigationSearch', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-search" />;
 });
 
 jest.mock('../components/navigation-screen-ui/elements/CustomButton', () => {
-    const React = require('react');
     const { TouchableOpacity, Text } = require('react-native');
     return ({ title, onPress }) => (
         <TouchableOpacity onPress={onPress} testID="back-button">
@@ -27,7 +25,6 @@ jest.mock('../components/navigation-screen-ui/elements/CustomButton', () => {
 });
 
 jest.mock('../components/navigation-screen-ui/elements/NavigationMode', () => {
-    const React = require('react');
     const { TouchableOpacity, Text } = require('react-native');
     return ({ mode, name, onModeChange }) => (
         <TouchableOpacity

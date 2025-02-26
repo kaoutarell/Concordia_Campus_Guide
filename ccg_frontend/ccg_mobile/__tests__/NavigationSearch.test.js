@@ -23,7 +23,7 @@ jest.mock('react-native/Libraries/Animated/Animated', () => {
     return {
         ...ActualAnimated,
         timing: jest.fn().mockReturnValue({
-            start: jest.fn((callback) => callback && callback()),
+            start: jest.fn((callback) => callback ? callback() : null),
         }),
         Value: jest.fn().mockImplementation(() => ({
             interpolate: jest.fn().mockReturnValue('0deg'),

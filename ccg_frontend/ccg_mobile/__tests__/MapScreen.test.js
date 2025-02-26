@@ -36,19 +36,16 @@ jest.mock('../api/dataService', () => ({
 
 // Mock nested components
 jest.mock('../components/map-screen-ui/sections/MapViewComponent', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="map-view-component" />;
 });
 
 jest.mock('../components/map-screen-ui/sections/NavigationToggle', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-toggle" />;
 });
 
 jest.mock('../components/map-screen-ui/sections/HeaderBar', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="header-bar" />;
 });

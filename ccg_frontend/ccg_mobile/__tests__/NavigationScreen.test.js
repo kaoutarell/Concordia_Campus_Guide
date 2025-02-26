@@ -5,43 +5,36 @@ import { render } from '@testing-library/react-native';
 import NavigationScreen from '../components/navigation-screen-ui/NavigationScreen';
 
 jest.mock('../components/navigation-screen-ui/sections/NavigationMap', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-map" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/NavigationHeader', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-header" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/NavigationFooter', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-footer" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/NavigationDirection', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-direction" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/BusNavigationInfo', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="bus-navigation-info" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/NavigationInfos', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="navigation-infos" />;
 });
 
 jest.mock('../components/navigation-screen-ui/sections/DirectionList', () => {
-    const React = require('react');
     const { View } = require('react-native');
     return () => <View testID="direction-list" />;
 });

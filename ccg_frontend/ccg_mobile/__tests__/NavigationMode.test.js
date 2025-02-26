@@ -11,7 +11,6 @@ jest.mock('@expo/vector-icons', () => ({
 
 // Mock the NavigationMode component
 jest.mock('../components/navigation-screen-ui/elements/NavigationMode', () => {
-    const React = require('react');
     const { TouchableOpacity, Text } = require('react-native');
     return ({ mode, name, onModeChange }) => (
         <TouchableOpacity

@@ -10,7 +10,6 @@ jest.mock('@expo/vector-icons', () => ({
 }));
 
 jest.mock('../components/navigation-screen-ui/sections/BusNavigationInfo', () => {
-    const React = require('react');
     const { View, Text } = require('react-native');
     return function MockBusNavigationInfo(props) {
         return (
