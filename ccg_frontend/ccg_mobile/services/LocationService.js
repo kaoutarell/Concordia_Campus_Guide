@@ -72,3 +72,4 @@ class LocationService {
 
 const locationService = new LocationService();
 export default locationService;
+export { LocationService };

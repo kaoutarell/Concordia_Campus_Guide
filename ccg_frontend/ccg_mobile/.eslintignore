@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+coverage/
+
+# Configuration files
+babel.config.js
+metro.config.js
+
+# Test files - we can ignore test-specific linting errors
+**/*.test.js
+**/__tests__/**
+**/__mocks__/**
