@@ -50,10 +50,10 @@ jest.mock("react-native-maps", () => {
   const MockMapView = ({ children, onRegionChangeComplete, onPress, testID }) => (
     <View testID={testID || "map-view"}>
       {children}
-      <button data-testid="region-change-button" onClick={() => onRegionChangeComplete && onRegionChangeComplete({ latitude: 45.5, longitude: -73.6, latitudeDelta: 0.01, longitudeDelta: 0.01 })}>
+      <button data-testid="region-change-button" onClick={() => onRegionChangeComplete ? onRegionChangeComplete({ latitude: 45.5, longitude: -73.6, latitudeDelta: 0.01, longitudeDelta: 0.01 }) : null}>
         Change Region
       </button>
-      <button data-testid="map-press-button" onClick={() => onPress && onPress()}>Press Map</button>
+      <button data-testid="map-press-button" onClick={() => onPress ? onPress() : null}>Press Map</button>
     </View>
   );
   MockMapView.Marker = ({ coordinate, title, pinColor, testID }) => (
@@ -87,9 +87,9 @@ jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
 jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
   return function MockCustomMarker({ value, onPress }) {
     return (
-      <div data-testid="custom-marker" onClick={() => onPress && onPress()} onKeyDown={(e) => e.key === 'Enter' && onPress && onPress()}>
+      <button data-testid="custom-marker" onClick={() => onPress ? onPress() : null} onKeyDown={(e) => e.key === 'Enter' && onPress ? onPress() : null}>
         <span>{value.id}</span>
-      </div>
+      </button>
     );
   };
 });
