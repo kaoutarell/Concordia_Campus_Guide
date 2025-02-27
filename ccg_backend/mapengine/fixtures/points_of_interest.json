@@ -6,6 +6,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.579389 45.5000155)",
+            "civic_address": "610 Pl. Mountain, Montreal, QC H3G 1G3, Canada",
             "campus": "SGW"
         }
     },
@@ -16,6 +17,7 @@
             "name": "Presse Cafe",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5786739 45.5001425)",
+            "civic_address": "1259 Rue Sherbrooke O, Montreal, QC H2L 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -26,6 +28,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5754177 45.4992516)",
+            "civic_address": "1435 Rue Drummond, Montreal, QC H3G 1W4, Canada",
             "campus": "SGW"
         }
     },
@@ -36,6 +39,7 @@
             "name": "Bar George",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5758108 45.4991656)",
+            "civic_address": "1440 Rue Drummond, Montreal, QC H3G 1V9, Canada",
             "campus": "SGW"
         }
     },
@@ -46,6 +50,7 @@
             "name": "Le Pois Penche",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5760644 45.4992991)",
+            "civic_address": "1454 Rue Drummond, Montreal, QC H3G 1V9, Canada",
             "campus": "SGW"
         }
     },
@@ -56,6 +61,7 @@
             "name": "Utea",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5771587 45.4990351)",
+            "civic_address": "2053 Rue de la Montagne, Montreal, QC H3G 1Z8, Canada",
             "campus": "SGW"
         }
     },
@@ -66,6 +72,7 @@
             "name": "Poke Monster",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5765657 45.4993416)",
+            "civic_address": "1225 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -76,6 +83,7 @@
             "name": "Club Wanda's",
             "category": "nightclub",
             "location": "SRID=4326;POINT (-73.5767627 45.4985799)",
+            "civic_address": "1456 Rue de la Montagne, Montreal, QC H3G 1Z3, Canada",
             "campus": "SGW"
         }
     },
@@ -86,6 +94,7 @@
             "name": "Eggspectation",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5771409 45.4987402)",
+            "civic_address": "1313 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 2R9, Canada",
             "campus": "SGW"
         }
     },
@@ -96,6 +105,7 @@
             "name": "Nara Reto Lounge",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5773986 45.4984151)",
+            "civic_address": "1333 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 2R9, Canada",
             "campus": "SGW"
         }
     },
@@ -106,6 +116,7 @@
             "name": "London Pub",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5774965 45.4983029)",
+            "civic_address": "1337 Maisonneuve Blvd W, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -116,6 +127,7 @@
             "name": "Mandy's Salades Gourmandes",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5778875 45.498385)",
+            "civic_address": "2075 Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -126,6 +138,7 @@
             "name": "Nespresso",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5777757 45.4983266)",
+            "civic_address": "2025 Rue Crescent, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -136,6 +149,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5777635 45.4982296)",
+            "civic_address": "2025 Rue Crescent, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -146,6 +160,7 @@
             "name": "Boustan",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5778401 45.4980546)",
+            "civic_address": "2020 Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -156,6 +171,7 @@
             "name": "Light Ultraclub",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.577919 45.4980869)",
+            "civic_address": "2030 Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -166,6 +182,7 @@
             "name": "Stogies",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5776034 45.4982639)",
+            "civic_address": "2015 Rue Crescent, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -176,6 +193,7 @@
             "name": "Copacabana",
             "category": "nightclub",
             "location": "SRID=4326;POINT (-73.5771636 45.498036)",
+            "civic_address": "1467 Rue Crescent, Montreal, QC H3G 0C8, Canada",
             "campus": "SGW"
         }
     },
@@ -186,6 +204,7 @@
             "name": "Ben & Jerry's",
             "category": "ice_cream",
             "location": "SRID=4326;POINT (-73.5771038 45.4982652)",
+            "civic_address": "1320 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 2P4, Canada",
             "campus": "SGW"
         }
     },
@@ -196,6 +215,7 @@
             "name": "Yama",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5756479 45.4982954)",
+            "civic_address": "1407 Rue de la Montagne, Montreal, QC H3G 1Z3, Canada",
             "campus": "SGW"
         }
     },
@@ -206,6 +226,7 @@
             "name": "Cafe Bazin",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5758922 45.4984443)",
+            "civic_address": "1425 Rue de la Montagne, Montreal, QC H3G 1Z3, Canada",
             "campus": "SGW"
         }
     },
@@ -216,6 +237,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5743666 45.4984889)",
+            "civic_address": "Ste-Catherine / Drummond, Montreal, QC H3G 1P1, Canada",
             "campus": "SGW"
         }
     },
@@ -226,6 +248,7 @@
             "name": "Pizza Chez Danny",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5745967 45.4977746)",
+            "civic_address": "1237 Rue de la Montagne, Montreal, QC H3G 1P1, Canada",
             "campus": "SGW"
         }
     },
@@ -236,6 +259,7 @@
             "name": "Hidden Fish",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5743941 45.4977411)",
+            "civic_address": "1233 Rue de la Montagne Suite 201, Montreal, QC H3G 1Z2, Canada",
             "campus": "SGW"
         }
     },
@@ -246,6 +270,7 @@
             "name": "Vladimir Poutine",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5747966 45.4973995)",
+            "civic_address": "1234 Rue de la Montagne, Montreal, QC H3G 1P1, Canada",
             "campus": "SGW"
         }
     },
@@ -256,6 +281,7 @@
             "name": "3 Brasseurs",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5754903 45.497185)",
+            "civic_address": "1350 Rue Sainte-Catherine, Montreal, QC H3G 1P6, Canada",
             "campus": "SGW"
         }
     },
@@ -266,6 +292,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5759082 45.4973152)",
+            "civic_address": "1412 Rue Crescent, Montreal, QC H3G 1R1, Canada",
             "campus": "SGW"
         }
     },
@@ -276,6 +303,7 @@
             "name": "Paris Crepe",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5757908 45.4973581)",
+            "civic_address": "1409 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -286,6 +314,7 @@
             "name": "Yaourti",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5759339 45.4974372)",
+            "civic_address": "1407 Rue Crescent, Montreal, QC H3G 2B3, Canada",
             "campus": "SGW"
         }
     },
@@ -296,6 +325,7 @@
             "name": "Parking meter bike rack",
             "category": "bicycle_parking",
             "location": "SRID=4326;POINT (-73.5760401 45.497443)",
+            "civic_address": "1411 Rue Crescent, Montreal, QC H3G 2B3, Canada",
             "campus": "SGW"
         }
     },
@@ -306,6 +336,7 @@
             "name": "Parking meter bike rack",
             "category": "bicycle_parking",
             "location": "SRID=4326;POINT (-73.5763486 45.4975997)",
+            "civic_address": "1427 Rue Crescent, Montreal, QC H3G, 1427 Crescent St, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -316,6 +347,7 @@
             "name": "Taverne Crescent",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5763729 45.4976589)",
+            "civic_address": "1433 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -326,6 +358,7 @@
             "name": "Parking meter bike rack",
             "category": "bicycle_parking",
             "location": "SRID=4326;POINT (-73.5764925 45.4976792)",
+            "civic_address": "1433 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -336,6 +369,7 @@
             "name": "Sushi Crescent",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5765184 45.4977438)",
+            "civic_address": "1437 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -346,6 +380,7 @@
             "name": "California Pizza",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.576857 45.4975743)",
+            "civic_address": "1446 Rue Crescent A, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -356,6 +391,7 @@
             "name": "Devi",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5769484 45.4976105)",
+            "civic_address": "1430 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -366,6 +402,7 @@
             "name": "L'Atelier d'Argentine",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.577163 45.4977637)",
+            "civic_address": "1464 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -376,6 +413,7 @@
             "name": "Parking meter bike rack",
             "category": "bicycle_parking",
             "location": "SRID=4326;POINT (-73.5767865 45.4978227)",
+            "civic_address": "1449 Rle Nick Auf Der Maur, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -386,6 +424,7 @@
             "name": "Sir Winston Churchill",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5769764 45.4979437)",
+            "civic_address": "1455 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -396,6 +435,7 @@
             "name": "Burger bar crescent",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5771059 45.4980036)",
+            "civic_address": "1465 Rue Crescent, Montreal, QC H3G 2B2, Canada",
             "campus": "SGW"
         }
     },
@@ -406,6 +446,7 @@
             "name": "xo",
             "category": "nightclub",
             "location": "SRID=4326;POINT (-73.5772232 45.497794)",
+            "civic_address": "1464 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -416,6 +457,7 @@
             "name": "K2 Sushi",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5772792 45.4977849)",
+            "civic_address": "1470 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -426,6 +468,7 @@
             "name": "Newtown",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5774405 45.4977858)",
+            "civic_address": "1478 Rue Crescent, Montreal, QC H3G, Canada",
             "campus": "SGW"
         }
     },
@@ -433,9 +476,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 44,
         "fields": {
-            "name": "Maison Cha∩sha∩",
+            "name": "Maison Chanshan",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5781353 45.4975759)",
+            "civic_address": "2005 R. Bishop, Montreal, QC H3G 2E9, Canada",
             "campus": "SGW"
         }
     },
@@ -446,6 +490,7 @@
             "name": "Hang Time",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5776958 45.4975597)",
+            "civic_address": "1390 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -456,6 +501,7 @@
             "name": "Notre-Boeuf-de-Grace",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.577674 45.4976209)",
+            "civic_address": "Bishop Court, 1388 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1M6, Canada",
             "campus": "SGW"
         }
     },
@@ -466,6 +512,7 @@
             "name": "Pigeon",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5777703 45.4974945)",
+            "civic_address": "Bishop Court, 1392 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -476,6 +523,7 @@
             "name": "Olivia's",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5778311 45.4974467)",
+            "civic_address": "1396 Maisonneuve Blvd W, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -486,6 +534,7 @@
             "name": "Le Garden Room",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5774768 45.4972187)",
+            "civic_address": "1445A R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -496,6 +545,7 @@
             "name": "DonDonYa",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5772686 45.4972312)",
+            "civic_address": "1433 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -506,6 +556,7 @@
             "name": "Pizza Hut",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5771979 45.4971162)",
+            "civic_address": "1431 A R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -516,6 +567,7 @@
             "name": "OFish Bishop",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5771329 45.4970806)",
+            "civic_address": "1429 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -526,6 +578,7 @@
             "name": "Kafein cafe-bar",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5771 45.4970805)",
+            "civic_address": "1429 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -536,6 +589,7 @@
             "name": "Messa 14",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5770222 45.497056)",
+            "civic_address": "1425 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -546,6 +600,7 @@
             "name": "Wienstein & Gavino's",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5767685 45.4975169)",
+            "civic_address": "1434 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -556,6 +611,7 @@
             "name": "Seven",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5766599 45.4974756)",
+            "civic_address": "1432 Rue Crescent, Montreal, QC H3G 2B6, Canada",
             "campus": "SGW"
         }
     },
@@ -566,6 +622,7 @@
             "name": "Parking meter bike rack",
             "category": "bicycle_parking",
             "location": "SRID=4326;POINT (-73.5764966 45.4974872)",
+            "civic_address": "1420 Rue Crescent, Montreal, QC H3G 2B7, Canada",
             "campus": "SGW"
         }
     },
@@ -576,6 +633,7 @@
             "name": "Ferrari Restaurant - Cafe",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5766199 45.496838)",
+            "civic_address": "1405 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -586,6 +644,7 @@
             "name": "Man-na",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5769592 45.4970119)",
+            "civic_address": "1419 R. Bishop, Montreal, QC H3G 2E4, Canada",
             "campus": "SGW"
         }
     },
@@ -596,6 +655,7 @@
             "name": "Mckibbins Pub",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5772264 45.4968227)",
+            "civic_address": "1424 R. Bishop, Montreal, QC H3G 2E6, Canada",
             "campus": "SGW"
         }
     },
@@ -606,6 +666,7 @@
             "name": "Webster Library",
             "category": "library",
             "location": "SRID=4326;POINT (-73.5779337 45.4968158)",
+            "civic_address": "Pavillion J.W. McConnell Bldg, 1400 Maisonneuve Blvd W, Montreal, QC H3G 1M8, Canada",
             "campus": "SGW"
         }
     },
@@ -615,7 +676,8 @@
         "fields": {
             "name": "Tim Hortons",
             "category": "cafe",
-            "location": "SRID=4326;POINT (-73.577387 45.4967552)",
+            "location": "SRID=4326;POINT (45.4958548 -73.5787827)",
+            "civic_address": "1550 Blvd. De Maisonneuve Ouest, Montreal, Quebec H3G 1N2",
             "campus": "SGW"
         }
     },
@@ -626,6 +688,7 @@
             "name": "J.A de Seve Cinema",
             "category": "cinema",
             "location": "SRID=4326;POINT (-73.5778047 45.4963996)",
+            "civic_address": "1439 Rue Mackay, Montreal, QC H3G 2H6, Canada",
             "campus": "SGW"
         }
     },
@@ -636,6 +699,7 @@
             "name": "Cactus Wa Wa Tea House",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5774565 45.4961952)",
+            "civic_address": "1417 Rue Mackay, Montreal, QC H3G 0H2, Canada",
             "campus": "SGW"
         }
     },
@@ -646,6 +710,7 @@
             "name": "Mei",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5775452 45.4962156)",
+            "civic_address": "1425 Rue Mackay, Montreal, QC H3G 0H2, Canada",
             "campus": "SGW"
         }
     },
@@ -656,6 +721,7 @@
             "name": "Patty Slaps",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5770217 45.4960875)",
+            "civic_address": "1449 Rue Sainte-Catherine, Montreal, QC H3G 1S6, Canada",
             "campus": "SGW"
         }
     },
@@ -666,6 +732,7 @@
             "name": "Poste de quartier 20",
             "category": "police",
             "location": "SRID=4326;POINT (-73.576435 45.496125)",
+            "civic_address": "1430 Rue Sainte-Catherine, Montreal, QC H3G 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -676,6 +743,7 @@
             "name": "Scores",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.576448 45.4961727)",
+            "civic_address": "1430 Rue Sainte-Catherine, Montreal, QC H3G 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -686,6 +754,7 @@
             "name": "Le Ninja",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5757537 45.4960973)",
+            "civic_address": "1238 A R. Bishop, Montreal, QC H3G 2E3, Canada",
             "campus": "SGW"
         }
     },
@@ -696,6 +765,7 @@
             "name": "Galerie d'Okeya",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5752745 45.4962086)",
+            "civic_address": "1217 R. Bishop, Montreal, QC H3G 2E2, Canada",
             "campus": "SGW"
         }
     },
@@ -706,6 +776,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5761128 45.4966664)",
+            "civic_address": "1394 Rue Sainte-Catherine, Montreal, QC H3G 1P9, Canada",
             "campus": "SGW"
         }
     },
@@ -716,6 +787,7 @@
             "name": "CoCo Fresh Tea & Juice",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.575885 45.4967187)",
+            "civic_address": "1396 Rue Sainte-Catherine, Montreal, QC H3G 1P9, Canada",
             "campus": "SGW"
         }
     },
@@ -726,6 +798,7 @@
             "name": "Columbus Cafe & Co",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5756395 45.4970185)",
+            "civic_address": "1374 Rue Sainte-Catherine, Montreal, QC H3G 1P8, Canada",
             "campus": "SGW"
         }
     },
@@ -736,6 +809,7 @@
             "name": "indian_food-1242",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.575397 45.4969101)",
+            "civic_address": "1260 Rue Crescent Suite 103, Montreal, QC H3G 2A9, Canada",
             "campus": "SGW"
         }
     },
@@ -746,6 +820,7 @@
             "name": "Mad Hatters",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5751849 45.4968178)",
+            "civic_address": "1242 Rue Crescent, Montreal, QC H3G 2A9, Canada",
             "campus": "SGW"
         }
     },
@@ -756,6 +831,7 @@
             "name": "Gyu-Kaku",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5750846 45.4969878)",
+            "civic_address": "1255 Rue Crescent, Montreal, QC H3G 1P6, Canada",
             "campus": "SGW"
         }
     },
@@ -766,6 +842,7 @@
             "name": "Hurley's",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5748362 45.4968705)",
+            "civic_address": "1231 Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -776,6 +853,7 @@
             "name": "Trattoria Trestevere",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5749645 45.4969078)",
+            "civic_address": "1233 Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -786,6 +864,7 @@
             "name": "Brutopia",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5744587 45.4966812)",
+            "civic_address": "1215 Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -796,6 +875,7 @@
             "name": "Clinique Medicale Crescent",
             "category": "clinic",
             "location": "SRID=4326;POINT (-73.5744729 45.4963818)",
+            "civic_address": "1200 Rue Crescent, Montreal, QC H3G 0G5, Canada",
             "campus": "SGW"
         }
     },
@@ -806,6 +886,7 @@
             "name": "nuevo - 1195",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5740783 45.4965203)",
+            "civic_address": "1197 Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -816,6 +897,7 @@
             "name": "cafe-1175",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5737708 45.4963879)",
+            "civic_address": "1175A Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -826,6 +908,7 @@
             "name": "Sana",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5737384 45.4963657)",
+            "civic_address": "1175A Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -836,6 +919,7 @@
             "name": "Cafe imagination",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.572998 45.4962661)",
+            "civic_address": "1355 Boul. Rene-Levesque O, Montreal, QC H3G 0E4, Canada",
             "campus": "SGW"
         }
     },
@@ -846,6 +930,7 @@
             "name": "Lo",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5733823 45.4969261)",
+            "civic_address": "1180 Rue de la Montagne, Montreal, QC H3G 1Z1, Canada",
             "campus": "SGW"
         }
     },
@@ -856,6 +941,7 @@
             "name": "Ye Olde Orchard Pub & Grill",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5734412 45.4972594)",
+            "civic_address": "1189 Rue de la Montagne, Montreal, QC H3G 1Z2, Canada",
             "campus": "SGW"
         }
     },
@@ -866,6 +952,7 @@
             "name": "Bis Ristorante",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5742497 45.4976955)",
+            "civic_address": "1223 Rue de la Montagne, Montreal, QC H3G 1Z2, Canada",
             "campus": "SGW"
         }
     },
@@ -876,6 +963,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5741165 45.4944575)",
+            "civic_address": "1450 Boul. Rene-Levesque O, Montreal, QC H3G 0E1, Canada",
             "campus": "SGW"
         }
     },
@@ -886,6 +974,7 @@
             "name": "Itali.co",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5742438 45.4950221)",
+            "civic_address": "1425 Rene-Levesque Blvd W #700, Montreal, QC H3G 1T7, Canada",
             "campus": "SGW"
         }
     },
@@ -896,6 +985,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.574056 45.4955029)",
+            "civic_address": "Pavillon des Beaux Arts, 1177 R. Bishop, Montreal, QC H3G 2E2, Canada",
             "campus": "SGW"
         }
     },
@@ -906,6 +996,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5739466 45.4954511)",
+            "civic_address": "1155 Rue de la Montagne, Montreal, QC H3G 2E2, Canada",
             "campus": "SGW"
         }
     },
@@ -916,6 +1007,7 @@
             "name": "Crossbar",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5731912 45.4954452)",
+            "civic_address": "1398 Boul. Rene-Levesque O, Montreal, QC H3H 2S1, Canada",
             "campus": "SGW"
         }
     },
@@ -926,6 +1018,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5733981 45.4960089)",
+            "civic_address": "1165 Rue Crescent, Montreal, QC H3G 2B1, Canada",
             "campus": "SGW"
         }
     },
@@ -936,6 +1029,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5734728 45.4960631)",
+            "civic_address": "1165 Rue Crescent, Montreal, QC H3G 1T3, Canada",
             "campus": "SGW"
         }
     },
@@ -946,6 +1040,7 @@
             "name": "Kinton Ramen",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5746477 45.4958792)",
+            "civic_address": "1197 R. Bishop, Montreal, QC H3G 0A7, Canada",
             "campus": "SGW"
         }
     },
@@ -956,6 +1051,7 @@
             "name": "Parma Cafe",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.574647 45.495526)",
+            "civic_address": "8-1176 R. Bishop, Montreal, QC H3G 2E3, Canada",
             "campus": "SGW"
         }
     },
@@ -966,6 +1062,7 @@
             "name": "Garage Beirut",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5761753 45.4952601)",
+            "civic_address": "1238 Rue Mackay, Montreal, QC H3G 2H4, Canada",
             "campus": "SGW"
         }
     },
@@ -976,6 +1073,7 @@
             "name": "O'regans Irish Pub",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5754558 45.4959534)",
+            "civic_address": "1189 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -986,6 +1084,7 @@
             "name": "Grumpy's",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.575695 45.4960673)",
+            "civic_address": "1242 R. Bishop, Montreal, QC H3G 2E3, Canada",
             "campus": "SGW"
         }
     },
@@ -996,6 +1095,7 @@
             "name": "Bruleries Faro",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5765474 45.4959972)",
+            "civic_address": "1440 Rue Sainte-Catherine, Montreal, QC H3G 1R8, Canada",
             "campus": "SGW"
         }
     },
@@ -1006,6 +1106,7 @@
             "name": "Liv Salades",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5766587 45.4959362)",
+            "civic_address": "1444B Rue Sainte-Catherine, Montreal, QC H3G 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -1016,6 +1117,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5767445 45.4957423)",
+            "civic_address": "215, 1440 Saint-Catherine St W Suite 215, Montreal, QC H3G 1R8, Canada",
             "campus": "SGW"
         }
     },
@@ -1026,6 +1128,7 @@
             "name": "Upstairs",
             "category": "nightclub",
             "location": "SRID=4326;POINT (-73.5768353 45.4955965)",
+            "civic_address": "1478 Rue Sainte-Catherine, Montreal, QC H3G 1S8, Canada",
             "campus": "SGW"
         }
     },
@@ -1036,6 +1139,7 @@
             "name": "McDonald's",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.576886 45.49562)",
+            "civic_address": "1472 Rue Sainte-Catherine, Montreal, QC H3G 1S8, Canada",
             "campus": "SGW"
         }
     },
@@ -1046,6 +1150,7 @@
             "name": "Koa Lua Poke",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5766991 45.4959043)",
+            "civic_address": "1440 Rue Sainte-Catherine, Montreal, QC H3G 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -1056,6 +1161,7 @@
             "name": "Humans",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5771175 45.4959969)",
+            "civic_address": "1455 Rue Sainte-Catherine, Montreal, QC H3G 1S6, Canada",
             "campus": "SGW"
         }
     },
@@ -1066,6 +1172,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5773973 45.4959509)",
+            "civic_address": "1457 Rue Sainte-Catherine, Montreal, QC H3G 1S6, Canada",
             "campus": "SGW"
         }
     },
@@ -1076,6 +1183,7 @@
             "name": "Matcha Zanmai",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5775829 45.4959663)",
+            "civic_address": "1428, 1428 Mackay St #1428, Montreal, QC H3G 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1086,6 +1194,7 @@
             "name": "Qabane a The",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5776941 45.4960474)",
+            "civic_address": "1432 Rue Mackay, Montreal, QC H3G 1T6, Canada",
             "campus": "SGW"
         }
     },
@@ -1096,6 +1205,7 @@
             "name": "Myriade",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5778526 45.4960734)",
+            "civic_address": "1432 Rue Mackay, Montreal, QC H3G 1T6, Canada",
             "campus": "SGW"
         }
     },
@@ -1106,6 +1216,7 @@
             "name": "Van Houtte",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.577712 45.4954239)",
+            "civic_address": "1515 Saint-Catherine St W #1428, Montreal, QC H3H 2L5, Canada",
             "campus": "SGW"
         }
     },
@@ -1116,6 +1227,7 @@
             "name": "Pharmaprix",
             "category": "pharmacy",
             "location": "SRID=4326;POINT (-73.5773225 45.495244)",
+            "civic_address": "1498 Rue Sainte-Catherine, Montreal, QC H3G 1S8, Canada",
             "campus": "SGW"
         }
     },
@@ -1126,6 +1238,7 @@
             "name": "Mon Ami",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5772425 45.4953152)",
+            "civic_address": "1494 Rue Sainte-Catherine, Montreal, QC H3G 1S8, Canada",
             "campus": "SGW"
         }
     },
@@ -1136,6 +1249,7 @@
             "name": "Cafe Jouney",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5771374 45.4954299)",
+            "civic_address": "1488 Rue Sainte-Catherine, Montreal, QC H3G 1S8, Canada",
             "campus": "SGW"
         }
     },
@@ -1146,6 +1260,7 @@
             "name": "P.J. O'Hara's",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5765956 45.4954263)",
+            "civic_address": "1262 Rue Mackay, Montreal, QC H3G 2H4, Canada",
             "campus": "SGW"
         }
     },
@@ -1156,6 +1271,7 @@
             "name": "sparta chicken",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5768958 45.4948492)",
+            "civic_address": "1237 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1166,6 +1282,7 @@
             "name": "COQCOR",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5768926 45.4948149)",
+            "civic_address": "1233 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1176,6 +1293,7 @@
             "name": "Andrews",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.577013 45.4948394)",
+            "civic_address": "1239 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1186,6 +1304,7 @@
             "name": "Clinique Medicale Alpha Medic",
             "category": "clinic",
             "location": "SRID=4326;POINT (-73.5772903 45.4949611)",
+            "civic_address": "1245 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1196,6 +1315,7 @@
             "name": "TD",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.5781432 45.4949863)",
+            "civic_address": "1601 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -1206,6 +1326,7 @@
             "name": "Second Cup",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5777732 45.4948318)",
+            "civic_address": "Faubourg Tower, Montreal, QC H3H, Canada",
             "campus": "SGW"
         }
     },
@@ -1216,6 +1337,7 @@
             "name": "La Residence Fulford",
             "category": "social_facility",
             "location": "SRID=4326;POINT (-73.5777354 45.4947908)",
+            "civic_address": "1206 Rue Sainte-Catherine, Montreal, QC H3H 2S7, Canada",
             "campus": "SGW"
         }
     },
@@ -1226,6 +1348,7 @@
             "name": "The Alley",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5776706 45.4948415)",
+            "civic_address": "1256 Rue Guy, Montreal, QC H3H 2T4, Canada",
             "campus": "SGW"
         }
     },
@@ -1236,6 +1359,7 @@
             "name": "La Hueca by Masa",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.577705 45.4945243)",
+            "civic_address": "1250 Rue Guy, Montreal, QC H3H 2S7, Canada",
             "campus": "SGW"
         }
     },
@@ -1246,6 +1370,7 @@
             "name": "Banque Scotia",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.5780677 45.4945998)",
+            "civic_address": "Le Faubourg Sainte Catherine, 1608 Saint-Catherine St W, Montreal, QC H3H 2S7, Canada",
             "campus": "SGW"
         }
     },
@@ -1256,6 +1381,7 @@
             "name": "Chez la Mere Michel",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5762712 45.494555)",
+            "civic_address": "1205 Rue Guy, Montreal, QC H3H 2K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1266,6 +1392,7 @@
             "name": "Bar B Barn",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5760757 45.4944594)",
+            "civic_address": "1195 Rue Guy, Montreal, QC H3H 2K7, Canada",
             "campus": "SGW"
         }
     },
@@ -1276,6 +1403,7 @@
             "name": "Notre Endroit",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5743612 45.4948268)",
+            "civic_address": "1437 Boul. Rene-Levesque O, Montreal, QC H3G 1T7, Canada",
             "campus": "SGW"
         }
     },
@@ -1286,6 +1414,7 @@
             "name": "Parking",
             "category": "parking_entrance",
             "location": "SRID=4326;POINT (-73.5744555 45.4934361)",
+            "civic_address": "1100 Rue Guy, Montreal, QC H3H, Canada",
             "campus": "SGW"
         }
     },
@@ -1296,6 +1425,7 @@
             "name": "Van Houtte",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5746428 45.493228)",
+            "civic_address": "1100 Rue Guy, Montreal, QC H3H, Canada",
             "campus": "SGW"
         }
     },
@@ -1306,6 +1436,7 @@
             "name": "Avis",
             "category": "car_rental",
             "location": "SRID=4326;POINT (-73.5760745 45.4924038)",
+            "civic_address": "1740 Boul. Rene-Levesque O, Montreal, QC H3H 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -1316,6 +1447,7 @@
             "name": "cafe rene-leveque",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5749371 45.4927418)",
+            "civic_address": "1630 Boul. Rene-Levesque O, Montreal, QC H3B 1S6, Canada",
             "campus": "SGW"
         }
     },
@@ -1326,6 +1458,7 @@
             "name": "Indigo",
             "category": "parking_entrance",
             "location": "SRID=4326;POINT (-73.5738923 45.4928093)",
+            "civic_address": "980 Rue Guy, Montreal, QC H3H 2K3, Canada",
             "campus": "SGW"
         }
     },
@@ -1336,6 +1469,7 @@
             "name": "Enterprise",
             "category": "car_rental",
             "location": "SRID=4326;POINT (-73.5740408 45.4934939)",
+            "civic_address": "1005 Rue Guy, Montreal, QC H3G 2H1, Canada",
             "campus": "SGW"
         }
     },
@@ -1346,6 +1480,7 @@
             "name": "l'entracte",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5756742 45.4920063)",
+            "civic_address": "1055 Rue St Mathieu, Montreal, QC H3H 1R3, Canada",
             "campus": "SGW"
         }
     },
@@ -1356,6 +1491,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5767049 45.4916865)",
+            "civic_address": "1819 Rue Joseph Manseau, Montreal, QC H3H, Canada",
             "campus": "SGW"
         }
     },
@@ -1366,6 +1502,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5812707 45.49146)",
+            "civic_address": "Ecole superieure de mode de Montreal, 1400 Rue du Fort, Montreal, QC H3H 0A3, Canada",
             "campus": "SGW"
         }
     },
@@ -1376,6 +1513,7 @@
             "name": "Bureau de poste",
             "category": "post_office",
             "location": "SRID=4326;POINT (-73.5810926 45.4918602)",
+            "civic_address": "1974 Rue Sainte-Catherine, Montreal, QC H3H 1N0, Canada",
             "campus": "SGW"
         }
     },
@@ -1386,6 +1524,7 @@
             "name": "Pasargad",
             "category": "bureau_de_change",
             "location": "SRID=4326;POINT (-73.5810031 45.4920848)",
+            "civic_address": "1968 Rue Sainte-Catherine, Montreal, QC H3H 1M4, Canada",
             "campus": "SGW"
         }
     },
@@ -1396,6 +1535,7 @@
             "name": "Complexe du Fort",
             "category": "waste_basket",
             "location": "SRID=4326;POINT (-73.5815178 45.4917298)",
+            "civic_address": "164 Rue du Fort, Montreal, QC H3H 0A3, Canada",
             "campus": "SGW"
         }
     },
@@ -1406,6 +1546,7 @@
             "name": "La Grosse",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5818849 45.4917887)",
+            "civic_address": "2051 Rue Sainte-Catherine, Montreal, QC H3H 1M6, Canada",
             "campus": "SGW"
         }
     },
@@ -1416,6 +1557,7 @@
             "name": "Avesta",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5819429 45.4917424)",
+            "civic_address": "2063 Rue Sainte-Catherine, Montreal, QC H3H 1M6, Canada",
             "campus": "SGW"
         }
     },
@@ -1426,6 +1568,7 @@
             "name": "Bar station sport",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5818281 45.4918548)",
+            "civic_address": "2051 Rue Sainte-Catherine, Montreal, QC H3H 2T1, Canada",
             "campus": "SGW"
         }
     },
@@ -1436,6 +1579,7 @@
             "name": "Clinic Medic Elle",
             "category": "doctors",
             "location": "SRID=4326;POINT (-73.583666 45.4937595)",
+            "civic_address": "1980 Sherbrooke St W Bureau 700, Montreal, QC H3H 1E8, Canada",
             "campus": "SGW"
         }
     },
@@ -1446,6 +1590,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5838267 45.4930651)",
+            "civic_address": "2100 Rue du Fort, Montreal, QC H3H 2C6, Canada",
             "campus": "SGW"
         }
     },
@@ -1456,6 +1601,7 @@
             "name": "Restaurant Mr. Dakbalgi",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5830995 45.4921745)",
+            "civic_address": "2020 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1466,6 +1612,7 @@
             "name": "Instacoin ATM",
             "category": "atm",
             "location": "SRID=4326;POINT (-73.5826017 45.4926225)",
+            "civic_address": "1986 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1476,6 +1623,7 @@
             "name": "Fuchun - Cuisine de Shanghai",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5825574 45.4926429)",
+            "civic_address": "1982 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1K5, Canada",
             "campus": "SGW"
         }
     },
@@ -1486,6 +1634,7 @@
             "name": "Sammi&Soup Dumplings",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5808212 45.4926727)",
+            "civic_address": "1917 Rue Sainte-Catherine, Montreal, QC H3H 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -1496,6 +1645,7 @@
             "name": "Pang Ji Guilin Nouilles",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5806488 45.4928272)",
+            "civic_address": "1901 Rue Sainte-Catherine, Montreal, QC H3H 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -1506,6 +1656,7 @@
             "name": "Thali Cuisine Indienne",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.580681 45.4931141)",
+            "civic_address": "1413 Rue St Marc, Montreal, QC H3H 2G4, Canada",
             "campus": "SGW"
         }
     },
@@ -1513,9 +1664,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 152,
         "fields": {
-            "name": "Ici Restaurant CorΘen",
+            "name": "Ici Restaurant Coreen",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5807098 45.4931293)",
+            "civic_address": "1413 Rue St Marc, Montreal, QC H3H 2G4, Canada",
             "campus": "SGW"
         }
     },
@@ -1526,6 +1678,7 @@
             "name": "Picks",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5806449 45.4930931)",
+            "civic_address": "1407 Rue St Marc, Montreal, QC H3H 2G4, Canada",
             "campus": "SGW"
         }
     },
@@ -1536,6 +1689,7 @@
             "name": "Noodles Star",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804177 45.493071)",
+            "civic_address": "1865 Rue Sainte-Catherine, Montreal, QC H3H 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -1546,6 +1700,7 @@
             "name": "Depanneur 7 Jours",
             "category": "atm",
             "location": "SRID=4326;POINT (-73.5802017 45.4928438)",
+            "civic_address": "1866 Rue Sainte-Catherine, Montreal, QC H3H 1M1, Canada",
             "campus": "SGW"
         }
     },
@@ -1556,6 +1711,7 @@
             "name": "Uniburger",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5808713 45.4926255)",
+            "civic_address": "1923 Rue Sainte-Catherine, Montreal, QC H3H 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -1566,6 +1722,7 @@
             "name": "La Maison de Maixang - Dumpling",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5809743 45.4925432)",
+            "civic_address": "1931 Rue Sainte-Catherine, Montreal, QC H3H 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -1576,6 +1733,7 @@
             "name": "Hot-Star",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5810138 45.4925058)",
+            "civic_address": "1933 Rue Sainte-Catherine, Montreal, QC H3H 1M3, Canada",
             "campus": "SGW"
         }
     },
@@ -1586,6 +1744,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5809648 45.4922807)",
+            "civic_address": "1934 Rue Sainte-Catherine, Montreal, QC H3H 1M4, Canada",
             "campus": "SGW"
         }
     },
@@ -1596,6 +1755,7 @@
             "name": "Pizza Pizza",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5799775 45.4930397)",
+            "civic_address": "1848 Rue Sainte-Catherine, Montreal, QC H3H 1M1, Canada",
             "campus": "SGW"
         }
     },
@@ -1606,6 +1766,7 @@
             "name": "Kinka Izakaya",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5786514 45.4941098)",
+            "civic_address": "1622 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1616,6 +1777,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5790823 45.4939028)",
+            "civic_address": "1275 Rue St Mathieu, Montreal, QC H3H 1L7, Canada",
             "campus": "SGW"
         }
     },
@@ -1626,6 +1788,7 @@
             "name": "Jean Coutu",
             "category": "pharmacy",
             "location": "SRID=4326;POINT (-73.5793112 45.494018)",
+            "civic_address": "1675 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1636,6 +1799,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5791503 45.4936988)",
+            "civic_address": "180 Rue St Mathieu, Montreal, QC H3H 2H8, Canada",
             "campus": "SGW"
         }
     },
@@ -1646,6 +1810,7 @@
             "name": "Sushi Ste-Catherine",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5794979 45.4938203)",
+            "civic_address": "1801 Rue Sainte-Catherine, Montreal, QC H3H 1M1, Canada",
             "campus": "SGW"
         }
     },
@@ -1656,6 +1821,7 @@
             "name": "Qinghua Dumplings (Express)",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.579628 45.4937084)",
+            "civic_address": "1809 Rue Sainte-Catherine, Montreal, QC H3H 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -1666,6 +1832,7 @@
             "name": "Moose Bawr",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5796542 45.4936726)",
+            "civic_address": "1815 Rue Sainte-Catherine, Montreal, QC H3H 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -1676,6 +1843,7 @@
             "name": "Chatime",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5796862 45.4936499)",
+            "civic_address": "1813 Rue Sainte-Catherine, Montreal, QC H3H 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -1686,6 +1854,7 @@
             "name": "Bureau de Change Mondiale",
             "category": "bureau_de_change",
             "location": "SRID=4326;POINT (-73.5802887 45.4931462)",
+            "civic_address": "1855 Rue Sainte-Catherine, Montreal, QC H3H 1M2, Canada",
             "campus": "SGW"
         }
     },
@@ -1696,6 +1865,7 @@
             "name": "Ganadara Restaurant",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5813752 45.4936916)",
+            "civic_address": "1862 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J9, Canada",
             "campus": "SGW"
         }
     },
@@ -1706,6 +1876,7 @@
             "name": "Face a face - organisme",
             "category": "post_box",
             "location": "SRID=4326;POINT (-73.5815806 45.4939076)",
+            "civic_address": "1857 Maisonneuve Blvd W, Montreal, QC H3H 2G8, Canada",
             "campus": "SGW"
         }
     },
@@ -1716,6 +1887,7 @@
             "name": "Restaurant Meilleur Choix",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5819462 45.4939043)",
+            "civic_address": "2125 Rue St Marc, Montreal, QC H3H 2P1, Canada",
             "campus": "SGW"
         }
     },
@@ -1726,6 +1898,7 @@
             "name": "Le Roi du Wonton",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5819143 45.4938845)",
+            "civic_address": "2125 Rue St Marc, Montreal, QC H3H 2P1, Canada",
             "campus": "SGW"
         }
     },
@@ -1736,6 +1909,7 @@
             "name": "Presotea",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5814359 45.4949149)",
+            "civic_address": "2160 Rue St Mathieu, Montreal, QC H3H 2J4, Canada",
             "campus": "SGW"
         }
     },
@@ -1746,6 +1920,7 @@
             "name": "Zoe Dessert et the",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5814591 45.4949278)",
+            "civic_address": "2160 Rue St Mathieu, Montreal, QC H3H 2J4, Canada",
             "campus": "SGW"
         }
     },
@@ -1756,6 +1931,7 @@
             "name": "Chimaek Gana",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.58116 45.4947615)",
+            "civic_address": "2080 Rue St Mathieu, Montreal, QC H3H 2J4, Canada",
             "campus": "SGW"
         }
     },
@@ -1766,6 +1942,7 @@
             "name": "KimGalbi",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5812241 45.4947974)",
+            "civic_address": "2128 Rue St Mathieu, Montreal, QC H3H 2J4, Canada",
             "campus": "SGW"
         }
     },
@@ -1776,6 +1953,7 @@
             "name": "Maison du Nord",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5812834 45.4948328)",
+            "civic_address": "2130 Rue St Mathieu, Montreal, QC H3H 2J4, Canada",
             "campus": "SGW"
         }
     },
@@ -1786,6 +1964,7 @@
             "name": "Qing Hua Dumpling",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804004 45.4949629)",
+            "civic_address": "1675 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J6, Canada",
             "campus": "SGW"
         }
     },
@@ -1796,6 +1975,7 @@
             "name": "Magic Idea Tea Lounge",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.580442 45.4948498)",
+            "civic_address": "1679 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J6, Canada",
             "campus": "SGW"
         }
     },
@@ -1806,6 +1986,7 @@
             "name": "Allo! Mon Coco",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5801911 45.4947087)",
+            "civic_address": "1455 St Mathieu St #100, Montreal, QC H3H 1J7, Canada",
             "campus": "SGW"
         }
     },
@@ -1816,6 +1997,7 @@
             "name": "Downtown Dhaba",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5801576 45.4947279)",
+            "civic_address": "1455 St Mathieu St #100, Montreal, QC H3H 1J7, Canada",
             "campus": "SGW"
         }
     },
@@ -1826,6 +2008,7 @@
             "name": "Pho Nguyen",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804592 45.4943664)",
+            "civic_address": "1452 St Mathieu St B, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1836,6 +2019,7 @@
             "name": "Shuyi The aux Perles",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5805538 45.4943919)",
+            "civic_address": "1456 Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1846,6 +2030,7 @@
             "name": "Poke Bento",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804334 45.4943508)",
+            "civic_address": "1454 Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1856,6 +2041,7 @@
             "name": "I am Pho",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5803662 45.4943154)",
+            "civic_address": "1448 Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1866,6 +2052,7 @@
             "name": "Cuisine AuntDai",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5803915 45.4943292)",
+            "civic_address": "1448A Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1876,6 +2063,7 @@
             "name": "Song The",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5804053 45.4943388)",
+            "civic_address": "1448A Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1886,6 +2074,7 @@
             "name": "Kabiga The",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5801867 45.4942252)",
+            "civic_address": "1438 Rue St Mathieu, Montreal, QC H3H 2H9, Canada",
             "campus": "SGW"
         }
     },
@@ -1896,6 +2085,7 @@
             "name": "Otto Yakitori",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5799879 45.4944677)",
+            "civic_address": "1443 Rue St Mathieu, Montreal, QC H3H 2M4, Canada",
             "campus": "SGW"
         }
     },
@@ -1906,6 +2096,7 @@
             "name": "Concordia CL",
             "category": "school",
             "location": "SRID=4326;POINT (-73.5789854 45.4942367)",
+            "civic_address": "1665 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1916,6 +2107,7 @@
             "name": "Les Trois amigos",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.578929 45.494302)",
+            "civic_address": "1653 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1926,6 +2118,7 @@
             "name": "La Belle et le Beouf",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5786152 45.4941505)",
+            "civic_address": "1622 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1936,6 +2129,7 @@
             "name": "BBQ Coreen PONY",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5781834 45.494505)",
+            "civic_address": "1616 Rue Sainte-Catherine, Montreal, QC H3H 1L7, Canada",
             "campus": "SGW"
         }
     },
@@ -1946,6 +2140,7 @@
             "name": "Prestotea",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5786106 45.494552)",
+            "civic_address": "1637 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -1956,6 +2151,7 @@
             "name": "Slice + Soda",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5787591 45.4944508)",
+            "civic_address": "164 Rue Pierce, Montreal, QC H3H 2K1, Canada",
             "campus": "SGW"
         }
     },
@@ -1966,6 +2162,7 @@
             "name": "Ocha Bubble Tea",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5788086 45.4944023)",
+            "civic_address": "1647 Rue Sainte-Catherine, Montreal, QC H3H 1L9, Canada",
             "campus": "SGW"
         }
     },
@@ -1976,6 +2173,7 @@
             "name": "Chungchun",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5791016 45.494625)",
+            "civic_address": "1418 Rue Pierce, Montreal, QC H3H 2K2, Canada",
             "campus": "SGW"
         }
     },
@@ -1986,6 +2184,7 @@
             "name": "Pub Billard",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5785353 45.4946225)",
+            "civic_address": "1635 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -1996,6 +2195,7 @@
             "name": "Hazukido",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5784704 45.4946832)",
+            "civic_address": "1631 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2006,6 +2206,7 @@
             "name": "Osmow's",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5784476 45.4947058)",
+            "civic_address": "1625 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2016,6 +2217,7 @@
             "name": "Poulet Rouge",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.578405 45.4947498)",
+            "civic_address": "1625 Saint-Catherine St W 2nd floor, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2026,6 +2228,7 @@
             "name": "Mont Tacos Ste-Catherine",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5783589 45.4947791)",
+            "civic_address": "1621 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2036,6 +2239,7 @@
             "name": "Burger King",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5782987 45.4948231)",
+            "civic_address": "1617 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2046,6 +2250,7 @@
             "name": "Tim Hortons",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5782354 45.4948984)",
+            "civic_address": "1611 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2056,6 +2261,7 @@
             "name": "NosThes",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5781872 45.4949266)",
+            "civic_address": "1607 Rue Sainte-Catherine, Montreal, QC H3H 1L8, Canada",
             "campus": "SGW"
         }
     },
@@ -2066,6 +2272,7 @@
             "name": "Shuyi Tealicious",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5800796 45.4947945)",
+            "civic_address": "1670-b Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1T8, Canada",
             "campus": "SGW"
         }
     },
@@ -2076,6 +2283,7 @@
             "name": "Angela Pizzeria & Restaurant",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5799701 45.4948995)",
+            "civic_address": "1662 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J7, Canada",
             "campus": "SGW"
         }
     },
@@ -2086,6 +2294,7 @@
             "name": "Depanneur Beau Prix",
             "category": "convenience",
             "location": "SRID=4326;POINT (-73.5797244 45.495018)",
+            "civic_address": "1640 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 2P3, Canada",
             "campus": "SGW"
         }
     },
@@ -2096,6 +2305,7 @@
             "name": "Poulet Bronze",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5796504 45.4951763)",
+            "civic_address": "1455 Rue Pierce, Montreal, QC H3H 2K1, Canada",
             "campus": "SGW"
         }
     },
@@ -2106,6 +2316,7 @@
             "name": "Cocktail Hawaii",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5800075 45.4952229)",
+            "civic_address": "1645 Maisonneuve Blvd W, Montreal, QC H3H 2N3, Canada",
             "campus": "SGW"
         }
     },
@@ -2116,6 +2327,7 @@
             "name": "Coq-O-Coq",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.579632 45.4955595)",
+            "civic_address": "2000 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2126,6 +2338,7 @@
             "name": "Al-Taib Boulangerie",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5797282 45.495505)",
+            "civic_address": "1619 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J5, Canada",
             "campus": "SGW"
         }
     },
@@ -2136,6 +2349,7 @@
             "name": "Antep Kabab",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5795704 45.4952512)",
+            "civic_address": "1628 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 1J5, Canada",
             "campus": "SGW"
         }
     },
@@ -2146,6 +2360,7 @@
             "name": "Java U",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5790314 45.4957981)",
+            "civic_address": "1455 Rue Guy, Montreal, QC H3H 2L5, Canada",
             "campus": "SGW"
         }
     },
@@ -2156,6 +2371,7 @@
             "name": "RBC",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.578754 45.4956514)",
+            "civic_address": "2155 GUY, ER101, Montreal, QC H3G 2W1, Canada",
             "campus": "SGW"
         }
     },
@@ -2166,6 +2382,7 @@
             "name": "Dairy Queen",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5787972 45.4956723)",
+            "civic_address": "1435 Rue Guy, Montreal, QC H3G 1N2, Canada",
             "campus": "SGW"
         }
     },
@@ -2176,6 +2393,7 @@
             "name": "A&W",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.578854 45.4960239)",
+            "civic_address": "1540 Blvd. De Maisonneuve Ouest, Montreal, QC H3H 2L5, Canada",
             "campus": "SGW"
         }
     },
@@ -2186,6 +2404,7 @@
             "name": "Patisserie Cocobun - Guy-Concordia",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5788498 45.495867)",
+            "civic_address": "1550 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1N1, Canada",
             "campus": "SGW"
         }
     },
@@ -2193,9 +2412,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 220,
         "fields": {
-            "name": "Tha∩ Express",
+            "name": "Thai Express",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5789809 45.49588)",
+            "civic_address": "1570 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1N1, Canada",
             "campus": "SGW"
         }
     },
@@ -2206,6 +2426,7 @@
             "name": "Starbucks",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5796279 45.4956457)",
+            "civic_address": "2000 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2216,6 +2437,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5797057 45.4957706)",
+            "civic_address": "2100 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2226,6 +2448,7 @@
             "name": "O'kogo",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5797068 45.4957032)",
+            "civic_address": "2100 Rue Guy #206a, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2236,6 +2459,7 @@
             "name": "QPIRG",
             "category": "community_centre",
             "location": "SRID=4326;POINT (-73.5797583 45.4956586)",
+            "civic_address": "1625 Maisonneuve Blvd W #302, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2246,6 +2470,7 @@
             "name": "Tim Hortons",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5796559 45.4959818)",
+            "civic_address": "Station Guy-Concordia, Montreal, QC H3H 2M1, Canada",
             "campus": "SGW"
         }
     },
@@ -2256,6 +2481,7 @@
             "name": "Chateau Kabab",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.580135 45.4958917)",
+            "civic_address": "2140 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2266,6 +2492,7 @@
             "name": "La Muse",
             "category": "pub",
             "location": "SRID=4326;POINT (-73.5802838 45.4958811)",
+            "civic_address": "2144 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2276,6 +2503,7 @@
             "name": "Chez Chen",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.580315 45.4958601)",
+            "civic_address": "1618 Av. Lincoln, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2286,6 +2514,7 @@
             "name": "Subway",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5802646 45.4959022)",
+            "civic_address": "2140 Rue Guy, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2296,6 +2525,7 @@
             "name": "La Diperie",
             "category": "ice_cream",
             "location": "SRID=4326;POINT (-73.5805761 45.4959745)",
+            "civic_address": "2210 Rue Guy, Montreal, QC H3H 2L9, Canada",
             "campus": "SGW"
         }
     },
@@ -2306,6 +2536,7 @@
             "name": "Heureux Rock N Road",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5806972 45.4960348)",
+            "civic_address": "2230 Rue Guy, Montreal, QC H3H 2L9, Canada",
             "campus": "SGW"
         }
     },
@@ -2316,6 +2547,7 @@
             "name": "Pizza Trois Royaumes",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5806344 45.4960093)",
+            "civic_address": "2210 Rue Guy, Montreal, QC H3H 2L9, Canada",
             "campus": "SGW"
         }
     },
@@ -2326,6 +2558,7 @@
             "name": "Chatpata",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804748 45.4957079)",
+            "civic_address": "1620 Av. Lincoln, Montreal, QC H3H 1G9, Canada",
             "campus": "SGW"
         }
     },
@@ -2336,6 +2569,7 @@
             "name": "Poulet Bronze",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5803631 45.4958189)",
+            "civic_address": "1618 Av. Lincoln, Montreal, QC H3H 2N4, Canada",
             "campus": "SGW"
         }
     },
@@ -2346,6 +2580,7 @@
             "name": "Student Tasty Biryani",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804048 45.4957837)",
+            "civic_address": "1630 Av. Lincoln, Montreal, QC H3H 1G9, Canada",
             "campus": "SGW"
         }
     },
@@ -2356,6 +2591,7 @@
             "name": "Tarim",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804308 45.495749)",
+            "civic_address": "1620-B Av. Lincoln, Montreal, QC H3H 1G9, Canada",
             "campus": "SGW"
         }
     },
@@ -2366,6 +2602,7 @@
             "name": "Restaurant Qinghua Dumpling",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5809915 45.4952594)",
+            "civic_address": "1676 Av. Lincoln, Montreal, QC H3H 1G9, Canada",
             "campus": "SGW"
         }
     },
@@ -2376,6 +2613,7 @@
             "name": "Shi Tang",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5809726 45.4953433)",
+            "civic_address": "1668 Av. Lincoln, Montreal, QC H3H 1G9, Canada",
             "campus": "SGW"
         }
     },
@@ -2386,6 +2624,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5830491 45.495264)",
+            "civic_address": "1836 Rue Sherbrooke O, Montreal, QC H3H 1E4, Canada",
             "campus": "SGW"
         }
     },
@@ -2396,6 +2635,7 @@
             "name": "Cote Cafe",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5834242 45.4966071)",
+            "civic_address": "3465 Chem. de la Cote-des-Neiges, Montreal, QC H3H 1T7, Canada",
             "campus": "SGW"
         }
     },
@@ -2406,6 +2646,7 @@
             "name": "BMO",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.5822954 45.4963789)",
+            "civic_address": "1601 QC-138, Montreal, QC H3H 1E2, Canada",
             "campus": "SGW"
         }
     },
@@ -2416,6 +2657,7 @@
             "name": "Chez Hailar",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5817158 45.4962413)",
+            "civic_address": "1612 Rue Sherbrooke O, Montreal, QC H3H 1C9, Canada",
             "campus": "SGW"
         }
     },
@@ -2426,6 +2668,7 @@
             "name": "Egina",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5811803 45.4962533)",
+            "civic_address": "2320 Rue Guy, Montreal, QC H3H 2M2, Canada",
             "campus": "SGW"
         }
     },
@@ -2436,6 +2679,7 @@
             "name": "Restaurant Traditions",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.58133 45.4962984)",
+            "civic_address": "2340 Rue Guy, Montreal, QC H3H 1E1, Canada",
             "campus": "SGW"
         }
     },
@@ -2446,6 +2690,7 @@
             "name": "Cuisine Szechuan",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5815133 45.4963591)",
+            "civic_address": "2350 Rue Guy, Montreal, QC H3H 1E1, Canada",
             "campus": "SGW"
         }
     },
@@ -2456,6 +2701,7 @@
             "name": "Chai Paratha",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5813992 45.4963196)",
+            "civic_address": "2340 Rue Guy, Montreal, QC H3H 1E1, Canada",
             "campus": "SGW"
         }
     },
@@ -2466,6 +2712,7 @@
             "name": "Ville Marie Pet/CT Centre",
             "category": "clinic",
             "location": "SRID=4326;POINT (-73.5811944 45.4965258)",
+            "civic_address": "1538 Sherbrooke St W Suite 1000, Montreal, QC H3G 1L5, Canada",
             "campus": "SGW"
         }
     },
@@ -2476,6 +2723,7 @@
             "name": "Technic",
             "category": "driving_school",
             "location": "SRID=4326;POINT (-73.5819919 45.4968022)",
+            "civic_address": "1535 Rue Sherbrooke O, Montreal, QC H3G 1L7, Canada",
             "campus": "SGW"
         }
     },
@@ -2486,6 +2734,7 @@
             "name": "Uniprix",
             "category": "pharmacy",
             "location": "SRID=4326;POINT (-73.5813876 45.4966391)",
+            "civic_address": "1538 Rue Sherbrooke O, Montreal, QC H3H 2L9, Canada",
             "campus": "SGW"
         }
     },
@@ -2496,6 +2745,7 @@
             "name": "Bice Restaurant",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5809582 45.4970237)",
+            "civic_address": "1500 Rue Sherbrooke O, Montreal, QC H3G 1L3, Canada",
             "campus": "SGW"
         }
     },
@@ -2506,6 +2756,7 @@
             "name": "RBC",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.580268 45.4962359)",
+            "civic_address": "2155 Rue Guy Suite #1201, Montreal, QC H3H 2R9, Canada",
             "campus": "SGW"
         }
     },
@@ -2516,6 +2767,7 @@
             "name": "Comptoir du chef",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5800322 45.4961676)",
+            "civic_address": "2153 Rue Guy, Montreal, QC H3H 2R9, Canada",
             "campus": "SGW"
         }
     },
@@ -2526,6 +2778,7 @@
             "name": "Al-Taib",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5799412 45.4961292)",
+            "civic_address": "2125 Rue Guy, Montreal, QC H3H 2L9, Canada",
             "campus": "SGW"
         }
     },
@@ -2536,6 +2789,7 @@
             "name": "Mr. Puffs",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5787252 45.4963141)",
+            "civic_address": "1500 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1N1, Canada",
             "campus": "SGW"
         }
     },
@@ -2546,6 +2800,7 @@
             "name": "Mr Tantuni",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5787705 45.4962498)",
+            "civic_address": "1520 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1N1, Canada",
             "campus": "SGW"
         }
     },
@@ -2556,6 +2811,7 @@
             "name": "Yumi Burger",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5782723 45.4962758)",
+            "civic_address": "1448 Rue Mackay, Montreal, QC H3G 2H6, Canada",
             "campus": "SGW"
         }
     },
@@ -2566,6 +2822,7 @@
             "name": "Trope",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5784899 45.4964159)",
+            "civic_address": "1460 Rue Mackay, Montreal, QC H3G 2H7, Canada",
             "campus": "SGW"
         }
     },
@@ -2576,6 +2833,7 @@
             "name": "Shifu",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.578432 45.4963864)",
+            "civic_address": "1460 Rue Mackay, Montreal, QC H3G 2H7, Canada",
             "campus": "SGW"
         }
     },
@@ -2586,6 +2844,7 @@
             "name": "Krispy Kreme",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5783838 45.4963654)",
+            "civic_address": "1452 Rue Mackay, Montreal, QC H3G 2H7, Canada",
             "campus": "SGW"
         }
     },
@@ -2596,6 +2855,7 @@
             "name": "Allons Burger",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5786287 45.4964791)",
+            "civic_address": "1480 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1M8, Canada",
             "campus": "SGW"
         }
     },
@@ -2606,6 +2866,7 @@
             "name": "Yi Fang",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5786988 45.4963869)",
+            "civic_address": "1510 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1N1, Canada",
             "campus": "SGW"
         }
     },
@@ -2616,6 +2877,7 @@
             "name": "Kebab Express",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.5789917 45.4966171)",
+            "civic_address": "2002 Rue Mackay, Montreal, QC H3G 2J1, Canada",
             "campus": "SGW"
         }
     },
@@ -2626,6 +2888,7 @@
             "name": "Hinnawi Bros Bagel & Cafe",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5790198 45.4966326)",
+            "civic_address": "2002 Rue Mackay, Montreal, QC H3G 2J1, Canada",
             "campus": "SGW"
         }
     },
@@ -2636,6 +2899,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.5792345 45.4968365)",
+            "civic_address": "2040 Rue Mackay, Montreal, QC H3G 2J1, Canada",
             "campus": "SGW"
         }
     },
@@ -2646,6 +2910,7 @@
             "name": "Hive Cafe",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5792923 45.4973891)",
+            "civic_address": "1455 Blvd. De Maisonneuve Ouest H-239, Montreal, QC H3G 1M8, Canada",
             "campus": "SGW"
         }
     },
@@ -2656,6 +2921,7 @@
             "name": "DB Clarke Theatre",
             "category": "theatre",
             "location": "SRID=4326;POINT (-73.5785128 45.4974073)",
+            "civic_address": "1455 Blvd. De Maisonneuve Ouest, Montreal, QC H3G 1M8, Canada",
             "campus": "SGW"
         }
     },
@@ -2666,6 +2932,7 @@
             "name": "Toro Sushi",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5783562 45.4976921)",
+            "civic_address": "2045 R. Bishop, Montreal, QC H3G 2E8, Canada",
             "campus": "SGW"
         }
     },
@@ -2676,6 +2943,7 @@
             "name": "Misoya",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5785398 45.4978354)",
+            "civic_address": "2075 R. Bishop, Montreal, QC H3G 2E8, Canada",
             "campus": "SGW"
         }
     },
@@ -2686,6 +2954,7 @@
             "name": "Burritoville",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5787978 45.4978734)",
+            "civic_address": "2085 Bishop, 2085 Bishop St, Montreal, QC H3G 2E8, Canada",
             "campus": "SGW"
         }
     },
@@ -2696,6 +2965,7 @@
             "name": "Tianxia",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5789216 45.4979195)",
+            "civic_address": "2177 R. Bishop, Montreal, QC H3G 2E8, Canada",
             "campus": "SGW"
         }
     },
@@ -2706,6 +2976,7 @@
             "name": "Nakamichi",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5799516 45.4976121)",
+            "civic_address": "2149 Rue Mackay, Montreal, QC H3G 2J2, Canada",
             "campus": "SGW"
         }
     },
@@ -2716,6 +2987,7 @@
             "name": "Cafe Aunja",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5803124 45.4977937)",
+            "civic_address": "1446 Rue Sherbrooke O, Montreal, QC H3G 2G2, Canada",
             "campus": "SGW"
         }
     },
@@ -2726,6 +2998,7 @@
             "name": "Maison Inja - Cuisine Perse",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5804339 45.4976883)",
+            "civic_address": "1458 QC-138, Montreal, QC H3G 2S8, Canada",
             "campus": "SGW"
         }
     },
@@ -2736,6 +3009,7 @@
             "name": "Schlouppe Bistrot",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5801261 45.4974543)",
+            "civic_address": "2153 Rue Mackay, Montreal, QC H3G 2J2, Canada",
             "campus": "SGW"
         }
     },
@@ -2746,6 +3020,7 @@
             "name": "Crudessence",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5801931 45.4974721)",
+            "civic_address": "2159 Rue Mackay, Montreal, QC H3G 2J2, Canada",
             "campus": "SGW"
         }
     },
@@ -2756,6 +3031,7 @@
             "name": "Riz en folie",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5801287 45.4974156)",
+            "civic_address": "2155 Rue Mackay, Montreal, QC H3G 2J2, Canada",
             "campus": "SGW"
         }
     },
@@ -2766,6 +3042,7 @@
             "name": "O Plaisirs Gourmands",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5808564 45.4971849)",
+            "civic_address": "1494 QC-138, Montreal, QC H3G 1L3, Canada",
             "campus": "SGW"
         }
     },
@@ -2776,6 +3053,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.5808248 45.4981248)",
+            "civic_address": "3400 Rue Redpath, Montreal, QC H3G 2G3, Canada",
             "campus": "SGW"
         }
     },
@@ -2786,6 +3064,7 @@
             "name": "L'Academie",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5782196 45.4982373)",
+            "civic_address": "2080-B Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -2796,6 +3075,7 @@
             "name": "Burrito Borracho",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5782589 45.4982572)",
+            "civic_address": "2110 Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -2806,6 +3086,7 @@
             "name": "K Karaoke Bar",
             "category": "bar",
             "location": "SRID=4326;POINT (-73.5782894 45.498273)",
+            "civic_address": "2110 Rue Crescent, Montreal, QC H3G 2B8, Canada",
             "campus": "SGW"
         }
     },
@@ -2816,6 +3097,7 @@
             "name": "L'Autre Saison",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5783698 45.4986283)",
+            "civic_address": "2153 Rue Crescent, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -2826,6 +3108,7 @@
             "name": "Le Poke Bar",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5783841 45.4986877)",
+            "civic_address": "2163 Rue Crescent, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -2836,6 +3119,7 @@
             "name": "Troika",
             "category": "restaurant",
             "location": "SRID=4326;POINT (-73.5785469 45.4986885)",
+            "civic_address": "2165 Rue Crescent #3, Montreal, QC H3G 2C1, Canada",
             "campus": "SGW"
         }
     },
@@ -2846,6 +3130,7 @@
             "name": "Le cafe des beaux-arts",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.5795792 45.4985268)",
+            "civic_address": "1384 Rue Sherbrooke O, Montreal, QC H3G 2E8, Canada",
             "campus": "SGW"
         }
     },
@@ -2856,6 +3141,7 @@
             "name": "Auditorium Maxwell-Cummings;Cinema du Musee",
             "category": "cinema",
             "location": "SRID=4326;POINT (-73.5799615 45.4987502)",
+            "civic_address": "1379 Rue Sherbrooke O, Montreal, QC H3G 1J5, Canada",
             "campus": "SGW"
         }
     },
@@ -2866,6 +3152,7 @@
             "name": "Tim Hortons",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.6236949 45.4621082)",
+            "civic_address": "6495 Rue Saint-Jacques, Montreal, QC H4B 1V1, Canada",
             "campus": "LOY"
         }
     },
@@ -2876,6 +3163,7 @@
             "name": "Seena Cultural Centre",
             "category": "community_centre",
             "location": "SRID=4326;POINT (-73.6233499 45.4615102)",
+            "civic_address": "6524 Rue Saint-Jacques, Montreal, QC H4B 1T6, Canada",
             "campus": "LOY"
         }
     },
@@ -2886,6 +3174,7 @@
             "name": "U-Haul",
             "category": "car_rental",
             "location": "SRID=4326;POINT (-73.6383249 45.4486301)",
+            "civic_address": "8101 Bd Montreal-Toronto, Montreal-Ouest, QC H4X 1N1, Canada",
             "campus": "LOY"
         }
     },
@@ -2896,6 +3185,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.6333425 45.4528178)",
+            "civic_address": "7350 Bd de Sainte-Anne de Bellevue, Montreal, QC H4B 1T4, Canada",
             "campus": "LOY"
         }
     },
@@ -2906,6 +3196,7 @@
             "name": "Hotel de Ville de Montreal-Ouest",
             "category": "townhall",
             "location": "SRID=4326;POINT (-73.6421192 45.4513337)",
+            "civic_address": "50 Avenue Westminster S, Montreal-Ouest, QC H4X 1Y6, Canada",
             "campus": "LOY"
         }
     },
@@ -2916,6 +3207,7 @@
             "name": "Centre communautaire John A. Simms",
             "category": "community_centre",
             "location": "SRID=4326;POINT (-73.6437126 45.4520473)",
+            "civic_address": "8 Avenue Westminster S, Montreal-Ouest, QC H4X 1Y5, Canada",
             "campus": "LOY"
         }
     },
@@ -2926,6 +3218,7 @@
             "name": "FM-3 Montreal-West",
             "category": "clinic",
             "location": "SRID=4326;POINT (-73.6445336 45.4527536)",
+            "civic_address": "1 Westminster North, Montreal-Ouest, QC H4X 1Y8, Canada",
             "campus": "LOY"
         }
     },
@@ -2936,6 +3229,7 @@
             "name": "Montreal West Public Library",
             "category": "library",
             "location": "SRID=4326;POINT (-73.6452588 45.4529874)",
+            "civic_address": "43 Westminster North, Montreal-Ouest, QC H4X 1Y8, Canada",
             "campus": "LOY"
         }
     },
@@ -2946,6 +3240,7 @@
             "name": "RBC Banque Royale",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.6455003 45.4527708)",
+            "civic_address": "28 Westminster North, Montreal-Ouest, QC H4X 1Z2, Canada",
             "campus": "LOY"
         }
     },
@@ -2956,6 +3251,7 @@
             "name": "Pharmaprix",
             "category": "pharmacy",
             "location": "SRID=4326;POINT (-73.6448816 45.4528585)",
+            "civic_address": "19 Westminster North, Montreal-Ouest, QC H4X 1Y8, Canada",
             "campus": "LOY"
         }
     },
@@ -2966,6 +3262,7 @@
             "name": "La Monde de Les Petits Enfants",
             "category": "childcare",
             "location": "SRID=4326;POINT (-73.645494 45.4522455)",
+            "civic_address": "16 Rue Milner, Montreal-Ouest, QC H4X 1J1, Canada",
             "campus": "LOY"
         }
     },
@@ -2976,6 +3273,7 @@
             "name": "Residence Jean-Placide-Desrosiers",
             "category": "social_facility",
             "location": "SRID=4326;POINT (-73.6463168 45.4465873)",
+            "civic_address": "55 Av. Ouellette, Lachine, QC H8R 1L4, Canada",
             "campus": "LOY"
         }
     },
@@ -2986,6 +3284,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.6505063 45.447601)",
+            "civic_address": "287 Av. Emile-Pominville, Montreal, QC H8R 1M2, Canada",
             "campus": "LOY"
         }
     },
@@ -2996,6 +3295,7 @@
             "name": "Little Red Playhouse",
             "category": "school",
             "location": "SRID=4326;POINT (-73.6550527 45.4545162)",
+            "civic_address": "263 Av. Percival, Montreal-Ouest, QC H4X 1T8, Canada",
             "campus": "LOY"
         }
     },
@@ -3006,6 +3306,7 @@
             "name": "Bixi",
             "category": "bicycle_rental",
             "location": "SRID=4326;POINT (-73.6446807 45.4597322)",
+            "civic_address": "Somerled / Doherty, Montreal, QC H4B 2B2, Canada",
             "campus": "LOY"
         }
     },
@@ -3016,6 +3317,7 @@
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.6422264 45.4581383)",
+            "civic_address": "St Ignatius, Montreal, QC H4B 2A7, Canada",
             "campus": "LOY"
         }
     },
@@ -3026,6 +3328,7 @@
             "name": "Second Cup",
             "category": "cafe",
             "location": "SRID=4326;POINT (-73.6408899 45.4561072)",
+            "civic_address": "7335 Rue Sherbrooke O, Montreal, QC H4B 1R9, Canada",
             "campus": "LOY"
         }
     },
@@ -3036,6 +3339,7 @@
             "name": "CIBC",
             "category": "bank",
             "location": "SRID=4326;POINT (-73.6411152 45.4558568)",
+            "civic_address": "7355 Rue Sherbrooke O, Montreal, QC H4B 1S1, Canada",
             "campus": "LOY"
         }
     },
@@ -3046,6 +3350,7 @@
             "name": "Subway",
             "category": "fast_food",
             "location": "SRID=4326;POINT (-73.6412021 45.45506)",
+            "civic_address": "7420 Rue Sherbrooke O, Montreal, QC H4B 1R7, Canada",
             "campus": "LOY"
         }
     },
@@ -3053,9 +3358,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 306,
         "fields": {
-            "name": "Montreal West United Church",
-            "category": "place_of_worship",
-            "location": "SRID=4326;POINT (-73.6466966 45.4538435)",
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6467912 45.4531551)",
+            "civic_address": "72 Westminster North, Montreal-Ouest, QC H4X 1Z2, Canada",
             "campus": "LOY"
         }
     },
@@ -3063,9 +3369,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 307,
         "fields": {
-            "name": "Circuit electrique",
-            "category": "charging_station",
-            "location": "SRID=4326;POINT (-73.6467912 45.4531551)",
+            "name": "Burger de Ville",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.645897 45.4533088)",
+            "civic_address": "59 Westminster North, Montreal-Ouest, QC H4X 1Y8, Canada",
             "campus": "LOY"
         }
     },
@@ -3073,9 +3380,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 308,
         "fields": {
-            "name": "Burger de Ville",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.645897 45.4533088)",
+            "name": "Montreal West Dentistry",
+            "category": "dentist",
+            "location": "SRID=4326;POINT (-73.6433759 45.4533649)",
+            "civic_address": "14 Av. Brock N, Montreal-Ouest, QC H4X 2E9, Canada",
             "campus": "LOY"
         }
     },
@@ -3083,9 +3391,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 309,
         "fields": {
-            "name": "Montreal West Dentistry",
-            "category": "dentist",
-            "location": "SRID=4326;POINT (-73.6433759 45.4533649)",
+            "name": "Goldies Pub",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.6371377 45.4536111)",
+            "civic_address": "7425 Rue Saint-Jacques, Montreal, QC H4B 1Y2, Canada",
             "campus": "LOY"
         }
     },
@@ -3093,9 +3402,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 310,
         "fields": {
-            "name": "Goldies Pub",
-            "category": "bar",
-            "location": "SRID=4326;POINT (-73.6371377 45.4536111)",
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6392765 45.4544138)",
+            "civic_address": "7421 Ave Harley, Montreal, QC H4B 1L5, Canada",
             "campus": "LOY"
         }
     },
@@ -3103,9 +3413,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 311,
         "fields": {
-            "name": "Circuit electrique",
-            "category": "charging_station",
-            "location": "SRID=4326;POINT (-73.6392765 45.4544138)",
+            "name": "Hyo Setsu Dojo (Montreal Kenjutsu)",
+            "category": "dojo",
+            "location": "SRID=4326;POINT (-73.6396469 45.4567057)",
+            "civic_address": "7272 Rue Sherbrooke O, Montreal, QC H4B 2A4, Canada",
             "campus": "LOY"
         }
     },
@@ -3113,9 +3424,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 312,
         "fields": {
-            "name": "Hyo Setsu Dojo (Montreal Kenjutsu)",
-            "category": "dojo",
-            "location": "SRID=4326;POINT (-73.6396469 45.4567057)",
+            "name": "McDonald's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6332496 45.4544861)",
+            "civic_address": "7270 Rue Saint-Jacques Ouest, Montreal, QC H4B 1W1, Canada",
             "campus": "LOY"
         }
     },
@@ -3123,9 +3435,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 313,
         "fields": {
-            "name": "McDonald's",
-            "category": "fast_food",
-            "location": "SRID=4326;POINT (-73.6332496 45.4544861)",
+            "name": "Petro-Canada",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6326406 45.454898)",
+            "civic_address": "7252 Rue Saint-Jacques, Montreal, QC H4B 1W1, Canada",
             "campus": "LOY"
         }
     },
@@ -3133,9 +3446,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 314,
         "fields": {
-            "name": "Petro-Canada",
-            "category": "fuel",
-            "location": "SRID=4326;POINT (-73.6326406 45.454898)",
+            "name": "Brasserie Manoir NDG",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6276873 45.4579092)",
+            "civic_address": "6810 Rue Saint-Jacques, Montreal, QC H4B 1V8, Canada",
             "campus": "LOY"
         }
     },
@@ -3143,9 +3457,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 315,
         "fields": {
-            "name": "Brasserie Manoir NDG",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.6276873 45.4579092)",
+            "name": "Enterprise",
+            "category": "car_rental",
+            "location": "SRID=4326;POINT (-73.6269105 45.4604146)",
+            "civic_address": "6685 Saint-Jacques Ouest, Montreal, QC H4B 1V3, Canada",
             "campus": "LOY"
         }
     },
@@ -3153,9 +3468,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 316,
         "fields": {
-            "name": "Enterprise",
-            "category": "car_rental",
-            "location": "SRID=4326;POINT (-73.6269105 45.4604146)",
+            "name": "Chez Cora",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6269231 45.4605477)",
+            "civic_address": "6685 Rue Saint-Jacques, Montreal, QC H4B 1V3, Canada",
             "campus": "LOY"
         }
     },
@@ -3163,9 +3479,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 317,
         "fields": {
-            "name": "Chez Cora",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.6269231 45.4605477)",
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6340725 45.4607294)",
+            "civic_address": "6874 Rue Sherbrooke O, Montreal, QC H4B 1P7, Canada",
             "campus": "LOY"
         }
     },
@@ -3173,9 +3490,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 318,
         "fields": {
-            "name": "Bixi",
-            "category": "bicycle_rental",
-            "location": "SRID=4326;POINT (-73.6340725 45.4607294)",
+            "name": "Ultramar",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6354446 45.4605916)",
+            "civic_address": "6905 Rue Sherbrooke O, Montreal, QC H4B 1P8, Canada",
             "campus": "LOY"
         }
     },
@@ -3183,9 +3501,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 319,
         "fields": {
-            "name": "Ultramar",
-            "category": "fuel",
-            "location": "SRID=4326;POINT (-73.6354446 45.4605916)",
+            "name": "Comptoir Koyajo",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.636437 45.459961)",
+            "civic_address": "6963 Rue Sherbrooke O, Montreal, QC H4B 1R1, Canada",
             "campus": "LOY"
         }
     },
@@ -3193,9 +3512,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 320,
         "fields": {
-            "name": "Comptoir Koyajo",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.636437 45.459961)",
+            "name": "Ca Lem",
+            "category": "ice_cream",
+            "location": "SRID=4326;POINT (-73.6355007 45.4601327)",
+            "civic_address": "6924 Rue Sherbrooke O, Montreal, QC H4B 1P9, Canada",
             "campus": "LOY"
         }
     },
@@ -3203,9 +3523,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 321,
         "fields": {
-            "name": "Ca Lem",
-            "category": "ice_cream",
-            "location": "SRID=4326;POINT (-73.6355007 45.4601327)",
+            "name": "MIA Cafe Club",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6355591 45.4601062)",
+            "civic_address": "6924 Rue Sherbrooke O, Montreal, QC H4B 1P9, Canada",
             "campus": "LOY"
         }
     },
@@ -3213,9 +3534,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 322,
         "fields": {
-            "name": "MIA Cafe Club",
-            "category": "cafe",
-            "location": "SRID=4326;POINT (-73.6355591 45.4601062)",
+            "name": "Dagwoods Sandwichs et salades",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6365539 45.4598862)",
+            "civic_address": "6970 Av de Monkland, Montreal, QC H4B 1J8, Canada",
             "campus": "LOY"
         }
     },
@@ -3223,9 +3545,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 323,
         "fields": {
-            "name": "Dagwoods Sandwichs et salades",
-            "category": "fast_food",
-            "location": "SRID=4326;POINT (-73.6365539 45.4598862)",
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6395391 45.4575167)",
+            "civic_address": "Universite Concordia / Campus Loyola, Montreal, QC H4B 2A4, Canada",
             "campus": "LOY"
         }
     },
@@ -3233,9 +3556,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 324,
         "fields": {
-            "name": "Bixi",
-            "category": "bicycle_rental",
-            "location": "SRID=4326;POINT (-73.6395391 45.4575167)",
+            "name": "Montclair",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6362803 45.4641243)",
+            "civic_address": "4413 Av. Montclair, Montreal, QC H4B 2J4, Canada",
             "campus": "LOY"
         }
     },
@@ -3243,9 +3567,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 325,
         "fields": {
-            "name": "Montclair",
-            "category": "social_facility",
-            "location": "SRID=4326;POINT (-73.6362803 45.4641243)",
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6321436 45.4617039)",
+            "civic_address": "2569 Rue Park Row E, Montreal, QC H4B 2H8, Canada",
             "campus": "LOY"
         }
     },
@@ -3253,9 +3578,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 326,
         "fields": {
-            "name": "Circuit electrique",
-            "category": "charging_station",
-            "location": "SRID=4326;POINT (-73.6321436 45.4617039)",
+            "name": "De Chou",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6324413 45.4621315)",
+            "civic_address": "6707 Rue Sherbrooke O, Montreal, QC H4B 1P3, Canada",
             "campus": "LOY"
         }
     },
@@ -3263,9 +3589,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 327,
         "fields": {
-            "name": "De Chou",
+            "name": "Cafe 92",
             "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.6324413 45.4621315)",
+            "location": "SRID=4326;POINT (-73.632277 45.4622)",
+            "civic_address": "6703 Rue Sherbrooke O, Montreal, QC H4B 1P3, Canada",
             "campus": "LOY"
         }
     },
@@ -3273,9 +3600,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 328,
         "fields": {
-            "name": "Cafe 92",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.632277 45.4622)",
+            "name": "Centre d'hebergement Saint-Andrew",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6289039 45.4631106)",
+            "civic_address": "3350 Boul Cavendish, Montreal, QC H4B 2M7, Canada",
             "campus": "LOY"
         }
     },
@@ -3283,9 +3611,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 329,
         "fields": {
-            "name": "Centre d'hebergement Saint-Andrew",
-            "category": "social_facility",
-            "location": "SRID=4326;POINT (-73.6289039 45.4631106)",
+            "name": "The Wheel Club",
+            "category": "events_venue",
+            "location": "SRID=4326;POINT (-73.6278766 45.4634534)",
+            "civic_address": "3363 Boul Cavendish, Montreal, QC H4B 2L7, Canada",
             "campus": "LOY"
         }
     },
@@ -3293,9 +3622,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 330,
         "fields": {
-            "name": "The Wheel Club",
-            "category": "events_venue",
-            "location": "SRID=4326;POINT (-73.6278766 45.4634534)",
+            "name": "Seoul Dosirak",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6272611 45.4631435)",
+            "civic_address": "3281 QC-138, Montreal, QC H4B 2L9, Canada",
             "campus": "LOY"
         }
     },
@@ -3303,9 +3633,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 331,
         "fields": {
-            "name": "Seoul Dosirak",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.6272611 45.4631435)",
+            "name": "French school",
+            "category": "school",
+            "location": "SRID=4326;POINT (-73.6272658 45.4633223)",
+            "civic_address": "3285 Boul Cavendish #100, Montreal, QC H4B 2L9, Canada",
             "campus": "LOY"
         }
     },
@@ -3313,9 +3644,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 332,
         "fields": {
-            "name": "French school",
-            "category": "school",
-            "location": "SRID=4326;POINT (-73.6272658 45.4633223)",
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6262632 45.464751)",
+            "civic_address": "2559 Av. Benny, Montreal, QC H4B 1M9, Canada",
             "campus": "LOY"
         }
     },
@@ -3323,9 +3655,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 333,
         "fields": {
-            "name": "Bixi",
-            "category": "bicycle_rental",
-            "location": "SRID=4326;POINT (-73.6262632 45.464751)",
+            "name": "Pharmaprix",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.6273964 45.464816)",
+            "civic_address": "6405 Rue Sherbrooke O, Montreal, QC H4B 2R8, Canada",
             "campus": "LOY"
         }
     },
@@ -3333,9 +3666,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 334,
         "fields": {
-            "name": "Pharmaprix",
-            "category": "pharmacy",
-            "location": "SRID=4326;POINT (-73.6273964 45.464816)",
+            "name": "CLSC de Benny Farm",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.6316201 45.4654822)",
+            "civic_address": "6484 Av de Monkland, Montreal, QC H4B 1H3, Canada",
             "campus": "LOY"
         }
     },
@@ -3343,9 +3677,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 335,
         "fields": {
-            "name": "CLSC de Benny Farm",
-            "category": "clinic",
-            "location": "SRID=4326;POINT (-73.6316201 45.4654822)",
+            "name": "Bibliotheque Benny",
+            "category": "library",
+            "location": "SRID=4326;POINT (-73.6309558 45.4663823)",
+            "civic_address": "6400 Av de Monkland, Montreal, QC H4B 1H3, Canada",
             "campus": "LOY"
         }
     },
@@ -3353,9 +3688,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 336,
         "fields": {
-            "name": "Bibliotheque Benny",
-            "category": "library",
-            "location": "SRID=4326;POINT (-73.6309558 45.4663823)",
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6309106 45.4661824)",
+            "civic_address": "6400 Av de Monkland, Montreal, QC H4B 1H3, Canada",
             "campus": "LOY"
         }
     },
@@ -3363,9 +3699,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 337,
         "fields": {
-            "name": "Circuit electrique",
-            "category": "charging_station",
-            "location": "SRID=4326;POINT (-73.6309106 45.4661824)",
+            "name": "A deux mains",
+            "category": "community_centre",
+            "location": "SRID=4326;POINT (-73.6278904 45.46569)",
+            "civic_address": "3465 Av. Benny, Montreal, QC H4B 2R9, Canada",
             "campus": "LOY"
         }
     },
@@ -3373,9 +3710,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 338,
         "fields": {
-            "name": "A deux mains",
-            "category": "community_centre",
-            "location": "SRID=4326;POINT (-73.6278904 45.46569)",
+            "name": "Amir",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6264415 45.4654104)",
+            "civic_address": "6365 QC-138, Montreal, QC H4B 1N1, Canada",
             "campus": "LOY"
         }
     },
@@ -3383,9 +3721,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 339,
         "fields": {
-            "name": "Amir",
-            "category": "fast_food",
-            "location": "SRID=4326;POINT (-73.6264415 45.4654104)",
+            "name": "Garderie Vendome",
+            "category": "childcare",
+            "location": "SRID=4326;POINT (-73.6275571 45.468483)",
+            "civic_address": "4178 Grand Blvd., Montreal, QC H4B 2X6, Canada",
             "campus": "LOY"
         }
     },
@@ -3393,9 +3732,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 340,
         "fields": {
-            "name": "Garderie Vendome",
-            "category": "childcare",
-            "location": "SRID=4326;POINT (-73.6275571 45.468483)",
+            "name": "Banque Laurentienne",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6393624 45.4661471)",
+            "civic_address": "4795 Av. Walkley, Montreal, QC H4B 2K7, Canada",
             "campus": "LOY"
         }
     },
@@ -3403,9 +3743,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 341,
         "fields": {
-            "name": "Banque Laurentienne",
-            "category": "bank",
-            "location": "SRID=4326;POINT (-73.6393624 45.4661471)",
+            "name": "Jean Coutu",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.6391568 45.4663717)",
+            "civic_address": "6624 Av. Somerled, Montreal, QC H4V 1T2, Canada",
             "campus": "LOY"
         }
     },
@@ -3413,9 +3754,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 342,
         "fields": {
-            "name": "Jean Coutu",
-            "category": "pharmacy",
-            "location": "SRID=4326;POINT (-73.6391568 45.4663717)",
+            "name": "Sushi Hoshimi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.639038 45.4671236)",
+            "civic_address": "6573 Av. Somerled, Montreal, QC H4V 1S9, Canada",
             "campus": "LOY"
         }
     },
@@ -3423,9 +3765,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 343,
         "fields": {
-            "name": "Sushi Hoshimi",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.639038 45.4671236)",
+            "name": "Elementaire Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6389788 45.4672247)",
+            "civic_address": "6559 Av. Somerled, Montreal, QC H4V 1T1, Canada",
             "campus": "LOY"
         }
     },
@@ -3433,9 +3776,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 344,
         "fields": {
-            "name": "Elementaire Cafe",
-            "category": "cafe",
-            "location": "SRID=4326;POINT (-73.6389788 45.4672247)",
+            "name": "CIBC",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6391469 45.4669049)",
+            "civic_address": "6591 Av. Somerled, Montreal, QC H4V 1T1, Canada",
             "campus": "LOY"
         }
     },
@@ -3443,9 +3787,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 345,
         "fields": {
-            "name": "CIBC",
-            "category": "bank",
-            "location": "SRID=4326;POINT (-73.6391469 45.4669049)",
+            "name": "Le Depot centre communautaire d'alimentation (Bureau Administratif)",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6385329 45.4678309)",
+            "civic_address": "6519 Av. Somerled, Montreal, QC H4V 1S8, Canada",
             "campus": "LOY"
         }
     },
@@ -3453,9 +3798,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 346,
         "fields": {
-            "name": "Le Depot centre communautaire d'alimentation (Bureau Administratif)",
+            "name": "Le Depot centre communautaire d'alimentation",
             "category": "social_facility",
-            "location": "SRID=4326;POINT (-73.6385329 45.4678309)",
+            "location": "SRID=4326;POINT (-73.6377601 45.4681646)",
+            "civic_address": "6480 Av. Somerled, Montreal, QC H4V 1S5, Canada",
             "campus": "LOY"
         }
     },
@@ -3463,9 +3809,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 347,
         "fields": {
-            "name": "Le Depot centre communautaire d'alimentation",
-            "category": "social_facility",
-            "location": "SRID=4326;POINT (-73.6377601 45.4681646)",
+            "name": "Shell",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6377495 45.4679593)",
+            "civic_address": "6490 Av. Somerled, Montreal, QC H4V 1S5, Canada",
             "campus": "LOY"
         }
     },
@@ -3473,9 +3820,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 348,
         "fields": {
-            "name": "Shell",
-            "category": "fuel",
-            "location": "SRID=4326;POINT (-73.6377495 45.4679593)",
+            "name": "McDonald's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6536357 45.466262)",
+            "civic_address": "7003 Chem. de la Cote St Luc, Montreal, QC H4V 1J2, Canada",
             "campus": "LOY"
         }
     },
@@ -3483,9 +3831,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 349,
         "fields": {
-            "name": "McDonald's",
-            "category": "fast_food",
-            "location": "SRID=4326;POINT (-73.6536357 45.466262)",
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6380188 45.4716188)",
+            "civic_address": "6265 Av. Biermans, Montreal, QC H3X 1Z1, Canada",
             "campus": "LOY"
         }
     },
@@ -3493,9 +3842,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 350,
         "fields": {
-            "name": "Circuit electrique",
-            "category": "charging_station",
-            "location": "SRID=4326;POINT (-73.6380188 45.4716188)",
+            "name": "Subway",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6359058 45.4707903)",
+            "civic_address": "6295 Av. Somerled, Montreal, QC H3X 2B7, Canada",
             "campus": "LOY"
         }
     },
@@ -3503,9 +3853,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 351,
         "fields": {
-            "name": "Subway",
-            "category": "fast_food",
-            "location": "SRID=4326;POINT (-73.6359058 45.4707903)",
+            "name": "Garderie Les Petits Diamants",
+            "category": "childcare",
+            "location": "SRID=4326;POINT (-73.6357801 45.4709363)",
+            "civic_address": "6263 Av. Somerled, Montreal, QC H3X 2B7, Canada",
             "campus": "LOY"
         }
     },
@@ -3513,9 +3864,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 352,
         "fields": {
-            "name": "Garderie Les Petits Diamants",
-            "category": "childcare",
-            "location": "SRID=4326;POINT (-73.6357801 45.4709363)",
+            "name": "Mon Ami",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6353713 45.4705302)",
+            "civic_address": "6290 Av. Somerled, Montreal, QC H3X 2B6, Canada",
             "campus": "LOY"
         }
     },
@@ -3523,9 +3875,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 353,
         "fields": {
-            "name": "Mon Ami",
-            "category": "restaurant",
-            "location": "SRID=4326;POINT (-73.6353713 45.4705302)",
+            "name": "Bar Sora",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.6353129 45.4705921)",
+            "civic_address": "6290 Av. Somerled, Montreal, QC H4B 2V5, Canada",
             "campus": "LOY"
         }
     },
@@ -3533,9 +3886,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 354,
         "fields": {
-            "name": "Bar Sora",
-            "category": "bar",
-            "location": "SRID=4326;POINT (-73.6353129 45.4705921)",
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6316572 45.470535)",
+            "civic_address": "Grand Boulevard / de Terrebonne, Montreal, QC H4B 1A4, Canada",
             "campus": "LOY"
         }
     },
@@ -3543,19 +3897,10 @@
         "model": "mapengine.pointofinterest",
         "pk": 355,
         "fields": {
-            "name": "Bixi",
-            "category": "bicycle_rental",
-            "location": "SRID=4326;POINT (-73.6316572 45.470535)",
-            "campus": "LOY"
-        }
-    },
-    {
-        "model": "mapengine.pointofinterest",
-        "pk": 356,
-        "fields": {
             "name": "Circuit electrique",
             "category": "charging_station",
             "location": "SRID=4326;POINT (-73.6282405 45.4691136)",
+            "civic_address": "4238 Grand Blvd., Montreal, QC H4B 2X6, Canada",
             "campus": "LOY"
         }
     }

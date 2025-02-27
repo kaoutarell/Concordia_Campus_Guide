@@ -5,3 +5,4 @@ class PointOfInterest(models.Model):
     category = models.CharField(max_length=255)
     location = models.PointField(srid=4326)
     campus = models.CharField(max_length=255)
+    civic_address = models.CharField(max_length=255)
