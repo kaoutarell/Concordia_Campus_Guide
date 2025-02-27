@@ -37,7 +37,7 @@ export default NavigationFooter;
 const styles = StyleSheet.create({
     safeArea: {
         justifyContent: 'flex-end',
-        height: '15%', // Ajustez la hauteur de la carte selon vos besoins
+        height: '15%',
         width: '100%',
     },
     container: {
@@ -48,8 +48,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#800020',
         paddingVertical: 12,
         paddingHorizontal: 20,
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        borderBottomLeftRadius: 0,  
+        borderBottomRightRadius: 0, 
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: -4 },
