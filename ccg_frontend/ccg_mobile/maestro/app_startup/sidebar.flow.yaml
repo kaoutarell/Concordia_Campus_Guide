@@ -23,7 +23,11 @@ name: "Sidebar"
     id: "menu-button"
 #test navigate button
 - assertVisible: "🚶‍♂️ Navigate"
-#- tapOn: "🚶‍♂️ Navigate"
+- tapOn: "🚶‍♂️ Navigate"
+- assertVisible: "Google Map"
+- tapOn: "←"
+- tapOn:
+    id: "menu-button"
 #test help button (currently disabled)
 - assertVisible: "❓ Help"
 #test feedback button (currently disabled)
