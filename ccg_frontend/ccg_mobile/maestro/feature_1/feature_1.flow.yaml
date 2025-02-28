@@ -2,11 +2,10 @@ appId: host.exp.Exponent
 name: "Feature 1 - Show Both Campuses"
 ---
 # Feature 1.1 - Show Both Campuses
-- setLocation:
-    latitude: 45.497660
-    longitude: -73.579162
-- assertVisible:
-    id: "map-view"
+#- setLocation:
+#   latitude: 45.497660
+#  longitude: -73.579162
+- assertVisible: "Google Map"
 - assertVisible: "Where to?"
 - assertVisible:
     id: "campus-button"
