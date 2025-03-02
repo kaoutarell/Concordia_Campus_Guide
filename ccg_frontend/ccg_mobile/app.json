@@ -19,7 +19,8 @@
           "locationAlwaysAndWhenInUsePermission": "Allow the app to access your location at all times.",
           "locationWhenInUsePermission": "Allow the app to access your location while using the app."
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "ios": {
       "supportsTablet": true
