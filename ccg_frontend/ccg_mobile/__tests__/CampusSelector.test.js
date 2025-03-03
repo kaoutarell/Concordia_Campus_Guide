@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import CampusSelector from "../components/CampusSelector";
+import CampusSelector from "../components/map-screen-ui/elements/CampusSelector";
 
 jest.mock("@expo/vector-icons", () => ({
   FontAwesome: ({ name }) => <>{name}</>,
@@ -29,7 +29,7 @@ describe("CampusSelector", () => {
   });
 
   it("toggles campus correctly when 'SGW' is selected", () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CampusSelector
         selectedCampus="SGW"
         onCampusSelect={mockOnCampusSelect}
@@ -47,7 +47,7 @@ describe("CampusSelector", () => {
   });
 
   it("toggles campus correctly when 'LOY' is selected", () => {
-    const { getByText, getByTestId } = render(
+    const { getByTestId } = render(
       <CampusSelector
         selectedCampus="LOY"
         onCampusSelect={mockOnCampusSelect}
@@ -65,7 +65,7 @@ describe("CampusSelector", () => {
   });
 
   it("checks if value is unexpected returns selectedCampus value", () => {
-    const {getByText} = render(
+    const { getByText } = render(
       <CampusSelector
         selectedCampus="unknown"
         onCampusSelect={mockOnCampusSelect}

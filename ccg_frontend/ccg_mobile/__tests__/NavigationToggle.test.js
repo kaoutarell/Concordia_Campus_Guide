@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react-native";
-import NavigationToggle from "../components/NavigationToggle"; // Adjust path
+import NavigationToggle from "../components/map-screen-ui/sections/NavigationToggle"; // Adjust path
 
 describe("NavigationToggle", () => {
   it("renders the NavigationToggle component", () => {

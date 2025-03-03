@@ -1,7 +1,9 @@
 import React from "react";
 import { render, waitFor, screen } from "@testing-library/react-native";
-import MapViewComponent from "../components/MapViewComponent";
+import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
+
+import { NavigationContainer } from '@react-navigation/native';
 
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
@@ -14,18 +16,36 @@ describe("MapViewComponent - Location Tests", () => {
     jest.clearAllMocks();
   });
 
+  // Define default props that all tests can use
+  const defaultProps = {
+    target: {},
+    locations: [],
+    region: {
+      latitude: 45.4973,
+      longitude: -73.5789,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    },
+    maxBounds: {
+      northeast: {
+        latitude: 45.5200,
+        longitude: -73.5600,
+      },
+      southwest: {
+        latitude: 45.4800,
+        longitude: -73.5900,
+      },
+    }
+  };
+
   // test to make sure that the tracking is started on mount
   test("should start tracking location on mount", async () => {
     render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          {...defaultProps}
+        />
+      </NavigationContainer>
     );
     expect(locationService.startTrackingLocation).toHaveBeenCalled();
   });
@@ -64,18 +84,14 @@ describe("MapViewComponent - Location Tests", () => {
       .mockRejectedValue(new Error("Location error"));
     locationService.getCurrentLocation = jest.fn().mockReturnValue(null);
 
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {}); // Suppress error logs in test output
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => { }); // Suppress error logs in test output
 
     render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          {...defaultProps}
+        />
+      </NavigationContainer>
     );
 
     await waitFor(() => {
@@ -91,15 +107,11 @@ describe("MapViewComponent - Location Tests", () => {
   // test to check is tracking is stopped on unmount
   test("should stop tracking location on unmount", () => {
     const { unmount } = render(
-      <MapViewComponent
-        locations={[]}
-        region={{
-          latitude: 0,
-          longitude: 0,
-          latitudeDelta: 1,
-          longitudeDelta: 1,
-        }}
-      />
+      <NavigationContainer>
+        <MapViewComponent
+          {...defaultProps}
+        />
+      </NavigationContainer>
     );
     unmount();
     expect(locationService.stopTrackingLocation).toHaveBeenCalled();
@@ -166,13 +178,21 @@ describe("MapViewComponent - Location Tests", () => {
   });
 
   test("should display loading indicator when locations are loading", () => {
-    render(<MapViewComponent locations={[]} region={{}} />);
+    render(
+      <NavigationContainer>
+        <MapViewComponent 
+          {...defaultProps}
+          locations={[]} // Empty locations will trigger loading state
+        />
+      </NavigationContainer>
+    );
 
     // Check if the loading screen is rendered
     const loadingText = screen.getByText("Loading locations...");
     expect(loadingText).toBeTruthy();
   });
 
+  // Commented out test that could be enabled later if needed
   // test("should set isLoading to false when locations are provided", async () => {
   //   const locations = [
   //     {
@@ -185,7 +205,11 @@ describe("MapViewComponent - Location Tests", () => {
   //     },
   //   ];
 
-  //   render(<MapViewComponent locations={locations} region={{}} />);
+  //   render(
+  //     <NavigationContainer>
+  //       <MapViewComponent {...defaultProps} locations={locations} />
+  //     </NavigationContainer>
+  //   );
 
   //   // Wait for the effect to run and isLoading to be set to false
   //   await waitFor(() => {

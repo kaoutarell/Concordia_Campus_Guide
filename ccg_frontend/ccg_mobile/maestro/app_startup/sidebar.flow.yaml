@@ -1,0 +1,33 @@
+appId: host.exp.Exponent
+name: "Sidebar"
+---
+- assertVisible:
+    id: "menu-button"
+- tapOn:
+    id: "menu-button"
+- assertVisible: "ConU CG"
+# test home button
+- assertVisible: "🏠 Home"
+- tapOn: "🏠 Home"
+- tapOn: "Continue to map ➤"
+- assertVisible:
+    id: "map-view"
+- tapOn:
+    id: "menu-button"
+  #test explore all buildings button
+- assertVisible: "🏛 Explore All Buildings"
+- tapOn: "🏛 Explore All Buildings"
+- assertVisible:
+    id: "map-view"
+- tapOn:
+    id: "menu-button"
+#test navigate button
+- assertVisible: "🚶‍♂️ Navigate"
+#- tapOn: "🚶‍♂️ Navigate"
+#test help button (currently disabled)
+- assertVisible: "❓ Help"
+#test feedback button (currently disabled)
+- assertVisible: "💬 Feedback"
+#go back to home --> map screen for next tests
+- tapOn: "🏠 Home"
+- tapOn: "Continue to map ➤"

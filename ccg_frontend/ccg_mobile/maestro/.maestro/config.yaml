@@ -1,0 +1,6 @@
+#config.yaml
+flows:
+  - launch/*
+  - app_startup/*
+  - feature_1/*
+  - feature_2/*

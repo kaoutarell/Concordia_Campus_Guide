@@ -12,8 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3x*s!uqo7n^0g2&=y-0o4olck)47d31ieqa0jsge4lsm18(-mx'
+# Try to get the SECRET_KEY from .env file, if not found, get it from the environment variables
+SECRET_KEY = config('SECRET_KEY', default=os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,16 +76,29 @@ WSGI_APPLICATION = 'concordia_campus_guide_backend.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'gis_db',
-        'USER': 'dev_experts',
-        'PASSWORD': 'soen390',
-        'HOST': 'localhost',
-        'PORT': '5433',
+
+if config('IS_IN_CI', default=False, cast=bool):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': os.getenv('TEST_DB_NAME'),
+            'USER': os.getenv('TEST_DB_USER'),
+            'PASSWORD': os.getenv('TEST_DB_PASSWORD'),
+            'HOST': os.getenv('TEST_DB_HOST'),
+            'PORT': os.getenv('TEST_DB_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'gis_db',
+            'USER': 'dev_experts',
+            'PASSWORD': config('DB_PASSWORD', default=os.getenv('DB_PASSWORD')),
+            'HOST': 'localhost',
+            'PORT': '5433',
+        }
+    }
 
 
 # Password validation

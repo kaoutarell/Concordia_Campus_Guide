@@ -1,0 +1,3562 @@
+[
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 1,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.579389 45.5000155)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 2,
+        "fields": {
+            "name": "Presse Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5786739 45.5001425)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 3,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5754177 45.4992516)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 4,
+        "fields": {
+            "name": "Bar George",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5758108 45.4991656)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 5,
+        "fields": {
+            "name": "Le Pois Penche",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5760644 45.4992991)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 6,
+        "fields": {
+            "name": "Utea",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5771587 45.4990351)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 7,
+        "fields": {
+            "name": "Poke Monster",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5765657 45.4993416)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 8,
+        "fields": {
+            "name": "Club Wanda's",
+            "category": "nightclub",
+            "location": "SRID=4326;POINT (-73.5767627 45.4985799)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 9,
+        "fields": {
+            "name": "Eggspectation",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5771409 45.4987402)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 10,
+        "fields": {
+            "name": "Nara Reto Lounge",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5773986 45.4984151)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 11,
+        "fields": {
+            "name": "London Pub",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5774965 45.4983029)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 12,
+        "fields": {
+            "name": "Mandy's Salades Gourmandes",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5778875 45.498385)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 13,
+        "fields": {
+            "name": "Nespresso",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5777757 45.4983266)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 14,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5777635 45.4982296)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 15,
+        "fields": {
+            "name": "Boustan",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5778401 45.4980546)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 16,
+        "fields": {
+            "name": "Light Ultraclub",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.577919 45.4980869)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 17,
+        "fields": {
+            "name": "Stogies",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5776034 45.4982639)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 18,
+        "fields": {
+            "name": "Copacabana",
+            "category": "nightclub",
+            "location": "SRID=4326;POINT (-73.5771636 45.498036)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 19,
+        "fields": {
+            "name": "Ben & Jerry's",
+            "category": "ice_cream",
+            "location": "SRID=4326;POINT (-73.5771038 45.4982652)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 20,
+        "fields": {
+            "name": "Yama",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5756479 45.4982954)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 21,
+        "fields": {
+            "name": "Cafe Bazin",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5758922 45.4984443)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 22,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5743666 45.4984889)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 23,
+        "fields": {
+            "name": "Pizza Chez Danny",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5745967 45.4977746)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 24,
+        "fields": {
+            "name": "Hidden Fish",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5743941 45.4977411)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 25,
+        "fields": {
+            "name": "Vladimir Poutine",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5747966 45.4973995)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 26,
+        "fields": {
+            "name": "3 Brasseurs",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5754903 45.497185)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 27,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5759082 45.4973152)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 28,
+        "fields": {
+            "name": "Paris Crepe",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5757908 45.4973581)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 29,
+        "fields": {
+            "name": "Yaourti",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5759339 45.4974372)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 30,
+        "fields": {
+            "name": "Parking meter bike rack",
+            "category": "bicycle_parking",
+            "location": "SRID=4326;POINT (-73.5760401 45.497443)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 31,
+        "fields": {
+            "name": "Parking meter bike rack",
+            "category": "bicycle_parking",
+            "location": "SRID=4326;POINT (-73.5763486 45.4975997)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 32,
+        "fields": {
+            "name": "Taverne Crescent",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5763729 45.4976589)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 33,
+        "fields": {
+            "name": "Parking meter bike rack",
+            "category": "bicycle_parking",
+            "location": "SRID=4326;POINT (-73.5764925 45.4976792)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 34,
+        "fields": {
+            "name": "Sushi Crescent",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5765184 45.4977438)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 35,
+        "fields": {
+            "name": "California Pizza",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.576857 45.4975743)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 36,
+        "fields": {
+            "name": "Devi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5769484 45.4976105)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 37,
+        "fields": {
+            "name": "L'Atelier d'Argentine",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.577163 45.4977637)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 38,
+        "fields": {
+            "name": "Parking meter bike rack",
+            "category": "bicycle_parking",
+            "location": "SRID=4326;POINT (-73.5767865 45.4978227)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 39,
+        "fields": {
+            "name": "Sir Winston Churchill",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5769764 45.4979437)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 40,
+        "fields": {
+            "name": "Burger bar crescent",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5771059 45.4980036)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 41,
+        "fields": {
+            "name": "xo",
+            "category": "nightclub",
+            "location": "SRID=4326;POINT (-73.5772232 45.497794)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 42,
+        "fields": {
+            "name": "K2 Sushi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5772792 45.4977849)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 43,
+        "fields": {
+            "name": "Newtown",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5774405 45.4977858)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 44,
+        "fields": {
+            "name": "Maison Cha∩sha∩",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5781353 45.4975759)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 45,
+        "fields": {
+            "name": "Hang Time",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5776958 45.4975597)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 46,
+        "fields": {
+            "name": "Notre-Boeuf-de-Grace",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.577674 45.4976209)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 47,
+        "fields": {
+            "name": "Pigeon",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5777703 45.4974945)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 48,
+        "fields": {
+            "name": "Olivia's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5778311 45.4974467)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 49,
+        "fields": {
+            "name": "Le Garden Room",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5774768 45.4972187)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 50,
+        "fields": {
+            "name": "DonDonYa",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5772686 45.4972312)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 51,
+        "fields": {
+            "name": "Pizza Hut",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5771979 45.4971162)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 52,
+        "fields": {
+            "name": "OFish Bishop",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5771329 45.4970806)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 53,
+        "fields": {
+            "name": "Kafein cafe-bar",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5771 45.4970805)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 54,
+        "fields": {
+            "name": "Messa 14",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5770222 45.497056)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 55,
+        "fields": {
+            "name": "Wienstein & Gavino's",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5767685 45.4975169)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 56,
+        "fields": {
+            "name": "Seven",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5766599 45.4974756)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 57,
+        "fields": {
+            "name": "Parking meter bike rack",
+            "category": "bicycle_parking",
+            "location": "SRID=4326;POINT (-73.5764966 45.4974872)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 58,
+        "fields": {
+            "name": "Ferrari Restaurant - Cafe",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5766199 45.496838)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 59,
+        "fields": {
+            "name": "Man-na",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5769592 45.4970119)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 60,
+        "fields": {
+            "name": "Mckibbins Pub",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5772264 45.4968227)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 61,
+        "fields": {
+            "name": "Webster Library",
+            "category": "library",
+            "location": "SRID=4326;POINT (-73.5779337 45.4968158)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 62,
+        "fields": {
+            "name": "Tim Hortons",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.577387 45.4967552)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 63,
+        "fields": {
+            "name": "J.A de Seve Cinema",
+            "category": "cinema",
+            "location": "SRID=4326;POINT (-73.5778047 45.4963996)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 64,
+        "fields": {
+            "name": "Cactus Wa Wa Tea House",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5774565 45.4961952)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 65,
+        "fields": {
+            "name": "Mei",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5775452 45.4962156)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 66,
+        "fields": {
+            "name": "Patty Slaps",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5770217 45.4960875)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 67,
+        "fields": {
+            "name": "Poste de quartier 20",
+            "category": "police",
+            "location": "SRID=4326;POINT (-73.576435 45.496125)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 68,
+        "fields": {
+            "name": "Scores",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.576448 45.4961727)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 69,
+        "fields": {
+            "name": "Le Ninja",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5757537 45.4960973)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 70,
+        "fields": {
+            "name": "Galerie d'Okeya",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5752745 45.4962086)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 71,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5761128 45.4966664)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 72,
+        "fields": {
+            "name": "CoCo Fresh Tea & Juice",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.575885 45.4967187)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 73,
+        "fields": {
+            "name": "Columbus Cafe & Co",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5756395 45.4970185)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 74,
+        "fields": {
+            "name": "indian_food-1242",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.575397 45.4969101)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 75,
+        "fields": {
+            "name": "Mad Hatters",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5751849 45.4968178)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 76,
+        "fields": {
+            "name": "Gyu-Kaku",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5750846 45.4969878)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 77,
+        "fields": {
+            "name": "Hurley's",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5748362 45.4968705)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 78,
+        "fields": {
+            "name": "Trattoria Trestevere",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5749645 45.4969078)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 79,
+        "fields": {
+            "name": "Brutopia",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5744587 45.4966812)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 80,
+        "fields": {
+            "name": "Clinique Medicale Crescent",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.5744729 45.4963818)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 81,
+        "fields": {
+            "name": "nuevo - 1195",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5740783 45.4965203)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 82,
+        "fields": {
+            "name": "cafe-1175",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5737708 45.4963879)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 83,
+        "fields": {
+            "name": "Sana",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5737384 45.4963657)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 84,
+        "fields": {
+            "name": "Cafe imagination",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.572998 45.4962661)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 85,
+        "fields": {
+            "name": "Lo",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5733823 45.4969261)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 86,
+        "fields": {
+            "name": "Ye Olde Orchard Pub & Grill",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5734412 45.4972594)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 87,
+        "fields": {
+            "name": "Bis Ristorante",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5742497 45.4976955)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 88,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5741165 45.4944575)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 89,
+        "fields": {
+            "name": "Itali.co",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5742438 45.4950221)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 90,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.574056 45.4955029)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 91,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5739466 45.4954511)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 92,
+        "fields": {
+            "name": "Crossbar",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5731912 45.4954452)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 93,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5733981 45.4960089)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 94,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5734728 45.4960631)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 95,
+        "fields": {
+            "name": "Kinton Ramen",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5746477 45.4958792)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 96,
+        "fields": {
+            "name": "Parma Cafe",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.574647 45.495526)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 97,
+        "fields": {
+            "name": "Garage Beirut",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5761753 45.4952601)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 98,
+        "fields": {
+            "name": "O'regans Irish Pub",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5754558 45.4959534)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 99,
+        "fields": {
+            "name": "Grumpy's",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.575695 45.4960673)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 100,
+        "fields": {
+            "name": "Bruleries Faro",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5765474 45.4959972)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 101,
+        "fields": {
+            "name": "Liv Salades",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5766587 45.4959362)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 102,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5767445 45.4957423)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 103,
+        "fields": {
+            "name": "Upstairs",
+            "category": "nightclub",
+            "location": "SRID=4326;POINT (-73.5768353 45.4955965)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 104,
+        "fields": {
+            "name": "McDonald's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.576886 45.49562)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 105,
+        "fields": {
+            "name": "Koa Lua Poke",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5766991 45.4959043)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 106,
+        "fields": {
+            "name": "Humans",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5771175 45.4959969)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 107,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5773973 45.4959509)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 108,
+        "fields": {
+            "name": "Matcha Zanmai",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5775829 45.4959663)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 109,
+        "fields": {
+            "name": "Qabane a The",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5776941 45.4960474)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 110,
+        "fields": {
+            "name": "Myriade",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5778526 45.4960734)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 111,
+        "fields": {
+            "name": "Van Houtte",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.577712 45.4954239)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 112,
+        "fields": {
+            "name": "Pharmaprix",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.5773225 45.495244)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 113,
+        "fields": {
+            "name": "Mon Ami",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5772425 45.4953152)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 114,
+        "fields": {
+            "name": "Cafe Jouney",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5771374 45.4954299)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 115,
+        "fields": {
+            "name": "P.J. O'Hara's",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5765956 45.4954263)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 116,
+        "fields": {
+            "name": "sparta chicken",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5768958 45.4948492)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 117,
+        "fields": {
+            "name": "COQCOR",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5768926 45.4948149)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 118,
+        "fields": {
+            "name": "Andrews",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.577013 45.4948394)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 119,
+        "fields": {
+            "name": "Clinique Medicale Alpha Medic",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.5772903 45.4949611)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 120,
+        "fields": {
+            "name": "TD",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.5781432 45.4949863)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 121,
+        "fields": {
+            "name": "Second Cup",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5777732 45.4948318)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 122,
+        "fields": {
+            "name": "La Residence Fulford",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.5777354 45.4947908)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 123,
+        "fields": {
+            "name": "The Alley",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5776706 45.4948415)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 124,
+        "fields": {
+            "name": "La Hueca by Masa",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.577705 45.4945243)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 125,
+        "fields": {
+            "name": "Banque Scotia",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.5780677 45.4945998)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 126,
+        "fields": {
+            "name": "Chez la Mere Michel",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5762712 45.494555)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 127,
+        "fields": {
+            "name": "Bar B Barn",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5760757 45.4944594)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 128,
+        "fields": {
+            "name": "Notre Endroit",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5743612 45.4948268)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 129,
+        "fields": {
+            "name": "Parking",
+            "category": "parking_entrance",
+            "location": "SRID=4326;POINT (-73.5744555 45.4934361)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 130,
+        "fields": {
+            "name": "Van Houtte",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5746428 45.493228)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 131,
+        "fields": {
+            "name": "Avis",
+            "category": "car_rental",
+            "location": "SRID=4326;POINT (-73.5760745 45.4924038)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 132,
+        "fields": {
+            "name": "cafe rene-leveque",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5749371 45.4927418)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 133,
+        "fields": {
+            "name": "Indigo",
+            "category": "parking_entrance",
+            "location": "SRID=4326;POINT (-73.5738923 45.4928093)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 134,
+        "fields": {
+            "name": "Enterprise",
+            "category": "car_rental",
+            "location": "SRID=4326;POINT (-73.5740408 45.4934939)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 135,
+        "fields": {
+            "name": "l'entracte",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5756742 45.4920063)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 136,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5767049 45.4916865)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 137,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5812707 45.49146)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 138,
+        "fields": {
+            "name": "Bureau de poste",
+            "category": "post_office",
+            "location": "SRID=4326;POINT (-73.5810926 45.4918602)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 139,
+        "fields": {
+            "name": "Pasargad",
+            "category": "bureau_de_change",
+            "location": "SRID=4326;POINT (-73.5810031 45.4920848)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 140,
+        "fields": {
+            "name": "Complexe du Fort",
+            "category": "waste_basket",
+            "location": "SRID=4326;POINT (-73.5815178 45.4917298)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 141,
+        "fields": {
+            "name": "La Grosse",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5818849 45.4917887)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 142,
+        "fields": {
+            "name": "Avesta",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5819429 45.4917424)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 143,
+        "fields": {
+            "name": "Bar station sport",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5818281 45.4918548)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 144,
+        "fields": {
+            "name": "Clinic Medic Elle",
+            "category": "doctors",
+            "location": "SRID=4326;POINT (-73.583666 45.4937595)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 145,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5838267 45.4930651)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 146,
+        "fields": {
+            "name": "Restaurant Mr. Dakbalgi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5830995 45.4921745)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 147,
+        "fields": {
+            "name": "Instacoin ATM",
+            "category": "atm",
+            "location": "SRID=4326;POINT (-73.5826017 45.4926225)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 148,
+        "fields": {
+            "name": "Fuchun - Cuisine de Shanghai",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5825574 45.4926429)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 149,
+        "fields": {
+            "name": "Sammi&Soup Dumplings",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5808212 45.4926727)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 150,
+        "fields": {
+            "name": "Pang Ji Guilin Nouilles",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5806488 45.4928272)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 151,
+        "fields": {
+            "name": "Thali Cuisine Indienne",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.580681 45.4931141)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 152,
+        "fields": {
+            "name": "Ici Restaurant CorΘen",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5807098 45.4931293)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 153,
+        "fields": {
+            "name": "Picks",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5806449 45.4930931)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 154,
+        "fields": {
+            "name": "Noodles Star",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804177 45.493071)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 155,
+        "fields": {
+            "name": "Depanneur 7 Jours",
+            "category": "atm",
+            "location": "SRID=4326;POINT (-73.5802017 45.4928438)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 156,
+        "fields": {
+            "name": "Uniburger",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5808713 45.4926255)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 157,
+        "fields": {
+            "name": "La Maison de Maixang - Dumpling",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5809743 45.4925432)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 158,
+        "fields": {
+            "name": "Hot-Star",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5810138 45.4925058)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 159,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5809648 45.4922807)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 160,
+        "fields": {
+            "name": "Pizza Pizza",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5799775 45.4930397)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 161,
+        "fields": {
+            "name": "Kinka Izakaya",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5786514 45.4941098)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 162,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5790823 45.4939028)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 163,
+        "fields": {
+            "name": "Jean Coutu",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.5793112 45.494018)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 164,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5791503 45.4936988)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 165,
+        "fields": {
+            "name": "Sushi Ste-Catherine",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5794979 45.4938203)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 166,
+        "fields": {
+            "name": "Qinghua Dumplings (Express)",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.579628 45.4937084)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 167,
+        "fields": {
+            "name": "Moose Bawr",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5796542 45.4936726)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 168,
+        "fields": {
+            "name": "Chatime",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5796862 45.4936499)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 169,
+        "fields": {
+            "name": "Bureau de Change Mondiale",
+            "category": "bureau_de_change",
+            "location": "SRID=4326;POINT (-73.5802887 45.4931462)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 170,
+        "fields": {
+            "name": "Ganadara Restaurant",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5813752 45.4936916)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 171,
+        "fields": {
+            "name": "Face a face - organisme",
+            "category": "post_box",
+            "location": "SRID=4326;POINT (-73.5815806 45.4939076)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 172,
+        "fields": {
+            "name": "Restaurant Meilleur Choix",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5819462 45.4939043)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 173,
+        "fields": {
+            "name": "Le Roi du Wonton",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5819143 45.4938845)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 174,
+        "fields": {
+            "name": "Presotea",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5814359 45.4949149)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 175,
+        "fields": {
+            "name": "Zoe Dessert et the",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5814591 45.4949278)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 176,
+        "fields": {
+            "name": "Chimaek Gana",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.58116 45.4947615)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 177,
+        "fields": {
+            "name": "KimGalbi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5812241 45.4947974)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 178,
+        "fields": {
+            "name": "Maison du Nord",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5812834 45.4948328)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 179,
+        "fields": {
+            "name": "Qing Hua Dumpling",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804004 45.4949629)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 180,
+        "fields": {
+            "name": "Magic Idea Tea Lounge",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.580442 45.4948498)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 181,
+        "fields": {
+            "name": "Allo! Mon Coco",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5801911 45.4947087)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 182,
+        "fields": {
+            "name": "Downtown Dhaba",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5801576 45.4947279)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 183,
+        "fields": {
+            "name": "Pho Nguyen",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804592 45.4943664)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 184,
+        "fields": {
+            "name": "Shuyi The aux Perles",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5805538 45.4943919)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 185,
+        "fields": {
+            "name": "Poke Bento",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804334 45.4943508)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 186,
+        "fields": {
+            "name": "I am Pho",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5803662 45.4943154)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 187,
+        "fields": {
+            "name": "Cuisine AuntDai",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5803915 45.4943292)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 188,
+        "fields": {
+            "name": "Song The",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5804053 45.4943388)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 189,
+        "fields": {
+            "name": "Kabiga The",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5801867 45.4942252)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 190,
+        "fields": {
+            "name": "Otto Yakitori",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5799879 45.4944677)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 191,
+        "fields": {
+            "name": "Concordia CL",
+            "category": "school",
+            "location": "SRID=4326;POINT (-73.5789854 45.4942367)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 192,
+        "fields": {
+            "name": "Les Trois amigos",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.578929 45.494302)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 193,
+        "fields": {
+            "name": "La Belle et le Beouf",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5786152 45.4941505)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 194,
+        "fields": {
+            "name": "BBQ Coreen PONY",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5781834 45.494505)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 195,
+        "fields": {
+            "name": "Prestotea",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5786106 45.494552)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 196,
+        "fields": {
+            "name": "Slice + Soda",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5787591 45.4944508)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 197,
+        "fields": {
+            "name": "Ocha Bubble Tea",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5788086 45.4944023)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 198,
+        "fields": {
+            "name": "Chungchun",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5791016 45.494625)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 199,
+        "fields": {
+            "name": "Pub Billard",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5785353 45.4946225)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 200,
+        "fields": {
+            "name": "Hazukido",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5784704 45.4946832)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 201,
+        "fields": {
+            "name": "Osmow's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5784476 45.4947058)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 202,
+        "fields": {
+            "name": "Poulet Rouge",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.578405 45.4947498)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 203,
+        "fields": {
+            "name": "Mont Tacos Ste-Catherine",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5783589 45.4947791)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 204,
+        "fields": {
+            "name": "Burger King",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5782987 45.4948231)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 205,
+        "fields": {
+            "name": "Tim Hortons",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5782354 45.4948984)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 206,
+        "fields": {
+            "name": "NosThes",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5781872 45.4949266)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 207,
+        "fields": {
+            "name": "Shuyi Tealicious",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5800796 45.4947945)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 208,
+        "fields": {
+            "name": "Angela Pizzeria & Restaurant",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5799701 45.4948995)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 209,
+        "fields": {
+            "name": "Depanneur Beau Prix",
+            "category": "convenience",
+            "location": "SRID=4326;POINT (-73.5797244 45.495018)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 210,
+        "fields": {
+            "name": "Poulet Bronze",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5796504 45.4951763)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 211,
+        "fields": {
+            "name": "Cocktail Hawaii",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5800075 45.4952229)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 212,
+        "fields": {
+            "name": "Coq-O-Coq",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.579632 45.4955595)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 213,
+        "fields": {
+            "name": "Al-Taib Boulangerie",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5797282 45.495505)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 214,
+        "fields": {
+            "name": "Antep Kabab",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5795704 45.4952512)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 215,
+        "fields": {
+            "name": "Java U",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5790314 45.4957981)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 216,
+        "fields": {
+            "name": "RBC",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.578754 45.4956514)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 217,
+        "fields": {
+            "name": "Dairy Queen",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5787972 45.4956723)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 218,
+        "fields": {
+            "name": "A&W",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.578854 45.4960239)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 219,
+        "fields": {
+            "name": "Patisserie Cocobun - Guy-Concordia",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5788498 45.495867)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 220,
+        "fields": {
+            "name": "Tha∩ Express",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5789809 45.49588)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 221,
+        "fields": {
+            "name": "Starbucks",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5796279 45.4956457)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 222,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5797057 45.4957706)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 223,
+        "fields": {
+            "name": "O'kogo",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5797068 45.4957032)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 224,
+        "fields": {
+            "name": "QPIRG",
+            "category": "community_centre",
+            "location": "SRID=4326;POINT (-73.5797583 45.4956586)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 225,
+        "fields": {
+            "name": "Tim Hortons",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5796559 45.4959818)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 226,
+        "fields": {
+            "name": "Chateau Kabab",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.580135 45.4958917)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 227,
+        "fields": {
+            "name": "La Muse",
+            "category": "pub",
+            "location": "SRID=4326;POINT (-73.5802838 45.4958811)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 228,
+        "fields": {
+            "name": "Chez Chen",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.580315 45.4958601)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 229,
+        "fields": {
+            "name": "Subway",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5802646 45.4959022)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 230,
+        "fields": {
+            "name": "La Diperie",
+            "category": "ice_cream",
+            "location": "SRID=4326;POINT (-73.5805761 45.4959745)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 231,
+        "fields": {
+            "name": "Heureux Rock N Road",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5806972 45.4960348)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 232,
+        "fields": {
+            "name": "Pizza Trois Royaumes",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5806344 45.4960093)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 233,
+        "fields": {
+            "name": "Chatpata",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804748 45.4957079)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 234,
+        "fields": {
+            "name": "Poulet Bronze",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5803631 45.4958189)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 235,
+        "fields": {
+            "name": "Student Tasty Biryani",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804048 45.4957837)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 236,
+        "fields": {
+            "name": "Tarim",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804308 45.495749)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 237,
+        "fields": {
+            "name": "Restaurant Qinghua Dumpling",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5809915 45.4952594)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 238,
+        "fields": {
+            "name": "Shi Tang",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5809726 45.4953433)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 239,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5830491 45.495264)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 240,
+        "fields": {
+            "name": "Cote Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5834242 45.4966071)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 241,
+        "fields": {
+            "name": "BMO",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.5822954 45.4963789)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 242,
+        "fields": {
+            "name": "Chez Hailar",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5817158 45.4962413)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 243,
+        "fields": {
+            "name": "Egina",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5811803 45.4962533)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 244,
+        "fields": {
+            "name": "Restaurant Traditions",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.58133 45.4962984)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 245,
+        "fields": {
+            "name": "Cuisine Szechuan",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5815133 45.4963591)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 246,
+        "fields": {
+            "name": "Chai Paratha",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5813992 45.4963196)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 247,
+        "fields": {
+            "name": "Ville Marie Pet/CT Centre",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.5811944 45.4965258)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 248,
+        "fields": {
+            "name": "Technic",
+            "category": "driving_school",
+            "location": "SRID=4326;POINT (-73.5819919 45.4968022)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 249,
+        "fields": {
+            "name": "Uniprix",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.5813876 45.4966391)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 250,
+        "fields": {
+            "name": "Bice Restaurant",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5809582 45.4970237)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 251,
+        "fields": {
+            "name": "RBC",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.580268 45.4962359)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 252,
+        "fields": {
+            "name": "Comptoir du chef",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5800322 45.4961676)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 253,
+        "fields": {
+            "name": "Al-Taib",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5799412 45.4961292)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 254,
+        "fields": {
+            "name": "Mr. Puffs",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5787252 45.4963141)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 255,
+        "fields": {
+            "name": "Mr Tantuni",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5787705 45.4962498)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 256,
+        "fields": {
+            "name": "Yumi Burger",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5782723 45.4962758)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 257,
+        "fields": {
+            "name": "Trope",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5784899 45.4964159)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 258,
+        "fields": {
+            "name": "Shifu",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.578432 45.4963864)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 259,
+        "fields": {
+            "name": "Krispy Kreme",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5783838 45.4963654)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 260,
+        "fields": {
+            "name": "Allons Burger",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5786287 45.4964791)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 261,
+        "fields": {
+            "name": "Yi Fang",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5786988 45.4963869)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 262,
+        "fields": {
+            "name": "Kebab Express",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.5789917 45.4966171)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 263,
+        "fields": {
+            "name": "Hinnawi Bros Bagel & Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5790198 45.4966326)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 264,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.5792345 45.4968365)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 265,
+        "fields": {
+            "name": "Hive Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5792923 45.4973891)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 266,
+        "fields": {
+            "name": "DB Clarke Theatre",
+            "category": "theatre",
+            "location": "SRID=4326;POINT (-73.5785128 45.4974073)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 267,
+        "fields": {
+            "name": "Toro Sushi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5783562 45.4976921)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 268,
+        "fields": {
+            "name": "Misoya",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5785398 45.4978354)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 269,
+        "fields": {
+            "name": "Burritoville",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5787978 45.4978734)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 270,
+        "fields": {
+            "name": "Tianxia",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5789216 45.4979195)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 271,
+        "fields": {
+            "name": "Nakamichi",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5799516 45.4976121)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 272,
+        "fields": {
+            "name": "Cafe Aunja",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5803124 45.4977937)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 273,
+        "fields": {
+            "name": "Maison Inja - Cuisine Perse",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5804339 45.4976883)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 274,
+        "fields": {
+            "name": "Schlouppe Bistrot",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5801261 45.4974543)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 275,
+        "fields": {
+            "name": "Crudessence",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5801931 45.4974721)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 276,
+        "fields": {
+            "name": "Riz en folie",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5801287 45.4974156)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 277,
+        "fields": {
+            "name": "O Plaisirs Gourmands",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5808564 45.4971849)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 278,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.5808248 45.4981248)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 279,
+        "fields": {
+            "name": "L'Academie",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5782196 45.4982373)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 280,
+        "fields": {
+            "name": "Burrito Borracho",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5782589 45.4982572)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 281,
+        "fields": {
+            "name": "K Karaoke Bar",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.5782894 45.498273)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 282,
+        "fields": {
+            "name": "L'Autre Saison",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5783698 45.4986283)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 283,
+        "fields": {
+            "name": "Le Poke Bar",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5783841 45.4986877)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 284,
+        "fields": {
+            "name": "Troika",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.5785469 45.4986885)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 285,
+        "fields": {
+            "name": "Le cafe des beaux-arts",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.5795792 45.4985268)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 286,
+        "fields": {
+            "name": "Auditorium Maxwell-Cummings;Cinema du Musee",
+            "category": "cinema",
+            "location": "SRID=4326;POINT (-73.5799615 45.4987502)",
+            "campus": "SGW"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 287,
+        "fields": {
+            "name": "Tim Hortons",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6236949 45.4621082)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 288,
+        "fields": {
+            "name": "Seena Cultural Centre",
+            "category": "community_centre",
+            "location": "SRID=4326;POINT (-73.6233499 45.4615102)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 289,
+        "fields": {
+            "name": "U-Haul",
+            "category": "car_rental",
+            "location": "SRID=4326;POINT (-73.6383249 45.4486301)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 290,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6333425 45.4528178)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 291,
+        "fields": {
+            "name": "Hotel de Ville de Montreal-Ouest",
+            "category": "townhall",
+            "location": "SRID=4326;POINT (-73.6421192 45.4513337)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 292,
+        "fields": {
+            "name": "Centre communautaire John A. Simms",
+            "category": "community_centre",
+            "location": "SRID=4326;POINT (-73.6437126 45.4520473)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 293,
+        "fields": {
+            "name": "FM-3 Montreal-West",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.6445336 45.4527536)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 294,
+        "fields": {
+            "name": "Montreal West Public Library",
+            "category": "library",
+            "location": "SRID=4326;POINT (-73.6452588 45.4529874)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 295,
+        "fields": {
+            "name": "RBC Banque Royale",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6455003 45.4527708)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 296,
+        "fields": {
+            "name": "Pharmaprix",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.6448816 45.4528585)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 297,
+        "fields": {
+            "name": "La Monde de Les Petits Enfants",
+            "category": "childcare",
+            "location": "SRID=4326;POINT (-73.645494 45.4522455)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 298,
+        "fields": {
+            "name": "Residence Jean-Placide-Desrosiers",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6463168 45.4465873)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 299,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6505063 45.447601)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 300,
+        "fields": {
+            "name": "Little Red Playhouse",
+            "category": "school",
+            "location": "SRID=4326;POINT (-73.6550527 45.4545162)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 301,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6446807 45.4597322)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 302,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6422264 45.4581383)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 303,
+        "fields": {
+            "name": "Second Cup",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6408899 45.4561072)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 304,
+        "fields": {
+            "name": "CIBC",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6411152 45.4558568)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 305,
+        "fields": {
+            "name": "Subway",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6412021 45.45506)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 306,
+        "fields": {
+            "name": "Montreal West United Church",
+            "category": "place_of_worship",
+            "location": "SRID=4326;POINT (-73.6466966 45.4538435)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 307,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6467912 45.4531551)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 308,
+        "fields": {
+            "name": "Burger de Ville",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.645897 45.4533088)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 309,
+        "fields": {
+            "name": "Montreal West Dentistry",
+            "category": "dentist",
+            "location": "SRID=4326;POINT (-73.6433759 45.4533649)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 310,
+        "fields": {
+            "name": "Goldies Pub",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.6371377 45.4536111)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 311,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6392765 45.4544138)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 312,
+        "fields": {
+            "name": "Hyo Setsu Dojo (Montreal Kenjutsu)",
+            "category": "dojo",
+            "location": "SRID=4326;POINT (-73.6396469 45.4567057)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 313,
+        "fields": {
+            "name": "McDonald's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6332496 45.4544861)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 314,
+        "fields": {
+            "name": "Petro-Canada",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6326406 45.454898)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 315,
+        "fields": {
+            "name": "Brasserie Manoir NDG",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6276873 45.4579092)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 316,
+        "fields": {
+            "name": "Enterprise",
+            "category": "car_rental",
+            "location": "SRID=4326;POINT (-73.6269105 45.4604146)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 317,
+        "fields": {
+            "name": "Chez Cora",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6269231 45.4605477)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 318,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6340725 45.4607294)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 319,
+        "fields": {
+            "name": "Ultramar",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6354446 45.4605916)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 320,
+        "fields": {
+            "name": "Comptoir Koyajo",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.636437 45.459961)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 321,
+        "fields": {
+            "name": "Ca Lem",
+            "category": "ice_cream",
+            "location": "SRID=4326;POINT (-73.6355007 45.4601327)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 322,
+        "fields": {
+            "name": "MIA Cafe Club",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6355591 45.4601062)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 323,
+        "fields": {
+            "name": "Dagwoods Sandwichs et salades",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6365539 45.4598862)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 324,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6395391 45.4575167)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 325,
+        "fields": {
+            "name": "Montclair",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6362803 45.4641243)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 326,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6321436 45.4617039)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 327,
+        "fields": {
+            "name": "De Chou",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6324413 45.4621315)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 328,
+        "fields": {
+            "name": "Cafe 92",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.632277 45.4622)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 329,
+        "fields": {
+            "name": "Centre d'hebergement Saint-Andrew",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6289039 45.4631106)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 330,
+        "fields": {
+            "name": "The Wheel Club",
+            "category": "events_venue",
+            "location": "SRID=4326;POINT (-73.6278766 45.4634534)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 331,
+        "fields": {
+            "name": "Seoul Dosirak",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6272611 45.4631435)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 332,
+        "fields": {
+            "name": "French school",
+            "category": "school",
+            "location": "SRID=4326;POINT (-73.6272658 45.4633223)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 333,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6262632 45.464751)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 334,
+        "fields": {
+            "name": "Pharmaprix",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.6273964 45.464816)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 335,
+        "fields": {
+            "name": "CLSC de Benny Farm",
+            "category": "clinic",
+            "location": "SRID=4326;POINT (-73.6316201 45.4654822)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 336,
+        "fields": {
+            "name": "Bibliotheque Benny",
+            "category": "library",
+            "location": "SRID=4326;POINT (-73.6309558 45.4663823)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 337,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6309106 45.4661824)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 338,
+        "fields": {
+            "name": "A deux mains",
+            "category": "community_centre",
+            "location": "SRID=4326;POINT (-73.6278904 45.46569)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 339,
+        "fields": {
+            "name": "Amir",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6264415 45.4654104)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 340,
+        "fields": {
+            "name": "Garderie Vendome",
+            "category": "childcare",
+            "location": "SRID=4326;POINT (-73.6275571 45.468483)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 341,
+        "fields": {
+            "name": "Banque Laurentienne",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6393624 45.4661471)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 342,
+        "fields": {
+            "name": "Jean Coutu",
+            "category": "pharmacy",
+            "location": "SRID=4326;POINT (-73.6391568 45.4663717)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 343,
+        "fields": {
+            "name": "Sushi Hoshimi",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.639038 45.4671236)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 344,
+        "fields": {
+            "name": "Elementaire Cafe",
+            "category": "cafe",
+            "location": "SRID=4326;POINT (-73.6389788 45.4672247)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 345,
+        "fields": {
+            "name": "CIBC",
+            "category": "bank",
+            "location": "SRID=4326;POINT (-73.6391469 45.4669049)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 346,
+        "fields": {
+            "name": "Le Depot centre communautaire d'alimentation (Bureau Administratif)",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6385329 45.4678309)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 347,
+        "fields": {
+            "name": "Le Depot centre communautaire d'alimentation",
+            "category": "social_facility",
+            "location": "SRID=4326;POINT (-73.6377601 45.4681646)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 348,
+        "fields": {
+            "name": "Shell",
+            "category": "fuel",
+            "location": "SRID=4326;POINT (-73.6377495 45.4679593)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 349,
+        "fields": {
+            "name": "McDonald's",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6536357 45.466262)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 350,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6380188 45.4716188)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 351,
+        "fields": {
+            "name": "Subway",
+            "category": "fast_food",
+            "location": "SRID=4326;POINT (-73.6359058 45.4707903)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 352,
+        "fields": {
+            "name": "Garderie Les Petits Diamants",
+            "category": "childcare",
+            "location": "SRID=4326;POINT (-73.6357801 45.4709363)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 353,
+        "fields": {
+            "name": "Mon Ami",
+            "category": "restaurant",
+            "location": "SRID=4326;POINT (-73.6353713 45.4705302)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 354,
+        "fields": {
+            "name": "Bar Sora",
+            "category": "bar",
+            "location": "SRID=4326;POINT (-73.6353129 45.4705921)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 355,
+        "fields": {
+            "name": "Bixi",
+            "category": "bicycle_rental",
+            "location": "SRID=4326;POINT (-73.6316572 45.470535)",
+            "campus": "LOY"
+        }
+    },
+    {
+        "model": "mapengine.pointofinterest",
+        "pk": 356,
+        "fields": {
+            "name": "Circuit electrique",
+            "category": "charging_station",
+            "location": "SRID=4326;POINT (-73.6282405 45.4691136)",
+            "campus": "LOY"
+        }
+    }
+]

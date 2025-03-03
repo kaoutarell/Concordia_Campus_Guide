@@ -21,8 +21,8 @@ This project is a full-stack map-based application with a Python backend and a R
 
 Make sure you have the following tools installed for the backend:
 
-- **Python 3**: Required for running the backend code.
 - **MiniConda**: For managing Python environments and dependencies.
+  - MiniConda comes with a python3 version that must be used, not another manually installed python version.
 - **PostGIS**: A spatial database extender for PostgreSQL, used for geospatial data storage and queries.
 - **Docker**: For containerizing and running the backend services.
 
@@ -88,9 +88,9 @@ To set up and run the project locally, follow the instructions below.
 
 Make sure you have the following tools installed for the backend:
 
-- **Pytest 8.3.4**: Required for running backend unit tests.  
-- **Pytest-Cov 6.0.0**: Generates test coverage reports.  
-- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.  
+- **Pytest 8.3.4**: Required for running backend unit tests.
+- **Pytest-Cov 6.0.0**: Generates test coverage reports.
+- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.
 
 ## Installation
 
@@ -103,7 +103,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Note if you add a library in the backend make sure to add it to file:
@@ -131,11 +131,12 @@ conda activate myenv
   ```
 
 - Activate the environment:
+
   ```bash
   conda activate myenv
   ```
 
-5.**Run the Python Backend**:
+  5.**Run the Python Backend**:
 
 - python migration
   ```bash
@@ -168,13 +169,14 @@ conda activate myenv
     npm install
     ```
 3.  **Run frontend**
-    ```bash
-    npm start
-    ```
-Error fix (start not found , try npm run) command :
+    `bash
+npm start
+`
+    Error fix (start not found , try npm run) command :
+
 ```bash
 npm install -g expo-cli
-``` 
+```
 
 ### Running the project
 
@@ -199,16 +201,18 @@ cd ccg_frontend\ccg_mobile
 # EXPO_PUBLIC_BASE_URL=http://<ip>:8000/api/
 npm start
 ```
-### Unit Test Prerequisites
-# Backend
+
+## Unit Test Prerequisites
+
+## Backend
 
 Make sure you have the following tools installed for the backend:
 
-- **Pytest 8.3.4**: Required for running backend unit tests.  
-- **Pytest-Cov 6.0.0**: Generates test coverage reports.  
-- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.  
+- **Pytest 8.3.4**: Required for running backend unit tests.
+- **Pytest-Cov 6.0.0**: Generates test coverage reports.
+- **Pytest-Django 4.9.0**: Provides Django-specific test utilities.
 
-## Installation
+### Installation
 
 To ensure you have the correct dependencies, set up your Conda environment using the `environment.yml` file:
 
@@ -219,7 +223,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Activate the environment:
@@ -228,7 +232,7 @@ Activate the environment:
 conda activate myenv
 ```
 
-## Running Tests
+### Running Tests
 
 Once the environment is set up, you can run the tests using:
 
@@ -242,28 +246,30 @@ To check test coverage, run:
 pytest --cov=mapengine --cov-report=term-missing
 ```
 
+## Frontend
 
-#### Frontend
 Make sure you have the following tools installed for the frontend:
 
-- **"jest" ~29.7.0"** : Jest is required for running frontend unit tests.  
-- **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.    
-- **"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.  
+- **"jest" ~29.7.0"** : Jest is required for running frontend unit tests.
+- **"jest-expo ~52.0.3"** : Jest-Expo provides an environment for testing React Native apps in Expo.
+- **"@testing-library/react-native ^13.0.1"** : This library offers utilities for testing React Native components.
 
-## Installation
+### Installation
 
-To ensure you have the correct dependencies,  get them from package.json or install them using npm:
+To ensure you have the correct dependencies, get them from package.json or install them using npm:
 
 ```bash
-  npm i 
+  npm i
 ```
-or 
+
+or
 
 ```bash
   npm install --save-dev @testing-library/react-native@^13.0.1
   npm i  jest jest-expo@~52.0.3
 ```
-## Running Tests
+
+### Running Tests
 
 Once all dependencies are installed run :
 
@@ -271,3 +277,40 @@ Once all dependencies are installed run :
  npm run test
 ```
 
+## End-to-End Testing
+
+### Prerequisites
+
+- Install maestro: https://docs.maestro.dev/getting-started/installing-maestro
+- Backend is running.
+- Frontend is running on an emulator.
+
+### Maestro Studio
+
+To start the Maestro Studio webapp:
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+maestro studio
+```
+
+### Run Tests
+
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+ maestro test --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
+```
+
+### Generate report:
+
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+maestro test --format junit --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
+```

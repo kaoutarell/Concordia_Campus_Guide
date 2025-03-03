@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5554" tests="5" failures="0" time="237">
+    <testcase id="Launch App" name="Launch App" classname="Launch App" time="1" status="SUCCESS"/>
+    <testcase id="Home Page" name="Home Page" classname="Home Page" time="16" status="SUCCESS"/>
+    <testcase id="Sidebar" name="Sidebar" classname="Sidebar" time="38" status="SUCCESS"/>
+    <testcase id="Feature 1 - Show Both Campuses" name="Feature 1 - Show Both Campuses" classname="Feature 1 - Show Both Campuses" time="83" status="SUCCESS"/>
+    <testcase id="Feature 2 - Outdoor Directions" name="Feature 2 - Outdoor Directions" classname="Feature 2 - Outdoor Directions" time="99" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

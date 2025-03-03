@@ -1,0 +1,3359 @@
+[
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 1,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 2,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 3,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 4,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 5,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 6,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 7,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 8,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 9,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 10,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 11,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 12,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 13,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 14,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 15,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 16,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 17,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 18,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 19,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 20,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 21,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 22,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 23,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 24,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 25,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 26,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 27,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 28,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 29,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 30,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 31,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 32,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 33,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 34,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 35,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 36,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 37,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 0,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 38,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 39,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 40,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 41,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 42,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 43,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 44,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 45,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 46,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 47,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 48,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 49,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 50,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 51,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 52,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 53,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 54,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 55,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 56,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 57,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 58,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 59,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 60,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 61,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 62,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 63,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 64,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 65,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 66,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 67,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 68,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 69,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 70,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 71,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 72,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 73,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 74,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 1,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 75,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 76,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 77,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 78,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 79,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 80,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 81,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 82,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 83,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 84,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 85,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 86,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 87,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 88,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 89,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 90,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 91,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 92,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 93,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 94,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 95,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 96,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 97,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 98,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 99,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 100,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 101,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 102,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 103,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 104,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 105,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 106,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 107,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 108,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 109,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 110,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 111,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 2,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 112,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 113,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 114,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 115,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 116,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 117,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 118,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 119,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 120,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 121,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 122,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 123,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 124,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 125,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 126,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 127,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 128,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 129,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 130,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 131,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 132,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 133,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 134,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 135,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 136,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 137,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 138,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 139,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 140,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 141,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 142,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 143,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 144,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 145,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 146,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 147,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 148,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 3,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 149,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 150,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 151,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 152,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 153,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 154,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 155,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 156,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 157,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 158,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 159,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 160,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 161,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 162,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 163,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 164,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 165,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 166,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 167,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 168,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 169,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 170,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 171,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 172,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 173,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 174,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 175,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 176,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 177,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 178,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 179,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 180,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 181,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 182,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 183,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 184,
+        "fields": {
+            "campus": "SGW",
+            "day_of_week": 4,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 185,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "09:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 186,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 187,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 188,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 189,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 190,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 191,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 192,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 193,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 194,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 195,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 196,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 197,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 198,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 199,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 200,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 201,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 202,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 203,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 204,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 205,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 206,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 207,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 208,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 209,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 210,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 211,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 212,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 213,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 214,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 215,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 216,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 217,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 218,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 219,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 220,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 221,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 222,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 0,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 223,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "09:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 224,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 225,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 226,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 227,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 228,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 229,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 230,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 231,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 232,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 233,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 234,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 235,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 236,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 237,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 238,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 239,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 240,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 241,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 242,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 243,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 244,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 245,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 246,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 247,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 248,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 249,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 250,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 251,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 252,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 253,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 254,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 255,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 256,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 257,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 258,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 259,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 260,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 1,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 261,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "09:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 262,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 263,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 264,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 265,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 266,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 267,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 268,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 269,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 270,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 271,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 272,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 273,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 274,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 275,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 276,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 277,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 278,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 279,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 280,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 281,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 282,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 283,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 284,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 285,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 286,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 287,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 288,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 289,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 290,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 291,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 292,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 293,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 294,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 295,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 296,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 297,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 298,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 2,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 299,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "09:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 300,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 301,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 302,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 303,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 304,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 305,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 306,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 307,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 308,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 309,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 310,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 311,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 312,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 313,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 314,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 315,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 316,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 317,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 318,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 319,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 320,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 321,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 322,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 323,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 324,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 325,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 326,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 327,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 328,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 329,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 330,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 331,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 332,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 333,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 334,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 335,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "18:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 336,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 3,
+            "time": "18:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 337,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "09:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 338,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "09:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 339,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "09:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 340,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "10:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 341,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "10:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 342,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "10:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 343,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "10:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 344,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "11:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 345,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "11:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 346,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "11:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 347,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "11:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 348,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "12:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 349,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "12:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 350,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "12:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 351,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "12:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 352,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "13:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 353,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "13:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 354,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "13:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 355,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "13:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 356,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "14:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 357,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "14:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 358,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "14:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 359,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "14:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 360,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "15:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 361,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "15:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 362,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "15:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 363,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "15:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 364,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "16:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 365,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "16:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 366,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "16:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 367,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "16:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 368,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "17:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 369,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "17:15:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 370,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "17:30:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 371,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "17:45:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 372,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "18:00:00"
+        }
+    },
+    {
+        "model": "mapengine.shuttleschedule",
+        "pk": 373,
+        "fields": {
+            "campus": "LOY",
+            "day_of_week": 4,
+            "time": "18:15:00"
+        }
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "model": "mapengine.shuttlestop",
+        "pk": 1,
+        "fields": {
+            "name": "SGW",
+            "latitude": 45.497129019513835,
+            "longitude": -73.57852460612132
+        }
+    },
+    {
+        "model": "mapengine.shuttlestop",
+        "pk": 2,
+        "fields": {
+            "name": "LOY",
+            "latitude": 45.45841608855384,
+            "longitude": -73.63828201677715
+        }
+    }
+]
