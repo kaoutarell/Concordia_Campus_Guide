@@ -13,10 +13,6 @@ const CustomButton = ({ title, onPress }) => {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
-        // justifyContent: 'center', // Center vertically
-        // alignItems: 'center',
-        // marginBottom: 5, // Center horizontally
         paddingLeft:10,
         paddingRight : 10,
     },

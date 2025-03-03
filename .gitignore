@@ -54,3 +54,5 @@ ccg_backend/mapengine/migrations
 *.pyc
 *.pyo
 *.pyd
+
+coverage/
