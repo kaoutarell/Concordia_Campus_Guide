@@ -42,34 +42,22 @@ const SearchBar = ({
         return [];
     }, [locationNames]);
 
-    const handleFocus = () => {
-        setFocusedInput("destination");
-        if (destination.length > 0) {
-            setFilteredLocations(filterLocations(destination));
-        }
-    };
-
     const handleSearch = (text) => {
         setDestination(text);
         setFilteredLocations(filterLocations(text));
     };
 
-    const handleSelect = (loc) => {
-        setDestination(loc);
-        setTargetLocation(locations.find(location => location.name === loc));
-        setSelectedCampus(locations.find(location => location.name === loc).campus);
-        setFilteredLocations([]);
-        Keyboard.dismiss();
-        setFocusedInput(null);
-    };
 
     const handlePress = () => {
         navigation.navigate("Search", {
             allLocations,
             type: "destination",
-            screen: "searchBar",
-            onGoBack: (selectedDestination) =>
-                setDestination(selectedDestination.name)
+            onGoBack: (selectedDestination) => {
+                setDestination(selectedDestination.name);
+                setTargetLocation(selectedDestination)
+                setSelectedCampus(selectedDestination.campus)
+                Keyboard.dismiss();
+            }
         });
     };
 

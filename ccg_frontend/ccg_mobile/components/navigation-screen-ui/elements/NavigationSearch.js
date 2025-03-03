@@ -11,7 +11,6 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
         navigation.navigate("Search", {
             allLocations,
             type,
-            screen: "navigateScreen",
             onGoBack: (selectedAddress) =>
                 type === "start"
                     ? onModifyAddress("start", selectedAddress)
