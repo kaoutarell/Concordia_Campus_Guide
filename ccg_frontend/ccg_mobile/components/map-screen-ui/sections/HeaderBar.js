@@ -5,13 +5,7 @@ import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
 import PropTypes from "prop-types";
 
-const HeaderBar = ({
-  selectedCampus,
-  onCampusSelect,
-  setSelectedCampus,
-  locations,
-  setTargetLocation,
-}) => {
+const HeaderBar = ({ selectedCampus, onCampusSelect, setSelectedCampus, locations, setTargetLocation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerRow}>
@@ -22,12 +16,12 @@ const HeaderBar = ({
           locations={locations}
           setSelectedCampus={setSelectedCampus}
         />
-          <CampusSelector
-            testID="campus-selector"
-            selectedCampus={selectedCampus}
-            onCampusSelect={onCampusSelect}
-            compact={true}
-          />
+        <CampusSelector
+          testID="campus-selector"
+          selectedCampus={selectedCampus}
+          onCampusSelect={onCampusSelect}
+          compact={true}
+        />
       </View>
     </View>
   );
