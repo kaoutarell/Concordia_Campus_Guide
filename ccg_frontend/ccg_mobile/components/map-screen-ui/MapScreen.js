@@ -12,6 +12,8 @@ import {
 
 import { View, StyleSheet } from "react-native";
 
+import PointsOfInterestBar from "./sections/PointsOfInterestBar"; //
+
 import HeaderBar from './sections/HeaderBar';
 
 const MapScreen = () => {
@@ -77,6 +79,10 @@ const MapScreen = () => {
         onCampusSelect={onCampusSelect}
         locations={allLocations}
       />
+
+      {/*Points of Interest Bar */}
+      <PointsOfInterestBar /> 
+
       {/* Map */}
       <MapViewComponent
         locations={allLocations}
