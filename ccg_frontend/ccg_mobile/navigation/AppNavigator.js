@@ -29,12 +29,21 @@ const drawerContent = (props) => <Sidebar {...props} />;
 export default function AppNavigator() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator
-                drawerContent={drawerContent}
-                screenOptions={{ headerShown: false }}
+            <PostHogProvider
+                apiKey={process.env.EXPO_PUBLIC_POSTHOG_API_KEY}
+                options={{
+                    host: process.env.EXPO_PUBLIC_POSTHOG_HOST_URL,
+                    autocapture: true,
+                    enableSessionRecording: true,
+                }}
             >
-                <Drawer.Screen name="Main" component={StackNavigator} />
-            </Drawer.Navigator>
+                <Drawer.Navigator
+                    drawerContent={drawerContent}
+                    screenOptions={{ headerShown: false }}
+                >
+                    <Drawer.Screen name="Main" component={StackNavigator} />
+                </Drawer.Navigator>
+            </PostHogProvider>
         </NavigationContainer>
     );
 }
