@@ -19,7 +19,7 @@ const HeaderBar = ({
         <SearchBar
           testID="search-bar"
           setTargetLocation={setTargetLocation}
-          locations={locations}
+          allLocations={locations}
           setSelectedCampus={setSelectedCampus}
         />
           <CampusSelector

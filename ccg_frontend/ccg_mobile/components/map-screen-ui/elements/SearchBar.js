@@ -30,7 +30,7 @@ const SearchBar = ({
 
     const locationNames = React.useMemo(() =>
             allLocations.map(location => location.name),
-        [locations]
+        [allLocations]
     );
 
     const filterLocations = useCallback((text) => {
