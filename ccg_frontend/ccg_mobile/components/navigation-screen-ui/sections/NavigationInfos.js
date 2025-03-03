@@ -32,48 +32,52 @@ NavigationInfos.propTypes = {
 export default NavigationInfos;
 
 const styles = StyleSheet.create({
-  safeArea: {
-    height: "16%", // Adjust as needed
-    width: "100%",
-    backgroundColor: "#800020",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  infoRow: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 10,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-  },
-  exitButton: {
-    backgroundColor: "#fff",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    alignItems: "center",
-    marginHorizontal: 5,
-  },
-  exitButtonText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#800020",
-  },
-  allButton: {
-    backgroundColor: "#fff",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 20,
-    alignItems: "center",
-    marginHorizontal: 5,
-  },
-  allButtonText: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#800020",
-  },
+    safeArea: {
+        height: '16%', // Adjust as needed
+        width: '100%',
+        backgroundColor: '#800020',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderTopLeftRadius: 30,  
+        borderTopRightRadius: 30, 
+        borderBottomLeftRadius: 0,  
+        borderBottomRightRadius: 0, 
+    },
+    infoRow: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+    },
+    exitButton: {
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignItems: 'center',
+        marginHorizontal: 5,
+    },
+    exitButtonText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#800020',
+    },
+    allButton: {
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignItems: 'center',
+        marginHorizontal: 5,
+    },
+    allButtonText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#800020',
+    },
 });
