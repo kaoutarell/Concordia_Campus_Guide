@@ -63,7 +63,8 @@ const SearchBar = ({
 
     const clearSearch = () => {
         setDestination("");
-        setFilteredLocations([]);
+        setTargetLocation({});
+        setSelectedCampus("SGW")
         Keyboard.dismiss();
     };
 

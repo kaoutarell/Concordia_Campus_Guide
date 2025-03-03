@@ -22,6 +22,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
@@ -88,8 +89,13 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
-      setSelectedMarker((prev) => (prev === target ? null : target));
-    } else setTargetRegion(region);
+      setSelectedMarker(target);
+      setShowPopup(true)
+    } else {
+      setShowPopup(false)
+      setMapKey((prevKey) => prevKey + 1);
+      setTargetRegion(region);
+    }
   }, [target]);
 
   return (
@@ -160,7 +166,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
         </View>
       )}
 
-      {selectedMarker !== null && (
+      {showPopup && selectedMarker !== null && (
         <View style={styles.popupWrapper}>
           <InfoPopup
             value={selectedMarker}
