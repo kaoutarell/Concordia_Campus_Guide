@@ -1,5 +1,5 @@
 import React from "react";
-import { render, waitFor, screen } from "@testing-library/react-native";
+import { render, waitFor } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 import { NavigationContainer } from '@react-navigation/native';
