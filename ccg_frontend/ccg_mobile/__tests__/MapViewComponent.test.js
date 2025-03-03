@@ -2,7 +2,6 @@ import React from "react";
 import { render, waitFor, screen } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
-
 import { NavigationContainer } from '@react-navigation/native';
 
 jest.mock("../services/LocationService", () => ({
@@ -216,4 +215,22 @@ describe("MapViewComponent - Location Tests", () => {
   //     expect(screen.queryByText("Loading locations...")).toBeNull();
   //   });
   // });
+
+  //This test ensure the map renders correctly
+  test("should render the MapView component", async () => {
+    render(
+      <NavigationContainer>
+        <MapViewComponent {...defaultProps} locations={[{ id: 1, name: "Test Location", location: { latitude: 45.5, longitude: -73.57 } }]} />
+      </NavigationContainer>
+    );
+  
+    // Wait for the loading state to disappear
+    await waitFor(() => expect(screen.queryByText("Loading locations...")).toBeNull());
+  
+    // Now check if the map is present
+    const mapView = screen.getByTestId("map-view");
+    expect(mapView).toBeTruthy();
+  });
+  
+
 });
