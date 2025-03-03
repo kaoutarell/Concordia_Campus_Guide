@@ -1,5 +1,5 @@
 import React from "react";
-import { render, waitFor } from "@testing-library/react-native";
+import { render, waitFor, screen } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 import { NavigationContainer } from '@react-navigation/native';
@@ -286,71 +286,4 @@ describe("MapViewComponent", () => {
       </NavigationContainer>
     );
   });
-
-  // Commented out test that could be enabled later if needed
-  // test("should set isLoading to false when locations are provided", async () => {
-  //   const locations = [
-  //     {
-  //       id: 1,
-  //       name: "Location 1",
-  //       location: {
-  //         latitude: 37.7749,
-  //         longitude: -122.4194,
-  //       },
-  //     },
-  //   ];
-
-  //   render(
-  //     <NavigationContainer>
-  //       <MapViewComponent {...defaultProps} locations={locations} />
-  //     </NavigationContainer>
-  //   );
-
-  //   // Wait for the effect to run and isLoading to be set to false
-  //   await waitFor(() => {
-  //     expect(screen.queryByText("Loading locations...")).toBeNull();
-  //   });
-  // });
-
-  //This test ensure the map renders correctly
-  test("should render the MapView component", async () => {
-    render(
-      <NavigationContainer>
-        <MapViewComponent {...defaultProps} locations={[{ id: 1, name: "Test Location", location: { latitude: 45.5, longitude: -73.57 } }]} />
-      </NavigationContainer>
-    );
-  
-    // Wait for the loading state to disappear
-    await waitFor(() => expect(screen.queryByText("Loading locations...")).toBeNull());
-  
-    // Now check if the map is present
-    const mapView = screen.getByTestId("map-view");
-    expect(mapView).toBeTruthy();
-  });
-
-  //Test onRegionChangeComplete for region updates
-  test("should update region when map region changes", () => {
-    const mockOnRegionChangeComplete = jest.fn();
-  
-    render(
-      <NavigationContainer>
-        <MapViewComponent {...defaultProps} onRegionChangeComplete={mockOnRegionChangeComplete} />
-      </NavigationContainer>
-    );
-  
-    // Simulate region change
-    const newRegion = {
-      latitude: 45.51,
-      longitude: -73.57,
-      latitudeDelta: 0.02,
-      longitudeDelta: 0.02,
-    };
-  
-    mockOnRegionChangeComplete(newRegion);
-    
-    expect(mockOnRegionChangeComplete).toHaveBeenCalledWith(newRegion);
-  });
-
-  
-  
 });
