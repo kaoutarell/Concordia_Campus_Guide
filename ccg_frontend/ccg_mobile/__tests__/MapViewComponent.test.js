@@ -231,6 +231,30 @@ describe("MapViewComponent - Location Tests", () => {
     const mapView = screen.getByTestId("map-view");
     expect(mapView).toBeTruthy();
   });
-  
 
+  //Test onRegionChangeComplete for region updates
+  test("should update region when map region changes", () => {
+    const mockOnRegionChangeComplete = jest.fn();
+  
+    render(
+      <NavigationContainer>
+        <MapViewComponent {...defaultProps} onRegionChangeComplete={mockOnRegionChangeComplete} />
+      </NavigationContainer>
+    );
+  
+    // Simulate region change
+    const newRegion = {
+      latitude: 45.51,
+      longitude: -73.57,
+      latitudeDelta: 0.02,
+      longitudeDelta: 0.02,
+    };
+  
+    mockOnRegionChangeComplete(newRegion);
+    
+    expect(mockOnRegionChangeComplete).toHaveBeenCalledWith(newRegion);
+  });
+
+  
+  
 });
