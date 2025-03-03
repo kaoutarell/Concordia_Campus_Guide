@@ -25,28 +25,6 @@ const SearchBar = ({
     const navigation = useNavigation();
 
     const [destination, setDestination] = useState("");
-    const [filteredLocations, setFilteredLocations] = useState([]);
-    const [focusedInput, setFocusedInput] = useState(null);
-
-    const locationNames = React.useMemo(() =>
-            allLocations.map(location => location.name),
-        [allLocations]
-    );
-
-    const filterLocations = useCallback((text) => {
-        if (text.length > 0) {
-            return locationNames.filter(name =>
-                name.toLowerCase().includes(text.toLowerCase())
-            );
-        }
-        return [];
-    }, [locationNames]);
-
-    const handleSearch = (text) => {
-        setDestination(text);
-        setFilteredLocations(filterLocations(text));
-    };
-
 
     const handlePress = () => {
         navigation.navigate("Search", {
@@ -71,9 +49,7 @@ const SearchBar = ({
     return (
         <View style={styles.container}>
             <View style={[
-                styles.searchContainer,
-                focusedInput === "destination" && styles.searchContainerFocused
-            ]}>
+                styles.searchContainer]}>
                 <FontAwesome
                     name="map-marker"
                     size={20}
@@ -85,7 +61,6 @@ const SearchBar = ({
                     placeholder="Where to?"
                     placeholderTextColor="#555"
                     value={destination}
-                    onChangeText={handleSearch}
                     onFocus={() => handlePress()}
                 />
                 {destination.length > 0 && (
@@ -94,42 +69,6 @@ const SearchBar = ({
                     </TouchableOpacity>
                 )}
             </View>
-
-            {focusedInput === "destination" && destination.length > 0 && (
-                <View style={styles.dropdownContainer}>
-                    {filteredLocations.length > 0 ? (
-                        <FlatList
-                            style={styles.dropdown}
-                            data={filteredLocations}
-                            keyExtractor={(item) => item}
-                            keyboardShouldPersistTaps="always"
-                            renderItem={({ item }) => (
-                                <TouchableOpacity
-                                    onPress={() => handleSelect(item)}
-                                    style={styles.suggestion}
-                                >
-                                    <FontAwesome
-                                        name="map-marker"
-                                        size={16}
-                                        color="#8B1D3B"
-                                        style={styles.suggestionIcon}
-                                    />
-                                    <Text style={styles.suggestionText}>{item}</Text>
-                                </TouchableOpacity>
-                            )}
-                        />
-                    ) : (
-                        <View style={styles.noResultsContainer}>
-                            <Text style={styles.noResultsText}>
-                                No results found
-                            </Text>
-                            <Text style={styles.tryAgainText}>
-                                Try a different search term
-                            </Text>
-                        </View>
-                    )}
-                </View>
-            )}
         </View>
     );
 };
@@ -165,12 +104,6 @@ const styles = StyleSheet.create({
         elevation: 2,
         borderWidth: 1,
         borderColor: "#eee",
-    },
-    searchContainerFocused: {
-        borderColor: "#8B1D3B",
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
-        elevation: 4,
     },
     icon: {
         marginRight: 8,
