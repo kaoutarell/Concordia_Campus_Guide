@@ -13,7 +13,7 @@ import { getBuildings } from "../../api/dataService";
 
 const CustomNavSearch = ({ navigation, route }) => {
 
-    const { type, onGoBack, allLocations } = route.params || {};
+    const { type, screen, onGoBack, allLocations } = route.params || {};
 
     const [allBuildings, setAllBuildings] = useState(allLocations);
 
@@ -37,11 +37,10 @@ const CustomNavSearch = ({ navigation, route }) => {
         }
     };
 
-    // Handle selecting a location
     const handleSelectLocation = (location) => {
         Keyboard.dismiss();
         setSearchText(location.name);
-
+        //reminder that onGoBack returns actual location object
         if (onGoBack) {
             onGoBack(location);
         }

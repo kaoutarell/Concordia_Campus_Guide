@@ -11,11 +11,15 @@ import {
     Keyboard
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import {useNavigation} from "@react-navigation/native";
 
 
 const { width } = Dimensions.get("window");
 
-const SearchBar = ({ locations, setIsSearching, setTargetLocation }) => {
+const SearchBar = ({ allLocations, setIsSearching, setTargetLocation }) => {
+
+    const navigation = useNavigation();
+
     const startInputOpacity = useRef(new Animated.Value(0)).current;
     const startInputTranslateY = useRef(new Animated.Value(10)).current;
 
@@ -26,7 +30,7 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation }) => {
     const [filteredLocations, setFilteredLocations] = useState([]);
     const [focusedInput, setFocusedInput] = useState(null);
 
-    const locationNames = locations.map(location => location.name);
+    const locationNames = allLocations.map(location => location.name);
 
     useEffect(() => {
         if (destination.length > 0) {
@@ -109,6 +113,16 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation }) => {
         setFocusedInput(null);
     };
 
+    const handlePress = () => {
+        navigation.navigate("Search", {
+            allLocations,
+            type: "destination",
+            screen: "searchBar",
+            onGoBack: (selectedDestination) =>
+                setDestination(selectedDestination.name)
+        });
+    };
+
     return (
         <>
             <View style={styles.container}>
@@ -120,7 +134,7 @@ const SearchBar = ({ locations, setIsSearching, setTargetLocation }) => {
                         placeholderTextColor="#555"
                         value={destination}
                         onChangeText={(text) => handleSearch(text, "destination")}
-                        onFocus={() => setFocusedInput("destination")}
+                        onFocus={() => handlePress()}
                     />
                 </View>
 
