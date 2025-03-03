@@ -39,6 +39,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#800020',
         justifyContent: 'center',
         alignItems: 'center',
+        borderTopLeftRadius: 30,  
+        borderTopRightRadius: 30, 
+        borderBottomLeftRadius: 0,  
+        borderBottomRightRadius: 0, 
     },
     infoRow: {
         flexDirection: 'row',
