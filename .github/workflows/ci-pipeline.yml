@@ -60,7 +60,7 @@ jobs:
             sleep 3
           done
           echo "PostGIS is ready!"
-      
+
       - name: Run backend tests
         env:
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
@@ -79,7 +79,7 @@ jobs:
           conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
-          pytest
+          pytest --cov=. --cov-report=xml --cov-report=term
 
   frontend-check:
     runs-on: ubuntu-latest
@@ -95,7 +95,7 @@ jobs:
           cd ccg_frontend/ccg_mobile
           npm install -g expo-cli
           npm install --legacy-peer-deps
-          npm run test
+          npm run test --coverage
 
       - name: Run ESLint
         run: |
