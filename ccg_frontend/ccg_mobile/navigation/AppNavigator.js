@@ -13,28 +13,25 @@ const Stack = createStackNavigator();
 
 // Stack Navigator inside Drawer
 const StackNavigator = () => {
-    return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Map" component={MapScreen} />
-            <Stack.Screen name="Navigation" component={NavigationScreen} />
-            <Stack.Screen name="Search" component={CustomNavSearch} />
-        </Stack.Navigator>
-    );
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Map" component={MapScreen} />
+      <Stack.Screen name="Navigation" component={NavigationScreen} />
+      <Stack.Screen name="Search" component={CustomNavSearch} />
+    </Stack.Navigator>
+  );
 };
 
-const drawerContent = (props) => <Sidebar {...props} />;
+const drawerContent = props => <Sidebar {...props} />;
 
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {
-    return (
-        <NavigationContainer>
-            <Drawer.Navigator
-                drawerContent={drawerContent}
-                screenOptions={{ headerShown: false }}
-            >
-                <Drawer.Screen name="Main" component={StackNavigator} />
-            </Drawer.Navigator>
-        </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator drawerContent={drawerContent} screenOptions={{ headerShown: false }}>
+        <Drawer.Screen name="Main" component={StackNavigator} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
 }
