@@ -79,7 +79,7 @@ jobs:
           conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
-          pytest --cov=. --cov-report=xml
+          pytest --cov-report=xml
 
   frontend-check:
     runs-on: ubuntu-latest
