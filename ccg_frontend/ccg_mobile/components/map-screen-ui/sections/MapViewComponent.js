@@ -44,6 +44,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
 
   const handleMarkerPress = (location) => {
     setTimeout(() => {
+      setShowPopup(true)
       setSelectedMarker((prev) => (prev === location ? null : location));
     }, 0);
   };
