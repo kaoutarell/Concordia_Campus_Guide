@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites>
-  <testsuite name="Test Suite" device="emulator-5554" tests="4" failures="0" time="103">
+  <testsuite name="Test Suite" device="emulator-5554" tests="10" failures="0" time="475">
     <testcase id="Launch App" name="Launch App" classname="Launch App" time="1" status="SUCCESS"/>
     <testcase id="Home Page" name="Home Page" classname="Home Page" time="12" status="SUCCESS"/>
     <testcase id="Sidebar" name="Sidebar" classname="Sidebar" time="46" status="SUCCESS"/>
