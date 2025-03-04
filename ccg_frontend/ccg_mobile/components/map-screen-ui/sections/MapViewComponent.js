@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  StyleSheet,
-  View,
-  ActivityIndicator,
-  Text,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
@@ -26,7 +20,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-  const isWithinBounds = (region) => {
+  const isWithinBounds = region => {
     return (
       region.latitude <= maxBounds.northeast.latitude &&
       region.latitude >= maxBounds.southwest.latitude &&
@@ -35,21 +29,21 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     );
   };
 
-  const handleRegionChange = (region) => {
+  const handleRegionChange = region => {
     if (Platform.OS == "android") {
       const zoomThreshold = 0.006;
       setShowMarkers(region.latitudeDelta < zoomThreshold);
     }
   };
 
-  const handleMarkerPress = (location) => {
+  const handleMarkerPress = location => {
     setTimeout(() => {
-      setShowPopup(true)
-      setSelectedMarker((prev) => (prev === location ? null : location));
+      setShowPopup(true);
+      setSelectedMarker(prev => (prev === location ? null : location));
     }, 0);
   };
 
-  const onGoToLocation = (location) => {
+  const onGoToLocation = location => {
     navigation.navigate("Navigation", {
       start: null,
       destination: location,
@@ -64,7 +58,6 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   }, [locations]);
 
   useEffect(() => {
-
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
@@ -83,7 +76,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
 
   useEffect(() => {
     if (target?.id) {
-      setMapKey((prevKey) => prevKey + 1);
+      setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
         latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
@@ -91,10 +84,10 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
         longitudeDelta: 0.005,
       });
       setSelectedMarker(target);
-      setShowPopup(true)
+      setShowPopup(true);
     } else {
-      setShowPopup(false)
-      setMapKey((prevKey) => prevKey + 1);
+      setShowPopup(false);
+      setMapKey(prevKey => prevKey + 1);
       setTargetRegion(region);
     }
   }, [target]);
@@ -134,19 +127,11 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
             })}
           >
             {target.id ? (
-              <CustomMarker
-                key={target.id}
-                value={target}
-                onPress={() => handleMarkerPress(target)}
-              />
+              <CustomMarker key={target.id} value={target} onPress={() => handleMarkerPress(target)} />
             ) : (
               showMarkers !== (Platform.OS == "ios") &&
-              locations.map((location) => (
-                <CustomMarker
-                  key={location.id}
-                  value={location}
-                  onPress={() => handleMarkerPress(location)}
-                />
+              locations.map(location => (
+                <CustomMarker key={location.id} value={location} onPress={() => handleMarkerPress(location)} />
               ))
             )}
 
@@ -169,11 +154,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
 
       {showPopup && selectedMarker !== null && (
         <View style={styles.popupWrapper}>
-          <InfoPopup
-            value={selectedMarker}
-            onClose={() => setSelectedMarker(null)}
-            onGo={onGoToLocation}
-          />
+          <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
         </View>
       )}
     </View>

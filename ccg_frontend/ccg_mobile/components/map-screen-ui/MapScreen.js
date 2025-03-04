@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import {getBuildings, getPointOfInterests} from '../../api/dataService';
+import React, { useEffect, useState } from "react";
+import { getBuildings, getPointOfInterests } from "../../api/dataService";
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
-import {
-  initialRegionSGW,
-  initialRegionLoyola,
-  maxBoundsSGW,
-  maxBoundsLoyola,
-} from "../../constants/initialRegions";
+import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
 
 import { View, StyleSheet } from "react-native";
 
-import HeaderBar from './sections/HeaderBar';
+import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
-
-
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [pointsOfInterest, setPointsOfInterest] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
-
 
   const [targetLocation, setTargetLocation] = useState({});
 
@@ -34,10 +26,8 @@ const MapScreen = () => {
   };
 
   useEffect(() => {
-
     const setData = async () => {
       try {
-
         await fetchAllLocations();
         await fetchPointsOfInterests();
         console.log("Data fetched successfully.");
@@ -51,8 +41,8 @@ const MapScreen = () => {
     }
   }, []);
 
-  const onCampusSelect = (campus) => {
-    setSelectedCampus((prevCampus) => {
+  const onCampusSelect = campus => {
+    setSelectedCampus(prevCampus => {
       if (prevCampus !== campus) {
         return campus;
       }
@@ -66,19 +56,19 @@ const MapScreen = () => {
       const data = await getBuildings();
       setAllLocations(data);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
     }
-  }
+  };
 
   const fetchPointsOfInterests = async () => {
     try {
       const data = await getPointOfInterests();
-      console.log(data)
-     // setPointsOfInterest(data);
+      console.log(data);
+      // setPointsOfInterest(data);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
