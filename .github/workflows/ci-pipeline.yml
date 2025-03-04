@@ -95,7 +95,6 @@ jobs:
           cd ccg_frontend/ccg_mobile
           npm install -g expo-cli
           npm install --legacy-peer-deps
-          npm run test --coverage
 
       - name: Run ESLint & Prettier
         run: |
@@ -105,6 +104,11 @@ jobs:
           npm install @typescript-eslint/eslint-plugin@latest --save-dev
           npx eslint .
           npm run format:check
+
+      - name: Run frontend tests
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npm run test --coverage
 
   sonarcloud-scan:
     runs-on: ubuntu-latest
