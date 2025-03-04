@@ -79,6 +79,7 @@ jobs:
           conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
+          pip install pytest-cov
           pytest --cov-report=xml:coverage.xml
 
       - name: Upload backend coverage report
