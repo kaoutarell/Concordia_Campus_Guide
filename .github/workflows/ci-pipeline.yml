@@ -79,7 +79,7 @@ jobs:
           conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
-          pytest --cov-report=xml
+          pytest --cov-report=xml:coverage.xml
 
       - name: Upload backend coverage report
         uses: actions/upload-artifact@v4
