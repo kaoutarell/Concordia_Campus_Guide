@@ -8,7 +8,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write '**/*.js'",
+    "format:check": "prettier --check '**/*.js'"
   },
   "jest": {
     "preset": "jest-expo",
@@ -62,7 +64,8 @@
     "@testing-library/react-native": "^13.0.1",
     "@typescript-eslint/eslint-plugin": "^8.24.0",
     "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.4"
+    "eslint-plugin-react": "^7.37.4",
+    "prettier": "^3.5.3"
   },
   "private": true
 }
