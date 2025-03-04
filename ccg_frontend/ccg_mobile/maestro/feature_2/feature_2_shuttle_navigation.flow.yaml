@@ -1,11 +1,17 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Shuttle"
 ---
-- tapOn: "GM"
-- tapOn: "Directions"
+# starting state: map view - with markers visible
+- tapOn: "GM" # tap on building marker - goal is to test another marker
+# open info popup
+- tapOn: "Get Directions"
+# choose destination
 - tapOn: "Destination Address"
+# assert and select destination from building list
+- assertVisible: "Physical Services Building"
 - tapOn: "Physical Services Building"
-- tapOn: "Shuttle"
+# check to see if page renders correctly
+- tapOn: "Shuttle" # select shuttle navigation
 - assertVisible: "Walk"
 - assertVisible: "Bike"
 - assertVisible: "Car"
@@ -17,12 +23,15 @@ name: "Feature 2.1 & 2.5 - Shuttle"
 - assertVisible: "Start Navigation"
 - assertVisible: "LOY"
 - assertVisible: "View Bus Schedule"
+# start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "↑"
 - assertVisible: "Google Map"
 - assertVisible: "DIR"
 - assertVisible: "Exit"
+# check that exit button works
 - tapOn: "Exit"
+# check to see if page renders correctly
 - assertVisible: "Walk"
 - assertVisible: "Bike"
 - assertVisible: "Car"
@@ -34,16 +43,24 @@ name: "Feature 2.1 & 2.5 - Shuttle"
 - assertVisible: "Start Navigation"
 - assertVisible: "LOY"
 - assertVisible: "View Bus Schedule"
+# start navigation flow
 - tapOn: "Start Navigation"
 - assertVisible: "DIR"
 - assertVisible: "Exit"
+# see directions and assert page renders correctly
 - tapOn: "DIR"
 - assertVisible: "Directions"
+# exit direction page
 - tapOn: "←"
+# exit navigation
 - tapOn: "Exit"
+# access and validate bus schedule
 - tapOn: "View Bus Schedule"
 - assertVisible: "Bus Schedule - SGW Campus"
+# exit bus schedule
 - tapOn: "Close"
 - assertVisible: "Google Map"
+# leave navigation map
 - tapOn: "←"
+# close info popup
 - tapOn: ""

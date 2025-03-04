@@ -10,25 +10,30 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "🏠 Home"
 - tapOn: "🏠 Home"
 - tapOn: "Continue to map ➤"
-#Feature 2.2 - Assert User's Current Location
-- assertVisible: "Google Map"
-- tapOn: "Zoom in"
-- scroll #scroll vertically
-- assertVisible: "My Location"
-- tapOn: "My Location"
-- assertVisible: "H"
+# [DEPRECATED] Feature 2.2 - Assert User's Current Location
+#- assertVisible: "Google Map"
+#- tapOn: "Zoom in"
+#- scroll #scroll vertically
+#- assertVisible: "My Location"
+#- tapOn: "My Location"
+# check that my location button recenters screen to user's location
+#- assertVisible: "H"
+
 # test that providing a start point will take the user to the navigation screen
 - tapOn:
     id: "campus-button"
 - assertVisible: "Loyola"
 - tapOn: "Zoom in"
-- tapOn: "CC"
-- tapOn: "Directions"
+- tapOn: "Zoom in"
+- tapOn: "TD"
+- tapOn: "Get Directions"
+# test start point other than Current Location
 - tapOn: "Start Address"
-# type start point
+# type building name
 - inputText:
     text: "Henry F. Hall Building"
     into: "Starting Point"
+# select start point
 - tapOn:
     text: "Henry F. Hall Building"
     index: 1
@@ -42,9 +47,13 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "Google Map"
+- assertVisible: "H"
+- assertVisible: "TD"
+# leave navigation map
 - tapOn: "←"
-- tapOn: "" #close
-#checks that the campus toggle button and other components render
+# close info popup
+- tapOn: ""
+# check that the campus toggle button and other components render
 #- assertVisible:
 #id: "campus-selector"
 - assertVisible: "Google Map"

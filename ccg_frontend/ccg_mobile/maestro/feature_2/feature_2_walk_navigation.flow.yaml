@@ -1,20 +1,27 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Walk"
 ---
+# type destination directly in Where to text box to access navigation
 - tapOn: "Where to?"
+# write destination
 - inputText:
     text: "Engineering, Computer Science and Visual Arts Integrated Complex"
     into: "Where to?"
+# flow to for android device if stylus configuration pops up
 - runFlow:
     when:
       visible: "Try out your stylus"
       platform: android
     file: ./subflows/stylus_android.flow.yaml
+# wait for typing to end
 - extendedWaitUntil:
     visible: "Engineering, Computer Science and Visual Arts Integrated Complex"
     timeout: 50000
+# select building from animation
 - tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
-- tapOn: "Directions"
+# head to navigation page
+- tapOn: "Get Directions"
+# check to see if page renders correctly, walk navigation selected by default
 - assertVisible: "1515 St. Catherine W."
 - assertVisible: "Walk"
 - assertVisible: "Bike"
@@ -27,12 +34,15 @@ name: "Feature 2.1 & 2.5 - Walk"
 - assertVisible: "EV"
 - assertVisible: "4 minutes"
 - assertVisible: "0.34 km"
+# start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "In 0.9 meters, Head northeast!"
 - assertVisible: "Google Map"
 - assertVisible: "DIR"
 - assertVisible: "Exit"
+# check that exit button works
 - tapOn: "Exit"
+# check to see if page renders correctly
 - assertVisible: "1515 St. Catherine W."
 - assertVisible: "Walk"
 - assertVisible: "Bike"
@@ -46,17 +56,23 @@ name: "Feature 2.1 & 2.5 - Walk"
 - assertVisible: "EV"
 - assertVisible: "4 minutes"
 - assertVisible: "0.34 km"
+# start navigation flow
 - tapOn: "Start Navigation"
 - assertVisible: "In 0.9 meters, Head northeast!"
 - assertVisible: "DIR"
 - assertVisible: "Exit"
+# see directions and assert page renders correctly
 - tapOn: "DIR"
 - assertVisible: "Directions"
 - assertVisible: "Head northeast"
 - assertVisible: "Turn left"
 - assertVisible: "Turn right"
+# exit direction page
 - tapOn: "←"
+# exit navigation
 - tapOn: "Exit"
 - assertVisible: "Google Map"
+# leave navigation map
 - tapOn: "←"
+# close info popup
 - tapOn: ""

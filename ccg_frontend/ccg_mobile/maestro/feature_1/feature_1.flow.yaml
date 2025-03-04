@@ -21,7 +21,7 @@ name: "Feature 1 - Show Both Campuses"
     id: "campus-button"
 - assertVisible:
     id: "map-view"
-- assertVisible: "Loyola"
+- assertVisible: "LOY"
 - assertVisible: "Where to?"
 - assertVisible:
     id: "campus-button"
@@ -38,30 +38,30 @@ name: "Feature 1 - Show Both Campuses"
 # Feature 1.5 - Show Info About Buildings
 - tapOn: "PY"
 - assertVisible: "Psychology Building"
-- assertVisible: "Building Code: PY"
+- assertVisible: "PY"
 - assertVisible: "7141 Sherbrooke W."
 - assertVisible: "Campus: LOY"
 - assertVisible: "Parking"
 - assertVisible: "Accessible"
 - assertVisible: "ATM"
-- assertVisible: ", Directions"
+- assertVisible: "Get Directions"
 - assertVisible: ""
 - tapOn: "" # close building info popup
 # Feature 1.3 - Toggle Between Campuses
 - tapOn:
     id: "campus-button"
-- assertVisible: "Sir George Williams"
+- assertVisible: "SGW"
 # Feature 1.5 - Show Info About Buildings
 - doubleTapOn: # zoom in on map to show markers
     id: "map-view"
 - tapOn: "ER"
 - assertVisible: "ER Building"
-- assertVisible: "Building Code: ER"
+- assertVisible: "ER"
 - assertVisible: "2155 Guy St."
 - assertVisible: "Campus: SGW"
 - assertVisible: "Parking"
 - assertVisible: "Accessible"
 - assertVisible: "ATM"
-- assertVisible: ", Directions"
+- assertVisible: "Get Directions"
 - assertVisible: ""
 - tapOn: "" # close building info popup
