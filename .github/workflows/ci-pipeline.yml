@@ -104,3 +104,15 @@ jobs:
           npm install eslint-plugin-react@latest --save-dev
           npm install @typescript-eslint/eslint-plugin@latest --save-dev
           npx eslint .
+
+  sonarcloud-scan:
+    runs-on: ubuntu-latest
+    needs: [backend-check, frontend-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
