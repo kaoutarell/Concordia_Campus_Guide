@@ -314,3 +314,13 @@ cd ccg_frontend/ccg_mobile/maestro
 
 maestro test --format junit --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
 ```
+
+### Prettier Formatting
+
+Prettier enforces code formatting for consistency. If your PR fails in CI due to formatting issues, run the following commands to auto-format your files and pass the check.
+
+```bash
+cd ccg_frontend/ccg_mobile/
+
+npm run format -- --write "**/*.js"
+```
