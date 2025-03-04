@@ -34,10 +34,8 @@ jest.mock("../constants/concordiaGeoJson.json", () => ({
   ],
 }));
 
-
 describe("BuildingHighlight", () => {
   it("renders geojson for SGW and LOY", () => {
-
     const { getAllByTestId } = render(<BuildingHighlight />);
 
     // Ensure multiple Polygon components are rendered

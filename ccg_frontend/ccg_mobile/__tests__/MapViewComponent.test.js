@@ -2,7 +2,7 @@ import React from "react";
 import { render, waitFor, screen } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from "@react-navigation/native";
 
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
@@ -27,23 +27,21 @@ describe("MapViewComponent - Location Tests", () => {
     },
     maxBounds: {
       northeast: {
-        latitude: 45.5200,
-        longitude: -73.5600,
+        latitude: 45.52,
+        longitude: -73.56,
       },
       southwest: {
-        latitude: 45.4800,
-        longitude: -73.5900,
+        latitude: 45.48,
+        longitude: -73.59,
       },
-    }
+    },
   };
 
   // test to make sure that the tracking is started on mount
   test("should start tracking location on mount", async () => {
     render(
       <NavigationContainer>
-        <MapViewComponent
-          {...defaultProps}
-        />
+        <MapViewComponent {...defaultProps} />
       </NavigationContainer>
     );
     expect(locationService.startTrackingLocation).toHaveBeenCalled();
@@ -56,9 +54,7 @@ describe("MapViewComponent - Location Tests", () => {
   // test to make sure that location marker is shown when available
   test("should display current location marker when available", async () => {
     expect(currentLocation).not.toBeNull();
-    expect(
-      locationService.getCurrentLocation.mockReturnValue(currentLocation)
-    ).toBeTruthy();
+    expect(locationService.getCurrentLocation.mockReturnValue(currentLocation)).toBeTruthy();
   });
 
   test("should update current location when a new location is provided", async () => {
@@ -78,26 +74,19 @@ describe("MapViewComponent - Location Tests", () => {
   // test that an error is thrown when issue with fetching location
   test("should handle error when fetching current location", async () => {
     // Mock location service to throw an error
-    locationService.startTrackingLocation = jest
-      .fn()
-      .mockRejectedValue(new Error("Location error"));
+    locationService.startTrackingLocation = jest.fn().mockRejectedValue(new Error("Location error"));
     locationService.getCurrentLocation = jest.fn().mockReturnValue(null);
 
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => { }); // Suppress error logs in test output
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {}); // Suppress error logs in test output
 
     render(
       <NavigationContainer>
-        <MapViewComponent
-          {...defaultProps}
-        />
+        <MapViewComponent {...defaultProps} />
       </NavigationContainer>
     );
 
     await waitFor(() => {
-      expect(consoleSpy).toHaveBeenCalledWith(
-        "Error fetching location:",
-        expect.any(Error)
-      );
+      expect(consoleSpy).toHaveBeenCalledWith("Error fetching location:", expect.any(Error));
     });
 
     consoleSpy.mockRestore();
@@ -107,9 +96,7 @@ describe("MapViewComponent - Location Tests", () => {
   test("should stop tracking location on unmount", () => {
     const { unmount } = render(
       <NavigationContainer>
-        <MapViewComponent
-          {...defaultProps}
-        />
+        <MapViewComponent {...defaultProps} />
       </NavigationContainer>
     );
     unmount();
@@ -179,7 +166,7 @@ describe("MapViewComponent - Location Tests", () => {
   test("should display loading indicator when locations are loading", () => {
     render(
       <NavigationContainer>
-        <MapViewComponent 
+        <MapViewComponent
           {...defaultProps}
           locations={[]} // Empty locations will trigger loading state
         />
@@ -220,13 +207,16 @@ describe("MapViewComponent - Location Tests", () => {
   test("should render the MapView component", async () => {
     render(
       <NavigationContainer>
-        <MapViewComponent {...defaultProps} locations={[{ id: 1, name: "Test Location", location: { latitude: 45.5, longitude: -73.57 } }]} />
+        <MapViewComponent
+          {...defaultProps}
+          locations={[{ id: 1, name: "Test Location", location: { latitude: 45.5, longitude: -73.57 } }]}
+        />
       </NavigationContainer>
     );
-  
+
     // Wait for the loading state to disappear
     await waitFor(() => expect(screen.queryByText("Loading locations...")).toBeNull());
-  
+
     // Now check if the map is present
     const mapView = screen.getByTestId("map-view");
     expect(mapView).toBeTruthy();
@@ -235,13 +225,13 @@ describe("MapViewComponent - Location Tests", () => {
   //Test onRegionChangeComplete for region updates
   test("should update region when map region changes", () => {
     const mockOnRegionChangeComplete = jest.fn();
-  
+
     render(
       <NavigationContainer>
         <MapViewComponent {...defaultProps} onRegionChangeComplete={mockOnRegionChangeComplete} />
       </NavigationContainer>
     );
-  
+
     // Simulate region change
     const newRegion = {
       latitude: 45.51,
@@ -249,12 +239,9 @@ describe("MapViewComponent - Location Tests", () => {
       latitudeDelta: 0.02,
       longitudeDelta: 0.02,
     };
-  
+
     mockOnRegionChangeComplete(newRegion);
-    
+
     expect(mockOnRegionChangeComplete).toHaveBeenCalledWith(newRegion);
   });
-
-  
-  
 });

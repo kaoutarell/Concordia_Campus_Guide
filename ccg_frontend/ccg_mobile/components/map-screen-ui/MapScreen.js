@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { getBuildings } from '../../api/dataService';
+import React, { useEffect, useState } from "react";
+import { getBuildings } from "../../api/dataService";
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
-import {
-  initialRegionSGW,
-  initialRegionLoyola,
-  maxBoundsSGW,
-  maxBoundsLoyola,
-} from "../../constants/initialRegions";
+import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
 
 import { View, StyleSheet } from "react-native";
 
-import HeaderBar from './sections/HeaderBar';
+import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
-
-
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
-
 
   const [targetLocation, setTargetLocation] = useState({});
 
@@ -33,10 +25,8 @@ const MapScreen = () => {
   };
 
   useEffect(() => {
-
     const setData = async () => {
       try {
-
         await fetchAllLocations();
         console.log("Data fetched successfully.");
       } catch (error) {
@@ -49,8 +39,8 @@ const MapScreen = () => {
     }
   }, []);
 
-  const onCampusSelect = (campus) => {
-    setSelectedCampus((prevCampus) => {
+  const onCampusSelect = campus => {
+    setSelectedCampus(prevCampus => {
       if (prevCampus !== campus) {
         return campus;
       }
@@ -59,14 +49,15 @@ const MapScreen = () => {
     setTargetLocation({});
   };
 
-  const fetchAllLocations = async () => { //gets the buildings of both campus for the purpose of getting directions from one campus to the other
+  const fetchAllLocations = async () => {
+    //gets the buildings of both campus for the purpose of getting directions from one campus to the other
     try {
       const data = await getBuildings();
       setAllLocations(data);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
