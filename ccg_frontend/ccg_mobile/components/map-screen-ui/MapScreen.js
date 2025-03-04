@@ -73,6 +73,7 @@ const MapScreen = () => {
       <HeaderBar
         setTargetLocation={setTargetLocation}
         selectedCampus={selectedCampus}
+        setSelectedCampus={setSelectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
       />

@@ -1,92 +1,68 @@
-import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Dimensions, Animated } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import MenuButton from "../elements/MenuButton";
 import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
+import PropTypes from "prop-types";
 
-const { width } = Dimensions.get("window");
+const HeaderBar = ({
+  selectedCampus,
+  onCampusSelect,
+  setSelectedCampus,
+  locations,
+  setTargetLocation,
+}) => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.headerRow}>
+        <MenuButton testID="menu-button" />
+        <SearchBar
+          testID="search-bar"
+          setTargetLocation={setTargetLocation}
+          locations={locations}
+          setSelectedCampus={setSelectedCampus}
+        />
+          <CampusSelector
+            testID="campus-selector"
+            selectedCampus={selectedCampus}
+            onCampusSelect={onCampusSelect}
+            compact={true}
+          />
+      </View>
+    </View>
+  );
+};
 
-
-const HeaderBar = ({ selectedCampus, onCampusSelect, locations, setTargetLocation }) => {
-
-    const [isSearching, setIsSearching] = useState(false);
-    const campusOpacity = useRef(new Animated.Value(1)).current; // Default to visible
-    const campusTranslateY = useRef(new Animated.Value(0)).current;
-
-    useEffect(() => {
-        if (isSearching) {
-            Animated.parallel([
-                Animated.timing(campusOpacity, {
-                    toValue: 0,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(campusTranslateY, {
-                    toValue: -10,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-            ]).start();
-        } else {
-            // Show animation
-            Animated.parallel([
-                Animated.timing(campusOpacity, {
-                    toValue: 1,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(campusTranslateY, {
-                    toValue: 0,
-                    duration: 300,
-                    useNativeDriver: true,
-                }),
-            ]).start();
-        }
-    }, [isSearching]);
-
-    return (
-        <View style={styles.headerContainer}>
-
-            <View style={styles.topRow}>
-
-                <MenuButton testID="menu-button" />
-                <View style={styles.topColumn}>
-
-                    <SearchBar testID="search-bar" setTargetLocation={setTargetLocation} setIsSearching={setIsSearching} locations={locations} />
-                    <Animated.View style={{
-                        opacity: campusOpacity,
-                        transform: [{ translateY: campusTranslateY }],
-                    }}>
-                        <CampusSelector testID="campus-selector" selectedCampus={selectedCampus} onCampusSelect={onCampusSelect} />
-                    </Animated.View>
-
-                </View>
-
-            </View>
-
-        </View>
-    );
+HeaderBar.propTypes = {
+  selectedCampus: PropTypes.string.isRequired,
+  onCampusSelect: PropTypes.func.isRequired,
+  setSelectedCampus: PropTypes.func.isRequired,
+  locations: PropTypes.array.isRequired,
+  setTargetLocation: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
-    headerContainer: {
-
-        paddingTop: 60,
-        paddingBottom: 10,
-        backgroundColor: "white",
-        width: "100%",
-    },
-    topColumn: {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: width * 0.9, // Responsive width
-    },
-
-    topRow: {
-        flexDirection: "row",
-        width: width * 0.9, // Responsive width
-    },
+  container: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    width: "100%",
+    paddingTop: 50,
+  },
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    marginHorizontal: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
+  },
 });
 
 export default HeaderBar;
