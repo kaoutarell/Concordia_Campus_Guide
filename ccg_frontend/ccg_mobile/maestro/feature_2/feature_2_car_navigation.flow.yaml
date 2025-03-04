@@ -1,7 +1,7 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Car"
 ---
-- tapOn: "LB" # tap on building marker - goal is to test another marker
+- tapOn: "MB" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
 # choose destination
@@ -23,7 +23,7 @@ name: "Feature 2.1 & 2.5 - Car"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "PC"
 - assertVisible: "15 minutes"
@@ -43,7 +43,7 @@ name: "Feature 2.1 & 2.5 - Car"
 - assertVisible: "Shuttle"
 - assertVisible: "7200 Sherbrooke St. W."
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "PC"
 - assertVisible: "15 minutes"

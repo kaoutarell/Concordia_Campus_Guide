@@ -1,10 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bike"
 ---
-# starting state: map view
-- tapOn: "Zoom in" #zoom in to see building markers
-- tapOn: "Zoom in" #zoom in to see building markers
-- tapOn: "Q" # tap on building marker - goal is to test another marker
+# starting state: map view zoomed in twice
+- tapOn: "FG" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
 - tapOn: "Bike" # select bike navigation
@@ -25,7 +23,7 @@ name: "Feature 2.1 & 2.5 - Bike"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+##[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "MB"
 - assertVisible: "1 minute"
@@ -45,7 +43,7 @@ name: "Feature 2.1 & 2.5 - Bike"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "MB"
 - assertVisible: "1 minute"

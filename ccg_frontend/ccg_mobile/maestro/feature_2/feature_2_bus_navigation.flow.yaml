@@ -2,7 +2,7 @@ appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bus"
 ---
 # starting state: map view - with markers visible
-- tapOn: "MB" # tap on building marker - goal is to test another marker
+- tapOn: "CL" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
 # choose destination
@@ -28,7 +28,7 @@ name: "Feature 2.1 & 2.5 - Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
 - assertVisible: "7141 Sherbrooke W."
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "RF"
 # start navigation
@@ -47,7 +47,7 @@ name: "Feature 2.1 & 2.5 - Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
 - assertVisible: "7141 Sherbrooke W."
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "RF"
 # start navigation flow

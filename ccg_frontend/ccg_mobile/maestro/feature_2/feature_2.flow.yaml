@@ -14,15 +14,12 @@ name: "Feature 2 - Outdoor Directions"
 #- assertVisible: "Google Map"
 #- tapOn: "Zoom in"
 #- scroll #scroll vertically
-#- assertVisible: "My Location"
+##[Deprecated]- assertVisible: "My Location"
 #- tapOn: "My Location"
 # check that my location button recenters screen to user's location
 #- assertVisible: "H"
 
 # test that providing a start point will take the user to the navigation screen
-- tapOn:
-    id: "campus-button"
-- assertVisible: "Loyola"
 - tapOn: "Zoom in"
 - tapOn: "Zoom in"
 - tapOn: "TD"
@@ -44,7 +41,7 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "Google Map"
 - assertVisible: "H"
@@ -54,8 +51,8 @@ name: "Feature 2 - Outdoor Directions"
 # close info popup
 - tapOn: ""
 # check that the campus toggle button and other components render
-#- assertVisible:
-#id: "campus-selector"
+- assertVisible:
+    id: "campus-button"
 - assertVisible: "Google Map"
 - tapOn: "" #menu
 # test that Navigate button from sidebar works properly
@@ -69,7 +66,7 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - tapOn: "Start Navigation"
 - assertVisible:

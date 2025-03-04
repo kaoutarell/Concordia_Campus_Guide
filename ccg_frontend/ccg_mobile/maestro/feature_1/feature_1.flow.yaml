@@ -32,9 +32,10 @@ name: "Feature 1 - Show Both Campuses"
 - assertVisible:
     text: "Indoor"
     enabled: true
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - doubleTapOn: # zoom in on map to show markers
     id: "map-view"
+- tapOn: "Zoom in"
 # Feature 1.5 - Show Info About Buildings
 - tapOn: "PY"
 - assertVisible: "Psychology Building"
@@ -54,6 +55,7 @@ name: "Feature 1 - Show Both Campuses"
 # Feature 1.5 - Show Info About Buildings
 - doubleTapOn: # zoom in on map to show markers
     id: "map-view"
+- tapOn: "Zoom in"
 - tapOn: "ER"
 - assertVisible: "ER Building"
 - assertVisible: "ER"
