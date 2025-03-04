@@ -1,0 +1,72 @@
+appId: host.exp.Exponent
+name: "Feature 2.1 & 2.5 - Bus"
+---
+# starting state: map view - with markers visible
+- tapOn: "CL" # tap on building marker - goal is to test another marker
+# open info popup
+- tapOn: "Get Directions"
+# choose destination
+- tapOn: "Destination Address"
+# select destination by typing part of building name
+- inputText:
+    text: "Jesuit"
+    into: "Where to?"
+# assert that there are two buildings container Jesuis
+- assertVisible: "Loyola Jesuit Hall and Conference Centre"
+- assertVisible:
+    text: "7141 Sherbrooke W."
+    index: 1
+- assertVisible: "Jesuit Residence"
+# select desired building from list
+- tapOn: "Loyola Jesuit Hall and Conference Centre"
+# check to see if page renders correctly
+- tapOn: "Bus" # select bus navigation
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+- assertVisible: "7141 Sherbrooke W."
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "RF"
+# start navigation
+- tapOn: "Start Navigation"
+- assertVisible: "↑"
+- assertVisible: "Google Map"
+- assertVisible: "DIR"
+- assertVisible: "Exit"
+# check that exit button works
+- tapOn: "Exit"
+# check to see if page renders correctly
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+- assertVisible: "7141 Sherbrooke W."
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "RF"
+# start navigation flow
+- tapOn: "Start Navigation"
+- assertVisible: "DIR"
+- assertVisible: "Exit"
+# see directions and assert page renders correctly
+- tapOn: "DIR"
+- assertVisible: "Directions"
+- scrollUntilVisible:
+    element:
+      text: "Arrived at destination"
+    timeout: 50000
+# exit direction page
+- tapOn: "←"
+# exit navigation
+- tapOn: "Exit"
+- assertVisible: "Google Map"
+# leave navigation map
+- tapOn: "←"
+# close info popup
+- tapOn: ""
