@@ -24,7 +24,8 @@ const NavigationScreen = ({ navigation, route }) => {
   const [startPoint, setStartPoint] = useState(params.start || null);
   const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
-  const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets school buildings + points of interest
+  //gets school buildings + points of interest
+  const [allLocations, setAllLocations] = useState(params.allLocations || []);
 
   const [direction, setDirection] = useState(null);
 

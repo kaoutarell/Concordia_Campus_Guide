@@ -9,7 +9,7 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
 
   const handlePress = type => {
     navigation.navigate("Search", {
-      allLocations,
+      searchableItems: allLocations,
       type,
       onGoBack: selectedAddress =>
         type === "start" ? onModifyAddress("start", selectedAddress) : onModifyAddress("destination", selectedAddress),

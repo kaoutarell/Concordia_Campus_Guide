@@ -38,7 +38,10 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
     navigation.navigate("Navigation", {
       start: null,
       destination: location,
-      allLocations: [...locations, ...pointsOfInterest],
+      allLocations: [
+        ...locations.map(item => ({ ...item, id: `school-${item.id}` })),
+        ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` })),
+      ],
     });
   };
 
