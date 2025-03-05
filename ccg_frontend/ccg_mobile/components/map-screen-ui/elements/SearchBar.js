@@ -47,7 +47,7 @@ const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelec
           onFocus={() => handlePress()}
         />
         {destination.length > 0 && (
-          <TouchableOpacity onPress={clearSearch} style={styles.clearButton}>
+          <TouchableOpacity testID="clear-search-button" onPress={clearSearch} style={styles.clearButton}>
             <FontAwesome name="times-circle" size={18} color="#8B1D3B" />
           </TouchableOpacity>
         )}
