@@ -676,7 +676,7 @@
         "fields": {
             "name": "Tim Hortons",
             "category": "cafe",
-            "location": "SRID=4326;POINT (45.4958548 -73.5787827)",
+            "location": "SRID=4326;POINT (-73.5787827 45.4958548)",
             "civic_address": "1550 Blvd. De Maisonneuve Ouest, Montreal, Quebec H3G 1N2",
             "campus": "SGW"
         }
