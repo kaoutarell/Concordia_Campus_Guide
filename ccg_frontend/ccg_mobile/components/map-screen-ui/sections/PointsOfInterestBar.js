@@ -25,7 +25,7 @@ const PointsOfInterestBar = () => {
  
   const POI_LIST = [
     { emoji: "🍽️", name: "Restaurants" },
-    { emoji: "☕", name: "Cafés" },
+    { emoji: "☕", name: "Coffee" },
     { emoji: "🍻", name: "Bars" },
     { emoji: "📕", name: "Library" },
     { emoji: "🏦", name: "Bank" },
