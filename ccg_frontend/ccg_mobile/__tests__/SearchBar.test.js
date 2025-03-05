@@ -48,11 +48,14 @@ describe("SearchBar Component", () => {
 
     await waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledTimes(1);
-      expect(mockNavigate).toHaveBeenCalledWith("Search", expect.objectContaining({
-        searchableItems: expect.any(Array),
-        type: "destination",
-        onGoBack: expect.any(Function),
-      }));
+      expect(mockNavigate).toHaveBeenCalledWith(
+        "Search",
+        expect.objectContaining({
+          searchableItems: expect.any(Array),
+          type: "destination",
+          onGoBack: expect.any(Function),
+        })
+      );
     });
-  })
+  });
 });
