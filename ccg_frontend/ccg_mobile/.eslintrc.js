@@ -20,6 +20,6 @@ module.exports = {
     "no-undef": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "react/display-name": "off",
-    "@typescript-eslint/no-require-imports": "off"
+    "@typescript-eslint/no-require-imports": "off",
   },
 };
