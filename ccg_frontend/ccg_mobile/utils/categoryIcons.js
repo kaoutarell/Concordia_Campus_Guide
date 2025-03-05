@@ -40,7 +40,7 @@ const categoryIcons = {
   waste_basket: require("../assets/poi_icons/waste_basket.png"),
 };
 
-export const getCategoryIcon = (category) => {
+export const getCategoryIcon = category => {
   return categoryIcons[category] || categoryIcons.university;
 };
 

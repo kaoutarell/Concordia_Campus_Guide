@@ -24,7 +24,7 @@ const NavigationScreen = ({ navigation, route }) => {
   const [startPoint, setStartPoint] = useState(params.start || null);
   const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
-  const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets the buildings in both campus
+  const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets school buildings + points of interest
 
   const [direction, setDirection] = useState(null);
 
@@ -97,7 +97,6 @@ const NavigationScreen = ({ navigation, route }) => {
     } else {
       setStartPoint(location);
     }
-    console.log("destt", startPoint.civic_address, destinationPoint.civic_address);
   };
 
   // needs to check destination point but we need to implement the search bar first

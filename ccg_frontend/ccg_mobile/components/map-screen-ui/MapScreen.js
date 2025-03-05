@@ -82,6 +82,7 @@ const MapScreen = () => {
       {/* Map */}
       <MapViewComponent
         locations={allLocations}
+        pointsOfInterest={pointsOfInterest}
         target={targetLocation}
         region={getRegion()}
         maxBounds={getMaxBounds()}

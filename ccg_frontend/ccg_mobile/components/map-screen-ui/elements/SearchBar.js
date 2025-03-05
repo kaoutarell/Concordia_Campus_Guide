@@ -13,7 +13,7 @@ const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelec
 
   const searchableItems = [
     ...allLocations.map(item => ({ ...item, id: `school-${item.id}` })),
-    ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` }))
+    ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` })),
   ];
   const handlePress = () => {
     navigation.navigate("Search", {

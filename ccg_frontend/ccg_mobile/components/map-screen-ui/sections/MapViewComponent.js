@@ -9,7 +9,7 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const MapViewComponent = ({ target, locations, region, maxBounds }) => {
+const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBounds }) => {
   const navigation = useNavigation();
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,15 +19,6 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
-
-  const isWithinBounds = region => {
-    return (
-      region.latitude <= maxBounds.northeast.latitude &&
-      region.latitude >= maxBounds.southwest.latitude &&
-      region.longitude <= maxBounds.northeast.longitude &&
-      region.longitude >= maxBounds.southwest.longitude
-    );
-  };
 
   const handleRegionChange = region => {
     if (Platform.OS == "android") {
@@ -47,7 +38,7 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
     navigation.navigate("Navigation", {
       start: null,
       destination: location,
-      allLocations: locations,
+      allLocations: [...locations, ...pointsOfInterest],
     });
   };
 

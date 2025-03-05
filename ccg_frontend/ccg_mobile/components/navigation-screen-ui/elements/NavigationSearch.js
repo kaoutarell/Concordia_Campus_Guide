@@ -25,8 +25,6 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
       rotateAnim.setValue(0);
     });
 
-    console.log("starrtt", startAddress, destinationAddress);
-
     onModifyAddress(
       "start",
       allLocations.find(location => location.civic_address === destinationAddress)
