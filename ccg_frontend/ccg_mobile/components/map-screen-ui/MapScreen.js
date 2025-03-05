@@ -7,9 +7,7 @@ import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } 
 
 import { View, StyleSheet } from "react-native";
 
-import PointsOfInterestBar from "./sections/PointsOfInterestBar"; //
-
-import PointsOfInterestBar from "./sections/PointsOfInterestBar"; //
+import PointsOfInterestBar from "./sections/PointsOfInterestBar";
 
 import HeaderBar from "./sections/HeaderBar";
 

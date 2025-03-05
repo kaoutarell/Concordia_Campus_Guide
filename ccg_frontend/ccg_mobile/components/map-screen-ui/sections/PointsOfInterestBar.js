@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
 
 const PointsOfInterestBar = () => {
+  const [selectedPOI, setSelectedPOI] = useState(null);
+
+
   const handleButtonPress = (category) => {
-    console.log(`${category} button pressed`);
+    const newSelection = selectedPOI === category ? null : category;
+    setSelectedPOI(newSelection);
+    console.log(`Selected POI: ${newSelection}`); //check which POI was selected
+
+    // for whoever that will work on the backend
     // Add backend here
+    // Here, notify the backend with the selected POI
+    // You can call a backend API based on the selected POI
+    // For example, if the selected category is "Restaurants", make an API call to get restaurant data
+    // implement an API call here, where category = selectedPOI
+    // Example: fetchPOIData(selectedPOI); // Call backend to fetch data based on POI
   };
+
+ 
 
  
   const POI_LIST = [
@@ -26,6 +40,7 @@ const PointsOfInterestBar = () => {
             key={index}
             emoji={poi.emoji}
             name={poi.name}
+            isSelected = {selectedPOI == poi.name}
             onPress={() => handleButtonPress(poi.name)}
           />
         ))}
