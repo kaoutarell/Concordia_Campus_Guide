@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, FlatList, TouchableOpacity, TextInput, Text, Keyboard } from "react-native";
+import { View, Image, StyleSheet, FlatList, TouchableOpacity, TextInput, Text, Keyboard } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { getBuildings } from "../../api/dataService";
+import { getCategoryIcon, getCategoryIcons } from "../../utils/categoryIcons";
 
 const CustomNavSearch = ({ navigation, route }) => {
-  const { type, onGoBack, allLocations } = route.params || {};
+  const { type, onGoBack, searchableItems } = route.params || {};
 
-  const [allBuildings, setAllBuildings] = useState(allLocations);
+  const [allBuildings, setAllBuildings] = useState(searchableItems);
 
   const [searchText, setSearchText] = useState("");
-  const [filteredLocations, setFilteredLocations] = useState(allLocations);
+  const [filteredLocations, setFilteredLocations] = useState(searchableItems);
 
   const inputRef = useRef(null);
 
@@ -39,21 +40,6 @@ const CustomNavSearch = ({ navigation, route }) => {
     navigation.goBack();
   };
 
-  const fetchBuildings = async () => {
-    const buildings = await getBuildings();
-    setAllBuildings(buildings);
-    setFilteredLocations(buildings);
-  };
-
-  useEffect(() => {
-    if (allLocations.length === 0) {
-      fetchBuildings();
-    }
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -77,8 +63,12 @@ const CustomNavSearch = ({ navigation, route }) => {
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.item} onPress={() => handleSelectLocation(item)}>
-            <Text style={styles.buildingName}>{item.name}</Text>
-            <Text style={styles.address}>{item.civic_address}</Text>
+            {/* Icon */}
+            <Image source={getCategoryIcon(item.category)} style={styles.icon} />
+            <View style={styles.textContainer}>
+              <Text style={styles.buildingName}>{item.name}</Text>
+              <Text style={styles.address}>{item.civic_address || "No address available"}</Text>
+            </View>
           </TouchableOpacity>
         )}
       />
@@ -86,13 +76,16 @@ const CustomNavSearch = ({ navigation, route }) => {
   );
 };
 
-// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
     paddingTop: 50,
     paddingHorizontal: 20,
+  },
+  textContainer: {
+    flex: 1,
+    flexDirection: "column",
   },
   inputContainer: {
     flexDirection: "row",
@@ -108,10 +101,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
-    flex: 1, // Take up remaining space
+    flex: 1,
     fontSize: 18,
   },
+  icon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+  },
   item: {
+    flexDirection: "row",
     padding: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#800020",

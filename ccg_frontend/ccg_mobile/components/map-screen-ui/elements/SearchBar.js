@@ -6,14 +6,18 @@ import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
-const SearchBar = ({ allLocations, setTargetLocation, setSelectedCampus }) => {
+const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelectedCampus }) => {
   const navigation = useNavigation();
 
   const [destination, setDestination] = useState("");
 
+  const searchableItems = [
+    ...allLocations.map(item => ({ ...item, id: `school-${item.id}` })),
+    ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` }))
+  ];
   const handlePress = () => {
     navigation.navigate("Search", {
-      allLocations,
+      searchableItems,
       type: "destination",
       onGoBack: selectedDestination => {
         setDestination(selectedDestination.name);

@@ -63,8 +63,7 @@ const MapScreen = () => {
   const fetchPointsOfInterests = async () => {
     try {
       const data = await getPointOfInterests();
-      console.log(data);
-      // setPointsOfInterest(data);
+      setPointsOfInterest(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -78,6 +77,7 @@ const MapScreen = () => {
         setSelectedCampus={setSelectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
+        pointsOfInterest={pointsOfInterest}
       />
       {/* Map */}
       <MapViewComponent
