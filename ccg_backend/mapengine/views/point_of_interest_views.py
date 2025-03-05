@@ -24,7 +24,6 @@ def get_points_of_interest(request):
         points_of_interest = PointOfInterest.objects.filter(campus=campus.upper())
     else:
         points_of_interest = PointOfInterest.objects.all()
-    
     # if the longitude and latitude are provided, return the closest point of interest
     if longitude and latitude:
         longitude = float(longitude)
