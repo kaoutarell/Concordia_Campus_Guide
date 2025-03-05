@@ -14,32 +14,22 @@ jest.mock("../components/map-screen-ui/elements/MenuButton", () => {
 jest.mock("../components/map-screen-ui/elements/SearchBar", () => {
   return ({ setTargetLocation }) => {
     const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
-    return (
-      <View
-        testID="search-bar"
-        onTouchStart={() => setTargetLocation({ name: "Test Location" })}
-      />
-    );
+    return <View testID="search-bar" onTouchStart={() => setTargetLocation({ name: "Test Location" })} />;
   };
 });
 
 jest.mock("../components/map-screen-ui/elements/CampusSelector", () => {
   const { View } = require("react-native"); // Import inside the function to avoid Jest scope issues
   return ({ onCampusSelect }) => {
-    return (
-      <View
-        testID="campus-selector"
-        onTouchStart={() => onCampusSelect("LOY")}
-      />
-    );
+    return <View testID="campus-selector" onTouchStart={() => onCampusSelect("LOY")} />;
   };
 });
 
 describe("HeaderBar Component", () => {
   // Mock locations data
   const mockLocations = [
-    { id: '1', name: 'Building A', campus: 'SGW' },
-    { id: '2', name: 'Building B', campus: 'LOY' }
+    { id: "1", name: "Building A", campus: "SGW" },
+    { id: "2", name: "Building B", campus: "LOY" },
   ];
 
   //Test case 1:
@@ -59,8 +49,6 @@ describe("HeaderBar Component", () => {
     expect(getByTestId("search-bar")).toBeTruthy();
     expect(getByTestId("campus-selector")).toBeTruthy();
   });
-
-
 
   //Test case 2:
   it("calls onCampusSelect when a campus is selected", () => {

@@ -1,7 +1,11 @@
 // hooks/useRouteInstruction.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import { getCumulativeDistanceToNearestCoord, getCurrentStepData, flattenRouteCoordinates } from '../utils/outdoorRouteUtils';
+import {
+  getCumulativeDistanceToNearestCoord,
+  getCurrentStepData,
+  flattenRouteCoordinates,
+} from "../utils/outdoorRouteUtils";
 
 /**
  * Custom hook that accepts dynamic route data and the user location,
@@ -12,16 +16,16 @@ import { getCumulativeDistanceToNearestCoord, getCurrentStepData, flattenRouteCo
  * @returns {Object} { instruction: string, distance: number }
  */
 export function useRouteInstruction(routeData, userLocation) {
-    const [stepData, setStepData] = useState({ instruction: "Fetching instruction...", distance: 0 });
+  const [stepData, setStepData] = useState({ instruction: "Fetching instruction...", distance: 0 });
 
-    useEffect(() => {
-        if (userLocation && routeData && routeData.steps && routeData.steps.length > 0) {
-            const flattenedCoords = flattenRouteCoordinates(routeData);
-            const currentDistance = getCumulativeDistanceToNearestCoord(flattenedCoords, userLocation);
-            const data = getCurrentStepData(routeData, currentDistance);
-            setStepData(data);
-        }
-    }, [userLocation, routeData]);
+  useEffect(() => {
+    if (userLocation && routeData && routeData.steps && routeData.steps.length > 0) {
+      const flattenedCoords = flattenRouteCoordinates(routeData);
+      const currentDistance = getCumulativeDistanceToNearestCoord(flattenedCoords, userLocation);
+      const data = getCurrentStepData(routeData, currentDistance);
+      setStepData(data);
+    }
+  }, [userLocation, routeData]);
 
-    return stepData;
+  return stepData;
 }
