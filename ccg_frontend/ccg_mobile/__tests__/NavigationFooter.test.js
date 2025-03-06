@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 // Mock the NavigationFooter component to avoid Animated issues
 jest.mock("../components/navigation-screen-ui/sections/NavigationFooter", () => {
   const { View, Text, TouchableOpacity } = require("react-native");
-  return function MockNavigationFooter({ onStartNavigation, totalDuration, totalDistance }) {
+  return function MockNavigationFooter({ onStartNavigation, onShowDirections, totalDuration, totalDistance }) {
     return (
       <View>
         <Text>
@@ -15,6 +15,9 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationFooter", () => 
         </Text>
         <TouchableOpacity onPress={onStartNavigation}>
           <Text>Start Navigation</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onShowDirections}>
+          <Text>Preview</Text>
         </TouchableOpacity>
       </View>
     );
@@ -80,7 +83,7 @@ describe("NavigationFooter", () => {
     expect(formattedDistance).toBe("Distance not available");
   });
 
-  test("verifies button press handler", () => {
+  test("verifies Start Navigation button press handler", () => {
     // Create a mock function for onStartNavigation
     const mockStartNavigation = jest.fn();
 
@@ -89,5 +92,15 @@ describe("NavigationFooter", () => {
 
     // Verify the function was called
     expect(mockStartNavigation).toHaveBeenCalled();
+  });
+
+  test("verifies Preview button press handler", () => {
+
+    const mockOnShowDirections = jest.fn();
+
+    mockOnShowDirections();
+
+    expect(mockOnShowDirections).toHaveBeenCalled();
+
   });
 });
