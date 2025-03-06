@@ -101,5 +101,5 @@ jobs:
         run: |
           cd ccg_frontend/ccg_mobile
           npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest --legacy-peer-deps
-          npx eslint . --fix 
+          npx eslint . --fix --ext .js,.jsx,.ts,.tsx
           npm run format:check
