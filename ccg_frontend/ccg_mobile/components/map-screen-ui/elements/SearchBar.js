@@ -4,8 +4,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-
-
 const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelectedCampus }) => {
   const navigation = useNavigation();
 
@@ -94,15 +92,13 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: '#333',
+    color: "#333",
     paddingVertical: 2,
     height: 24,
   },
   clearButton: {
     padding: 5,
   },
-
-
 });
 
 export default SearchBar;
