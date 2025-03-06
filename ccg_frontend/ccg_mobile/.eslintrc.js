@@ -3,22 +3,10 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    "react-native/react-native": true,
+    'react-native/react-native': true,
     jest: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
-  overrides: [
-    {
-      // Only use TypeScript rules for TypeScript files
-      files: ["*.ts", "*.tsx"],
-      extends: ["plugin:@typescript-eslint/recommended"],
-      plugins: ["@typescript-eslint"],
-      parser: "@typescript-eslint/parser",
-      rules: {
-        "@typescript-eslint/no-unused-vars": "off",
-      },
-    },
-  ],
+  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -29,7 +17,7 @@ module.exports = {
   plugins: ["react", "react-native"],
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
   rules: {
