@@ -90,7 +90,7 @@ export default NavigationSearch;
 
 // Get dimensions for responsive styling
 Dimensions.get("window");
-const { width } = Dimensions.get("window");
+
 
 const styles = StyleSheet.create({
   searchContainer: {
