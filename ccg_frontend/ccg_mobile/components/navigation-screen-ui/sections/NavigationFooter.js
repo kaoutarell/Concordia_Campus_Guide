@@ -17,8 +17,6 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance, onS
   return (
     <SafeAreaView style={styles.safeArea}>
       <Animated.View style={[styles.container, { opacity: fadeIn }]}>
-
-
         <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
 
         <View style={styles.buttonWrapper}>
@@ -29,7 +27,6 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance, onS
             <Text style={styles.startButtonText}>Preview</Text>
           </TouchableOpacity>
         </View>
-
       </Animated.View>
     </SafeAreaView>
   );

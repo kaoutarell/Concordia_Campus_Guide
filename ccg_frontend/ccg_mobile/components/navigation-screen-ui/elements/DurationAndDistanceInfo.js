@@ -21,7 +21,7 @@ const DurationAndDistanceInfo = ({ duration, distance }) => {
       </View>
     </View>
   );
-}
+};
 
 DurationAndDistanceInfo.propTypes = {
   duration: PropTypes.number,
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   infoBand: {
     flex: 1,
     alignSelf: "flex-start",
-
   },
   infoItem: {
     flexDirection: "row",
