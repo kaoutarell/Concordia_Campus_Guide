@@ -1,9 +1,7 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, Dimensions, View } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
-
-const { width } = Dimensions.get("window");
 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
   const getCampusName = campus => {
@@ -14,17 +12,6 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
         return "Loyola";
       default:
         return "Error: Unknown Campus";
-    }
-  };
-
-  const getCampusInitials = campus => {
-    switch (campus) {
-      case "SGW":
-        return "SGW";
-      case "LOY":
-        return "LOY";
-      default:
-        return "??";
     }
   };
 
