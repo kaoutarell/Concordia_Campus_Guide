@@ -26,5 +26,5 @@ export const getUpcomingShuttles = async (lat, long) => {
 }
 
 export const getIndoorDirections = async (profile, start, destination) => {
-  return await fetchDataByEndpoint("directions/indoor");
+  return await fetchDataByEndpoint("directions/indoor?start="+start+"&destination="+destination);
 }

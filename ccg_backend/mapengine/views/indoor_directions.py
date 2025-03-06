@@ -7,9 +7,10 @@ import numpy as np
 
 @api_view(['GET'])
 def get_indoor_directions(request):
-    with open('mapengine/fixtures/h8.json', 'r') as file:
-        map_data=json.load(file)
-    sequence=get_node_sequence(map_data, "H867", "H827")
+    start=request.GET.get('start')
+    destination=request.GET.get('destination')
+    map_data=select_map(request)
+    sequence=get_node_sequence(map_data, start, destination)
     coords=get_path_coordinates(map_data, sequence)
     path = {"path_data": convert_coords_to_output(coords)}
     print(path)
@@ -93,3 +94,14 @@ def convert_coords_to_output(coords):
         output+=" L"+str(coords[i]["x"])+" "+str(coords[i]["y"])
         i+=1
     return output
+
+#incomplete function (will need changes for adding floor and logic for going through multiple floors)
+def select_map(request):
+    start = request.GET.get('start')
+    destination = request.GET.get('destination')
+    if start.startswith('H8'):
+        with open('mapengine/fixtures/h8.json', 'r') as file:
+            map_data=json.load(file)
+        return map_data
+    else:
+        return None
