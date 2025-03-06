@@ -95,12 +95,10 @@ describe("NavigationFooter", () => {
   });
 
   test("verifies Preview button press handler", () => {
-
     const mockOnShowDirections = jest.fn();
 
     mockOnShowDirections();
 
     expect(mockOnShowDirections).toHaveBeenCalled();
-
   });
 });
