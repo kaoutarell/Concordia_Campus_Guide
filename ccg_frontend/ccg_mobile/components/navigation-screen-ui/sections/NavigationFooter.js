@@ -36,6 +36,7 @@ NavigationFooter.propTypes = {
   totalDuration: PropTypes.number,
   totalDistance: PropTypes.number,
   onStartNavigation: PropTypes.func.isRequired,
+  onShowDirections: PropTypes.func.isRequired,
 };
 
 export default NavigationFooter;
