@@ -19,6 +19,11 @@ describe("Sidebar", () => {
     useNavigation.mockReturnValue({ navigate: mockNavigate });
   });
 
+  // Set up a mock implementation for `useNavigation` before each test
+  beforeEach(() => {
+    useNavigation.mockReturnValue({ navigate: mockNavigate });
+  });
+
   // Clean up any mock data between tests to ensure no interference
   afterEach(() => {
     jest.clearAllMocks(); // Clears mock functions to reset their state
@@ -39,6 +44,7 @@ describe("Sidebar", () => {
     expect(getByText("ConU CG")).toBeTruthy();
     expect(getByText("🏠 Home")).toBeTruthy();
     expect(getByText("🏛 Explore All Buildings")).toBeTruthy();
+    expect(getByText("🚶‍♂️ Navigate")).toBeTruthy();
     expect(getByText("❓ Help")).toBeTruthy();
     expect(getByText("💬 Feedback")).toBeTruthy();
   });
@@ -53,15 +59,42 @@ describe("Sidebar", () => {
     expect(mockNavigate).toHaveBeenCalledWith("Home");
   });
 
-  // Test to verify that all menu items are rendered correctly
-  it("renders all menu items", () => {
+  // Test to check if the "Explore All Buildings" button triggers the correct navigation
+  it("navigates to Map when Explore All Buildings button is pressed", () => {
     const { getByText } = render(component);
+    const exploreButton = getByText("🏛 Explore All Buildings");
 
-    // check for each menu item
-    expect(getByText("🏠 Home")).toBeTruthy();
-    expect(getByText("🏛 Explore All Buildings")).toBeTruthy();
-    expect(getByText("❓ Help")).toBeTruthy();
-    expect(getByText("💬 Feedback")).toBeTruthy();
+    fireEvent.press(exploreButton);
+    expect(mockNavigate).toHaveBeenCalledWith("Map");
+  });
+
+  // Test to check if the "Navigate" button triggers the correct navigation
+  it("navigates to Navigation when Navigate button is pressed", () => {
+    const { getByText } = render(component);
+    const navigateButton = getByText("🚶‍♂️ Navigate");
+
+    fireEvent.press(navigateButton);
+    expect(mockNavigate).toHaveBeenCalledWith("Navigation");
+  });
+
+  // Test for Help button press (which doesn't have navigation yet)
+  it("handles Help button press without navigation", () => {
+    const { getByText } = render(component);
+    const helpButton = getByText("❓ Help");
+
+    fireEvent.press(helpButton);
+    // We only expect 0 calls if this test runs first, otherwise there might be calls from other tests
+    expect(mockNavigate).not.toHaveBeenCalledWith("Help");
+  });
+
+  // Test for Feedback button press (which doesn't have navigation yet)
+  it("handles Feedback button press without navigation", () => {
+    const { getByText } = render(component);
+    const feedbackButton = getByText("💬 Feedback");
+
+    fireEvent.press(feedbackButton);
+    // We only expect 0 calls if this test runs first, otherwise there might be calls from other tests
+    expect(mockNavigate).not.toHaveBeenCalledWith("Feedback");
   });
 
   // Test to verify that the logo has the correct styles
@@ -74,6 +107,23 @@ describe("Sidebar", () => {
       color: "#8B1D3B",
       textAlign: "center",
       marginBottom: expect.any(Number),
+    });
+  });
+
+  // Test to verify menu button styling
+  it("has correct styles for menu buttons", () => {
+    const { getByText } = render(component);
+    const homeButton = getByText("🏠 Home");
+    const homeButtonParent = homeButton.parent;
+
+    // Test that the menu button style has proper attributes
+    expect(homeButtonParent.props.style).toBeDefined();
+    // Just verify it has a style property since exact styles can vary based on device dimensions
+
+    expect(homeButton.props.style).toMatchObject({
+      fontSize: expect.any(Number),
+      fontWeight: "bold",
+      color: "#333",
     });
   });
 });

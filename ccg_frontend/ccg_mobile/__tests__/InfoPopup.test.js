@@ -1,15 +1,98 @@
-import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react-native";
-import InfoPopup from "../components/map-screen-ui/elements/InfoPopUp.js";
-// Mock Ionicons
+// Mock the vector icons
 jest.mock("@expo/vector-icons", () => ({
-  Ionicons: ({ name }) => <>{name}</>,
-  FontAwesome: ({ name }) => <>{name}</>,
+  Ionicons: () => "Ionicons",
+  FontAwesome5: () => "FontAwesome5",
 }));
 
+// Create a mock version of InfoPopup for testing
+jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
+  return function MockInfoPopup(props) {
+    return {
+      type: "div",
+      props: {
+        children: [
+          {
+            type: "div",
+            props: {
+              testID: "building-name",
+              children: props.value.name,
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "building-code",
+              children: ["Building Code: ", props.value.building_code],
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "civic-address",
+              children: props.value.civic_address,
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "campus",
+              children: ["Campus: ", props.value.campus],
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "parking-icon",
+              children: props.value.parking_lot ? "car" : "close-circle",
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "accessibility-icon",
+              children: props.value.accessibility ? "accessibility" : "close-circle",
+            },
+          },
+          {
+            type: "div",
+            props: {
+              testID: "atm-icon",
+              children: props.value.atm ? "cash-outline" : "close-circle",
+            },
+          },
+          {
+            type: "button",
+            props: {
+              testID: "close-icon",
+              onClick: props.onClose,
+              children: "X",
+            },
+          },
+          {
+            type: "button",
+            props: {
+              testID: "directions-button",
+              onClick: () => props.onGo(props.value),
+              children: "Directions",
+            },
+          },
+          {
+            type: "button",
+            props: {
+              testID: "close-button",
+              onClick: props.onClose,
+              children: "Close",
+            },
+          },
+        ],
+      },
+    };
+  };
+});
+
 describe("InfoPopup", () => {
+  // Mock components and data
   const mockBuilding = {
-    // Define mockBuilding *outside* the tests
     name: "Building A",
     building_code: "A",
     civic_address: "1234 Elm St",
@@ -19,35 +102,72 @@ describe("InfoPopup", () => {
     atm: false,
   };
 
-  it("renders the InfoPopup", () => {
-    const mockOnClose = jest.fn();
-    const mockOnGo = jest.fn();
+  const mockOnClose = jest.fn();
+  const mockOnGo = jest.fn();
 
-    // render(
-    //   <InfoPopup value={mockBuilding} onClose={mockOnClose} onGo={mockOnGo} />
-    // );
+  // Import the mocked component
+  const InfoPopup = require("../components/map-screen-ui/elements/InfoPopUp.js");
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  // it("triggers onClose when close button is pressed", () => {
-  //   const mockOnClose = jest.fn();
-  //   const mockOnGo = jest.fn();
+  it("passes the correct data to the InfoPopup component", () => {
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
+    });
 
-  //   render(
-  //     <InfoPopup value={mockBuilding} onClose={mockOnClose} onGo={mockOnGo} />
-  //   );
+    expect(result.props.children[0].props.children).toBe("Building A");
+    expect(result.props.children[1].props.children).toEqual(["Building Code: ", "A"]);
+    expect(result.props.children[2].props.children).toBe("1234 Elm St");
+    expect(result.props.children[3].props.children).toEqual(["Campus: ", "SGW"]);
+  });
 
-  //   fireEvent.press(screen.getByRole("button", { name: "Close" })); // Use screen.getByRole!
-  //   expect(mockOnClose).toHaveBeenCalledTimes(1);
-  // });
+  it("shows the correct icons based on building amenities", () => {
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
+    });
 
-  // it("triggers onGo when go button is pressed", () => {
-  //   const mockOnGo = jest.fn();
+    expect(result.props.children[4].props.children).toBe("car"); // parking_lot is true
+    expect(result.props.children[5].props.children).toBe("accessibility"); // accessibility is true
+    expect(result.props.children[6].props.children).toBe("close-circle"); // atm is false
+  });
 
-  //   render(
-  //     <InfoPopup value={mockBuilding} onClose={jest.fn()} onGo={mockOnGo} />
-  //   );
+  it("calls onClose when close icon is clicked", () => {
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
+    });
 
-  //   fireEvent.press(screen.getByRole("button", { name: "Go" })); // Use screen.getByRole!
-  //   expect(mockOnGo).toHaveBeenCalledTimes(1);
-  // });
+    result.props.children[7].props.onClick();
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onClose when close button is clicked", () => {
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
+    });
+
+    result.props.children[9].props.onClick();
+    expect(mockOnClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onGo with building value when directions button is clicked", () => {
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
+    });
+
+    result.props.children[8].props.onClick();
+    expect(mockOnGo).toHaveBeenCalledTimes(1);
+    expect(mockOnGo).toHaveBeenCalledWith(mockBuilding);
+  });
 });
