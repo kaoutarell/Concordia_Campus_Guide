@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5554" tests="10" failures="0" time="475">
+    <testcase id="Launch App" name="Launch App" classname="Launch App" time="1" status="SUCCESS"/>
+    <testcase id="Home Page" name="Home Page" classname="Home Page" time="12" status="SUCCESS"/>
+    <testcase id="Sidebar" name="Sidebar" classname="Sidebar" time="46" status="SUCCESS"/>
+    <testcase id="Feature 1 - Show Both Campuses" name="Feature 1 - Show Both Campuses" classname="Feature 1 - Show Both Campuses" time="44" status="SUCCESS"/>
+    <testcase id="Feature 2 - Outdoor Directions" name="Feature 2 - Outdoor Directions" classname="Feature 2 - Outdoor Directions" time="99" status="SUCCESS"/>
+    <testcase id="Feature 2.1 &amp; 2.5 - Bike" name="Feature 2.1 &amp; 2.5 - Bike" classname="Feature 2.1 &amp; 2.5 - Bike" time="64" status="SUCCESS"/>
+    <testcase id="Feature 2.1 &amp; 2.5 - Bus" name="Feature 2.1 &amp; 2.5 - Bus" classname="Feature 2.1 &amp; 2.5 - Bus" time="62" status="SUCCESS"/>
+    <testcase id="Feature 2.1 &amp; 2.5 - Car" name="Feature 2.1 &amp; 2.5 - Car" classname="Feature 2.1 &amp; 2.5 - Car" time="46" status="SUCCESS"/>
+    <testcase id="Feature 2.1 &amp; 2.5 - Shuttle" name="Feature 2.1 &amp; 2.5 - Shuttle" classname="Feature 2.1 &amp; 2.5 - Shuttle" time="50" status="SUCCESS"/>
+    <testcase id="Feature 2.1 &amp; 2.5 - Walk" name="Feature 2.1 &amp; 2.5 - Walk" classname="Feature 2.1 &amp; 2.5 - Walk" time="51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -4,6 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
+<<<<<<< HEAD
     const getCampusName = (campus) => {
         switch (campus) {
             case "SGW":
@@ -39,8 +40,19 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
                 </View>
             </TouchableOpacity>
         );
+=======
+  const getCampusName = campus => {
+    switch (campus) {
+      case "SGW":
+        return "Sir George Williams";
+      case "LOY":
+        return "Loyola";
+      default:
+        return "Error: Unknown Campus";
+>>>>>>> main
     }
 
+<<<<<<< HEAD
     return (
         <TouchableOpacity
             style={styles.campusButton}
@@ -58,6 +70,53 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
             />
         </TouchableOpacity>
     );
+=======
+  const getCampusInitials = campus => {
+    switch (campus) {
+      case "SGW":
+        return "SGW";
+      case "LOY":
+        return "LOY";
+      default:
+        return "??";
+    }
+  };
+
+  const toggleCampus = () => {
+    const newCampus = selectedCampus === "SGW" ? "LOY" : "SGW";
+    onCampusSelect(newCampus);
+  };
+
+  if (compact) {
+    return (
+      <TouchableOpacity
+        style={styles.campusToggle}
+        onPress={toggleCampus}
+        testID="campus-button"
+        accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
+      >
+        {/* SGW Side */}
+        <View style={[styles.toggleOption, selectedCampus === "SGW" && styles.activeCampus]}>
+          <Text style={[styles.campusText, selectedCampus === "SGW" && styles.activeText]}>SGW</Text>
+        </View>
+
+        {/* LOY Side */}
+        <View style={[styles.toggleOption, selectedCampus === "LOY" && styles.activeCampus]}>
+          <Text style={[styles.campusText, selectedCampus === "LOY" && styles.activeText]}>LOY</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
+  return (
+    <TouchableOpacity style={styles.campusButton} onPress={toggleCampus} testID="campus-button">
+      <Text style={styles.campusText} testID="campus-name">
+        {getCampusName(selectedCampus)}
+      </Text>
+      <FontAwesome name="exchange" size={14} color="white" style={styles.icon} />
+    </TouchableOpacity>
+  );
+>>>>>>> main
 };
 
 // prop validation

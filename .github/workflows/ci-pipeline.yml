@@ -60,7 +60,7 @@ jobs:
             sleep 3
           done
           echo "PostGIS is ready!"
-      
+
       - name: Run backend tests
         env:
           SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
@@ -97,8 +97,9 @@ jobs:
           npm install --legacy-peer-deps
           npm run test
 
-      - name: Run ESLint
+      - name: Run ESLint & Prettier
         run: |
           cd ccg_frontend/ccg_mobile
           npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest --legacy-peer-deps
           npx eslint .
+          npm run format:check

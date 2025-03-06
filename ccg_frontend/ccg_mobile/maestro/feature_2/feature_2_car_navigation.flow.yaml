@@ -1,0 +1,68 @@
+appId: host.exp.Exponent
+name: "Feature 2.1 & 2.5 - Car"
+---
+- tapOn: "MB" # tap on building marker - goal is to test another marker
+# open info popup
+- tapOn: "Get Directions"
+# choose destination
+- tapOn: "Destination Address"
+# select destination by typing part of building name
+- inputText:
+    text: "Per"
+    into: "Where to?"
+# assert building is visible
+- assertVisible: "PERFORM Centre"
+# select desired building from list
+- tapOn: "PERFORM Centre"
+# check to see if page renders correctly
+- assertVisible: "7200 Sherbrooke St. W."
+- tapOn: "Car" #select car navigation
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "PC"
+- assertVisible: "15 minutes"
+- assertVisible: "7.45 km"
+# start navigation
+- tapOn: "Start Navigation"
+- assertVisible: "Google Map"
+- assertVisible: "DIR"
+- assertVisible: "Exit"
+# check that exit button works
+- tapOn: "Exit"
+# check to see if page renders correctly
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "7200 Sherbrooke St. W."
+- assertVisible: "Google Map"
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "PC"
+- assertVisible: "15 minutes"
+- assertVisible: "7.45 km"
+# start navigation flow
+- tapOn: "Start Navigation"
+- assertVisible: "DIR"
+- assertVisible: "Exit"
+# see directions and assert page renders correctly
+- tapOn: "DIR"
+- assertVisible: "Directions"
+- assertVisible: "Head southwest"
+- assertVisible: "Keep right"
+# exit direction page
+- tapOn: "←"
+# exit navigation
+- tapOn: "Exit"
+- assertVisible: "Google Map"
+# leave navigation map
+- tapOn: "←"
+# close info popup
+- tapOn: ""

@@ -2,14 +2,14 @@
 export const initialRegionSGW = {
   latitude: 45.495654,
   longitude: -73.579219,
-  latitudeDelta: 0.010,
-  longitudeDelta: 0.010,
+  latitudeDelta: 0.01,
+  longitudeDelta: 0.01,
 };
 
 export const maxBoundsSGW = {
   northeast: {
     latitude: 45.4983,
-    longitude: -73.5710,
+    longitude: -73.571,
   },
   southwest: {
     latitude: 45.4921,
@@ -18,10 +18,10 @@ export const maxBoundsSGW = {
 };
 
 export const initialRegionLoyola = {
-  latitude: 45.458400,
+  latitude: 45.4584,
   longitude: -73.640263,
-  latitudeDelta: 0.010,
-  longitudeDelta: 0.010,
+  latitudeDelta: 0.01,
+  longitudeDelta: 0.01,
 };
 
 export const maxBoundsLoyola = {
@@ -30,7 +30,7 @@ export const maxBoundsLoyola = {
     longitude: -73.6336,
   },
   southwest: {
-    latitude: 45.4560,
+    latitude: 45.456,
     longitude: -73.6453,
   },
 };
