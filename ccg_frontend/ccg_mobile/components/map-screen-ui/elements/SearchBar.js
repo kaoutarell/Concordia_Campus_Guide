@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Keyboard } from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity, Keyboard } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const { width } = Dimensions.get("window");
+
 
 const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelectedCampus }) => {
   const navigation = useNavigation();
@@ -94,73 +94,15 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: "#333",
+    color: '#333',
     paddingVertical: 2,
     height: 24,
   },
   clearButton: {
     padding: 5,
   },
-  dropdownContainer: {
-    position: "absolute",
-    top: 60,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-    alignItems: "center",
-    width: "100%",
-  },
-  dropdown: {
-    backgroundColor: "white",
-    borderRadius: 12,
-    width: width * 0.7,
-    maxHeight: 250,
-    borderWidth: 1,
-    borderColor: "#eee",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 5,
-    paddingVertical: 5,
-  },
-  suggestion: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f0f0f0",
-  },
-  suggestionIcon: {
-    marginRight: 10,
-  },
-  suggestionText: {
-    fontSize: 15,
-    color: "#333",
-    fontWeight: "500",
-  },
-  noResultsContainer: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 12,
-    alignItems: "center",
-    width: width * 0.7,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  noResultsText: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#8B1D3B",
-    marginBottom: 5,
-  },
-  tryAgainText: {
-    fontSize: 14,
-    color: "#666",
-  },
+
+
 });
 
 export default SearchBar;

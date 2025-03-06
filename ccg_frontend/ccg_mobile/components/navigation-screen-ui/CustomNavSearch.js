@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { View, Image, StyleSheet, FlatList, TouchableOpacity, TextInput, Text, Keyboard } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { getBuildings } from "../../api/dataService";
-import { getCategoryIcon, getCategoryIcons } from "../../utils/categoryIcons";
+
+import { getCategoryIcon } from "../../utils/categoryIcons";
 
 const CustomNavSearch = ({ navigation, route }) => {
   const { type, onGoBack, searchableItems } = route.params || {};

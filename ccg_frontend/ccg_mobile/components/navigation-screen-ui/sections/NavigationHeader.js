@@ -60,17 +60,6 @@ const styles = StyleSheet.create({
     height: "22%", // Ajustez la hauteur de la carte selon vos besoins
     width: "100%",
   },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 10,
-    paddingLeft: 10,
-    backgroundColor: "#fff",
-    height: 45, // Ensures a good clickable area
-  },
   navModesContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
@@ -92,9 +81,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     width: width * 0.14,
   },
-  inputSwapContainer: {
-    position: "relative", // Ensures correct positioning for swap button
-  },
+
   activeMode: {
     backgroundColor: "#800020",
   },

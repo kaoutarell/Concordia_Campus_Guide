@@ -2,7 +2,6 @@ import React from "react";
 import { render, fireEvent, waitFor, act } from "@testing-library/react-native";
 import SearchBar from "../components/map-screen-ui/elements/SearchBar";
 
-
 const mockNavigate = jest.fn();
 
 jest.mock("@react-navigation/native", () => ({
