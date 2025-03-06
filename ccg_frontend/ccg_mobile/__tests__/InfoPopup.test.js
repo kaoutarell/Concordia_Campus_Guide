@@ -113,12 +113,12 @@ describe("InfoPopup", () => {
   });
 
   it("passes the correct data to the InfoPopup component", () => {
-    const result = InfoPopup({ 
-      value: mockBuilding, 
-      onClose: mockOnClose, 
-      onGo: mockOnGo 
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
     });
-    
+
     expect(result.props.children[0].props.children).toBe("Building A");
     expect(result.props.children[1].props.children).toEqual(["Building Code: ", "A"]);
     expect(result.props.children[2].props.children).toBe("1234 Elm St");
@@ -126,46 +126,46 @@ describe("InfoPopup", () => {
   });
 
   it("shows the correct icons based on building amenities", () => {
-    const result = InfoPopup({ 
-      value: mockBuilding, 
-      onClose: mockOnClose, 
-      onGo: mockOnGo 
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
     });
-    
+
     expect(result.props.children[4].props.children).toBe("car"); // parking_lot is true
     expect(result.props.children[5].props.children).toBe("accessibility"); // accessibility is true
     expect(result.props.children[6].props.children).toBe("close-circle"); // atm is false
   });
 
   it("calls onClose when close icon is clicked", () => {
-    const result = InfoPopup({ 
-      value: mockBuilding, 
-      onClose: mockOnClose, 
-      onGo: mockOnGo 
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
     });
-    
+
     result.props.children[7].props.onClick();
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
   it("calls onClose when close button is clicked", () => {
-    const result = InfoPopup({ 
-      value: mockBuilding, 
-      onClose: mockOnClose, 
-      onGo: mockOnGo 
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
     });
-    
+
     result.props.children[9].props.onClick();
     expect(mockOnClose).toHaveBeenCalledTimes(1);
   });
 
   it("calls onGo with building value when directions button is clicked", () => {
-    const result = InfoPopup({ 
-      value: mockBuilding, 
-      onClose: mockOnClose, 
-      onGo: mockOnGo 
+    const result = InfoPopup({
+      value: mockBuilding,
+      onClose: mockOnClose,
+      onGo: mockOnGo,
     });
-    
+
     result.props.children[8].props.onClick();
     expect(mockOnGo).toHaveBeenCalledTimes(1);
     expect(mockOnGo).toHaveBeenCalledWith(mockBuilding);

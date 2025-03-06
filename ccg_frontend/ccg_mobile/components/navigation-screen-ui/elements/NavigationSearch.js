@@ -88,7 +88,6 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
 
 export default NavigationSearch;
 
-
 // Get dimensions for responsive styling
 Dimensions.get("window");
 const { width } = Dimensions.get("window");

@@ -1,9 +1,9 @@
-import transformLocation from '../utils/transformCurrentLoc';
+import transformLocation from "../utils/transformCurrentLoc";
 
-describe('transformLocation', () => {
+describe("transformLocation", () => {
   beforeEach(() => {
     // Mock console.error before each test
-    jest.spyOn(console, 'error').mockImplementation(() => {});
+    jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -11,13 +11,13 @@ describe('transformLocation', () => {
     console.error.mockRestore();
   });
 
-  it('should properly transform a valid location object', () => {
+  it("should properly transform a valid location object", () => {
     // Arrange
     const mockLocation = {
       coords: {
         latitude: 45.4972159,
-        longitude: -73.5789256
-      }
+        longitude: -73.5789256,
+      },
     };
 
     // Act
@@ -30,31 +30,31 @@ describe('transformLocation', () => {
       id: 1,
       location: {
         latitude: 45.4972159,
-        longitude: -73.5789256
+        longitude: -73.5789256,
       },
-      name: "Current location"
+      name: "Current location",
     });
   });
 
-  it('should return null for null input', () => {
+  it("should return null for null input", () => {
     // Act
     const result = transformLocation(null);
 
     // Assert
     expect(result).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Invalid location object:', null);
+    expect(console.error).toHaveBeenCalledWith("Invalid location object:", null);
   });
 
-  it('should return null for undefined input', () => {
+  it("should return null for undefined input", () => {
     // Act
     const result = transformLocation(undefined);
 
     // Assert
     expect(result).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Invalid location object:', undefined);
+    expect(console.error).toHaveBeenCalledWith("Invalid location object:", undefined);
   });
 
-  it('should return null when coords property is missing', () => {
+  it("should return null when coords property is missing", () => {
     // Arrange
     const invalidLocation = { timestamp: 123456789 };
 
@@ -63,10 +63,10 @@ describe('transformLocation', () => {
 
     // Assert
     expect(result).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Invalid location object:', invalidLocation);
+    expect(console.error).toHaveBeenCalledWith("Invalid location object:", invalidLocation);
   });
 
-  it('should return null when coords property is null', () => {
+  it("should return null when coords property is null", () => {
     // Arrange
     const invalidLocation = { coords: null };
 
@@ -75,6 +75,6 @@ describe('transformLocation', () => {
 
     // Assert
     expect(result).toBeNull();
-    expect(console.error).toHaveBeenCalledWith('Invalid location object:', invalidLocation);
+    expect(console.error).toHaveBeenCalledWith("Invalid location object:", invalidLocation);
   });
 });

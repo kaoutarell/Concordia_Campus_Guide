@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
-  const getCampusName = (campus) => {
+  const getCampusName = campus => {
     switch (campus) {
       case "SGW":
         return "Sir George Williams";
@@ -42,20 +42,11 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
   }
 
   return (
-    <TouchableOpacity
-      style={styles.campusButton}
-      onPress={toggleCampus}
-      testID="campus-button"
-    >
+    <TouchableOpacity style={styles.campusButton} onPress={toggleCampus} testID="campus-button">
       <Text style={styles.campusText} testID="campus-name">
         {getCampusName(selectedCampus)}
       </Text>
-      <FontAwesome
-        name="exchange"
-        size={14}
-        color="white"
-        style={styles.icon}
-      />
+      <FontAwesome name="exchange" size={14} color="white" style={styles.icon} />
     </TouchableOpacity>
   );
 };

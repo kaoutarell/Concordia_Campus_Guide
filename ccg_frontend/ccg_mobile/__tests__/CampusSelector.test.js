@@ -56,20 +56,16 @@ describe("CampusSelector", () => {
 
   it("should render in compact mode when compact prop is true", () => {
     const { getByTestId, getAllByText } = render(
-      <CampusSelector
-        selectedCampus="SGW"
-        onCampusSelect={mockOnCampusSelect}
-        compact={true}
-      />
+      <CampusSelector selectedCampus="SGW" onCampusSelect={mockOnCampusSelect} compact={true} />
     );
-    
+
     // Check that both SGW and LOY are visible in compact mode
     const sgwElements = getAllByText("SGW");
     const loyElements = getAllByText("LOY");
-    
+
     expect(sgwElements.length).toBeGreaterThan(0);
     expect(loyElements.length).toBeGreaterThan(0);
-    
+
     // Test clicking toggles to LOY
     fireEvent.press(getByTestId("campus-button"));
     expect(mockOnCampusSelect).toHaveBeenCalledWith("LOY");
@@ -77,16 +73,12 @@ describe("CampusSelector", () => {
 
   it("should properly show active state in compact mode for LOY campus", () => {
     const { getAllByText } = render(
-      <CampusSelector
-        selectedCampus="LOY"
-        onCampusSelect={mockOnCampusSelect}
-        compact={true}
-      />
+      <CampusSelector selectedCampus="LOY" onCampusSelect={mockOnCampusSelect} compact={true} />
     );
-    
+
     const sgwElements = getAllByText("SGW");
     const loyElements = getAllByText("LOY");
-    
+
     expect(sgwElements.length).toBeGreaterThan(0);
     expect(loyElements.length).toBeGreaterThan(0);
   });

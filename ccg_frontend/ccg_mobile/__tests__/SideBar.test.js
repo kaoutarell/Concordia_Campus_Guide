@@ -37,22 +37,22 @@ describe("Sidebar", () => {
   );
 
   // Test to verify that Sidebar renders the expected elements correctly
-  it('renders correctly', () => {
+  it("renders correctly", () => {
     const { getByText } = render(component);
 
     // Assert that the key elements are visible in the sidebar
-    expect(getByText('ConU CG')).toBeTruthy();
-    expect(getByText('🏠 Home')).toBeTruthy();
-    expect(getByText('🏛 Explore All Buildings')).toBeTruthy();
-    expect(getByText('🚶‍♂️ Navigate')).toBeTruthy();
-    expect(getByText('❓ Help')).toBeTruthy();
-    expect(getByText('💬 Feedback')).toBeTruthy();
+    expect(getByText("ConU CG")).toBeTruthy();
+    expect(getByText("🏠 Home")).toBeTruthy();
+    expect(getByText("🏛 Explore All Buildings")).toBeTruthy();
+    expect(getByText("🚶‍♂️ Navigate")).toBeTruthy();
+    expect(getByText("❓ Help")).toBeTruthy();
+    expect(getByText("💬 Feedback")).toBeTruthy();
   });
 
   // Test to check if the "Home" button triggers the correct navigation
-  it('navigates to Home when Home button is pressed', () => {
+  it("navigates to Home when Home button is pressed", () => {
     const { getByText } = render(component);
-    const homeButton = getByText('🏠 Home'); // Find the "Home" button by its text
+    const homeButton = getByText("🏠 Home"); // Find the "Home" button by its text
 
     fireEvent.press(homeButton); // Simulate pressing the Home button
     // Assert that navigate was called with "Home" as an argument
@@ -60,27 +60,27 @@ describe("Sidebar", () => {
   });
 
   // Test to check if the "Explore All Buildings" button triggers the correct navigation
-  it('navigates to Map when Explore All Buildings button is pressed', () => {
+  it("navigates to Map when Explore All Buildings button is pressed", () => {
     const { getByText } = render(component);
-    const exploreButton = getByText('🏛 Explore All Buildings');
+    const exploreButton = getByText("🏛 Explore All Buildings");
 
     fireEvent.press(exploreButton);
     expect(mockNavigate).toHaveBeenCalledWith("Map");
   });
 
   // Test to check if the "Navigate" button triggers the correct navigation
-  it('navigates to Navigation when Navigate button is pressed', () => {
+  it("navigates to Navigation when Navigate button is pressed", () => {
     const { getByText } = render(component);
-    const navigateButton = getByText('🚶‍♂️ Navigate');
+    const navigateButton = getByText("🚶‍♂️ Navigate");
 
     fireEvent.press(navigateButton);
     expect(mockNavigate).toHaveBeenCalledWith("Navigation");
   });
 
   // Test for Help button press (which doesn't have navigation yet)
-  it('handles Help button press without navigation', () => {
+  it("handles Help button press without navigation", () => {
     const { getByText } = render(component);
-    const helpButton = getByText('❓ Help');
+    const helpButton = getByText("❓ Help");
 
     fireEvent.press(helpButton);
     // We only expect 0 calls if this test runs first, otherwise there might be calls from other tests
@@ -88,9 +88,9 @@ describe("Sidebar", () => {
   });
 
   // Test for Feedback button press (which doesn't have navigation yet)
-  it('handles Feedback button press without navigation', () => {
+  it("handles Feedback button press without navigation", () => {
     const { getByText } = render(component);
-    const feedbackButton = getByText('💬 Feedback');
+    const feedbackButton = getByText("💬 Feedback");
 
     fireEvent.press(feedbackButton);
     // We only expect 0 calls if this test runs first, otherwise there might be calls from other tests
@@ -98,22 +98,22 @@ describe("Sidebar", () => {
   });
 
   // Test to verify that the logo has the correct styles
-  it('has correct styles for logo', () => {
+  it("has correct styles for logo", () => {
     const { getByText } = render(component);
-    const logo = getByText('ConU CG'); // logo text element
+    const logo = getByText("ConU CG"); // logo text element
     expect(logo.props.style).toMatchObject({
       fontSize: expect.any(Number),
-      fontWeight: 'bold',
-      color: '#8B1D3B',
-      textAlign: 'center',
+      fontWeight: "bold",
+      color: "#8B1D3B",
+      textAlign: "center",
       marginBottom: expect.any(Number),
     });
   });
 
   // Test to verify menu button styling
-  it('has correct styles for menu buttons', () => {
+  it("has correct styles for menu buttons", () => {
     const { getByText } = render(component);
-    const homeButton = getByText('🏠 Home');
+    const homeButton = getByText("🏠 Home");
     const homeButtonParent = homeButton.parent;
 
     // Test that the menu button style has proper attributes
@@ -122,8 +122,8 @@ describe("Sidebar", () => {
 
     expect(homeButton.props.style).toMatchObject({
       fontSize: expect.any(Number),
-      fontWeight: 'bold',
-      color: '#333',
+      fontWeight: "bold",
+      color: "#333",
     });
   });
 });

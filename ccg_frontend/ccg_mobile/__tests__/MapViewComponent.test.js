@@ -6,8 +6,8 @@ import { NavigationContainer } from "@react-navigation/native";
 
 // Mock navigation
 const mockNavigate = jest.fn();
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native');
+jest.mock("@react-navigation/native", () => {
+  const actualNav = jest.requireActual("@react-navigation/native");
   return {
     ...actualNav,
     useNavigation: () => ({
@@ -17,9 +17,9 @@ jest.mock('@react-navigation/native', () => {
 });
 
 // Mock Platform
-jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'ios',
-  select: jest.fn().mockImplementation(obj => obj.ios)
+jest.mock("react-native/Libraries/Utilities/Platform", () => ({
+  OS: "ios",
+  select: jest.fn().mockImplementation(obj => obj.ios),
 }));
 
 // Mock the location service
@@ -39,20 +39,29 @@ jest.mock("../utils/transformCurrentLoc", () => {
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
     },
-    name: "Current location"
+    name: "Current location",
   }));
 });
 
 // Mock the map view
 jest.mock("react-native-maps", () => {
-  const { View } = require('react-native');
+  const { View } = require("react-native");
   const MockMapView = ({ children, onRegionChangeComplete, onPress, testID }) => (
     <View testID={testID || "map-view"}>
       {children}
-      <button data-testid="region-change-button" onClick={() => onRegionChangeComplete ? onRegionChangeComplete({ latitude: 45.5, longitude: -73.6, latitudeDelta: 0.01, longitudeDelta: 0.01 }) : null}>
+      <button
+        data-testid="region-change-button"
+        onClick={() =>
+          onRegionChangeComplete
+            ? onRegionChangeComplete({ latitude: 45.5, longitude: -73.6, latitudeDelta: 0.01, longitudeDelta: 0.01 })
+            : null
+        }
+      >
         Change Region
       </button>
-      <button data-testid="map-press-button" onClick={() => onPress ? onPress() : null}>Press Map</button>
+      <button data-testid="map-press-button" onClick={() => (onPress ? onPress() : null)}>
+        Press Map
+      </button>
     </View>
   );
   MockMapView.Marker = ({ coordinate, title, pinColor, testID }) => (
@@ -75,8 +84,12 @@ jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
   return function MockInfoPopup({ value, onClose, onGo }) {
     return (
       <div data-testid="info-popup">
-        <button data-testid="popup-close" onClick={() => onClose()}>Close</button>
-        <button data-testid="popup-go" onClick={() => onGo(value)}>Go</button>
+        <button data-testid="popup-close" onClick={() => onClose()}>
+          Close
+        </button>
+        <button data-testid="popup-go" onClick={() => onGo(value)}>
+          Go
+        </button>
       </div>
     );
   };
@@ -86,7 +99,11 @@ jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
 jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
   return function MockCustomMarker({ value, onPress }) {
     return (
-      <button data-testid="custom-marker" onClick={() => onPress ? onPress() : null} onKeyDown={(e) => e.key === 'Enter' && onPress ? onPress() : null}>
+      <button
+        data-testid="custom-marker"
+        onClick={() => (onPress ? onPress() : null)}
+        onKeyDown={e => (e.key === "Enter" && onPress ? onPress() : null)}
+      >
         <span>{value.id}</span>
       </button>
     );
@@ -96,9 +113,7 @@ jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
 // Mock BuildingHighlight
 jest.mock("../components/map-screen-ui/elements/BuildingHighlight", () => {
   return function MockBuildingHighlight() {
-    return (
-      <div data-testid="building-highlight"></div>
-    );
+    return <div data-testid="building-highlight"></div>;
   };
 });
 
@@ -158,19 +173,14 @@ describe("MapViewComponent", () => {
       coords: {
         latitude: 45.5,
         longitude: -73.6,
-      }
+      },
     }));
   });
 
   it("should start tracking location on mount", () => {
     render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={[]}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={[]} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
     expect(locationService.startTrackingLocation).toHaveBeenCalled();
@@ -179,12 +189,7 @@ describe("MapViewComponent", () => {
   it("should stop tracking location on unmount", () => {
     const { unmount } = render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
     unmount();
@@ -196,16 +201,11 @@ describe("MapViewComponent", () => {
     locationService.startTrackingLocation = jest.fn().mockRejectedValue(new Error("Location error"));
     locationService.getCurrentLocation = jest.fn().mockReturnValue(null);
 
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => { });
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
 
     render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
@@ -219,12 +219,7 @@ describe("MapViewComponent", () => {
   it("should show loading indicator when locations array is empty", () => {
     const { getByText } = render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={[]}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={[]} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
@@ -234,12 +229,7 @@ describe("MapViewComponent", () => {
   it("should not show loading indicator when locations are loaded", () => {
     const { queryByText } = render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
@@ -261,23 +251,13 @@ describe("MapViewComponent", () => {
 
     const { rerender } = render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
     rerender(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={mockTarget}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={mockTarget} />
       </NavigationContainer>
     );
   });
