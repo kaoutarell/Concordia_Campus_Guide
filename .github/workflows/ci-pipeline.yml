@@ -79,7 +79,13 @@ jobs:
           conda activate myenv
           python manage.py makemigrations
           python manage.py migrate
-          pytest
+          pytest --cov-report xml:coverage.xml --cov=./mapengine/tests/
+
+      - name: Upload backend coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: ccg_backend/coverage.xml
 
   frontend-check:
     runs-on: ubuntu-latest
@@ -95,11 +101,47 @@ jobs:
           cd ccg_frontend/ccg_mobile
           npm install -g expo-cli
           npm install --legacy-peer-deps
-          npm run test
 
       - name: Run ESLint & Prettier
         run: |
           cd ccg_frontend/ccg_mobile
-          npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest --legacy-peer-deps
+          npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest  --legacy-peer-deps
           npx eslint .
           npm run format:check
+
+      - name: Run frontend tests
+        run: |
+          cd ccg_frontend/ccg_mobile
+          npm run test --coverage
+
+      - name: Upload frontend coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: ccg_frontend/ccg_mobile/coverage/lcov.info
+
+  sonarcloud-scan:
+    runs-on: ubuntu-latest
+    needs: [backend-check, frontend-check]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download backend coverage report
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-coverage
+          path: ccg_backend
+
+      - name: Download frontend coverage report
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-coverage
+          path: ccg_frontend/ccg_mobile/coverage
+
+      - name: Run SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
