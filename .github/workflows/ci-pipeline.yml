@@ -103,5 +103,6 @@ jobs:
           npm install --save-dev eslint@8
           npm install eslint-plugin-react@latest --save-dev
           npm install @typescript-eslint/eslint-plugin@latest --save-dev
+          npm install --save-dev typescript 
           npx eslint .
           npm run format:check
