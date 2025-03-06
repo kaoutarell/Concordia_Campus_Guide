@@ -88,13 +88,10 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
 
 export default NavigationSearch;
 
-<<<<<<< HEAD
 
 // Get dimensions for responsive styling
 Dimensions.get("window");
-=======
 const { width } = Dimensions.get("window");
->>>>>>> main
 
 const styles = StyleSheet.create({
   searchContainer: {
