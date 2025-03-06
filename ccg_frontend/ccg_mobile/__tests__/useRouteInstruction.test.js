@@ -4,7 +4,7 @@ import useRouteInstruction from '../hooks/useRouteInstruction';
 jest.mock('../hooks/useRouteInstruction', () => {
   return (steps) => {
     if (!steps) return [];
-    
+
     return steps.map(step => ({
       instruction: step.html_instructions ? step.html_instructions.replace(/<\/?b>/g, '') : '',
       distance: step.distance?.text
@@ -33,20 +33,20 @@ describe('useRouteInstruction', () => {
   it('should process directions data correctly', () => {
     // Call the hook directly with test data
     const result = useRouteInstruction(mockSteps);
-    
+
     // Check results
     expect(result).toEqual([
-      { 
-        instruction: 'Walk north on St. Catherine St.', 
-        distance: '100 m' 
+      {
+        instruction: 'Walk north on St. Catherine St.',
+        distance: '100 m'
       },
-      { 
-        instruction: 'Turn right onto Bishop St.', 
-        distance: '200 m' 
+      {
+        instruction: 'Turn right onto Bishop St.',
+        distance: '200 m'
       },
-      { 
-        instruction: 'Your destination is on the left', 
-        distance: undefined 
+      {
+        instruction: 'Your destination is on the left',
+        distance: undefined
       }
     ]);
   });
@@ -71,9 +71,9 @@ describe('useRouteInstruction', () => {
       { /* missing html_instructions */ },
       { html_instructions: 'Some instruction' /* missing distance */ },
     ];
-    
+
     const result = useRouteInstruction(incompleteSteps);
-    
+
     expect(result).toEqual([
       { instruction: '', distance: undefined },
       { instruction: 'Some instruction', distance: undefined }
