@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, FlatList, Text, Keyboard } from "react-native";
+import React, { useState } from "react";
+import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Keyboard } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
