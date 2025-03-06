@@ -141,4 +141,7 @@ jobs:
           name: frontend-coverage
           path: ccg_frontend/ccg_mobile/coverage
 
-    
+      - name: Run SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
