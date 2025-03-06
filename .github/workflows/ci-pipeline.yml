@@ -105,7 +105,8 @@ jobs:
       - name: Run ESLint & Prettier
         run: |
           cd ccg_frontend/ccg_mobile
-          npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest --legacy-peer-deps
+          npm install --save-dev eslint@8 eslint-plugin-react@latest @typescript-eslint/eslint-plugin@latest prettier --legacy-peer-deps
+          prettier --write '**/*.js'
           npx eslint .
           npm run format:check
 
