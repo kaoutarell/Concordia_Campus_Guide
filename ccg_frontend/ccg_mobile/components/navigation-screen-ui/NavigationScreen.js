@@ -193,6 +193,7 @@ const NavigationScreen = ({ navigation, route }) => {
             totalDistance={direction?.total_distance}
             totalDuration={direction?.total_duration}
             onStartNavigation={startNavigation}
+            onShowDirections={() => setShowDirections(true)}
           />
         );
       }
@@ -282,10 +283,7 @@ const styles = StyleSheet.create({
     height: isNavigating ? "70%" : "60%", // Dynamic height based on isNavigating
     width: "100%",
   }),
-  map: {
-    flex: 1,
-    width: "100%",
-  },
+
   loadingContainer: {
     flex: 1,
     justifyContent: "center",

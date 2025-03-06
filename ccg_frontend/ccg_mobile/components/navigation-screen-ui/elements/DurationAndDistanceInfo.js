@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const { width } = Dimensions.get("window");
 
-export default function DurationAndDistanceInfo({ duration, distance }) {
+const DurationAndDistanceInfo = ({ duration, distance }) => {
   return (
     <View style={styles.infoBand}>
       <View style={styles.infoItem}>
@@ -32,11 +32,13 @@ const styles = StyleSheet.create({
   infoBand: {
     flex: 1,
     alignSelf: "flex-start",
+
   },
   infoItem: {
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 6,
+    padding: 6,
   },
   infoText: {
     fontSize: 14,
@@ -46,3 +48,5 @@ const styles = StyleSheet.create({
     maxWidth: width - 200,
   },
 });
+
+export default DurationAndDistanceInfo;

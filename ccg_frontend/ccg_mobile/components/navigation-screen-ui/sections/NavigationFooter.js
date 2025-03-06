@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, View } from "react-native";
 import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
 import PropTypes from "prop-types";
 
-const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) => {
+const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance, onShowDirections }) => {
   const [fadeIn] = React.useState(new Animated.Value(0));
 
   React.useEffect(() => {
@@ -17,10 +17,19 @@ const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance }) =
   return (
     <SafeAreaView style={styles.safeArea}>
       <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+
+
         <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
-        <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
-          <Text style={styles.startButtonText}>Start Navigation</Text>
-        </TouchableOpacity>
+
+        <View style={styles.buttonWrapper}>
+          <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
+            <Text style={styles.startButtonText}>Start Navigation</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.startButton} onPress={onShowDirections}>
+            <Text style={styles.startButtonText}>Preview</Text>
+          </TouchableOpacity>
+        </View>
+
       </Animated.View>
     </SafeAreaView>
   );
@@ -37,7 +46,7 @@ export default NavigationFooter;
 const styles = StyleSheet.create({
   safeArea: {
     justifyContent: "flex-end",
-    height: "15%",
+    height: "12%",
     width: "100%",
   },
   container: {
@@ -53,25 +62,31 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: -4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 5,
   },
+
+  buttonWrapper: {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 10, // Adds space between buttons
+  },
   startButton: {
     backgroundColor: "#fff",
     paddingVertical: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     borderRadius: 30,
     alignItems: "center",
-    width: "100%",
-    maxWidth: 280,
-    marginTop: 10,
-    marginBottom: 30,
+    width: 160,
+    marginVertical: 5,
   },
   startButtonText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "bold",
     color: "#800020",
   },

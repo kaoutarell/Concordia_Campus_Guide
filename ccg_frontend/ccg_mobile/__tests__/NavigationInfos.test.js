@@ -27,7 +27,7 @@ describe("NavigationInfos", () => {
     expect(getByText("2.50 km")).toBeTruthy();
 
     // Check if buttons are rendered
-    expect(getByText("DIR")).toBeTruthy();
+    expect(getByText("Preview")).toBeTruthy();
     expect(getByText("Exit")).toBeTruthy();
   });
 
@@ -49,7 +49,7 @@ describe("NavigationInfos", () => {
     const { getByText } = render(<NavigationInfos {...defaultProps} />);
 
     // Press the DIR button
-    fireEvent.press(getByText("DIR"));
+    fireEvent.press(getByText("Preview"));
 
     // Check if onShowDirections was called
     expect(defaultProps.onShowDirections).toHaveBeenCalled();
