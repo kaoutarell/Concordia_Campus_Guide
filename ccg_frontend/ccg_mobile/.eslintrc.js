@@ -6,7 +6,22 @@ module.exports = {
     'react-native/react-native': true,
     jest: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+  ],
+  overrides: [
+    {
+      // Only use TypeScript rules for TypeScript files
+      files: ['*.ts', '*.tsx'],
+      extends: ["plugin:@typescript-eslint/recommended"],
+      plugins: ["@typescript-eslint"],
+      parser: "@typescript-eslint/parser",
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
+      }
+    }
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
