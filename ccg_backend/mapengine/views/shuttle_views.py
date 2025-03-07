@@ -5,9 +5,10 @@ from ..models.shuttle import ShuttleStop, ShuttleSchedule
 from datetime import datetime
 from django.db.models import F
 from django.db.models.functions import Power
-from pytz import timezone
+from django.utils.timezone import make_aware
+from zoneinfo import ZoneInfo
 
-tz = timezone('America/New_York')
+tz = ZoneInfo('America/New_York')
 
 @api_view(['GET'])
 @require_http_methods(['GET'])
@@ -36,7 +37,7 @@ def get_upcoming_sheduled_shuttle(request):
     # find the closest shuttle stop
     closest_stop = ShuttleStop.objects.annotate(distance=Power(F('latitude') - latitude, 2) + Power(F('longitude') - longitude, 2)).order_by('distance').first()
 
-    now = datetime.now(tz)
+    now = datetime.now()
     day_of_week = now.weekday()
     current_time = now.time()
 
@@ -49,7 +50,7 @@ def get_upcoming_sheduled_shuttle(request):
 
     upcoming_shuttles = []
     for shuttle in schedule:
-        departure_time = tz.localize(datetime.combine(now.date(), shuttle.time))
+        departure_time = make_aware(datetime.combine(now.date(), shuttle.time), timezone=tz)
         time_to_departure = round((departure_time - now).total_seconds() / 60)
         upcoming_shuttles.append({
             "scheduled_time": shuttle.time.strftime("%H:%M"),
