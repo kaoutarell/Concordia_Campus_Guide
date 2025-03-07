@@ -37,7 +37,7 @@ def get_upcoming_sheduled_shuttle(request):
     # find the closest shuttle stop
     closest_stop = ShuttleStop.objects.annotate(distance=Power(F('latitude') - latitude, 2) + Power(F('longitude') - longitude, 2)).order_by('distance').first()
 
-    now = make_aware(datetime.now(), timezone=tz)
+    now = datetime.now()
     day_of_week = now.weekday()
     current_time = now.time()
 
