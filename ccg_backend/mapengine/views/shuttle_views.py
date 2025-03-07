@@ -50,7 +50,7 @@ def get_upcoming_sheduled_shuttle(request):
 
     upcoming_shuttles = []
     for shuttle in schedule:
-        departure_time = make_aware(datetime.combine(now.date(), shuttle.time), timezone=tz) 
+        departure_time = make_aware(datetime.combine(now.date(), shuttle.time), timezone=tz)
         time_to_departure = round((departure_time - now).total_seconds() / 60)
         upcoming_shuttles.append({
             "scheduled_time": shuttle.time.strftime("%H:%M"),
