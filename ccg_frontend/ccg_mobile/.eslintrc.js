@@ -38,8 +38,10 @@ module.exports = {
     "react/prop-types": "off",
     "no-undef": "off",
     "react/display-name": "off",
+    "@typescript-eslint/no-require-imports": "off",
     "react-native/no-unused-styles": "warn",
     "react-native/no-inline-styles": "warn",
     "react-native/no-color-literals": "warn",
+    "no-unused-vars": "warn",
   },
 };

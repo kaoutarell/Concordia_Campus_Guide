@@ -25,7 +25,7 @@ export const getUpcomingShuttles = async (lat, long) => {
   return await fetchDataByEndpoint("upcoming_shuttle?lat=" + lat + "&long=" + long);
 };
 
-export const getPointOfInterests = async (category = null, campus = null) => {
+export const getPointOfInterests = async (category = null, campus = null, long = null, lat = null) => {
   let endpoint = "poi";
   if (category) {
     endpoint += `?category=${category}`;
@@ -33,9 +33,8 @@ export const getPointOfInterests = async (category = null, campus = null) => {
   if (campus) {
     endpoint += category ? `&campus=${campus}` : `?campus=${campus}`;
   }
+  if (long && lat) {
+    endpoint += category || campus ? `&long=${long}&lat=${lat}` : `?long=${long}&lat=${lat}`;
+  }
   return await fetchDataByEndpoint(endpoint);
-};
-
-export const getPointOfInterestsCategories = async () => {
-  return await fetchDataByEndpoint("poi-categories");
 };

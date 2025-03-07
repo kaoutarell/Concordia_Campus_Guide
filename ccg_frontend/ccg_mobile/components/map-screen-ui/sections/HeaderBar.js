@@ -1,11 +1,18 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { View, StyleSheet, Dimensions, Animated } from "react-native";
 import MenuButton from "../elements/MenuButton";
 import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
 import PropTypes from "prop-types";
 
-const HeaderBar = ({ selectedCampus, onCampusSelect, setSelectedCampus, locations, setTargetLocation }) => {
+const HeaderBar = ({
+  pointsOfInterest,
+  selectedCampus,
+  onCampusSelect,
+  setSelectedCampus,
+  locations,
+  setTargetLocation,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerRow}>
@@ -13,7 +20,8 @@ const HeaderBar = ({ selectedCampus, onCampusSelect, setSelectedCampus, location
         <SearchBar
           testID="search-bar"
           setTargetLocation={setTargetLocation}
-          locations={locations}
+          allLocations={locations}
+          pointsOfInterest={pointsOfInterest}
           setSelectedCampus={setSelectedCampus}
         />
         <CampusSelector
