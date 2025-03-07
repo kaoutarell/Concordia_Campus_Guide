@@ -5,9 +5,10 @@ from ..models.shuttle import ShuttleStop, ShuttleSchedule
 from datetime import datetime
 from django.db.models import F
 from django.db.models.functions import Power
-from pytz import timezone
+from zoneinfo import ZoneInfo
 
-tz = timezone('America/New_York')
+tz = ZoneInfo('America/New_York')
+
 
 @api_view(['GET'])
 @require_http_methods(['GET'])
@@ -49,7 +50,7 @@ def get_upcoming_sheduled_shuttle(request):
 
     upcoming_shuttles = []
     for shuttle in schedule:
-        departure_time = tz.localize(datetime.combine(now.date(), shuttle.time))
+        departure_time = datetime.combine(now.date(), shuttle.time, tzinfo=tz)
         time_to_departure = round((departure_time - now).total_seconds() / 60)
         upcoming_shuttles.append({
             "scheduled_time": shuttle.time.strftime("%H:%M"),
