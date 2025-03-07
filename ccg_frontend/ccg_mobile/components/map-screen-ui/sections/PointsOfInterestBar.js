@@ -1,51 +1,48 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
+import { getPointOfInterests } from "../../../api/dataService.js";
+import locationService from '../../../services/LocationService.js';
 
-const PointsOfInterestBar = () => {
+const PointsOfInterestBar = ({setAllLocations, campus, animateSearch}) => {
   const [selectedPOI, setSelectedPOI] = useState(null);
 
 
-  const handleButtonPress = (category) => {
+  const handleButtonPress = async (name,category) => {
     const newSelection = selectedPOI === category ? null : category;
     setSelectedPOI(newSelection);
-    console.log(`Selected POI: ${newSelection}`); //check which POI was selected
+    const loc = locationService.getCurrentLocation();
 
-    // for whoever that will work on the backend
-    // Add backend here
-    // Here, notify the backend with the selected POI
-    // You can call a backend API based on the selected POI
-    // For example, if the selected category is "Restaurants", make an API call to get restaurant data
-    // implement an API call here, where category = selectedPOI
-    // Example: fetchPOIData(selectedPOI); // Call backend to fetch data based on POI
+    try {
+      const data = await getPointOfInterests(category, campus, loc.coords.longitude, loc.coords.latitude);
+      setAllLocations(data.slice(0, 10));
+    } catch (error) {
+      console.error("Error fetching locations: ", error);
+    }
+    animateSearch(name);
   };
 
- 
-
- 
   const POI_LIST = [
-    { emoji: "🍽️", name: "Restaurants" },
-    { emoji: "☕", name: "Coffee" },
-    { emoji: "🍻", name: "Bars" },
-    { emoji: "📕", name: "Library" },
-    { emoji: "🏦", name: "Bank" },
+    { type: "restaurant", name: "Restaurants" },
+    { type: "cafe", name: "Coffee" },
+    { type: "library", name: "Library" },
+    { type: "bank", name: "Bank" },
+    { type: "clinic", name: "Clinic" },
 
   ];
 
   return (
-    <View style={styles.poiContainer}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+    <>
         {POI_LIST.map((poi, index) => (
           <PointsOfInterestButton
             key={index}
-            emoji={poi.emoji}
+            type={poi.type}
             name={poi.name}
             isSelected = {selectedPOI == poi.name}
-            onPress={() => handleButtonPress(poi.name)}
+            onPress={() => handleButtonPress(poi.name,poi.type)}
           />
         ))}
-      </ScrollView>
-    </View>
+    </>
   );
 };
 

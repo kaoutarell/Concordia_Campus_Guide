@@ -15,16 +15,16 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [showMarkers, setShowMarkers] = useState(false);
+  const [showMarkers, setShowMarkers] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
   const handleRegionChange = region => {
-    if (Platform.OS == "android") {
-      const zoomThreshold = 0.006;
-      setShowMarkers(region.latitudeDelta < zoomThreshold);
-    }
+    // if (Platform.OS == "android") {
+    //   const zoomThreshold = 0.006;
+    //   setShowMarkers(region.latitudeDelta < zoomThreshold);
+    // }
   };
 
   const handleMarkerPress = location => {

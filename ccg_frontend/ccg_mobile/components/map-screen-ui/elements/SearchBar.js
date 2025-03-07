@@ -4,10 +4,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelectedCampus }) => {
+const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelectedCampus, destination, setDestination, clearSearch }) => {
   const navigation = useNavigation();
-
-  const [destination, setDestination] = useState("");
 
   const searchableItems = [
     ...allLocations.map(item => ({ ...item, id: `school-${item.id}` })),
@@ -24,13 +22,6 @@ const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelec
         Keyboard.dismiss();
       },
     });
-  };
-
-  const clearSearch = () => {
-    setDestination("");
-    setTargetLocation({});
-    setSelectedCampus("SGW");
-    Keyboard.dismiss();
   };
 
   return (

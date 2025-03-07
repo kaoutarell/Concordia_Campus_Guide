@@ -1,14 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
+import { getCategoryIcon } from '../../../utils/categoryIcons.js';
 
-const PointsOfInterestButton = ({ emoji, name, isSelected, onPress }) => {
+
+const PointsOfInterestButton = ({ type, name, isSelected, onPress }) => {
   return (
-    <TouchableOpacity style={[styles.button, isSelected && styles.selectedButton]}
+    <TouchableOpacity style={styles.button}
       activeOpacity={0.7}
       onPress={onPress}
       >
-      <Text style={[styles.emoji, isSelected && styles.selectedText]}>{emoji}</Text>
-      <Text style={[styles.text, isSelected && styles.selectedText]}>{name}</Text>
+        <Image source={getCategoryIcon(type)} style={styles.icon} />
+        <Text style={styles.text}>{name}</Text>
     </TouchableOpacity>
   );
 };
@@ -34,10 +36,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#8B1D3B', // White text for contrast
+    color: '#000', // White text for contrast
   },
   selectedText: {
     color: '#FFFFFF', // White text when selected
+  },
+  icon: {
+    width: 16,
+    height: 16,
+    marginRight: 5,
   },
 });
 

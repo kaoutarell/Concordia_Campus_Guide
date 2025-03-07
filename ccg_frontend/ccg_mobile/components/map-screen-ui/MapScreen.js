@@ -7,8 +7,6 @@ import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } 
 
 import { View, StyleSheet } from "react-native";
 
-import PointsOfInterestBar from "./sections/PointsOfInterestBar";
-
 import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
@@ -71,6 +69,10 @@ const MapScreen = () => {
     }
   };
 
+  const resetLocations = () => {
+    fetchAllLocations();
+  }
+
   return (
     <View style={styles.container}>
       <HeaderBar
@@ -78,12 +80,11 @@ const MapScreen = () => {
         selectedCampus={selectedCampus}
         setSelectedCampus={setSelectedCampus}
         onCampusSelect={onCampusSelect}
+        setAllLocations={setAllLocations}
         locations={allLocations}
         pointsOfInterest={pointsOfInterest}
+        resetLocations={resetLocations}
       />
-
-      {/*Points of Interest Bar */}
-      <PointsOfInterestBar /> 
 
       {/* Map */}
       <MapViewComponent
