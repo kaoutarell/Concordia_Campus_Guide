@@ -1,17 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { View, Text } from "react-native";
-
-// Skip the actual component and use a mock
-const MockNavigationScreen = jest.fn(() => (
-  <View>
-    <Text>NavigationScreen Mock</Text>
-  </View>
-));
-
-// Mock the actual NavigationScreen
-jest.mock("../components/navigation-screen-ui/NavigationScreen", () => MockNavigationScreen);
+import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 // Mock required components
 jest.mock("../components/navigation-screen-ui/sections/NavigationMap", () => "NavigationMap");
@@ -67,17 +57,10 @@ describe("NavigationScreen", () => {
   it("renders correctly with provided route params", () => {
     const { getByText } = render(
       <NavigationContainer>
-        <MockNavigationScreen route={mockRoute} navigation={mockNavigation} />
+        <NavigationScreen route={mockRoute} navigation={mockNavigation} />
       </NavigationContainer>
     );
 
-    expect(getByText("NavigationScreen Mock")).toBeTruthy();
-    expect(MockNavigationScreen).toHaveBeenCalledWith(
-      expect.objectContaining({
-        route: mockRoute,
-        navigation: mockNavigation,
-      }),
-      expect.anything()
-    );
+    expect(getByText("Loading locations...")).toBeTruthy();
   });
 });
