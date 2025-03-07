@@ -1,12 +1,13 @@
-import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 const PointsOfInterestButton = ({ emoji, name, isSelected, onPress }) => {
   return (
-    <TouchableOpacity style={[styles.button, isSelected && styles.selectedButton]}
+    <TouchableOpacity
+      style={[styles.button, isSelected && styles.selectedButton]}
       activeOpacity={0.7}
       onPress={onPress}
-      >
+    >
       <Text style={[styles.emoji, isSelected && styles.selectedText]}>{emoji}</Text>
       <Text style={[styles.text, isSelected && styles.selectedText]}>{name}</Text>
     </TouchableOpacity>
@@ -15,9 +16,9 @@ const PointsOfInterestButton = ({ emoji, name, isSelected, onPress }) => {
 
 const styles = StyleSheet.create({
   button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF', // Button color
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF", // Button color
     paddingVertical: 12,
     paddingHorizontal: 15,
     borderRadius: 30, //rounded
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     elevation: 5, // Shadow effect
   },
   selectedButton: {
-    backgroundColor: '#8B1D3B', // Burgundy background when selected
+    backgroundColor: "#8B1D3B", // Burgundy background when selected
   },
   emoji: {
     fontSize: 15,
@@ -33,11 +34,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    fontWeight: '500',
-    color: '#8B1D3B', // White text for contrast
+    fontWeight: "500",
+    color: "#8B1D3B", // White text for contrast
   },
   selectedText: {
-    color: '#FFFFFF', // White text when selected
+    color: "#FFFFFF", // White text when selected
   },
 });
 

@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
 
 const PointsOfInterestBar = () => {
   const [selectedPOI, setSelectedPOI] = useState(null);
 
-
-  const handleButtonPress = (category) => {
+  const handleButtonPress = category => {
     const newSelection = selectedPOI === category ? null : category;
     setSelectedPOI(newSelection);
     console.log(`Selected POI: ${newSelection}`); //check which POI was selected
@@ -20,16 +19,12 @@ const PointsOfInterestBar = () => {
     // Example: fetchPOIData(selectedPOI); // Call backend to fetch data based on POI
   };
 
- 
-
- 
   const POI_LIST = [
     { emoji: "🍽️", name: "Restaurants" },
     { emoji: "☕", name: "Coffee" },
     { emoji: "🍻", name: "Bars" },
     { emoji: "📕", name: "Library" },
     { emoji: "🏦", name: "Bank" },
-
   ];
 
   return (
@@ -40,7 +35,7 @@ const PointsOfInterestBar = () => {
             key={index}
             emoji={poi.emoji}
             name={poi.name}
-            isSelected = {selectedPOI == poi.name}
+            isSelected={selectedPOI == poi.name}
             onPress={() => handleButtonPress(poi.name)}
           />
         ))}
@@ -55,7 +50,7 @@ const styles = StyleSheet.create({
     top: 110, // Positioned under the HeaderBar
     left: 0,
     right: 0,
-    zIndex: 5, 
+    zIndex: 5,
     flexDirection: "row",
     justifyContent: "space-around", // Space out buttons
     alignItems: "center",

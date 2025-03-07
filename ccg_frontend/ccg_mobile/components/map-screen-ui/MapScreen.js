@@ -83,7 +83,7 @@ const MapScreen = () => {
       />
 
       {/*Points of Interest Bar */}
-      <PointsOfInterestBar /> 
+      <PointsOfInterestBar />
 
       {/* Map */}
       <MapViewComponent
