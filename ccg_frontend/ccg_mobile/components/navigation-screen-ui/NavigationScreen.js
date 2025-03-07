@@ -110,9 +110,6 @@ const NavigationScreen = ({ navigation, route }) => {
   // needs to check destination point but we need to implement the search bar first
   const startNavigation = async () => {
     // when navigating, set the start point to the current location --> not what we want | set the starting point to what was written in the start destination
-    /*const currentLocation = await getMyCurrentLocation();
-    setStartPoint(currentLocation);
-    setIsNavigating(true);*/
     if (startPoint) {
       setIsNavigating(true);
     } else {
