@@ -58,7 +58,7 @@ const CustomNavSearch = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity testID="back-button" onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color="#800020" />
         </TouchableOpacity>
 

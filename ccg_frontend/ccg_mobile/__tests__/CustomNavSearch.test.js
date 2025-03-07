@@ -1,39 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-
-// Mock the component completely
-jest.mock("../components/navigation-screen-ui/CustomNavSearch", () => {
-  const { View, Text, TextInput, TouchableOpacity } = require("react-native");
-  return function MockCustomNavSearch(props) {
-    const { navigation, route } = props;
-    const { type, onGoBack, allLocations } = route?.params || {};
-
-    // Simulate component behavior for testing
-    return (
-      <View>
-        <TouchableOpacity testID="back-button" onPress={() => navigation.goBack()}>
-          <Text>Back</Text>
-        </TouchableOpacity>
-        <TextInput placeholder={type === "destination" ? "Choose destination" : "Choose start"} testID="search-input" />
-        {allLocations.map(loc => (
-          <TouchableOpacity
-            key={loc.id}
-            onPress={() => {
-              require("react-native/Libraries/Components/Keyboard/Keyboard").dismiss();
-              onGoBack(loc);
-              navigation.goBack();
-            }}
-          >
-            <Text>{loc.name}</Text>
-            <Text>{loc.civic_address}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    );
-  };
-});
-
-// Importing for type checking purposes only
+import { Ionicons } from "@expo/vector-icons";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 
 // Mock dependencies
@@ -139,9 +106,7 @@ describe("CustomNavSearch", () => {
     expect(getByText("Hall Building")).toBeTruthy();
 
     // Library Building should not be visible since it doesn't match the search
-    // Note: This might not work as expected if the component renders all items initially
-    // regardless of search text. In that case, this test would need to be adjusted.
-    expect(queryByText("Library Building")).toBeTruthy();
+    expect(queryByText("Library Building")).toBeFalsy();
   });
 
   it("selects a location and navigates back", () => {
