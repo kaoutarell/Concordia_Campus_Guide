@@ -24,7 +24,8 @@ const NavigationScreen = ({ navigation, route }) => {
   const [startPoint, setStartPoint] = useState(params.start || null);
   const [destinationPoint, setDestinationPoint] = useState(params.destination || null);
 
-  const [allLocations, setAllLocations] = useState(params.allLocations || []); //gets the buildings in both campus
+  //gets school buildings + points of interest
+  const [allLocations, setAllLocations] = useState(params.allLocations || []);
 
   const [direction, setDirection] = useState(null);
 
@@ -97,7 +98,6 @@ const NavigationScreen = ({ navigation, route }) => {
     } else {
       setStartPoint(location);
     }
-    console.log("destt", startPoint.civic_address, destinationPoint.civic_address);
   };
 
   // needs to check destination point but we need to implement the search bar first
@@ -193,6 +193,7 @@ const NavigationScreen = ({ navigation, route }) => {
             totalDistance={direction?.total_distance}
             totalDuration={direction?.total_duration}
             onStartNavigation={startNavigation}
+            onShowDirections={() => setShowDirections(true)}
           />
         );
       }
@@ -282,10 +283,7 @@ const styles = StyleSheet.create({
     height: isNavigating ? "70%" : "60%", // Dynamic height based on isNavigating
     width: "100%",
   }),
-  map: {
-    flex: 1,
-    width: "100%",
-  },
+
   loadingContainer: {
     flex: 1,
     justifyContent: "center",

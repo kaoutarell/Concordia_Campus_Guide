@@ -1,87 +1,211 @@
 import React from "react";
-import { render, waitFor, screen } from "@testing-library/react-native";
+import { render, waitFor } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 import { NavigationContainer } from "@react-navigation/native";
 
+// Mock navigation
+const mockNavigate = jest.fn();
+jest.mock("@react-navigation/native", () => {
+  const actualNav = jest.requireActual("@react-navigation/native");
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: mockNavigate,
+    }),
+  };
+});
+
+// Mock Platform
+jest.mock("react-native/Libraries/Utilities/Platform", () => ({
+  OS: "ios",
+  select: jest.fn().mockImplementation(obj => obj.ios),
+}));
+
+// Mock the location service
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
   getCurrentLocation: jest.fn(),
   stopTrackingLocation: jest.fn(),
 }));
 
-describe("MapViewComponent - Location Tests", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  // Define default props that all tests can use
-  const defaultProps = {
-    target: {},
-    locations: [],
-    region: {
-      latitude: 45.4973,
-      longitude: -73.5789,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
+// Mock transformCurrentLoc
+jest.mock("../utils/transformCurrentLoc", () => {
+  return jest.fn(location => ({
+    building_code: "CURR_LOC",
+    civic_address: "Your Location",
+    id: 1,
+    location: {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
     },
-    maxBounds: {
-      northeast: {
-        latitude: 45.52,
-        longitude: -73.56,
-      },
-      southwest: {
-        latitude: 45.48,
-        longitude: -73.59,
-      },
+    name: "Current location",
+  }));
+});
+
+// Mock the map view
+jest.mock("react-native-maps", () => {
+  const { View } = require("react-native");
+  const MockMapView = ({ children, onRegionChangeComplete, onPress, testID }) => (
+    <View testID={testID || "map-view"}>
+      {children}
+      <button
+        data-testid="region-change-button"
+        onClick={() =>
+          onRegionChangeComplete
+            ? onRegionChangeComplete({ latitude: 45.5, longitude: -73.6, latitudeDelta: 0.01, longitudeDelta: 0.01 })
+            : null
+        }
+      >
+        Change Region
+      </button>
+      <button data-testid="map-press-button" onClick={() => (onPress ? onPress() : null)}>
+        Press Map
+      </button>
+    </View>
+  );
+  MockMapView.Marker = ({ coordinate, title, pinColor, testID }) => (
+    <View testID={testID || "marker"}>
+      <span>{title}</span>
+      <span>{coordinate.latitude}</span>
+      <span>{coordinate.longitude}</span>
+      <span>{pinColor}</span>
+    </View>
+  );
+  return {
+    __esModule: true,
+    default: MockMapView,
+    Marker: MockMapView.Marker,
+  };
+});
+
+// Mock InfoPopup
+jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
+  return function MockInfoPopup({ value, onClose, onGo }) {
+    return (
+      <div data-testid="info-popup">
+        <button data-testid="popup-close" onClick={() => onClose()}>
+          Close
+        </button>
+        <button data-testid="popup-go" onClick={() => onGo(value)}>
+          Go
+        </button>
+      </div>
+    );
+  };
+});
+
+// Mock CustomMarker
+jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
+  return function MockCustomMarker({ value, onPress }) {
+    return (
+      <button
+        data-testid="custom-marker"
+        onClick={() => (onPress ? onPress() : null)}
+        onKeyDown={e => (e.key === "Enter" && onPress ? onPress() : null)}
+      >
+        <span>{value.id}</span>
+      </button>
+    );
+  };
+});
+
+// Mock BuildingHighlight
+jest.mock("../components/map-screen-ui/elements/BuildingHighlight", () => {
+  return function MockBuildingHighlight() {
+    return <div data-testid="building-highlight"></div>;
+  };
+});
+
+describe("MapViewComponent", () => {
+  const mockMaxBounds = {
+    northeast: {
+      latitude: 46.0,
+      longitude: -73.0,
+    },
+    southwest: {
+      latitude: 45.0,
+      longitude: -74.0,
     },
   };
 
-  // test to make sure that the tracking is started on mount
-  test("should start tracking location on mount", async () => {
+  const mockRegion = {
+    latitude: 45.5,
+    longitude: -73.5,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,
+  };
+
+  const mockLocations = [
+    {
+      id: 1,
+      name: "Location 1",
+      building_code: "LOC1",
+      campus: "SGW",
+      civic_address: "1234 Test Street",
+      parking_lot: true,
+      accessibility: true,
+      atm: false,
+      location: {
+        latitude: 45.49,
+        longitude: -73.58,
+      },
+    },
+    {
+      id: 2,
+      name: "Location 2",
+      building_code: "LOC2",
+      campus: "LOY",
+      civic_address: "5678 Test Avenue",
+      parking_lot: false,
+      accessibility: false,
+      atm: true,
+      location: {
+        latitude: 45.51,
+        longitude: -73.52,
+      },
+    },
+  ];
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    locationService.getCurrentLocation.mockImplementation(() => ({
+      coords: {
+        latitude: 45.5,
+        longitude: -73.6,
+      },
+    }));
+  });
+
+  it("should start tracking location on mount", () => {
     render(
       <NavigationContainer>
-        <MapViewComponent {...defaultProps} />
+        <MapViewComponent locations={[]} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
     expect(locationService.startTrackingLocation).toHaveBeenCalled();
   });
 
-  let currentLocation = {
-    latitude: 37.7749,
-    longitude: -122.4194,
-  };
-  // test to make sure that location marker is shown when available
-  test("should display current location marker when available", async () => {
-    expect(currentLocation).not.toBeNull();
-    expect(locationService.getCurrentLocation.mockReturnValue(currentLocation)).toBeTruthy();
+  it("should stop tracking location on unmount", () => {
+    const { unmount } = render(
+      <NavigationContainer>
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
+      </NavigationContainer>
+    );
+    unmount();
+    expect(locationService.stopTrackingLocation).toHaveBeenCalled();
   });
 
-  test("should update current location when a new location is provided", async () => {
-    // Define the new location
-    const updatedLocation = { latitude: 40.7128, longitude: -74.006 };
-
-    // Mock the location service to return the updated location
-    locationService.getCurrentLocation.mockReturnValue(updatedLocation);
-
-    // Simulate the component logic (assuming this runs inside a component)
-    const location = locationService.getCurrentLocation();
-
-    // For a simple test, you can directly check the location instead of using setState
-    expect(location).toEqual(updatedLocation);
-  });
-
-  // test that an error is thrown when issue with fetching location
-  test("should handle error when fetching current location", async () => {
+  it("should handle error when fetching current location", async () => {
     // Mock location service to throw an error
     locationService.startTrackingLocation = jest.fn().mockRejectedValue(new Error("Location error"));
     locationService.getCurrentLocation = jest.fn().mockReturnValue(null);
 
-    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {}); // Suppress error logs in test output
+    const consoleSpy = jest.spyOn(console, "log").mockImplementation(() => {});
 
     render(
       <NavigationContainer>
-        <MapViewComponent {...defaultProps} />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
@@ -92,156 +216,49 @@ describe("MapViewComponent - Location Tests", () => {
     consoleSpy.mockRestore();
   });
 
-  // test to check is tracking is stopped on unmount
-  test("should stop tracking location on unmount", () => {
-    const { unmount } = render(
+  it("should show loading indicator when locations array is empty", () => {
+    const { getByText } = render(
       <NavigationContainer>
-        <MapViewComponent {...defaultProps} />
+        <MapViewComponent locations={[]} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
-    unmount();
-    expect(locationService.stopTrackingLocation).toHaveBeenCalled();
+
+    expect(getByText("Loading locations...")).toBeTruthy();
   });
 
-  let selectedMarker = { id: 1 }; // Non-null initial state for selectedMarker tests
+  it("should not show loading indicator when locations are loaded", () => {
+    const { queryByText } = render(
+      <NavigationContainer>
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
+      </NavigationContainer>
+    );
 
-  // Simulate close button press
-  const handleClosePress = () => {
-    selectedMarker = null;
-  };
-  // Simulate pressing a marker (this should update selectedMarker)
-  const handleMakerPress = () => {
-    selectedMarker = { id: 1 }; // Mock location or value for the selectedMarker
-  };
-
-  // Test to check if selectedMarker is null after close press
-  test("should set selectedMarker to null after close button press", () => {
-    // Check if selectedMarker is initially set (non-null)
-    expect(selectedMarker).not.toBeNull(); // Should pass
-
-    // Simulate pressing the close button
-    handleClosePress();
-
-    // Check if selectedMarker is null after close press
-    expect(selectedMarker).toBeNull(); // Should pass
+    expect(queryByText("Loading locations...")).toBeNull();
   });
 
-  // Test to check if selectedMarker is set to a non-null value after marker press
-  test("should set selectedMarker to be not null after marker press", () => {
-    // Initially, selectedMarker should be null
-    expect(selectedMarker).toBeNull(); // Should pass
-
-    // Simulate pressing a marker
-    handleMakerPress();
-
-    // After marker press, selectedMarker should no longer be null
-    expect(selectedMarker).not.toBeNull(); // Should pass
-  });
-
-  test("should call onGoToLocation with the correct location when button is pressed", () => {
-    // Create a mock location with latitude and longitude
-    const mockLocation = {
-      name: "John Molson Building",
+  it("should update region when target changes", () => {
+    const mockTarget = {
+      id: 3,
+      name: "Target Location",
+      building_code: "TGT",
+      campus: "SGW",
+      civic_address: "Target Street",
       location: {
-        latitude: 45.49687,
-        longitude: -73.57804,
+        latitude: 45.52,
+        longitude: -73.57,
       },
     };
 
-    // Mock onGoToLocation function
-    const onGoToLocation = jest.fn();
-
-    // Simulate pressing the "Go" button
-    const handleGoPress = () => {
-      onGoToLocation(mockLocation); // Call with mockLocation
-    };
-
-    // simulate Go button press
-    handleGoPress();
-
-    // make sure onGoToLocation was called with the correct location
-    expect(onGoToLocation).toHaveBeenCalledWith(mockLocation);
-  });
-
-  test("should display loading indicator when locations are loading", () => {
-    render(
+    const { rerender } = render(
       <NavigationContainer>
-        <MapViewComponent
-          {...defaultProps}
-          locations={[]} // Empty locations will trigger loading state
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
-    // Check if the loading screen is rendered
-    const loadingText = screen.getByText("Loading locations...");
-    expect(loadingText).toBeTruthy();
-  });
-
-  // Commented out test that could be enabled later if needed
-  // test("should set isLoading to false when locations are provided", async () => {
-  //   const locations = [
-  //     {
-  //       id: 1,
-  //       name: "Location 1",
-  //       location: {
-  //         latitude: 37.7749,
-  //         longitude: -122.4194,
-  //       },
-  //     },
-  //   ];
-
-  //   render(
-  //     <NavigationContainer>
-  //       <MapViewComponent {...defaultProps} locations={locations} />
-  //     </NavigationContainer>
-  //   );
-
-  //   // Wait for the effect to run and isLoading to be set to false
-  //   await waitFor(() => {
-  //     expect(screen.queryByText("Loading locations...")).toBeNull();
-  //   });
-  // });
-
-  //This test ensure the map renders correctly
-  test("should render the MapView component", async () => {
-    render(
+    rerender(
       <NavigationContainer>
-        <MapViewComponent
-          {...defaultProps}
-          locations={[{ id: 1, name: "Test Location", location: { latitude: 45.5, longitude: -73.57 } }]}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={mockTarget} />
       </NavigationContainer>
     );
-
-    // Wait for the loading state to disappear
-    await waitFor(() => expect(screen.queryByText("Loading locations...")).toBeNull());
-
-    // Now check if the map is present
-    const mapView = screen.getByTestId("map-view");
-    expect(mapView).toBeTruthy();
-  });
-
-  //Test onRegionChangeComplete for region updates
-  test("should update region when map region changes", () => {
-    const mockOnRegionChangeComplete = jest.fn();
-
-    render(
-      <NavigationContainer>
-        <MapViewComponent {...defaultProps} onRegionChangeComplete={mockOnRegionChangeComplete} />
-      </NavigationContainer>
-    );
-
-    // Simulate region change
-    const newRegion = {
-      latitude: 45.51,
-      longitude: -73.57,
-      latitudeDelta: 0.02,
-      longitudeDelta: 0.02,
-    };
-
-    mockOnRegionChangeComplete(newRegion);
-
-    expect(mockOnRegionChangeComplete).toHaveBeenCalledWith(newRegion);
   });
 });

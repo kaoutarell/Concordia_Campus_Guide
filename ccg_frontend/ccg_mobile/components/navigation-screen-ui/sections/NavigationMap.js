@@ -128,7 +128,7 @@ const NavigationMap = ({
 
   return (
     <MapView style={styles.map} showsUserLocation region={region} ref={mapRef}>
-      <Marker coordinate={startMarker} title={startTitle} pinColor="red" />
+      <Marker coordinate={startMarker} title={startTitle} pinColor="blue" />
       <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
 
       {busStops.map(marker => (
