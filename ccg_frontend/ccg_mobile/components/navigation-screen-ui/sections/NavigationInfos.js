@@ -11,7 +11,7 @@ const NavigationInfos = ({ totalDuration, totalDistance, onExit, onShowDirection
         {/* Buttons */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.allButton} onPress={onShowDirections}>
-            <Text style={styles.allButtonText}>DIR</Text>
+            <Text style={styles.allButtonText}>Preview</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.exitButton} onPress={onExit}>
             <Text style={styles.exitButtonText}>Exit</Text>

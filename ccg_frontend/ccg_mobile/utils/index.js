@@ -1,3 +1,5 @@
+// buggy code
+//
 export const formatDuration = seconds => {
   if (seconds <= 0) return "Now";
   const days = Math.floor(seconds / 86400);
