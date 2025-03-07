@@ -75,6 +75,13 @@ const NavigationScreen = ({ navigation, route }) => {
 
   const { instruction, distance } = useRouteInstruction(direction, userLocation);
 
+  // Ensure the 'direction' is fetched with the correct start and destination points - bug#166
+  useEffect(() => {
+    if (startPoint && destinationPoint) {
+      fetchDirections();
+    }
+  }, [startPoint, destinationPoint, selectedMode]);
+
   const handleModeSelect = mode => {
     setSelectedMode(mode);
   };
@@ -102,10 +109,17 @@ const NavigationScreen = ({ navigation, route }) => {
 
   // needs to check destination point but we need to implement the search bar first
   const startNavigation = async () => {
-    // when navigating, set the start point to the current location
-    const currentLocation = await getMyCurrentLocation();
+    // when navigating, set the start point to the current location --> not what we want | set the starting point to what was written in the start destination
+    /*const currentLocation = await getMyCurrentLocation();
     setStartPoint(currentLocation);
-    setIsNavigating(true);
+    setIsNavigating(true);*/
+    if (startPoint) {
+      setIsNavigating(true);
+    } else {
+      const currentLocation = await getMyCurrentLocation();
+      setStartPoint(currentLocation);
+      setIsNavigating(true);
+    }
   };
 
   const onExitNavigation = () => {
