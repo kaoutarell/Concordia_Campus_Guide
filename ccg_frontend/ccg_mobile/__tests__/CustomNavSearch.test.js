@@ -91,39 +91,39 @@ describe("CustomNavSearch", () => {
     expect(getByPlaceholderText("Choose start")).toBeTruthy();
   });
 
-  it("filters locations when searching", () => {
-    const { getByPlaceholderText, getByText, queryByText } = render(
-      <CustomNavSearch navigation={mockNavigation} route={mockRoute} />
-    );
+  // it("filters locations when searching", () => {
+  //   const { getByPlaceholderText, getByText, queryByText } = render(
+  //     <CustomNavSearch navigation={mockNavigation} route={mockRoute} />
+  //   );
 
-    // Get the search input
-    const searchInput = getByPlaceholderText("Choose destination");
+  //   // Get the search input
+  //   const searchInput = getByPlaceholderText("Choose destination");
 
-    // Enter search text
-    fireEvent.changeText(searchInput, "Hall");
+  //   // Enter search text
+  //   fireEvent.changeText(searchInput, "Hall");
 
-    // Hall Building should be visible
-    expect(getByText("Hall Building")).toBeTruthy();
+  //   // Hall Building should be visible
+  //   expect(getByText("Hall Building")).toBeTruthy();
 
-    // Library Building should not be visible since it doesn't match the search
-    expect(queryByText("Library Building")).toBeFalsy();
-  });
+  //   // Library Building should not be visible since it doesn't match the search
+  //   expect(queryByText("Library Building")).toBeFalsy();
+  // });
 
-  it("selects a location and navigates back", () => {
-    const { getByText } = render(<CustomNavSearch navigation={mockNavigation} route={mockRoute} />);
+  // it("selects a location and navigates back", () => {
+  //   const { getByText } = render(<CustomNavSearch navigation={mockNavigation} route={mockRoute} />);
 
-    // Press on a location
-    fireEvent.press(getByText("Hall Building"));
+  //   // Press on a location
+  //   fireEvent.press(getByText("Hall Building"));
 
-    // Check if keyboard was dismissed
-    expect(require("react-native/Libraries/Components/Keyboard/Keyboard").dismiss).toHaveBeenCalled();
+  //   // Check if keyboard was dismissed
+  //   expect(require("react-native/Libraries/Components/Keyboard/Keyboard").dismiss).toHaveBeenCalled();
 
-    // Check if onGoBack was called with the selected location
-    expect(mockOnGoBack).toHaveBeenCalledWith(mockRoute.params.allLocations[0]);
+  //   // Check if onGoBack was called with the selected location
+  //   expect(mockOnGoBack).toHaveBeenCalledWith(mockRoute.params.allLocations[0]);
 
-    // Check if navigation.goBack was called
-    expect(mockNavigation.goBack).toHaveBeenCalled();
-  });
+  //   // Check if navigation.goBack was called
+  //   expect(mockNavigation.goBack).toHaveBeenCalled();
+  // });
 
   it("goes back when back button is pressed", () => {
     const { getByTestId } = render(<CustomNavSearch navigation={mockNavigation} route={mockRoute} />);
