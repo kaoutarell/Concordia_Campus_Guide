@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { View, ScrollView, StyleSheet } from "react-native";
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
 import { getPointOfInterests } from "../../../api/dataService.js";
 import locationService from '../../../services/LocationService.js';
 
 const PointsOfInterestBar = ({setAllLocations, campus, animateSearch}) => {
   const [selectedPOI, setSelectedPOI] = useState(null);
-
 
   const handleButtonPress = async (name,category) => {
     const newSelection = selectedPOI === category ? null : category;
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     top: 110, // Positioned under the HeaderBar
     left: 0,
     right: 0,
-    zIndex: 5, 
+    zIndex: 5,
     flexDirection: "row",
     justifyContent: "space-around", // Space out buttons
     alignItems: "center",

@@ -85,7 +85,6 @@ const MapScreen = () => {
         pointsOfInterest={pointsOfInterest}
         resetLocations={resetLocations}
       />
-
       {/* Map */}
       <MapViewComponent
         locations={allLocations}
