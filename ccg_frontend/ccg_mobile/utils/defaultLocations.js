@@ -5,7 +5,7 @@ export const getMyCurrentLocation = async () => {
     await locationService.startTrackingLocation();
     const currentLocation = locationService.getCurrentLocation();
 
-    if (!currentLocation || !currentLocation.coords) {
+    if (!currentLocation?.coords) {
       return getDefaultDestination();
     }
 

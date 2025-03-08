@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, forwardRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
