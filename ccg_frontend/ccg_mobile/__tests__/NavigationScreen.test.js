@@ -1,5 +1,5 @@
 import React from "react";
-import { render, act, fireEvent } from "@testing-library/react-native";
+import { render, act, fireEvent, waitFor } from "@testing-library/react-native";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 // Mock components with testID to make them identifiable in tests
@@ -474,6 +474,13 @@ describe("NavigationScreen", () => {
       jest.runAllTimers();
     });
 
+    // Ensure the start point is the current location
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", mockCurrentLocation);
+      jest.runAllTimers();
+    });
+
     // Find the NavigationFooter's Start Navigation button
     const navFooter = getByTestId("navigation-footer");
 
@@ -687,5 +694,117 @@ describe("NavigationScreen", () => {
     // Should unsubscribe and stop tracking on unmount
     expect(locationService.unsubscribe).toHaveBeenCalled();
     expect(locationService.stopTrackingLocation).toHaveBeenCalled();
+  });
+
+  it("hides the Start Navigation button when start point is not the current location", async () => {
+    const { getByTestId, queryByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Ensure the Start Navigation button is initially visible
+    expect(getByTestId("start-navigation-button")).toBeTruthy();
+
+    // Set a custom start point that is not the current location
+    const customStartPoint = {
+      name: "Custom Start",
+      civic_address: "123 Custom St",
+      location: { latitude: 45.492, longitude: -73.582 }, // Different from mockCurrentLocation
+    };
+
+    // Find the NavigationHeader and simulate changing the start point
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", customStartPoint);
+      jest.runAllTimers();
+    });
+
+    // Simulate a location update
+    const locationService = require("../services/LocationService");
+    await act(async () => {
+      locationService._simulateLocationUpdate({
+        coords: { latitude: 45.497, longitude: -73.579 }, // mockCurrentLocation
+      });
+      jest.runAllTimers();
+    });
+
+    // Wait for UI update before assertion
+    await waitFor(() => {
+      expect(queryByTestId("start-navigation-button")).toBeNull();
+    });
+  }, 10000); // Set timeout to 10000ms
+
+  it("starts navigation with a custom start point", async () => {
+    const { getByTestId, queryByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Set a custom start point that is not the current location
+    const customStartPoint = {
+      name: "Custom Start",
+      civic_address: "123 Custom St",
+      location: { latitude: 45.492, longitude: -73.582 }, // Different from mockCurrentLocation
+    };
+
+    // Find the NavigationHeader
+    const navHeader = getByTestId("navigation-header");
+
+    // Simulate changing the start point
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", customStartPoint);
+      jest.runAllTimers();
+    });
+
+    // Ensure the userLocation is set to a different location
+    const locationService = require("../services/LocationService");
+    await act(async () => {
+      locationService._simulateLocationUpdate({
+        coords: { latitude: 45.497, longitude: -73.579 }, // mockCurrentLocation
+      });
+      jest.runAllTimers();
+    });
+
+    // The Start Navigation button should be hidden
+    await waitFor(() => {
+      expect(queryByTestId("start-navigation-button")).toBeNull();
+    });
+
+    // Manually trigger navigation start
+    await act(async () => {
+      // Access the startNavigation function directly
+      const instance = getByTestId("navigation-footer");
+      instance.props.onStartNavigation();
+      jest.runAllTimers();
+    });
+
+    // Verify that navigation mode is active
+    expect(getByTestId("navigation-direction")).toBeTruthy();
+  }, 10000); // Set timeout to 10000ms
+
+  it("starts navigation with the current location as the start point", async () => {
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // The Start Navigation button should be visible
+    expect(getByTestId("start-navigation-button")).toBeTruthy();
+
+    // Simulate pressing Start Navigation
+    await act(async () => {
+      const navFooter = getByTestId("navigation-footer");
+      navFooter.props.onStartNavigation();
+      jest.runAllTimers();
+    });
+
+    // Verify that navigation mode is active
+    expect(getByTestId("navigation-direction")).toBeTruthy();
   });
 });
