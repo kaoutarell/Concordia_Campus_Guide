@@ -5,6 +5,7 @@ import { modes } from "../../../constants/TransportModes";
 import NavigationSearch from "../elements/NavigationSearch";
 import CustomButton from "../elements/CustomButton";
 import NavigationMode from "../elements/NavigationMode";
+import PropTypes from "prop-types";
 
 const NavigationHeader = ({
   startAddress,
@@ -49,6 +50,16 @@ const NavigationHeader = ({
       </View>
     </View>
   );
+};
+
+NavigationHeader.propTypes = {
+  startAddress: PropTypes.string.isRequired,
+  destinationAddress: PropTypes.string.isRequired,
+  onSelectedMode: PropTypes.func.isRequired,
+  onModifyAddress: PropTypes.func.isRequired,
+  selectedMode: PropTypes.string.isRequired,
+  allLocations: PropTypes.array.isRequired,
+  onBackPress: PropTypes.func.isRequired,
 };
 
 const { width } = Dimensions.get("window");

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
-
+import PropTypes from "prop-types";
 const { width } = Dimensions.get("window");
 
 const NavigationToggle = ({ isIndoor, setIsIndoor }) => {
@@ -17,6 +17,11 @@ const NavigationToggle = ({ isIndoor, setIsIndoor }) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+NavigationToggle.propTypes = {
+  isIndoor: PropTypes.bool.isRequired,
+  setIsIndoor: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

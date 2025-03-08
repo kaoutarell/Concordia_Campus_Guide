@@ -36,6 +36,7 @@ const HeaderBar = ({
 };
 
 HeaderBar.propTypes = {
+  pointsOfInterest: PropTypes.array.isRequired,
   selectedCampus: PropTypes.string.isRequired,
   onCampusSelect: PropTypes.func.isRequired,
   setSelectedCampus: PropTypes.func.isRequired,

@@ -1,8 +1,14 @@
 import React from "react";
 import { render, fireEvent, waitFor, act } from "@testing-library/react-native";
 import SearchBar from "../components/map-screen-ui/elements/SearchBar";
+import { Keyboard } from "react-native";
 
 const mockNavigate = jest.fn();
+
+// Mock Keyboard
+jest.mock("react-native/Libraries/Components/Keyboard/Keyboard", () => ({
+  dismiss: jest.fn(),
+}));
 
 jest.mock("@react-navigation/native", () => ({
   useNavigation: () => ({
@@ -58,39 +64,68 @@ describe("SearchBar Component", () => {
     });
   });
 
-  // it("should show 'No results found' when no matches are found", async () => {
-  //   const { getByPlaceholderText, findByText } = renderSearchBar();
-  //   await typeInSearchBar({ getByPlaceholderText }, "NonexistentBuilding");
+  it("should handle the onGoBack callback correctly", async () => {
+    const { getByPlaceholderText } = render(<SearchBar {...defaultProps} />);
+    const input = getByPlaceholderText("Where to?");
 
-  //   const noResultsText = await findByText("No results found");
-  //   expect(noResultsText).toBeTruthy();
+    await act(async () => {
+      fireEvent(input, "focus");
+    });
 
-  //   const tryAgainText = await findByText("Try a different search term");
-  //   expect(tryAgainText).toBeTruthy();
-  // });
+    // Extract the onGoBack callback from the navigation call
+    const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
 
-  // Test is removed because finding the clear button with the test renderer is unreliable
-  // The functionality is already covered by other tests like empty text handling
+    // Simulate selecting a destination
+    const selectedDestination = {
+      name: "Hall Building",
+      campus: "SGW",
+      id: "school-3",
+    };
 
-  // it("should select a location when pressing on a suggestion", async () => {
-  //   const mockSetTargetLocation = jest.fn();
-  //   const mockSetSelectedCampus = jest.fn();
+    // Call the callback
+    onGoBack(selectedDestination);
 
-  //   const { getByPlaceholderText, findByText } = renderSearchBar({
-  //     setTargetLocation: mockSetTargetLocation,
-  //     setSelectedCampus: mockSetSelectedCampus,
-  //   });
+    // Verify that the state was updated correctly
+    expect(mockSetTargetLocation).toHaveBeenCalledWith(selectedDestination);
+    expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");
+    expect(Keyboard.dismiss).toHaveBeenCalled();
+  });
 
-  //   await typeInSearchBar({ getByPlaceholderText }, "Vanier");
+  it("should clear search when the clear button is clicked", async () => {
+    // Render the component with an initial destination value set
+    const { getByPlaceholderText, getByTestId, rerender } = render(<SearchBar {...defaultProps} />);
 
-  //   // Find the suggestion item and press it
-  //   const suggestion = await findByText("Vanier Library Building");
-  //   await act(async () => {
-  //     fireEvent.press(suggestion);
-  //   });
+    // Set initial state by simulating a selection
+    const input = getByPlaceholderText("Where to?");
 
-  //   // Verify the target location and campus were updated
-  //   expect(mockSetTargetLocation).toHaveBeenCalledWith(locations[3]);
-  //   expect(mockSetSelectedCampus).toHaveBeenCalledWith("LOY");
-  // });
+    // Focus to trigger navigation
+    await act(async () => {
+      fireEvent(input, "focus");
+    });
+
+    // Extract and call the onGoBack callback to set destination state
+    const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
+    const selectedDestination = { name: "Hall Building", campus: "SGW", id: "school-3" };
+
+    // Call the callback to set internal state
+    act(() => {
+      onGoBack(selectedDestination);
+    });
+
+    // Rerender the component to reflect state changes
+    rerender(<SearchBar {...defaultProps} />);
+
+    // Now the clear button should be visible
+    const clearButton = getByTestId("clear-search-button");
+
+    // Click the clear button
+    act(() => {
+      fireEvent.press(clearButton);
+    });
+
+    // Verify that the right actions were performed
+    expect(mockSetTargetLocation).toHaveBeenCalledWith({});
+    expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");
+    expect(Keyboard.dismiss).toHaveBeenCalled();
+  });
 });
