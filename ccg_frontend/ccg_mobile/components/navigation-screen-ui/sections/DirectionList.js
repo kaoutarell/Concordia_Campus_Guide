@@ -1,7 +1,7 @@
 // components/DirectionsList.js
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-
+import PropTypes from "prop-types";
 /**
  * DirectionsList: displays a list of route steps with distance and instruction.
  *
@@ -44,6 +44,18 @@ export default function DirectionsList({ steps }) {
     </View>
   );
 }
+
+DirectionsList.propTypes = {
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      distance: PropTypes.number.isRequired,
+      duration: PropTypes.number.isRequired,
+      instruction: PropTypes.string.isRequired,
+      type: PropTypes.number.isRequired,
+      coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+    })
+  ),
+};
 
 const styles = StyleSheet.create({
   container: {
