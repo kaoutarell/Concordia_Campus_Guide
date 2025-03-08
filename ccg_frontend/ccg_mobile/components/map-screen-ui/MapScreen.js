@@ -6,7 +6,7 @@ import NavigationToggle from "./sections/NavigationToggle";
 import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
 
 import { View, StyleSheet } from "react-native";
-
+import PointsOfInterestBar from "./sections/PointsOfInterestBar";
 import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
@@ -14,6 +14,7 @@ const MapScreen = () => {
   const [pointsOfInterest, setPointsOfInterest] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
+  const [selectedPointOfInterest, setSelectedPointOfInterest] = useState(null);
 
   const [targetLocation, setTargetLocation] = useState({});
 
@@ -49,6 +50,7 @@ const MapScreen = () => {
       return prevCampus;
     });
     setTargetLocation({});
+    setSelectedPointOfInterest([]);
   };
 
   const fetchAllLocations = async () => {
@@ -69,6 +71,10 @@ const MapScreen = () => {
     }
   };
 
+  const resetLocations = () => {
+    fetchAllLocations();
+  };
+
   return (
     <View style={styles.container}>
       <HeaderBar
@@ -79,6 +85,9 @@ const MapScreen = () => {
         locations={allLocations}
         pointsOfInterest={pointsOfInterest}
       />
+      {/*Points of Interest Bar */}
+      <PointsOfInterestBar setSelectedPointOfInterest={setSelectedPointOfInterest} campus={selectedCampus} />
+
       {/* Map */}
       <MapViewComponent
         locations={allLocations}
@@ -86,6 +95,7 @@ const MapScreen = () => {
         target={targetLocation}
         region={getRegion()}
         maxBounds={getMaxBounds()}
+        selectedPointOfInterest={selectedPointOfInterest}
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
