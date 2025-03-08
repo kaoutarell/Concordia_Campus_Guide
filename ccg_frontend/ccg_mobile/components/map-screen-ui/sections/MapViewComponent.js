@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
@@ -9,23 +9,24 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBounds }) => {
+const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBounds, selectedPointOfInterest }) => {
   const navigation = useNavigation();
-  const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [showMarkers, setShowMarkers] = useState(true);
+  const [showMarkers, setShowMarkers] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
+
   const handleRegionChange = region => {
-    // if (Platform.OS == "android") {
-    //   const zoomThreshold = 0.006;
-    //   setShowMarkers(region.latitudeDelta < zoomThreshold);
-    // }
+    if (Platform.OS == "android") {
+      const zoomThreshold = 0.006;
+      setShowMarkers(region.latitudeDelta < zoomThreshold);
+    }
   };
+
 
   const handleMarkerPress = location => {
     setTimeout(() => {
@@ -97,7 +98,6 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
         <View style={styles.mapContainer}>
           <MapView
             key={mapKey}
-            ref={mapRef}
             testID="map-view"
             style={styles.map}
             region={targetRegion}
@@ -140,6 +140,10 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
                 testID="current-location-marker"
               />
             )}
+
+            {selectedPointOfInterest?.map(point => (
+              <CustomMarker key={point.id} value={point} onPress={() => handleMarkerPress(point)} />
+            ))}
 
             <BuildingHighlight />
           </MapView>

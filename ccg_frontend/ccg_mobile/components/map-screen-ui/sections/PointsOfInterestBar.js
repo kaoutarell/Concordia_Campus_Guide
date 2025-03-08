@@ -1,47 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
 import { getPointOfInterests } from "../../../api/dataService.js";
-import locationService from '../../../services/LocationService.js';
+import locationService from "../../../services/LocationService.js";
 
-const PointsOfInterestBar = ({setAllLocations, campus, animateSearch}) => {
+const PointsOfInterestBar = ({ campus, setSelectedPointOfInterest }) => {
   const [selectedPOI, setSelectedPOI] = useState(null);
 
-  const handleButtonPress = async (name,category) => {
+  useEffect(() => {
+    setSelectedPOI(null);
+  }, [campus]);
+
+  const handleButtonPress = async category => {
     const newSelection = selectedPOI === category ? null : category;
     setSelectedPOI(newSelection);
     const loc = locationService.getCurrentLocation();
 
     try {
-      const data = await getPointOfInterests(category, campus, loc.coords.longitude, loc.coords.latitude);
-      setAllLocations(data.slice(0, 10));
+      if (selectedPOI !== category) {
+        const data = await getPointOfInterests(category, campus, loc.coords.longitude, loc.coords.latitude);
+        setSelectedPointOfInterest(data.slice(0, 10));
+      } else {
+        setSelectedPointOfInterest([]);
+      }
     } catch (error) {
       console.error("Error fetching locations: ", error);
     }
-    animateSearch(name);
   };
 
   const POI_LIST = [
     { type: "restaurant", name: "Restaurants" },
     { type: "cafe", name: "Coffee" },
+    { type: "fast_food", name: "Fast Food" },
     { type: "library", name: "Library" },
-    { type: "bank", name: "Bank" },
+    { type: "atm", name: "ATM" },
     { type: "clinic", name: "Clinic" },
-
   ];
 
   return (
-    <>
+    <View style={styles.poiContainer}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {POI_LIST.map((poi, index) => (
           <PointsOfInterestButton
             key={index}
             type={poi.type}
             name={poi.name}
-            isSelected = {selectedPOI == poi.name}
-            onPress={() => handleButtonPress(poi.name,poi.type)}
+            isSelected={selectedPOI == poi.type}
+            onPress={() => handleButtonPress(poi.type)}
           />
         ))}
-    </>
+      </ScrollView>
+    </View>
   );
 };
 

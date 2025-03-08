@@ -29,9 +29,6 @@ describe("SearchBar Component", () => {
     ],
     setTargetLocation: mockSetTargetLocation,
     setSelectedCampus: mockSetSelectedCampus,
-    destination: "",
-    setDestination: jest.fn(),
-    clearSearch: jest.fn(),
   };
 
   it("should render SearchBar with correct placeholder", () => {
