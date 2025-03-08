@@ -20,8 +20,8 @@ const CustomNavSearch = ({ navigation, route }) => {
     if (text.length > 0) {
       const filtered = allBuildings.filter(
         loc =>
-          (loc.name && loc.name.toLowerCase().includes(text.toLowerCase())) ||
-          (loc.civic_address && loc.civic_address.toLowerCase().includes(text.toLowerCase()))
+          loc.name?.toLowerCase().includes(text.toLowerCase()) ||
+          loc.civic_address?.toLowerCase().includes(text.toLowerCase())
       );
       setFilteredLocations(filtered);
     } else {
