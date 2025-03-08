@@ -2,39 +2,43 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import IndoorMap from "./sections/IndoorMap";
 import IndoorNavigationHeader from "./sections/IndoorNavigationHeader";
+import { getBuildings } from "../../api/dataService";
 
 const IndoorNavigationScreen = () => {
-  // Define buildings and selectedBuilding state // static for now
-  const [buildings, setBuildings] = useState([
-    { label: "Hall Building", value: "hall" },
-    { label: "Library", value: "library" },
-    { label: "Gym", value: "gym" },
-  ]);
-
+  const [buildings, setBuildings] = useState([]);
   const [selectedBuilding, setSelectedBuilding] = useState("");
 
-  // Set default building if not selected yet
+  // Fetch buildings from the API -> dataservice
   useEffect(() => {
-    if (buildings.length > 0 && !selectedBuilding) {
-      setSelectedBuilding(buildings[0].value); // Set default building when buildings are available
-    }
-  }, [buildings, selectedBuilding]);
+    const fetchBuildings = async () => {
+      try {
+        const buildingsData = await getBuildings();
+        const formattedBuildings = buildingsData.map((building) => ({
+          label: building.name,
+          value: building.id,
+        }));
+        setBuildings(formattedBuildings);
+        if (formattedBuildings.length > 0) {
+          setSelectedBuilding(formattedBuildings[0].value);
+        }
+      } catch (error) {
+        console.error("Error fetching buildings:", error);
+      }
+    };
+
+    fetchBuildings();
+  }, []);
 
   const handleBuildingChange = (value) => {
-    setSelectedBuilding(value); // Update the selected building state / for dropdown
-  };
-
-  const handleBackPress = () => {
-    console.log("Back button pressed");
+    setSelectedBuilding(value);
   };
 
   return (
     <View style={styles.container}>
       <IndoorNavigationHeader
-        buildings={buildings} // static buildings array here for now --> replaced by api
+        buildings={buildings}
         selectedBuilding={selectedBuilding}
         onBuildingChange={handleBuildingChange}
-        onBackPress={handleBackPress}
       />
       <IndoorMap />
     </View>
