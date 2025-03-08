@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const NavigationDirection = ({ distance, instruction }) => {
   const getDirectionIcon = instruction => {

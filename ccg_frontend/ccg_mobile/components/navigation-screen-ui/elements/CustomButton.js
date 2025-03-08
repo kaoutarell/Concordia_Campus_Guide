@@ -14,7 +14,7 @@ const CustomButton = ({ title, onPress }) => {
 CustomButton.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
-}
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -4,7 +4,7 @@ import { Marker } from "react-native-maps";
 import markerImage from "../../../assets/marker-1.png";
 import PropTypes from "prop-types";
 
-const CustomMarker = ({ value, onPress, destination=false }) => {
+const CustomMarker = ({ value, onPress, destination = false }) => {
   return (
     <Marker
       coordinate={{
