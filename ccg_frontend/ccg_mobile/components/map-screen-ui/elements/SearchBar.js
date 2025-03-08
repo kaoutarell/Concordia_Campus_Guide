@@ -55,9 +55,10 @@ const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelec
 };
 
 SearchBar.propTypes = {
-  locations: PropTypes.array,
-  setTargetLocation: PropTypes.func,
-  setSelectedCampus: PropTypes.func,
+  pointsOfInterest: PropTypes.array.isRequired,
+  allLocations: PropTypes.array.isRequired,
+  setTargetLocation: PropTypes.func.isRequired,
+  setSelectedCampus: PropTypes.func.isRequired,
 };
 
 // Improved Styles
