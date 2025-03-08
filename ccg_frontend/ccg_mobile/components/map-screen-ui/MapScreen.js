@@ -8,8 +8,6 @@ import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
 import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
 
-import { View, StyleSheet } from "react-native";
-
 import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
