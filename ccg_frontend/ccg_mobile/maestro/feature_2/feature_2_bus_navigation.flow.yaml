@@ -7,6 +7,7 @@ name: "Feature 2.1 & 2.5 - Bus"
 - tapOn: "Get Directions"
 # choose destination
 - tapOn: "Destination Address"
+- tapOn: "Choose destination"
 # select destination by typing part of building name
 - inputText:
     text: "Jesuit"
@@ -35,7 +36,7 @@ name: "Feature 2.1 & 2.5 - Bus"
 - tapOn: "Start Navigation"
 - assertVisible: "↑"
 - assertVisible: "Google Map"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # check that exit button works
 - tapOn: "Exit"
@@ -52,10 +53,10 @@ name: "Feature 2.1 & 2.5 - Bus"
 - assertVisible: "RF"
 # start navigation flow
 - tapOn: "Start Navigation"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # see directions and assert page renders correctly
-- tapOn: "DIR"
+- tapOn: "Preview"
 - assertVisible: "Directions"
 - scrollUntilVisible:
     element:
