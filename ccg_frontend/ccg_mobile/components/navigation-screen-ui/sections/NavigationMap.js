@@ -33,22 +33,37 @@ const NavigationMap = ({
   useEffect(() => {
     const updateRegion = async () => {
       if (isNavigating) {
-        const currentLocation = await getMyCurrentLocation();
         const region = {
-          latitude: currentLocation.location.latitude,
-          longitude: currentLocation.location.longitude,
+          latitude: start?.location?.latitude || 0, // Use start location or fallback to 0 if not available
+          longitude: start?.location?.longitude || 0, // Use start location or fallback to 0 if not available
           latitudeDelta: 0.001, // Zoom level - adjust as needed
           longitudeDelta: 0.001,
         };
 
-        if (mapRef.current) {
-          mapRef.current.animateToRegion(region, 1000);
+        if (start?.location) {
+          // Use start location if available
+          if (mapRef.current) {
+            mapRef.current.animateToRegion(region, 1000);
+          }
+        } else {
+          // Fallback to current location if start location is not available - fixed - bug#166
+          const currentLocation = await getMyCurrentLocation();
+          const regionFallback = {
+            latitude: currentLocation.location.latitude,
+            longitude: currentLocation.location.longitude,
+            latitudeDelta: 0.001, // Zoom level - adjust as needed
+            longitudeDelta: 0.001,
+          };
+
+          if (mapRef.current) {
+            mapRef.current.animateToRegion(regionFallback, 1000);
+          }
         }
       }
     };
 
     updateRegion();
-  }, [isNavigating]);
+  }, [isNavigating, start]);
 
   const allCoordinates = useMemo(() => {
     if (displayShuttle && legs) {
