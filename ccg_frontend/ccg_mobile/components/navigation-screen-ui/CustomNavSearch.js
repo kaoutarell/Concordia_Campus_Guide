@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 import { getCategoryIcon } from "../../utils/categoryIcons";
 
 const CustomNavSearch = ({ navigation, route }) => {
-  const { type, onGoBack, searchableItems } = route.params || {};
+  const { type, onGoBack, searchableItems, allLocations } = route.params || {};
 
-  const [allBuildings, setAllBuildings] = useState(searchableItems);
+  const [allBuildings, setAllBuildings] = useState(searchableItems || allLocations || []);
 
   const [searchText, setSearchText] = useState("");
-  const [filteredLocations, setFilteredLocations] = useState(searchableItems);
+  const [filteredLocations, setFilteredLocations] = useState(searchableItems || allLocations || []);
 
   const inputRef = useRef(null);
 

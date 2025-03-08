@@ -166,6 +166,38 @@ describe("BusLocationService", () => {
 
       consoleSpy.mockRestore();
     });
+
+    it("should handle missing session cookie", async () => {
+      // Mock null session cookie result
+      busLocationService.fetchSessionCookie = jest.fn().mockResolvedValue(null);
+
+      // Mock successful bus data fetch
+      const mockBusData = {
+        d: {
+          Points: [{ ID: "BUS1", Latitude: 45.5, Longitude: -73.6 }],
+        },
+      };
+
+      fetch.mockResolvedValueOnce({
+        json: jest.fn().mockResolvedValue(mockBusData),
+      });
+
+      await busLocationService.fetchBusData();
+
+      // Verify that fetch was called without Cookie header
+      expect(fetch).toHaveBeenCalledWith(
+        "https://shuttle.concordia.ca/concordiabusmap/WebService/GService.asmx/GetGoogleObject",
+        expect.objectContaining({
+          method: "POST",
+          headers: expect.not.objectContaining({
+            Cookie: expect.anything(),
+          }),
+        })
+      );
+
+      // Should still process bus data correctly
+      expect(busLocationService.busLocations).toHaveLength(1);
+    });
   });
 
   describe("startTracking", () => {
