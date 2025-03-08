@@ -74,17 +74,17 @@ describe("SearchBar Component", () => {
 
     // Extract the onGoBack callback from the navigation call
     const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
-    
+
     // Simulate selecting a destination
-    const selectedDestination = { 
-      name: "Hall Building", 
+    const selectedDestination = {
+      name: "Hall Building",
       campus: "SGW",
-      id: "school-3" 
+      id: "school-3",
     };
-    
+
     // Call the callback
     onGoBack(selectedDestination);
-    
+
     // Verify that the state was updated correctly
     expect(mockSetTargetLocation).toHaveBeenCalledWith(selectedDestination);
     expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");
@@ -93,38 +93,36 @@ describe("SearchBar Component", () => {
 
   it("should clear search when the clear button is clicked", async () => {
     // Render the component with an initial destination value set
-    const { getByPlaceholderText, getByTestId, rerender } = render(
-      <SearchBar {...defaultProps} />
-    );
-    
+    const { getByPlaceholderText, getByTestId, rerender } = render(<SearchBar {...defaultProps} />);
+
     // Set initial state by simulating a selection
     const input = getByPlaceholderText("Where to?");
-    
+
     // Focus to trigger navigation
     await act(async () => {
       fireEvent(input, "focus");
     });
-    
+
     // Extract and call the onGoBack callback to set destination state
     const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
     const selectedDestination = { name: "Hall Building", campus: "SGW", id: "school-3" };
-    
+
     // Call the callback to set internal state
     act(() => {
       onGoBack(selectedDestination);
     });
-    
+
     // Rerender the component to reflect state changes
     rerender(<SearchBar {...defaultProps} />);
-    
+
     // Now the clear button should be visible
     const clearButton = getByTestId("clear-search-button");
-    
+
     // Click the clear button
     act(() => {
       fireEvent.press(clearButton);
     });
-    
+
     // Verify that the right actions were performed
     expect(mockSetTargetLocation).toHaveBeenCalledWith({});
     expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");

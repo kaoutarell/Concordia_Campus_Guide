@@ -68,7 +68,7 @@ const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = 
         }
       }
     };
-    
+
     fetchLocation();
 
     return () => {
@@ -220,7 +220,7 @@ MapViewComponentImpl.propTypes = {
   }).isRequired,
 };
 
-// Create a memoized version of the component to prevent unnecessary re-renders 
+// Create a memoized version of the component to prevent unnecessary re-renders
 const MapViewComponent = React.memo(MapViewComponentImpl);
 
 // Use the same propTypes for the wrapped component

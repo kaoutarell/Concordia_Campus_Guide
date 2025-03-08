@@ -97,7 +97,7 @@ describe("NavigationMap Component", () => {
 
     // Map should still be rendered in navigation mode
     expect(getByTestId("mock-map-view")).toBeTruthy();
-    
+
     // Check if getMyCurrentLocation was called for navigation mode
     expect(getMyCurrentLocation).toHaveBeenCalled();
   });
@@ -137,13 +137,13 @@ describe("NavigationMap Component", () => {
     // Map should be rendered with shuttle display
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("handles shuttle mode with bus locations", () => {
     const shuttleLocations = [
       { id: 1, latitude: 45.5, longitude: -73.6 },
-      { id: 2, latitude: 45.4, longitude: -73.65 }
+      { id: 2, latitude: 45.4, longitude: -73.65 },
     ];
-    
+
     const props = {
       ...defaultProps,
       displayShuttle: true,
@@ -151,7 +151,12 @@ describe("NavigationMap Component", () => {
       legs: {
         0: {
           steps: [
-            { coordinates: [[-73.579, 45.497], [-73.58, 45.49]] },
+            {
+              coordinates: [
+                [-73.579, 45.497],
+                [-73.58, 45.49],
+              ],
+            },
           ],
           total_distance: 100,
         },
@@ -161,22 +166,22 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("handles case with no path coordinates", () => {
     const props = {
       ...defaultProps,
-      pathCoordinates: null
+      pathCoordinates: null,
     };
 
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("handles case with empty legs", () => {
     const props = {
       ...defaultProps,
       displayShuttle: true,
-      legs: {}
+      legs: {},
     };
 
     const { getByTestId } = render(<NavigationMap {...props} />);
@@ -207,7 +212,7 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("renders with complete bus stops from legs when shuttle mode is on", () => {
     const props = {
       ...defaultProps,
@@ -243,7 +248,7 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("renders without legs with total_distance of 0", () => {
     const props = {
       ...defaultProps,
@@ -266,7 +271,7 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("handles empty coordinate arrays in legs steps", () => {
     const props = {
       ...defaultProps,
@@ -287,7 +292,7 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("properly renders BusTrackingMarkers component with shuttle locations", () => {
     const props = {
       ...defaultProps,
@@ -301,14 +306,12 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("does not display BusTrackingMarkers when displayShuttle is false", () => {
     const props = {
       ...defaultProps,
       displayShuttle: false,
-      shuttleLocations: [
-        { id: "bus1", latitude: 45.49, longitude: -73.58 },
-      ],
+      shuttleLocations: [{ id: "bus1", latitude: 45.49, longitude: -73.58 }],
     };
 
     const { getByTestId } = render(<NavigationMap {...props} />);

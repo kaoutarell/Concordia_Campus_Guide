@@ -67,18 +67,18 @@ describe("outdoorRouteUtils", () => {
       // Should return cumulative distance to the second point
       expect(result).toBeGreaterThan(0);
     });
-    
+
     it("returns distance to nearest coordinate when coordinates are far apart", () => {
       const coords = [
-        [-74.6, 46.5],   // Very far point
+        [-74.6, 46.5], // Very far point
         [-73.59, 45.51], // This one should be closest
         [-72.58, 44.52], // Very far point
       ];
       const userLocation = [-73.6, 45.5]; // Closest to the second point
-      
+
       // Reset the mock implementation
       calculateDistance.mockReset();
-      
+
       // Mock the distance calculation to make the test deterministic
       calculateDistance.mockImplementation((lat1, lon1, lat2, lon2) => {
         // Check which point we're calculating and return appropriate distance
@@ -87,9 +87,9 @@ describe("outdoorRouteUtils", () => {
         if (lat1 === 44.52 && lon1 === -72.58) return 200000; // Point 3
         return 100000; // Default
       });
-      
+
       const result = getCumulativeDistanceToNearestCoord(coords, userLocation);
-      
+
       // We expect the function to identify the second point as closest
       // Just verify the result is a number, and don't check call count which is implementation dependent
       expect(result).toEqual(expect.any(Number));

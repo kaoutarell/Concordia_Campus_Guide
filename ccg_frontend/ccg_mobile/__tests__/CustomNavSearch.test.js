@@ -9,7 +9,7 @@ jest.mock("@expo/vector-icons", () => ({
 
 // Mock categoryIcons utility
 jest.mock("../utils/categoryIcons", () => ({
-  getCategoryIcon: jest.fn().mockImplementation((category) => {
+  getCategoryIcon: jest.fn().mockImplementation(category => {
     return { uri: `mock-icon-${category || "default"}` };
   }),
 }));
@@ -124,7 +124,7 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByPlaceholderText, getByText, queryByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={customRoute} />
     );
@@ -160,7 +160,7 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByText } = render(<CustomNavSearch navigation={mockNavigation} route={customRoute} />);
 
     // Press on a location
@@ -193,7 +193,7 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByText } = render(<CustomNavSearch navigation={mockNavigation} route={routeWithoutOnGoBack} />);
 
     // Press on a location
@@ -229,11 +229,9 @@ describe("CustomNavSearch", () => {
   it("renders without params correctly", () => {
     // Test with no route params
     const emptyRoute = { params: null };
-    
-    const { getByPlaceholderText } = render(
-      <CustomNavSearch navigation={mockNavigation} route={emptyRoute} />
-    );
-    
+
+    const { getByPlaceholderText } = render(<CustomNavSearch navigation={mockNavigation} route={emptyRoute} />);
+
     // Should still render even without params
     // With no type specified, it defaults to "start" placeholder
     expect(getByPlaceholderText("Choose start")).toBeTruthy();
@@ -243,15 +241,15 @@ describe("CustomNavSearch", () => {
     const { getByPlaceholderText, queryByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={mockRoute} />
     );
-    
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Enter search text
     fireEvent.changeText(searchInput, "Hall");
-    
+
     // Now clear the search
     fireEvent.changeText(searchInput, "");
-    
+
     // No locations should be visible
     expect(queryByText("Hall Building")).toBeFalsy();
     expect(queryByText("Library Building")).toBeFalsy();
@@ -284,19 +282,19 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByPlaceholderText, getByText, queryByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={customRoute} />
     );
-    
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Search by address
     fireEvent.changeText(searchInput, "1455");
-    
+
     // Hall Building should be visible (matches the address)
     expect(getByText("Hall Building")).toBeTruthy();
-    
+
     // Library Building should not be visible
     expect(queryByText("Library Building")).toBeFalsy();
   });
@@ -319,23 +317,23 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByPlaceholderText, getByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={customRoute} />
     );
-    
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Enter search text to show the location
     fireEvent.changeText(searchInput, "Hall");
-    
+
     // "No address available" text should be visible
     expect(getByText("No address available")).toBeTruthy();
   });
 
   it("properly uses getCategoryIcon for different categories", () => {
     const getCategoryIcon = require("../utils/categoryIcons").getCategoryIcon;
-    
+
     const customRoute = {
       params: {
         type: "destination",
@@ -360,16 +358,14 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
-    const { getByPlaceholderText } = render(
-      <CustomNavSearch navigation={mockNavigation} route={customRoute} />
-    );
-    
+
+    const { getByPlaceholderText } = render(<CustomNavSearch navigation={mockNavigation} route={customRoute} />);
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Enter search text to show the locations
     fireEvent.changeText(searchInput, "Building");
-    
+
     // Check if getCategoryIcon was called with the correct categories
     expect(getCategoryIcon).toHaveBeenCalledWith("cafe");
     expect(getCategoryIcon).toHaveBeenCalledWith("library");
@@ -383,16 +379,16 @@ describe("CustomNavSearch", () => {
         searchableItems: [], // Empty array
       },
     };
-    
+
     const { getByPlaceholderText, queryByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={emptyRoute} />
     );
-    
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Enter search text
     fireEvent.changeText(searchInput, "Building");
-    
+
     // No buildings should be visible
     expect(queryByText("Hall Building")).toBeFalsy();
     expect(queryByText("Library Building")).toBeFalsy();
@@ -425,19 +421,19 @@ describe("CustomNavSearch", () => {
         ],
       },
     };
-    
+
     const { getByPlaceholderText, getByText, queryByText } = render(
       <CustomNavSearch navigation={mockNavigation} route={mixedRoute} />
     );
-    
+
     const searchInput = getByPlaceholderText("Choose destination");
-    
+
     // Enter search text to show all locations
     fireEvent.changeText(searchInput, "Building");
-    
+
     // Science Building should be visible (from searchableItems)
     expect(getByText("Science Building")).toBeTruthy();
-    
+
     // Hall Building should not be visible (from allLocations which is overridden)
     expect(queryByText("Hall Building")).toBeFalsy();
   });

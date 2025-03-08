@@ -22,7 +22,7 @@ jest.mock("react-native/Libraries/Utilities/Platform", () => {
     OS: "ios",
     select: jest.fn().mockImplementation(obj => obj.ios),
   };
-  
+
   return Platform;
 });
 
@@ -265,7 +265,7 @@ describe("MapViewComponent", () => {
       </NavigationContainer>
     );
   });
-  
+
   it("should update target region when target has an ID", () => {
     const mockTarget = {
       id: 3,
@@ -282,27 +282,17 @@ describe("MapViewComponent", () => {
     // First render without a target
     const { rerender } = render(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={{}}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={{}} />
       </NavigationContainer>
     );
 
     // Then rerender with a target that has an ID
     rerender(
       <NavigationContainer>
-        <MapViewComponent
-          locations={mockLocations}
-          region={mockRegion}
-          maxBounds={mockMaxBounds}
-          target={mockTarget}
-        />
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={mockMaxBounds} target={mockTarget} />
       </NavigationContainer>
     );
-    
+
     // Since we're mocking the map component, we can't actually test the region changes
     // but the test passes if no errors are thrown during the effect that updates the region
   });

@@ -92,7 +92,7 @@ describe("NavigationDirection", () => {
     // For this instruction it actually matches 'left' and returns a left arrow
     expect(getByText("←")).toBeTruthy();
   });
-  
+
   it("uses default straight arrow when no direction keywords are present", () => {
     const props = {
       distance: 120,
