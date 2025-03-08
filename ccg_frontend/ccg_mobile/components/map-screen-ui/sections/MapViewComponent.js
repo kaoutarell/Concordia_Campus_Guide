@@ -19,14 +19,12 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-
   const handleRegionChange = region => {
     if (Platform.OS == "android") {
       const zoomThreshold = 0.006;
       setShowMarkers(region.latitudeDelta < zoomThreshold);
     }
   };
-
 
   const handleMarkerPress = location => {
     setTimeout(() => {
