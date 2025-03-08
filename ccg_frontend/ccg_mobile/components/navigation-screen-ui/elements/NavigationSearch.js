@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { View, TextInput, TouchableOpacity, StyleSheet, Dimensions, Animated } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
+import PropTypes from "prop-types";
 const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onModifyAddress }) => {
   const navigation = useNavigation();
   const rotateAnim = useRef(new Animated.Value(0)).current; // Animation reference
@@ -82,6 +82,17 @@ const NavigationSearch = ({ startAddress, allLocations, destinationAddress, onMo
       </View>
     </View>
   );
+};
+
+NavigationSearch.propTypes = {
+  allLocations: PropTypes.arrayOf(
+    PropTypes.shape({
+      civic_address: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  startAddress: PropTypes.string.isRequired,
+  destinationAddress: PropTypes.string.isRequired,
+  onModifyAddress: PropTypes.func.isRequired,
 };
 
 export default NavigationSearch;
