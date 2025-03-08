@@ -35,7 +35,7 @@ name: "Feature 1 - Show Both Campuses"
 #[Deprecated]- assertVisible: "My Location"
 - doubleTapOn: # zoom in on map to show markers
     id: "map-view"
-- tapOn: "Zoom in"
+- doubleTapOn: "Google Map"
 # Feature 1.5 - Show Info About Buildings
 - tapOn: "PY"
 - assertVisible: "Psychology Building"
@@ -55,7 +55,7 @@ name: "Feature 1 - Show Both Campuses"
 # Feature 1.5 - Show Info About Buildings
 - doubleTapOn: # zoom in on map to show markers
     id: "map-view"
-- tapOn: "Zoom in"
+- doubleTapOn: "Google Map"
 - tapOn: "ER"
 - assertVisible: "ER Building"
 - assertVisible: "ER"
@@ -67,3 +67,4 @@ name: "Feature 1 - Show Both Campuses"
 - assertVisible: "Get Directions"
 - assertVisible: ""
 - tapOn: "" # close building info popup
+- tapOn: "Google Map" # to make sure marker is not selected anymore
