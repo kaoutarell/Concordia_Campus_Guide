@@ -103,7 +103,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Note if you add a library in the backend make sure to add it to file:
@@ -223,7 +223,7 @@ conda env create -f environment.yml
 If the environment is already created, update it using:
 
 ```bash
-conda env update --file environment.yml --prune
+conda env update --file environment.yml --prune --name myenv
 ```
 
 Activate the environment:
@@ -313,4 +313,14 @@ To run new tests, make sure that all test suite folders are included in .maestro
 cd ccg_frontend/ccg_mobile/maestro
 
 maestro test --format junit --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
+```
+
+### Prettier Formatting
+
+Prettier enforces code formatting for consistency. If your PR fails in CI due to formatting issues, run the following commands to auto-format your files and pass the check.
+
+```bash
+cd ccg_frontend/ccg_mobile/
+
+npm run format -- --write "**/*.js"
 ```

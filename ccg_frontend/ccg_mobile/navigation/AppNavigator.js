@@ -26,7 +26,7 @@ const StackNavigator = () => {
   );
 };
 
-const drawerContent = (props) => <Sidebar {...props} />;
+const drawerContent = props => <Sidebar {...props} />;
 
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {

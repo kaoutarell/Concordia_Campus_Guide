@@ -1,38 +1,27 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
-
+import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
+import PropTypes from "prop-types";
 const { width } = Dimensions.get("window");
 
 const NavigationToggle = ({ isIndoor, setIsIndoor }) => {
   return (
     <View style={styles.navContainer}>
       {/* Outdoor Button */}
-      <TouchableOpacity
-        style={[styles.navButton, !isIndoor && styles.activeNav]}
-        onPress={() => setIsIndoor(false)}
-      >
-        <Text style={[styles.navText, !isIndoor && styles.activeText]}>
-          Outdoor
-        </Text>
+      <TouchableOpacity style={[styles.navButton, !isIndoor && styles.activeNav]} onPress={() => setIsIndoor(false)}>
+        <Text style={[styles.navText, !isIndoor && styles.activeText]}>Outdoor</Text>
       </TouchableOpacity>
 
       {/* Indoor Button */}
-      <TouchableOpacity
-        style={[styles.navButton, isIndoor && styles.activeNav]}
-        onPress={() => setIsIndoor(true)}
-      >
-        <Text style={[styles.navText, isIndoor && styles.activeText]}>
-          Indoor
-        </Text>
+      <TouchableOpacity style={[styles.navButton, isIndoor && styles.activeNav]} onPress={() => setIsIndoor(true)}>
+        <Text style={[styles.navText, isIndoor && styles.activeText]}>Indoor</Text>
       </TouchableOpacity>
     </View>
   );
+};
+
+NavigationToggle.propTypes = {
+  isIndoor: PropTypes.bool.isRequired,
+  setIsIndoor: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

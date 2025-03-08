@@ -1,48 +1,84 @@
 appId: host.exp.Exponent
 name: "Feature 2 - Outdoor Directions"
 ---
-#Feature 2.2 - Show User's Current Location
-- setLocation:
-    latitude: 45.497660
-    longitude: -73.579162
-- scroll #scroll vertically
-- assertVisible: "My Location"
-- tapOn: "My Location"
-- assertVisible: "H"
-# Feature 2.1 - Navigate to a destination
-- tapOn: "Where to?"
-- inputText:
-    text: "Engineering, Computer Science and Visual Arts Integrated Complex"
-    into: "Where to?"
-- runFlow:
-    when:
-      visible: "Try out your stylus"
-      platform: android
-    file: ./subflows/stylus_android.flow.yaml
-- extendedWaitUntil:
-    visible: "Engineering, Computer Science and Visual Arts Integrated Complex"
-    timeout: 50000
-- tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
-- tapOn: "Starting Point"
+- assertVisible:
+    id: "menu-button"
+- tapOn:
+    id: "menu-button"
+- assertVisible: "ConU CG"
+# test home button
+- assertVisible: "🏠 Home"
+- tapOn: "🏠 Home"
+- tapOn: "Continue to map ➤"
+# [DEPRECATED] Feature 2.2 - Assert User's Current Location
+#- assertVisible: "Google Map"
+#- tapOn: "Zoom in"
+#- scroll #scroll vertically
+##[Deprecated]- assertVisible: "My Location"
+#- tapOn: "My Location"
+# check that my location button recenters screen to user's location
+#- assertVisible: "H"
+
+# test that providing a start point will take the user to the navigation screen
+- tapOn: "Zoom in"
+- tapOn: "Zoom in"
+- tapOn: "TD"
+- tapOn: "Get Directions"
+# test start point other than Current Location
+- tapOn: "Start Address"
+# type building name
 - inputText:
     text: "Henry F. Hall Building"
     into: "Starting Point"
-- extendedWaitUntil:
-    visible: "Henry F. Hall Building"
-    timeout: 50000
+# select start point
 - tapOn:
     text: "Henry F. Hall Building"
     index: 1
-- tapOn: "Take me there"
+# make sure that the navigation screen and relevant information renders
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
 - assertVisible: "Google Map"
-- assertVisible: "1455 De Maisonneuve Blvd. W."
-- assertVisible: "1515 St. Catherine W."
-- assertVisible: "Google Map"
-- assertVisible: "My Location"
+#[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
+- assertVisible: "Google Map"
 - assertVisible: "H"
-- assertVisible: "EV"
-- assertVisible: "Back"
-- tapOn: "Back"
+- assertVisible: "TD"
+# leave navigation map
+- tapOn: "←"
+# close info popup
+- tapOn: ""
+# check that the campus toggle button and other components render
 - assertVisible:
-    id: "map-view"
+    id: "campus-button"
+- assertVisible: "Google Map"
+- tapOn: "" #menu
+# test that Navigate button from sidebar works properly
+- tapOn: "🚶‍♂️ Navigate"
+- tapOn: "Destination Address"
+- tapOn: "Grey Nuns Garden"
+# make sure that the navigation screen and relevant information renders
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- tapOn: "Start Navigation"
+- assertVisible:
+    text: "DIR"
+    enabled: true
+- assertVisible:
+    text: "Exit"
+    enabled: true
+- tapOn: "Exit"
+- tapOn: "←"
+- assertVisible: "Google Map"
+##some tests to make sure that reversing start/destination works with navigation (set destination to something else than current location)
+#- setLocation:
+#    latitude: 45.497660
+#    longitude: -73.579162

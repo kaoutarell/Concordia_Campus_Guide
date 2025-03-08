@@ -1,181 +1,131 @@
 import React from "react";
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-  act,
-} from "@testing-library/react-native";
+import { render, fireEvent, waitFor, act } from "@testing-library/react-native";
 import SearchBar from "../components/map-screen-ui/elements/SearchBar";
-import { cleanup } from "@testing-library/react-native";
+import { Keyboard } from "react-native";
 
-afterEach(() => {
-  cleanup();
-});
+const mockNavigate = jest.fn();
 
-// Mock location data
-const locations = [
-  { name: "Samuel Bronfman Building" },
-  { name: "Hingston Hall, wing HC" },
-  { name: "X Annex" },
-  { name: "Vanier Library Building" },
-  { name: "FA Annex" },
-];
+// Mock Keyboard
+jest.mock("react-native/Libraries/Components/Keyboard/Keyboard", () => ({
+  dismiss: jest.fn(),
+}));
+
+jest.mock("@react-navigation/native", () => ({
+  useNavigation: () => ({
+    navigate: mockNavigate,
+  }),
+}));
 
 describe("SearchBar Component", () => {
-  it("should render SearchBar with correct placeholder", async () => {
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} />
-    );
-    // Check if the placeholder and value are correctly rendered
-    const input = await waitFor(() => getByPlaceholderText("Where to?"), {
-      timeout: 3000, // Wait for up to 3 seconds
-    });
-    expect(input.props.value).toBe("");
+  const mockSetTargetLocation = jest.fn();
+  const mockSetSelectedCampus = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  it("should call setSearchText when text changes", async () => {
-    const setSearchText = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} setIsSearching={setSearchText} />
-    );
+  const defaultProps = {
+    pointsOfInterest: [
+      { id: "poi-1", name: "Library", campus: "SGW" },
+      { id: "poi-2", name: "Cafeteria", campus: "LOY" },
+    ],
+    allLocations: [
+      { id: "school-1", name: "Samuel Bronfman Building", campus: "SGW" },
+      { id: "school-2", name: "Hingston Hall, wing HC", campus: "LOY" },
+    ],
+    setTargetLocation: mockSetTargetLocation,
+    setSelectedCampus: mockSetSelectedCampus,
+  };
 
-    const input = await waitFor(() => getByPlaceholderText("Where to?"), {
-      timeout: 3000, // Wait for the input to be rendered
-    });
+  it("should render SearchBar with correct placeholder", () => {
+    const { getByPlaceholderText } = render(<SearchBar {...defaultProps} />);
+    const input = getByPlaceholderText("Where to?");
+    expect(input).toBeTruthy();
+  });
 
-    // Simulate text change; wrapped inside act to avoid ReferenceError
+  it("should navigate to 'Search' screen when tapped", async () => {
+    const { getByPlaceholderText } = render(<SearchBar {...defaultProps} />);
+    const input = getByPlaceholderText("Where to?");
+
     await act(async () => {
-      fireEvent.changeText(input, "X Annex");
+      fireEvent(input, "focus");
     });
 
-    // Ensure setSearchText is called with the new value
-    expect(setSearchText).toHaveBeenCalledWith(true);
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
+      expect(mockNavigate).toHaveBeenCalledWith(
+        "Search",
+        expect.objectContaining({
+          searchableItems: expect.any(Array),
+          type: "destination",
+          onGoBack: expect.any(Function),
+        })
+      );
+    });
   });
 
-  it("should not search anything if there is no text input", async () => {
-    const setSearchText = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} setIsSearching={setSearchText} />
-    );
-    const input = await waitFor(() => getByPlaceholderText("Where to?"), {
-      timeout: 3000, // Wait for input to appear
-    });
+  it("should handle the onGoBack callback correctly", async () => {
+    const { getByPlaceholderText } = render(<SearchBar {...defaultProps} />);
+    const input = getByPlaceholderText("Where to?");
 
-    // wrapped inside act to avoid ReferenceError
     await act(async () => {
-      fireEvent.changeText(input, "");
+      fireEvent(input, "focus");
     });
 
-    expect(setSearchText).toHaveBeenCalledWith(false);
-  });
+    // Extract the onGoBack callback from the navigation call
+    const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
 
-  it("should update filtered locations based on input", async () => {
-    const setIsSearching = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} setIsSearching={setIsSearching} />
-    );
-
-    const input = getByPlaceholderText("Where to?");
-    fireEvent.changeText(input, "Vanier L");
-
-    // Wait for filtered locations to appear
-    await screen.queryByText("Vanier Library Building");
-
-    // Log to see if locations are filtered correctly
-    screen.debug();
-  });
-
-  it("should not show Vanier Extension when 'Vanier L' is typed", async () => {
-    const setIsSearching = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} setIsSearching={setIsSearching} />
-    );
-
-    const input = getByPlaceholderText("Where to?");
-    fireEvent.changeText(input, "Vanier L");
-
-    const vanierExtension = screen.queryByText("Vanier Extension");
-    expect(vanierExtension).toBeNull();
-  });
-
-  it("should call setIsSearching when input changes", async () => {
-    const setIsSearching = jest.fn();
-    const { getByPlaceholderText } = render(
-      <SearchBar locations={locations} setIsSearching={setIsSearching} />
-    );
-
-    const input = getByPlaceholderText("Where to?");
-    fireEvent.changeText(input, "Vanier L");
-
-    expect(setIsSearching).toHaveBeenCalledWith(true);
-  });
-
-  it("should update filtered locations and show the correct suggestions", async () => {
-    const { getByPlaceholderText, queryAllByText } = render(
-      <SearchBar
-        locations={locations}
-        setIsSearching={jest.fn()}
-        setStartLocation={jest.fn()}
-        setDestinationLocation={jest.fn()}
-        handleViewNavigation={jest.fn()}
-      />
-    );
-
-    // Simulate typing in the destination search input
-    const destinationInput = getByPlaceholderText("Where to?");
-    fireEvent.changeText(destinationInput, "Vanier L");
-
-    // Mock the filtered locations state after the input change
-    const filteredLocations = ["Vanier Library Building"];
-
-    // Use queryAllByText to check if the filtered location is rendered in the dropdown
-    const filteredSuggestions = queryAllByText(filteredLocations);
-
-    // Log the filtered suggestions to confirm they're being rendered
-    console.log("Filtered Suggestions:", filteredSuggestions);
-
-    // Expect the filtered suggestion to be present in the dropdown
-    expect(filteredSuggestions).toBeTruthy();
-  });
-
-  it("should call setStartPoint and update filtered locations when input changes", async () => {
-    const setStartPoint = jest.fn();
-    const setIsSearching = jest.fn();
-
-    const { queryAllByText } = render(
-      <SearchBar
-        locations={locations}
-        setStartPoint={setStartPoint}
-        setIsSearching={setIsSearching}
-        selectedDestination={"Vanier Library Building"}
-      />
-    );
-
-    // Call handleSearch directly with the expected arguments
-    const handleSearch = (text, type) => {
-      if (type != "destination") {
-        setStartPoint(text);
-        setIsSearching(text.length > 0);
-      }
+    // Simulate selecting a destination
+    const selectedDestination = {
+      name: "Hall Building",
+      campus: "SGW",
+      id: "school-3",
     };
 
-    // Call handleSearch with "X Annex" and "start"
-    handleSearch("X Annex", "start");
+    // Call the callback
+    onGoBack(selectedDestination);
 
-    // Ensure setStartPoint is called with "X Annex"
-    expect(setStartPoint).toHaveBeenCalledWith("X Annex");
+    // Verify that the state was updated correctly
+    expect(mockSetTargetLocation).toHaveBeenCalledWith(selectedDestination);
+    expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");
+    expect(Keyboard.dismiss).toHaveBeenCalled();
+  });
 
-    // Ensure setIsSearching is called with true
-    expect(setIsSearching).toHaveBeenCalledWith(true);
+  it("should clear search when the clear button is clicked", async () => {
+    // Render the component with an initial destination value set
+    const { getByPlaceholderText, getByTestId, rerender } = render(<SearchBar {...defaultProps} />);
 
-    // Mock the filtered locations state after the input change
-    const filteredLocations = ["X Annex"];
+    // Set initial state by simulating a selection
+    const input = getByPlaceholderText("Where to?");
 
-    // Use queryAllByText to check if the filtered location is rendered in the dropdown
-    const filteredSuggestions = queryAllByText(filteredLocations);
+    // Focus to trigger navigation
+    await act(async () => {
+      fireEvent(input, "focus");
+    });
 
-    // Expect the filtered suggestion to be present in the dropdown
-    expect(filteredSuggestions).toBeTruthy();
+    // Extract and call the onGoBack callback to set destination state
+    const onGoBack = mockNavigate.mock.calls[0][1].onGoBack;
+    const selectedDestination = { name: "Hall Building", campus: "SGW", id: "school-3" };
+
+    // Call the callback to set internal state
+    act(() => {
+      onGoBack(selectedDestination);
+    });
+
+    // Rerender the component to reflect state changes
+    rerender(<SearchBar {...defaultProps} />);
+
+    // Now the clear button should be visible
+    const clearButton = getByTestId("clear-search-button");
+
+    // Click the clear button
+    act(() => {
+      fireEvent.press(clearButton);
+    });
+
+    // Verify that the right actions were performed
+    expect(mockSetTargetLocation).toHaveBeenCalledWith({});
+    expect(mockSetSelectedCampus).toHaveBeenCalledWith("SGW");
+    expect(Keyboard.dismiss).toHaveBeenCalled();
   });
 });

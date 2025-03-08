@@ -8,9 +8,10 @@ name: "Home Page"
 - assertVisible: "ConU CG"
 - assertVisible: "Continue to map ➤"
 - tapOn: "Continue to map ➤"
-- setLocation:
-    latitude: 45.497660
-    longitude: -73.579162
+# set location directly in android studio device setting; uncomment if needed
+#- setLocation:
+#latitude: 45.497660
+#longitude: -73.579162
 # specify location permission when necessary
 # android
 - runFlow:

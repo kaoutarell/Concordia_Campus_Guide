@@ -1,0 +1,1145 @@
+[
+    {
+        "model": "mapengine.service",
+        "pk": 1,
+        "fields": {
+            "building": 1,
+            "link_text": "School of Health",
+            "link_path": "/content/concordia/en/schoolofhealth.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 2,
+        "fields": {
+            "building": 3,
+            "link_text": "Concordia Coop Bookstore",
+            "link_path": "https://www.co-opbookstore.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 3,
+        "fields": {
+            "building": 3,
+            "link_text": "CUPFA",
+            "link_path": "https://cupfa.org/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 4,
+        "fields": {
+            "building": 6,
+            "link_text": "VAV Art Gallery",
+            "link_path": "http://vavgallery.concordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 5,
+        "fields": {
+            "building": 7,
+            "link_text": "FOFA Gallery",
+            "link_path": "/content/concordia/en/finearts/about/galleries-venues/fofa-gallery.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 6,
+        "fields": {
+            "building": 7,
+            "link_text": "LeGym",
+            "link_path": "/content/concordia/en/campus-life/recreation/facilities/le-gym.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 7,
+        "fields": {
+            "building": 9,
+            "link_text": "Concert Hall",
+            "link_path": "/content/concordia/en/arts/venues/oscar-peterson.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 8,
+        "fields": {
+            "building": 10,
+            "link_text": "Concordia International",
+            "link_path": "/content/concordia/en/offices/ci.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 9,
+        "fields": {
+            "building": 11,
+            "link_text": "Student Residence",
+            "link_path": "/content/concordia/en/students/housing/residences/loyola-residences"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 10,
+        "fields": {
+            "building": 12,
+            "link_text": "Ed Meagher Arena",
+            "link_path": "/content/concordia/en/campus-life/recreation/facilities/arena.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 11,
+        "fields": {
+            "building": 12,
+            "link_text": "Gymnasium",
+            "link_path": "/content/concordia/en/campus-life/recreation/facilities/athletic-complex.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 12,
+        "fields": {
+            "building": 13,
+            "link_text": "Conference services",
+            "link_path": "/content/concordia/en/hospitality.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 13,
+        "fields": {
+            "building": 13,
+            "link_text": "Loyola Jesuit Hall and Conference Centre",
+            "link_path": "/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 14,
+        "fields": {
+            "building": 14,
+            "link_text": "Campus Safety and Prevention Services",
+            "link_path": "/content/concordia/en/campus-life/security"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 15,
+        "fields": {
+            "building": 14,
+            "link_text": "Career and Planning Services",
+            "link_path": "/content/concordia/en/students/success/career-planning-services"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 16,
+        "fields": {
+            "building": 14,
+            "link_text": "Concordia Student Union",
+            "link_path": "https://www.csu.qc.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 17,
+        "fields": {
+            "building": 14,
+            "link_text": "Concordia Theatre",
+            "link_path": "/content/concordia/en/arts/venues/db-clarke-theatre.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 18,
+        "fields": {
+            "building": 14,
+            "link_text": "Dean of Students",
+            "link_path": "/content/concordia/en/students/life"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 19,
+        "fields": {
+            "building": 14,
+            "link_text": "First Year Experience",
+            "link_path": "/content/concordia/en/students/new.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 20,
+        "fields": {
+            "building": 14,
+            "link_text": "IT Service Desk",
+            "link_path": "/content/concordia/en/it"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 21,
+        "fields": {
+            "building": 14,
+            "link_text": "Mail Services",
+            "link_path": "/content/concordia/en/offices/facilities.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 22,
+        "fields": {
+            "building": 14,
+            "link_text": "NouLa student lounge",
+            "link_path": "/content/concordia/en/students/noula.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 23,
+        "fields": {
+            "building": 14,
+            "link_text": "Otsenhákta Student Centre",
+            "link_path": "/content/concordia/en/students/otsenhakta"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 24,
+        "fields": {
+            "building": 14,
+            "link_text": "Student Success Centre",
+            "link_path": "/content/concordia/en/students/success"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 25,
+        "fields": {
+            "building": 14,
+            "link_text": "Welcome Crew Office",
+            "link_path": "/content/concordia/en/students/new/mentoring.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 26,
+        "fields": {
+            "building": 17,
+            "link_text": "IT Services — 1st floor",
+            "link_path": "/content/concordia/en/it/services/classroom-support/sir-george-williamscampus/SGW-LS-1"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 27,
+        "fields": {
+            "building": 17,
+            "link_text": "IT Services — 2nd floor",
+            "link_path": "/content/concordia/en/it/services/classroom-support/sir-george-williamscampus/SGW-LS-2"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 28,
+        "fields": {
+            "building": 18,
+            "link_text": "Campus Retail Stores",
+            "link_path": "https://www.bkstr.com/concordiastore/home"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 29,
+        "fields": {
+            "building": 19,
+            "link_text": "Arts and Science Research Groups",
+            "link_path": "/content/concordia/en/artsci/research/centres.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 30,
+        "fields": {
+            "building": 20,
+            "link_text": "Classrooms",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 31,
+        "fields": {
+            "building": 20,
+            "link_text": "RMA Research Room and Vault",
+            "link_path": "/content/concordia/en/offices/archives"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 32,
+        "fields": {
+            "building": 22,
+            "link_text": "ACUMAE",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#acumae"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 33,
+        "fields": {
+            "building": 22,
+            "link_text": "SCOMM",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#scomm-sgw"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 34,
+        "fields": {
+            "building": 22,
+            "link_text": "CUSSU",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cussu"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 35,
+        "fields": {
+            "building": 22,
+            "link_text": "CUUSS-TS",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cuuss-ts"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 36,
+        "fields": {
+            "building": 22,
+            "link_text": "CULEU",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#culeu"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 37,
+        "fields": {
+            "building": 22,
+            "link_text": "CUPEU",
+            "link_path": "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cupeu"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 38,
+        "fields": {
+            "building": 22,
+            "link_text": "CUCEPTFU",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 39,
+        "fields": {
+            "building": 24,
+            "link_text": "Centre 2110",
+            "link_path": "http://www.centre2110.org/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 40,
+        "fields": {
+            "building": 24,
+            "link_text": "CUTV",
+            "link_path": "https://www.cutvmontreal.org/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 41,
+        "fields": {
+            "building": 25,
+            "link_text": "Library",
+            "link_path": "/content/concordia/en/library"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 42,
+        "fields": {
+            "building": 26,
+            "link_text": "Centre for Structural and Functional Genomics",
+            "link_path": "/content/concordia/en/research/genomics"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 43,
+        "fields": {
+            "building": 27,
+            "link_text": "Student Residence",
+            "link_path": "/content/concordia/en/students/housing/residences/loyola-residences"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 44,
+        "fields": {
+            "building": 28,
+            "link_text": "Career Management Services",
+            "link_path": "/content/concordia/en/jmsb/career"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 45,
+        "fields": {
+            "building": 28,
+            "link_text": "John Molson Executive Centre",
+            "link_path": "/content/concordia/en/jmsb/programs/executive-centre"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 46,
+        "fields": {
+            "building": 28,
+            "link_text": "Performing Arts Facilities",
+            "link_path": "/content/concordia/en/finearts/shops-studios/performing-arts"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 47,
+        "fields": {
+            "building": 30,
+            "link_text": "Access Centre for Students with Disabilities",
+            "link_path": "/content/concordia/en/students/accessibility"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 48,
+        "fields": {
+            "building": 30,
+            "link_text": "Centre for Teaching & Learning",
+            "link_path": "/content/concordia/en/ctl.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 49,
+        "fields": {
+            "building": 30,
+            "link_text": "Counselling and Psychological Services",
+            "link_path": "/content/concordia/en/health/mental-health/counselling"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 50,
+        "fields": {
+            "building": 30,
+            "link_text": "Dean of Students",
+            "link_path": "/content/concordia/en/students/life.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 51,
+        "fields": {
+            "building": 30,
+            "link_text": "Health Services",
+            "link_path": "/content/concordia/en/health/medical/clinic"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 52,
+        "fields": {
+            "building": 30,
+            "link_text": "Loyola International College",
+            "link_path": "/content/concordia/en/artsci/loyola-college-diversity-sustainability.html "
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 53,
+        "fields": {
+            "building": 30,
+            "link_text": "Loyola Landing",
+            "link_path": "/content/concordia/en/students/services/loyola"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 54,
+        "fields": {
+            "building": 30,
+            "link_text": "Provost and VP, Academic",
+            "link_path": "/content/concordia/en/provost.html "
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 55,
+        "fields": {
+            "building": 30,
+            "link_text": "Welcome Crew Office",
+            "link_path": "/content/concordia/en/students/new/mentoring.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 56,
+        "fields": {
+            "building": 31,
+            "link_text": "Environmental Health and Safety",
+            "link_path": "/content/concordia/en/campus-life/safety"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 57,
+        "fields": {
+            "building": 31,
+            "link_text": "Facilities Management",
+            "link_path": "/content/concordia/en/offices/facilities"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 58,
+        "fields": {
+            "building": 32,
+            "link_text": "Café",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 59,
+        "fields": {
+            "building": 32,
+            "link_text": "Campus Safety and Prevention Services",
+            "link_path": "https://www.concordia.ca/campus-life/security.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 60,
+        "fields": {
+            "building": 32,
+            "link_text": "Science College",
+            "link_path": "/content/concordia/en/artsci/science-college"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 61,
+        "fields": {
+            "building": 33,
+            "link_text": "Enrolment Services / Office of the Registrar / Student Recruitment",
+            "link_path": "/content/concordia/en/offices/registrar"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 62,
+        "fields": {
+            "building": 33,
+            "link_text": "Environmental Health and Safety",
+            "link_path": "/content/concordia/en/campus-life/safety"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 63,
+        "fields": {
+            "building": 33,
+            "link_text": "Examinations Office",
+            "link_path": "/content/concordia/en/students/exams"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 64,
+        "fields": {
+            "building": 33,
+            "link_text": "Human Resources",
+            "link_path": "/content/concordia/en/hr"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 65,
+        "fields": {
+            "building": 33,
+            "link_text": "Office of Sustainability",
+            "link_path": "/content/concordia/en/sustainability"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 66,
+        "fields": {
+            "building": 33,
+            "link_text": "Records Management and Archives (RMA) Office",
+            "link_path": "/content/concordia/en/offices/archives"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 67,
+        "fields": {
+            "building": 33,
+            "link_text": "Senior non-credit program",
+            "link_path": "/content/concordia/en/lifelong-learning/seniors"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 68,
+        "fields": {
+            "building": 33,
+            "link_text": "STUDY HUB",
+            "link_path": "/content/concordia/en/students/success/superb-study-spots-at-concordia.html#study-spots"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 69,
+        "fields": {
+            "building": 35,
+            "link_text": "Access Centre for Students with Disabilities",
+            "link_path": "/content/concordia/en/students/accessibility"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 70,
+        "fields": {
+            "building": 35,
+            "link_text": "Facilities Management",
+            "link_path": "/content/concordia/en/offices/facilities"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 71,
+        "fields": {
+            "building": 35,
+            "link_text": "Financial Aid & Awards Office",
+            "link_path": "/content/concordia/en/students/financial.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 72,
+        "fields": {
+            "building": 35,
+            "link_text": "Financial Services",
+            "link_path": "/content/concordia/en/financial-services"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 73,
+        "fields": {
+            "building": 35,
+            "link_text": "Graduate Studies",
+            "link_path": "/content/concordia/en/sgs.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 74,
+        "fields": {
+            "building": 35,
+            "link_text": "Health Services",
+            "link_path": "/content/concordia/en/health/medical/clinic"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 75,
+        "fields": {
+            "building": 35,
+            "link_text": "Institute for Co-operative Education",
+            "link_path": "/content/concordia/en/academics/co-op.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 76,
+        "fields": {
+            "building": 35,
+            "link_text": "International Students Office",
+            "link_path": "/content/concordia/en/students/international"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 77,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of the Chief Communications Officer",
+            "link_path": "/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 78,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of the President",
+            "link_path": "/content/concordia/en/about/administration-governance/president.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 79,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of the Provost & VP, Academic",
+            "link_path": "/content/concordia/en/provost.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 80,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of Rights and Responsibilities",
+            "link_path": "/content/concordia/en/conduct/behavioural-integrity/rights-responsibilities.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 81,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of the VP, Research & Graduate Studies",
+            "link_path": "/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 82,
+        "fields": {
+            "building": 35,
+            "link_text": "Office of the VP, Services and Sustainability",
+            "link_path": "/content/concordia/en/about/administration-governance/office-vp-services-sustainability"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 83,
+        "fields": {
+            "building": 35,
+            "link_text": "Ombuds Office",
+            "link_path": "/content/concordia/en/offices/ombuds.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 84,
+        "fields": {
+            "building": 35,
+            "link_text": "University Advancement",
+            "link_path": "/content/concordia/en/about/administration-governance/office-vp-advancement.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 85,
+        "fields": {
+            "building": 35,
+            "link_text": "University Communications Services",
+            "link_path": "/content/concordia/en/about/administration-governance/office-chief-communications-officer"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 86,
+        "fields": {
+            "building": 36,
+            "link_text": "Graduate Students Association",
+            "link_path": "http://gsaconcordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 87,
+        "fields": {
+            "building": 37,
+            "link_text": "Library",
+            "link_path": "http://library.concordia.ca/index.php"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 88,
+        "fields": {
+            "building": 38,
+            "link_text": "Cazalet Theater",
+            "link_path": "/content/concordia/en/arts/venues/cazalet"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 89,
+        "fields": {
+            "building": 38,
+            "link_text": "Concordia Multi-Faith and Spirituality Centre",
+            "link_path": "/content/concordia/en/students/spirituality"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 90,
+        "fields": {
+            "building": 38,
+            "link_text": "F.C. Smith Auditorium",
+            "link_path": "/content/concordia/en/arts/venues/fc-smith-auditorium"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 91,
+        "fields": {
+            "building": 40,
+            "link_text": "Student Residence",
+            "link_path": "/content/concordia/en/students/housing/residences/jesuit-residence"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 92,
+        "fields": {
+            "building": 42,
+            "link_text": "Class Entrance: 1175 St-Mathieu St.",
+            "link_path": "/content/concordia/en/maps/sgw-campus.html?building=GN-classes"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 93,
+        "fields": {
+            "building": 42,
+            "link_text": "CUSP: 1175 St-Mathieu St. (temporary)",
+            "link_path": "/content/concordia/en/students/student-parents-centre.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 94,
+        "fields": {
+            "building": 42,
+            "link_text": "Daycare Centre: 1185 St-Mathieu St.",
+            "link_path": "/content/concordia/en/campus-life/daycares.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 95,
+        "fields": {
+            "building": 42,
+            "link_text": "Grey Nuns Library (Reading Room and Group Study Rooms)",
+            "link_path": "/content/concordia/en/maps/buildings/gn"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 96,
+        "fields": {
+            "building": 42,
+            "link_text": "Residences",
+            "link_path": "/content/concordia/en/students/housing/residences/grey-nuns.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 97,
+        "fields": {
+            "building": 42,
+            "link_text": "Summer Accommodation",
+            "link_path": "/content/concordia/en/summer/accommodations.html/greynunsresidence/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 98,
+        "fields": {
+            "building": 43,
+            "link_text": "CPE Les P'tits Profs Daycare",
+            "link_path": "http://lesptitsprofs.wordpress.com/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 99,
+        "fields": {
+            "building": 45,
+            "link_text": "CSU Daycare & Nursery",
+            "link_path": "mailto:infocsudaycare@csu.qc.ca"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 100,
+        "fields": {
+            "building": 47,
+            "link_text": "Cafeteria",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 101,
+        "fields": {
+            "building": 47,
+            "link_text": "Café",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 102,
+        "fields": {
+            "building": 47,
+            "link_text": "Campus Centre",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 103,
+        "fields": {
+            "building": 47,
+            "link_text": "Food Services",
+            "link_path": "/content/concordia/en/students/housing/residences"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 104,
+        "fields": {
+            "building": 51,
+            "link_text": "Concordia Student Union",
+            "link_path": "https://www.csu.qc.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 105,
+        "fields": {
+            "building": 51,
+            "link_text": "Loyola College for Diversity and Sustainability and Loyola",
+            "link_path": "/content/concordia/en/artsci/loyola-college-diversity-sustainability.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 106,
+        "fields": {
+            "building": 52,
+            "link_text": "Multi-Faith and Spirituality Centre",
+            "link_path": "/content/concordia/en/students/spirituality"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 107,
+        "fields": {
+            "building": 52,
+            "link_text": "Sustainable Concordia",
+            "link_path": "http://sustainableconcordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 108,
+        "fields": {
+            "building": 57,
+            "link_text": "Engineering and Computer Science Association",
+            "link_path": "http://ecaconcordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 109,
+        "fields": {
+            "building": 60,
+            "link_text": "4TH SPACE",
+            "link_path": "/content/concordia/en/next-gen/4th-space"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 110,
+        "fields": {
+            "building": 60,
+            "link_text": "Birks Student Service Centre",
+            "link_path": "/content/concordia/en/students/birks"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 111,
+        "fields": {
+            "building": 60,
+            "link_text": "Concordia Book Stop",
+            "link_path": "https://www.bkstr.com/concordiastore"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 112,
+        "fields": {
+            "building": 60,
+            "link_text": "Concordia Print Services",
+            "link_path": "/content/concordia/en/print"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 113,
+        "fields": {
+            "building": 60,
+            "link_text": "Instructional & Information Technology Services (IITS)",
+            "link_path": "/content/concordia/en/it"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 114,
+        "fields": {
+            "building": 60,
+            "link_text": "J.A. De Sève Cinema",
+            "link_path": "/content/concordia/en/it/services/cinemas"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 115,
+        "fields": {
+            "building": 60,
+            "link_text": "Leonard and Bina Ellen Art Gallery",
+            "link_path": "http://ellengallery.concordia.ca/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 116,
+        "fields": {
+            "building": 60,
+            "link_text": "R. Howard Webster Library",
+            "link_path": "/content/concordia/en/library"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 117,
+        "fields": {
+            "building": 60,
+            "link_text": "Sexual Assault Resource Centre (SARC)",
+            "link_path": "/content/concordia/en/conduct/sexual-assault"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 118,
+        "fields": {
+            "building": 60,
+            "link_text": "SHIFT Centre for Social Transformation",
+            "link_path": "/content/concordia/en/about/shift.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 119,
+        "fields": {
+            "building": 60,
+            "link_text": "Welcome Centre",
+            "link_path": "/content/concordia/en/admissions/undergraduate/welcometours.html"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 120,
+        "fields": {
+            "building": 62,
+            "link_text": "CPE Les P'tits Profs Daycare",
+            "link_path": "http://lesptitsprofs.wordpress.com/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 121,
+        "fields": {
+            "building": 63,
+            "link_text": "Daycare Centre",
+            "link_path": "http://deanofstudents.concordia.ca/childcare/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 122,
+        "fields": {
+            "building": 63,
+            "link_text": "Residences",
+            "link_path": "http://www.concordia.ca/admissions/housing/residences/grey-nuns/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 123,
+        "fields": {
+            "building": 63,
+            "link_text": "Summer Accommodation",
+            "link_path": "http://vpservices.concordia.ca/summerhousing/greynunsresidence/"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 124,
+        "fields": {
+            "building": 64,
+            "link_text": "",
+            "link_path": ""
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 125,
+        "fields": {
+            "building": 65,
+            "link_text": "Concordia Continuing Education",
+            "link_path": "/content/concordia/en/cce"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 126,
+        "fields": {
+            "building": 66,
+            "link_text": "Student Residence",
+            "link_path": "/content/concordia/en/students/housing/residences/hingston-hall-hb"
+        }
+    },
+    {
+        "model": "mapengine.service",
+        "pk": 127,
+        "fields": {
+            "building": 66,
+            "link_text": "CUFA",
+            "link_path": "http://www.cufa.net/"
+        }
+    }
+]

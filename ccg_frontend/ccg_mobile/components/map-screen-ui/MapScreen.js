@@ -2,25 +2,23 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { getBuildings } from "../../api/dataService";
+import { getBuildings, getPointOfInterests } from "../../api/dataService";
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
-import {
-  initialRegionSGW,
-  initialRegionLoyola,
-  maxBoundsSGW,
-  maxBoundsLoyola,
-} from "../../constants/initialRegions";
+import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
+
+import { View, StyleSheet } from "react-native";
 
 import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
   const navigation = useNavigation(); // Get navigation object
-
-  const [allLocations, setAllLocations] = useState([]);
+  const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
+  const [pointsOfInterest, setPointsOfInterest] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
   const [isIndoor, setIsIndoor] = useState(false);
+
   const [targetLocation, setTargetLocation] = useState({});
 
   const getRegion = () => {
@@ -35,6 +33,7 @@ const MapScreen = () => {
     const setData = async () => {
       try {
         await fetchAllLocations();
+        await fetchPointsOfInterests();
         console.log("Data fetched successfully.");
       } catch (error) {
         console.error("Error fetching locations:", error);
@@ -53,8 +52,15 @@ const MapScreen = () => {
     }
   }, [isIndoor, navigation]);
 
-  const onCampusSelect = (campus) => {
-    setSelectedCampus((prevCampus) => {
+  // Navigate to IndoorScreen when isIndoor is true
+  useEffect(() => {
+    if (isIndoor) {
+      navigation.navigate("Indoor");
+    }
+  }, [isIndoor, navigation]);
+
+  const onCampusSelect = campus => {
+    setSelectedCampus(prevCampus => {
       if (prevCampus !== campus) {
         return campus;
       }
@@ -72,17 +78,29 @@ const MapScreen = () => {
     }
   };
 
+  const fetchPointsOfInterests = async () => {
+    try {
+      const data = await getPointOfInterests();
+      setPointsOfInterest(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <HeaderBar
         setTargetLocation={setTargetLocation}
         selectedCampus={selectedCampus}
+        setSelectedCampus={setSelectedCampus}
         onCampusSelect={onCampusSelect}
         locations={allLocations}
+        pointsOfInterest={pointsOfInterest}
       />
       {/* Map */}
       <MapViewComponent
         locations={allLocations}
+        pointsOfInterest={pointsOfInterest}
         target={targetLocation}
         region={getRegion()}
         maxBounds={getMaxBounds()}
