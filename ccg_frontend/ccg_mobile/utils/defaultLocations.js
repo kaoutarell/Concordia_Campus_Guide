@@ -1,16 +1,25 @@
 import locationService from "../services/LocationService";
 
 export const getMyCurrentLocation = async () => {
-  locationService.startTrackingLocation();
-  const currentLocation = locationService.getCurrentLocation();
+  try {
+    await locationService.startTrackingLocation();
+    const currentLocation = locationService.getCurrentLocation();
+    
+    if (!currentLocation || !currentLocation.coords) {
+      return getDefaultDestination();
+    }
 
-  return {
-    location: {
-      latitude: currentLocation.coords.latitude,
-      longitude: currentLocation.coords.longitude,
-    },
-    civic_address: "Current Location",
-  };
+    return {
+      location: {
+        latitude: currentLocation.coords.latitude,
+        longitude: currentLocation.coords.longitude,
+      },
+      civic_address: "Current Location",
+    };
+  } catch (error) {
+    // Return a fallback location if unable to get current location
+    return getDefaultDestination();
+  }
 };
 
 export const getDefaultDestination = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
@@ -9,7 +9,8 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBounds }) => {
+// Use React.memo to optimize rendering
+const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = [], region, maxBounds }) => {
   const navigation = useNavigation();
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,18 +53,26 @@ const MapViewComponent = ({ pointsOfInterest, target, locations, region, maxBoun
   }, [locations]);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-        if (location) setCurrentLocation(transformCurrentLoc(location));
+        if (location && isMounted) {
+          setCurrentLocation(transformCurrentLoc(location));
+        }
       } catch (error) {
-        console.log("Error fetching location:", error);
+        if (isMounted) {
+          console.log("Error fetching location:", error);
+        }
       }
     };
+    
     fetchLocation();
 
     return () => {
+      isMounted = false;
       locationService.stopTrackingLocation();
     };
   }, []);
@@ -189,7 +198,8 @@ const styles = StyleSheet.create({
   },
 });
 
-MapViewComponent.propTypes = {
+MapViewComponentImpl.propTypes = {
+  pointsOfInterest: PropTypes.array,
   target: PropTypes.object,
   locations: PropTypes.array.isRequired,
   region: PropTypes.shape({
@@ -209,5 +219,11 @@ MapViewComponent.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+// Create a memoized version of the component to prevent unnecessary re-renders 
+const MapViewComponent = React.memo(MapViewComponentImpl);
+
+// Use the same propTypes for the wrapped component
+MapViewComponent.propTypes = MapViewComponentImpl.propTypes;
 
 export default MapViewComponent;

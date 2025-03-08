@@ -92,4 +92,19 @@ describe("NavigationDirection", () => {
     // For this instruction it actually matches 'left' and returns a left arrow
     expect(getByText("←")).toBeTruthy();
   });
+  
+  it("uses default straight arrow when no direction keywords are present", () => {
+    const props = {
+      distance: 120,
+      instruction: "You have arrived at your destination",
+    };
+
+    const { getByText } = render(<NavigationDirection {...props} />);
+
+    // Check if the distance and instruction are rendered correctly
+    expect(getByText("In 120.0 meters, You have arrived at your destination!")).toBeTruthy();
+
+    // Should use the default straight arrow when no direction keywords match
+    expect(getByText("↑")).toBeTruthy();
+  });
 });

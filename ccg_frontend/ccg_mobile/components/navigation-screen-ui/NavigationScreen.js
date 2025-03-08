@@ -56,7 +56,7 @@ const NavigationScreen = ({ navigation, route }) => {
   useEffect(() => {
     // Start tracking location using the service
     locationService.startTrackingLocation().catch(err => {
-      setErrorMsg(err.message);
+      console.error("Location tracking error:", err.message);
     });
 
     // Subscribe to location updates
