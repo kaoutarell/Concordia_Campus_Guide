@@ -22,10 +22,10 @@ def get_indoor_directions_data(request):
     if map_data==None:return None
 
     sequence=get_node_sequence(map_data, start, destination)
-    print(sequence)
     if sequence==None:return None
 
     coords=get_path_coordinates(map_data, sequence)
+    print(coords)
     path_data=convert_coords_to_output(coords)
     pin_array=get_pins(map_data, start, destination, False)
     data = {"floor_sequence": floor_sequence, "path_data": path_data, "pin": pin_array}

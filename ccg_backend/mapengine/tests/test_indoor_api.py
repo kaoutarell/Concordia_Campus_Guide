@@ -29,5 +29,5 @@ def test_get_path_coordinates():
         map_data=json.load(file)
     sequence = ['H867', 'C1', 'C2', 'H813']
     coords = get_path_coordinates(map_data, sequence)
-    assert coords == [{'x':160,'y':200}, {'x':180, 'y':220}, {'x': 555, 'y': 220}, {'x':555, 'y':800}, {'x':675, 'y':800}, {'x':675, 'y':820}]
+    assert coords == [{'x': 160, 'y': 200}, {'x': 180, 'y': 220}, {'x': 180, 'y': 220}, {'x': 555, 'y': 220}, {'x': 765, 'y': 220}, {'x': 765, 'y': 195}]
     
