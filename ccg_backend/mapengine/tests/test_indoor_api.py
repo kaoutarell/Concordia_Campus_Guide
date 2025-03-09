@@ -443,11 +443,12 @@ def test_convert_coords_to_output():
     assert output == "M160 200 L180 220 L180 220 L555 220 L765 220 L765 195"
 
 
-'''def test_select_map():
+"""def test_select_map():
     map_data = MAP_DATA
     assert map_data == select_map("H8")
     assert select_map("doesntexist") is None
-'''
+"""
+
 
 def test_get_floor_sequence():
     sequence = get_floor_sequence("H867", "H967")
