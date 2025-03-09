@@ -8,7 +8,7 @@ import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
-
+import MapController from "../elements/MapController";
 // Use React.memo to optimize rendering
 const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = [], region, maxBounds }) => {
   const navigation = useNavigation();
@@ -45,6 +45,32 @@ const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = 
       ],
     });
   };
+
+  const handleZoomIn = () => {
+    mapRef.current?.getCamera().then(camera => {
+      camera.zoom += 1;
+      mapRef.current?.animateCamera(camera);
+    });
+};
+
+const handleZoomOut = () => {
+    mapRef.current?.getCamera().then(camera => {
+      camera.zoom -= 1;
+      mapRef.current?.animateCamera(camera);
+    });
+};
+
+const handleCurrentLocation = () => {
+  const location = locationService.getCurrentLocation();
+  if (location) {
+    mapRef.current?.animateCamera({
+      center: {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      },
+    });
+  }
+};
 
   useEffect(() => {
     if (locations.length > 0) {
@@ -160,6 +186,11 @@ const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = 
           <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
         </View>
       )}
+
+        {/* Map Controller */}
+        <MapController onCurrentLocation={handleCurrentLocation} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut}/>
+      
+
     </View>
   );
 };
