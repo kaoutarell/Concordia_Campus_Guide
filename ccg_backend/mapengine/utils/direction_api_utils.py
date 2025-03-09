@@ -1,8 +1,15 @@
-import requests
-import polyline
-from geopy.distance import geodesic
 import numpy as np
-from ..constants import ORS_BASE_URL, OTP_BASE_URL, OTP_HEADER, OTP_AVG_WALKING_SPEED, otp_query
+import polyline
+import requests
+from geopy.distance import geodesic
+
+from ..constants import (
+    ORS_BASE_URL,
+    OTP_AVG_WALKING_SPEED,
+    OTP_BASE_URL,
+    OTP_HEADER,
+    otp_query,
+)
 
 
 def ors_directions(start, end, profile):
@@ -12,6 +19,7 @@ def ors_directions(start, end, profile):
         ors_error = response.json().get("error", "Unknown error")
         return {"error": "Failed to get directions", "ors_error": ors_error}, 400
     return parse_ors_directions(response.json()), 200
+
 
 def parse_ors_directions(geojson_data):
     features = geojson_data.get("features", [])
@@ -29,30 +37,41 @@ def parse_ors_directions(geojson_data):
     route_info = []
 
     for step in steps:
-        route_info.append({
-            "distance": step["distance"],
-            "duration": step["duration"],
-            "instruction": step["instruction"],
-            "type": step["type"],
-            "coordinates": coordinates[step["way_points"][0]: step["way_points"][1] + 1],
-        })
+        route_info.append(
+            {
+                "distance": step["distance"],
+                "duration": step["duration"],
+                "instruction": step["instruction"],
+                "type": step["type"],
+                "coordinates": coordinates[
+                    step["way_points"][0]: step["way_points"][1] + 1
+                ],
+            }
+        )
 
     route["steps"] = route_info
     return route
+
 
 def otp_directions(start, end):
     start = start.split(",")
     end = end.split(",")
 
-    response = requests.post(OTP_BASE_URL, headers=OTP_HEADER, json=otp_query(start, end, True, 3))
+    response = requests.post(
+        OTP_BASE_URL, headers=OTP_HEADER, json=otp_query(start, end, True, 3)
+    )
 
     return parse_otp_directions(response.json(), start, end)
+
 
 def parse_otp_directions(json, start, end):
     trip_patterns = json["data"]["trip"]["tripPatterns"]
     # To avoid trip patterns with only foot walking, select the first one with more than one leg
     if len(trip_patterns) >= 1:
-        trip_patterns = next((pattern for pattern in trip_patterns if len(pattern["legs"]) > 1), trip_patterns[0])
+        trip_patterns = next(
+            (pattern for pattern in trip_patterns if len(pattern["legs"]) > 1),
+            trip_patterns[0],
+        )
     else:
         return {"error": "No trip patterns found"}, 400
 
@@ -60,13 +79,15 @@ def parse_otp_directions(json, start, end):
     for leg in trip_patterns["legs"]:
         all_steps.extend(parse_leg(leg))
     # Add last destination step
-    all_steps.append({
-        "distance": 0,
-        "duration": 0,
-        "instruction": "Arrived at destination",
-        "type": -1,
-        "coordinates": [[float(coord) for coord in end]]
-    })
+    all_steps.append(
+        {
+            "distance": 0,
+            "duration": 0,
+            "instruction": "Arrived at destination",
+            "type": -1,
+            "coordinates": [[float(coord) for coord in end]],
+        }
+    )
 
     route = {
         "profile": "public-transport",
@@ -75,10 +96,11 @@ def parse_otp_directions(json, start, end):
         "total_distance": trip_patterns["distance"],
         "total_duration": trip_patterns["duration"],
         "bbox": bounding_box(get_all_coordinates(all_steps)),
-        "steps": all_steps
+        "steps": all_steps,
     }
 
     return route, 200
+
 
 def find_closest_point(step, path):
     """Finds the index of the closest path point to a given step."""
@@ -86,6 +108,7 @@ def find_closest_point(step, path):
     distances = [geodesic(step_coord, (p[0], p[1])).meters for p in path]
     n = np.argmin(distances)
     return n  # Return index of the closest path point
+
 
 def match_steps_to_path(steps, path, mode):
     """Matches navigation steps to the closest points in the path and links coordinates."""
@@ -98,6 +121,7 @@ def match_steps_to_path(steps, path, mode):
     if mode != "foot":
         matched_indices.append(len(path) - 1)
     return matched_indices
+
 
 def parse_leg(leg):
     if leg["mode"] == "foot":
@@ -134,20 +158,28 @@ def parse_leg(leg):
             "duration": steps[i].get("distance", 0) / OTP_AVG_WALKING_SPEED,
             "instruction": instruction,
             "type": 0,
-            "coordinates": [[lon, lat] for lat, lon in path[start_idx:end_idx + 1]]
+            "coordinates": [[lon, lat] for lat, lon in path[start_idx: end_idx + 1]],
         }
         result.append(step_data)
     return result
 
+
 def bounding_box(points):
     x_coordinates, y_coordinates = zip(*points)
-    return [min(x_coordinates), min(y_coordinates), max(x_coordinates), max(y_coordinates)]
+    return [
+        min(x_coordinates),
+        min(y_coordinates),
+        max(x_coordinates),
+        max(y_coordinates),
+    ]
+
 
 def get_all_coordinates(steps):
     all_coordinates = []
     for step in steps:
         all_coordinates.extend(step["coordinates"])
     return all_coordinates
+
 
 def compute_bbox_from_steps(steps):
     """
