@@ -70,7 +70,7 @@ const IndoorNavigationScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="indoor-navigation-screen">
       <IndoorNavigationHeader
         buildings={buildings}
         selectedBuilding={selectedBuilding}
