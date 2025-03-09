@@ -15,10 +15,15 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
   };
 
   return (
-    <KeyboardAvoidingView style={styles.searchContainer} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+    <KeyboardAvoidingView
+      style={styles.searchContainer}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      testID="navigation-search-container"
+    >
       <View style={styles.inputContainer}>
         <Ionicons name="chevron-down-circle-outline" size={20} color="#800020" style={styles.icon} />
         <TextInput
+          testID="start-address-input"
           ref={startAddressRef}
           style={styles.input}
           placeholder="Start Address"
@@ -31,6 +36,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
       <View style={styles.inputContainer}>
         <Ionicons name="location-outline" size={20} color="#800020" style={styles.icon} />
         <TextInput
+          testID="destination-address-input"
           ref={destinationAddressRef}
           style={styles.input}
           placeholder="Destination Address"
