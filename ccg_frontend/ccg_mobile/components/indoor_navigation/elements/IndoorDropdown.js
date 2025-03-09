@@ -67,11 +67,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     borderWidth: 1,
     borderColor: "#ccc",
-    justifyContent: "center",
     alignItems: "center",
     paddingVertical: 10,
     flexDirection: "row", // Align text and icon horizontally
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   text: {
     fontSize: 16,
