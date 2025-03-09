@@ -2,24 +2,35 @@ from collections import deque
 import json
 import numpy as np
 
+
+''' main function of this file. returns a dictionary with all the data needed by the client
+    example output:
+    {
+        'floor_sequence': ['H8'], ==> sequence of floors to be traveled to get from point A to B
+        'path_data': 'M160 200 L180 220 L555 800 L675 800 L675 820', ==> path data for the <Path> tag on the frontend
+        'pin': [[75, 105], [640, 900]] ==> array of pins to be displayed on the frontend to show point A and B
+    }
+'''
 def get_indoor_directions_data(request):
     start=request.GET.get('start')
     destination=request.GET.get('destination')
+
     floor_sequence=get_floor_sequence(request)
     if floor_sequence==None:return None
-    #if len(floor_sequence)>1:
-    
-    #for floor in floor_sequence:
+
     map_data=select_map(floor_sequence[0])
+    if map_data==None:return None
+
     sequence=get_node_sequence(map_data, start, destination)
     if sequence==None:return None
+
     coords=get_path_coordinates(map_data, sequence)
     path_data=convert_coords_to_output(coords)
     pin_array=get_pins(map_data, start, destination, False)
     data = {"floor_sequence": floor_sequence, "path_data": path_data, "pin": pin_array}
-    print(data)
     return data
 
+# returns an array of pins for the start and destination if it isn't a multifloor request
 def get_pins(map_data, start, destination, multifloor):
     pin=[
         [map_data[start]['pin']['x'], map_data[start]['pin']['y']]
@@ -29,6 +40,7 @@ def get_pins(map_data, start, destination, multifloor):
         pin.append([map_data[destination]['pin']['x'], map_data[destination]['pin']['y']])
     return pin
 
+# returns a sequence of nodes in a graph when given the start and destination nodes using BFS
 def get_node_sequence(map_data, start, destination):
     
     if start not in map_data or destination not in map_data:
@@ -50,6 +62,8 @@ def get_node_sequence(map_data, start, destination):
     
     return None
 
+# returns a sequence of nodes from a classroom to a stairwell
+'''
 def get_class_stair_sequence(map_data, classroom):
     
     if classroom not in map_data:
@@ -70,7 +84,7 @@ def get_class_stair_sequence(map_data, classroom):
                     queue.append((neighbor, path + [neighbor]))
     
     return None
-
+'''
 
 #this function returns the closest point in the hallway to the class in order to connect the two graphically
 def get_hallway_class_point(map_data, room):
@@ -119,7 +133,8 @@ def get_path_coordinates(map_data, path):
         coords.append({"x":int(p[0]), "y":int(p[1])})
         coords.append(map_data[path[i]]["coords"])
         return coords
-    
+
+#converts the array of coordinates to proper output format    
 def convert_coords_to_output(coords):
     output="M"+str(coords[0]["x"])+" "+str(coords[0]["y"])
     output+=" L"+str(coords[1]["x"])+" "+str(coords[1]["y"])
@@ -129,7 +144,7 @@ def convert_coords_to_output(coords):
         i+=1
     return output
 
-#incomplete function (will need changes for adding floor and logic for going through multiple floors)
+# returns the json graph associated with the floor
 def select_map(floor):
     try:
         with open('mapengine/fixtures/'+floor+'.json', 'r') as file:
@@ -138,6 +153,7 @@ def select_map(floor):
     except:
         return None
     
+# returns a sequence of floors to be traveled to get from point A to B
 def get_floor_sequence(request):
     start = request.GET.get('start')
     destination = request.GET.get('destination')
