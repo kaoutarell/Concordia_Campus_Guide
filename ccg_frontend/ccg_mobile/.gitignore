@@ -36,3 +36,4 @@ yarn-error.*
 *.tsbuildinfo
 **/__pycache__
 node_modules/
+ccg_frontend/ccg_mobile/ios/
