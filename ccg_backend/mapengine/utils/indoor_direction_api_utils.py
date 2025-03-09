@@ -22,6 +22,7 @@ def get_indoor_directions_data(request):
     if map_data==None:return None
 
     sequence=get_node_sequence(map_data, start, destination)
+    print(sequence)
     if sequence==None:return None
 
     coords=get_path_coordinates(map_data, sequence)
@@ -122,7 +123,7 @@ def get_path_coordinates(map_data, path):
     else:
         p = get_hallway_class_point(map_data, path[0])
         coords.append({"x":int(p[0]), "y":int(p[1])})
-        i=2
+        i=1
         while map_data[path[i]]["type"] != "room":
             if map_data[path[i]]["type"] == "room":
                 p = get_hallway_class_point(map_data, path[i])
