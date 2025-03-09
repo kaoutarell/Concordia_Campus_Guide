@@ -45,6 +45,14 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Google Map"
 - assertVisible: "H"
 - assertVisible: "TD"
+# switch start and destination
+- tapOn:
+    text: ""
+    index: 1
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 # leave navigation map
 - tapOn: "←"
 # close info popup
