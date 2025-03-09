@@ -54,17 +54,33 @@ const MapViewComponentImpl = ({
   };
 
   const handleZoomIn = () => {
-    mapRef.current?.getCamera().then(camera => {
-      camera.zoom += 1;
-      mapRef.current?.animateCamera(camera);
-    });
+    if (Platform.OS == "ios") {
+      mapRef.current?.getCamera().then(camera => {
+        camera.altitude -= 750;
+        mapRef.current?.animateCamera(camera);
+      });
+    } else {
+      // Android
+      mapRef.current?.getCamera().then(camera => {
+        camera.zoom += 1;
+        mapRef.current?.animateCamera(camera);
+      });
+    }
   };
 
   const handleZoomOut = () => {
-    mapRef.current?.getCamera().then(camera => {
-      camera.zoom -= 1;
-      mapRef.current?.animateCamera(camera);
-    });
+    if (Platform.OS == "ios") {
+      mapRef.current?.getCamera().then(camera => {
+        camera.altitude += 750;
+        mapRef.current?.animateCamera(camera);
+      });
+    } else {
+      // Android
+      mapRef.current?.getCamera().then(camera => {
+        camera.zoom -= 1;
+        mapRef.current?.animateCamera(camera);
+      });
+    }
   };
 
   const handleCurrentLocation = () => {
