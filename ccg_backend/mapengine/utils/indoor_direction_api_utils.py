@@ -2,6 +2,14 @@ from collections import deque
 import json
 import numpy as np
 
+def get_indoor_directions_data(request):
+    start=request.GET.get('start')
+    destination=request.GET.get('destination')
+    map_data=select_map(request)
+    sequence=get_node_sequence(map_data, start, destination)
+    coords=get_path_coordinates(map_data, sequence)
+    data = {"path_data": convert_coords_to_output(coords)}
+    return data
 
 def get_node_sequence(map_data, start, destination):
     
