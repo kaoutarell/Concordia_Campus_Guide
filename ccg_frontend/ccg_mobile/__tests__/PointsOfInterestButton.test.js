@@ -8,9 +8,11 @@ jest.mock("../utils/categoryIcons", () => ({
 }));
 
 describe("PointsOfInterestButton", () => {
+  const mockOnPress = jest.fn();
+
   it("renders correctly with given props", () => {
     const { getByText, toJSON } = render(
-      <PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={() => {}} />
+      <PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={mockOnPress} />
     );
 
     expect(getByText("Coffee")).toBeTruthy();
@@ -19,11 +21,10 @@ describe("PointsOfInterestButton", () => {
 
   it("applies selected styles when `isSelected` is true", () => {
     const { getByTestId } = render(
-      <PointsOfInterestButton type="cafe" name="Coffee" isSelected={true} onPress={() => {}} />
+      <PointsOfInterestButton type="cafe" name="Coffee" isSelected={true} onPress={mockOnPress} />
     );
 
-    const buttonElement = getByTestId("points-of-interest-button");
-    expect(buttonElement.props.style).toEqual(
+    expect(getByTestId("points-of-interest-button").props.style).toEqual(
       expect.objectContaining({
         backgroundColor: "#8B1D3B", // Burgundy background when selected
       })
@@ -31,7 +32,6 @@ describe("PointsOfInterestButton", () => {
   });
 
   it("calls `onPress` when pressed", () => {
-    const mockOnPress = jest.fn();
     const { getByText } = render(
       <PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={mockOnPress} />
     );
@@ -41,12 +41,12 @@ describe("PointsOfInterestButton", () => {
   });
 
   it("displays the correct icon based on `type`", () => {
-    render(<PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={() => {}} />);
+    render(<PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={mockOnPress} />);
     expect(getCategoryIcon).toHaveBeenCalledWith("cafe");
   });
 
   it("renders with default props", () => {
-    const { getByText } = render(<PointsOfInterestButton type="cafe" name="Coffee" onPress={() => {}} />);
+    const { getByText } = render(<PointsOfInterestButton type="cafe" name="Coffee" onPress={mockOnPress} />);
 
     expect(getByText("Coffee")).toBeTruthy();
   });

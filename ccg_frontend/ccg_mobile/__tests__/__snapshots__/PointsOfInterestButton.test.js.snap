@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PointsOfInterestButton renders correctly with given props 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 30,
+      "elevation": 5,
+      "flexDirection": "row",
+      "marginRight": 10,
+      "opacity": 1,
+      "paddingHorizontal": 15,
+      "paddingVertical": 12,
+    }
+  }
+  testID="points-of-interest-button"
+>
+  <Image
+    source="test-file-stub"
+    style={
+      {
+        "height": 16,
+        "marginRight": 5,
+        "width": 16,
+      }
+    }
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#000",
+          "fontSize": 14,
+          "fontWeight": "500",
+        },
+        false,
+      ]
+    }
+  >
+    Coffee
+  </Text>
+</View>
+`;

@@ -8,155 +8,141 @@ jest.mock("../api/dataService", () => ({
   getPointOfInterests: jest.fn(),
 }));
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 jest.mock("../services/LocationService", () => ({
   getCurrentLocation: jest.fn(() => ({
     coords: { longitude: -73.5673, latitude: 45.5017 },
   })),
 }));
 
-test("Clicking a POI button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Restaurant" }]);
+describe("PointsOfInterestBar", () => {
+  const mockSetSelectedPointOfInterest = jest.fn();
+  const defaultCampus = "SGW";
 
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Restaurants");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
-  });
-});
-
-test("Clicking the Coffee button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Coffee Shop" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Coffee");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("cafe", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Coffee Shop" }]);
-  });
-});
-
-test("Clicking the Fast Food button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Fast Food Place" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Fast Food");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("fast_food", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Fast Food Place" }]);
-  });
-});
-
-test("Clicking the Library button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Library" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Library");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("library", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Library" }]);
-  });
-});
-
-test("Clicking the ATM button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test ATM" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("ATM");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("atm", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test ATM" }]);
-  });
-});
-
-test("Clicking the Clinic button fetches locations", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Clinic" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Clinic");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("clinic", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Clinic" }]);
-  });
-});
-
-test("Clicking a POI button returns empty data", async () => {
-  getPointOfInterests.mockResolvedValue([]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Restaurants");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([]);
-  });
-});
-
-test("Clicking a POI button toggles selection", async () => {
-  getPointOfInterests.mockResolvedValue([{ name: "Test Restaurant" }]);
-
-  const setSelectedPointOfInterest = jest.fn();
-  const { getByText } = render(
-    <PointsOfInterestBar campus="SGW" setSelectedPointOfInterest={setSelectedPointOfInterest} />
-  );
-
-  const button = getByText("Restaurants");
-  fireEvent.press(button);
-
-  await waitFor(() => {
-    expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", "SGW", -73.5673, 45.5017);
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  // Deselect the same button
-  fireEvent.press(button);
+  const renderComponent = () =>
+    render(<PointsOfInterestBar campus={defaultCampus} setSelectedPointOfInterest={mockSetSelectedPointOfInterest} />);
 
-  await waitFor(() => {
-    expect(setSelectedPointOfInterest).toHaveBeenCalledWith([]);
+  it("fetches locations when the Restaurants button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Restaurant" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Restaurants"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
+    });
+  });
+
+  it("fetches locations when the Coffee button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Coffee Shop" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Coffee"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("cafe", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Coffee Shop" }]);
+    });
+  });
+
+  it("fetches locations when the Fast Food button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Fast Food Place" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Fast Food"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("fast_food", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Fast Food Place" }]);
+    });
+  });
+
+  it("fetches locations when the Library button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Library" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Library"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("library", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Library" }]);
+    });
+  });
+
+  it("fetches locations when the ATM button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test ATM" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("ATM"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("atm", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test ATM" }]);
+    });
+  });
+
+  it("fetches locations when the Clinic button is pressed", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Clinic" }]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Clinic"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("clinic", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Clinic" }]);
+    });
+  });
+
+  it("returns empty data when a POI button is pressed and no locations are found", async () => {
+    getPointOfInterests.mockResolvedValue([]);
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Restaurants"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
+    });
+  });
+
+  it("logs an error when fetching locations fails", async () => {
+    const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {}); //console.error
+    getPointOfInterests.mockRejectedValue(new Error("Network error")); // Simulate API failure
+
+    const { getByText } = renderComponent();
+    fireEvent.press(getByText("Restaurants"));
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).not.toHaveBeenCalled();
+      expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching locations: ", expect.any(Error)); // Verify error log
+    });
+
+    consoleErrorSpy.mockRestore(); // Restore console.error after the test
+  });
+
+  it("toggles selection when the same POI button is pressed twice", async () => {
+    getPointOfInterests.mockResolvedValue([{ name: "Test Restaurant" }]);
+
+    const { getByText } = renderComponent();
+    const button = getByText("Restaurants");
+
+    fireEvent.press(button);
+
+    await waitFor(() => {
+      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
+    });
+
+    // Deselect the same button
+    fireEvent.press(button);
+
+    await waitFor(() => {
+      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
+    });
   });
 });
