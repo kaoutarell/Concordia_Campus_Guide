@@ -11,12 +11,23 @@ describe("PointsOfInterestButton", () => {
   const mockOnPress = jest.fn();
 
   it("renders correctly with given props", () => {
-    const { getByText, toJSON } = render(
+    const { getByText, getByTestId } = render(
       <PointsOfInterestButton type="cafe" name="Coffee" isSelected={false} onPress={mockOnPress} />
     );
 
     expect(getByText("Coffee")).toBeTruthy();
-    expect(toJSON()).toMatchSnapshot();
+
+    expect(getByTestId("points-of-interest-button").props.style).toEqual(
+      expect.objectContaining({
+        backgroundColor: "#FFFFFF", // Default background color when not selected
+        borderRadius: 30,
+        flexDirection: "row",
+        paddingHorizontal: 15,
+        paddingVertical: 12,
+      })
+    );
+
+    expect(getCategoryIcon).toHaveBeenCalledWith("cafe");
   });
 
   it("applies selected styles when `isSelected` is true", () => {
