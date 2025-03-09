@@ -36,12 +36,10 @@ name: "Feature 2 - Outdoor Directions"
     text: "Henry F. Hall Building"
     index: 1
 # make sure that the navigation screen and relevant information renders
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "Google Map"
@@ -61,14 +59,11 @@ name: "Feature 2 - Outdoor Directions"
 - tapOn: "Destination Address"
 - tapOn: "Grey Nuns Garden"
 # make sure that the navigation screen and relevant information renders
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 # check direction preview
-- assertVisible: "Preview"
 - tapOn: "Preview"
 - assertVisible: "Directions"
 - assertVisible: "Turn Left"

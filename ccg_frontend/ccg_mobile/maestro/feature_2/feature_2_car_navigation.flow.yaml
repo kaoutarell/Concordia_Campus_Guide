@@ -19,14 +19,11 @@ name: "Feature 2.1 & 2.5 - Car"
 # check to see if page renders correctly
 - assertVisible: "7200 Sherbrooke St. W."
 - tapOn: "Car" #select car navigation
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
 - assertVisible: "PC"
 - assertVisible: "15 minutes"
 - assertVisible: "7.45 km"

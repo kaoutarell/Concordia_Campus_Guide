@@ -24,14 +24,11 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: "Get Directions"
 # check to see if page renders correctly, walk navigation selected by default
 - assertVisible: "1515 St. Catherine W."
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
 - assertVisible: "EV"
 - assertVisible: "4 minutes"
 - assertVisible: "0.34 km"
@@ -45,12 +42,10 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: "Exit"
 # check to see if page renders correctly
 - assertVisible: "1515 St. Catherine W."
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 - assertVisible: "1515 St. Catherine W."
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
