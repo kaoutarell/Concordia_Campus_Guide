@@ -12,8 +12,6 @@ const SearchBar = ({ pointsOfInterest, allLocations, setTargetLocation, setSelec
     setDestination("");
     setTargetLocation({});
     setSelectedCampus("SGW");
-    //setShowPoiBar(true);
-    resetLocations();
     Keyboard.dismiss();
   };
 
