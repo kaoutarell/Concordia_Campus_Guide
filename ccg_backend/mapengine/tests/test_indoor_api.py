@@ -30,4 +30,8 @@ def test_get_path_coordinates():
     sequence = ['H867', 'C1', 'C2', 'H813']
     coords = get_path_coordinates(map_data, sequence)
     assert coords == [{'x': 160, 'y': 200}, {'x': 180, 'y': 220}, {'x': 180, 'y': 220}, {'x': 555, 'y': 220}, {'x': 765, 'y': 220}, {'x': 765, 'y': 195}]
-    
+
+def test_convert_coords_to_output():
+    coords = [{'x': 160, 'y': 200}, {'x': 180, 'y': 220}, {'x': 180, 'y': 220}, {'x': 555, 'y': 220}, {'x': 765, 'y': 220}, {'x': 765, 'y': 195}]
+    output = convert_coords_to_output(coords)
+    assert output == 'M160 200 L180 220 L180 220 L555 220 L765 220 L765 195'
