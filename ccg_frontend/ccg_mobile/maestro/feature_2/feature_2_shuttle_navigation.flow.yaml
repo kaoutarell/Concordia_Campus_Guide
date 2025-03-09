@@ -35,20 +35,6 @@ name: "Feature 2.1 & 2.5 - Shuttle"
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
 - assertVisible: "7141 Sherbrooke W."
-#[Deprecated]- assertVisible: "My Location"
-- assertVisible: "LOY"
-- assertVisible: "View Bus Schedule"
-# start navigation flow
-- tapOn: "Start Navigation"
-- assertVisible: "Preview"
-- assertVisible: "Exit"
-# see directions and assert page renders correctly
-- tapOn: "Preview"
-- assertVisible: "Directions"
-# exit direction page
-- tapOn: "←"
-# exit navigation
-- tapOn: "Exit"
 # access and validate bus schedule
 - tapOn: "View Bus Schedule"
 - assertVisible: "Bus Schedule - SGW Campus"
