@@ -62,6 +62,7 @@ const IndoorNavigationScreen = () => {
 
       // fetch the path data only when the button is pressed
       const pathData = await getIndoorDirections("foot-walking", start, destination);
+      console.log(pathData);
       setPath(pathData); // set the path data
     } catch (error) {
       console.error("Error fetching path:", error);

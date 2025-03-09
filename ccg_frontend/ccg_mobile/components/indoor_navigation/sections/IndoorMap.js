@@ -1,10 +1,16 @@
 import React from "react";
-import { Text, View, Image, StyleSheet, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
 import Hall8 from "../floors/Hall-8.png";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
 
-const IndoorMap = ({ startLocation, destination, path }) => {
+const IndoorMap = ({ path }) => {
+  // getting the start and destination pin coordinates
+  const [startPin, destinationPin] = path?.pin || [[], []];
+
+  const pinSize = 90;
+
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
@@ -22,6 +28,43 @@ const IndoorMap = ({ startLocation, destination, path }) => {
             <Svg style={styles.svg}>
               {path !== "" && <Path d={path.path_data} fill="transparent" stroke="black" strokeWidth="5" />}
             </Svg>
+
+            {/* Start Pin */}
+            {/* The pin needs to be centered at the specified coordinates. 
+            If we place the icon at exactly startPin[0] and startPin[1], 
+            the top-left corner of the pin will be at that point */}
+            {startPin.length > 0 && (
+              <Ionicons
+                name="location-sharp"
+                size={pinSize}
+                color="black"
+                style={[
+                  styles.pin,
+                  {
+                    left: startPin[0] - pinSize / 2, // x-coord
+                    top: startPin[1] - pinSize, // y-coord
+                  },
+                ]}
+              />
+            )}
+            {/* now, to center the pin at the coordinates, 
+            we adjust the position by subtracting half the pin size from the x-coord & subtracting 
+            the full pin size from the y-coord */}
+            {/* Destination Pin */}
+            {destinationPin.length > 0 && (
+              <Ionicons
+                name="pin-outline"
+                size={pinSize}
+                color="black"
+                style={[
+                  styles.pin,
+                  {
+                    left: destinationPin[0] - pinSize / 2,
+                    top: destinationPin[1] - pinSize,
+                  },
+                ]}
+              />
+            )}
           </ImageBackground>
         </ReactNativeZoomableView>
       </View>
@@ -43,6 +86,9 @@ const styles = StyleSheet.create({
     left: 0,
     width: "100%",
     height: "100%",
+  },
+  pin: {
+    position: "absolute",
   },
 });
 
