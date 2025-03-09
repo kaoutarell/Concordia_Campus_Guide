@@ -18,7 +18,6 @@ jest.mock("@react-navigation/native", () => {
   };
 });
 
-
 // Mock the location service
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
