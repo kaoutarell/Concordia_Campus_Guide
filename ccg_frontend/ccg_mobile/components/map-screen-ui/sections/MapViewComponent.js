@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  StyleSheet,
-  View,
-  ActivityIndicator,
-  Text,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
@@ -15,56 +9,40 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const MapViewComponent = ({ target, locations, region, maxBounds }) => {
+// Use React.memo to optimize rendering
+const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = [], region, maxBounds }) => {
   const navigation = useNavigation();
   const mapRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
 
-  const isWithinBounds = (region) => {
-    return (
-      region.latitude <= maxBounds.northeast.latitude &&
-      region.latitude >= maxBounds.southwest.latitude &&
-      region.longitude <= maxBounds.northeast.longitude &&
-      region.longitude >= maxBounds.southwest.longitude
-    );
-  };
-
-  const handleRegionChange = (region) => {
+  const handleRegionChange = region => {
     if (Platform.OS == "android") {
       const zoomThreshold = 0.006;
       setShowMarkers(region.latitudeDelta < zoomThreshold);
-    } else if (!isWithinBounds(region)) {
-      mapRef.current.animateToRegion({
-        latitude:
-          (maxBounds.northeast.latitude + maxBounds.southwest.latitude) / 2,
-        longitude:
-          (maxBounds.northeast.longitude + maxBounds.southwest.longitude) / 2,
-        latitudeDelta: Math.abs(
-          maxBounds.northeast.latitude - maxBounds.southwest.latitude
-        ),
-        longitudeDelta: Math.abs(
-          maxBounds.northeast.longitude - maxBounds.southwest.longitude
-        ),
-      });
     }
   };
 
-  const handleMarkerPress = (location) => {
+  const handleMarkerPress = location => {
     setTimeout(() => {
-      setSelectedMarker((prev) => (prev === location ? null : location));
+      setShowPopup(true);
+      setSelectedMarker(prev => (prev === location ? null : location));
     }, 0);
   };
 
-  const onGoToLocation = (location) => {
+  const onGoToLocation = location => {
     navigation.navigate("Navigation", {
       start: null,
       destination: location,
-      allLocations: locations,
+      allLocations: [
+        ...locations.map(item => ({ ...item, id: `school-${item.id}` })),
+        ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` })),
+      ],
     });
   };
 
@@ -75,39 +53,46 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
   }, [locations]);
 
   useEffect(() => {
-    if (Platform.OS == "android" && mapRef.current) {
-      mapRef.current.setMapBoundaries(maxBounds.northeast, maxBounds.southwest);
-    }
-  }, [maxBounds, mapRef.current]);
+    let isMounted = true;
 
-  useEffect(() => {
     const fetchLocation = async () => {
       try {
         await locationService.startTrackingLocation();
         const location = locationService.getCurrentLocation();
-        if (location) setCurrentLocation(transformCurrentLoc(location));
+        if (location && isMounted) {
+          setCurrentLocation(transformCurrentLoc(location));
+        }
       } catch (error) {
-        console.log("Error fetching location:", error);
+        if (isMounted) {
+          console.log("Error fetching location:", error);
+        }
       }
     };
+
     fetchLocation();
 
     return () => {
+      isMounted = false;
       locationService.stopTrackingLocation();
     };
   }, []);
 
   useEffect(() => {
     if (target?.id) {
-      setMapKey((prevKey) => prevKey + 1);
+      setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
         latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       });
-      setSelectedMarker((prev) => (prev === target ? null : target));
-    } else setTargetRegion(region);
+      setSelectedMarker(target);
+      setShowPopup(true);
+    } else {
+      setShowPopup(false);
+      setMapKey(prevKey => prevKey + 1);
+      setTargetRegion(region);
+    }
   }, [target]);
 
   return (
@@ -128,8 +113,8 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
-            zoomControlEnabled={true}
-            showsMyLocationButton={true}
+            zoomControlEnabled={false}
+            showsMyLocationButton={false}
             toolbarEnabled={false}
             onPress={() => setSelectedMarker(null)}
             {...(Platform.OS == "android" && {
@@ -145,19 +130,11 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
             })}
           >
             {target.id ? (
-              <CustomMarker
-                key={target.id}
-                value={target}
-                onPress={() => handleMarkerPress(target)}
-              />
+              <CustomMarker key={target.id} value={target} onPress={() => handleMarkerPress(target)} />
             ) : (
               showMarkers !== (Platform.OS == "ios") &&
-              locations.map((location) => (
-                <CustomMarker
-                  key={location.id}
-                  value={location}
-                  onPress={() => handleMarkerPress(location)}
-                />
+              locations.map(location => (
+                <CustomMarker key={location.id} value={location} onPress={() => handleMarkerPress(location)} />
               ))
             )}
 
@@ -178,13 +155,9 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
         </View>
       )}
 
-      {selectedMarker !== null && (
+      {showPopup && selectedMarker !== null && (
         <View style={styles.popupWrapper}>
-          <InfoPopup
-            value={selectedMarker}
-            onClose={() => setSelectedMarker(null)}
-            onGo={onGoToLocation}
-          />
+          <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
         </View>
       )}
     </View>
@@ -193,14 +166,14 @@ const MapViewComponent = ({ target, locations, region, maxBounds }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // the parent container takes the full screen space
-    backgroundColor: "transparent", // no background color interferes - improvement
+    flex: 1,
+    backgroundColor: "transparent",
   },
   mapContainer: {
-    flex: 1, // ensures the map container fills the entire parent container - improvement
+    flex: 1,
   },
   map: {
-    flex: 1, // ensures map takes the full size of the container - improvement
+    flex: 1,
     width: "100%",
     height: "100%",
   },
@@ -225,7 +198,8 @@ const styles = StyleSheet.create({
   },
 });
 
-MapViewComponent.propTypes = {
+MapViewComponentImpl.propTypes = {
+  pointsOfInterest: PropTypes.array,
   target: PropTypes.object,
   locations: PropTypes.array.isRequired,
   region: PropTypes.shape({
@@ -245,5 +219,11 @@ MapViewComponent.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+// Create a memoized version of the component to prevent unnecessary re-renders
+const MapViewComponent = React.memo(MapViewComponentImpl);
+
+// Use the same propTypes for the wrapped component
+MapViewComponent.propTypes = MapViewComponentImpl.propTypes;
 
 export default MapViewComponent;

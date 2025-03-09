@@ -1,0 +1,79 @@
+appId: host.exp.Exponent
+name: "Feature 2.1 & 2.5 - Walk"
+---
+# type destination directly in Where to text box to access navigation
+- tapOn: "Where to?"
+- tapOn: "Choose destination"
+# write destination
+- inputText:
+    text: "Engineering, "
+    into: "Where to?"
+# flow to for android device if stylus configuration pops up
+- runFlow:
+    when:
+      visible: "Try out your stylus"
+      platform: android
+    file: ./subflows/stylus_android.flow.yaml
+# wait for typing to end
+- extendedWaitUntil:
+    visible: "Engineering, Computer Science and Visual Arts Integrated Complex"
+    timeout: 50000
+# select building from animation
+- tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
+# head to navigation page
+- tapOn: "Get Directions"
+# check to see if page renders correctly, walk navigation selected by default
+- assertVisible: "1515 St. Catherine W."
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "EV"
+- assertVisible: "4 minutes"
+- assertVisible: "0.34 km"
+# start navigation
+- tapOn: "Start Navigation"
+- assertVisible: "In 0.9 meters, Head northeast!"
+- assertVisible: "Google Map"
+- assertVisible: "Preview"
+- assertVisible: "Exit"
+# check that exit button works
+- tapOn: "Exit"
+# check to see if page renders correctly
+- assertVisible: "1515 St. Catherine W."
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+- assertVisible: "1515 St. Catherine W."
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "EV"
+- assertVisible: "4 minutes"
+- assertVisible: "0.34 km"
+# start navigation flow
+- tapOn: "Start Navigation"
+- assertVisible: "In 0.9 meters, Head northeast!"
+- assertVisible: "Preview"
+- assertVisible: "Exit"
+# see directions and assert page renders correctly
+- tapOn: "Preview"
+- assertVisible: "Directions"
+- assertVisible: "Head northeast"
+- assertVisible: "Turn left"
+- assertVisible: "Turn right"
+# exit direction page
+- tapOn: "←"
+# exit navigation
+- tapOn: "Exit"
+- assertVisible: "Google Map"
+# leave navigation map
+- tapOn: "←"
+# close info popup
+- tapOn: ""

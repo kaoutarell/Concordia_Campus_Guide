@@ -1,11 +1,12 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { View, StyleSheet, Dimensions, Animated } from "react-native";
 import MenuButton from "../elements/MenuButton";
 import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
 import PropTypes from "prop-types";
 
 const HeaderBar = ({
+  pointsOfInterest,
   selectedCampus,
   onCampusSelect,
   setSelectedCampus,
@@ -19,21 +20,23 @@ const HeaderBar = ({
         <SearchBar
           testID="search-bar"
           setTargetLocation={setTargetLocation}
-          locations={locations}
+          allLocations={locations}
+          pointsOfInterest={pointsOfInterest}
           setSelectedCampus={setSelectedCampus}
         />
-          <CampusSelector
-            testID="campus-selector"
-            selectedCampus={selectedCampus}
-            onCampusSelect={onCampusSelect}
-            compact={true}
-          />
+        <CampusSelector
+          testID="campus-selector"
+          selectedCampus={selectedCampus}
+          onCampusSelect={onCampusSelect}
+          compact={true}
+        />
       </View>
     </View>
   );
 };
 
 HeaderBar.propTypes = {
+  pointsOfInterest: PropTypes.array.isRequired,
   selectedCampus: PropTypes.string.isRequired,
   onCampusSelect: PropTypes.func.isRequired,
   setSelectedCampus: PropTypes.func.isRequired,

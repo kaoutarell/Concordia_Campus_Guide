@@ -1,12 +1,10 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, Dimensions, View } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
-const { width } = Dimensions.get("window");
-
 const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = false }) => {
-  const getCampusName = (campus) => {
+  const getCampusName = campus => {
     switch (campus) {
       case "SGW":
         return "Sir George Williams";
@@ -14,17 +12,6 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
         return "Loyola";
       default:
         return "Error: Unknown Campus";
-    }
-  };
-
-  const getCampusInitials = (campus) => {
-    switch (campus) {
-      case "SGW":
-        return "SGW";
-      case "LOY":
-        return "LOY";
-      default:
-        return "??";
     }
   };
 
@@ -36,39 +23,30 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
   if (compact) {
     return (
       <TouchableOpacity
-      style={styles.campusToggle}
-      onPress={toggleCampus}
-      testID="campus-button"
-      accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
-    >
-      {/* SGW Side */}
-      <View style={[styles.toggleOption, selectedCampus === "SGW" && styles.activeCampus]}>
-        <Text style={[styles.campusText, selectedCampus === "SGW" && styles.activeText]}>SGW</Text>
-      </View>
+        style={styles.campusToggle}
+        onPress={toggleCampus}
+        testID="campus-button"
+        accessibilityLabel={`Switch to ${selectedCampus === "SGW" ? "Loyola" : "Sir George Williams"} campus`}
+      >
+        {/* SGW Side */}
+        <View style={[styles.toggleOption, selectedCampus === "SGW" && styles.activeCampus]}>
+          <Text style={[styles.campusText, selectedCampus === "SGW" && styles.activeText]}>SGW</Text>
+        </View>
 
-      {/* LOY Side */}
-      <View style={[styles.toggleOption, selectedCampus === "LOY" && styles.activeCampus]}>
-        <Text style={[styles.campusText, selectedCampus === "LOY" && styles.activeText]}>LOY</Text>
-      </View>
-    </TouchableOpacity>
+        {/* LOY Side */}
+        <View style={[styles.toggleOption, selectedCampus === "LOY" && styles.activeCampus]}>
+          <Text style={[styles.campusText, selectedCampus === "LOY" && styles.activeText]}>LOY</Text>
+        </View>
+      </TouchableOpacity>
     );
   }
 
   return (
-    <TouchableOpacity
-      style={styles.campusButton}
-      onPress={toggleCampus}
-      testID="campus-button"
-    >
+    <TouchableOpacity style={styles.campusButton} onPress={toggleCampus} testID="campus-button">
       <Text style={styles.campusText} testID="campus-name">
         {getCampusName(selectedCampus)}
       </Text>
-      <FontAwesome
-        name="exchange"
-        size={14}
-        color="white"
-        style={styles.icon}
-      />
+      <FontAwesome name="exchange" size={14} color="white" style={styles.icon} />
     </TouchableOpacity>
   );
 };

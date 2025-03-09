@@ -1,5 +1,5 @@
 // services/LocationService.js
-import * as Location from 'expo-location';
+import * as Location from "expo-location";
 
 class LocationService {
   static instance = null;
@@ -26,17 +26,17 @@ class LocationService {
   }
 
   unsubscribe(callback) {
-    this.subscribers = this.subscribers.filter((cb) => cb !== callback);
+    this.subscribers = this.subscribers.filter(cb => cb !== callback);
   }
 
   // Request permission and start tracking location
   async startTrackingLocation() {
     const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
+    if (status !== "granted") {
       this.locationPermissionAccess = false;
       this.currentLocation = null;
       console.log("LocationService: Permission to access location was denied");
-      throw new Error('Permission to access location was denied');
+      throw new Error("Permission to access location was denied");
     }
     this.locationPermissionAccess = true;
 
@@ -46,10 +46,10 @@ class LocationService {
         timeInterval: 1000,
         distanceInterval: 1,
       },
-      (location) => {
+      location => {
         this.currentLocation = location;
         // Notify all subscribers with the new location
-        this.subscribers.forEach((cb) => cb(location));
+        this.subscribers.forEach(cb => cb(location));
       }
     );
   }
@@ -72,3 +72,4 @@ class LocationService {
 
 const locationService = new LocationService();
 export default locationService;
+export { LocationService };

@@ -1,0 +1,71 @@
+appId: host.exp.Exponent
+name: "Feature 2.1 & 2.5 - Bike"
+---
+# starting state: map view zoomed in twice
+- tapOn: "Google Map" # to make sure marker is not selected anymore
+- tapOn: "FG" # tap on building marker - goal is to test another marker
+# open info popup
+- tapOn: "Get Directions"
+- tapOn: "Bike" # select bike navigation
+# choose destination
+- tapOn: "Destination Address"
+- assertVisible: "Choose destination"
+# select destination by scrolling to building name
+- scrollUntilVisible:
+    element:
+      text: "John Molson Building"
+    timeout: 50000
+- tapOn: "John Molson Building"
+# check to see if page renders correctly
+- assertVisible: "1450 Guy"
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+##[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "MB"
+- assertVisible: "1 minute"
+- assertVisible: "0.33 km"
+# start navigation
+- tapOn: "Start Navigation"
+- assertVisible: "Google Map"
+- assertVisible: "Preview"
+- assertVisible: "Exit"
+# check that exit button works
+- tapOn: "Exit"
+# check to see if page renders correctly
+- assertVisible: "1450 Guy"
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
+#[Deprecated]- assertVisible: "My Location"
+- assertVisible: "Start Navigation"
+- assertVisible: "MB"
+- assertVisible: "1 minute"
+- assertVisible: "0.33 km"
+# start navigation flow
+- tapOn: "Start Navigation"
+- assertVisible: "Preview"
+- assertVisible: "Exit"
+# see directions and assert page renders correctly
+- tapOn: "Preview"
+- assertVisible: "Directions"
+- assertVisible: "Head northeast"
+- assertVisible: "Turn left"
+- assertVisible: "Turn right"
+- assertVisible: "Arrive at your destination, on the left"
+# exit direction page
+- tapOn: "←"
+# exit navigation
+- tapOn: "Exit"
+- assertVisible: "Google Map"
+# leave navigation map
+- tapOn: "←"
+# close info popup
+- tapOn: ""
