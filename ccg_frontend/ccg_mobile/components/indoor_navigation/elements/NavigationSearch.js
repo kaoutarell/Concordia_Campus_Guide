@@ -1,69 +1,42 @@
 import React, { useState, useRef } from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  Dimensions,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { View, TextInput, StyleSheet, Dimensions, KeyboardAvoidingView, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const NavigationSearch = ({
-  startAddress,
-  destinationAddress,
-  onModifyAddress,
-}) => {
-  const startAddressRef = useRef(null); // Ref for the start address input
-  const destinationAddressRef = useRef(null); // Ref for the destination address input
+const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress }) => {
+  const startAddressRef = useRef(null);
+  const destinationAddressRef = useRef(null);
 
-  const handlePress = (type) => {
-    // Focus the appropriate input field when either is clicked
+  const handlePress = type => {
     if (type === "start" && startAddressRef.current) {
-      startAddressRef.current.focus(); // Show the keyboard for start address
+      startAddressRef.current.focus();
     } else if (type === "destination" && destinationAddressRef.current) {
-      destinationAddressRef.current.focus(); // Show the keyboard for destination address
+      destinationAddressRef.current.focus();
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.searchContainer}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
-      {/* Start Address */}
+    <KeyboardAvoidingView style={styles.searchContainer} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       <View style={styles.inputContainer}>
-        <Ionicons
-          name="chevron-down-circle-outline"
-          size={20}
-          color="#800020"
-          style={styles.icon}
-        />
+        <Ionicons name="chevron-down-circle-outline" size={20} color="#800020" style={styles.icon} />
         <TextInput
-          ref={startAddressRef} // Assign ref to start address
+          ref={startAddressRef}
           style={styles.input}
           placeholder="Start Address"
-          value={startAddress} // Display current start address
-          onChangeText={(text) => onModifyAddress("start", text)} // Update onChange
-          onFocus={() => handlePress("start")} // Trigger any action on focus
+          value={startAddress}
+          onChangeText={text => onModifyAddress("start", text)} // Updates parent but does NOT trigger API
+          onFocus={() => handlePress("start")}
         />
       </View>
 
-      {/* Destination Address */}
       <View style={styles.inputContainer}>
-        <Ionicons
-          name="location-outline"
-          size={20}
-          color="#800020"
-          style={styles.icon}
-        />
+        <Ionicons name="location-outline" size={20} color="#800020" style={styles.icon} />
         <TextInput
-          ref={destinationAddressRef} // Assign ref to destination address
+          ref={destinationAddressRef}
           style={styles.input}
           placeholder="Destination Address"
-          value={destinationAddress} // Display current destination address
-          onChangeText={(text) => onModifyAddress("destination", text)} // Update onChange
-          onFocus={() => handlePress("destination")} // Trigger any action on focus
+          value={destinationAddress}
+          onChangeText={text => onModifyAddress("destination", text)} // Updates parent but does NOT trigger API
+          onFocus={() => handlePress("destination")}
         />
       </View>
     </KeyboardAvoidingView>
