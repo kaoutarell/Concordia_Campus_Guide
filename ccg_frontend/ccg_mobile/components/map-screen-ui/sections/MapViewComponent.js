@@ -18,6 +18,7 @@ const MapViewComponentImpl = ({
   maxBounds,
   selectedPointOfInterest,
 }) => {
+  const mapRef = React.useRef(null);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -138,6 +139,7 @@ const MapViewComponentImpl = ({
         <View style={styles.mapContainer}>
           <MapView
             key={mapKey}
+            ref={mapRef}
             testID="map-view"
             style={styles.map}
             region={targetRegion}
