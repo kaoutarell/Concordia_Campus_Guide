@@ -22,11 +22,22 @@ describe("BusLocationService", () => {
   });
 
   describe("Singleton Pattern", () => {
-    it("should return the same instance when getInstance is called", () => {
-      const instance1 = busLocationService;
-      const instance2 = require("../services/BusLocationService").default;
+    it("should return the a new instance if it was null and return the same if already defined", () => {
+      const BusLocationService = require("../services/BusLocationService").BusLocationService;
 
-      expect(instance1).toBe(instance2);
+      BusLocationService.instance = null;
+
+      // check that the instance is null
+      expect(BusLocationService.instance).toBeNull();
+
+      const instance = BusLocationService.getInstance();
+      // check that the instance is not null
+      expect(instance).not.toBeNull();
+
+      const instance2 = BusLocationService.getInstance();
+      // check that the instance is the same
+      expect(instance).toBe(instance2);
+
     });
 
     it("should throw error when trying to create a new instance directly", () => {
@@ -40,6 +51,7 @@ describe("BusLocationService", () => {
         expect(error.message).toContain("Use BusLocationService.getInstance()");
       }
     });
+
   });
 
   describe("fetchSessionCookie", () => {
