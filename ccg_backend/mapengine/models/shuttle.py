@@ -1,9 +1,11 @@
 from django.contrib.gis.db import models
 
+
 class ShuttleStop(models.Model):
     name = models.CharField(max_length=100, default="")
     latitude = models.FloatField()
     longitude = models.FloatField()
+
 
 class ShuttleSchedule(models.Model):
     campus = models.CharField(max_length=100, default="SGW")
