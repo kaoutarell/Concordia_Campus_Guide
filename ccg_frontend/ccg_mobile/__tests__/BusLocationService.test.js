@@ -37,7 +37,6 @@ describe("BusLocationService", () => {
       const instance2 = BusLocationService.getInstance();
       // check that the instance is the same
       expect(instance).toBe(instance2);
-
     });
 
     it("should throw error when trying to create a new instance directly", () => {
@@ -51,7 +50,6 @@ describe("BusLocationService", () => {
         expect(error.message).toContain("Use BusLocationService.getInstance()");
       }
     });
-
   });
 
   describe("fetchSessionCookie", () => {
