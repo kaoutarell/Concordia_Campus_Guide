@@ -30,6 +30,14 @@ jest.mock("react-native-maps", () => {
   };
 });
 
+// Setup mock for getMyCurrentLocation
+const mockGetMyCurrentLocation = jest.fn().mockResolvedValue({
+  location: {
+    latitude: 45.495,
+    longitude: -73.578,
+  },
+});
+
 jest.mock("../utils/defaultLocations", () => ({
   getMyCurrentLocation: jest.fn().mockResolvedValue({
     location: {
@@ -417,5 +425,339 @@ describe("NavigationMap Component", () => {
     const markers = queryAllByTestId("map-marker");
     const busMarkers = markers.filter(marker => marker.props.image === "bus-marker-image");
     expect(busMarkers.length).toBe(2);
+  });
+
+  // Testing useEffect to cover the uncovered lines in isNavigating/start location code
+  it("tests the useEffect code for isNavigating", () => {
+    jest.spyOn(React, "useEffect").mockImplementationOnce(f => f());
+
+    // Create a mock animateToRegion function
+    const mockAnimateToRegion = jest.fn();
+
+    // Create a mock ref for the map
+    const mockMapRef = {
+      current: {
+        animateToRegion: mockAnimateToRegion,
+      },
+    };
+
+    // Mock useRef to return our mock ref
+    jest.spyOn(React, "useRef").mockReturnValueOnce(mockMapRef);
+
+    // Test that useEffect handles isNavigating with start location
+    render(<NavigationMap {...defaultProps} isNavigating={true} />);
+
+    // The code that gets the current location should NOT have been called
+    expect(jest.requireMock("../utils/defaultLocations").getMyCurrentLocation).not.toHaveBeenCalled();
+  });
+
+  it("tests useEffect when in navigation mode without start location", () => {
+    // Mock getMyCurrentLocation for this test
+    const { getMyCurrentLocation } = jest.requireMock("../utils/defaultLocations");
+
+    // Setup a fresh mock for this test
+    getMyCurrentLocation.mockClear();
+
+    // Create props without start location
+    const propsWithoutStartLocation = {
+      ...defaultProps,
+      isNavigating: true,
+      start: {
+        // start.location is undefined
+      },
+    };
+
+    render(<NavigationMap {...propsWithoutStartLocation} />);
+
+    // The useEffect hook should call getMyCurrentLocation for the fallback
+    expect(getMyCurrentLocation).toHaveBeenCalled();
+  });
+
+  it("handles legs with steps that don't have coordinates", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              // Step without coordinates property
+            },
+          ],
+          total_distance: 100,
+        },
+      },
+    };
+
+    const { getByTestId } = render(<NavigationMap {...props} />);
+    expect(getByTestId("mock-map-view")).toBeTruthy();
+  });
+
+  it("handles firstLeg without steps", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          // No steps array
+          total_distance: 100,
+        },
+        1: {
+          steps: [
+            {
+              coordinates: [
+                [-73.61, 45.47],
+                [-73.62, 45.465],
+              ],
+            },
+          ],
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles lastLeg without steps", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: [
+                [-73.58, 45.496],
+                [-73.585, 45.49],
+              ],
+            },
+          ],
+          total_distance: 100,
+        },
+        1: {
+          // No steps array
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles start with no building_code or campus", () => {
+    const props = {
+      ...defaultProps,
+      start: {
+        location: {
+          latitude: 45.497,
+          longitude: -73.579,
+        },
+        // No building_code or campus
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    // First marker should have undefined title since no building_code or campus
+    expect(markers[0].props.title).toBe(undefined);
+  });
+
+  it("handles leg steps with coordinates but without coordinates array", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: "not-an-array", // Not an array
+            },
+          ],
+          total_distance: 100,
+        },
+      },
+    };
+
+    const { getByTestId } = render(<NavigationMap {...props} />);
+    expect(getByTestId("mock-map-view")).toBeTruthy();
+  });
+
+  it("handles firstLeg with empty steps", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [], // Empty steps array
+          total_distance: 100,
+        },
+        1: {
+          steps: [
+            {
+              coordinates: [
+                [-73.61, 45.47],
+                [-73.62, 45.465],
+              ],
+            },
+          ],
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles lastLeg with empty steps", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: [
+                [-73.58, 45.496],
+                [-73.585, 45.49],
+              ],
+            },
+          ],
+          total_distance: 100,
+        },
+        1: {
+          steps: [], // Empty steps array
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles firstLeg with steps that have no coordinates", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              // No coordinates
+            },
+          ],
+          total_distance: 100,
+        },
+        1: {
+          steps: [
+            {
+              coordinates: [
+                [-73.61, 45.47],
+                [-73.62, 45.465],
+              ],
+            },
+          ],
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles lastLeg with steps that have no coordinates", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: [
+                [-73.58, 45.496],
+                [-73.585, 45.49],
+              ],
+            },
+          ],
+          total_distance: 100,
+        },
+        1: {
+          steps: [
+            {
+              // No coordinates
+            },
+          ],
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBeGreaterThan(0);
+  });
+
+  it("handles firstLeg with steps that have empty coordinates", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: [], // Empty coordinates array
+            },
+          ],
+          total_distance: 100,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    expect(markers.length).toBe(2); // Only start and end markers
+  });
+
+  it("handles lastLeg with steps that have empty coordinates", () => {
+    const props = {
+      ...defaultProps,
+      displayShuttle: true,
+      legs: {
+        0: {
+          steps: [
+            {
+              coordinates: [
+                [-73.58, 45.496],
+                [-73.585, 45.49],
+              ],
+            },
+          ],
+          total_distance: 100,
+        },
+        1: {
+          steps: [
+            {
+              coordinates: [], // Empty coordinates array
+            },
+          ],
+          total_distance: 200,
+        },
+      },
+    };
+
+    const { queryAllByTestId } = render(<NavigationMap {...props} />);
+    const markers = queryAllByTestId("map-marker");
+    // Should at least have start, end markers, and bus stop from first leg
+    expect(markers.length).toBeGreaterThan(2);
   });
 });
