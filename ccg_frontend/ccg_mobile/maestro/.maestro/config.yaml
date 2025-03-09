@@ -6,8 +6,9 @@ executionOrder:
     - app_startup/*
     - feature_1/*
     - feature_2/feature_2.flow.yaml
-    - feature_2/feature_2_walk_navigation.flow.yaml
     - feature_2/feature_2_bike_navigation.flow.yaml
     - feature_2/feature_2_car_navigation.flow.yaml
     - feature_2/feature_2_bus_navigation.flow.yaml
     - feature_2/feature_2_shuttle_navigation.flow.yaml
+    - feature_2/feature_2_walk_navigation.flow.yaml
+    - feature 5/*
