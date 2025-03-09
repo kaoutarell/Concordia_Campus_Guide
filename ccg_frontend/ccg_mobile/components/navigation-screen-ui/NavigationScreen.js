@@ -75,6 +75,13 @@ const NavigationScreen = ({ navigation, route }) => {
 
   const { instruction, distance } = useRouteInstruction(direction, userLocation);
 
+  // Ensure the 'direction' is fetched with the correct start and destination points - bug#166
+  useEffect(() => {
+    if (startPoint && destinationPoint) {
+      fetchDirections();
+    }
+  }, [startPoint, destinationPoint, selectedMode]);
+
   const handleModeSelect = mode => {
     setSelectedMode(mode);
   };
@@ -103,9 +110,13 @@ const NavigationScreen = ({ navigation, route }) => {
   // needs to check destination point but we need to implement the search bar first
   const startNavigation = async () => {
     // when navigating, set the start point to the current location
-    const currentLocation = await getMyCurrentLocation();
-    setStartPoint(currentLocation);
-    setIsNavigating(true);
+    if (startPoint) {
+      setIsNavigating(true);
+    } else {
+      const currentLocation = await getMyCurrentLocation();
+      setStartPoint(currentLocation);
+      setIsNavigating(true);
+    }
   };
 
   const onExitNavigation = () => {
@@ -188,12 +199,18 @@ const NavigationScreen = ({ navigation, route }) => {
           />
         );
       } else {
+        // checking if the startPoint is the current location to conditionally hide "Start Navigation" button
+        const isStartLocationCurrent =
+          Math.abs(startPoint?.location?.longitude - userLocation?.[0]) < 0.0001 &&
+          Math.abs(startPoint?.location?.latitude - userLocation?.[1]) < 0.0001;
+
         return (
           <NavigationFooter
             totalDistance={direction?.total_distance}
             totalDuration={direction?.total_duration}
             onStartNavigation={startNavigation}
             onShowDirections={() => setShowDirections(true)}
+            hideStartButton={!isStartLocationCurrent} // here is the condition to hide the start button
           />
         );
       }

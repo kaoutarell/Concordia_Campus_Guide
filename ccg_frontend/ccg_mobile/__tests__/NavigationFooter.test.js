@@ -1,104 +1,149 @@
+// NavigationFooter.test.js
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { render, fireEvent } from "@testing-library/react-native";
+import NavigationFooter from "../components/navigation-screen-ui/sections/NavigationFooter";
+import { formatDuration } from "../utils";
 
-// Mock the NavigationFooter component to avoid Animated issues
-jest.mock("../components/navigation-screen-ui/sections/NavigationFooter", () => {
-  const { View, Text, TouchableOpacity } = require("react-native");
-  return function MockNavigationFooter({ onStartNavigation, onShowDirections, totalDuration, totalDistance }) {
-    return (
-      <View>
-        <Text>
-          {totalDuration ? parseFloat("" + totalDuration / 60).toFixed(2) + " minutes" : "Duration not available"}
-        </Text>
-        <Text>
-          {totalDistance ? parseFloat("" + totalDistance / 1000).toFixed(2) + " km" : "Distance not available"}
-        </Text>
-        <TouchableOpacity onPress={onStartNavigation}>
-          <Text>Start Navigation</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onShowDirections}>
-          <Text>Preview</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-});
-
-// Mock Animated components
-jest.mock("react-native/Libraries/Animated/Animated", () => {
-  const ActualAnimated = jest.requireActual("react-native/Libraries/Animated/Animated");
-  return {
-    ...ActualAnimated,
-    timing: jest.fn().mockReturnValue({
-      start: jest.fn(),
-    }),
-  };
-});
-
-// Mock Expo vector icons
-jest.mock("@expo/vector-icons", () => ({
-  FontAwesome5: () => "Icon",
+// Mock the formatDuration function
+jest.mock("../utils", () => ({
+  formatDuration: jest.fn(seconds => {
+    if (seconds <= 0) return "Now";
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    let parts = [];
+    if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? "s" : ""}`);
+    if (minutes > 0) parts.push(`${minutes} minute${minutes !== 1 ? "s" : ""}`);
+    return parts.join(", ");
+  }),
 }));
 
-describe("NavigationFooter", () => {
-  test("verifies duration and distance formatting", () => {
-    // Format a duration without rendering React components
-    const formatDuration = duration => {
-      return duration ? parseFloat("" + duration / 60).toFixed(2) + " minutes" : "Duration not available";
-    };
+// Mock DurationAndDistanceInfo component
+jest.mock("../components/navigation-screen-ui/elements/DurationAndDistanceInfo", () => {
+  const React = require("react");
+  const { View, Text } = require("react-native");
+  return jest.fn(({ duration, distance }) => (
+    <View testID="duration-distance-info">
+      <Text testID="duration-value">{duration}</Text>
+      <Text testID="distance-value">{distance}</Text>
+    </View>
+  ));
+});
 
-    const formatDistance = distance => {
-      return distance ? parseFloat("" + distance / 1000).toFixed(2) + " km" : "Distance not available";
-    };
+describe("NavigationFooter component", () => {
+  // Define common props
+  const defaultProps = {
+    onStartNavigation: jest.fn(),
+    onShowDirections: jest.fn(),
+    totalDuration: 1800, // 30 minutes
+    totalDistance: 2500, // 2.5 km
+  };
 
-    // Test with values
-    const duration = 1200; // 20 minutes in seconds
-    const distance = 2500; // 2.5 km in meters
-
-    // Calculate expected results
-    const formattedDuration = formatDuration(duration);
-    const formattedDistance = formatDistance(distance);
-
-    // Verify formatting is correct
-    expect(formattedDuration).toBe("20.00 minutes");
-    expect(formattedDistance).toBe("2.50 km");
+  beforeEach(() => {
+    // Clear mocks before each test
+    jest.clearAllMocks();
   });
 
-  test("verifies fallback text for null values", () => {
-    // Format with null values without rendering React components
-    const formatDuration = duration => {
-      return duration ? parseFloat("" + duration / 60).toFixed(2) + " minutes" : "Duration not available";
-    };
+  test("renders correctly with all props", () => {
+    const { getByText, getByTestId } = render(<NavigationFooter {...defaultProps} />);
 
-    const formatDistance = distance => {
-      return distance ? parseFloat("" + distance / 1000).toFixed(2) + " km" : "Distance not available";
-    };
+    // Test that DurationAndDistanceInfo is rendered
+    const durationInfo = getByTestId("duration-distance-info");
+    expect(durationInfo).toBeTruthy();
 
-    // Test with null values
-    const formattedDuration = formatDuration(null);
-    const formattedDistance = formatDistance(null);
-
-    // Verify fallback text is used
-    expect(formattedDuration).toBe("Duration not available");
-    expect(formattedDistance).toBe("Distance not available");
+    // Test that buttons are rendered
+    expect(getByText("Start Navigation")).toBeTruthy();
+    expect(getByText("Preview")).toBeTruthy();
   });
 
-  test("verifies Start Navigation button press handler", () => {
-    // Create a mock function for onStartNavigation
-    const mockStartNavigation = jest.fn();
+  test("handles missing duration and distance props gracefully", () => {
+    const propsWithoutDurationDistance = {
+      onStartNavigation: jest.fn(),
+      onShowDirections: jest.fn(),
+    };
 
-    // Directly call the function
-    mockStartNavigation();
+    const { getByTestId } = render(<NavigationFooter {...propsWithoutDurationDistance} />);
 
-    // Verify the function was called
-    expect(mockStartNavigation).toHaveBeenCalled();
+    // Check that DurationAndDistanceInfo is rendered
+    expect(getByTestId("duration-distance-info")).toBeTruthy();
   });
 
-  test("verifies Preview button press handler", () => {
-    const mockOnShowDirections = jest.fn();
+  test("hides Start Navigation button when hideStartButton is true", () => {
+    const { queryByText } = render(<NavigationFooter {...defaultProps} hideStartButton={true} />);
 
-    mockOnShowDirections();
+    // Start Navigation button should not be in the document
+    expect(queryByText("Start Navigation")).toBeNull();
 
-    expect(mockOnShowDirections).toHaveBeenCalled();
+    // Preview button should still be there
+    expect(queryByText("Preview")).toBeTruthy();
+  });
+
+  test("shows Start Navigation button by default", () => {
+    const { getByText } = render(<NavigationFooter {...defaultProps} />);
+
+    // Both buttons should be visible
+    expect(getByText("Start Navigation")).toBeTruthy();
+    expect(getByText("Preview")).toBeTruthy();
+  });
+
+  test("calls onStartNavigation when Start Navigation button is pressed", () => {
+    const { getByText } = render(<NavigationFooter {...defaultProps} />);
+
+    // Press the Start Navigation button
+    fireEvent.press(getByText("Start Navigation"));
+
+    // Check that the onStartNavigation function was called
+    expect(defaultProps.onStartNavigation).toHaveBeenCalledTimes(1);
+  });
+
+  test("calls onShowDirections when Preview button is pressed", () => {
+    const { getByText } = render(<NavigationFooter {...defaultProps} />);
+
+    // Press the Preview button
+    fireEvent.press(getByText("Preview"));
+
+    // Check that the onShowDirections function was called
+    expect(defaultProps.onShowDirections).toHaveBeenCalledTimes(1);
+  });
+
+  test("handles zero duration and distance", () => {
+    const props = {
+      ...defaultProps,
+      totalDuration: 0,
+      totalDistance: 0,
+    };
+
+    const { getByTestId } = render(<NavigationFooter {...props} />);
+
+    // Check that DurationAndDistanceInfo is rendered
+    expect(getByTestId("duration-distance-info")).toBeTruthy();
+  });
+
+  test("handles very large duration and distance values", () => {
+    const props = {
+      ...defaultProps,
+      totalDuration: 86400 * 2, // 2 days
+      totalDistance: 100000, // 100 km
+    };
+
+    const { getByTestId } = render(<NavigationFooter {...props} />);
+
+    // Check that DurationAndDistanceInfo is rendered
+    expect(getByTestId("duration-distance-info")).toBeTruthy();
+  });
+
+  test("passes correct props to DurationAndDistanceInfo", () => {
+    // Import the mocked component
+    const DurationAndDistanceInfo = require("../components/navigation-screen-ui/elements/DurationAndDistanceInfo");
+
+    render(<NavigationFooter {...defaultProps} />);
+
+    // Check that DurationAndDistanceInfo was called with the correct props
+    expect(DurationAndDistanceInfo).toHaveBeenCalledWith(
+      expect.objectContaining({
+        duration: defaultProps.totalDuration,
+        distance: defaultProps.totalDistance,
+      }),
+      expect.anything()
+    );
   });
 });
