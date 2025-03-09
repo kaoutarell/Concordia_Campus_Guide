@@ -51,26 +51,26 @@ const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = 
       camera.zoom += 1;
       mapRef.current?.animateCamera(camera);
     });
-};
+  };
 
-const handleZoomOut = () => {
+  const handleZoomOut = () => {
     mapRef.current?.getCamera().then(camera => {
       camera.zoom -= 1;
       mapRef.current?.animateCamera(camera);
     });
-};
+  };
 
-const handleCurrentLocation = () => {
-  const location = locationService.getCurrentLocation();
-  if (location) {
-    mapRef.current?.animateCamera({
-      center: {
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      },
-    });
-  }
-};
+  const handleCurrentLocation = () => {
+    const location = locationService.getCurrentLocation();
+    if (location) {
+      mapRef.current?.animateCamera({
+        center: {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        },
+      });
+    }
+  };
 
   useEffect(() => {
     if (locations.length > 0) {
@@ -187,10 +187,8 @@ const handleCurrentLocation = () => {
         </View>
       )}
 
-        {/* Map Controller */}
-        <MapController onCurrentLocation={handleCurrentLocation} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut}/>
-      
-
+      {/* Map Controller */}
+      <MapController onCurrentLocation={handleCurrentLocation} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
     </View>
   );
 };
