@@ -1,4 +1,5 @@
 import json
+import os
 from collections import deque
 
 import numpy as np
@@ -161,7 +162,9 @@ def convert_coords_to_output(coords):
 # returns the json graph associated with the floor
 def select_map(floor):
     try:
-        with open("mapengine/fixtures/" + floor + ".json", "r") as file:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(BASE_DIR, "..", "fixtures", floor + ".json")
+        with open(file_path, "r") as file:
             map_data = json.load(file)
         return map_data
     except BaseException:
