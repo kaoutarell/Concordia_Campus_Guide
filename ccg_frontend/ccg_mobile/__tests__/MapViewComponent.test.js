@@ -106,7 +106,7 @@ jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
   return function MockCustomMarker({ value, onPress }) {
     return (
       <button
-        data-testid="custom-marker"
+        testID="custom-marker"
         onClick={() => (onPress ? onPress() : null)}
         onKeyDown={e => (e.key === "Enter" && onPress ? onPress() : null)}
       >
@@ -313,5 +313,10 @@ describe("MapViewComponent", () => {
     });
 
     // Verify expected behavior when map is pressed (if applicable)
+  });
+  it("should display InfoPopup when marker is pressed", () => {
+    // ... render component ...
+    fireEvent.press(getByTestId("custom-marker"));
+    expect(getByTestId("info-popup")).toBeTruthy();
   });
 });
