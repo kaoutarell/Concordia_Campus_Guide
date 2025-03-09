@@ -5,4 +5,7 @@ from ..utils.indoor_direction_api_utils import get_indoor_directions_data
 @api_view(['GET'])
 def get_indoor_directions(request):
     data= get_indoor_directions_data(request)
-    return JsonResponse(data)
+    if data != None:
+        return JsonResponse(data)
+    else:
+        return JsonResponse({})

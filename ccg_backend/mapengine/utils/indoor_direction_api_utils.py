@@ -3,14 +3,31 @@ import json
 import numpy as np
 
 def get_indoor_directions_data(request):
-    print(get_floor_sequence(request))
     start=request.GET.get('start')
     destination=request.GET.get('destination')
-    map_data=select_map(request)
+    floor_sequence=get_floor_sequence(request)
+    if floor_sequence==None:return None
+    #if len(floor_sequence)>1:
+    
+    #for floor in floor_sequence:
+    map_data=select_map(floor_sequence[0])
     sequence=get_node_sequence(map_data, start, destination)
+    if sequence==None:return None
     coords=get_path_coordinates(map_data, sequence)
-    data = {"path_data": convert_coords_to_output(coords)}
+    path_data=convert_coords_to_output(coords)
+    pin_array=get_pins(map_data, start, destination, False)
+    data = {"floor_sequence": floor_sequence, "path_data": path_data, "pin": pin_array}
+    print(data)
     return data
+
+def get_pins(map_data, start, destination, multifloor):
+    pin=[
+        [map_data[start]['pin']['x'], map_data[start]['pin']['y']]
+    ]
+
+    if multifloor == False :
+        pin.append([map_data[destination]['pin']['x'], map_data[destination]['pin']['y']])
+    return pin
 
 def get_node_sequence(map_data, start, destination):
     
@@ -32,6 +49,28 @@ def get_node_sequence(map_data, start, destination):
                     queue.append((neighbor, path + [neighbor]))
     
     return None
+
+def get_class_stair_sequence(map_data, classroom):
+    
+    if classroom not in map_data:
+        return None
+    
+    queue = deque([(classroom, [classroom])])
+    visited = set()
+
+    while queue:
+        current_node, path = queue.popleft()
+        if current_node['type'] == 'stairs':
+            return path
+        
+        if current_node not in visited:
+            visited.add(current_node)
+            for neighbor in map_data[current_node]['connections']:
+                if neighbor not in visited:
+                    queue.append((neighbor, path + [neighbor]))
+    
+    return None
+
 
 #this function returns the closest point in the hallway to the class in order to connect the two graphically
 def get_hallway_class_point(map_data, room):
@@ -91,14 +130,12 @@ def convert_coords_to_output(coords):
     return output
 
 #incomplete function (will need changes for adding floor and logic for going through multiple floors)
-def select_map(request):
-    start = request.GET.get('start')
-    destination = request.GET.get('destination')
-    if start.startswith('H8'):
-        with open('mapengine/fixtures/h8.json', 'r') as file:
+def select_map(floor):
+    try:
+        with open('mapengine/fixtures/'+floor+'.json', 'r') as file:
             map_data=json.load(file)
         return map_data
-    else:
+    except:
         return None
     
 def get_floor_sequence(request):
