@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Dimensions, Animated } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import MenuButton from "../elements/MenuButton";
 import SearchBar from "../elements/SearchBar";
 import CampusSelector from "../elements/CampusSelector";
@@ -65,6 +65,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 5,
+  },
+  poiContainer: {
+    position: "relative",
+    marginTop: 10, // Positioned under the HeaderBar
+    flexDirection: "row",
+    justifyContent: "space-around", // Space out buttons
+    alignItems: "center",
+    paddingVertical: 0,
+    paddingHorizontal: 20,
+    backgroundColor: "rgba(255, 255, 255, 0)",
+    borderRadius: 10,
   },
 });
 
