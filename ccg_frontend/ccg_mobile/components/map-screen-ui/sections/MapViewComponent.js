@@ -154,13 +154,11 @@ const MapViewComponentImpl = ({
               />
             )}
 
-
             {selectedPointOfInterest?.map(point => (
               <CustomMarker key={point.id} value={point} onPress={() => handleMarkerPress(point)} />
             ))}
 
             <BuildingHighlight />
-
           </MapView>
         </View>
       )}
