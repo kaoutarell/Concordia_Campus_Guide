@@ -1,16 +1,16 @@
 import React, { useState, useRef } from "react";
 import { View, Image, StyleSheet, FlatList, TouchableOpacity, TextInput, Text, Keyboard } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import PropTypes from "prop-types";
 import { getCategoryIcon } from "../../utils/categoryIcons";
 
 const CustomNavSearch = ({ navigation, route }) => {
-  const { type, onGoBack, searchableItems } = route.params || {};
+  const { type, onGoBack, searchableItems, allLocations } = route.params || {};
 
-  const [allBuildings, setAllBuildings] = useState(searchableItems);
+  const [allBuildings, setAllBuildings] = useState(searchableItems || allLocations || []);
 
   const [searchText, setSearchText] = useState("");
-  const [filteredLocations, setFilteredLocations] = useState(searchableItems);
+  const [filteredLocations, setFilteredLocations] = useState(searchableItems || allLocations || []);
 
   const inputRef = useRef(null);
 
@@ -20,8 +20,8 @@ const CustomNavSearch = ({ navigation, route }) => {
     if (text.length > 0) {
       const filtered = allBuildings.filter(
         loc =>
-          loc.name.toLowerCase().includes(text.toLowerCase()) ||
-          loc.civic_address.toLowerCase().includes(text.toLowerCase())
+          loc.name?.toLowerCase().includes(text.toLowerCase()) ||
+          loc.civic_address?.toLowerCase().includes(text.toLowerCase())
       );
       setFilteredLocations(filtered);
     } else {
@@ -74,6 +74,24 @@ const CustomNavSearch = ({ navigation, route }) => {
       />
     </View>
   );
+};
+
+CustomNavSearch.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      type: PropTypes.string,
+      onGoBack: PropTypes.func,
+      searchableItems: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          civic_address: PropTypes.string,
+          category: PropTypes.string,
+        })
+      ),
+    }),
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({

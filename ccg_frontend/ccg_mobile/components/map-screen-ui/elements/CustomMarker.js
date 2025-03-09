@@ -2,8 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Marker } from "react-native-maps";
 import markerImage from "../../../assets/marker-1.png";
+import PropTypes from "prop-types";
 
-const CustomMarker = ({ value, onPress, destination }) => {
+const CustomMarker = ({ value, onPress, destination = false }) => {
   return (
     <Marker
       coordinate={{
@@ -59,5 +60,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 });
+
+CustomMarker.propTypes = {
+  value: PropTypes.shape({
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+    }).isRequired,
+    building_code: PropTypes.string.isRequired,
+  }).isRequired,
+  onPress: PropTypes.func.isRequired,
+  destination: PropTypes.bool,
+};
 
 export default CustomMarker;
