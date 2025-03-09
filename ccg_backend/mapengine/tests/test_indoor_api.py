@@ -23,3 +23,11 @@ def test_get_hallway_class_point():
         map_data=json.load(file)
     point=get_hallway_class_point(map_data, 'H813')
     assert point==(765, 220)
+
+def test_get_path_coordinates():
+    with open('mapengine/fixtures/H8.json', 'r') as file:
+        map_data=json.load(file)
+    sequence = ['H867', 'C1', 'C2', 'H813']
+    coords = get_path_coordinates(map_data, sequence)
+    assert coords == [{'x':160,'y':200}, {'x':180, 'y':220}, {'x': 555, 'y': 220}, {'x':555, 'y':800}, {'x':675, 'y':800}, {'x':675, 'y':820}]
+    

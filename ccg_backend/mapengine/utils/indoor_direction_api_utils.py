@@ -32,6 +32,7 @@ def get_indoor_directions_data(request):
 
 # returns an array of pins for the start and destination if it isn't a multifloor request
 def get_pins(map_data, start, destination, multifloor):
+    if "pin" not in map_data[start] or "pin" not in map_data[destination]:return None
     pin=[
         [map_data[start]['pin']['x'], map_data[start]['pin']['y']]
     ]
