@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, Image } from "react-native";
 import { getCategoryIcon } from "../../../utils/categoryIcons.js";
+import PropTypes from "prop-types";
 
 const PointsOfInterestButton = ({ type, name, isSelected, onPress }) => {
   return (
@@ -14,6 +15,14 @@ const PointsOfInterestButton = ({ type, name, isSelected, onPress }) => {
       <Text style={[styles.text, isSelected && styles.selectedText]}>{name}</Text>
     </TouchableOpacity>
   );
+};
+
+// Prop validation
+PointsOfInterestButton.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

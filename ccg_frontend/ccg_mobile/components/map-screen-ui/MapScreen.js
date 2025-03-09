@@ -71,10 +71,6 @@ const MapScreen = () => {
     }
   };
 
-  const resetLocations = () => {
-    fetchAllLocations();
-  };
-
   return (
     <View style={styles.container}>
       <HeaderBar

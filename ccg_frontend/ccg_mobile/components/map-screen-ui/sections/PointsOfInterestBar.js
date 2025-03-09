@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from "react-native";
 import PointsOfInterestButton from "../elements/PointsOfInterestButton.js";
 import { getPointOfInterests } from "../../../api/dataService.js";
 import locationService from "../../../services/LocationService.js";
+import PropTypes from "prop-types";
 
 const PointsOfInterestBar = ({ campus, setSelectedPointOfInterest }) => {
   const [selectedPOI, setSelectedPOI] = useState(null);
@@ -42,7 +43,7 @@ const PointsOfInterestBar = ({ campus, setSelectedPointOfInterest }) => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {POI_LIST.map((poi, index) => (
           <PointsOfInterestButton
-            key={index}
+            key={`poi-${index}`}
             type={poi.type}
             name={poi.name}
             isSelected={selectedPOI == poi.type}
@@ -52,6 +53,11 @@ const PointsOfInterestBar = ({ campus, setSelectedPointOfInterest }) => {
       </ScrollView>
     </View>
   );
+};
+
+PointsOfInterestBar.propTypes = {
+  campus: PropTypes.string.isRequired,
+  setSelectedPointOfInterest: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
