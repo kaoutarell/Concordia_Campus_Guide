@@ -16,14 +16,17 @@ const IndoorNavigationFooter = ({ onShowDirections, startAddress, destinationAdd
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <Animated.View style={[styles.container, { opacity: fadeIn }]} testID="footer-container">
         <View style={styles.buttonWrapper}>
           <TouchableOpacity
             style={styles.startButton}
             onPress={() => onShowDirections(startAddress, destinationAddress)}
+            testID="start-button"
           >
-            <Icon name="location-arrow" size={20} color="#800020" style={styles.icon} />
-            <Text style={styles.startButtonText}>Get Direction</Text>
+            <Icon name="location-arrow" size={20} color="#800020" style={styles.icon} testID="icon" />
+            <Text style={styles.startButtonText} testID="start-button-text">
+              Get Direction
+            </Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
