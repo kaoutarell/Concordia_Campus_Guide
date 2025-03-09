@@ -3,6 +3,8 @@ import { render, waitFor } from "@testing-library/react-native";
 import MapViewComponent from "../components/map-screen-ui/sections/MapViewComponent";
 import locationService from "../services/LocationService";
 import { NavigationContainer } from "@react-navigation/native";
+import { act } from "@testing-library/react-native";
+import { fireEvent } from "@testing-library/react-native";
 
 // Mock navigation
 const mockNavigate = jest.fn();
@@ -295,5 +297,21 @@ describe("MapViewComponent", () => {
 
     // Since we're mocking the map component, we can't actually test the region changes
     // but the test passes if no errors are thrown during the effect that updates the region
+  });
+
+  it("should handle map press event", () => {
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <MapViewComponent locations={mockLocations} region={mockRegion} maxBounds={{}} target={{}} />
+      </NavigationContainer>
+    );
+
+    const mapPressButton = getByTestId("map-view");
+
+    act(() => {
+      fireEvent.press(mapPressButton); // Simulate map press
+    });
+
+    // Verify expected behavior when map is pressed (if applicable)
   });
 });

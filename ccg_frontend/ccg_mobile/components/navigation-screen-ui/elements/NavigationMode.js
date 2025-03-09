@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, Dimensions } from "react-native";
-
+import PropTypes from "prop-types";
 const NavigationMode = ({ mode, selectedMode, onModeChange, icon, name }) => {
   return (
     <TouchableOpacity
@@ -11,6 +11,14 @@ const NavigationMode = ({ mode, selectedMode, onModeChange, icon, name }) => {
       <Text style={[styles.text, { color: selectedMode === mode ? "#fff" : "black" }]}>{name}</Text>
     </TouchableOpacity>
   );
+};
+
+NavigationMode.propTypes = {
+  mode: PropTypes.string.isRequired,
+  selectedMode: PropTypes.string.isRequired,
+  onModeChange: PropTypes.func.isRequired,
+  icon: PropTypes.element.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default NavigationMode;

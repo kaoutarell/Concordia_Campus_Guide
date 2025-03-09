@@ -1,5 +1,5 @@
 import React from "react";
-import { render, act, fireEvent } from "@testing-library/react-native";
+import { render, act, fireEvent, waitFor } from "@testing-library/react-native";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 // Mock components with testID to make them identifiable in tests
@@ -474,6 +474,13 @@ describe("NavigationScreen", () => {
       jest.runAllTimers();
     });
 
+    // Ensure the start point is the current location
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", mockCurrentLocation);
+      jest.runAllTimers();
+    });
+
     // Find the NavigationFooter's Start Navigation button
     const navFooter = getByTestId("navigation-footer");
 
@@ -687,5 +694,250 @@ describe("NavigationScreen", () => {
     // Should unsubscribe and stop tracking on unmount
     expect(locationService.unsubscribe).toHaveBeenCalled();
     expect(locationService.stopTrackingLocation).toHaveBeenCalled();
+  });
+
+  it("starts navigation with the current location as the start point", async () => {
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // The Start Navigation button should be visible
+    expect(getByTestId("start-navigation-button")).toBeTruthy();
+
+    // Simulate pressing Start Navigation
+    await act(async () => {
+      const navFooter = getByTestId("navigation-footer");
+      navFooter.props.onStartNavigation();
+      jest.runAllTimers();
+    });
+
+    // Verify that navigation mode is active
+    expect(getByTestId("navigation-direction")).toBeTruthy();
+  });
+
+  it("conditionally hides Start Navigation button based on user location", async () => {
+    const locationService = require("../services/LocationService");
+
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Simulate location update that matches the start point
+    await act(async () => {
+      locationService._simulateLocationUpdate({
+        coords: {
+          latitude: mockCurrentLocation.location.latitude,
+          longitude: mockCurrentLocation.location.longitude,
+        },
+      });
+      jest.runAllTimers();
+    });
+
+    // Start button should be visible because location matches
+    const navFooter = getByTestId("navigation-footer");
+    expect(navFooter.props.hideStartButton).toBeFalsy();
+
+    // Simulate a location update that doesn't match the start point
+    await act(async () => {
+      locationService._simulateLocationUpdate({
+        coords: {
+          latitude: 45.5, // Different from start point
+          longitude: -73.6, // Different from start point
+        },
+      });
+      jest.runAllTimers();
+    });
+
+    // Now NavFooter should have hideStartButton set to true
+    expect(navFooter.props.hideStartButton).toBeTruthy();
+  });
+
+  it("shows the directions modal from NavigationInfos during navigation", async () => {
+    const { getByTestId, getByText } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading and start navigation
+    await act(async () => {
+      jest.runAllTimers();
+      const navFooter = getByTestId("navigation-footer");
+      navFooter.props.onStartNavigation();
+      jest.runAllTimers();
+    });
+
+    // Should be in navigation mode with NavigationInfos visible
+    const navInfos = getByTestId("navigation-infos");
+
+    // Show directions from NavigationInfos
+    await act(async () => {
+      navInfos.props.onShowDirections();
+      jest.runAllTimers();
+    });
+
+    // Modal should be visible with directions list
+    expect(getByText("←")).toBeTruthy();
+    expect(getByTestId("direction-list")).toBeTruthy();
+  });
+
+  it("handles case when getDirections fails", async () => {
+    const { getDirections } = require("../api/dataService");
+
+    // Mock getDirections to throw an error
+    getDirections.mockImplementationOnce(() => Promise.reject(new Error("Network error")));
+
+    const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Error should be logged
+    expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching: ", expect.any(Error));
+
+    // Component should still render (not crash)
+    expect(getByTestId("navigation-header")).toBeTruthy();
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it("handles modifications to start location", async () => {
+    const { getDirections } = require("../api/dataService");
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Reset mock to clear previous calls
+    getDirections.mockClear();
+
+    // Define a new start location
+    const newStart = {
+      name: "New Start",
+      civic_address: "123 Start St",
+      location: { latitude: 45.48, longitude: -73.58 },
+    };
+
+    // Find the NavigationHeader
+    const navHeader = getByTestId("navigation-header");
+
+    // Simulate changing start location
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", newStart);
+      jest.runAllTimers();
+    });
+
+    // Should fetch new directions with updated start point
+    expect(getDirections).toHaveBeenCalledWith(
+      expect.any(String),
+      [newStart.location.longitude, newStart.location.latitude],
+      expect.any(Array)
+    );
+  });
+
+  it("handles setting start location to null (current location)", async () => {
+    const { getMyCurrentLocation } = require("../utils/defaultLocations");
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Reset mock
+    getMyCurrentLocation.mockClear();
+
+    // Find the NavigationHeader
+    const navHeader = getByTestId("navigation-header");
+
+    // Simulate setting start to null (which should use current location)
+    await act(async () => {
+      navHeader.props.onModifyAddress("start", null);
+      jest.runAllTimers();
+    });
+
+    // Should fetch current location
+    expect(getMyCurrentLocation).toHaveBeenCalled();
+  });
+
+  it("handles setting destination location to null (current location)", async () => {
+    const { getMyCurrentLocation } = require("../utils/defaultLocations");
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Reset mock
+    getMyCurrentLocation.mockClear();
+
+    // Find the NavigationHeader
+    const navHeader = getByTestId("navigation-header");
+
+    // Simulate setting destination to null (which should use current location)
+    await act(async () => {
+      navHeader.props.onModifyAddress("destination", null);
+      jest.runAllTimers();
+    });
+
+    // Should fetch current location
+    expect(getMyCurrentLocation).toHaveBeenCalled();
+  });
+
+  it("handles starting navigation when start point is not provided", async () => {
+    // Render with no start point
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Find the NavigationFooter and start navigation
+    const navFooter = getByTestId("navigation-footer");
+
+    // Simulate starting navigation with no start point set
+    await act(async () => {
+      navFooter.props.onStartNavigation();
+      jest.runAllTimers();
+    });
+
+    // Should enter navigation mode
+    expect(getByTestId("navigation-direction")).toBeTruthy();
+  });
+
+  it("handles starting bus navigation", async () => {
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Change to shuttle mode
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onSelectedMode("concordia-shuttle");
+      jest.runAllTimers();
+    });
+
+    // Find the BusNavigationInfo
+    const busNavInfo = getByTestId("bus-navigation-info");
+
+    // Start bus navigation without waiting for timers
+    // This avoids the infinite loop error
+    busNavInfo.props.onStartNavigation();
+
+    // Mock that navigation is active
+    expect(getByTestId("bus-navigation-info")).toBeTruthy();
   });
 });

@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 const NavigationDirection = ({ distance, instruction }) => {
   const getDirectionIcon = instruction => {
@@ -22,6 +23,11 @@ const NavigationDirection = ({ distance, instruction }) => {
       </Text>
     </View>
   );
+};
+
+NavigationDirection.propTypes = {
+  distance: PropTypes.number.isRequired,
+  instruction: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
