@@ -41,3 +41,7 @@ def test_select_map():
         map_data=json.load(file)
     assert map_data==select_map('H8')
     assert select_map('doesntexist')==None
+
+def test_get_floor_sequence():
+    sequence = get_floor_sequence('H867', 'H967')
+    assert sequence == ['H8', 'H9']

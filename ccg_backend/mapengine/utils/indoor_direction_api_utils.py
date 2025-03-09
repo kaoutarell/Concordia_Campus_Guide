@@ -15,7 +15,7 @@ def get_indoor_directions_data(request):
     start=request.GET.get('start')
     destination=request.GET.get('destination')
 
-    floor_sequence=get_floor_sequence(request)
+    floor_sequence=get_floor_sequence(start, destination)
     if floor_sequence==None:return None
 
     map_data=select_map(floor_sequence[0])
@@ -151,9 +151,7 @@ def select_map(floor):
         return None
     
 # returns a sequence of floors to be traveled to get from point A to B
-def get_floor_sequence(request):
-    start = request.GET.get('start')
-    destination = request.GET.get('destination')
+def get_floor_sequence(start, destination):
     with open('mapengine/fixtures/floor_connection_graph.json', 'r') as file:
         floor_graph=json.load(file)
     for key in floor_graph:
