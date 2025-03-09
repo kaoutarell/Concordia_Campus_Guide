@@ -9,3 +9,11 @@ def test_get_pins():
     assert pins == [[75, 105], [640, 900]]
     pins=get_pins(map_data, 'H867', 'H837', True)
     assert pins == [[75, 105]]
+
+def test_get_node_sequence():
+    with open('mapengine/fixtures/H8.json', 'r') as file:
+        map_data=json.load(file)
+    sequence=get_node_sequence(map_data, 'H867', 'H813')
+    assert sequence==['H867', 'C1', 'C2', 'H813']
+    sequence=get_node_sequence(map_data, 'H800', 'H813')
+    assert sequence==None
