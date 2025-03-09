@@ -8,6 +8,7 @@ const PointsOfInterestButton = ({ type, name, isSelected, onPress }) => {
       style={[styles.button, isSelected && styles.selectedButton]}
       activeOpacity={0.7}
       onPress={onPress}
+      testID="points-of-interest-button"
     >
       <Image source={getCategoryIcon(type)} style={styles.icon} />
       <Text style={[styles.text, isSelected && styles.selectedText]}>{name}</Text>
