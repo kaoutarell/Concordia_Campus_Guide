@@ -25,7 +25,7 @@ const IndoorMap = ({ path }) => {
           initialZoom={0.3}
         >
           <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={Hall8}>
-            <Svg style={styles.svg}>
+            <Svg style={styles.svg} testID="path-svg">
               {path !== "" && <Path d={path.path_data} fill="transparent" stroke="black" strokeWidth="5" />}
             </Svg>
 
@@ -35,6 +35,7 @@ const IndoorMap = ({ path }) => {
             the top-left corner of the pin will be at that point */}
             {startPin.length > 0 && (
               <Ionicons
+                testID="start-pin"
                 name="location-sharp"
                 size={pinSize}
                 color="black"
@@ -53,6 +54,7 @@ const IndoorMap = ({ path }) => {
             {/* Destination Pin */}
             {destinationPin.length > 0 && (
               <Ionicons
+                testID="destination-pin"
                 name="pin-outline"
                 size={pinSize}
                 color="black"
