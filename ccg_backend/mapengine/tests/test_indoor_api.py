@@ -17,3 +17,9 @@ def test_get_node_sequence():
     assert sequence==['H867', 'C1', 'C2', 'H813']
     sequence=get_node_sequence(map_data, 'H800', 'H813')
     assert sequence==None
+
+def test_get_hallway_class_point():
+    with open('mapengine/fixtures/H8.json', 'r') as file:
+        map_data=json.load(file)
+    point=get_hallway_class_point(map_data, 'H813')
+    assert point==(765, 220)
