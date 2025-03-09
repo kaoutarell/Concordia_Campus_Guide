@@ -18,15 +18,6 @@ jest.mock("@react-navigation/native", () => {
   };
 });
 
-// Mock Platform
-jest.mock("react-native/Libraries/Utilities/Platform", () => {
-  const Platform = {
-    OS: "ios",
-    select: jest.fn().mockImplementation(obj => obj.ios),
-  };
-
-  return Platform;
-});
 
 // Mock the location service
 jest.mock("../services/LocationService", () => ({
