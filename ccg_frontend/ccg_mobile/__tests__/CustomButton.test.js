@@ -27,5 +27,4 @@ describe("CustomButton", () => {
     // Check if special character is displayed
     expect(getByText("←")).toBeTruthy();
   });
-
 });
