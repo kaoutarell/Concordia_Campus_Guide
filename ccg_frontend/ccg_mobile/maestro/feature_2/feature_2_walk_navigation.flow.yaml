@@ -3,6 +3,7 @@ name: "Feature 2.1 & 2.5 - Walk"
 ---
 # type destination directly in Where to text box to access navigation
 - tapOn: "Where to?"
+- tapOn: "Choose destination"
 # write destination
 - inputText:
     text: "Engineering, "
@@ -38,7 +39,7 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: "Start Navigation"
 - assertVisible: "In 0.9 meters, Head northeast!"
 - assertVisible: "Google Map"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # check that exit button works
 - tapOn: "Exit"
@@ -59,10 +60,10 @@ name: "Feature 2.1 & 2.5 - Walk"
 # start navigation flow
 - tapOn: "Start Navigation"
 - assertVisible: "In 0.9 meters, Head northeast!"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # see directions and assert page renders correctly
-- tapOn: "DIR"
+- tapOn: "Preview"
 - assertVisible: "Directions"
 - assertVisible: "Head northeast"
 - assertVisible: "Turn left"

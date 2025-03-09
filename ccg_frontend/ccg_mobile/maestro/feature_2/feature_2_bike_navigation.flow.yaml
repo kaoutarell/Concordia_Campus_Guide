@@ -2,6 +2,7 @@ appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bike"
 ---
 # starting state: map view zoomed in twice
+- tapOn: "Google Map" # to make sure marker is not selected anymore
 - tapOn: "FG" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
@@ -31,7 +32,7 @@ name: "Feature 2.1 & 2.5 - Bike"
 # start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "Google Map"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # check that exit button works
 - tapOn: "Exit"
@@ -50,10 +51,10 @@ name: "Feature 2.1 & 2.5 - Bike"
 - assertVisible: "0.33 km"
 # start navigation flow
 - tapOn: "Start Navigation"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # see directions and assert page renders correctly
-- tapOn: "DIR"
+- tapOn: "Preview"
 - assertVisible: "Directions"
 - assertVisible: "Head northeast"
 - assertVisible: "Turn left"
