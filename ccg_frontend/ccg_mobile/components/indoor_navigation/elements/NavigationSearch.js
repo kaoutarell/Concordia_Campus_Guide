@@ -35,7 +35,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
           style={styles.input}
           placeholder="Destination Address"
           value={destinationAddress}
-          onChangeText={text => onModifyAddress("destination", text)} // Updates parent but does NOT trigger API
+          onChangeText={text => onModifyAddress("destination", text)} // updates parent WITHOUT triggering API - avoid sending endless useless api calls
           onFocus={() => handlePress("destination")}
         />
       </View>
@@ -52,15 +52,15 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginBottom: 10,
     zIndex: 1,
-    alignItems: "center", // Center align the inputs
+    alignItems: "center",
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 6,
     paddingLeft: 10,
-    width: width * 0.8, // Ensure inputs have a consistent width
-    height: 45, // Same height for all input fields
+    width: width * 0.8,
+    height: 45,
   },
   icon: {
     marginRight: 10,
@@ -73,11 +73,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     borderWidth: 1,
     borderColor: "#ccc",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 10,
-    flexDirection: "row", // Align text and icon horizontally
-    justifyContent: "space-between",
   },
 });
 

@@ -1,28 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Text, View, Image, StyleSheet, ImageBackground } from "react-native";
 import Hall8 from "../floors/Hall-8.png";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
-import { getIndoorDirections } from "../../../api/dataService";
 
-const IndoorMap = ({ startLocation, destination }) => {
-  const [path, setPath] = useState("");
-
-  const fetchPath = async () => {
-    try {
-      const data = await getIndoorDirections("foot-walking", startLocation, destination);
-      setPath(data);
-    } catch (error) {
-      //console.error("Error fetching path data: ", error);
-    }
-  };
-
-  useEffect(() => {
-    if (startLocation && destination) {
-      fetchPath();
-    }
-  }, [startLocation, destination]);
-
+const IndoorMap = ({ startLocation, destination, path }) => {
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
