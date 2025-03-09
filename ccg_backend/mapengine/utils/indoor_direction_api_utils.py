@@ -3,6 +3,7 @@ import json
 import numpy as np
 
 def get_indoor_directions_data(request):
+    print(get_floor_sequence(request))
     start=request.GET.get('start')
     destination=request.GET.get('destination')
     map_data=select_map(request)
@@ -99,3 +100,16 @@ def select_map(request):
         return map_data
     else:
         return None
+    
+def get_floor_sequence(request):
+    start = request.GET.get('start')
+    destination = request.GET.get('destination')
+    with open('mapengine/fixtures/floor_connection_graph.json', 'r') as file:
+        floor_graph=json.load(file)
+    for key in floor_graph:
+        if start.startswith(key):
+            start=key
+        if destination.startswith(key):
+            destination=key
+    sequence=get_node_sequence(floor_graph, start, destination)
+    return sequence
