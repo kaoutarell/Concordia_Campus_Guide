@@ -12,7 +12,11 @@ jest.mock("react-native-maps", () => {
         animateToRegion: jest.fn(),
       };
     }
-    return <View testID="mock-map-view" region={props.region}>{props.children}</View>;
+    return (
+      <View testID="mock-map-view" region={props.region}>
+        {props.children}
+      </View>
+    );
   };
 
   MockMapView.Marker = props => <View testID="map-marker" {...props} />;
@@ -136,7 +140,7 @@ describe("NavigationMap Component", () => {
 
     // Map should be rendered with shuttle display
     expect(getByTestId("mock-map-view")).toBeTruthy();
-    
+
     // Should render bus stop markers in shuttle mode
     const markers = queryAllByTestId("map-marker");
     expect(markers.length).toBeGreaterThan(2); // Start, end, and bus stops
@@ -168,11 +172,11 @@ describe("NavigationMap Component", () => {
     };
 
     const { getByTestId, queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should render shuttle markers
     const markers = queryAllByTestId("map-marker");
     expect(markers.length).toBeGreaterThan(2); // Start, end, bus stops, and shuttles
-    
+
     // Check if any marker has bus marker image
     const busMarkers = markers.some(marker => marker.props.image === "bus-marker-image");
     expect(busMarkers).toBeTruthy();
@@ -180,9 +184,9 @@ describe("NavigationMap Component", () => {
 
   it("calculates correct region from bbox", () => {
     const { getByTestId } = render(<NavigationMap {...defaultProps} />);
-    
+
     const mapView = getByTestId("mock-map-view");
-    
+
     // Verify the region props are calculated correctly from bbox
     expect(mapView.props.region).toEqual({
       latitude: (defaultProps.bbox[1] + defaultProps.bbox[3]) / 2,
@@ -199,10 +203,10 @@ describe("NavigationMap Component", () => {
     };
 
     const { getByTestId, queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Map should still render
     expect(getByTestId("mock-map-view")).toBeTruthy();
-    
+
     // Polyline should still render with empty coordinates
     const polylines = queryAllByTestId("map-polyline");
     expect(polylines.length).toBe(1);
@@ -242,13 +246,13 @@ describe("NavigationMap Component", () => {
     };
 
     const { getByTestId, queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Map markers should still have titles
     const markers = queryAllByTestId("map-marker");
-    
+
     // First marker should have campus as title
     expect(markers[0].props.title).toBe("SGW");
-    
+
     // Second marker should have "End" as title
     expect(markers[1].props.title).toBe("End");
   });
@@ -286,11 +290,11 @@ describe("NavigationMap Component", () => {
     };
 
     const { queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should render bus stop markers
     const markers = queryAllByTestId("map-marker");
     expect(markers.length).toBeGreaterThan(2); // Start, end, and bus stops
-    
+
     // Some markers should have the bus stop image
     const busStopMarkers = markers.some(marker => marker.props.image === "bus-stop-image");
     expect(busStopMarkers).toBeTruthy();
@@ -316,7 +320,7 @@ describe("NavigationMap Component", () => {
     };
 
     const { getByTestId, queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Legs with distance 0 should be filtered out
     const markers = queryAllByTestId("map-marker");
     expect(markers.length).toBe(2); // Only start and end markers, no bus stops
@@ -342,75 +346,73 @@ describe("NavigationMap Component", () => {
     const { getByTestId } = render(<NavigationMap {...props} />);
     expect(getByTestId("mock-map-view")).toBeTruthy();
   });
-  
+
   it("handles BusTrackingMarkers with shuttle locations", () => {
     const shuttleLocations = [
       { id: "bus1", latitude: 45.49, longitude: -73.58 },
       { id: "bus2", latitude: 45.48, longitude: -73.59 },
     ];
-    
+
     const props = {
       ...defaultProps,
       displayShuttle: true,
       shuttleLocations: shuttleLocations,
     };
-    
+
     const { queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should have markers with bus marker image
     const markers = queryAllByTestId("map-marker");
     const busMarkers = markers.filter(marker => marker.props.image === "bus-marker-image");
     expect(busMarkers.length).toBe(2);
   });
-  
+
   it("does not display bus markers when displayShuttle is false", () => {
-    const shuttleLocations = [
-      { id: "bus1", latitude: 45.49, longitude: -73.58 },
-    ];
-    
+    const shuttleLocations = [{ id: "bus1", latitude: 45.49, longitude: -73.58 }];
+
     const props = {
       ...defaultProps,
       displayShuttle: false,
       shuttleLocations: shuttleLocations,
     };
-    
+
     const { queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should not have markers with bus marker image
     const markers = queryAllByTestId("map-marker");
     const busMarkers = markers.filter(marker => marker.props.image === "bus-marker-image");
     expect(busMarkers.length).toBe(0);
   });
-  
+
   it("handles case when shuttle locations are missing", () => {
     const props = {
       ...defaultProps,
       displayShuttle: true,
       shuttleLocations: null,
     };
-    
+
     const { queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should not have markers with bus marker image
     const markers = queryAllByTestId("map-marker");
     const busMarkers = markers.filter(marker => marker.props.image === "bus-marker-image");
     expect(busMarkers.length).toBe(0);
   });
-  
+
   it("handles different id types for shuttle locations", () => {
     const shuttleLocations = [
       { id: "string-id", latitude: 45.49, longitude: -73.58 },
       { id: 123, latitude: 45.48, longitude: -73.59 },
     ];
-    
+
     const props = {
       ...defaultProps,
       displayShuttle: true,
       shuttleLocations: shuttleLocations,
     };
-    
+
     const { queryAllByTestId } = render(<NavigationMap {...props} />);
-    
+
     // Should have markers with bus marker image
     const markers = queryAllByTestId("map-marker");
     const busMarkers = markers.filter(marker => marker.props.image === "bus-marker-image");

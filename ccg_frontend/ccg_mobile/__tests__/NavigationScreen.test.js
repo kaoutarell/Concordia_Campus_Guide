@@ -720,7 +720,7 @@ describe("NavigationScreen", () => {
 
   it("conditionally hides Start Navigation button based on user location", async () => {
     const locationService = require("../services/LocationService");
-    
+
     const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
 
     // Wait for initial loading
@@ -785,25 +785,25 @@ describe("NavigationScreen", () => {
 
   it("handles case when getDirections fails", async () => {
     const { getDirections } = require("../api/dataService");
-    
+
     // Mock getDirections to throw an error
     getDirections.mockImplementationOnce(() => Promise.reject(new Error("Network error")));
-    
-    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    
+
+    const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+
     const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
 
     // Wait for initial loading
     await act(async () => {
       jest.runAllTimers();
     });
-    
+
     // Error should be logged
     expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching: ", expect.any(Error));
-    
+
     // Component should still render (not crash)
     expect(getByTestId("navigation-header")).toBeTruthy();
-    
+
     consoleErrorSpy.mockRestore();
   });
 
@@ -904,13 +904,13 @@ describe("NavigationScreen", () => {
 
     // Find the NavigationFooter and start navigation
     const navFooter = getByTestId("navigation-footer");
-    
+
     // Simulate starting navigation with no start point set
     await act(async () => {
       navFooter.props.onStartNavigation();
       jest.runAllTimers();
     });
-    
+
     // Should enter navigation mode
     expect(getByTestId("navigation-direction")).toBeTruthy();
   });
@@ -932,11 +932,11 @@ describe("NavigationScreen", () => {
 
     // Find the BusNavigationInfo
     const busNavInfo = getByTestId("bus-navigation-info");
-    
+
     // Start bus navigation without waiting for timers
     // This avoids the infinite loop error
     busNavInfo.props.onStartNavigation();
-    
+
     // Mock that navigation is active
     expect(getByTestId("bus-navigation-info")).toBeTruthy();
   });
