@@ -35,3 +35,9 @@ def test_convert_coords_to_output():
     coords = [{'x': 160, 'y': 200}, {'x': 180, 'y': 220}, {'x': 180, 'y': 220}, {'x': 555, 'y': 220}, {'x': 765, 'y': 220}, {'x': 765, 'y': 195}]
     output = convert_coords_to_output(coords)
     assert output == 'M160 200 L180 220 L180 220 L555 220 L765 220 L765 195'
+
+def test_select_map():
+    with open('mapengine/fixtures/H8.json', 'r') as file:
+        map_data=json.load(file)
+    assert map_data==select_map('H8')
+    assert select_map('doesntexist')==None
