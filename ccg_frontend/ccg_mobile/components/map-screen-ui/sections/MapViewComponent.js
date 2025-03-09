@@ -150,7 +150,7 @@ const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = 
               />
             )}
 
-            <BuildingHighlight />
+            <BuildingHighlight testID="building-highlight" />
           </MapView>
         </View>
       )}
