@@ -1,39 +1,26 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-const IndoorDropdown = ({
-  options,
-  selectedValue,
-  onValueChange,
-  placeholder,
-}) => {
+const IndoorDropdown = ({ options, selectedValue, onValueChange, placeholder }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleDropdownToggle = () => {
     setDropdownVisible(!isDropdownVisible); // Toggle visibility
   };
 
-  const handleSelectItem = (item) => {
+  const handleSelectItem = item => {
     onValueChange(item.value); // Update the selected value
     setDropdownVisible(false); // Hide dropdown after selection
   };
 
   // Find the selected label from the options based on the selected value
-  const selectedLabel = options.find(
-    (item) => item.value === selectedValue
-  )?.label;
+  const selectedLabel = options.find(item => item.value === selectedValue)?.label;
 
   return (
     <View style={styles.container}>
       {/* The button which shows the selected building or placeholder */}
-      <TouchableOpacity style={styles.input} onPress={handleDropdownToggle}>
+      <TouchableOpacity style={styles.input} onPress={handleDropdownToggle} testID="dropdown-input">
         <Text style={styles.text}>{selectedLabel || placeholder}</Text>
         {/* Dropdown Icon */}
         <Icon
@@ -41,18 +28,20 @@ const IndoorDropdown = ({
           size={24}
           color="#333"
           style={styles.icon}
+          testID="dropdown-icon"
         />
       </TouchableOpacity>
 
       {/* Dropdown list shown when the button is pressed */}
       {isDropdownVisible && (
-        <View style={styles.dropdown}>
+        <View style={styles.dropdown} testID="dropdown">
           <ScrollView style={styles.scrollView}>
-            {options.map((item) => (
+            {options.map(item => (
               <TouchableOpacity
                 key={item.value}
                 style={styles.item}
                 onPress={() => handleSelectItem(item)}
+                testID={`dropdown-item-${item.value}`}
               >
                 <Text style={styles.itemText}>{item.label}</Text>
               </TouchableOpacity>
