@@ -43,7 +43,7 @@ const PointsOfInterestBar = ({ campus, setSelectedPointOfInterest }) => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {POI_LIST.map((poi, index) => (
           <PointsOfInterestButton
-            key={`poi-${index}`}
+            key={poi.type}
             type={poi.type}
             name={poi.name}
             isSelected={selectedPOI == poi.type}
