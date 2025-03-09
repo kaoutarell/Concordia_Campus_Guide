@@ -9,7 +9,14 @@ import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
 
-const MapViewComponentImpl = ({ pointsOfInterest = [], target = {}, locations = [], region, maxBounds, selectedPointOfInterest }) => {
+const MapViewComponentImpl = ({
+  pointsOfInterest = [],
+  target = {},
+  locations = [],
+  region,
+  maxBounds,
+  selectedPointOfInterest,
+}) => {
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
