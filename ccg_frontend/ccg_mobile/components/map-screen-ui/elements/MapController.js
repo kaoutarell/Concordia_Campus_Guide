@@ -1,23 +1,35 @@
-import React from 'react';
+import { React, Image } from 'react-native';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+
+const controllerIcons = {
+    locate: require('../../../assets/locate.png'),
+    zoomIn: require('../../../assets/zoom_in.png'),
+    zoomOut: require('../../../assets/zoom_out.png'),
+};
 
 const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut }) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={onCurrentLocation}>
-                <Ionicons name="locate" size={24} color="black" />
+            <TouchableOpacity style={styles.button} onPress={onCurrentLocation} testID='locate-button'>
+                <Image source={controllerIcons.locate} style={styles.icon} />
             </TouchableOpacity>
             <View style={styles.zoomContainer}>
-                <TouchableOpacity style={styles.zoomButton} onPress={onZoomIn}>
-                    <Ionicons name="add" size={24} color="black" />
+                <TouchableOpacity style={styles.zoomButton} onPress={onZoomIn} testID='zoom-in-button'>
+                    <Image source={controllerIcons.zoomIn} style={styles.icon} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.zoomButton} onPress={onZoomOut}>
-                    <Ionicons name="remove" size={24} color="black" />
+                <TouchableOpacity style={styles.zoomButton} onPress={onZoomOut} testID='zoom-out-button'>
+                    <Image source={controllerIcons.zoomOut} style={styles.icon} />
                 </TouchableOpacity>
             </View>
         </View>
     );
+};
+
+MapController.propsTypes = {
+    onCurrentLocation: PropTypes.func.isRequired,
+    onZoomIn: PropTypes.func.isRequired,
+    onZoomOut: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -48,6 +60,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    icon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
+    }
 });
 
 export default MapController;
