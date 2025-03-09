@@ -1,33 +1,25 @@
 import React from "react";
-import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, View } from "react-native";
+import { Text, TouchableOpacity, SafeAreaView, StyleSheet, View } from "react-native";
 import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
 import PropTypes from "prop-types";
 
-const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance, onShowDirections }) => {
-  const [fadeIn] = React.useState(new Animated.Value(0));
-
-  React.useEffect(() => {
-    Animated.timing(fadeIn, {
-      toValue: 1,
-      duration: 600,
-      useNativeDriver: true,
-    }).start();
-  }, []);
-
+const NavigationFooter = ({ onStartNavigation, totalDuration, totalDistance, onShowDirections, hideStartButton }) => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <Animated.View style={[styles.container, { opacity: fadeIn }]}>
+      <View style={styles.container}>
         <DurationAndDistanceInfo duration={totalDuration} distance={totalDistance} />
 
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
-            <Text style={styles.startButtonText}>Start Navigation</Text>
-          </TouchableOpacity>
+          {!hideStartButton && (
+            <TouchableOpacity style={styles.startButton} onPress={onStartNavigation}>
+              <Text style={styles.startButtonText}>Start Navigation</Text>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity style={styles.startButton} onPress={onShowDirections}>
             <Text style={styles.startButtonText}>Preview</Text>
           </TouchableOpacity>
         </View>
-      </Animated.View>
+      </View>
     </SafeAreaView>
   );
 };
@@ -37,6 +29,7 @@ NavigationFooter.propTypes = {
   totalDistance: PropTypes.number,
   onStartNavigation: PropTypes.func.isRequired,
   onShowDirections: PropTypes.func.isRequired,
+  hideStartButton: PropTypes.bool, // Prop to control visibility of the "Start Navigation" button (hidden when start location is not current location)
 };
 
 export default NavigationFooter;

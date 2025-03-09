@@ -12,7 +12,7 @@ name: "Feature 2 - Outdoor Directions"
 - tapOn: "Continue to map ➤"
 # [DEPRECATED] Feature 2.2 - Assert User's Current Location
 #- assertVisible: "Google Map"
-#- tapOn: "Zoom in"
+#- doubleTapOn: "Google Map"
 #- scroll #scroll vertically
 ##[Deprecated]- assertVisible: "My Location"
 #- tapOn: "My Location"
@@ -20,12 +20,13 @@ name: "Feature 2 - Outdoor Directions"
 #- assertVisible: "H"
 
 # test that providing a start point will take the user to the navigation screen
-- tapOn: "Zoom in"
-- tapOn: "Zoom in"
+- doubleTapOn: "Google Map"
+- doubleTapOn: "Google Map"
 - tapOn: "TD"
 - tapOn: "Get Directions"
 # test start point other than Current Location
 - tapOn: "Start Address"
+- tapOn: "Choose start"
 # type building name
 - inputText:
     text: "Henry F. Hall Building"
@@ -66,11 +67,19 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
+# check direction preview
+- assertVisible: "Preview"
+- tapOn: "Preview"
+- assertVisible: "Directions"
+- assertVisible: "Turn Left"
+- assertVisible: "Turn Right"
+- tapOn: "←"
 #[Deprecated]- assertVisible: "My Location"
+# check that start navigation works
 - assertVisible: "Start Navigation"
 - tapOn: "Start Navigation"
 - assertVisible:
-    text: "DIR"
+    text: "Preview"
     enabled: true
 - assertVisible:
     text: "Exit"

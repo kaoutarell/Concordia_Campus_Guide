@@ -1,11 +1,13 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Car"
 ---
+# starting state: map view - with markers visible
 - tapOn: "MB" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
 # choose destination
 - tapOn: "Destination Address"
+- tapOn: "Choose destination"
 # select destination by typing part of building name
 - inputText:
     text: "Per"
@@ -31,7 +33,7 @@ name: "Feature 2.1 & 2.5 - Car"
 # start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "Google Map"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # check that exit button works
 - tapOn: "Exit"
@@ -50,10 +52,10 @@ name: "Feature 2.1 & 2.5 - Car"
 - assertVisible: "7.45 km"
 # start navigation flow
 - tapOn: "Start Navigation"
-- assertVisible: "DIR"
+- assertVisible: "Preview"
 - assertVisible: "Exit"
 # see directions and assert page renders correctly
-- tapOn: "DIR"
+- tapOn: "Preview"
 - assertVisible: "Directions"
 - assertVisible: "Head southwest"
 - assertVisible: "Keep right"
