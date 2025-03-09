@@ -44,7 +44,7 @@ describe("IndoorNavigationScreen", () => {
             { label: "Henry F. Hall Building", value: "1" },
             { label: "John Molson Building", value: "2" },
           ],
-          selectedBuilding: "1", // Default building is set
+          selectedBuilding: "1", // Default building is set (not 0)
         }),
         expect.anything()
       );
