@@ -11,22 +11,21 @@ const IndoorNavigationHeader = ({
   onBuildingChange,
   startLocation,
   destination,
-  onModifyAddress,
+  onStartLocationChange,
   onDestinationChange,
-  onStartDestinationSubmit,
 }) => {
   const navigation = useNavigation();
   const [startAddress, setStartAddress] = useState(startLocation);
   const [destinationAddress, setDestinationAddress] = useState(destination);
 
-  // Update the address in the parent component
+  // Handle start and destination room code change
   const handleModifyAddress = (type, address) => {
     if (type === "start") {
-      setStartAddress(address); // Start address update
-      onModifyAddress(address); // Pass to parent
+      setStartAddress(address);
+      onStartLocationChange(address); // start address to the parent component
     } else {
-      setDestinationAddress(address); // Destination address update
-      onDestinationChange(address); // Pass to parent
+      setDestinationAddress(address);
+      onDestinationChange(address); // destination address to the parent component
     }
   };
 
@@ -49,7 +48,7 @@ const IndoorNavigationHeader = ({
       <NavigationSearch
         startAddress={startAddress}
         destinationAddress={destinationAddress}
-        onModifyAddress={handleModifyAddress} // Handle both start and destination dynamically (without pressing any button)
+        onModifyAddress={handleModifyAddress} // modified address handler
         allLocations={buildings}
       />
     </View>
@@ -71,6 +70,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginRight: 290,
+  },
+  button: {
+    borderRadius: 60,
   },
 });
 

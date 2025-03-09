@@ -2,30 +2,15 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import IndoorMap from "./sections/IndoorMap";
 import IndoorNavigationHeader from "./sections/IndoorNavigationHeader";
-import { getBuildings } from "../../api/dataService";
-
-// Debounce helper function to delay the API request
-const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler); // Clean up the timeout on re-render
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-};
+import { getBuildings, getIndoorDirections } from "../../api/dataService";
+import IndoorNavigationFooter from "./sections/IndoorNavigationFooter";
 
 const IndoorNavigationScreen = () => {
   const [buildings, setBuildings] = useState([]);
   const [selectedBuilding, setSelectedBuilding] = useState("");
   const [startLocation, setStartLocation] = useState("");
   const [destination, setDestination] = useState("");
+  const [path, setPath] = useState("");
 
   // Fetch buildings from the API
   useEffect(() => {
@@ -38,7 +23,7 @@ const IndoorNavigationScreen = () => {
         }));
         setBuildings(formattedBuildings);
 
-        // Set default building to "Henry F. Hall Building"
+        // default building to "Henry F. Hall Building"
         const defaultBuilding = formattedBuildings.find(building => building.label === "Henry F. Hall Building");
         if (defaultBuilding) {
           setSelectedBuilding(defaultBuilding.value);
@@ -47,7 +32,7 @@ const IndoorNavigationScreen = () => {
           setSelectedBuilding(formattedBuildings[0].value);
         }
       } catch (error) {
-        //console.error("Error fetching buildings:", error);
+        console.error("Error fetching buildings:", error);
       }
     };
 
@@ -66,6 +51,23 @@ const IndoorNavigationScreen = () => {
     setDestination(location);
   };
 
+  const handleShowDirections = async (start, destination) => {
+    if (!start || !destination) {
+      console.error("Start location and destination are required.");
+      return;
+    }
+
+    try {
+      console.log("Fetching path between", start, "and", destination);
+
+      // fetch the path data only when the button is pressed
+      const pathData = await getIndoorDirections("foot-walking", start, destination);
+      setPath(pathData); // set the path data
+    } catch (error) {
+      console.error("Error fetching path:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <IndoorNavigationHeader
@@ -74,10 +76,19 @@ const IndoorNavigationScreen = () => {
         onBuildingChange={handleBuildingChange}
         startLocation={startLocation}
         destination={destination}
-        onModifyAddress={handleStartLocationChange}
+        onStartLocationChange={handleStartLocationChange}
         onDestinationChange={handleDestinationChange}
       />
-      <IndoorMap startLocation={startLocation} destination={destination} />
+      <IndoorMap
+        startLocation={startLocation}
+        destination={destination}
+        path={path} // path data to IndoorMap
+      />
+      <IndoorNavigationFooter
+        onShowDirections={handleShowDirections} // Handle Get Direction button press
+        startAddress={startLocation}
+        destinationAddress={destination}
+      />
     </View>
   );
 };

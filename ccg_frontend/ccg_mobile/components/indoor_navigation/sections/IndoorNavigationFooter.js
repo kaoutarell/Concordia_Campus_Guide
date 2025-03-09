@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
-import Icon from "react-native-vector-icons/FontAwesome"; // Import the icon library
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const IndoorNavigationFooter = ({ onShowDirections }) => {
+const IndoorNavigationFooter = ({ onShowDirections, startAddress, destinationAddress }) => {
   const [fadeIn] = React.useState(new Animated.Value(0));
 
   React.useEffect(() => {
@@ -18,7 +18,10 @@ const IndoorNavigationFooter = ({ onShowDirections }) => {
     <SafeAreaView style={styles.safeArea}>
       <Animated.View style={[styles.container, { opacity: fadeIn }]}>
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.startButton} onPress={onShowDirections}>
+          <TouchableOpacity
+            style={styles.startButton}
+            onPress={() => onShowDirections(startAddress, destinationAddress)}
+          >
             <Icon name="location-arrow" size={20} color="#800020" style={styles.icon} />
             <Text style={styles.startButtonText}>Get Direction</Text>
           </TouchableOpacity>
@@ -30,6 +33,8 @@ const IndoorNavigationFooter = ({ onShowDirections }) => {
 
 IndoorNavigationFooter.propTypes = {
   onShowDirections: PropTypes.func.isRequired,
+  startAddress: PropTypes.string.isRequired,
+  destinationAddress: PropTypes.string.isRequired,
 };
 
 export default IndoorNavigationFooter;
