@@ -1,6 +1,6 @@
-from django.contrib.gis.db import models
-
 import json
+
+from django.contrib.gis.db import models
 
 
 class Building(models.Model):

@@ -1,12 +1,16 @@
-from decouple import config
 import os
-ORS_BASE_URL = config("ORS_BASE_URL", default=os.getenv('ORS_BASE_URL'))
-OTP_BASE_URL = config("OTP_BASE_URL", default=os.getenv('OTP_BASE_URL'))
+
+from decouple import config
+
+ORS_BASE_URL = config("ORS_BASE_URL", default=os.getenv("ORS_BASE_URL"))
+OTP_BASE_URL = config("OTP_BASE_URL", default=os.getenv("OTP_BASE_URL"))
 OTP_HEADER = {"Content-Type": "application/json"}
 OTP_AVG_WALKING_SPEED = 1.385
+
+
 def otp_query(start, end, wheelchair_accessible, num_trip_patterns):
     return {
-    "query": f"""
+        "query": f"""
     query PublicTransportQuery {{
     trip(
     wheelchairAccessible: {str(wheelchair_accessible).lower()}
