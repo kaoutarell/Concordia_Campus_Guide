@@ -35,4 +35,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 **/__pycache__
-ccg_frontend/ccg_mobile/ios/
+
+# native-builds
+android/
+ios/

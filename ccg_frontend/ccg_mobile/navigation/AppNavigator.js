@@ -38,7 +38,7 @@ export default function AppNavigator() {
         options={{
           host: process.env.EXPO_PUBLIC_POSTHOG_HOST_URL,
           autocapture: true,
-          enableSessionRecording: true,
+          enableSessionReplay: true,
         }}
       >
         <Drawer.Navigator drawerContent={drawerContent} screenOptions={{ headerShown: false }}>
