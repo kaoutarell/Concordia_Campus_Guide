@@ -12,3 +12,4 @@ executionOrder:
     - feature_2/feature_2_shuttle_navigation.flow.yaml
     - feature_2/feature_2_walk_navigation.flow.yaml
     - feature 5/*
+    - feature 4/*
