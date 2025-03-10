@@ -164,7 +164,8 @@ def select_map(floor):
         with open("mapengine/fixtures/" + floor + ".json", "r") as file:
             map_data = json.load(file)
         return map_data
-    except BaseException:
+    except BaseException as e:
+        print(f"Error loading map data for floor {floor}: {e}")
         return None
 
 
