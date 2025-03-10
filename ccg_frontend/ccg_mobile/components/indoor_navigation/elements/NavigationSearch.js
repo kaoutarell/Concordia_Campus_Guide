@@ -25,7 +25,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
         <TextInput
           testID="start-address-input"
           ref={startAddressRef}
-          style={styles.input}
+          style={[styles.input, { zIndex: 100 }]}
           placeholder="Start Address"
           value={startAddress}
           onChangeText={text => onModifyAddress("start", text)} // Updates parent but does NOT trigger API
@@ -53,8 +53,9 @@ const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   searchContainer: {
+    position: "absolute", // to allow testIDs to become visible to maestro
     width: "100%",
-    marginTop: 20,
+    marginTop: 90, // to allow testIDs to become visible to maestro
     marginLeft: 15,
     marginBottom: 10,
     zIndex: 1,
