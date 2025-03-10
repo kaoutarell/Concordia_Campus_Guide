@@ -8,6 +8,7 @@ import transformCurrentLoc from "../../../utils/transformCurrentLoc";
 import BuildingHighlight from "../elements/BuildingHighlight";
 import PropTypes from "prop-types";
 import { useNavigation } from "@react-navigation/native";
+import MapController from "../elements/MapController";
 
 const MapViewComponentImpl = ({
   pointsOfInterest = [],
@@ -17,6 +18,7 @@ const MapViewComponentImpl = ({
   maxBounds,
   selectedPointOfInterest,
 }) => {
+  const mapRef = React.useRef(null);
   const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(true);
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -49,6 +51,48 @@ const MapViewComponentImpl = ({
         ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` })),
       ],
     });
+  };
+
+  const handleZoomIn = () => {
+    if (Platform.OS == "ios") {
+      mapRef.current?.getCamera().then(camera => {
+        camera.altitude -= 750;
+        mapRef.current?.animateCamera(camera);
+      });
+    } else {
+      // Android
+      mapRef.current?.getCamera().then(camera => {
+        camera.zoom += 1;
+        mapRef.current?.animateCamera(camera);
+      });
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (Platform.OS == "ios") {
+      mapRef.current?.getCamera().then(camera => {
+        camera.altitude += 750;
+        mapRef.current?.animateCamera(camera);
+      });
+    } else {
+      // Android
+      mapRef.current?.getCamera().then(camera => {
+        camera.zoom -= 1;
+        mapRef.current?.animateCamera(camera);
+      });
+    }
+  };
+
+  const handleCurrentLocation = () => {
+    const location = locationService.getCurrentLocation();
+    if (location) {
+      mapRef.current?.animateCamera({
+        center: {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        },
+      });
+    }
   };
 
   useEffect(() => {
@@ -111,6 +155,7 @@ const MapViewComponentImpl = ({
         <View style={styles.mapContainer}>
           <MapView
             key={mapKey}
+            ref={mapRef}
             testID="map-view"
             style={styles.map}
             region={targetRegion}
@@ -168,6 +213,9 @@ const MapViewComponentImpl = ({
           <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
         </View>
       )}
+
+      {/* Map Controller */}
+      <MapController onCurrentLocation={handleCurrentLocation} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
     </View>
   );
 };
