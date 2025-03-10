@@ -35,7 +35,10 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 **/__pycache__
-ccg_frontend/ccg_mobile/ios/
+
+# native-builds
+android/
+ios/
 
 node_modules/
 # @generated expo-cli sync-8d4afeec25ea8a192358fae2f8e2fc766bdce4ec
