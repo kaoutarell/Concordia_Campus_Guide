@@ -4,6 +4,7 @@ import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
 import Hall8 from "../floors/Hall-8.png";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
+import PropTypes from "prop-types";
 
 const IndoorMap = ({ path }) => {
   // getting the start and destination pin coordinates
@@ -72,6 +73,13 @@ const IndoorMap = ({ path }) => {
       </View>
     </View>
   );
+};
+
+IndoorMap.propTypes = {
+  path: PropTypes.shape({
+    pin: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+    path_data: PropTypes.string,
+  }),
 };
 
 const styles = StyleSheet.create({

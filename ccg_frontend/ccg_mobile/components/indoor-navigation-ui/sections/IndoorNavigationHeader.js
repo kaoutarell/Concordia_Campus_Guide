@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import NavigationSearch from "../elements/NavigationSearch";
 import CustomButton from "../elements/CustomButton";
 import IndoorDropdown from "../elements/IndoorDropdown";
+import PropTypes from "prop-types";
 
 const IndoorNavigationHeader = ({
   buildings,
@@ -55,6 +56,16 @@ const IndoorNavigationHeader = ({
       />
     </View>
   );
+};
+
+IndoorNavigationHeader.propTypes = {
+  buildings: PropTypes.array.isRequired,
+  selectedBuilding: PropTypes.string.isRequired,
+  onBuildingChange: PropTypes.func.isRequired,
+  startLocation: PropTypes.string.isRequired,
+  destination: PropTypes.string.isRequired,
+  onStartLocationChange: PropTypes.func.isRequired,
+  onDestinationChange: PropTypes.func.isRequired,
 };
 
 const { width } = Dimensions.get("window");

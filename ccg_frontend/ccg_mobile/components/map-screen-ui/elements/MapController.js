@@ -1,5 +1,4 @@
-import { React, Image } from "react-native";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { React, Image, View, TouchableOpacity, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 
 const controllerIcons = {

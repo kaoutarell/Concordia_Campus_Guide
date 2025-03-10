@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent, waitFor, act } from "@testing-library/react-native";
-import IndoorNavigationScreen from "../components/indoor_navigation/IndoorNavigationScreen";
+import IndoorNavigationScreen from "../components/indoor-navigation-ui/IndoorNavigationScreen";
 import { getBuildings, getIndoorDirections } from "../api/dataService";
-import IndoorNavigationHeader from "../components/indoor_navigation/sections/IndoorNavigationHeader";
-import IndoorMap from "../components/indoor_navigation/sections/IndoorMap";
-import IndoorNavigationFooter from "../components/indoor_navigation/sections/IndoorNavigationFooter";
+import IndoorNavigationHeader from "../components/indoor-navigation-ui/sections/IndoorNavigationHeader";
+import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
+import IndoorNavigationFooter from "../components/indoor-navigation-ui/sections/IndoorNavigationFooter";
 
 // Mock the API functions
 jest.mock("../api/dataService", () => ({
@@ -13,9 +13,9 @@ jest.mock("../api/dataService", () => ({
 }));
 
 // Mock child components
-jest.mock("../components/indoor_navigation/sections/IndoorNavigationHeader", () => jest.fn(() => null));
-jest.mock("../components/indoor_navigation/sections/IndoorMap", () => jest.fn(() => null));
-jest.mock("../components/indoor_navigation/sections/IndoorNavigationFooter", () => jest.fn(() => null));
+jest.mock("../components/indoor-navigation-ui/sections/IndoorNavigationHeader", () => jest.fn(() => null));
+jest.mock("../components/indoor-navigation-ui/sections/IndoorMap", () => jest.fn(() => null));
+jest.mock("../components/indoor-navigation-ui/sections/IndoorNavigationFooter", () => jest.fn(() => null));
 
 describe("IndoorNavigationScreen", () => {
   beforeEach(() => {

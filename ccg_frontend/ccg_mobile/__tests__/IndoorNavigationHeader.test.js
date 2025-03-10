@@ -1,12 +1,12 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import IndoorNavigationHeader from "../components/indoor_navigation/sections/IndoorNavigationHeader";
+import IndoorNavigationHeader from "../components/indoor-navigation-ui/sections/IndoorNavigationHeader";
 import { useNavigation } from "@react-navigation/native";
 
 // Mock child components
-jest.mock("../components/indoor_navigation/elements/NavigationSearch", () => "NavigationSearch");
-jest.mock("../components/indoor_navigation/elements/CustomButton", () => "CustomButton");
-jest.mock("../components/indoor_navigation/elements/IndoorDropdown", () => "IndoorDropdown");
+jest.mock("../components/indoor-navigation-ui/elements/NavigationSearch", () => "NavigationSearch");
+jest.mock("../components/indoor-navigation-ui/elements/CustomButton", () => "CustomButton");
+jest.mock("../components/indoor-navigation-ui/elements/IndoorDropdown", () => "IndoorDropdown");
 
 // Mock the useNavigation hook
 jest.mock("@react-navigation/native", () => ({

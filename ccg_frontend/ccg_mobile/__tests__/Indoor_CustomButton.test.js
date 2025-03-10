@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import CustomButton from "../components/indoor_navigation/elements/CustomButton";
+import CustomButton from "../components/indoor-navigation-ui/elements/CustomButton";
 
 describe("CustomButton Component", () => {
   it("renders correctly with given title", () => {

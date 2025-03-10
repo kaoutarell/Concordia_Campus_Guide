@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { View, TextInput, StyleSheet, Dimensions, KeyboardAvoidingView, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import PropTypes from "prop-types";
 const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress }) => {
   const startAddressRef = useRef(null);
   const destinationAddressRef = useRef(null);
@@ -47,6 +47,12 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
       </View>
     </KeyboardAvoidingView>
   );
+};
+
+NavigationSearch.propTypes = {
+  startAddress: PropTypes.string.isRequired,
+  destinationAddress: PropTypes.string.isRequired,
+  onModifyAddress: PropTypes.func.isRequired,
 };
 
 const { width } = Dimensions.get("window");

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import IndoorNavigationFooter from "../components/indoor_navigation/sections/IndoorNavigationFooter";
+import IndoorNavigationFooter from "../components/indoor-navigation-ui/sections/IndoorNavigationFooter";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 // Mock the Icon component

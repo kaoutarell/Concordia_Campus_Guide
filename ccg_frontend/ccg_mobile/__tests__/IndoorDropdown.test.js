@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import IndoorDropdown from "../components/indoor_navigation/elements/IndoorDropdown";
+import IndoorDropdown from "../components/indoor-navigation-ui/elements/IndoorDropdown";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 // Mock the Icon component
