@@ -18,16 +18,6 @@ jest.mock("@react-navigation/native", () => {
   };
 });
 
-// Mock Platform
-jest.mock("react-native/Libraries/Utilities/Platform", () => {
-  const Platform = {
-    OS: "ios",
-    select: jest.fn().mockImplementation(obj => obj.ios),
-  };
-
-  return Platform;
-});
-
 // Mock the location service
 jest.mock("../services/LocationService", () => ({
   startTrackingLocation: jest.fn(),
@@ -97,21 +87,6 @@ jest.mock("../components/map-screen-ui/elements/InfoPopUp.js", () => {
           Go
         </button>
       </div>
-    );
-  };
-});
-
-// Mock CustomMarker
-jest.mock("../components/map-screen-ui/elements/CustomMarker.js", () => {
-  return function MockCustomMarker({ value, onPress }) {
-    return (
-      <button
-        data-testid="custom-marker"
-        onClick={() => (onPress ? onPress() : null)}
-        onKeyDown={e => (e.key === "Enter" && onPress ? onPress() : null)}
-      >
-        <span>{value.id}</span>
-      </button>
     );
   };
 });
