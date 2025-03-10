@@ -1,14 +1,16 @@
+from django.views.decorators.http import require_http_methods
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+
 from ..models.building import Building
 from ..serializers.building_serializer import BuildingSerializer
-from django.views.decorators.http import require_http_methods
 
-@api_view(['GET'])
-@require_http_methods(['GET'])
+
+@api_view(["GET"])
+@require_http_methods(["GET"])
 def get_buildings_by_campus(request):
-    campus_name = request.GET.get('campus')
+    campus_name = request.GET.get("campus")
 
     if not campus_name:
         return Response({"error": "Missing campus parameter"}, status=400)
@@ -18,8 +20,9 @@ def get_buildings_by_campus(request):
 
     return Response(serializer.data)
 
-@api_view(['GET'])
-@require_http_methods(['GET'])
+
+@api_view(["GET"])
+@require_http_methods(["GET"])
 def get_buildings(request):
 
     buildings = Building.objects

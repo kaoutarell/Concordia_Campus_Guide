@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Building, Route, Department, Service, ShuttleSchedule, ShuttleStop, PointOfInterest
+
+from .models import (
+    Building,
+    Department,
+    PointOfInterest,
+    Route,
+    Service,
+    ShuttleSchedule,
+    ShuttleStop,
+)
 
 admin.site.register(Building)
 admin.site.register(Route)

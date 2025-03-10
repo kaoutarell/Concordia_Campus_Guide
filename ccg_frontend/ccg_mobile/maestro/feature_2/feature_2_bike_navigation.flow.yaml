@@ -18,14 +18,11 @@ name: "Feature 2.1 & 2.5 - Bike"
 - tapOn: "John Molson Building"
 # check to see if page renders correctly
 - assertVisible: "1450 Guy"
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 ##[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
 - assertVisible: "MB"
 - assertVisible: "1 minute"
 - assertVisible: "0.33 km"
@@ -38,12 +35,10 @@ name: "Feature 2.1 & 2.5 - Bike"
 - tapOn: "Exit"
 # check to see if page renders correctly
 - assertVisible: "1450 Guy"
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "MB"

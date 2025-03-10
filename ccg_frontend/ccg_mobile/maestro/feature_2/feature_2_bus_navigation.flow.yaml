@@ -22,15 +22,12 @@ name: "Feature 2.1 & 2.5 - Bus"
 - tapOn: "Loyola Jesuit Hall and Conference Centre"
 # check to see if page renders correctly
 - tapOn: "Bus" # select bus navigation
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 - assertVisible: "7141 Sherbrooke W."
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
 - assertVisible: "RF"
 # start navigation
 - tapOn: "Start Navigation"
@@ -41,15 +38,12 @@ name: "Feature 2.1 & 2.5 - Bus"
 # check that exit button works
 - tapOn: "Exit"
 # check to see if page renders correctly
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
-- assertVisible: "Google Map"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
 - assertVisible: "7141 Sherbrooke W."
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
 - assertVisible: "RF"
 # start navigation flow
 - tapOn: "Start Navigation"

@@ -1,12 +1,16 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
 from django.urls import reverse
 from rest_framework.test import APIClient
+
 from ..models.building import Building
+
 
 @pytest.fixture
 def api_client():
     return APIClient()
+
 
 def test_get_buildings_by_campus(api_client):
     url = reverse("buildings-by-campus")

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import { getBuildings, getPointOfInterests } from "../../api/dataService";
 
 import MapViewComponent from "./sections/MapViewComponent";
 import NavigationToggle from "./sections/NavigationToggle";
 import { initialRegionSGW, initialRegionLoyola, maxBoundsSGW, maxBoundsLoyola } from "../../constants/initialRegions";
 
-import { View, StyleSheet } from "react-native";
 import PointsOfInterestBar from "./sections/PointsOfInterestBar";
 import HeaderBar from "./sections/HeaderBar";
 
 const MapScreen = () => {
+  const navigation = useNavigation(); // Get navigation object
   const [allLocations, setAllLocations] = useState([]); //gets the buildings in both campus
   const [pointsOfInterest, setPointsOfInterest] = useState([]); //gets the buildings in both campus
   const [selectedCampus, setSelectedCampus] = useState("SGW");
@@ -41,6 +44,20 @@ const MapScreen = () => {
       setData();
     }
   }, []);
+
+  // Navigate to IndoorScreen when isIndoor is true
+  useEffect(() => {
+    if (isIndoor) {
+      navigation.navigate("Indoor");
+    }
+  }, [isIndoor, navigation]);
+
+  // Navigate to IndoorScreen when isIndoor is true
+  useEffect(() => {
+    if (isIndoor) {
+      navigation.navigate("Indoor");
+    }
+  }, [isIndoor, navigation]);
 
   const onCampusSelect = campus => {
     setSelectedCampus(prevCampus => {
