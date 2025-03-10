@@ -1,0 +1,20 @@
+appId: host.exp.Exponent
+name: "Assert that map view screen renders properly"
+---
+- assertVisible:
+    id: "menu-button"
+- assertVisible: "Google Map"
+- assertVisible: "Where to?"
+- assertVisible:
+    id: "campus-button"
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 0
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 1
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 2
+- assertVisible: "Outdoor"
+- assertVisible: "Indoor"
