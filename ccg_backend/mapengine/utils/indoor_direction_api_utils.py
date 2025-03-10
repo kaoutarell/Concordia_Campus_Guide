@@ -115,12 +115,12 @@ def get_hallway_class_point(map_data, room):
     AB = B - A
     AP = P - A
 
-    AB_squared = np.dot(AB, AB)
-    if AB_squared == 0:
+    ab_squared = np.dot(AB, AB)
+    if ab_squared == 0:
         print("Degenerate line segment:", A)
         return tuple(A)
 
-    t = np.dot(AP, AB) / AB_squared
+    t = np.dot(AP, AB) / ab_squared
     t = max(0, min(1, t))
     Q = A + t * AB
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import PropTypes from "prop-types";
 
 const IndoorDropdown = ({ options, selectedValue, onValueChange, placeholder }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -51,6 +52,18 @@ const IndoorDropdown = ({ options, selectedValue, onValueChange, placeholder }) 
       )}
     </View>
   );
+};
+
+IndoorDropdown.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectedValue: PropTypes.string,
+  onValueChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

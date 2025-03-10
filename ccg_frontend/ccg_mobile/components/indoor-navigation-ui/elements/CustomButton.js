@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-
+import PropTypes from "prop-types";
 const CustomButton = ({ title, onPress }) => {
   return (
     <View style={styles.container}>
@@ -11,6 +11,11 @@ const CustomButton = ({ title, onPress }) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+CustomButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

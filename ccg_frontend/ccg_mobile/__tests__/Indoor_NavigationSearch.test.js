@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import NavigationSearch from "../components/indoor_navigation/elements/NavigationSearch";
+import NavigationSearch from "../components/indoor-navigation-ui/elements/NavigationSearch";
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
