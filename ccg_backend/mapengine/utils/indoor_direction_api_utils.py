@@ -11,7 +11,7 @@ import numpy as np
         'pin': [[75, 105], [640, 900]] ==> array of pins to be displayed on the frontend to show point A and B
     }
 """
-
+last_used_stairs = ""
 
 def get_indoor_directions_data(request):
     start = request.GET.get("start")
@@ -21,32 +21,69 @@ def get_indoor_directions_data(request):
     if floor_sequence is None:
         return None
 
-    map_data = select_map(floor_sequence[0])
-    if map_data is None:
-        return None
+    data = {"floor_sequence":floor_sequence, "path_data":{}, "pin":{}}
 
-    #sequence = get_node_sequence(map_data, start, destination)
-    sequence = get_class_stair_sequence(map_data, start)
-    if sequence is None:
-        return None
+    global last_used_stairs
+    last_used_stairs=""
+    map_data=None
+    sequence=None
 
-    coords = get_path_coordinates(map_data, sequence)
-    path_data = convert_coords_to_output(coords)
-    pin_array = get_pins(map_data, start, destination, False)
-    data = {"floor_sequence": floor_sequence, "path_data": path_data, "pin": pin_array}
-    return data
+    i=0
+    while i<len(floor_sequence):
+        if floor_sequence[i] != "outside":
+            map_data = select_map(floor_sequence[i])
+            if map_data is None:
+                print("no map data")
+                return None
+        else:
+            last_used_stairs=""
+            continue
+    #If there is only one floor
+        if len(floor_sequence) == 1:
+            sequence = get_floor_sequence(map_data, start, destination)
+            pin_array = get_pins(map_data, start, destination)
+    #If there is a floor after the current
+        elif len(floor_sequence)>i+1 and floor_sequence[i+1] != "outside":
+            print("1")
+            if last_used_stairs == "":
+                sequence = get_class_stair_sequence(map_data, start)
+                print("last stairs used: "+last_used_stairs)
+                pin_array = get_pins(map_data, start, last_used_stairs)
+    #If the current floor is between two floors
+            else:
+                sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
+                pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
+    #If there is a floor before the current
+        elif i>0 and floor_sequence[i-1] != "outside":
+            print("2")
+            sequence = get_node_sequence(map_data, last_used_stairs, destination)
+            pin_array = get_pins(map_data, last_used_stairs, destination)
+
+        if sequence is None:
+            print("no sequence")
+            return None
+
+        coords = get_path_coordinates(map_data, sequence)
+        path_data = convert_coords_to_output(coords)
+        
+        data["path_data"][floor_sequence[i]]=path_data
+        data["pin"][floor_sequence[i]]=pin_array
+
+        i+=1
+    print(data)
+    return None
 
 
 # returns an array of pins for the start and destination if it isn't a multifloor request
-def get_pins(map_data, start, destination, multifloor):
+def get_pins(map_data, start, destination):
     if "pin" not in map_data[start] or "pin" not in map_data[destination]:
         return None
     pin = [[map_data[start]["pin"]["x"], map_data[start]["pin"]["y"]]]
 
-    if multifloor is False:
-        pin.append(
-            [map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]]
-        )
+    
+    pin.append(
+        [map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]]
+    )
     return pin
 
 
@@ -77,6 +114,8 @@ def get_node_sequence(map_data, start, destination):
 
 def get_class_stair_sequence(map_data, classroom):
 
+    global last_used_stairs
+
     if classroom not in map_data:
         return None
 
@@ -86,6 +125,8 @@ def get_class_stair_sequence(map_data, classroom):
     while queue:
         current_node, path = queue.popleft()
         if map_data[current_node]['type'] == 'stairs':
+            last_used_stairs=map_data[current_node]["id"]
+            print(last_used_stairs)
             return path
 
         if current_node not in visited:
@@ -131,6 +172,7 @@ def get_hallway_class_point(map_data, room):
 # returns the list of coordinates for the path between two rooms
 def get_path_coordinates(map_data, path):
     coords = []
+    print(path)
     coords.append(map_data[path[0]]["coords"])
     if map_data[path[1]]["type"] != "corner":
         coords.append(map_data[path[1]]["coords"])
