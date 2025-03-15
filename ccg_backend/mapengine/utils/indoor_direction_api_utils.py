@@ -26,6 +26,7 @@ def get_indoor_directions_data(request):
         return None
 
     sequence = get_node_sequence(map_data, start, destination)
+    #sequence = get_class_stair_sequence(map_data, start)
     if sequence is None:
         return None
 
@@ -73,7 +74,7 @@ def get_node_sequence(map_data, start, destination):
 
 
 # returns a sequence of nodes from a classroom to a stairwell
-"""
+
 def get_class_stair_sequence(map_data, classroom):
 
     if classroom not in map_data:
@@ -84,7 +85,7 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if current_node['type'] == 'stairs':
+        if map_data[current_node]['type'] == 'stairs':
             return path
 
         if current_node not in visited:
@@ -94,7 +95,7 @@ def get_class_stair_sequence(map_data, classroom):
                     queue.append((neighbor, path + [neighbor]))
 
     return None
-"""
+
 
 
 # this function returns the closest point in the hallway to the class in order to connect the two graphically
@@ -161,7 +162,7 @@ def convert_coords_to_output(coords):
 # returns the json graph associated with the floor
 def select_map(floor):
     try:
-        with open("mapengine/fixtures/" + floor + ".json", "r") as file:
+        with open("mapengine/fixtures/IndoorMaps/" + floor + ".json", "r") as file:
             map_data = json.load(file)
         return map_data
     except (FileNotFoundError, json.JSONDecodeError) as e:
@@ -171,7 +172,7 @@ def select_map(floor):
 
 # returns a sequence of floors to be traveled to get from point A to B
 def get_floor_sequence(start, destination):
-    with open("mapengine/fixtures/floor_connection_graph.json", "r") as file:
+    with open("mapengine/fixtures/IndoorMaps/floor_connection_graph.json", "r") as file:
         floor_graph = json.load(file)
     for key in floor_graph:
         if start.startswith(key):
