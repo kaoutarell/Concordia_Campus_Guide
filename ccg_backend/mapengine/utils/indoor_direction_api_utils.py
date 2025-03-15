@@ -25,8 +25,8 @@ def get_indoor_directions_data(request):
     if map_data is None:
         return None
 
-    sequence = get_node_sequence(map_data, start, destination)
-    #sequence = get_class_stair_sequence(map_data, start)
+    #sequence = get_node_sequence(map_data, start, destination)
+    sequence = get_class_stair_sequence(map_data, start)
     if sequence is None:
         return None
 
@@ -132,14 +132,14 @@ def get_hallway_class_point(map_data, room):
 def get_path_coordinates(map_data, path):
     coords = []
     coords.append(map_data[path[0]]["coords"])
-    if map_data[path[1]]["type"] == "room":
+    if map_data[path[1]]["type"] != "corner":
         coords.append(map_data[path[1]]["coords"])
         return coords
     else:
         p = get_hallway_class_point(map_data, path[0])
         coords.append({"x": int(p[0]), "y": int(p[1])})
         i = 1
-        while map_data[path[i]]["type"] != "room":
+        while map_data[path[i]]["type"] == "corner":
             coords.append(map_data[path[i]]["coords"])
             i = i + 1
         p = get_hallway_class_point(map_data, path[i])
