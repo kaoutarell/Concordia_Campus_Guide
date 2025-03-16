@@ -12,6 +12,8 @@ from ..utils.direction_api_utils import (
     otp_directions,
 )
 
+from ..exceptions.exceptions import InvalidCoordinatesError, BuildingNotFoundError,ShuttleStopNotFoundError
+
 
 @api_view(["GET"])
 @require_http_methods(["GET"])
@@ -85,6 +87,67 @@ def get_directions(request, profile):
     return JsonResponse(route_info, status=code)
 
 
+
+def parse_coordinates(start, end):
+    """Extracts and validates start and end coordinates."""
+
+    if not start or not end:
+        raise InvalidCoordinatesError("Missing start or end parameter")
+    try:
+        start_lon, start_lat = map(float, start.split(","))
+        end_lon, end_lat = map(float, end.split(","))
+    except ValueError:
+        raise InvalidCoordinatesError("Invalid coordinate format. Use 'lon,lat'.")
+
+    return (start_lon, start_lat), (end_lon, end_lat)
+
+#
+def find_nearest_building(point):
+    building = (
+        Building.objects.annotate(distance=Distance("location", point))
+        .order_by("distance")
+        .first()
+    )
+
+    if not building:
+        raise BuildingNotFoundError("No nearby building found for the given location.")
+
+    return building
+
+
+
+def get_shuttle_stops(origin_campus, destination_campus):
+    """Retrieves the shuttle stops for the given campuses."""
+    try:
+        return (
+            ShuttleStop.objects.get(name=origin_campus),
+            ShuttleStop.objects.get(name=destination_campus),
+        )
+    except ShuttleStop.DoesNotExist:
+        raise ShuttleStopNotFoundError("Shuttle stop not found for one or both campuses.")
+
+
+def build_combined_route(route_legs, origin_building, destination_building, origin_campus, destination_campus):
+    """Constructs the final combined route from individual route legs."""
+
+    total_distance = sum(leg.get("total_distance", 0) for leg in route_legs.values())
+    total_duration = sum(leg.get("total_duration", 0) for leg in route_legs.values())
+
+    # Merge steps from all legs
+    combined_steps = [step for leg in route_legs.values() if "steps" in leg for step in leg["steps"]]
+
+    return {
+        "total_distance": total_distance,
+        "total_duration": total_duration,
+        "bbox": compute_bbox_from_steps(combined_steps),
+        "legs": route_legs,
+        "origin_building": origin_building.building_code,
+        "destination_building": destination_building.building_code,
+        "origin_campus": origin_campus,
+        "destination_campus": destination_campus,
+    }
+
+
 def multi_modal_shuttle_directions(request):
     """
     Builds a multi-modal route by:
@@ -102,53 +165,34 @@ def multi_modal_shuttle_directions(request):
     start = request.GET.get("start")
     end = request.GET.get("end")
 
-    if not start or not end:
-        return JsonResponse({"error": "Missing start or end parameter"}, status=400)
-
     try:
-        start_lon, start_lat = map(float, start.split(","))
-        end_lon, end_lat = map(float, end.split(","))
-    except Exception:
-        return JsonResponse(
-            {"error": "Invalid coordinate format. Use 'lon,lat'."}, status=400
-        )
+        coordinates = parse_coordinates(start, end)
+    except InvalidCoordinatesError as e:
+        return JsonResponse({"error": str(e)}, status=400)
+    (start_lon, start_lat), (end_lon, end_lat) = coordinates
 
     origin_point = Point(start_lon, start_lat, srid=4326)
     destination_point = Point(end_lon, end_lat, srid=4326)
 
     # Find the nearest building to the origin and destination
-    origin_building = (
-        Building.objects.annotate(distance=Distance("location", origin_point))
-        .order_by("distance")
-        .first()
-    )
-    destination_building = (
-        Building.objects.annotate(distance=Distance("location", destination_point))
-        .order_by("distance")
-        .first()
-    )
+    try:
+        origin_building = find_nearest_building(origin_point)
+        destination_building = find_nearest_building(destination_point)
+    except BuildingNotFoundError as e:
+        return JsonResponse({"error": str(e)}, status=404)
 
-    print(origin_building, destination_building)
+    origin_campus, destination_campus = origin_building.campus, destination_building.campus
 
-    if not origin_building or not destination_building:
-        return JsonResponse(
-            {"error": "No nearby building found for origin or destination."}, status=404
-        )
-
-    origin_campus = origin_building.campus
-    destination_campus = destination_building.campus
-
+    # If both locations are on the same campus, return direct walking directions
     if origin_campus == destination_campus:
         return get_directions(request, "foot-walking")
 
+
     # Look up the corresponding shuttle stops based on campus
     try:
-        origin_stop = ShuttleStop.objects.get(name=origin_campus)
-        destination_stop = ShuttleStop.objects.get(name=destination_campus)
-    except ShuttleStop.DoesNotExist:
-        return JsonResponse(
-            {"error": "Shuttle stop not found for one or both campuses."}, status=404
-        )
+        origin_stop, destination_stop = get_shuttle_stops(origin_campus, destination_campus)
+    except ShuttleStopNotFoundError as e:
+        return JsonResponse({"error": str(e)}, status=404)
 
     origin_stop_coord = f"{origin_stop.longitude},{origin_stop.latitude}"
     destination_stop_coord = f"{destination_stop.longitude},{destination_stop.latitude}"
@@ -176,35 +220,12 @@ def multi_modal_shuttle_directions(request):
             {"error": "Error fetching walking directions for leg 3."}, status=code3
         )
 
-    total_distance = (
-        leg1_response.get("total_distance", 0)
-        + leg2_response.get("total_distance", 0)
-        + leg3_response.get("total_distance", 0)
-    )
-    total_duration = (
-        leg1_response.get("total_duration", 0)
-        + leg2_response.get("total_duration", 0)
-        + leg3_response.get("total_duration", 0)
-    )
-
-    combined_steps = []
-    for leg in (leg1_response, leg2_response, leg3_response):
-        if "steps" in leg:
-            combined_steps.extend(leg["steps"])
-
-    combined_route = {
-        "total_distance": total_distance,
-        "total_duration": total_duration,
-        "bbox": compute_bbox_from_steps(combined_steps),
-        "legs": {
-            "walk_to_stop": leg1_response,
-            "shuttle_ride": leg2_response,
-            "walk_from_stop": leg3_response,
-        },
-        "origin_building": origin_building.building_code,
-        "destination_building": destination_building.building_code,
-        "origin_campus": origin_campus,
-        "destination_campus": destination_campus,
-    }
+    combined_route = build_combined_route(route_legs, origin_building, destination_building, origin_campus,
+                                          destination_campus)
 
     return JsonResponse(combined_route, status=200)
+
+
+
+
+
