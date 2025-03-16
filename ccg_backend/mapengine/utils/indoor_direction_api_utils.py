@@ -13,46 +13,49 @@ import numpy as np
 """
 last_used_stairs = ""
 
+
 def get_indoor_directions_data(start, destination):
 
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
         return None
 
-    data = {"floor_sequence":floor_sequence, "path_data":{}, "pin":{}}
+    data = {"floor_sequence": floor_sequence, "path_data": {}, "pin": {}}
 
     global last_used_stairs
-    last_used_stairs=""
-    map_data=None
-    sequence=None
+    last_used_stairs = ""
+    map_data = None
+    sequence = None
 
-    i=0
-    while i<len(floor_sequence):
+    i = 0
+    while i < len(floor_sequence):
         if floor_sequence[i] != "outside":
             map_data = select_map(floor_sequence[i])
             if map_data is None:
                 print("no map data")
                 return None
         else:
-            last_used_stairs=""
+            last_used_stairs = ""
             continue
-    #If there is only one floor
+        # If there is only one floor
         if len(floor_sequence) == 1:
             sequence = get_node_sequence(map_data, start, destination)
             pin_array = get_pins(map_data, start, destination)
-    #If there is a floor after the current
-        elif len(floor_sequence)>i+1 and floor_sequence[i+1] != "outside":
+        # If there is a floor after the current
+        elif len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "outside":
             print("1")
             if last_used_stairs == "":
                 sequence = get_class_stair_sequence(map_data, start)
-                print("last stairs used: "+last_used_stairs)
+                print("last stairs used: " + last_used_stairs)
                 pin_array = get_pins(map_data, start, last_used_stairs)
-    #If the current floor is between two floors
+            # If the current floor is between two floors
             else:
-                sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
+                sequence = get_node_sequence(
+                    map_data, last_used_stairs, last_used_stairs
+                )
                 pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
-    #If there is a floor before the current
-        elif i>0 and floor_sequence[i-1] != "outside":
+        # If there is a floor before the current
+        elif i > 0 and floor_sequence[i - 1] != "outside":
             print("2")
             sequence = get_node_sequence(map_data, last_used_stairs, destination)
             pin_array = get_pins(map_data, last_used_stairs, destination)
@@ -63,11 +66,11 @@ def get_indoor_directions_data(start, destination):
 
         coords = get_path_coordinates(map_data, sequence)
         path_data = convert_coords_to_output(coords)
-        
-        data["path_data"][floor_sequence[i]]=path_data
-        data["pin"][floor_sequence[i]]=pin_array
 
-        i+=1
+        data["path_data"][floor_sequence[i]] = path_data
+        data["pin"][floor_sequence[i]] = pin_array
+
+        i += 1
     print(data)
     return data
 
@@ -78,10 +81,7 @@ def get_pins(map_data, start, destination):
         return None
     pin = [[map_data[start]["pin"]["x"], map_data[start]["pin"]["y"]]]
 
-    
-    pin.append(
-        [map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]]
-    )
+    pin.append([map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]])
     return pin
 
 
@@ -110,6 +110,7 @@ def get_node_sequence(map_data, start, destination):
 
 # returns a sequence of nodes from a classroom to a stairwell
 
+
 def get_class_stair_sequence(map_data, classroom):
 
     global last_used_stairs
@@ -122,19 +123,18 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if map_data[current_node]['type'] == 'stairs':
-            last_used_stairs=map_data[current_node]["id"]
+        if map_data[current_node]["type"] == "stairs":
+            last_used_stairs = map_data[current_node]["id"]
             print(last_used_stairs)
             return path
 
         if current_node not in visited:
             visited.add(current_node)
-            for neighbor in map_data[current_node]['connections']:
+            for neighbor in map_data[current_node]["connections"]:
                 if neighbor not in visited:
                     queue.append((neighbor, path + [neighbor]))
 
     return None
-
 
 
 # this function returns the closest point in the hallway to the class in order to connect the two graphically
