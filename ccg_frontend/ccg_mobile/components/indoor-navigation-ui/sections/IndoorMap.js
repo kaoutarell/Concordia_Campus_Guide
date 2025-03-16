@@ -87,8 +87,9 @@ const IndoorMap = ({ path, index }) => {
 
 IndoorMap.propTypes = {
   path: PropTypes.shape({
-    pin: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    path_data: PropTypes.string,
+    pin: PropTypes.object,
+    path_data: PropTypes.object,
+    floor_sequence: PropTypes.array
   }),
 };
 

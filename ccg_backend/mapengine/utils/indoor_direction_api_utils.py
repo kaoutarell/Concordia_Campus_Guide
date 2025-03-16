@@ -13,9 +13,7 @@ import numpy as np
 """
 last_used_stairs = ""
 
-def get_indoor_directions_data(request):
-    start = request.GET.get("start")
-    destination = request.GET.get("destination")
+def get_indoor_directions_data(start, destination):
 
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
