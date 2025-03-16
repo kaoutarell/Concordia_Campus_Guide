@@ -40,7 +40,7 @@ def get_indoor_directions_data(request):
             continue
     #If there is only one floor
         if len(floor_sequence) == 1:
-            sequence = get_floor_sequence(map_data, start, destination)
+            sequence = get_node_sequence(map_data, start, destination)
             pin_array = get_pins(map_data, start, destination)
     #If there is a floor after the current
         elif len(floor_sequence)>i+1 and floor_sequence[i+1] != "outside":
@@ -71,7 +71,7 @@ def get_indoor_directions_data(request):
 
         i+=1
     print(data)
-    return None
+    return data
 
 
 # returns an array of pins for the start and destination if it isn't a multifloor request
