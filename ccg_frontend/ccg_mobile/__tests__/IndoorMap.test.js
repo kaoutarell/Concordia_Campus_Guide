@@ -23,7 +23,7 @@ jest.mock("@openspacelabs/react-native-zoomable-view", () => ({
 
 describe("IndoorMap Component", () => {
   it("renders correctly", () => {
-    const { getByText } = render(<IndoorMap path={{}} />);
+    const { getByText } = render(<IndoorMap path={{}} index={0} />);
     expect(getByText("ReactNativeZoomableView")).toBeTruthy();
   });
 
@@ -38,7 +38,7 @@ describe("IndoorMap Component", () => {
         ],
       },
     };
-    const { getByTestId } = render(<IndoorMap path={path} />);
+    const { getByTestId } = render(<IndoorMap path={path} index={0} />);
     expect(getByTestId("start-pin")).toBeTruthy();
   });
 
@@ -53,7 +53,7 @@ describe("IndoorMap Component", () => {
         ],
       },
     };
-    const { getByTestId } = render(<IndoorMap path={path} />);
+    const { getByTestId } = render(<IndoorMap path={path} index={0} />);
     expect(getByTestId("destination-pin")).toBeTruthy();
   });
 
@@ -68,7 +68,7 @@ describe("IndoorMap Component", () => {
         ],
       },
     };
-    const { getByTestId } = render(<IndoorMap path={path} />);
+    const { getByTestId } = render(<IndoorMap path={path} index={0} />);
     expect(getByTestId("path-svg")).toBeTruthy();
   });
 });
