@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     position: "absolute", // to allow testIDs to become visible to maestro
     width: "100%",
-    marginTop: 90, // to allow testIDs to become visible to maestro
+    marginTop: "15%", // to allow testIDs to become visible to maestro
     marginLeft: 15,
     marginBottom: 10,
     zIndex: 1,

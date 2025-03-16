@@ -15,7 +15,7 @@ const IndoorMap = ({ path }) => {
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
-      <View style={{ borderWidth: 5, height: 400, width: "100%" }}>
+      <View style={{ borderWidth: 5, height: 350, width: "100%" }}>
         <ReactNativeZoomableView
           maxZoom={10}
           minZoom={0.3}
@@ -85,7 +85,7 @@ IndoorMap.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "100%",
+    marginTop: "85%",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,

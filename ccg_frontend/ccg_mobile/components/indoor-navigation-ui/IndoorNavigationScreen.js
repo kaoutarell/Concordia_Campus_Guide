@@ -4,6 +4,7 @@ import IndoorMap from "./sections/IndoorMap";
 import IndoorNavigationHeader from "./sections/IndoorNavigationHeader";
 import { getBuildings, getIndoorDirections } from "../../api/dataService";
 import IndoorNavigationFooter from "./sections/IndoorNavigationFooter";
+import FloorChangeButton from "./elements/FloorChangeButton";
 
 const IndoorNavigationScreen = () => {
   const [buildings, setBuildings] = useState([]);
@@ -85,6 +86,7 @@ const IndoorNavigationScreen = () => {
         destination={destination}
         path={path} // path data to IndoorMap
       />
+      <FloorChangeButton/>
       <IndoorNavigationFooter
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}
