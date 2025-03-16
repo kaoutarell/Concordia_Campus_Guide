@@ -67,8 +67,8 @@ const IndoorNavigationScreen = () => {
       const pathData = await getIndoorDirections("foot-walking", start, destination);
       console.log(pathData);
       setPath(pathData); // set the path data
-      if (path!=""){
-        setFloorIndexMax(path["floor_sequence"].length-1)
+      if (path != "") {
+        setFloorIndexMax(path["floor_sequence"].length - 1);
       }
     } catch (error) {
       console.error("Error fetching path:", error);
@@ -92,11 +92,7 @@ const IndoorNavigationScreen = () => {
         path={path} // path data to IndoorMap
         index={floorIndex}
       />
-      <FloorChangeButton
-        index={floorIndex}
-        maxIndex={floorIndexMax}
-        setIndex={setFloorIndex}
-      />
+      <FloorChangeButton index={floorIndex} maxIndex={floorIndexMax} setIndex={setFloorIndex} />
       <IndoorNavigationFooter
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}
