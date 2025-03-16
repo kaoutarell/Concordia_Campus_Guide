@@ -1,13 +1,17 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 
-const FloorChangeButton = ({}) =>{
+const FloorChangeButton = ({index, maxIndex, setIndex}) =>{
     const increment = ()=>{
-
+        if (index<maxIndex){
+            setIndex(index+1);
+        };
     }
 
     const decrement = ()=>{
-
+        if (index>0){
+            setIndex(index-1);
+        };
     }
     return(
         <View style={styles.view}>

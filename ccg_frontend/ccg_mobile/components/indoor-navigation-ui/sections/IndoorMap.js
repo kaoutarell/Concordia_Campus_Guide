@@ -6,9 +6,7 @@ import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-vi
 import Svg, { Path } from "react-native-svg";
 import PropTypes from "prop-types";
 
-const IndoorMap = ({ path }) => {
-  // getting the start and destination pin coordinates
-  const [startPin, destinationPin] = [[], []];
+const IndoorMap = ({ path, index }) => {
 
   const pinSize = 90;
 
@@ -27,14 +25,14 @@ const IndoorMap = ({ path }) => {
         >
           <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={Hall8}>
             <Svg style={styles.svg} testID="path-svg">
-              {path !== "" && <Path d={path["path_data"][path["floor_sequence"][0]]} fill="transparent" stroke="black" strokeWidth="5" />}
+              {path !== "" && <Path d={path["path_data"][path["floor_sequence"][index]]} fill="transparent" stroke="black" strokeWidth="5" />}
             </Svg>
 
             {/* Start Pin */}
             {/* The pin needs to be centered at the specified coordinates. 
             If we place the icon at exactly startPin[0] and startPin[1], 
             the top-left corner of the pin will be at that point */}
-            {path !== "" && path["pin"][path["floor_sequence"][0]] != null && (
+            {path !== "" && path["pin"][path["floor_sequence"][index]] != null && (
               <Ionicons
                 testID="start-pin"
                 name="location-sharp"
@@ -43,8 +41,8 @@ const IndoorMap = ({ path }) => {
                 style={[
                   styles.pin,
                   {
-                    left: path["pin"][path["floor_sequence"][0]][0][0] - pinSize / 2, // x-coord
-                    top: path["pin"][path["floor_sequence"][0]][0][1] - pinSize, // y-coord
+                    left: path["pin"][path["floor_sequence"][index]][0][0] - pinSize / 2, // x-coord
+                    top: path["pin"][path["floor_sequence"][index]][0][1] - pinSize, // y-coord
                   },
                 ]}
               />
@@ -53,7 +51,7 @@ const IndoorMap = ({ path }) => {
             we adjust the position by subtracting half the pin size from the x-coord & subtracting 
             the full pin size from the y-coord */}
             {/* Destination Pin */}
-            {path !== "" && path["pin"][path["floor_sequence"][0]] != null && (
+            {path !== "" && path["pin"][path["floor_sequence"][index]] != null && (
               <Ionicons
                 testID="destination-pin"
                 name="pin-outline"
@@ -62,8 +60,8 @@ const IndoorMap = ({ path }) => {
                 style={[
                   styles.pin,
                   {
-                    left: path["pin"][path["floor_sequence"][0]][1][0] - pinSize / 2,
-                    top: path["pin"][path["floor_sequence"][0]][1][1] - pinSize,
+                    left: path["pin"][path["floor_sequence"][index]][1][0] - pinSize / 2,
+                    top: path["pin"][path["floor_sequence"][index]][1][1] - pinSize,
                   },
                 ]}
               />
