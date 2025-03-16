@@ -29,10 +29,12 @@ describe("IndoorMap Component", () => {
 
   it("displays the start pin when coordinates are provided", () => {
     const path = {
+      floor_sequence: ["H8"],
+      path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
       pin: {
         H8: [
           [75, 105],
-          [250, 320],
+          [640, 900],
         ],
       },
     };
@@ -42,10 +44,12 @@ describe("IndoorMap Component", () => {
 
   it("displays the destination pin when coordinates are provided", () => {
     const path = {
+      floor_sequence: ["H8"],
+      path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
       pin: {
         H8: [
           [75, 105],
-          [250, 320],
+          [640, 900],
         ],
       },
     };
@@ -54,7 +58,16 @@ describe("IndoorMap Component", () => {
   });
 
   it("renders the path when path_data is provided", () => {
-    const path = { path_data: { H8: "M10 10 L90 90" } };
+    const path = {
+      floor_sequence: ["H8"],
+      path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
+      pin: {
+        H8: [
+          [75, 105],
+          [640, 900],
+        ],
+      },
+    };
     const { getByTestId } = render(<IndoorMap path={path} />);
     expect(getByTestId("path-svg")).toBeTruthy();
   });
