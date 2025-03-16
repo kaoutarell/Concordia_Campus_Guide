@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, ImageBackground } from "react-native";
 import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
-import Hall8 from "../floors/Hall-8.png";
+import H8 from "../floors/Hall-8.png";
+import H9 from "../floors/Hall-9.png";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
 import PropTypes from "prop-types";
@@ -10,10 +11,21 @@ const IndoorMap = ({ path, index }) => {
 
   const pinSize = 90;
 
+  const [image, setImage] = useState(H8)
+
+  useEffect(()=>{
+    if(path!=""){
+      if (path["floor_sequence"][index]=="H8"){setImage(H8);}
+      else if(path["floor_sequence"][index]=="H9"){setImage(H9);}
+    };
+  }, [index])
+
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
-      <View style={{ borderWidth: 5, height: 350, width: "100%" }}>
+      <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems:"center" }}>
+        {path!=""&&<Text style={{fontSize:18}}>{path["floor_sequence"][index]}</Text>}
+        {path==""&&<Text style={{fontSize:18}}>{"H8"}</Text>}
         <ReactNativeZoomableView
           maxZoom={10}
           minZoom={0.3}
@@ -23,7 +35,7 @@ const IndoorMap = ({ path, index }) => {
           contentHeight={1024}
           initialZoom={0.3}
         >
-          <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={Hall8}>
+          <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={image}>
             <Svg style={styles.svg} testID="path-svg">
               {path !== "" && <Path d={path["path_data"][path["floor_sequence"][index]]} fill="transparent" stroke="black" strokeWidth="5" />}
             </Svg>
