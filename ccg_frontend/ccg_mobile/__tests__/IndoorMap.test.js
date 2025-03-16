@@ -23,7 +23,17 @@ jest.mock("@openspacelabs/react-native-zoomable-view", () => ({
 
 describe("IndoorMap Component", () => {
   it("renders correctly", () => {
-    const { getByText } = render(<IndoorMap path={{}} index={0} />);
+    const path = {
+      floor_sequence: ["H8"],
+      path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
+      pin: {
+        H8: [
+          [75, 105],
+          [640, 900],
+        ],
+      },
+    };
+    const { getByText } = render(<IndoorMap path={path} index={0} />);
     expect(getByText("ReactNativeZoomableView")).toBeTruthy();
   });
 
