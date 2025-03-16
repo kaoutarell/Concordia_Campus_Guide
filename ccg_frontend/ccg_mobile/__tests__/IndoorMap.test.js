@@ -28,19 +28,33 @@ describe("IndoorMap Component", () => {
   });
 
   it("displays the start pin when coordinates are provided", () => {
-    const path = { pin: {H8: [[75, 105], [250, 320]]} };
+    const path = {
+      pin: {
+        H8: [
+          [75, 105],
+          [250, 320],
+        ],
+      },
+    };
     const { getByTestId } = render(<IndoorMap path={path} />);
     expect(getByTestId("start-pin")).toBeTruthy();
   });
 
   it("displays the destination pin when coordinates are provided", () => {
-    const path = { pin: {H8: [[75, 105], [250, 320]]} };
+    const path = {
+      pin: {
+        H8: [
+          [75, 105],
+          [250, 320],
+        ],
+      },
+    };
     const { getByTestId } = render(<IndoorMap path={path} />);
     expect(getByTestId("destination-pin")).toBeTruthy();
   });
 
   it("renders the path when path_data is provided", () => {
-    const path = { path_data: {H8:"M10 10 L90 90"} };
+    const path = { path_data: { H8: "M10 10 L90 90" } };
     const { getByTestId } = render(<IndoorMap path={path} />);
     expect(getByTestId("path-svg")).toBeTruthy();
   });
