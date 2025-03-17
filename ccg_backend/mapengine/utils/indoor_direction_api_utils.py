@@ -15,64 +15,55 @@ last_used_stairs = ""
 
 
 def get_indoor_directions_data(start, destination):
-
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
         return None
 
     data = {"floor_sequence": floor_sequence, "path_data": {}, "pin": {}}
-
     global last_used_stairs
     last_used_stairs = ""
-    map_data = None
-    sequence = None
 
-    i = 0
-    while i < len(floor_sequence):
-        if floor_sequence[i] != "outside":
-            map_data = select_map(floor_sequence[i])
-            if map_data is None:
-                print("no map data")
-                return None
-        else:
+    for i, floor in enumerate(floor_sequence):
+        if floor == "outside":
             last_used_stairs = ""
             continue
-        # If there is only one floor
-        if len(floor_sequence) == 1:
-            sequence = get_node_sequence(map_data, start, destination)
-            pin_array = get_pins(map_data, start, destination)
-        # If there is a floor after the current
-        elif len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "outside":
-            print("1")
-            if last_used_stairs == "":
-                sequence = get_class_stair_sequence(map_data, start)
-                print("last stairs used: " + last_used_stairs)
-                pin_array = get_pins(map_data, start, last_used_stairs)
-            # If the current floor is between two floors
-            else:
-                sequence = get_node_sequence(
-                    map_data, last_used_stairs, last_used_stairs
-                )
-                pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
-        # If there is a floor before the current
-        elif i > 0 and floor_sequence[i - 1] != "outside":
-            print("2")
-            sequence = get_node_sequence(map_data, last_used_stairs, destination)
-            pin_array = get_pins(map_data, last_used_stairs, destination)
 
+        map_data = select_map(floor)
+        if map_data is None:
+            print("no map data")
+            return None
+
+        sequence, pin_array = determine_path_sequence(i, floor_sequence, map_data, start, destination)
         if sequence is None:
             print("no sequence")
             return None
 
         coords = get_path_coordinates(map_data, sequence)
-        path_data = convert_coords_to_output(coords)
+        data["path_data"][floor] = convert_coords_to_output(coords)
+        data["pin"][floor] = pin_array
 
-        data["path_data"][floor_sequence[i]] = path_data
-        data["pin"][floor_sequence[i]] = pin_array
-
-        i += 1
     print(data)
     return data
+
+def determine_path_sequence(i, floor_sequence, map_data, start, destination):
+    global last_used_stairs
+    if len(floor_sequence) == 1:
+        return get_node_sequence(map_data, start, destination), get_pins(map_data, start, destination)
+    
+    if len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "outside":
+        if last_used_stairs == "":
+            sequence = get_class_stair_sequence(map_data, start)
+            pin_array = get_pins(map_data, start, last_used_stairs)
+        else:
+            sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
+            pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
+    elif i > 0 and floor_sequence[i - 1] != "outside":
+        sequence = get_node_sequence(map_data, last_used_stairs, destination)
+        pin_array = get_pins(map_data, last_used_stairs, destination)
+    else:
+        return None, None
+    
+    return sequence, pin_array
 
 
 # returns an array of pins for the start and destination if it isn't a multifloor request

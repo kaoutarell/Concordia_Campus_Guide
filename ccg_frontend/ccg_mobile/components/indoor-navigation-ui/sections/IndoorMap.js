@@ -108,6 +108,7 @@ IndoorMap.propTypes = {
     path_data: PropTypes.object,
     floor_sequence: PropTypes.array,
   }),
+  index: PropTypes.number
 };
 
 const styles = StyleSheet.create({

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 
@@ -24,7 +25,12 @@ const FloorChangeButton = ({ index, maxIndex, setIndex }) => {
     </View>
   );
 };
-export default FloorChangeButton;
+
+FloorChangeButton.propTypes = {
+  index: PropTypes.number,
+  maxIndex: PropTypes.number,
+  setIndex: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   view: {
@@ -51,3 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
+
+export default FloorChangeButton;
+
+
