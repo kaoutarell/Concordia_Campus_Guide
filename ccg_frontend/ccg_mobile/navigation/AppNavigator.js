@@ -5,7 +5,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "../components/home-screen-ui/HomeScreen";
 import MapScreen from "../components/map-screen-ui/MapScreen";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
-import { PostHogProvider } from "posthog-react-native";
 
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
@@ -33,22 +32,9 @@ const drawerContent = props => <Sidebar {...props} />;
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <PostHogProvider
-        apiKey={process.env.EXPO_PUBLIC_POSTHOG_API_KEY}
-        options={{
-          host: process.env.EXPO_PUBLIC_POSTHOG_HOST_URL,
-          autocapture: true,
-          enableSessionReplay: true,
-          sessionReplayConfig: {
-            maskAllTextInputs: false,
-            maskAllImages: false,
-          },
-        }}
-      >
         <Drawer.Navigator drawerContent={drawerContent} screenOptions={{ headerShown: false }}>
           <Drawer.Screen name="Main" component={StackNavigator} />
         </Drawer.Navigator>
-      </PostHogProvider>
     </NavigationContainer>
   );
 }
