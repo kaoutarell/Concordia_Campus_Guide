@@ -26,8 +26,16 @@ const IndoorMap = ({ path, index }) => {
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
       <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems: "center" }}>
-        {path != null && <Text style={{ fontSize: 18 }}>{path["floor_sequence"][index]}</Text>}
-        {path == null && <Text style={{ fontSize: 18 }}>{"H8"}</Text>}
+        {path != null && (
+          <Text style={{ fontSize: 18 }} testID="title">
+            {path["floor_sequence"][index]}
+          </Text>
+        )}
+        {path == null && (
+          <Text style={{ fontSize: 18 }} testID="default-title">
+            {"H8"}
+          </Text>
+        )}
         <ReactNativeZoomableView
           maxZoom={10}
           minZoom={0.3}

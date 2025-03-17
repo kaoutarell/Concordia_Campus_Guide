@@ -15,10 +15,10 @@ const FloorChangeButton = ({ index, maxIndex, setIndex }) => {
   };
   return (
     <View style={styles.view}>
-      <TouchableOpacity style={styles.button} onPress={decrement}>
+      <TouchableOpacity style={styles.button} onPress={decrement} testID="prev-button">
         <Text style={styles.text}>{"< Prev"}</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={increment}>
+      <TouchableOpacity style={styles.button} onPress={increment} testID="next-button">
         <Text style={styles.text}>{"Next >"}</Text>
       </TouchableOpacity>
     </View>

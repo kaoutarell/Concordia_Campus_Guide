@@ -81,4 +81,24 @@ describe("IndoorMap Component", () => {
     const { getByTestId } = render(<IndoorMap path={path} index={0} />);
     expect(getByTestId("path-svg")).toBeTruthy();
   });
+
+  it("renders title when path is provided", () => {
+    const path = {
+      floor_sequence: ["H8"],
+      path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
+      pin: {
+        H8: [
+          [75, 105],
+          [640, 900],
+        ],
+      },
+    };
+    const { getByTestId } = render(<IndoorMap path={path} index={0} />);
+    expect(getByTestId("title")).toBeTruthy();
+  });
+
+  it("renders default title when no path is provided", () => {
+    const { getByTestId } = render(<IndoorMap path={null} index={0} />);
+    expect(getByTestId("title")).toBeTruthy();
+  });
 });
