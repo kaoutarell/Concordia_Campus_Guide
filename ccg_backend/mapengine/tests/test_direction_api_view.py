@@ -169,3 +169,117 @@ def test_directions_with_mock(mock_find_nearest_building, api_client):
     response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
 
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_multi_modal_shuttle_directions_valid(api_client, setup_test_data):
+    """Test API with valid input coordinates."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
+
+    assert response.status_code == 200
+    json_data = response.json()
+    assert "total_distance" in json_data
+    assert "total_duration" in json_data
+    assert "legs" in json_data
+    assert set(json_data["legs"].keys()) == {"walk_to_stop", "shuttle_ride", "walk_from_stop"}
+
+
+@pytest.mark.django_db
+def test_multi_modal_shuttle_directions_missing_params(api_client):
+    """Test API with missing start or end parameters."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url)  # No parameters
+
+    assert response.status_code == 400
+    assert response.json() == {"error": "Missing start or end parameter"}
+
+
+@pytest.mark.django_db
+def test_multi_modal_shuttle_directions_invalid_format(api_client):
+    """Test API with incorrectly formatted coordinates."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "invalid", "end": "45.4973,-73.579"})
+
+    assert response.status_code == 400
+    assert response.json() == {"error": "Invalid coordinate format. Use 'lon,lat'."}
+
+
+@pytest.mark.django_db
+def test_multi_modal_shuttle_directions_no_nearby_building(api_client):
+    """Test API when no nearby buildings exist."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.000,45.000", "end": "-73.500,45.500"})
+
+    assert response.status_code == 404
+    assert "No nearby building found" in response.json()["error"]
+
+
+@pytest.mark.django_db
+def test_multi_modal_shuttle_directions_shuttle_stops_not_found(api_client):
+    """Test API when no shuttle stops exist for the campuses."""
+
+    Building.objects.create(name="Hall Building", location=Point(-73.579, 45.4973), campus="SGW")
+    Building.objects.create(name="Vanier Library", location=Point(-73.638, 45.459), campus="LOY")
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
+
+    assert response.status_code == 404
+    assert "Shuttle stop not found" in response.json()["error"]
+
+
+@pytest.mark.django_db
+@patch("mapengine.views.direction_api_views.find_nearest_building",
+       side_effect=BuildingNotFoundError("No nearby building found"))
+def test_multi_modal_shuttle_directions_building_not_found(mock_find_building, api_client):
+    """Test API when find_nearest_building() fails to locate buildings."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
+
+    assert response.status_code == 404
+    assert "No nearby building found" in response.json()["error"]
+
+
+@pytest.mark.django_db
+@patch("mapengine.views.direction_api_views.get_shuttle_stops",
+       side_effect=ShuttleStopNotFoundError("Shuttle stop not found"))
+def test_multi_modal_shuttle_directions_mock_shuttle_stops_not_found(mock_get_shuttle_stops, api_client,
+                                                                     setup_test_data):
+    """Test API when get_shuttle_stops() fails."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
+
+    assert response.status_code == 404
+    assert "Shuttle stop not found" in response.json()["error"]
+
+
+@pytest.mark.django_db
+@patch("mapengine.views.direction_api_views.ors_directions", return_value=({}, 500))
+def test_multi_modal_shuttle_directions_api_failure(mock_ors_directions, api_client, setup_test_data):
+    """Test API when ors_directions() fails to fetch directions."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.638,45.459"})
+
+    assert response.status_code == 500
+    assert "Error fetching walking directions" in response.json()["error"]
+
+
+@pytest.mark.django_db
+@patch("mapengine.views.direction_api_views.find_nearest_building", return_value=Mock(campus="SGW"))
+def test_multi_modal_shuttle_directions_same_campus(mock_find_building, api_client, setup_test_data):
+    """Test API response when the origin and destination are on the same campus."""
+
+    url = reverse("concordia-shuttle")
+    response = api_client.get(url, {"start": "-73.579,45.4973", "end": "-73.5783,45.4955"})
+
+    assert response.status_code == 200
+    json_data = response.json()
+    assert json_data.get("profile") == "foot-walking"
