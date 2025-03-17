@@ -99,6 +99,6 @@ describe("IndoorMap Component", () => {
 
   it("renders default title when no path is provided", () => {
     const { getByTestId } = render(<IndoorMap path={null} index={0} />);
-    expect(getByTestId("title")).toBeTruthy();
+    expect(getByTestId("default-title")).toBeTruthy();
   });
 });
