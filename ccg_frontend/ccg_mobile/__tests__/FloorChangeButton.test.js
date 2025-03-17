@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import { render, fireEvent } from "@testing-library/react-native";
 import FloorChangeButton from "../components/indoor-navigation-ui/elements/FloorChangeButton";
 
 describe("IndoorMap Component", () => {
