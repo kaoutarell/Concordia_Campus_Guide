@@ -11,7 +11,6 @@ from ..constants import (
     otp_query,
 )
 
-
 def ors_directions(start, end, profile):
     url = f"{ORS_BASE_URL}/{profile}?start={start}&end={end}"
     response = requests.get(url)

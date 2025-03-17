@@ -12,7 +12,6 @@ import numpy as np
     }
 """
 
-
 def get_indoor_directions_data(request):
     start = request.GET.get("start")
     destination = request.GET.get("destination")

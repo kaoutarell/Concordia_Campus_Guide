@@ -39,7 +39,6 @@ INVALID_PARAMS = "?start=0,0&end=0,0"
 def api_client():
     return APIClient()
 
-
 def test_get_profiles(api_client):
     url = reverse("profiles")
     response = api_client.get(url)
@@ -55,26 +54,20 @@ def test_get_profiles(api_client):
         ]
     }
 
-
 def test_foot_walking_directions(api_client):
     check_directions(api_client, "foot-walking")
-
 
 def test_cycling_regular_directions(api_client):
     check_directions(api_client, "cycling-regular")
 
-
 def test_driving_car_directions(api_client):
     check_directions(api_client, "driving-car")
-
 
 def test_wheelchair_directions(api_client):
     check_directions(api_client, "wheelchair")
 
-
 def test_public_transport_directions(api_client):
     check_directions(api_client, "public-transport")
-
 
 def check_directions(api_client, profile):
     # Case 1: Missing start or end parameter
@@ -264,9 +257,6 @@ def test_multi_modal_shuttle_directions_no_nearby_building(api_client):
     assert response.status_code == 404
     assert "No nearby building found" in response.json()["error"]
 
-
-#
-#
 @pytest.mark.django_db
 def test_multi_modal_shuttle_directions_shuttle_stops_not_found(api_client):
     """Test API when no shuttle stops exist for the campuses."""
