@@ -29,7 +29,7 @@ const FloorChangeButton = ({ index, maxIndex, setIndex }) => {
 FloorChangeButton.propTypes = {
   index: PropTypes.number,
   maxIndex: PropTypes.number,
-  setIndex: PropTypes.func
+  setIndex: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -59,5 +59,3 @@ const styles = StyleSheet.create({
 });
 
 export default FloorChangeButton;
-
-

@@ -33,7 +33,9 @@ def get_indoor_directions_data(start, destination):
             print("no map data")
             return None
 
-        sequence, pin_array = determine_path_sequence(i, floor_sequence, map_data, start, destination)
+        sequence, pin_array = determine_path_sequence(
+            i, floor_sequence, map_data, start, destination
+        )
         if sequence is None:
             print("no sequence")
             return None
@@ -45,11 +47,14 @@ def get_indoor_directions_data(start, destination):
     print(data)
     return data
 
+
 def determine_path_sequence(i, floor_sequence, map_data, start, destination):
     global last_used_stairs
     if len(floor_sequence) == 1:
-        return get_node_sequence(map_data, start, destination), get_pins(map_data, start, destination)
-    
+        return get_node_sequence(map_data, start, destination), get_pins(
+            map_data, start, destination
+        )
+
     if len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "outside":
         if last_used_stairs == "":
             sequence = get_class_stair_sequence(map_data, start)
@@ -62,7 +67,7 @@ def determine_path_sequence(i, floor_sequence, map_data, start, destination):
         pin_array = get_pins(map_data, last_used_stairs, destination)
     else:
         return None, None
-    
+
     return sequence, pin_array
 
 
