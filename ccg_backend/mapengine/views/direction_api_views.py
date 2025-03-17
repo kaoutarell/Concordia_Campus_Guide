@@ -3,7 +3,6 @@ from django.contrib.gis.geos import Point
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from rest_framework.decorators import api_view
-
 from ..models.building import Building
 from ..models.shuttle import ShuttleStop
 from ..utils.direction_api_utils import (
@@ -11,22 +10,20 @@ from ..utils.direction_api_utils import (
     ors_directions,
     otp_directions,
 )
-
-from ..exceptions.exceptions import InvalidCoordinatesError, BuildingNotFoundError,ShuttleStopNotFoundError
-
-
-
+from ..exceptions.exceptions import (
+    InvalidCoordinatesError,
+    BuildingNotFoundError,
+    ShuttleStopNotFoundError,
+)
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def foot_walking_directions(request):
     return get_directions(request, "foot-walking")
 
-
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def cycling_regular_directions(request):
     return get_directions(request, "cycling-regular")
-
 
 @api_view(["GET"])
 @require_http_methods(["GET"])
@@ -39,18 +36,15 @@ def driving_car_directions(request):
 def wheelchair_directions(request):
     return get_directions(request, "wheelchair")
 
-
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def public_transport_directions(request):
     return get_directions(request, "public-transport")
 
-
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def shuttle_bus_directions(request):
     return multi_modal_shuttle_directions(request)
-
 
 @api_view(["GET"])
 @require_http_methods(["GET"])
@@ -87,8 +81,6 @@ def get_directions(request, profile):
         route_info, code = otp_directions(start, end)
     return JsonResponse(route_info, status=code)
 
-
-
 def parse_coordinates(start, end):
     """Extracts and validates start and end coordinates."""
 
@@ -102,7 +94,6 @@ def parse_coordinates(start, end):
 
     return (start_lon, start_lat), (end_lon, end_lat)
 
-#
 def find_nearest_building(point):
     building = (
         Building.objects.annotate(distance=Distance("location", point))
@@ -114,8 +105,6 @@ def find_nearest_building(point):
         raise BuildingNotFoundError("No nearby building found for the given location.")
 
     return building
-
-
 
 def get_shuttle_stops(origin_campus, destination_campus):
     """Retrieves the shuttle stops for the given campuses."""
@@ -147,7 +136,6 @@ def build_combined_route(route_legs, origin_building, destination_building, orig
         "origin_campus": origin_campus,
         "destination_campus": destination_campus,
     }
-
 
 def multi_modal_shuttle_directions(request):
     """
@@ -213,7 +201,6 @@ def multi_modal_shuttle_directions(request):
         return JsonResponse(
             {"error": "Error fetching shuttle ride directions for leg 2."}, status=code2
         )
-
     # Leg 3: Walk from destination shuttle stop to final destination (foot-walking)
     leg3_response, code3 = ors_directions(destination_stop_coord, end, "foot-walking")
     if code3 != 200:
@@ -227,7 +214,6 @@ def multi_modal_shuttle_directions(request):
     }
     combined_route = build_combined_route(route_legs, origin_building, destination_building, origin_campus,
                                           destination_campus)
-
     return JsonResponse(combined_route, status=200)
 
 
