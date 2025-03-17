@@ -11,7 +11,7 @@ const IndoorNavigationScreen = () => {
   const [selectedBuilding, setSelectedBuilding] = useState("");
   const [startLocation, setStartLocation] = useState("");
   const [destination, setDestination] = useState("");
-  const [path, setPath] = useState("");
+  const [path, setPath] = useState(null);
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
 
