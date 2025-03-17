@@ -20,6 +20,7 @@ def get_buildings_by_campus(request):
 
     return Response(serializer.data)
 
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def get_buildings(request):

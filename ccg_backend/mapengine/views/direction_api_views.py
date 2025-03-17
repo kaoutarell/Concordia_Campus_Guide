@@ -15,15 +15,19 @@ from ..exceptions.exceptions import (
     BuildingNotFoundError,
     ShuttleStopNotFoundError,
 )
+
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def foot_walking_directions(request):
     return get_directions(request, "foot-walking")
 
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def cycling_regular_directions(request):
     return get_directions(request, "cycling-regular")
+
 
 @api_view(["GET"])
 @require_http_methods(["GET"])
@@ -36,15 +40,18 @@ def driving_car_directions(request):
 def wheelchair_directions(request):
     return get_directions(request, "wheelchair")
 
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def public_transport_directions(request):
     return get_directions(request, "public-transport")
 
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def shuttle_bus_directions(request):
     return multi_modal_shuttle_directions(request)
+
 
 @api_view(["GET"])
 @require_http_methods(["GET"])
@@ -81,6 +88,7 @@ def get_directions(request, profile):
         route_info, code = otp_directions(start, end)
     return JsonResponse(route_info, status=code)
 
+
 def parse_coordinates(start, end):
     """Extracts and validates start and end coordinates."""
 
@@ -94,6 +102,7 @@ def parse_coordinates(start, end):
 
     return (start_lon, start_lat), (end_lon, end_lat)
 
+
 def find_nearest_building(point):
     building = (
         Building.objects.annotate(distance=Distance("location", point))
@@ -106,6 +115,7 @@ def find_nearest_building(point):
 
     return building
 
+
 def get_shuttle_stops(origin_campus, destination_campus):
     """Retrieves the shuttle stops for the given campuses."""
     try:
@@ -114,17 +124,23 @@ def get_shuttle_stops(origin_campus, destination_campus):
             ShuttleStop.objects.get(name=destination_campus),
         )
     except ShuttleStop.DoesNotExist:
-        raise ShuttleStopNotFoundError("Shuttle stop not found for one or both campuses.")
+        raise ShuttleStopNotFoundError(
+            "Shuttle stop not found for one or both campuses."
+        )
 
 
-def build_combined_route(route_legs, origin_building, destination_building, origin_campus, destination_campus):
+def build_combined_route(
+    route_legs, origin_building, destination_building, origin_campus, destination_campus
+):
     """Constructs the final combined route from individual route legs."""
 
     total_distance = sum(leg.get("total_distance", 0) for leg in route_legs.values())
     total_duration = sum(leg.get("total_duration", 0) for leg in route_legs.values())
 
     # Merge steps from all legs
-    combined_steps = [step for leg in route_legs.values() if "steps" in leg for step in leg["steps"]]
+    combined_steps = [
+        step for leg in route_legs.values() if "steps" in leg for step in leg["steps"]
+    ]
 
     return {
         "total_distance": total_distance,
@@ -136,6 +152,7 @@ def build_combined_route(route_legs, origin_building, destination_building, orig
         "origin_campus": origin_campus,
         "destination_campus": destination_campus,
     }
+
 
 def multi_modal_shuttle_directions(request):
     """
@@ -170,16 +187,20 @@ def multi_modal_shuttle_directions(request):
     except BuildingNotFoundError as e:
         return JsonResponse({"error": str(e)}, status=404)
 
-    origin_campus, destination_campus = origin_building.campus, destination_building.campus
+    origin_campus, destination_campus = (
+        origin_building.campus,
+        destination_building.campus,
+    )
 
     # If both locations are on the same campus, return direct walking directions
     if origin_campus == destination_campus:
         return get_directions(request, "foot-walking")
 
-
     # Look up the corresponding shuttle stops based on campus
     try:
-        origin_stop, destination_stop = get_shuttle_stops(origin_campus, destination_campus)
+        origin_stop, destination_stop = get_shuttle_stops(
+            origin_campus, destination_campus
+        )
     except ShuttleStopNotFoundError as e:
         return JsonResponse({"error": str(e)}, status=404)
 
@@ -212,11 +233,11 @@ def multi_modal_shuttle_directions(request):
         "shuttle_ride": leg2_response,
         "walk_from_stop": leg3_response,
     }
-    combined_route = build_combined_route(route_legs, origin_building, destination_building, origin_campus,
-                                          destination_campus)
+    combined_route = build_combined_route(
+        route_legs,
+        origin_building,
+        destination_building,
+        origin_campus,
+        destination_campus,
+    )
     return JsonResponse(combined_route, status=200)
-
-
-
-
-
