@@ -220,7 +220,11 @@ def multi_modal_shuttle_directions(request):
         return JsonResponse(
             {"error": "Error fetching walking directions for leg 3."}, status=code3
         )
-
+    route_legs = {
+        "walk_to_stop": leg1_response,
+        "shuttle_ride": leg2_response,
+        "walk_from_stop": leg3_response,
+    }
     combined_route = build_combined_route(route_legs, origin_building, destination_building, origin_campus,
                                           destination_campus)
 
