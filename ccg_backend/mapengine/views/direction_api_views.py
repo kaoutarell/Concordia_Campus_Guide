@@ -15,6 +15,7 @@ from ..utils.direction_api_utils import (
 from ..exceptions.exceptions import InvalidCoordinatesError, BuildingNotFoundError,ShuttleStopNotFoundError
 
 
+
 @api_view(["GET"])
 @require_http_methods(["GET"])
 def foot_walking_directions(request):
