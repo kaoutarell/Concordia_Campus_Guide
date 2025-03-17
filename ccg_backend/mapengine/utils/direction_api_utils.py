@@ -43,7 +43,7 @@ def parse_ors_directions(geojson_data):
                 "instruction": step["instruction"],
                 "type": step["type"],
                 "coordinates": coordinates[
-                    step["way_points"][0] : step["way_points"][1] + 1
+                    step["way_points"][0]: step["way_points"][1] + 1
                 ],
             }
         )
@@ -157,7 +157,7 @@ def parse_leg(leg):
             "duration": steps[i].get("distance", 0) / OTP_AVG_WALKING_SPEED,
             "instruction": instruction,
             "type": 0,
-            "coordinates": [[lon, lat] for lat, lon in path[start_idx : end_idx + 1]],
+            "coordinates": [[lon, lat] for lat, lon in path[start_idx: end_idx + 1]],
         }
         result.append(step_data)
     return result
