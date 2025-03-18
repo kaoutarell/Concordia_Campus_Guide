@@ -9,7 +9,7 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 import IndoorScreen from "../screens/IndoorScreen";
-import * as Clarity from '@microsoft/react-native-clarity';
+import * as Clarity from "@microsoft/react-native-clarity";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -41,7 +41,7 @@ export default function AppNavigator() {
       onReady={() => {
         routeNameRef.current = navigationRef.getCurrentRoute().name;
         const clarityConfig = {
-          logLevel: Clarity.LogLevel.Verbose
+          logLevel: Clarity.LogLevel.Verbose,
         };
 
         Clarity.initialize(projectID, clarityConfig);
@@ -57,9 +57,9 @@ export default function AppNavigator() {
         }
       }}
     >
-        <Drawer.Navigator drawerContent={drawerContent} screenOptions={{ headerShown: false }}>
-          <Drawer.Screen name="Main" component={StackNavigator} />
-        </Drawer.Navigator>
+      <Drawer.Navigator drawerContent={drawerContent} screenOptions={{ headerShown: false }}>
+        <Drawer.Screen name="Main" component={StackNavigator} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
