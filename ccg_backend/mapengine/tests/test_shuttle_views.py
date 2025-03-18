@@ -8,6 +8,8 @@ from rest_framework.test import APIClient
 
 from ..models.shuttle import ShuttleSchedule, ShuttleStop
 
+from ..views.shuttle_views import get_sgw_coordinates
+
 
 class ShuttleViewsTestCase(TestCase):
     tz = timezone("America/New_York")
@@ -106,3 +108,16 @@ class ShuttleViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         print(response.json())
         self.assertEqual(len(response.json()["upcoming_shuttles"]), 0)
+
+    def test_get_sgw_coordinates_exists(self):
+        """Test retrieving SGW coordinates when SGW stop exists."""
+        latitude, longitude = get_sgw_coordinates()
+        self.assertEqual(latitude, 45.4971)
+        self.assertEqual(longitude, -73.5788)
+
+    def test_get_sgw_coordinates_missing(self):
+        """Test behavior when SGW shuttle stop is missing."""
+        ShuttleStop.objects.filter(name="SGW").delete()  # Remove SGW from DB
+        latitude, longitude = get_sgw_coordinates()
+        self.assertIsNone(latitude)
+        self.assertIsNone(longitude)

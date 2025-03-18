@@ -42,10 +42,8 @@ def get_upcoming_sheduled_shuttle(request):
         longitude = None
         latitude = None
 
-    if not longitude or not latitude:
-        # default to SGW
-        latitude = ShuttleStop.objects.get(name="SGW").latitude
-        longitude = ShuttleStop.objects.get(name="SGW").longitude
+    if longitude is None or latitude is None:
+        longitude, latitude = get_sgw_coordinates()
 
     # find the closest shuttle stop
     closest_stop = (
@@ -57,7 +55,7 @@ def get_upcoming_sheduled_shuttle(request):
         .first()
     )
 
-    now = make_aware(datetime.now(), timezone=tz)
+    now = datetime.now(tz)
     day_of_week = now.weekday()
     current_time = now.time()
 
@@ -89,3 +87,8 @@ def get_upcoming_sheduled_shuttle(request):
             "upcoming_shuttles": upcoming_shuttles,
         }
     )
+
+def get_sgw_coordinates():
+    """Retrieves SGW coordinates from the database (only queried once)."""
+    sgw_stop = ShuttleStop.objects.filter(name="SGW").values_list("latitude", "longitude").first()
+    return sgw_stop if sgw_stop else (None, None)  # Prevents crashes if SGW is missing
