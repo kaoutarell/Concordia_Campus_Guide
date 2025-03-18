@@ -2,7 +2,6 @@ import React from "react";
 import { render } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
 
-
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
   Ionicons: "Ionicons", // or any other icon set you're using
