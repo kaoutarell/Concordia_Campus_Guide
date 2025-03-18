@@ -10,7 +10,7 @@ describe("IndoorMap Component", () => {
 
   it("calls onPress function when pressed", () => {
     const mockOnPress = jest.fn();
-    const { getByTestId } = render(<FloorChangeButton index={1} maxIndex={5} setIndex={mockOnPress} />);
+    const { getByTestId } = render(<FloorChangeButton currentFloor={1} maxFloor={5} setFloor={mockOnPress} />);
 
     // Press the button
     fireEvent.press(getByTestId("prev-button"));
@@ -26,7 +26,7 @@ describe("IndoorMap Component", () => {
 
   it("calls onPress function when pressed", () => {
     const mockOnPress = jest.fn();
-    const { getByTestId } = render(<FloorChangeButton index={1} maxIndex={5} setIndex={mockOnPress} />);
+    const { getByTestId } = render(<FloorChangeButton currentFloor={1} maxFloor={5} setFloor={mockOnPress} />);
 
     // Press the button
     fireEvent.press(getByTestId("next-button"));

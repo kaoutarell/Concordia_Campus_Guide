@@ -2,8 +2,6 @@ import React from "react";
 import { render } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
 
-// Mock the image asset
-jest.mock("../components/indoor-navigation-ui/floors/Hall-8.png", () => "mocked-image-path");
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
