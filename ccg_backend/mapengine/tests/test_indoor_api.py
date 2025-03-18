@@ -5,8 +5,10 @@ import pytest
 
 from ..utils.indoor_direction_api_utils import (
     convert_coords_to_output,
+    get_class_stair_sequence,
     get_floor_sequence,
     get_hallway_class_point,
+    get_indoor_directions_data,
     get_node_sequence,
     get_path_coordinates,
     get_pins,
@@ -19,84 +21,84 @@ MAP_DATA = {
         "type": "room",
         "pin": {"x": 75, "y": 105},
         "coords": {"x": 160, "y": 200},
-        "connections": ["C1", "C4"],
+        "connections": ["C1", "C7"],
     },
     "H865": {
         "id": "H865",
         "type": "room",
         "pin": {"x": 75, "y": 175},
         "coords": {"x": 160, "y": 200},
-        "connections": ["C1", "C4"],
+        "connections": ["C1", "C7"],
     },
     "H863": {
         "id": "H863",
         "type": "room",
         "pin": {"x": 75, "y": 240},
         "coords": {"x": 160, "y": 200},
-        "connections": ["C1", "C4"],
+        "connections": ["C1", "C7"],
     },
     "H861": {
         "id": "H861",
         "type": "room",
         "pin": {"x": 75, "y": 325},
         "coords": {"x": 160, "y": 355},
-        "connections": ["C1", "C4"],
+        "connections": ["C1", "C7"],
     },
     "H859": {
         "id": "H859",
         "type": "room",
         "pin": {"x": 75, "y": 420},
         "coords": {"x": 160, "y": 385},
-        "connections": ["C1", "C4"],
+        "connections": ["C1", "C7"],
     },
     "H857": {
         "id": "H857",
         "type": "room",
         "pin": {"x": 75, "y": 510},
         "coords": {"x": 160, "y": 480},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H855": {
         "id": "H855",
         "type": "room",
         "pin": {"x": 75, "y": 600},
         "coords": {"x": 160, "y": 570},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H853": {
         "id": "H853",
         "type": "room",
         "pin": {"x": 75, "y": 690},
         "coords": {"x": 160, "y": 720},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H851.01": {
         "id": "H851.01",
         "type": "room",
         "pin": {"x": 130, "y": 760},
         "coords": {"x": 160, "y": 810},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H851.02": {
         "id": "H851.02",
         "type": "room",
         "pin": {"x": 60, "y": 760},
         "coords": {"x": 160, "y": 810},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H851.03": {
         "id": "H851.03",
         "type": "room",
         "pin": {"x": 50, "y": 810},
         "coords": {"x": 160, "y": 810},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H849": {
         "id": "H849",
         "type": "room",
         "pin": {"x": 75, "y": 900},
         "coords": {"x": 160, "y": 810},
-        "connections": ["C1", "C4"],
+        "connections": ["C7", "C4"],
     },
     "H847": {
         "id": "H847",
@@ -263,32 +265,18 @@ MAP_DATA = {
         "coords": {"x": 225, "y": 195},
         "connections": ["C1", "C2"],
     },
+    "S1": {
+        "id": "S1",
+        "type": "stairs",
+        "pin": {"x": 250, "y": 320},
+        "coords": {"x": 275, "y": 380},
+        "connections": ["C7", "C8"],
+    },
     "C1": {
         "id": "C1",
         "type": "corner",
         "coords": {"x": 180, "y": 220},
-        "connections": [
-            "C2",
-            "C4",
-            "H867",
-            "H865",
-            "H863",
-            "H861",
-            "H859",
-            "H857",
-            "H855",
-            "H853",
-            "H851.01",
-            "H851.02",
-            "H851.03",
-            "H849",
-            "H801",
-            "H803",
-            "H805.01",
-            "H805.02",
-            "H805.03",
-            "H807",
-        ],
+        "connections": ["C2", "C4", "C7", "H867", "H865", "H863", "H861", "H859"],
     },
     "C2": {
         "id": "C2",
@@ -298,6 +286,7 @@ MAP_DATA = {
             "C1",
             "C3",
             "C5",
+            "C8",
             "H801",
             "H803",
             "H805.01",
@@ -336,11 +325,7 @@ MAP_DATA = {
         "connections": [
             "C1",
             "C5",
-            "H867",
-            "H865",
-            "H863",
-            "H861",
-            "H859",
+            "C7",
             "H857",
             "H855",
             "H853",
@@ -362,6 +347,7 @@ MAP_DATA = {
             "C2",
             "C4",
             "C6",
+            "C8",
             "H847",
             "H845",
             "H843",
@@ -391,15 +377,50 @@ MAP_DATA = {
             "H837",
         ],
     },
+    "C7": {
+        "id": "C7",
+        "type": "corner",
+        "coords": {"x": 180, "y": 400},
+        "connections": [
+            "C1",
+            "C4",
+            "C8",
+            "H867",
+            "H865",
+            "H863",
+            "H861",
+            "H859",
+            "H857",
+            "H855",
+            "H853",
+            "H851.01",
+            "H851.02",
+            "H851.03",
+            "H849",
+            "H801",
+            "H803",
+            "H805.01",
+            "H805.02",
+            "H805.03",
+            "H807",
+            "S1",
+        ],
+    },
+    "C8": {
+        "id": "C8",
+        "type": "corner",
+        "coords": {"x": 555, "y": 400},
+        "connections": ["C2", "C5", "C7", "S1"],
+    },
 }
 
 
 def test_get_pins():
     map_data = MAP_DATA
-    pins = get_pins(map_data, "H867", "H837", False)
+    pins = get_pins(map_data, "H867", "H837")
     assert pins == [[75, 105], [640, 900]]
-    pins = get_pins(map_data, "H867", "H837", True)
-    assert pins == [[75, 105]]
+    pins = get_pins(map_data, "H867", "H827")
+    assert pins is None
 
 
 def test_get_node_sequence():
@@ -453,3 +474,28 @@ def test_convert_coords_to_output():
 def test_get_floor_sequence():
     sequence = get_floor_sequence("H867", "H967")
     assert sequence == ["H8", "H9"]
+
+
+def test_get_class_stairs_sequence():
+    sequence = get_class_stair_sequence(MAP_DATA, "H867")
+    assert sequence == ["H867", "C7", "S1"]
+
+
+def test_get_indoor_direction_data():
+    data = get_indoor_directions_data("H867", "H837")
+    assert data == {
+        "floor_sequence": ["H8"],
+        "path_data": {
+            "H8": "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820"
+        },
+        "pin": {"H8": [[75, 105], [640, 900]]},
+    }
+    data = get_indoor_directions_data("H867", "H913")
+    assert data == {
+        "floor_sequence": ["H8", "H9"],
+        "path_data": {
+            "H8": "M160 200 L180 220 L180 400 L275 400 L275 380",
+            "H9": "M265 385 L265 405 L530 405 L530 225 L705 225 L705 200",
+        },
+        "pin": {"H8": [[75, 105], [250, 320]], "H9": [[265, 340], [740, 120]]},
+    }
