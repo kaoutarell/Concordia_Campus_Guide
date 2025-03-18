@@ -50,7 +50,6 @@ def get_upcoming_sheduled_shuttle(request):
 
     upcoming_shuttles = get_upcoming_shuttles(closest_stop.name)
 
-
     return JsonResponse(
         {
             "shuttle_stop": {
@@ -62,16 +61,28 @@ def get_upcoming_sheduled_shuttle(request):
         }
     )
 
+
 def get_sgw_coordinates():
     """Retrieves SGW coordinates from the database (only queried once)."""
-    sgw_stop = ShuttleStop.objects.filter(name="SGW").values_list("latitude", "longitude").first()
+    sgw_stop = (
+        ShuttleStop.objects.filter(name="SGW")
+        .values_list("latitude", "longitude")
+        .first()
+    )
     return sgw_stop if sgw_stop else (None, None)  # Prevents crashes if SGW is missing
+
 
 def get_closest_shuttle_stop(longitude, latitude):
     """Finds the closest shuttle stop based on given coordinates."""
-    return ShuttleStop.objects.annotate(
-        distance=Power(F("latitude") - latitude, 2) + Power(F("longitude") - longitude, 2)
-    ).order_by("distance").first()
+    return (
+        ShuttleStop.objects.annotate(
+            distance=Power(F("latitude") - latitude, 2)
+            + Power(F("longitude") - longitude, 2)
+        )
+        .order_by("distance")
+        .first()
+    )
+
 
 def get_upcoming_shuttles(stop_name):
     """Retrieves the next 5 upcoming shuttles from the given stop."""
