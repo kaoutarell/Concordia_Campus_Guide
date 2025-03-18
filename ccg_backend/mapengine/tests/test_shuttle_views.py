@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 from ..views.shuttle_views import get_closest_shuttle_stop, get_upcoming_shuttles
 
-from datetime import datetime
+from datetime import datetime, time
 import pytz
 
 
