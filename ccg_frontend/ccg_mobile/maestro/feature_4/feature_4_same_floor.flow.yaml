@@ -6,7 +6,7 @@ name: "Feature 4 - Indoor Directions"
 - tapOn: "Indoor"
 - runFlow:
     when:
-      visible: "Get Directions"
+      visible: "Get Direction"
     file: ./subflows/assert_render_indoor_mapview.flow.yaml
 # indoor navigation
 # 4.2: show shortest path directions
@@ -25,7 +25,7 @@ name: "Feature 4 - Indoor Directions"
 # assert indoor navigation page
 - runFlow:
     when:
-      visible: "Get Directions"
+      visible: "Get Direction"
     file: ./subflows/assert_render_indoor_mapview.flow.yaml
 # exit navigation
 - tapOn: "←"

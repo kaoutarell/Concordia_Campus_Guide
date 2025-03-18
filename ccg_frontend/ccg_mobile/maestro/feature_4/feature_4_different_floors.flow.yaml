@@ -1,0 +1,47 @@
+appId: host.exp.Exponent
+name: "Feature 4 - Indoor Directions for Different Floors"
+---
+# start test at mapview
+# 4.1: locate rooms on indoor maps
+- tapOn: "Indoor"
+- runFlow:
+    when:
+      visible: "Get Direction"
+    file: ./subflows/assert_render_indoor_mapview.flow.yaml
+# indoor navigation
+# 4.2: show shortest path directions
+# select starting point by typing room number
+- tapOn: "Start Address"
+- inputText:
+    text: "H867"
+    into: Start Address"
+# select destination room by typing room number
+- tapOn: "Destination Address"
+- inputText:
+    text: "H913"
+    into: "Destination Address"
+- tapOn:
+    id: "start-button"
+# assert indoor navigation page
+- runFlow:
+    when:
+      visible: "Get Direction"
+    file: ./subflows/assert_render_indoor_mapview.flow.yaml
+# view next floor navigation map
+- tapOn:
+    id: "next-button"
+# assert indoor navigation page
+- runFlow:
+    when:
+      visible: "Get Direction"
+    file: ./subflows/assert_render_indoor_mapview.flow.yaml
+# check that going back to previous page works
+- tapOn:
+    id: "prev-button"
+# assert indoor navigation page
+- runFlow:
+    when:
+      visible: "Get Direction"
+    file: ./subflows/assert_render_indoor_mapview.flow.yaml
+# exit navigation
+- tapOn: "←"

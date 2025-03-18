@@ -2,8 +2,7 @@ appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bike"
 ---
 # starting state: map view zoomed in twice
-- tapOn: "Google Map" # to make sure marker is not selected anymore
-- tapOn: "FG" # tap on building marker - goal is to test another marker
+- tapOn: "ER" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
 - tapOn: "Bike" # select bike navigation

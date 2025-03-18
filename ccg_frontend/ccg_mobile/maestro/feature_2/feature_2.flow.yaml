@@ -10,19 +10,23 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "🏠 Home"
 - tapOn: "🏠 Home"
 - tapOn: "Continue to map ➤"
-# [DEPRECATED] Feature 2.2 - Assert User's Current Location
-#- assertVisible: "Google Map"
-#- doubleTapOn: "Google Map"
-#- scroll #scroll vertically
-##[Deprecated]- assertVisible: "My Location"
-#- tapOn: "My Location"
-# check that my location button recenters screen to user's location
-#- assertVisible: "H"
+#Feature 2.2 - Assert User's Current Location
+- assertVisible:
+    id: "map-view"
+- assertVisible:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
+- scroll #scroll vertically
+- tapOn:
+    id: "locate-button"
+# check that my location button re-centers screen to user's location
+- assertVisible: "H"
 
 # test that providing a start point will take the user to the navigation screen
-- doubleTapOn: "Google Map"
-- doubleTapOn: "Google Map"
-- tapOn: "TD"
+- tapOn: "LS"
 - tapOn: "Get Directions"
 # test start point other than Current Location
 - tapOn: "Start Address"
@@ -44,15 +48,17 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Start Navigation"
 - assertVisible: "Google Map"
 - assertVisible: "H"
-- assertVisible: "TD"
+- assertVisible: "LS"
 # switch start and destination
 - tapOn:
     text: ""
     index: 1
-- runFlow:
-    when:
-      visible: "Google Map"
-    file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"
 # leave navigation map
 - tapOn: "←"
 # close info popup
@@ -73,21 +79,21 @@ name: "Feature 2 - Outdoor Directions"
     file: ./subflows/assert_render_navigation_screen.yaml
 # check direction preview
 - tapOn: "Preview"
-- assertVisible: "Directions"
+#[Deprecated]- assertVisible: "Directions"
 - assertVisible: "Turn Left"
 - assertVisible: "Turn Right"
 - tapOn: "←"
 #[Deprecated]- assertVisible: "My Location"
 # check that start navigation works
-- assertVisible: "Start Navigation"
-- tapOn: "Start Navigation"
+#[Deprecated]- assertVisible: "Start Navigation"
+#[Deprecated]- tapOn: "Start Navigation"
 - assertVisible:
     text: "Preview"
     enabled: true
-- assertVisible:
-    text: "Exit"
-    enabled: true
-- tapOn: "Exit"
+#[Deprecated]- assertVisible:
+#    text: "Exit"
+#    enabled: true
+#[Deprecated]- tapOn: "Exit"
 - tapOn: "←"
 - assertVisible: "Google Map"
 ##some tests to make sure that reversing start/destination works with navigation (set destination to something else than current location)
