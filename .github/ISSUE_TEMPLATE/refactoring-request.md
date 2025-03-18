@@ -2,7 +2,7 @@
 name: Refactoring request
 about: Refactor existing code to improve maintainability, readability, and performance
   without changing functionality.
-title: Refactoring] <brief description>
+title: "[Refactoring] <brief description>"
 labels: refactoring
 assignees: ''
 
