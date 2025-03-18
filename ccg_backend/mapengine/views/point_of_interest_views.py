@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from ..models import PointOfInterest
 from ..serializers import PointOfInterestSerializer
+from django.db.models import Q
 
 
 @api_view(["GET"])
@@ -16,18 +17,16 @@ def get_points_of_interest(request):
     campus = request.query_params.get("campus")
     longitude = request.query_params.get("longitude")
     latitude = request.query_params.get("latitude")
-    # if the longitude and latitude are provided, return the closest point of interest
 
-    if category and campus:
-        points_of_interest = PointOfInterest.objects.filter(
-            category=category, campus=campus.upper()
-        )
-    elif category:
-        points_of_interest = PointOfInterest.objects.filter(category=category)
-    elif campus:
-        points_of_interest = PointOfInterest.objects.filter(campus=campus.upper())
-    else:
-        points_of_interest = PointOfInterest.objects.all()
+    filters = Q()
+    if category:
+        filters &= Q(category=category)
+    if campus:
+        filters &= Q(campus=campus.upper())
+
+    # if category and campus are not present, Query is equivalent to PointOfInterest.objects.all()
+    points_of_interest = PointOfInterest.objects.filter(filters)
+
     # if the longitude and latitude are provided, return the closest point of interest
     if longitude and latitude:
         longitude = float(longitude)
