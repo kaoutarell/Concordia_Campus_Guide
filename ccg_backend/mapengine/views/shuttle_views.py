@@ -57,7 +57,7 @@ def get_upcoming_sheduled_shuttle(request):
         .first()
     )
 
-    now = datetime.now()
+    now = make_aware(datetime.now(), timezone=tz)
     day_of_week = now.weekday()
     current_time = now.time()
 
