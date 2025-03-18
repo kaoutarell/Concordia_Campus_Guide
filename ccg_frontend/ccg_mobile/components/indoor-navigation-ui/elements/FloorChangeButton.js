@@ -27,9 +27,9 @@ const FloorChangeButton = ({ currentFloor, maxFloor, setFloor }) => {
 };
 
 FloorChangeButton.propTypes = {
-  index: PropTypes.number,
-  maxIndex: PropTypes.number,
-  setIndex: PropTypes.func,
+  currentFloor: PropTypes.number,
+  maxFloor: PropTypes.number,
+  setFloor: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
