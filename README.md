@@ -142,7 +142,14 @@ conda activate myenv
   ```bash
   python manage.py makemigrations
   python manage.py migrate
-  python manage.py loaddata campus_buildings.json
+  python manage.py loaddata campus_buildings.json departments.json services.json routes.json shuttle_stops.json shuttle_schedule.json points_of_interest.json
+  ```
+- Create a .env file in ccg_backend/ directory and add the following (See wiki for actual values):
+  ```bash
+  SECRET_KEY=<django secret key>
+  ORS_BASE_URL=<ors base url for directions api>
+  OTP_BASE_URL=<otp base url for directions api>
+  DB_PASSWORD=<postgres db password>
   ```
 - run python
 
@@ -163,6 +170,7 @@ conda activate myenv
 1.  **Create a .env file in ccg_mobile/ directory and add the following (change <ipv4> with your local ip address):**
     ```bash
     EXPO_PUBLIC_BASE_URL=http://<ipv4>:8000/api/
+    EXPO_PUBLIC_CLARITY_PROJECT_ID=<clarity project id>
     ```
 2.  **Install dependencies:**
     ```bash

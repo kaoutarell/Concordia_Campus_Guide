@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, ImageBackground } from "react-native";
 import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
-import Hall8 from "../floors/Hall-8.png";
+import { getFloorImage } from "../../../utils/floorImages.js";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
 import PropTypes from "prop-types";
 
-const IndoorMap = ({ path }) => {
-  // getting the start and destination pin coordinates
-  const [startPin, destinationPin] = path?.pin || [[], []];
-
+const IndoorMap = ({ path, index }) => {
   const pinSize = 90;
+
+  const [image, setImage] = useState(getFloorImage("H8"));
+
+  useEffect(() => {
+    if (path == null) {
+      setImage(getFloorImage("H8"));
+    } else {
+      setImage(getFloorImage(path["floor_sequence"][index]));
+    }
+  }, [index]);
 
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
-      <View style={{ borderWidth: 5, height: 400, width: "100%" }}>
+      <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems: "center" }}>
+        {path != null && (
+          <Text style={{ fontSize: 18 }} testID="title">
+            {path["floor_sequence"][index]}
+          </Text>
+        )}
+        {path == null && (
+          <Text style={{ fontSize: 18 }} testID="default-title">
+            {"H8"}
+          </Text>
+        )}
         <ReactNativeZoomableView
           maxZoom={10}
           minZoom={0.3}
@@ -25,16 +42,23 @@ const IndoorMap = ({ path }) => {
           contentHeight={1024}
           initialZoom={0.3}
         >
-          <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={Hall8}>
+          <ImageBackground style={{ width: 1024, height: 1024, resizeMode: "contain" }} source={image}>
             <Svg style={styles.svg} testID="path-svg">
-              {path !== "" && <Path d={path.path_data} fill="transparent" stroke="black" strokeWidth="5" />}
+              {path !== null && (
+                <Path
+                  d={path["path_data"][path["floor_sequence"][index]]}
+                  fill="transparent"
+                  stroke="black"
+                  strokeWidth="5"
+                />
+              )}
             </Svg>
 
             {/* Start Pin */}
             {/* The pin needs to be centered at the specified coordinates. 
-            If we place the icon at exactly startPin[0] and startPin[1], 
+            If we place the icon at exactly path["pin"][path["floor_sequence"][index]][0][0] and path["pin"][path["floor_sequence"][index]][0][1], 
             the top-left corner of the pin will be at that point */}
-            {startPin.length > 0 && (
+            {path !== null && path["pin"][path["floor_sequence"][index]] != null && (
               <Ionicons
                 testID="start-pin"
                 name="location-sharp"
@@ -43,8 +67,8 @@ const IndoorMap = ({ path }) => {
                 style={[
                   styles.pin,
                   {
-                    left: startPin[0] - pinSize / 2, // x-coord
-                    top: startPin[1] - pinSize, // y-coord
+                    left: path["pin"][path["floor_sequence"][index]][0][0] - pinSize / 2, // x-coord
+                    top: path["pin"][path["floor_sequence"][index]][0][1] - pinSize, // y-coord
                   },
                 ]}
               />
@@ -53,7 +77,7 @@ const IndoorMap = ({ path }) => {
             we adjust the position by subtracting half the pin size from the x-coord & subtracting 
             the full pin size from the y-coord */}
             {/* Destination Pin */}
-            {destinationPin.length > 0 && (
+            {path !== null && path["pin"][path["floor_sequence"][index]] != null && (
               <Ionicons
                 testID="destination-pin"
                 name="pin-outline"
@@ -62,8 +86,8 @@ const IndoorMap = ({ path }) => {
                 style={[
                   styles.pin,
                   {
-                    left: destinationPin[0] - pinSize / 2,
-                    top: destinationPin[1] - pinSize,
+                    left: path["pin"][path["floor_sequence"][index]][1][0] - pinSize / 2,
+                    top: path["pin"][path["floor_sequence"][index]][1][1] - pinSize,
                   },
                 ]}
               />
@@ -77,15 +101,17 @@ const IndoorMap = ({ path }) => {
 
 IndoorMap.propTypes = {
   path: PropTypes.shape({
-    pin: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    path_data: PropTypes.string,
+    pin: PropTypes.object,
+    path_data: PropTypes.object,
+    floor_sequence: PropTypes.array,
   }),
+  index: PropTypes.number,
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "100%",
+    marginTop: "85%",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,

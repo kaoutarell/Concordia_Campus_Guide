@@ -2,8 +2,9 @@
 name: Improvement Request
 about: Suggest an enhancement to improve functionality, performance, or user experience.
 title: "[Improvement] <brief description>"
-labels: ["enhancement"]
-assignees: []
+labels: enhancement
+assignees: ''
+
 ---
 
 **Describe the Improvement**
@@ -22,4 +23,4 @@ List the files or directories that will be affected by this improvement.
 Suggest possible ways to implement the improvement.  
 
 **Additional Context / Screenshots**
-Add any relevant details, references, or images to support the request.  
+Add any relevant details, references, or images to support the request.
