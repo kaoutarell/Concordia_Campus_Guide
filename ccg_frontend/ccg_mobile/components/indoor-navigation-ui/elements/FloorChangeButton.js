@@ -2,16 +2,16 @@ import PropTypes from "prop-types";
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 
-const FloorChangeButton = ({ index, maxIndex, setIndex }) => {
+const FloorChangeButton = ({ currentFloor, maxFloor, setFloor }) => {
   const increment = () => {
-    if (index < maxIndex) {
-      setIndex(index + 1);
+    if (currentFloor < maxFloor) {
+      setFloor(currentFloor + 1);
     }
   };
 
   const decrement = () => {
-    if (index > 0) {
-      setIndex(index - 1);
+    if (currentFloor > 0) {
+      setFloor(currentFloor - 1);
     }
   };
   return (

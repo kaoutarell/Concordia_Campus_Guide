@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, ImageBackground } from "react-native";
 import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
-import H8 from "../floors/Hall-8.png";
-import H9 from "../floors/Hall-9.png";
+import { getFloorImage } from "../../../utils/floorImages.js";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
 import PropTypes from "prop-types";
@@ -10,15 +9,13 @@ import PropTypes from "prop-types";
 const IndoorMap = ({ path, index }) => {
   const pinSize = 90;
 
-  const [image, setImage] = useState(H8);
+  const [image, setImage] = useState(getFloorImage("H8"));
 
   useEffect(() => {
-    if (path != null) {
-      if (path["floor_sequence"][index] == "H8") {
-        setImage(H8);
-      } else if (path["floor_sequence"][index] == "H9") {
-        setImage(H9);
-      }
+    if (path == null) {
+      setImage(getFloorImage("H8"));
+    } else {
+      setImage(getFloorImage(path["floor_sequence"][index]));
     }
   }, [index]);
 
@@ -59,7 +56,7 @@ const IndoorMap = ({ path, index }) => {
 
             {/* Start Pin */}
             {/* The pin needs to be centered at the specified coordinates. 
-            If we place the icon at exactly startPin[0] and startPin[1], 
+            If we place the icon at exactly path["pin"][path["floor_sequence"][index]][0][0] and path["pin"][path["floor_sequence"][index]][0][1], 
             the top-left corner of the pin will be at that point */}
             {path !== null && path["pin"][path["floor_sequence"][index]] != null && (
               <Ionicons

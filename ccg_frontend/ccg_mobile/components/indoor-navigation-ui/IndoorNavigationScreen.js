@@ -44,6 +44,7 @@ const IndoorNavigationScreen = () => {
 
   const handleBuildingChange = value => {
     setSelectedBuilding(value);
+    console.log(value);
   };
 
   const handleStartLocationChange = location => {
