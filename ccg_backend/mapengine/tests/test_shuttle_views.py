@@ -10,7 +10,12 @@ from ..models.shuttle import ShuttleSchedule, ShuttleStop
 
 from ..views.shuttle_views import get_sgw_coordinates
 
+from unittest.mock import patch
 
+from ..views.shuttle_views import get_closest_shuttle_stop, get_upcoming_shuttles
+
+from datetime import datetime
+import pytz
 class ShuttleViewsTestCase(TestCase):
     tz = timezone("America/New_York")
 
@@ -121,3 +126,40 @@ class ShuttleViewsTestCase(TestCase):
         latitude, longitude = get_sgw_coordinates()
         self.assertIsNone(latitude)
         self.assertIsNone(longitude)
+
+
+    def test_get_closest_shuttle_stop(self):
+        """Test finding the closest shuttle stop."""
+        closest_stop = get_closest_shuttle_stop(-73.579, 45.4973)
+        self.assertIsNotNone(closest_stop)
+        self.assertEqual(closest_stop.name, "SGW")  # SGW should be closest
+
+    def test_get_closest_shuttle_stop_no_stops(self):
+        """Test behavior when no shuttle stops exist."""
+        ShuttleStop.objects.all().delete()  # Remove all stops
+        closest_stop = get_closest_shuttle_stop(-73.579, 45.4973)
+        self.assertIsNone(closest_stop)  # Should return None
+
+    @patch("mapengine.views.shuttle_views.datetime")
+    def test_get_upcoming_shuttles(self,mock_datetime):
+        """Test retrieving the next 5 upcoming shuttles."""
+        tz = pytz.timezone("America/New_York")
+        mock_now = datetime(2025, 2, 10, 14, 0, tzinfo=tz)  # Monday, 14:00
+        mock_datetime.now.return_value = mock_now
+        mock_datetime.combine.side_effect = lambda d, t: datetime.combine(d, t)
+
+        upcoming_shuttles = get_upcoming_shuttles("SGW")
+
+        assert len(upcoming_shuttles) == 5
+        assert upcoming_shuttles[0]["scheduled_time"] == "14:30"
+        assert upcoming_shuttles[1]["scheduled_time"] == "15:00"
+
+    @patch("mapengine.views.shuttle_views.datetime")
+    def test_get_upcoming_shuttles_no_schedules(self, mock_datetime):
+        """Test when no upcoming schedules exist."""
+        ShuttleSchedule.objects.all().delete()  # Remove all schedules
+        mock_now = datetime(2025, 2, 10, 14, 0)  # Mock the time
+        mock_datetime.now.return_value = mock_now
+
+        upcoming_shuttles = get_upcoming_shuttles("SGW")
+        self.assertEqual(len(upcoming_shuttles), 0)  # Should return an empty list
