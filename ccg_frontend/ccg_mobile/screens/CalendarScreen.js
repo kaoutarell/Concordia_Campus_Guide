@@ -14,7 +14,7 @@ const CalendarScreen = () => {
     useEffect(() => {
         GoogleSignin.configure({
             scopes: ["https://www.googleapis.com/auth/calendar.readonly", "openid", "profile", "email"],
-            iosClientId: process.env.IOS_CLIENT_ID,
+            iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
         });
     }, []);
 
@@ -66,7 +66,7 @@ const CalendarScreen = () => {
               <View style={styles.userInfoContainer}>
                   <Text style={styles.successText}>Connected to Google Calendar!</Text>
                   <Text style={styles.userEmail}>
-                      Signed in as: {userInfo.data.user?.email}
+                      Signed in as: {userInfo.data?.user?.email}
                   </Text>
                   <Button title="Sign Out" onPress={signOut} />
               </View>
