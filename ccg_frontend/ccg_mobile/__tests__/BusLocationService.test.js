@@ -57,7 +57,7 @@ describe("BusLocationService", () => {
     it("should attach an observer function", () => {
       const observer = jest.fn();
       busLocationService.attach(observer);
-      
+
       expect(busLocationService.observers).toContain(observer);
     });
 
@@ -65,18 +65,18 @@ describe("BusLocationService", () => {
       busLocationService.attach("not a function");
       busLocationService.attach({});
       busLocationService.attach(null);
-      
+
       expect(busLocationService.observers).toHaveLength(0);
     });
 
     it("should detach an observer function", () => {
       const observer1 = jest.fn();
       const observer2 = jest.fn();
-      
+
       busLocationService.attach(observer1);
       busLocationService.attach(observer2);
       expect(busLocationService.observers).toHaveLength(2);
-      
+
       busLocationService.detach(observer1);
       expect(busLocationService.observers).toHaveLength(1);
       expect(busLocationService.observers).not.toContain(observer1);
@@ -86,18 +86,16 @@ describe("BusLocationService", () => {
     it("should notify all observers with current bus locations", () => {
       const observer1 = jest.fn();
       const observer2 = jest.fn();
-      
+
       busLocationService.attach(observer1);
       busLocationService.attach(observer2);
-      
+
       // Setup some test data
-      const testLocations = [
-        { id: "BUS1", latitude: 45.5, longitude: -73.6 }
-      ];
+      const testLocations = [{ id: "BUS1", latitude: 45.5, longitude: -73.6 }];
       busLocationService.busLocations = testLocations;
-      
+
       busLocationService.notify();
-      
+
       expect(observer1).toHaveBeenCalledWith(testLocations);
       expect(observer2).toHaveBeenCalledWith(testLocations);
     });
