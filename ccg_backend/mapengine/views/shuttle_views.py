@@ -42,13 +42,39 @@ def get_upcoming_sheduled_shuttle(request):
         longitude = None
         latitude = None
 
-    if not longitude or not latitude:
-        # default to SGW
-        latitude = ShuttleStop.objects.get(name="SGW").latitude
-        longitude = ShuttleStop.objects.get(name="SGW").longitude
+    if longitude is None or latitude is None:
+        longitude, latitude = get_sgw_coordinates()
 
     # find the closest shuttle stop
-    closest_stop = (
+    closest_stop = get_closest_shuttle_stop(longitude, latitude)
+
+    upcoming_shuttles = get_upcoming_shuttles(closest_stop.name)
+
+    return JsonResponse(
+        {
+            "shuttle_stop": {
+                "name": closest_stop.name,
+                "latitude": closest_stop.latitude,
+                "longitude": closest_stop.longitude,
+            },
+            "upcoming_shuttles": upcoming_shuttles,
+        }
+    )
+
+
+def get_sgw_coordinates():
+    """Retrieves SGW coordinates from the database (only queried once)."""
+    sgw_stop = (
+        ShuttleStop.objects.filter(name="SGW")
+        .values_list("latitude", "longitude")
+        .first()
+    )
+    return sgw_stop if sgw_stop else (None, None)  # Prevents crashes if SGW is missing
+
+
+def get_closest_shuttle_stop(longitude, latitude):
+    """Finds the closest shuttle stop based on given coordinates."""
+    return (
         ShuttleStop.objects.annotate(
             distance=Power(F("latitude") - latitude, 2)
             + Power(F("longitude") - longitude, 2)
@@ -57,13 +83,16 @@ def get_upcoming_sheduled_shuttle(request):
         .first()
     )
 
-    now = datetime.now()
+
+def get_upcoming_shuttles(stop_name):
+    """Retrieves the next 5 upcoming shuttles from the given stop."""
+    now = datetime.now(tz)
     day_of_week = now.weekday()
     current_time = now.time()
 
     # Get the next 5 upcoming shuttles from the closest stop
     schedule = ShuttleSchedule.objects.filter(
-        campus=closest_stop.name, day_of_week=day_of_week, time__gte=current_time
+        campus=stop_name, day_of_week=day_of_week, time__gte=current_time
     ).order_by("time")[:5]
 
     upcoming_shuttles = []
@@ -79,13 +108,4 @@ def get_upcoming_sheduled_shuttle(request):
             }
         )
 
-    return JsonResponse(
-        {
-            "shuttle_stop": {
-                "name": closest_stop.name,
-                "latitude": closest_stop.latitude,
-                "longitude": closest_stop.longitude,
-            },
-            "upcoming_shuttles": upcoming_shuttles,
-        }
-    )
+    return upcoming_shuttles

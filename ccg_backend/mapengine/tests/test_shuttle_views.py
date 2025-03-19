@@ -1,12 +1,18 @@
-from datetime import datetime, time
-from unittest.mock import patch
-
 from django.test import TestCase
 from django.urls import reverse
 from pytz import timezone
 from rest_framework.test import APIClient
 
 from ..models.shuttle import ShuttleSchedule, ShuttleStop
+
+from ..views.shuttle_views import get_sgw_coordinates
+
+from unittest.mock import patch
+
+from ..views.shuttle_views import get_closest_shuttle_stop, get_upcoming_shuttles
+
+from datetime import datetime, time
+import pytz
 
 
 class ShuttleViewsTestCase(TestCase):
@@ -106,3 +112,42 @@ class ShuttleViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         print(response.json())
         self.assertEqual(len(response.json()["upcoming_shuttles"]), 0)
+
+    def test_get_sgw_coordinates_exists(self):
+        """Test retrieving SGW coordinates when SGW stop exists."""
+        latitude, longitude = get_sgw_coordinates()
+        self.assertEqual(latitude, 45.4971)
+        self.assertEqual(longitude, -73.5788)
+
+    def test_get_sgw_coordinates_missing(self):
+        """Test behavior when SGW shuttle stop is missing."""
+        ShuttleStop.objects.filter(name="SGW").delete()  # Remove SGW from DB
+        latitude, longitude = get_sgw_coordinates()
+        self.assertIsNone(latitude)
+        self.assertIsNone(longitude)
+
+    def test_get_closest_shuttle_stop(self):
+        """Test finding the closest shuttle stop."""
+        closest_stop = get_closest_shuttle_stop(-73.579, 45.4973)
+        self.assertIsNotNone(closest_stop)
+        self.assertEqual(closest_stop.name, "SGW")  # SGW should be closest
+
+    def test_get_closest_shuttle_stop_no_stops(self):
+        """Test behavior when no shuttle stops exist."""
+        ShuttleStop.objects.all().delete()  # Remove all stops
+        closest_stop = get_closest_shuttle_stop(-73.579, 45.4973)
+        self.assertIsNone(closest_stop)  # Should return None
+
+    def test_get_upcoming_shuttles(self):
+        """Test retrieving the next 5 upcoming shuttles."""
+        upcoming_shuttles = get_upcoming_shuttles("SGW")
+
+        self.assertEqual(len(upcoming_shuttles), 5)
+        self.assertEqual(upcoming_shuttles[0]["scheduled_time"], "14:30")
+        self.assertEqual(upcoming_shuttles[1]["scheduled_time"], "15:00")
+
+    def test_get_upcoming_shuttles_no_schedules(self):
+        """Test when no upcoming schedules exist."""
+        ShuttleSchedule.objects.all().delete()  # Remove all schedules
+        upcoming_shuttles = get_upcoming_shuttles("SGW")
+        self.assertEqual(len(upcoming_shuttles), 0)  # Should return an empty list
