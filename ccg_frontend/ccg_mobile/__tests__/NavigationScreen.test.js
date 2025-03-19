@@ -1,5 +1,5 @@
 import React from "react";
-import {act, fireEvent, render} from "@testing-library/react-native";
+import { act, fireEvent, render } from "@testing-library/react-native";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 // Mock components with testID to make them identifiable in tests
@@ -225,7 +225,7 @@ jest.mock("../services/BusLocationService", () => {
     { id: "BUS1", latitude: 45.497, longitude: -73.579 },
     { id: "BUS2", latitude: 45.494, longitude: -73.577 },
   ];
-  
+
   // Store observers for the mock implementation
   const observers = new Set();
 
@@ -254,11 +254,11 @@ jest.mock("../services/BusLocationService", () => {
       observers.forEach(observer => observer(mockBusLocations));
     },
     // Helper to check if an observer is attached
-    _hasObserver: (observer) => observers.has(observer),
+    _hasObserver: observer => observers.has(observer),
     // Helper to get observer count
     _getObserverCount: () => observers.size,
     // Reset all observers
-    _resetObservers: () => observers.clear()
+    _resetObservers: () => observers.clear(),
   };
 });
 
@@ -322,7 +322,7 @@ jest.mock("../api/dataService", () => ({
 
 // Mock the useRouteInstruction hook
 jest.mock("../hooks/useRouteInstruction", () => ({
-  useRouteInstruction: jest.fn((direction) => {
+  useRouteInstruction: jest.fn(direction => {
     // Return different values based on if direction is provided
     if (direction && direction.steps && direction.steps.length > 0) {
       return { instruction: "Turn right in 50m", distance: 50 };
@@ -350,7 +350,7 @@ describe("NavigationScreen", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    
+
     // Reset bus location service observers before each test
     const busLocationService = require("../services/BusLocationService");
     busLocationService._resetObservers();
@@ -649,7 +649,7 @@ describe("NavigationScreen", () => {
 
     // Should start shuttle tracking
     expect(busLocationService.startTracking).toHaveBeenCalledWith(2000);
-    
+
     // Should have registered an observer
     expect(busLocationService.attach).toHaveBeenCalled();
     expect(busLocationService._getObserverCount()).toBe(1);
@@ -718,7 +718,7 @@ describe("NavigationScreen", () => {
 
     // Verify observer is attached
     expect(busLocationService._getObserverCount()).toBe(1);
-    
+
     // Unmount the component
     await act(async () => {
       unmount();
@@ -1035,7 +1035,7 @@ describe("NavigationScreen", () => {
     // Get the NavigationMap and check initial state
     const navMap = getByTestId("navigation-map");
     expect(navMap.props.displayShuttle).toBe(true);
-    
+
     // Initially there might not be any shuttle locations
     // Manually call the observer with updated locations
     await act(async () => {
