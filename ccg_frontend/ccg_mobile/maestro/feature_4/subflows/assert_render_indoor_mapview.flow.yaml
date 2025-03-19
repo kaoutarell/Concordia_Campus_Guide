@@ -11,3 +11,7 @@ name: "Assert that indoor map view renders properly"
     id: "start-button"
 - assertVisible:
     id: "footer-container"
+- assertVisible:
+    id: "prev-button"
+- assertVisible:
+    id: "next-button"
