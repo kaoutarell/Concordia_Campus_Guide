@@ -9,6 +9,7 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 import IndoorScreen from "../screens/IndoorScreen";
+import CalendarScreen from "../screens/CalendarScreen";
 import * as Clarity from "@microsoft/react-native-clarity";
 
 const Drawer = createDrawerNavigator();
@@ -21,6 +22,7 @@ const StackNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Indoor" component={IndoorScreen} />
       <Stack.Screen name="Map" component={MapScreen} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Search" component={CustomNavSearch} />
     </Stack.Navigator>

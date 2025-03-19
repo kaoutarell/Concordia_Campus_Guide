@@ -23,9 +23,16 @@ export default ({ config }) => ({
         },
       ],
       "expo-localization",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          iosUrlScheme: process.env.IOS_URL_SCHEME
+        }
+      ]
     ],
     ios: {
       supportsTablet: true,
+      bundleIdentifier: "com.ikozay.ccg-mobile",
     },
     android: {
       adaptiveIcon: {
