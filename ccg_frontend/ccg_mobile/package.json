@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "android": "expo prebuild && expo run:android",
+    "ios": "expo prebuild && expo run:ios",
     "web": "expo start --web",
     "test": "jest",
     "format": "prettier --write '**/*.js'",
@@ -38,6 +38,7 @@
     "@react-navigation/stack": "^7.1.1",
     "expo": "^52.0.33",
     "expo-application": "~6.0.2",
+    "expo-dev-client": "^5.0.14",
     "expo-device": "~7.0.2",
     "expo-file-system": "~18.0.11",
     "expo-linear-gradient": "^14.0.2",

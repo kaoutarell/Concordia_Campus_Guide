@@ -177,9 +177,13 @@ conda activate myenv
     npm install
     ```
 3.  **Run frontend**
-    `bash
-npm start
-`
+    ```bash
+    # Expo Go Build
+    npm start
+    # OR
+    # Dev Build (replace <os> with 'android' or 'ios')
+    npm run <os>
+    ```
     Error fix (start not found , try npm run) command :
 
 ```bash
