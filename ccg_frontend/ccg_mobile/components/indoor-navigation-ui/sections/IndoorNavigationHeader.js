@@ -60,7 +60,7 @@ const IndoorNavigationHeader = ({
 
 IndoorNavigationHeader.propTypes = {
   buildings: PropTypes.array.isRequired,
-  selectedBuilding: PropTypes.string.isRequired,
+  selectedBuilding: PropTypes.any.isRequired,
   onBuildingChange: PropTypes.func.isRequired,
   startLocation: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,

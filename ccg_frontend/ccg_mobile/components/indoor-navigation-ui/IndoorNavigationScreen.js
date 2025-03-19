@@ -4,13 +4,16 @@ import IndoorMap from "./sections/IndoorMap";
 import IndoorNavigationHeader from "./sections/IndoorNavigationHeader";
 import { getBuildings, getIndoorDirections } from "../../api/dataService";
 import IndoorNavigationFooter from "./sections/IndoorNavigationFooter";
+import FloorChangeButton from "./elements/FloorChangeButton";
 
 const IndoorNavigationScreen = () => {
   const [buildings, setBuildings] = useState([]);
   const [selectedBuilding, setSelectedBuilding] = useState("");
   const [startLocation, setStartLocation] = useState("");
   const [destination, setDestination] = useState("");
-  const [path, setPath] = useState("");
+  const [path, setPath] = useState(null);
+  const [floorIndex, setFloorIndex] = useState(0);
+  const [floorIndexMax, setFloorIndexMax] = useState(1);
 
   // Fetch buildings from the API
   useEffect(() => {
@@ -41,6 +44,7 @@ const IndoorNavigationScreen = () => {
 
   const handleBuildingChange = value => {
     setSelectedBuilding(value);
+    console.log(value);
   };
 
   const handleStartLocationChange = location => {
@@ -64,6 +68,9 @@ const IndoorNavigationScreen = () => {
       const pathData = await getIndoorDirections("foot-walking", start, destination);
       console.log(pathData);
       setPath(pathData); // set the path data
+      if (path != "") {
+        setFloorIndexMax(path["floor_sequence"].length - 1);
+      }
     } catch (error) {
       console.error("Error fetching path:", error);
     }
@@ -84,7 +91,9 @@ const IndoorNavigationScreen = () => {
         startLocation={startLocation}
         destination={destination}
         path={path} // path data to IndoorMap
+        index={floorIndex}
       />
+      <FloorChangeButton index={floorIndex} maxIndex={floorIndexMax} setIndex={setFloorIndex} />
       <IndoorNavigationFooter
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}

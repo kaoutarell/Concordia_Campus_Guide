@@ -11,41 +11,73 @@ import numpy as np
         'pin': [[75, 105], [640, 900]] ==> array of pins to be displayed on the frontend to show point A and B
     }
 """
+last_used_stairs = ""
 
 
-def get_indoor_directions_data(request):
-    start = request.GET.get("start")
-    destination = request.GET.get("destination")
-
+def get_indoor_directions_data(start, destination):
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
         return None
 
-    map_data = select_map(floor_sequence[0])
-    if map_data is None:
-        return None
+    data = {"floor_sequence": floor_sequence, "path_data": {}, "pin": {}}
+    global last_used_stairs
+    last_used_stairs = ""
 
-    sequence = get_node_sequence(map_data, start, destination)
-    if sequence is None:
-        return None
+    for i, floor in enumerate(floor_sequence):
+        if floor == "outside":
+            last_used_stairs = ""
+            continue
 
-    coords = get_path_coordinates(map_data, sequence)
-    path_data = convert_coords_to_output(coords)
-    pin_array = get_pins(map_data, start, destination, False)
-    data = {"floor_sequence": floor_sequence, "path_data": path_data, "pin": pin_array}
+        map_data = select_map(floor)
+        if map_data is None:
+            print("no map data")
+            return None
+
+        sequence, pin_array = determine_path_sequence(
+            i, floor_sequence, map_data, start, destination
+        )
+        if sequence is None:
+            print("no sequence")
+            return None
+
+        coords = get_path_coordinates(map_data, sequence)
+        data["path_data"][floor] = convert_coords_to_output(coords)
+        data["pin"][floor] = pin_array
+
+    print(data)
     return data
 
 
+def determine_path_sequence(i, floor_sequence, map_data, start, destination):
+    global last_used_stairs
+    if len(floor_sequence) == 1:
+        return get_node_sequence(map_data, start, destination), get_pins(
+            map_data, start, destination
+        )
+
+    if len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "outside":
+        if last_used_stairs == "":
+            sequence = get_class_stair_sequence(map_data, start)
+            pin_array = get_pins(map_data, start, last_used_stairs)
+        else:
+            sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
+            pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
+    elif i > 0 and floor_sequence[i - 1] != "outside":
+        sequence = get_node_sequence(map_data, last_used_stairs, destination)
+        pin_array = get_pins(map_data, last_used_stairs, destination)
+    else:
+        return None, None
+
+    return sequence, pin_array
+
+
 # returns an array of pins for the start and destination if it isn't a multifloor request
-def get_pins(map_data, start, destination, multifloor):
+def get_pins(map_data, start, destination):
     if "pin" not in map_data[start] or "pin" not in map_data[destination]:
         return None
     pin = [[map_data[start]["pin"]["x"], map_data[start]["pin"]["y"]]]
 
-    if multifloor is False:
-        pin.append(
-            [map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]]
-        )
+    pin.append([map_data[destination]["pin"]["x"], map_data[destination]["pin"]["y"]])
     return pin
 
 
@@ -73,8 +105,11 @@ def get_node_sequence(map_data, start, destination):
 
 
 # returns a sequence of nodes from a classroom to a stairwell
-"""
+
+
 def get_class_stair_sequence(map_data, classroom):
+
+    global last_used_stairs
 
     if classroom not in map_data:
         return None
@@ -84,17 +119,18 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if current_node['type'] == 'stairs':
+        if map_data[current_node]["type"] == "stairs":
+            last_used_stairs = map_data[current_node]["id"]
+            print(last_used_stairs)
             return path
 
         if current_node not in visited:
             visited.add(current_node)
-            for neighbor in map_data[current_node]['connections']:
+            for neighbor in map_data[current_node]["connections"]:
                 if neighbor not in visited:
                     queue.append((neighbor, path + [neighbor]))
 
     return None
-"""
 
 
 # this function returns the closest point in the hallway to the class in order to connect the two graphically
@@ -130,15 +166,16 @@ def get_hallway_class_point(map_data, room):
 # returns the list of coordinates for the path between two rooms
 def get_path_coordinates(map_data, path):
     coords = []
+    print(path)
     coords.append(map_data[path[0]]["coords"])
-    if map_data[path[1]]["type"] == "room":
+    if map_data[path[1]]["type"] != "corner":
         coords.append(map_data[path[1]]["coords"])
         return coords
     else:
         p = get_hallway_class_point(map_data, path[0])
         coords.append({"x": int(p[0]), "y": int(p[1])})
         i = 1
-        while map_data[path[i]]["type"] != "room":
+        while map_data[path[i]]["type"] == "corner":
             coords.append(map_data[path[i]]["coords"])
             i = i + 1
         p = get_hallway_class_point(map_data, path[i])
@@ -161,7 +198,7 @@ def convert_coords_to_output(coords):
 # returns the json graph associated with the floor
 def select_map(floor):
     try:
-        with open("mapengine/fixtures/" + floor + ".json", "r") as file:
+        with open("mapengine/fixtures/IndoorMaps/" + floor + ".json", "r") as file:
             map_data = json.load(file)
         return map_data
     except (FileNotFoundError, json.JSONDecodeError) as e:
@@ -171,7 +208,7 @@ def select_map(floor):
 
 # returns a sequence of floors to be traveled to get from point A to B
 def get_floor_sequence(start, destination):
-    with open("mapengine/fixtures/floor_connection_graph.json", "r") as file:
+    with open("mapengine/fixtures/IndoorMaps/floor_connection_graph.json", "r") as file:
         floor_graph = json.load(file)
     for key in floor_graph:
         if start.startswith(key):

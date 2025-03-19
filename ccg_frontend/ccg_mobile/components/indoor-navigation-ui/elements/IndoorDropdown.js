@@ -58,10 +58,10 @@ IndoorDropdown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
+      value: PropTypes.any.isRequired,
     })
   ).isRequired,
-  selectedValue: PropTypes.string,
+  selectedValue: PropTypes.any,
   onValueChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
 };
