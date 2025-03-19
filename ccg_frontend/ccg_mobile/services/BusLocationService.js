@@ -5,6 +5,7 @@ class BusLocationService {
   static instance = null;
   busLocations = [];
   intervalId = null;
+  observers = [];
 
   constructor() {
     if (BusLocationService.instance) {
@@ -20,11 +21,22 @@ class BusLocationService {
     return BusLocationService.instance;
   }
 
+  attach(observer) {
+    if (typeof observer === "function") {
+      this.observers.push(observer);
+    }
+  }
+
+  detach(observer) {
+    this.observers = this.observers.filter(obs => obs !== observer);
+  }
+
+  notify() {
+    this.observers.forEach(observer => observer(this.busLocations));
+  }
+
   /**
    * Fetch a fresh session cookie via a GET request.
-   * The cookie is not stored; it is used immediately for the POST request.
-   *
-   * @returns {Promise<string|null>} The session cookie string if available, otherwise null.
    */
   async fetchSessionCookie() {
     try {
@@ -43,7 +55,7 @@ class BusLocationService {
 
   /**
    * Fetch bus data by first obtaining a fresh session cookie and then making a POST request.
-   * If no bus data is provided in the response, busLocations is set to an empty array.
+   * Notifies all attached observers after updating the busLocations.
    */
   async fetchBusData() {
     try {
@@ -75,13 +87,14 @@ class BusLocationService {
     } catch (error) {
       console.error("BusLocationService: Error fetching bus data", error);
       this.busLocations = [];
+    } finally {
+      // Notify all observers regardless of success or failure.
+      this.notify();
     }
   }
 
   /**
-   * Start tracking bus locations every 5 seconds.
-   *
-   * @param {number} intervalMs - Interval between refreshes in milliseconds. Default is 5000 (5 seconds).
+   * Start tracking bus locations every intervalMs milliseconds.
    */
   startTracking(intervalMs = 5000) {
     this.stopTracking();
@@ -104,8 +117,6 @@ class BusLocationService {
 
   /**
    * Retrieve the latest bus locations.
-   *
-   * @returns {Array} An array of objects, each with { id, latitude, longitude }.
    */
   getBusLocations() {
     return this.busLocations;

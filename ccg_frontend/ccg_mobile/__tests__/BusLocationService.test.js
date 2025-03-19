@@ -7,8 +7,9 @@ describe("BusLocationService", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    // Reset the bus locations
+    // Reset the bus locations and observers
     busLocationService.busLocations = [];
+    busLocationService.observers = [];
 
     // Mock intervals
     jest.useFakeTimers();
@@ -49,6 +50,56 @@ describe("BusLocationService", () => {
       } catch (error) {
         expect(error.message).toContain("Use BusLocationService.getInstance()");
       }
+    });
+  });
+
+  describe("Observer Pattern", () => {
+    it("should attach an observer function", () => {
+      const observer = jest.fn();
+      busLocationService.attach(observer);
+      
+      expect(busLocationService.observers).toContain(observer);
+    });
+
+    it("should ignore non-function observers", () => {
+      busLocationService.attach("not a function");
+      busLocationService.attach({});
+      busLocationService.attach(null);
+      
+      expect(busLocationService.observers).toHaveLength(0);
+    });
+
+    it("should detach an observer function", () => {
+      const observer1 = jest.fn();
+      const observer2 = jest.fn();
+      
+      busLocationService.attach(observer1);
+      busLocationService.attach(observer2);
+      expect(busLocationService.observers).toHaveLength(2);
+      
+      busLocationService.detach(observer1);
+      expect(busLocationService.observers).toHaveLength(1);
+      expect(busLocationService.observers).not.toContain(observer1);
+      expect(busLocationService.observers).toContain(observer2);
+    });
+
+    it("should notify all observers with current bus locations", () => {
+      const observer1 = jest.fn();
+      const observer2 = jest.fn();
+      
+      busLocationService.attach(observer1);
+      busLocationService.attach(observer2);
+      
+      // Setup some test data
+      const testLocations = [
+        { id: "BUS1", latitude: 45.5, longitude: -73.6 }
+      ];
+      busLocationService.busLocations = testLocations;
+      
+      busLocationService.notify();
+      
+      expect(observer1).toHaveBeenCalledWith(testLocations);
+      expect(observer2).toHaveBeenCalledWith(testLocations);
     });
   });
 
@@ -96,7 +147,11 @@ describe("BusLocationService", () => {
   });
 
   describe("fetchBusData", () => {
-    it("should fetch bus data successfully", async () => {
+    it("should fetch bus data successfully and notify observers", async () => {
+      // Setup mock observer
+      const mockObserver = jest.fn();
+      busLocationService.attach(mockObserver);
+
       // Mock successful session cookie fetch
       busLocationService.fetchSessionCookie = jest.fn().mockResolvedValue("session=abc123");
 
@@ -137,9 +192,16 @@ describe("BusLocationService", () => {
         latitude: 45.5,
         longitude: -73.6,
       });
+
+      // Check if observer was notified
+      expect(mockObserver).toHaveBeenCalledWith(busLocationService.busLocations);
     });
 
-    it("should handle missing Points array in response", async () => {
+    it("should handle missing Points array in response and notify observers", async () => {
+      // Setup mock observer
+      const mockObserver = jest.fn();
+      busLocationService.attach(mockObserver);
+
       // Mock successful session cookie fetch
       busLocationService.fetchSessionCookie = jest.fn().mockResolvedValue("session=abc123");
 
@@ -156,10 +218,17 @@ describe("BusLocationService", () => {
       expect(consoleSpy).toHaveBeenCalled();
       expect(busLocationService.busLocations).toEqual([]);
 
+      // Check if observer was notified with empty array
+      expect(mockObserver).toHaveBeenCalledWith([]);
+
       consoleSpy.mockRestore();
     });
 
-    it("should handle errors when fetching bus data", async () => {
+    it("should handle errors when fetching bus data and still notify observers", async () => {
+      // Setup mock observer
+      const mockObserver = jest.fn();
+      busLocationService.attach(mockObserver);
+
       // Mock successful session cookie fetch
       busLocationService.fetchSessionCookie = jest.fn().mockResolvedValue("session=abc123");
 
@@ -174,10 +243,17 @@ describe("BusLocationService", () => {
       expect(consoleSpy).toHaveBeenCalled();
       expect(busLocationService.busLocations).toEqual([]);
 
+      // Check if observer was notified even though there was an error
+      expect(mockObserver).toHaveBeenCalledWith([]);
+
       consoleSpy.mockRestore();
     });
 
     it("should handle missing session cookie", async () => {
+      // Setup mock observer
+      const mockObserver = jest.fn();
+      busLocationService.attach(mockObserver);
+
       // Mock null session cookie result
       busLocationService.fetchSessionCookie = jest.fn().mockResolvedValue(null);
 
@@ -207,6 +283,9 @@ describe("BusLocationService", () => {
 
       // Should still process bus data correctly
       expect(busLocationService.busLocations).toHaveLength(1);
+
+      // Check if observer was notified
+      expect(mockObserver).toHaveBeenCalledWith(busLocationService.busLocations);
     });
   });
 
