@@ -26,13 +26,13 @@ export default ({ config }) => ({
       [
         "@react-native-google-signin/google-signin",
         {
-          iosUrlScheme: process.env.IOS_URL_SCHEME
-        }
-      ]
+          iosUrlScheme: process.env.IOS_URL_SCHEME,
+        },
+      ],
     ],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.ikozay.ccg-mobile",
+      bundleIdentifier: "com.ikozay.ccgmobile",
     },
     android: {
       adaptiveIcon: {
@@ -45,7 +45,7 @@ export default ({ config }) => ({
           apiKey: process.env.GOOGLE_MAPS_API_KEY,
         },
       },
-      package: "com.ikozay.ccg_mobile",
+      package: "com.ikozay.ccgmobile",
     },
     web: {
       favicon: "./assets/favicon.png",
