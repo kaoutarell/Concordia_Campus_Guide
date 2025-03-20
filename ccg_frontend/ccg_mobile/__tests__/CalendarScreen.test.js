@@ -489,13 +489,7 @@ describe("CalendarScreen Component", () => {
         await new Promise(resolve => setTimeout(resolve, 100));
       });
 
-      // Look for the event (without expecting to find it - the mock response might not render properly in tests)
-      try {
-        await findByText("Team Meeting");
-      } catch (error) {
-        // If we can't find it, that's ok for this test - we're mainly testing the API call
-        console.log("Test event not found in rendered component - this is expected in some test environments");
-      }
+      await expect(findByText("Team Meeting")).resolves.toBeTruthy();
     });
 
     it("handles events with date-only start times", async () => {

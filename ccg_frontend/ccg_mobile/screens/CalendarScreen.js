@@ -4,6 +4,7 @@ import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from "reac
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GoogleSignin, GoogleSigninButton, statusCodes } from "@react-native-google-signin/google-signin";
 
+// testProps is an object that can be passed to the component to set the initial state for testing purposes
 const CalendarScreen = ({ testProps }) => {
   const [userInfo, setUserInfo] = useState(testProps?.userInfo || null);
   const [accessToken, setAccessToken] = useState(testProps?.accessToken || null);
@@ -205,21 +206,27 @@ const EventsList = ({ accessToken, selectedCalendars }) => {
     </View>
   );
 
+  const renderEventsContent = () => {
+    if (loading) {
+      return <Text>Loading events...</Text>;
+    }
+    if (events.length === 0) {
+      return <Text>No events to display.</Text>;
+    }
+    return (
+      <FlatList
+        data={events}
+        keyExtractor={item => item.id}
+        renderItem={renderEventItem}
+        contentContainerStyle={{ paddingBottom: 50 }}
+      />
+    );
+  };
+
   return (
     <View style={[styles.sectionContainer, { flex: 1 }]}>
       <Text style={styles.sectionTitle}>Events</Text>
-      {loading ? (
-        <Text>Loading events...</Text>
-      ) : events.length === 0 ? (
-        <Text>No events to display.</Text>
-      ) : (
-        <FlatList
-          data={events}
-          keyExtractor={item => item.id}
-          renderItem={renderEventItem}
-          contentContainerStyle={{ paddingBottom: 50 }}
-        />
-      )}
+      {renderEventsContent()}
     </View>
   );
 };
@@ -311,6 +318,14 @@ CalendarsList.propTypes = {
 EventsList.propTypes = {
   accessToken: PropTypes.string,
   selectedCalendars: PropTypes.array,
+};
+
+CalendarScreen.propTypes = {
+  testProps: PropTypes.shape({
+    userInfo: PropTypes.object,
+    accessToken: PropTypes.string,
+    selectedCalendars: PropTypes.array,
+  }),
 };
 
 export default CalendarScreen;
