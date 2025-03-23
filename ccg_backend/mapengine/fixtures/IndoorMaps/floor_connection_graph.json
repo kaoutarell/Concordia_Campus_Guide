@@ -1,8 +1,20 @@
 {
+    "H1":{
+        "connections":[
+            "H2",
+            "Outside"
+        ]
+    },
+    "H2":{
+        "connections":[
+            "H1",
+            "H8"
+        ]
+    },
     "H8":{
         "connections":[
             "H9",
-            "Outside"
+            "H2"
         ]
     },
     "H9":{
@@ -12,7 +24,13 @@
     },
     "Outside":{
         "connections":[
-            "H8"
+            "H1",
+            "MB1"
+        ]
+    },
+    "MB1":{
+        "connections":[
+            "Outside"
         ]
     }
 }

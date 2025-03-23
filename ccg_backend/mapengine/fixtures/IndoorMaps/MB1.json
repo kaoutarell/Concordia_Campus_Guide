@@ -1,0 +1,70 @@
+{
+    "Exit":{
+        "id": "Exit",
+		"type": "exit",
+		"pin":{
+			"x":511,
+			"y":936
+		},
+		"coords": {
+			"x": 541,
+			"y": 929
+		},
+		"connections":[
+			"C1",
+			"C2"
+		]
+    },
+    "MB1.125":{
+        "id": "MB1.124",
+		"type": "room",
+		"pin":{
+			"x":650,
+			"y":385
+		},
+		"coords": {
+			"x": 585,
+			"y": 530
+		},
+		"connections":[
+			"C1",
+			"C2"
+		]
+    },
+    "C1":{
+        "id": "C1",
+		"type": "corner",
+		"coords":{
+			"x":570,
+			"y":950
+		},
+		"connections":[
+			"C2"
+		]
+    },
+    "C2":{
+        "id": "C1",
+		"type": "corner",
+		"coords":{
+			"x":570,
+			"y":605
+		},
+		"connections":[
+			"C3",
+            "C1",
+			"MB1.125"
+		]
+    },
+    "C3":{
+        "id": "C1",
+		"type": "corner",
+		"coords":{
+			"x":470,
+			"y":605
+		},
+		"connections":[
+			"C2",
+			"MB1.125"
+		]
+    }
+}

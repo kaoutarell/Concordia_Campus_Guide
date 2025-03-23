@@ -1,0 +1,85 @@
+{
+    "Exit":{
+        "id": "Exit",
+		"type": "exit",
+		"pin":{
+			"x":325,
+			"y":1000
+		},
+		"coords": {
+			"x": 325,
+			"y": 960
+		},
+		"connections":[
+			"C1",
+			"C2"
+		]
+    },
+    "S1":{
+        "id": "S1",
+		"type": "stairs",
+		"pin":{
+			"x":185,
+			"y":185
+		},
+		"coords": {
+			"x": 150,
+			"y": 235
+		},
+		"connections":[
+			"C1",
+			"C7"
+		]
+    },
+    "C1":{
+        "id": "C1",
+		"type": "corner",
+		"coords":{
+			"x":100,
+			"y":900
+		},
+		"connections":[
+			"C1",
+			"C2",
+            "Exit"
+		]
+    },
+    "C2":{
+        "id": "C2",
+		"type": "corner",
+		"coords": {
+			"x": 530,
+			"y": 900
+		},
+		"connections":[
+			"C1",
+			"C3",
+            "Exit"
+		]
+    },
+    "C3":{
+        "id": "C3",
+		"type": "corner",
+		"coords":{
+			"x":530,
+			"y":250
+		},
+		"connections":[
+			"C2",
+			"C4",
+            "S1"
+		]
+    },
+    "C4":{
+        "id": "C4",
+		"type": "corner",
+		"coords":{
+			"x":100,
+			"y":250
+		},
+		"connections":[
+			"C3",
+			"Exit"
+		]
+    }
+}
