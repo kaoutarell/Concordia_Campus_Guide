@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import { render, fireEvent } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
 import { useNavigation } from "@react-navigation/native";
 import * as dataService from "../api/dataService";
