@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
 import { useNavigation } from "@react-navigation/native";
+import { getBuildings, getPointOfInterests } from '../api/dataService';
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
