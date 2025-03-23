@@ -141,7 +141,7 @@ describe("IndoorNavigationScreen", () => {
     });
 
     await waitFor(() => {
-      expect(getIndoorDirections).toHaveBeenCalledWith("foot-walking", startLocation, destination);
+      expect(getIndoorDirections).toHaveBeenCalledWith(false, startLocation, destination);
       expect(IndoorMap).toHaveBeenCalledWith(
         expect.objectContaining({
           path: mockPath,
@@ -213,7 +213,7 @@ describe("IndoorNavigationScreen", () => {
     });
 
     await waitFor(() => {
-      expect(getIndoorDirections).toHaveBeenCalledWith("false", startLocation, destination);
+      expect(getIndoorDirections).toHaveBeenCalledWith(false, startLocation, destination);
       expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching path:", expect.any(Error));
     });
 
