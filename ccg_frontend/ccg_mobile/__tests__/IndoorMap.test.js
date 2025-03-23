@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
 import { useNavigation } from "@react-navigation/native";
-import { getBuildings, getPointOfInterests } from "../api/dataService";
+import * as dataService from "../api/dataService";
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
@@ -26,6 +26,11 @@ jest.mock("@react-navigation/native", () => ({
   useNavigation: () => ({
     navigate: jest.fn(),
   }),
+}));
+
+jest.mock("../api/dataService", () => ({
+  getBuildings: jest.fn(),
+  getPointOfInterests: jest.fn(),
 }));
 
 const path = {
@@ -84,13 +89,13 @@ describe("IndoorMap Component", () => {
     const mockPOI = [{ id: 1, building_code: "POI1", name: "Cafeteria" }];
 
     // Mock functions
-    getBuildings.mockResolvedValue(mockBuildings);
-    getPointOfInterests.mockResolvedValue(mockPOI);
+    dataService.getBuildings.mockResolvedValue(mockBuildings);
+    dataService.getPointOfInterests.mockResolvedValue(mockPOI);
 
     const navigateMock = jest.fn();
     useNavigation.mockReturnValue({ navigate: navigateMock });
 
-    const { getByTestId } = render(<TestComponent />);
+    const { getByTestId } = render(<IndoorMap path={path} index={1} />);
     const button = getByTestId("outside-button");
 
     // Simulate button press
