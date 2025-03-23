@@ -23,12 +23,15 @@ const CalendarScreen = ({ testProps }) => {
       try {
         // Attempt to restore the previous session
         const info = await GoogleSignin.signInSilently();
+        console.log("Restored previous sign in session.", info);
         setUserInfo(info);
         const tokens = await GoogleSignin.getTokens();
         setAccessToken(tokens.accessToken);
       } catch (error) {
         // If there is no previous session, ignore the error.
         console.log("No previous sign in or sign in expired.", error);
+        setUserInfo(null);
+        setAccessToken(null);
       }
     };
     restoreSignIn();
