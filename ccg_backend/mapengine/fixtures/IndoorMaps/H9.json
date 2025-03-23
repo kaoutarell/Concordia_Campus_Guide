@@ -31,6 +31,22 @@
 			"C5"
 		]
     },
+	"E1":{
+        "id": "E1",
+		"type": "elevator",
+		"pin":{
+			"x":360,
+			"y":360
+		},
+		"coords": {
+			"x": 360,
+			"y": 385
+		},
+		"connections":[
+			"C4",
+			"C5"
+		]
+    },
     "C2":{
         "id": "C2",
 		"type": "corner",

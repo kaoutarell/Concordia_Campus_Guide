@@ -554,6 +554,22 @@
 			"C8"
 		]
 	},
+	"E1":{
+		"id":"E1",
+		"type":"elevator",
+		"pin":{
+			"x":360,
+			"y":350
+		},
+		"coords":{
+			"x":360,
+			"y":380
+		},
+		"connections":[
+			"C7",
+			"C8"
+		]
+	},
 	"C1":{
         "id": "C1",
 		"type": "corner",

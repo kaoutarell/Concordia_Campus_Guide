@@ -39,6 +39,6 @@ export const getPointOfInterests = async (category = null, campus = null, long =
   return await fetchDataByEndpoint(endpoint);
 };
 
-export const getIndoorDirections = async (profile, start, destination) => {
-  return await fetchDataByEndpoint("directions/indoor?start=" + start + "&destination=" + destination);
+export const getIndoorDirections = async (disabled, start, destination) => {
+  return await fetchDataByEndpoint("directions/indoor?start=" + start + "&destination=" + destination + "&disabled="+disabled);
 };

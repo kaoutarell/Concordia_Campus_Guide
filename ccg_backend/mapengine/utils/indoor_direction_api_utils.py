@@ -12,9 +12,13 @@ import numpy as np
     }
 """
 last_used_stairs = ""
+isDisabled = False
 
 
-def get_indoor_directions_data(start, destination):
+def get_indoor_directions_data(start, destination, disabled):
+    global isDisabled
+    isDisabled=disabled
+
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
         return None
@@ -134,7 +138,7 @@ def get_node_sequence(map_data, start, destination):
 
 
 def get_class_stair_sequence(map_data, classroom):
-
+    global isDisabled
     global last_used_stairs
 
     if classroom not in map_data:
@@ -145,10 +149,17 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if map_data[current_node]["type"] == "stairs":
-            last_used_stairs = map_data[current_node]["id"]
-            print(last_used_stairs)
-            return path
+        if isDisabled==False:
+
+            if map_data[current_node]["type"] == "stairs":
+                last_used_stairs = map_data[current_node]["id"]
+                print(last_used_stairs)
+                return path
+        else:
+            if map_data[current_node]["type"] == "elevator":
+                last_used_stairs = map_data[current_node]["id"]
+                print(last_used_stairs)
+                return path
 
         if current_node not in visited:
             visited.add(current_node)
