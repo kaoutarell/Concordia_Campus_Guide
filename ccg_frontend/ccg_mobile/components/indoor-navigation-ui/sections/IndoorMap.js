@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native";
 import { Ionicons } from "react-native-vector-icons"; // Import Ionicons
 import { getFloorImage } from "../../../utils/floorImages.js";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import Svg, { Path } from "react-native-svg";
 import PropTypes from "prop-types";
+import {getBuildings, getPointOfInterests} from '../../../api/dataService.js';
+import { useNavigation } from "@react-navigation/native";
 
 const IndoorMap = ({ path, index }) => {
   const pinSize = 90;
+  const navigation = useNavigation();
 
   const [image, setImage] = useState(getFloorImage("H8"));
 
@@ -19,10 +22,43 @@ const IndoorMap = ({ path, index }) => {
     }
   }, [index]);
 
+  const goOutside = async ()=> {
+    console.log("started");
+    buildings = await getBuildings();
+    poi= await getPointOfInterests();
+    startLocation=null;
+    destinationLocation=null;
+    startBuildingCode = path["floor_sequence"][0].split("").filter(char => isNaN(char)).join("");
+    destinationBuildingCode = path["floor_sequence"].at(-1).split("").filter(char => isNaN(char)).join("");
+    console.log({"startCode": startBuildingCode, "destinationCode": destinationBuildingCode});
+    buildings.forEach(element => {
+      if (element.building_code==startBuildingCode && element.building_code != ""){
+        startLocation=element;
+      }
+
+      if (element.building_code==destinationBuildingCode && element.building_code != ""){
+        destinationLocation=element;
+      }
+      
+    });
+
+    console.log({"start": startLocation, "destination": destinationLocation})
+
+    navigation.navigate("Navigation", {
+      start: startLocation,
+      destination: destinationLocation,
+      allLocations: [
+        ...buildings.map(item => ({ ...item, id: `school-${item.id}` })),
+        ...poi.map(item => ({ ...item, id: `poi-${item.id}` })),
+      ],
+    });
+
+  }
+
   return (
     <View style={styles.container}>
       <Text>ReactNativeZoomableView</Text>
-      <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems: "center" }}>
+      <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems: "center", overflow:"hidden" }}>
         {path != null && (
           <Text style={{ fontSize: 18 }} testID="title">
             {path["floor_sequence"][index]}
@@ -33,7 +69,7 @@ const IndoorMap = ({ path, index }) => {
             {"H8"}
           </Text>
         )}
-        <ReactNativeZoomableView
+        { path?.floor_sequence[index] != "Outside" && <ReactNativeZoomableView
           maxZoom={10}
           minZoom={0.3}
           zoomStep={0.5}
@@ -93,7 +129,13 @@ const IndoorMap = ({ path, index }) => {
               />
             )}
           </ImageBackground>
-        </ReactNativeZoomableView>
+        </ReactNativeZoomableView>}
+        {path?.floor_sequence[index] == "Outside" && 
+        
+          <TouchableOpacity style={styles.outside} onPress={goOutside}>
+            <Text style={{fontSize: 30, textAlign:"center", color:"white"}}>Move to Outside Navigation</Text>
+          </TouchableOpacity>
+        }
       </View>
     </View>
   );
@@ -126,6 +168,22 @@ const styles = StyleSheet.create({
   pin: {
     position: "absolute",
   },
+  outside: {
+    height: 250,
+    width: 250,
+    marginTop: 40,
+    backgroundColor: "#800020",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 30, // More rounded button
+  },
+  outsideContainer:{
+    height: 1024,
+    width: 1024,
+    alignItems: "center",
+    justifyContent: "center",
+
+  }
 });
 
 export default IndoorMap;
