@@ -149,7 +149,7 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if isDisabled==False:
+        if isDisabled=="false":
 
             if map_data[current_node]["type"] == "stairs":
                 last_used_stairs = map_data[current_node]["id"]

@@ -16,6 +16,11 @@ const IndoorNavigationScreen = () => {
   const [floorIndexMax, setFloorIndexMax] = useState(1);
   const [disabled, setDisabled] = useState(false);
 
+  //reset floorIndex when getting new directions
+  useEffect(()=>{
+    setFloorIndex(0);
+  }, [path])
+
   // Fetch buildings from the API
   useEffect(() => {
     const fetchBuildings = async () => {
@@ -99,6 +104,8 @@ const IndoorNavigationScreen = () => {
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}
         destinationAddress={destination}
+        isDisabled={disabled}
+        setDisabled={setDisabled}
       />
     </View>
   );
