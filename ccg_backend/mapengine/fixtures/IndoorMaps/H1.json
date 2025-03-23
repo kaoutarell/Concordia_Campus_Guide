@@ -39,7 +39,6 @@
 			"y":900
 		},
 		"connections":[
-			"C1",
 			"C2",
             "Exit"
 		]

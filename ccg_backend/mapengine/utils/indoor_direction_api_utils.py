@@ -17,7 +17,7 @@ isDisabled = False
 
 def get_indoor_directions_data(start, destination, disabled):
     global isDisabled
-    isDisabled=disabled
+    isDisabled = disabled
 
     floor_sequence = get_floor_sequence(start, destination)
     if floor_sequence is None:
@@ -60,43 +60,47 @@ def determine_path_sequence(i, floor_sequence, map_data, start, destination):
             map_data, start, destination
         )
 
-    #If you're not going Outside after this floor
-    if len(floor_sequence) > i + 1 and floor_sequence[i + 1] != "Outside":
-        #If you didn't just use the stairs
+    # If you're not going Outside after this floor and weren't just outside
+    if (
+        len(floor_sequence) > i + 1
+        and floor_sequence[i + 1] != "Outside"
+        and floor_sequence[i - 1] != "Outside"
+    ):
+        # If you didn't just use the stairs
         if last_used_stairs == "":
             sequence = get_class_stair_sequence(map_data, start)
             pin_array = get_pins(map_data, start, last_used_stairs)
-        #If you are in between two floors
+        # If you are in between two floors
         else:
             sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
             pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
-    #If you're going Outside after this floor
+    # If you're going Outside after this floor
     elif len(floor_sequence) > i + 1 and floor_sequence[i + 1] == "Outside":
-        #If this is the starting floor
-        if i==0:
+        # If this is the starting floor
+        if i == 0:
             sequence = get_node_sequence(map_data, start, "Exit")
             pin_array = get_pins(map_data, start, "Exit")
-        #If this isn't the stating floor
+        # If this isn't the stating floor
         else:
             sequence = get_node_sequence(map_data, last_used_stairs, "Exit")
             pin_array = get_pins(map_data, last_used_stairs, "Exit")
-    #If there was a floor before current one
+    # If there was a floor before current one
     elif i > 0 and floor_sequence[i - 1] != "Outside":
         sequence = get_node_sequence(map_data, last_used_stairs, destination)
         pin_array = get_pins(map_data, last_used_stairs, destination)
-    #If you were Outside before this floor
-    elif i > 0 and floor_sequence[i-1] == "Outside":
-        #If this isn't the destination floor
-        if i<len(floor_sequence)-1:
+    # If you were Outside before this floor
+    elif i > 0 and floor_sequence[i - 1] == "Outside":
+        # If this isn't the destination floor
+        if i < len(floor_sequence) - 1:
             sequence = get_class_stair_sequence(map_data, "Exit")
             pin_array = get_pins(map_data, "Exit", last_used_stairs)
-        #If this is the destination floor
+        # If this is the destination floor
         else:
             sequence = get_node_sequence(map_data, "Exit", destination)
             pin_array = get_pins(map_data, "Exit", destination)
     else:
         return None, None
-    
+
     return sequence, pin_array
 
 
@@ -149,7 +153,7 @@ def get_class_stair_sequence(map_data, classroom):
 
     while queue:
         current_node, path = queue.popleft()
-        if isDisabled=="false":
+        if isDisabled == "false":
 
             if map_data[current_node]["type"] == "stairs":
                 last_used_stairs = map_data[current_node]["id"]
@@ -204,7 +208,7 @@ def get_hallway_class_point(map_data, room):
 def get_path_coordinates(map_data, path):
     coords = []
     print(path)
-    if len(path)==1:
+    if len(path) == 1:
         coords.append(map_data[path[0]]["coords"])
         return coords
     coords.append(map_data[path[0]]["coords"])
@@ -227,7 +231,7 @@ def get_path_coordinates(map_data, path):
 # converts the array of coordinates to proper output format
 def convert_coords_to_output(coords):
     output = "M" + str(coords[0]["x"]) + " " + str(coords[0]["y"])
-    if len(coords)==1:
+    if len(coords) == 1:
         return output
     i = 1
     while i < len(coords):

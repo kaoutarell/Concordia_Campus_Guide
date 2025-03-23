@@ -1,5 +1,5 @@
 from .exceptions import (
-    InvalidCoordinatesError,
     BuildingNotFoundError,
+    InvalidCoordinatesError,
     ShuttleStopNotFoundError,
 )
