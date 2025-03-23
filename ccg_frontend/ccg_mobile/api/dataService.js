@@ -36,7 +36,11 @@ export const getPointOfInterests = async (category = null, campus = null, long =
   if (long && lat) {
     endpoint += category || campus ? `&long=${long}&lat=${lat}` : `?long=${long}&lat=${lat}`;
   }
-  return await fetchDataByEndpoint(endpoint);
+  let data = await fetchDataByEndpoint(endpoint);
+  data = data.map(poi => {
+    return { ...poi, building_code: "" };
+  });
+  return data;
 };
 
 export const getIndoorDirections = async (disabled, start, destination) => {
