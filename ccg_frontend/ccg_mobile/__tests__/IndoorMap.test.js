@@ -33,6 +33,10 @@ jest.mock("../api/dataService", () => ({
   getPointOfInterests: jest.fn(),
 }));
 
+jest.mock("@react-navigation/native", () => ({
+  useNavigation: jest.fn(),
+}));
+
 const path = {
   floor_sequence: ["H8", "Outside"],
   path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
