@@ -40,5 +40,7 @@ export const getPointOfInterests = async (category = null, campus = null, long =
 };
 
 export const getIndoorDirections = async (disabled, start, destination) => {
-  return await fetchDataByEndpoint("directions/indoor?start=" + start + "&destination=" + destination + "&disabled="+disabled);
+  return await fetchDataByEndpoint(
+    "directions/indoor?start=" + start + "&destination=" + destination + "&disabled=" + disabled
+  );
 };

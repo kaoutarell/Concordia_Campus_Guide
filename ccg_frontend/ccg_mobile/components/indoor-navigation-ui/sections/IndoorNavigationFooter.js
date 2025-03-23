@@ -15,25 +15,21 @@ const IndoorNavigationFooter = ({ onShowDirections, startAddress, destinationAdd
     }).start();
   }, []);
 
-  const onPress = () =>{
-    onShowDirections(startAddress, destinationAddress)
-  }
+  const onPress = () => {
+    onShowDirections(startAddress, destinationAddress);
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <Animated.View style={[styles.container, { opacity: fadeIn }]} testID="footer-container">
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity
-            style={styles.startButton}
-            onPress={onPress}
-            testID="start-button"
-          >
+          <TouchableOpacity style={styles.startButton} onPress={onPress} testID="start-button">
             <Icon name="location-arrow" size={20} color="#800020" style={styles.icon} testID="icon" />
             <Text style={styles.startButtonText} testID="start-button-text">
               Get Direction
             </Text>
           </TouchableOpacity>
-          <DisabledButton isDisabled={isDisabled} setDisabled={setDisabled} onShowDirections={onPress}/>
+          <DisabledButton isDisabled={isDisabled} setDisabled={setDisabled} onShowDirections={onPress} />
         </View>
       </Animated.View>
     </SafeAreaView>

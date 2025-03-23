@@ -17,9 +17,9 @@ const IndoorNavigationScreen = () => {
   const [disabled, setDisabled] = useState(false);
 
   //reset floorIndex when getting new directions
-  useEffect(()=>{
+  useEffect(() => {
     setFloorIndex(0);
-  }, [path])
+  }, [path]);
 
   // Fetch buildings from the API
   useEffect(() => {

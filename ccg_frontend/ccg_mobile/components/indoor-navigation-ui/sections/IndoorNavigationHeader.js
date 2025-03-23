@@ -46,14 +46,13 @@ const IndoorNavigationHeader = ({
           testID="indoor-dropdown"
         />
       </View>
-        <NavigationSearch
-          startAddress={startAddress}
-          destinationAddress={destinationAddress}
-          onModifyAddress={handleModifyAddress} // modified address handler
-          allLocations={buildings}
-          testID="navigation-search"
-        />
-      
+      <NavigationSearch
+        startAddress={startAddress}
+        destinationAddress={destinationAddress}
+        onModifyAddress={handleModifyAddress} // modified address handler
+        allLocations={buildings}
+        testID="navigation-search"
+      />
     </View>
   );
 };
