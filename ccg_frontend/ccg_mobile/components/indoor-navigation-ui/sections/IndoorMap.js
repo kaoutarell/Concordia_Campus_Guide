@@ -23,7 +23,6 @@ const IndoorMap = ({ path, index }) => {
   }, [index]);
 
   const goOutside = async () => {
-    console.log("started");
     buildings = await getBuildings();
     poi = await getPointOfInterests();
     startLocation = null;
@@ -37,7 +36,6 @@ const IndoorMap = ({ path, index }) => {
       .split("")
       .filter(char => isNaN(char))
       .join("");
-    console.log({ startCode: startBuildingCode, destinationCode: destinationBuildingCode });
     buildings.forEach(element => {
       if (element.building_code == startBuildingCode && element.building_code != "") {
         startLocation = element;
@@ -47,8 +45,6 @@ const IndoorMap = ({ path, index }) => {
         destinationLocation = element;
       }
     });
-
-    console.log({ start: startLocation, destination: destinationLocation });
 
     navigation.navigate("Navigation", {
       start: startLocation,
@@ -138,7 +134,7 @@ const IndoorMap = ({ path, index }) => {
           </ReactNativeZoomableView>
         )}
         {path?.floor_sequence[index] == "Outside" && (
-          <TouchableOpacity style={styles.outside} onPress={goOutside}>
+          <TouchableOpacity style={styles.outside} onPress={goOutside} testID="outside-button">
             <Text style={{ fontSize: 30, textAlign: "center", color: "white" }}>Move to Outside Navigation</Text>
           </TouchableOpacity>
         )}
