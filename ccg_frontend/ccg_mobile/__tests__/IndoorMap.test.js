@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
@@ -20,8 +20,8 @@ jest.mock("@openspacelabs/react-native-zoomable-view", () => ({
 }));
 
 // Mock useNavigation
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
+jest.mock("@react-navigation/native", () => ({
+  ...jest.requireActual("@react-navigation/native"),
   useNavigation: () => ({
     navigate: jest.fn(),
   }),
