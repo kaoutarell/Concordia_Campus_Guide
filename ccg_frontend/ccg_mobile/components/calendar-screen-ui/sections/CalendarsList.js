@@ -1,30 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
-const CalendarsList = ({ accessToken, selectedCalendars, onSelectCalendar }) => {
-  const [calendars, setCalendars] = useState([]);
-  const [loading, setLoading] = useState(false);
+const useCalendars = accessToken => {
+  const [calendars, setCalendars] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
-  const fetchCalendars = async () => {
-    if (!accessToken) return;
-    setLoading(true);
-    try {
-      const response = await fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      const data = await response.json();
-      setCalendars(data.items || []);
-    } catch (error) {
-      console.error("Error fetching calendars:", error);
-    } finally {
-      setLoading(false);
+  React.useEffect(() => {
+    if (!accessToken) {
+      setCalendars([]);
+      return;
     }
-  };
+    const fetchCalendars = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        const data = await response.json();
+        setCalendars(data.items || []);
+      } catch (error) {
+        console.error("Error fetching calendars:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(() => {
     fetchCalendars();
   }, [accessToken]);
+
+  return { calendars, loading };
+};
+
+const CalendarsList = ({ accessToken, selectedCalendars, onSelectCalendar }) => {
+  const { calendars, loading } = useCalendars(accessToken);
 
   const toggleCalendarSelection = calendar => {
     if (selectedCalendars.find(item => item.id === calendar.id)) {
@@ -35,7 +44,7 @@ const CalendarsList = ({ accessToken, selectedCalendars, onSelectCalendar }) => 
   };
 
   const renderCalendarItem = ({ item }) => {
-    const isSelected = !!selectedCalendars.find(cal => cal.id === item.id);
+    const isSelected = selectedCalendars.some(cal => cal.id === item.id);
     return (
       <TouchableOpacity
         style={[styles.calendarItem, isSelected && styles.selectedItem]}
@@ -68,36 +77,6 @@ CalendarsList.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginVertical: 20,
-    textAlign: "center",
-  },
-  googleButton: {
-    width: 240,
-    height: 48,
-    alignSelf: "center",
-    marginTop: 16,
-  },
-  successText: {
-    fontSize: 16,
-    marginBottom: 8,
-    textAlign: "center",
-  },
-  userEmail: {
-    fontSize: 14,
-    marginBottom: 16,
-    fontStyle: "italic",
-    textAlign: "center",
-  },
   sectionContainer: {
     marginVertical: 20,
     width: "100%",
@@ -127,21 +106,6 @@ const styles = StyleSheet.create({
   },
   tick: {
     fontSize: 18,
-  },
-  eventItem: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    marginBottom: 5,
-  },
-  eventTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  eventTime: {
-    fontSize: 14,
-    color: "#555",
   },
 });
 

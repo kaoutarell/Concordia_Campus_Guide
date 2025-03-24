@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { View, Text, StyleSheet, FlatList, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const normalizeString = str => {
-  return str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-};
-
-const parseEventLocation = (location, buildings) => {
+export const parseEventLocation = (location, buildings) => {
   // Expected format: "Campus Name - Building Name Rm RoomNumber"
-  // Example: "Loyola Campus - Richard Renaud Science Complex Rm S110"
-  const regex = /^(.+?)\s*-\s*(.+?)\s+Rm\s+(.+)$/i;
+  const regex = /^([^-\r\n]+?)\s*-\s*([^-\r\n]+?)\s+Rm\s+(.+)$/i;
   const match = location.match(regex);
-  if (!match) {
-    return null;
-  }
+  if (!match) return null;
   const [, , buildingNameFromEvent, room] = match;
-  // Normalize the event building name for fuzzy matching
-  const normalizedEventBuilding = normalizeString(buildingNameFromEvent);
-  let matchedBuilding = null;
+  const tokensEvent = buildingNameFromEvent.split(/\s+/).map(t => t.toLowerCase());
+
+  // First, check if the first token directly matches a building code
+  const firstToken = tokensEvent[0];
+  const directMatch = buildings.find(building => building.code.toLowerCase() === firstToken);
+  if (directMatch) {
+    return {
+      campus: directMatch.campus,
+      buildingName: directMatch.name,
+      buildingCode: directMatch.code,
+      room: room.trim(),
+    };
+  }
+
+  // Fallback: find the best match based on matching tokens from the building name
+  let bestMatch = null;
+  let bestMatchCount = 0;
+
   for (const building of buildings) {
-    const buildingName = building.name;
-    const normalizedBuildingDataName = normalizeString(buildingName);
-    // Check if one string contains the other to allow for slight variations
-    if (
-      normalizedBuildingDataName.includes(normalizedEventBuilding) ||
-      normalizedEventBuilding.includes(normalizedBuildingDataName)
-    ) {
-      matchedBuilding = building;
-      break;
+    const tokensBuilding = building.name.split(/\s+/).map(t => t.toLowerCase());
+    const matchCount = tokensEvent.filter(token => tokensBuilding.includes(token)).length;
+    if (matchCount > bestMatchCount) {
+      bestMatchCount = matchCount;
+      bestMatch = building;
     }
   }
-  if (!matchedBuilding) {
-    return null; // No matching building found
-  }
+
+  if (!bestMatch) return null;
+
   return {
-    campus: matchedBuilding.campus,
-    buildingName: matchedBuilding.name,
-    buildingCode: matchedBuilding.code,
+    campus: bestMatch.campus,
+    buildingName: bestMatch.name,
+    buildingCode: bestMatch.code,
     room: room.trim(),
   };
 };
@@ -50,15 +54,14 @@ const isSupportedLocation = classLocation => {
 };
 
 const EventsList = ({ accessToken, selectedCalendars, buildings }) => {
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const navigation = useNavigation();
-  const [filterClassesOnly, setFilterClassesOnly] = useState(false);
   const [allEvents, setAllEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [filterClassesOnly, setFilterClassesOnly] = useState(false);
+  const navigation = useNavigation();
 
   const fetchEvents = async () => {
     if (!accessToken || selectedCalendars.length === 0) {
-      setEvents([]);
+      setAllEvents([]);
       return;
     }
     setLoading(true);
@@ -78,7 +81,6 @@ const EventsList = ({ accessToken, selectedCalendars, buildings }) => {
         const data = await response.json();
         fetchedEvents = fetchedEvents.concat(data.items || []);
       }
-
       // Sort events by start time
       fetchedEvents.sort(
         (a, b) => new Date(a.start?.dateTime || a.start?.date) - new Date(b.start?.dateTime || b.start?.date)
@@ -92,28 +94,27 @@ const EventsList = ({ accessToken, selectedCalendars, buildings }) => {
   };
 
   useEffect(() => {
-    const classEvents = allEvents.reduce((acc, event) => {
-      if (event.location) {
-        const parsedLocation = parseEventLocation(event.location, buildings);
-        if (parsedLocation) {
-          event.classLocation = `${parsedLocation.buildingCode} ${parsedLocation.room}`;
-          event.building = parsedLocation.buildingName;
-          acc.push(event);
-        }
-      }
-      return acc;
-    }, []);
-
-    if (filterClassesOnly) {
-      setEvents(classEvents);
-    } else {
-      setEvents(allEvents);
-    }
-  }, [allEvents, buildings, filterClassesOnly]);
-
-  useEffect(() => {
     fetchEvents();
   }, [accessToken, selectedCalendars]);
+
+  // Process events and filter by class location using useMemo instead of a separate useEffect.
+  const processedEvents = useMemo(() => {
+    return allEvents
+      .map(event => {
+        if (event.location) {
+          const parsedLocation = parseEventLocation(event.location, buildings);
+          if (parsedLocation) {
+            return {
+              ...event,
+              classLocation: `${parsedLocation.buildingCode} ${parsedLocation.room}`,
+              building: parsedLocation.buildingName,
+            };
+          }
+        }
+        return event;
+      })
+      .filter(event => (filterClassesOnly ? event.classLocation : true));
+  }, [allEvents, buildings, filterClassesOnly]);
 
   const handleGoPress = event => {
     navigation.navigate("Indoor", {
@@ -132,12 +133,18 @@ const EventsList = ({ accessToken, selectedCalendars, buildings }) => {
         <Text style={styles.eventTitle}>{item.summary}</Text>
         <Text style={styles.eventTime}>{item.start?.dateTime || item.start?.date}</Text>
         {hasClassLocation && <Text style={styles.eventLocation}>{item.classLocation}</Text>}
-
         {hasClassLocation &&
           (supported ? (
             <Button title="Go" onPress={() => handleGoPress(item)} />
           ) : (
-            <Text style={{ marginTop: 6, fontStyle: "italic", color: "red", textAlign: "center" }}>
+            <Text
+              style={{
+                marginTop: 6,
+                fontStyle: "italic",
+                color: "red",
+                textAlign: "center",
+              }}
+            >
               Location not supported
             </Text>
           ))}
@@ -146,15 +153,11 @@ const EventsList = ({ accessToken, selectedCalendars, buildings }) => {
   };
 
   const renderEventsContent = () => {
-    if (loading) {
-      return <Text>Loading events...</Text>;
-    }
-    if (events.length === 0) {
-      return <Text>No events to display.</Text>;
-    }
+    if (loading) return <Text>Loading events...</Text>;
+    if (processedEvents.length === 0) return <Text>No events to display.</Text>;
     return (
       <FlatList
-        data={events}
+        data={processedEvents}
         keyExtractor={item => item.id}
         renderItem={renderEventItem}
         contentContainerStyle={{ paddingBottom: 50 }}
@@ -184,36 +187,6 @@ EventsList.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginVertical: 20,
-    textAlign: "center",
-  },
-  googleButton: {
-    width: 240,
-    height: 48,
-    alignSelf: "center",
-    marginTop: 16,
-  },
-  successText: {
-    fontSize: 16,
-    marginBottom: 8,
-    textAlign: "center",
-  },
-  userEmail: {
-    fontSize: 14,
-    marginBottom: 16,
-    fontStyle: "italic",
-    textAlign: "center",
-  },
   sectionContainer: {
     marginVertical: 20,
     width: "100%",
@@ -222,27 +195,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
     marginBottom: 10,
-  },
-  calendarItem: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    marginBottom: 5,
-  },
-  selectedItem: {
-    backgroundColor: "#e0e0e0",
-  },
-  calendarItemContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  calendarTitle: {
-    fontSize: 16,
-  },
-  tick: {
-    fontSize: 18,
   },
   eventItem: {
     padding: 10,

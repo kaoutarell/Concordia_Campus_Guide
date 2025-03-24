@@ -21,7 +21,8 @@ const CalendarScreen = ({ user, token, calendars }) => {
       iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
     });
 
-    const fetchBuildings = async () => {
+    const initializeData = async () => {
+      // Fetch buildings data
       try {
         const buildingsData = await getBuildings();
         const formattedBuildings = buildingsData.map(building => ({
@@ -33,50 +34,42 @@ const CalendarScreen = ({ user, token, calendars }) => {
       } catch (error) {
         console.error("Error fetching buildings:", error);
       }
+
+      // Load previously selected calendars from storage
+      try {
+        const storedCalendars = await AsyncStorage.getItem("selectedCalendars");
+        if (storedCalendars) {
+          setSelectedCalendars(JSON.parse(storedCalendars));
+        }
+      } catch (error) {
+        console.error("Failed to load selected calendars:", error);
+      }
+
+      // Attempt to restore a previous sign-in session
+      try {
+        const info = await GoogleSignin.signInSilently();
+        setUserInfo(info);
+        const tokens = await GoogleSignin.getTokens();
+        setAccessToken(tokens.accessToken);
+      } catch (error) {
+        console.log("No previous sign in or sign in expired.", error);
+      }
     };
 
-    fetchBuildings();
+    initializeData();
   }, []);
 
   const handleSelectCalendars = async calendars => {
+    setSelectedCalendars(calendars);
     try {
-      setSelectedCalendars(calendars);
       await AsyncStorage.setItem("selectedCalendars", JSON.stringify(calendars));
     } catch (error) {
       console.error("Failed to save selected calendars:", error);
     }
   };
 
-  useEffect(() => {
-    const loadSelectedCalendars = async () => {
-      try {
-        const stored = await AsyncStorage.getItem("selectedCalendars");
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setSelectedCalendars(parsed);
-        }
-      } catch (error) {
-        console.error("Failed to load selected calendars:", error);
-      }
-    };
-    loadSelectedCalendars();
-  }, []);
-
-  useEffect(() => {
-    const restoreSignIn = async () => {
-      try {
-        // Attempt to restore the previous session
-        const info = await GoogleSignin.signInSilently();
-        setUserInfo(info);
-        const tokens = await GoogleSignin.getTokens();
-        setAccessToken(tokens.accessToken);
-      } catch (error) {
-        // If there is no previous session, ignore the error.
-        console.log("No previous sign in or sign in expired.", error);
-      }
-    };
-    restoreSignIn();
-  }, []);
+  // Export for testing purposes
+  CalendarScreen.handleSelectCalendars = handleSelectCalendars;
 
   const signIn = async () => {
     try {
