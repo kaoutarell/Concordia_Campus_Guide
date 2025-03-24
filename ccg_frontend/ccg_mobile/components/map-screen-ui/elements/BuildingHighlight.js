@@ -27,7 +27,7 @@ const BuildingHighlight = () => {
   let currentBuilding;
   if (user_loc) {
     currentBuilding = buildingUserLocatedIn(user_loc.coords.latitude, user_loc.coords.longitude, concordiaGeoJson);
-  }else{
+  } else {
     currentBuilding = null;
   }
 
