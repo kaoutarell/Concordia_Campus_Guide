@@ -107,8 +107,8 @@ describe("IndoorMap Component", () => {
 
     // Wait for async calls and check if navigate was called with the correct arguments
     await waitFor(() => {
-      expect(getBuildings).toHaveBeenCalled();
-      expect(getPointOfInterests).toHaveBeenCalled();
+      expect(dataService.getBuildings).toHaveBeenCalled();
+      expect(dataService.getPointOfInterests).toHaveBeenCalled();
     });
 
     // Check the navigation call with expected parameters
