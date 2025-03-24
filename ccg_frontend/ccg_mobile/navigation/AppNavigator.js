@@ -9,7 +9,7 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 import IndoorScreen from "../screens/IndoorScreen";
-// import * as Clarity from "@microsoft/react-native-clarity";
+import * as Clarity from "@microsoft/react-native-clarity";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -28,7 +28,7 @@ const StackNavigator = () => {
 };
 
 const drawerContent = props => <Sidebar {...props} />;
-// const projectID = process.env.EXPO_PUBLIC_CLARITY_PROJECT_ID;
+const projectID = process.env.EXPO_PUBLIC_CLARITY_PROJECT_ID;
 
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {
@@ -38,22 +38,22 @@ export default function AppNavigator() {
   return (
     <NavigationContainer
       ref={navigationRef}
-      // onReady={() => {
-      //   routeNameRef.current = navigationRef.getCurrentRoute().name;
-      //   const clarityConfig = {
-      //     logLevel: Clarity.LogLevel.Verbose,
-      //   };
+      onReady={() => {
+        routeNameRef.current = navigationRef.getCurrentRoute().name;
+        const clarityConfig = {
+          logLevel: Clarity.LogLevel.Verbose,
+        };
 
-      //   Clarity.initialize(projectID, clarityConfig);
-      //   Clarity.setCurrentScreenName(routeNameRef.current);
-      // }}
+        Clarity.initialize(projectID, clarityConfig);
+        Clarity.setCurrentScreenName(routeNameRef.current);
+      }}
       onStateChange={() => {
         const previousRouteName = routeNameRef.current;
         const currentRouteName = navigationRef.getCurrentRoute().name;
 
         if (previousRouteName !== currentRouteName) {
           routeNameRef.current = currentRouteName;
-          // Clarity.setCurrentScreenName(currentRouteName);
+          Clarity.setCurrentScreenName(currentRouteName);
         }
       }}
     >
