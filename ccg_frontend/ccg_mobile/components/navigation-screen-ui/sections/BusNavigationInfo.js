@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Animated, SafeAreaView, ScrollView } from "react-native";
 import PropTypes from "prop-types";
 import locationService from "../../../services/LocationService";
-import { formatDuration } from "../../../utils/formatDuration";
+import { formatDuration } from "../../../utils/ParsingDuration";
 import { getUpcomingShuttles } from "../../../api/dataService";
 import DurationAndDistanceInfo from "../elements/DurationAndDistanceInfo";
 

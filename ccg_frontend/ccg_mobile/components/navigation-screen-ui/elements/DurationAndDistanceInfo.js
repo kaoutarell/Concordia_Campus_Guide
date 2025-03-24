@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { formatDuration } from "../../../utils/formatDuration";
+import { formatDuration } from "../../../utils/ParsingDuration";
 import React from "react";
 import PropTypes from "prop-types";
 
