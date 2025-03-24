@@ -1,4 +1,4 @@
-import { formatDuration } from "../utils/formatDuration";
+import { formatDuration } from "../utils/ParsingDuration";
 
 describe("formatDuration", () => {
   it("should return 'Now' for 0 seconds", () => {
