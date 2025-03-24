@@ -63,7 +63,7 @@ describe("BuildingHighlight", () => {
   it("renders highlighted building when user is inside one", () => {
     const { getAllByTestId } = render(<BuildingHighlight />);
     const geojsonLayers = getAllByTestId("geojson");
-    
+
     // First layer is the base map, second should be the highlight
     expect(geojsonLayers.length).toBe(2);
   });
@@ -74,7 +74,7 @@ describe("BuildingHighlight", () => {
     }));
     const { getAllByTestId } = render(<BuildingHighlight />);
     const geojsonLayers = getAllByTestId("geojson");
-    
+
     // Only the base layer should be rendered
     expect(geojsonLayers.length).toBe(1);
   });
