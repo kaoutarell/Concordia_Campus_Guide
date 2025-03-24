@@ -1,18 +1,18 @@
+from datetime import datetime, time
+from unittest.mock import patch
+
+import pytz
 from django.test import TestCase
 from django.urls import reverse
 from pytz import timezone
 from rest_framework.test import APIClient
 
 from ..models.shuttle import ShuttleSchedule, ShuttleStop
-
-from ..views.shuttle_views import get_sgw_coordinates
-
-from unittest.mock import patch
-
-from ..views.shuttle_views import get_closest_shuttle_stop, get_upcoming_shuttles
-
-from datetime import datetime, time
-import pytz
+from ..views.shuttle_views import (
+    get_closest_shuttle_stop,
+    get_sgw_coordinates,
+    get_upcoming_shuttles,
+)
 
 
 class ShuttleViewsTestCase(TestCase):

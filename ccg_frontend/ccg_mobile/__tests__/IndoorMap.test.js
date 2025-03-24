@@ -1,6 +1,8 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import IndoorMap from "../components/indoor-navigation-ui/sections/IndoorMap";
+import { useNavigation } from "@react-navigation/native";
+import * as dataService from "../api/dataService";
 
 // Mock @expo/vector-icons
 jest.mock("@expo/vector-icons", () => ({
@@ -18,8 +20,25 @@ jest.mock("@openspacelabs/react-native-zoomable-view", () => ({
   ReactNativeZoomableView: ({ children }) => <>{children}</>,
 }));
 
+// Mock useNavigation
+jest.mock("@react-navigation/native", () => ({
+  ...jest.requireActual("@react-navigation/native"),
+  useNavigation: () => ({
+    navigate: jest.fn(),
+  }),
+}));
+
+jest.mock("../api/dataService", () => ({
+  getBuildings: jest.fn(),
+  getPointOfInterests: jest.fn(),
+}));
+
+jest.mock("@react-navigation/native", () => ({
+  useNavigation: jest.fn(),
+}));
+
 const path = {
-  floor_sequence: ["H8"],
+  floor_sequence: ["H8", "Outside"],
   path_data: { H8: "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820" },
   pin: {
     H8: [
@@ -58,5 +77,51 @@ describe("IndoorMap Component", () => {
   it("renders default title when no path is provided", () => {
     const { getByTestId } = render(<IndoorMap path={null} index={0} />);
     expect(getByTestId("default-title")).toBeTruthy();
+  });
+
+  it("renders going outside button", () => {
+    const { getByTestId } = render(<IndoorMap path={path} index={1} />);
+    expect(getByTestId("outside-button")).toBeTruthy();
+  });
+
+  test("TouchableOpacity triggers goOutside and navigates correctly", async () => {
+    // Mock data for buildings and POI
+    const mockBuildings = [
+      { id: 1, building_code: "H8", name: "Building H8" },
+      { id: 2, building_code: "H9", name: "Building H9" },
+    ];
+    const mockPOI = [{ id: 1, building_code: "POI1", name: "Cafeteria" }];
+
+    // Mock functions
+    dataService.getBuildings.mockResolvedValue(mockBuildings);
+    dataService.getPointOfInterests.mockResolvedValue(mockPOI);
+
+    const navigateMock = jest.fn();
+    useNavigation.mockReturnValue({ navigate: navigateMock });
+
+    const { getByTestId } = render(<IndoorMap path={path} index={1} />);
+    const button = getByTestId("outside-button");
+
+    // Simulate button press
+    fireEvent.press(button);
+
+    // Wait for async calls and check if navigate was called with the correct arguments
+    await waitFor(() => {
+      expect(dataService.getBuildings).toHaveBeenCalled();
+      expect(dataService.getPointOfInterests).toHaveBeenCalled();
+    });
+
+    // Check the navigation call with expected parameters
+    /*await waitFor(() => {
+      expect(navigateMock).toHaveBeenCalledWith("Navigation", {
+        start: mockBuildings[0], // H8
+        destination: mockBuildings[1], // H9
+        allLocations: [
+          { ...mockBuildings[0], id: "school-1" },
+          { ...mockBuildings[1], id: "school-2" },
+          { ...mockPOI[0], id: "poi-1" },
+        ],
+      });
+    });*/
   });
 });

@@ -3,17 +3,18 @@ from django.contrib.gis.geos import Point
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from rest_framework.decorators import api_view
+
+from ..exceptions.exceptions import (
+    BuildingNotFoundError,
+    InvalidCoordinatesError,
+    ShuttleStopNotFoundError,
+)
 from ..models.building import Building
 from ..models.shuttle import ShuttleStop
 from ..utils.direction_api_utils import (
     compute_bbox_from_steps,
     ors_directions,
     otp_directions,
-)
-from ..exceptions.exceptions import (
-    InvalidCoordinatesError,
-    BuildingNotFoundError,
-    ShuttleStopNotFoundError,
 )
 
 

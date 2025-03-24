@@ -14,6 +14,12 @@ const IndoorNavigationScreen = () => {
   const [path, setPath] = useState(null);
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
+  const [showAccessibleRoute, setShowAccessibleRoute] = useState(false);
+
+  //reset floorIndex when getting new directions
+  useEffect(() => {
+    setFloorIndex(0);
+  }, [path]);
 
   // Fetch buildings from the API
   useEffect(() => {
@@ -65,11 +71,11 @@ const IndoorNavigationScreen = () => {
       console.log("Fetching path between", start, "and", destination);
 
       // fetch the path data only when the button is pressed
-      const pathData = await getIndoorDirections("foot-walking", start, destination);
+      const pathData = await getIndoorDirections(showAccessibleRoute, start, destination);
       console.log(pathData);
       setPath(pathData); // set the path data
       if (path != "") {
-        setFloorIndexMax(path["floor_sequence"].length - 1);
+        setFloorIndexMax(pathData["floor_sequence"].length - 1);
       }
     } catch (error) {
       console.error("Error fetching path:", error);
@@ -93,11 +99,13 @@ const IndoorNavigationScreen = () => {
         path={path} // path data to IndoorMap
         index={floorIndex}
       />
-      <FloorChangeButton index={floorIndex} maxIndex={floorIndexMax} setIndex={setFloorIndex} />
+      <FloorChangeButton currentFloor={floorIndex} maxFloor={floorIndexMax} setFloor={setFloorIndex} />
       <IndoorNavigationFooter
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}
         destinationAddress={destination}
+        showAccessibleRoute={showAccessibleRoute}
+        setShowAccessibleRoute={setShowAccessibleRoute}
       />
     </View>
   );

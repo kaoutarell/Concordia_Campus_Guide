@@ -2,9 +2,14 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import IndoorNavigationFooter from "../components/indoor-navigation-ui/sections/IndoorNavigationFooter";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 // Mock the Icon component
 jest.mock("react-native-vector-icons/FontAwesome", () => "Icon");
+
+jest.mock("@react-navigation/native", () => ({
+  useNavigation: jest.fn(),
+}));
 
 describe("IndoorNavigationFooter", () => {
   const mockOnShowDirections = jest.fn();
