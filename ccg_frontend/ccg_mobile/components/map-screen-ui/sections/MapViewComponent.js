@@ -27,6 +27,7 @@ const MapViewComponentImpl = ({
   const [showPopup, setShowPopup] = useState(false);
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
+  const [startLocation, setStartLocation] = useState(null);
 
   const handleRegionChange = region => {
     if (Platform.OS == "android") {
@@ -44,7 +45,7 @@ const MapViewComponentImpl = ({
 
   const onGoToLocation = location => {
     navigation.navigate("Navigation", {
-      start: null,
+      start: startLocation ? startLocation : currentLocation,
       destination: location,
       allLocations: [
         ...locations.map(item => ({ ...item, id: `school-${item.id}` })),
@@ -210,7 +211,13 @@ const MapViewComponentImpl = ({
 
       {showPopup && selectedMarker !== null && (
         <View style={styles.popupWrapper}>
-          <InfoPopup value={selectedMarker} onClose={() => setSelectedMarker(null)} onGo={onGoToLocation} />
+          <InfoPopup
+            value={selectedMarker}
+            onClose={() => setSelectedMarker(null)}
+            onGo={onGoToLocation}
+            startLocation={startLocation}
+            setStartLocation={setStartLocation}
+          />
         </View>
       )}
 
