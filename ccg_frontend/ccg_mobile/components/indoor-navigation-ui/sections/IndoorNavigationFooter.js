@@ -2,9 +2,15 @@ import React from "react";
 import { Text, TouchableOpacity, Animated, SafeAreaView, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/FontAwesome";
-import DisabledButton from "../elements/DisabledButton";
+import AccessibleRouteButton from "../elements/AccessibilityButton";
 
-const IndoorNavigationFooter = ({ onShowDirections, startAddress, destinationAddress, isDisabled, setDisabled }) => {
+const IndoorNavigationFooter = ({
+  onShowDirections,
+  startAddress,
+  destinationAddress,
+  showAccessibleRoute,
+  setShowAccessibleRoute,
+}) => {
   const [fadeIn] = React.useState(new Animated.Value(0));
 
   React.useEffect(() => {
@@ -29,7 +35,11 @@ const IndoorNavigationFooter = ({ onShowDirections, startAddress, destinationAdd
               Get Direction
             </Text>
           </TouchableOpacity>
-          <DisabledButton isDisabled={isDisabled} setDisabled={setDisabled} onShowDirections={onPress} />
+          <AccessibleRouteButton
+            showAccessibleRoute={showAccessibleRoute}
+            setShowAccessibleRoute={setShowAccessibleRoute}
+            onShowDirections={onPress}
+          />
         </View>
       </Animated.View>
     </SafeAreaView>
@@ -40,8 +50,8 @@ IndoorNavigationFooter.propTypes = {
   onShowDirections: PropTypes.func.isRequired,
   startAddress: PropTypes.string.isRequired,
   destinationAddress: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-  setDisabled: PropTypes.func,
+  showAccessibleRoute: PropTypes.bool,
+  setShowAccessibleRoute: PropTypes.func,
 };
 
 export default IndoorNavigationFooter;

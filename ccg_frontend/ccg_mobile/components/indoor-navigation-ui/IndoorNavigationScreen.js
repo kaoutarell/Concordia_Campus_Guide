@@ -14,7 +14,7 @@ const IndoorNavigationScreen = () => {
   const [path, setPath] = useState(null);
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
-  const [disabled, setDisabled] = useState(false);
+  const [showAccessibleRoute, setShowAccessibleRoute] = useState(false);
 
   //reset floorIndex when getting new directions
   useEffect(() => {
@@ -71,7 +71,7 @@ const IndoorNavigationScreen = () => {
       console.log("Fetching path between", start, "and", destination);
 
       // fetch the path data only when the button is pressed
-      const pathData = await getIndoorDirections(disabled, start, destination);
+      const pathData = await getIndoorDirections(showAccessibleRoute, start, destination);
       console.log(pathData);
       setPath(pathData); // set the path data
       if (path != "") {
@@ -104,8 +104,8 @@ const IndoorNavigationScreen = () => {
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}
         destinationAddress={destination}
-        isDisabled={disabled}
-        setDisabled={setDisabled}
+        showAccessibleRoute={showAccessibleRoute}
+        setShowAccessibleRoute={setShowAccessibleRoute}
       />
     </View>
   );

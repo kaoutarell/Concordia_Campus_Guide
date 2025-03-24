@@ -3,20 +3,20 @@ import React from "react";
 import { TouchableOpacity, StyleSheet, View, Image } from "react-native";
 import wheelchair from "../../../assets/wheelchair.png";
 
-const DisabledButton = ({ isDisabled, setDisabled, onShowDirections }) => {
+const AccessibleRouteButton = ({ showAccessibleRoute, setShowAccessibleRoute, onShowDirections }) => {
   const onPress = () => {
-    setDisabled(!isDisabled);
+    setShowAccessibleRoute(!showAccessibleRoute);
     onShowDirections();
   };
 
   return (
     <View>
-      {!isDisabled && (
+      {!showAccessibleRoute && (
         <TouchableOpacity style={styles.buttonFalse} onPress={onPress}>
           <Image source={wheelchair} style={{ width: "150%", height: "150%", tintColor: "white" }} />
         </TouchableOpacity>
       )}
-      {isDisabled && (
+      {showAccessibleRoute && (
         <TouchableOpacity style={styles.buttonTrue} onPress={onPress}>
           <Image source={wheelchair} style={{ width: "150%", height: "150%", tintColor: "black" }} />
         </TouchableOpacity>
@@ -25,9 +25,9 @@ const DisabledButton = ({ isDisabled, setDisabled, onShowDirections }) => {
   );
 };
 
-DisabledButton.propTypes = {
-  isDisabled: PropTypes.bool,
-  setDisabled: PropTypes.func,
+AccessibleRouteButton.propTypes = {
+  showAccessibleRoute: PropTypes.bool,
+  setShowAccessibleRoute: PropTypes.func,
   onShowDirections: PropTypes.func,
 };
 
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
-export default DisabledButton;
+export default AccessibleRouteButton;
