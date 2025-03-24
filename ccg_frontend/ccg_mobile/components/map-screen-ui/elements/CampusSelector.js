@@ -17,7 +17,6 @@ const CampusSelector = ({ selectedCampus = "SGW", onCampusSelect, compact = fals
 
   const toggleCampus = () => onCampusSelect(selectedCampus === "SGW" ? "LOY" : "SGW");
 
-
   if (compact) {
     return (
       <TouchableOpacity
