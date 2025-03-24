@@ -1,22 +1,65 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GoogleSignin, GoogleSigninButton, statusCodes } from "@react-native-google-signin/google-signin";
 import EventsList from "./sections/EventsList";
 import CalendarsList from "./sections/CalendarsList";
+import { getBuildings } from "../../api/dataService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CalendarScreen = ({ user, token, calendars }) => {
   const [userInfo, setUserInfo] = useState(user || null);
   const [accessToken, setAccessToken] = useState(token || null);
   const [isSigninInProgress, setIsSigninInProgress] = useState(false);
   const [selectedCalendars, setSelectedCalendars] = useState(calendars || []);
+  const [buildings, setBuildings] = useState([]);
 
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ["https://www.googleapis.com/auth/calendar.readonly", "openid", "profile", "email"],
       iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
     });
+
+    const fetchBuildings = async () => {
+      try {
+        const buildingsData = await getBuildings();
+        const formattedBuildings = buildingsData.map(building => ({
+          campus: building.campus,
+          name: building.name,
+          code: building.building_code,
+        }));
+        setBuildings(formattedBuildings);
+      } catch (error) {
+        console.error("Error fetching buildings:", error);
+      }
+    };
+
+    fetchBuildings();
+  }, []);
+
+  const handleSelectCalendars = async calendars => {
+    try {
+      setSelectedCalendars(calendars);
+      await AsyncStorage.setItem("selectedCalendars", JSON.stringify(calendars));
+    } catch (error) {
+      console.error("Failed to save selected calendars:", error);
+    }
+  };
+
+  useEffect(() => {
+    const loadSelectedCalendars = async () => {
+      try {
+        const stored = await AsyncStorage.getItem("selectedCalendars");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          setSelectedCalendars(parsed);
+        }
+      } catch (error) {
+        console.error("Failed to load selected calendars:", error);
+      }
+    };
+    loadSelectedCalendars();
   }, []);
 
   useEffect(() => {
@@ -90,15 +133,14 @@ const CalendarScreen = ({ user, token, calendars }) => {
           <CalendarsList
             accessToken={accessToken}
             selectedCalendars={selectedCalendars}
-            onSelectCalendar={setSelectedCalendars}
+            onSelectCalendar={handleSelectCalendars}
           />
-          <EventsList accessToken={accessToken} selectedCalendars={selectedCalendars} />
+          <EventsList accessToken={accessToken} selectedCalendars={selectedCalendars} buildings={buildings} />
         </View>
       )}
     </SafeAreaView>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {

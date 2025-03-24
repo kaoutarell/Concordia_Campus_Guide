@@ -12,6 +12,24 @@ jest.mock("react-native-safe-area-context", () => {
   };
 });
 
+// Mock AsyncStorage
+jest.mock("@react-native-async-storage/async-storage", () => ({
+  setItem: jest.fn(() => Promise.resolve()),
+  getItem: jest.fn(() => Promise.resolve(null)),
+  removeItem: jest.fn(() => Promise.resolve()),
+  clear: jest.fn(() => Promise.resolve()),
+}));
+
+// Mock useNavigation for EventsList component
+jest.mock("@react-navigation/native", () => {
+  return {
+    ...jest.requireActual("@react-navigation/native"),
+    useNavigation: () => ({
+      navigate: jest.fn(),
+    }),
+  };
+});
+
 // Mock Google Sign-in
 jest.mock("@react-native-google-signin/google-signin", () => {
   const { TouchableOpacity, Text } = require("react-native");
@@ -274,7 +292,9 @@ describe("CalendarScreen Component", () => {
     });
 
     // Render with user already signed in via test props
-    let { getByText, queryByTestId } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
+    let { getByText, queryByTestId } = render(
+      <CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />
+    );
 
     // Verify signed-in state is displayed
     expect(getByText("Connected to Google Calendar!")).toBeTruthy();
@@ -518,7 +538,9 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in and calendar selected
-      const { findByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />);
+      const { findByText } = render(
+        <CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />
+      );
 
       // Verify events API was called
       expect(fetch).toHaveBeenCalledWith(

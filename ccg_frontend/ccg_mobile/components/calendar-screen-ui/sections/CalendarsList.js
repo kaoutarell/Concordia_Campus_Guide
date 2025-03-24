@@ -61,7 +61,6 @@ const CalendarsList = ({ accessToken, selectedCalendars, onSelectCalendar }) => 
   );
 };
 
-
 CalendarsList.propTypes = {
   accessToken: PropTypes.string,
   selectedCalendars: PropTypes.array,

@@ -23,7 +23,8 @@ describe("IndoorNavigationScreen", () => {
   });
 
   it("renders correctly", () => {
-    const { getByTestId } = render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    const { getByTestId } = render(<IndoorNavigationScreen route={mockRoute} />);
     expect(getByTestId("indoor-navigation-screen")).toBeTruthy();
   });
 
@@ -34,7 +35,8 @@ describe("IndoorNavigationScreen", () => {
     ];
     getBuildings.mockResolvedValue(mockBuildings);
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -58,7 +60,8 @@ describe("IndoorNavigationScreen", () => {
     ];
     getBuildings.mockResolvedValue(mockBuildings);
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -82,7 +85,8 @@ describe("IndoorNavigationScreen", () => {
     const mockBuildings = [{ id: "1", name: "Henry F. Hall Building" }];
     getBuildings.mockResolvedValue(mockBuildings);
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -117,11 +121,12 @@ describe("IndoorNavigationScreen", () => {
 
   it("handles showing directions when start and destination are provided", async () => {
     const mockBuildings = [{ id: "1", name: "Henry F. Hall Building" }];
-    const mockPath = { steps: ["Step 1", "Step 2"] };
+    const mockPath = { steps: ["Step 1", "Step 2"], floor_sequence: ["Floor 1", "Floor 2"] };
     getBuildings.mockResolvedValue(mockBuildings);
     getIndoorDirections.mockResolvedValue(mockPath);
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -155,7 +160,8 @@ describe("IndoorNavigationScreen", () => {
     const mockBuildings = [{ id: "1", name: "Henry F. Hall Building" }];
     getBuildings.mockResolvedValue(mockBuildings);
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -176,7 +182,8 @@ describe("IndoorNavigationScreen", () => {
 
     const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
@@ -193,7 +200,8 @@ describe("IndoorNavigationScreen", () => {
 
     const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
 
-    render(<IndoorNavigationScreen />);
+    const mockRoute = { params: {} };
+    render(<IndoorNavigationScreen route={mockRoute} />);
 
     await waitFor(() => {
       expect(getBuildings).toHaveBeenCalledTimes(1);
