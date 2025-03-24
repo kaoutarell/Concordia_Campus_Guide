@@ -23,15 +23,15 @@ const IndoorMap = ({ path, index }) => {
   }, [index]);
 
   const goOutside = async () => {
-    buildings = await getBuildings();
-    poi = await getPointOfInterests();
-    startLocation = null;
-    destinationLocation = null;
-    startBuildingCode = path["floor_sequence"][0]
+    let buildings = await getBuildings();
+    let poi = await getPointOfInterests();
+    let startLocation = null;
+    let destinationLocation = null;
+    let startBuildingCode = path["floor_sequence"][0]
       .split("")
       .filter(char => isNaN(char))
       .join("");
-    destinationBuildingCode = path["floor_sequence"]
+    let destinationBuildingCode = path["floor_sequence"]
       .at(-1)
       .split("")
       .filter(char => isNaN(char))

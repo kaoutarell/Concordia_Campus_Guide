@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, View, Image } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Image } from "react-native";
 import wheelchair from "../../../assets/wheelchair.png";
 
 const DisabledButton = ({ isDisabled, setDisabled, onShowDirections }) => {
@@ -11,12 +11,12 @@ const DisabledButton = ({ isDisabled, setDisabled, onShowDirections }) => {
 
   return (
     <View>
-      {isDisabled == false && (
+      {!isDisabled && (
         <TouchableOpacity style={styles.buttonFalse} onPress={onPress}>
           <Image source={wheelchair} style={{ width: "150%", height: "150%", tintColor: "white" }} />
         </TouchableOpacity>
       )}
-      {isDisabled == true && (
+      {isDisabled && (
         <TouchableOpacity style={styles.buttonTrue} onPress={onPress}>
           <Image source={wheelchair} style={{ width: "150%", height: "150%", tintColor: "black" }} />
         </TouchableOpacity>
@@ -28,6 +28,7 @@ const DisabledButton = ({ isDisabled, setDisabled, onShowDirections }) => {
 DisabledButton.propTypes = {
   isDisabled: PropTypes.bool,
   setDisabled: PropTypes.func,
+  onShowDirections: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
