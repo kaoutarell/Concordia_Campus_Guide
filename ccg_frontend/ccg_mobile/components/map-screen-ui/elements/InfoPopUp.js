@@ -1,10 +1,25 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import PropTypes from "prop-types";
+import DirectionsButton from "./DirectionsButton";
 
-const InfoPopup = ({ value, onClose, onGo }) => {
+const InfoPopup = ({ value, onClose, onGo, startLocation, setStartLocation }) => {
+  const handleSelect = option => {
+    if (option === "start") {
+      // if the same location is selected, unselect it
+      if (startLocation && startLocation.id === value.id) {
+        setStartLocation(null);
+      } else {
+        setStartLocation(value);
+      }
+      // close the popup
+      onClose();
+    } else if (option === "destination") {
+      onGo(value);
+    }
+  };
+
   return (
     <View style={styles.popupContainer}>
       <TouchableOpacity onPress={onClose} style={styles.closeIcon} testID="close-popup-button">
@@ -73,10 +88,11 @@ const InfoPopup = ({ value, onClose, onGo }) => {
         )}
       </View>
 
-      <TouchableOpacity onPress={() => onGo(value)} style={styles.directionsButton} testID="get-directions-button">
+      {/* <TouchableOpacity onPress={() => onGo(value)} style={styles.directionsButton} testID="get-directions-button">
         <FontAwesome5 name="directions" size={20} color="white" />
         <Text style={styles.directionsText}>Get Directions</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <DirectionsButton handleSelect={handleSelect} value={value} startLocation={startLocation} />
     </View>
   );
 };
