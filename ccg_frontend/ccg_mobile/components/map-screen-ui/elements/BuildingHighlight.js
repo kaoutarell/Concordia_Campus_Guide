@@ -24,7 +24,12 @@ const buildingUserLocatedIn = (lat, lon, geojson, bufferMeters = 5) => {
 const BuildingHighlight = () => {
   // Get user location
   const user_loc = locationService.getCurrentLocation();
-  const currentBuilding = buildingUserLocatedIn(user_loc.coords.latitude, user_loc.coords.longitude, concordiaGeoJson);
+  let currentBuilding;
+  if (user_loc) {
+    currentBuilding = buildingUserLocatedIn(user_loc.coords.latitude, user_loc.coords.longitude, concordiaGeoJson);
+  }else{
+    currentBuilding = null;
+  }
 
   return (
     <>
