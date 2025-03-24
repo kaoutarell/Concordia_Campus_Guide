@@ -46,7 +46,6 @@ const IndoorNavigationHeader = ({
           testID="indoor-dropdown"
         />
       </View>
-
       <NavigationSearch
         startAddress={startAddress}
         destinationAddress={destinationAddress}

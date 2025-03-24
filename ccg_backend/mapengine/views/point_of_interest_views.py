@@ -1,5 +1,6 @@
 from django.contrib.gis.db.models.functions import Distance
 from django.contrib.gis.geos import Point
+from django.db.models import Q
 from django.views.decorators.http import require_http_methods
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -7,7 +8,6 @@ from rest_framework.response import Response
 
 from ..models import PointOfInterest
 from ..serializers import PointOfInterestSerializer
-from django.db.models import Q
 
 
 @api_view(["GET"])
