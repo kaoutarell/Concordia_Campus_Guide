@@ -1,11 +1,13 @@
 export const formatDuration = (seconds) => {
   if (seconds <= 0) return "Now";
 
-  const days = Math.floor(seconds / 86400);
-  seconds %= 86400;
-  const hours = Math.floor(seconds / 3600);
-  seconds %= 3600;
-  const minutes = Math.floor(seconds / 60);
+  const days = calculateDays(seconds);
+  seconds = remainingSecondsAfterDays(seconds);
+
+  const hours = calculateHours(seconds);
+  seconds = remainingSecondsAfterHours(seconds);
+
+  const minutes = calculateMinutes(seconds);
 
   const parts = [];
   addTimePart(parts, days, "day");
@@ -15,6 +17,16 @@ export const formatDuration = (seconds) => {
   return parts.join(", ");
 };
 
+// Extracted methods for calculations
+const calculateDays = (seconds) => Math.floor(seconds / 86400);
+const remainingSecondsAfterDays = (seconds) => seconds % 86400;
+
+const calculateHours = (seconds) => Math.floor(seconds / 3600);
+const remainingSecondsAfterHours = (seconds) => seconds % 3600;
+
+const calculateMinutes = (seconds) => Math.floor(seconds / 60);
+
+// Extracted method for adding parts
 const addTimePart = (parts, value, unit) => {
   if (value > 0) {
     parts.push(`${value} ${unit}${value !== 1 ? "s" : ""}`);
