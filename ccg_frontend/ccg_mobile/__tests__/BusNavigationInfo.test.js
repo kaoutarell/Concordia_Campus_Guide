@@ -64,7 +64,7 @@ jest.mock("../api/dataService", () => ({
 }));
 
 // Mock formatDuration utility
-jest.mock("../utils", () => ({
+jest.mock("../utils/PasingDuration", () => ({
   formatDuration: jest.fn().mockImplementation(seconds => {
     const minutes = Math.floor(seconds / 60);
     return `${minutes} min`;
