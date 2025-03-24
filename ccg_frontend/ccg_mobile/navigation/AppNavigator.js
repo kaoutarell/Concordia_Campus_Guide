@@ -9,7 +9,7 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
 import IndoorScreen from "../screens/IndoorScreen";
-import CalendarScreen from "../screens/CalendarScreen";
+import CalendarScreen from "../components/calendar-screen-ui/CalendarScreen";
 import * as Clarity from "@microsoft/react-native-clarity";
 
 const Drawer = createDrawerNavigator();

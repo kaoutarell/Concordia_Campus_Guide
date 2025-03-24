@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, act, waitFor } from "@testing-library/react-native";
-import CalendarScreen from "../screens/CalendarScreen";
+import CalendarScreen from "../components/calendar-screen-ui/CalendarScreen";
 
 // Mock react-native-safe-area-context
 jest.mock("react-native-safe-area-context", () => {
@@ -260,11 +260,11 @@ describe("CalendarScreen Component", () => {
     };
 
     // Setup initial signed-in state with test props
-    const testProps = {
-      userInfo: mockUserInfo,
-      accessToken: "test-token",
-      selectedCalendars: [],
-    };
+    // const testProps = {
+    //   userInfo: mockUserInfo,
+    //   accessToken: "test-token",
+    //   selectedCalendars: [],
+    // };
 
     // Mock calendar list API
     fetch.mockResolvedValueOnce({
@@ -274,7 +274,7 @@ describe("CalendarScreen Component", () => {
     });
 
     // Render with user already signed in via test props
-    let { getByText, queryByTestId } = render(<CalendarScreen testProps={testProps} />);
+    let { getByText, queryByTestId } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
     // Verify signed-in state is displayed
     expect(getByText("Connected to Google Calendar!")).toBeTruthy();
@@ -300,10 +300,17 @@ describe("CalendarScreen Component", () => {
     GoogleSignin.revokeAccess.mockRejectedValueOnce(new Error("Sign out error"));
 
     // Setup initial signed-in state with test props
-    const testProps = {
-      userInfo: { data: { user: { email: "test@example.com" } } },
-      accessToken: "test-token",
-      selectedCalendars: [],
+    // const testProps = {
+    //   userInfo: { data: { user: { email: "test@example.com" } } },
+    //   accessToken: "test-token",
+    //   selectedCalendars: [],
+    // };
+    const mockUserInfo = {
+      data: {
+        user: {
+          email: "test@example.com",
+        },
+      },
     };
 
     // Mock calendar list API
@@ -314,7 +321,7 @@ describe("CalendarScreen Component", () => {
     });
 
     // Render with user already signed in via test props
-    let { getByText } = render(<CalendarScreen testProps={testProps} />);
+    let { getByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
     // Trigger sign out
     const signOutButton = getByText("Sign Out");
@@ -329,10 +336,17 @@ describe("CalendarScreen Component", () => {
   describe("CalendarsList component", () => {
     it("fetches and displays calendars", async () => {
       // Setup test props with signed-in state
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: [],
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: [],
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -345,11 +359,11 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in
-      let { findByText } = render(<CalendarScreen testProps={testProps} />);
+      let { findByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
       // Check calendar fetch API was called
       expect(fetch).toHaveBeenCalledWith("https://www.googleapis.com/calendar/v3/users/me/calendarList", {
-        headers: { Authorization: `Bearer ${testProps.accessToken}` },
+        headers: { Authorization: `Bearer test-token` },
       });
 
       // Verify primary calendar is displayed (not checking for Work Calendar since it might not render in test)
@@ -358,10 +372,17 @@ describe("CalendarScreen Component", () => {
 
     it("handles calendar selection and deselection", async () => {
       // Setup test props with signed-in state
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: [],
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: [],
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -379,7 +400,7 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in
-      let { findByText } = render(<CalendarScreen testProps={testProps} />);
+      let { findByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
       // Find and select a calendar
       const calendarItem = await findByText("Primary Calendar");
@@ -406,17 +427,24 @@ describe("CalendarScreen Component", () => {
 
     it("handles calendar fetch error", async () => {
       // Setup test props with signed-in state
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: [],
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: [],
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API with error
       fetch.mockRejectedValueOnce(new Error("Network error"));
 
       // Render with user already signed in
-      render(<CalendarScreen testProps={testProps} />);
+      render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
       // Add a small delay to ensure the error handling has time to execute
       await act(async () => {
@@ -431,10 +459,17 @@ describe("CalendarScreen Component", () => {
   describe("EventsList component", () => {
     it("handles no selected calendars", async () => {
       // Setup test props with signed-in state but no selected calendars
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: [],
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: [],
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -443,7 +478,7 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in
-      let { findByText } = render(<CalendarScreen testProps={testProps} />);
+      let { findByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={[]} />);
 
       // Verify no events message is displayed
       await findByText("No events to display.");
@@ -452,10 +487,17 @@ describe("CalendarScreen Component", () => {
     it("fetches and displays events from selected calendars", async () => {
       // Setup test props with signed-in state and a selected calendar
       const selectedCalendars = [{ id: "cal1", summary: "Primary Calendar" }];
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: selectedCalendars,
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: selectedCalendars,
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -476,7 +518,7 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in and calendar selected
-      const { findByText } = render(<CalendarScreen testProps={testProps} />);
+      const { findByText } = render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />);
 
       // Verify events API was called
       expect(fetch).toHaveBeenCalledWith(
@@ -495,10 +537,17 @@ describe("CalendarScreen Component", () => {
     it("handles events with date-only start times", async () => {
       // Setup test props with signed-in state and a selected calendar
       const selectedCalendars = [{ id: "cal1", summary: "Primary Calendar" }];
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: selectedCalendars,
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: selectedCalendars,
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -519,7 +568,7 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in and calendar selected
-      render(<CalendarScreen testProps={testProps} />);
+      render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />);
 
       // Verify API was called with the right parameters
       expect(fetch).toHaveBeenCalledWith(
@@ -536,10 +585,17 @@ describe("CalendarScreen Component", () => {
         { id: "cal1", summary: "Primary Calendar" },
         { id: "cal2", summary: "Work Calendar" },
       ];
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: selectedCalendars,
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: selectedCalendars,
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -572,7 +628,7 @@ describe("CalendarScreen Component", () => {
       });
 
       // Render with user already signed in and calendars selected
-      render(<CalendarScreen testProps={testProps} />);
+      render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />);
 
       // Verify that both calendar APIs were called
       await waitFor(() => {
@@ -590,10 +646,17 @@ describe("CalendarScreen Component", () => {
     it("handles events fetch error", async () => {
       // Setup test props with signed-in state and a selected calendar
       const selectedCalendars = [{ id: "cal1", summary: "Primary Calendar" }];
-      const testProps = {
-        userInfo: { data: { user: { email: "test@example.com" } } },
-        accessToken: "test-token",
-        selectedCalendars: selectedCalendars,
+      // const testProps = {
+      //   userInfo: { data: { user: { email: "test@example.com" } } },
+      //   accessToken: "test-token",
+      //   selectedCalendars: selectedCalendars,
+      // };
+      const mockUserInfo = {
+        data: {
+          user: {
+            email: "test@example.com",
+          },
+        },
       };
 
       // Mock calendar list API
@@ -605,7 +668,7 @@ describe("CalendarScreen Component", () => {
       fetch.mockRejectedValueOnce(new Error("Network error"));
 
       // Render with user already signed in and calendar selected
-      render(<CalendarScreen testProps={testProps} />);
+      render(<CalendarScreen user={mockUserInfo} token={"test-token"} calendars={selectedCalendars} />);
 
       // Add a small delay to ensure the error handling has time to execute
       await act(async () => {
