@@ -1,4 +1,4 @@
-import { 
+import {
   formatDuration,
   calculateDays,
   remainingSecondsAfterDays,

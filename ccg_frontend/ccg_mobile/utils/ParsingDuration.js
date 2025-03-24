@@ -1,4 +1,4 @@
-export const formatDuration = (seconds) => {
+export const formatDuration = seconds => {
   if (seconds <= 0) return "Now";
 
   const days = calculateDays(seconds);
@@ -18,13 +18,13 @@ export const formatDuration = (seconds) => {
 };
 
 // Extracted methods for calculations
-export const calculateDays = (seconds) => Math.floor(seconds / 86400);
-export const remainingSecondsAfterDays = (seconds) => seconds % 86400;
+export const calculateDays = seconds => Math.floor(seconds / 86400);
+export const remainingSecondsAfterDays = seconds => seconds % 86400;
 
-export const calculateHours = (seconds) => Math.floor(seconds / 3600);
-export const remainingSecondsAfterHours = (seconds) => seconds % 3600;
+export const calculateHours = seconds => Math.floor(seconds / 3600);
+export const remainingSecondsAfterHours = seconds => seconds % 3600;
 
-export const calculateMinutes = (seconds) => Math.floor(seconds / 60);
+export const calculateMinutes = seconds => Math.floor(seconds / 60);
 
 // Extracted method for adding parts
 export const addTimePart = (parts, value, unit) => {
