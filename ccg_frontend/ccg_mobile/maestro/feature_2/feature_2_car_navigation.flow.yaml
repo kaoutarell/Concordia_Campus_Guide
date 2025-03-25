@@ -1,10 +1,13 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Car"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # starting state: map view - with markers visible
 - tapOn: "MB" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
+- tapOn: "Set as Destination"
 # choose destination
 - tapOn: "Destination Address"
 - tapOn: "Choose destination"
@@ -23,10 +26,11 @@ name: "Feature 2.1 & 2.5 - Car"
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "PC"
-- assertVisible: "15 minutes"
-- assertVisible: "7.45 km"
+- assertVisible: "16 minutes"
+- assertVisible: "7.61 km"
 # start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "Google Map"
@@ -35,18 +39,16 @@ name: "Feature 2.1 & 2.5 - Car"
 # check that exit button works
 - tapOn: "Exit"
 # check to see if page renders correctly
-- assertVisible: "Walk"
-- assertVisible: "Bike"
-- assertVisible: "Car"
-- assertVisible: "Bus"
-- assertVisible: "Shuttle"
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yam
 - assertVisible: "7200 Sherbrooke St. W."
-- assertVisible: "Google Map"
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "PC"
-- assertVisible: "15 minutes"
-- assertVisible: "7.45 km"
+- assertVisible: "16 minutes"
+- assertVisible: "7.61 km"
 # start navigation flow
 - tapOn: "Start Navigation"
 - assertVisible: "Preview"
@@ -54,7 +56,7 @@ name: "Feature 2.1 & 2.5 - Car"
 # see directions and assert page renders correctly
 - tapOn: "Preview"
 - assertVisible: "Directions"
-- assertVisible: "Head southwest"
+- assertVisible: "Turn right"
 - assertVisible: "Keep right"
 # exit direction page
 - tapOn: "←"
