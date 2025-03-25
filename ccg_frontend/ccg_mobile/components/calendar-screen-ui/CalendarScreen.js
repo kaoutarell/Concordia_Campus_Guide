@@ -110,26 +110,26 @@ const CalendarScreen = ({ user, token, calendars }) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Class Schedule</Text>
       {userInfo?.data ? (
-          <View style={styles.contentContainer}>
-            <Text style={styles.successText}>Connected to Google Calendar!</Text>
-            <Text style={styles.userEmail}>Signed in as: {userInfo.data.user?.email}</Text>
-            <Button title="Sign Out" onPress={signOut} />
-            <CalendarsList
-                accessToken={accessToken}
-                selectedCalendars={selectedCalendars}
-                onSelectCalendar={handleSelectCalendars}
-            />
-            <EventsList accessToken={accessToken} selectedCalendars={selectedCalendars} buildings={buildings} />
-          </View>
-      ) : (
-          <GoogleSigninButton
-              size={GoogleSigninButton.Size.Wide}
-              color={GoogleSigninButton.Color.Dark}
-              onPress={signIn}
-              disabled={isSigninInProgress}
-              style={styles.googleButton}
-              testID="googleSignInButton"
+        <View style={styles.contentContainer}>
+          <Text style={styles.successText}>Connected to Google Calendar!</Text>
+          <Text style={styles.userEmail}>Signed in as: {userInfo.data.user?.email}</Text>
+          <Button title="Sign Out" onPress={signOut} />
+          <CalendarsList
+            accessToken={accessToken}
+            selectedCalendars={selectedCalendars}
+            onSelectCalendar={handleSelectCalendars}
           />
+          <EventsList accessToken={accessToken} selectedCalendars={selectedCalendars} buildings={buildings} />
+        </View>
+      ) : (
+        <GoogleSigninButton
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Dark}
+          onPress={signIn}
+          disabled={isSigninInProgress}
+          style={styles.googleButton}
+          testID="googleSignInButton"
+        />
       )}
     </SafeAreaView>
   );
