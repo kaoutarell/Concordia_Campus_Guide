@@ -2,10 +2,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
 import NavigationFooter from "../components/navigation-screen-ui/sections/NavigationFooter";
-import { formatDuration } from "../utils";
+import { formatDuration } from "../utils/ParsingDuration";
 
 // Mock the formatDuration function
-jest.mock("../utils", () => ({
+jest.mock("../utils/ParsingDuration", () => ({
   formatDuration: jest.fn(seconds => {
     if (seconds <= 0) return "Now";
     const hours = Math.floor(seconds / 3600);
