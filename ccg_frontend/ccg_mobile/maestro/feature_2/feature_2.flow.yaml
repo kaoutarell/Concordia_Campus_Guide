@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 2 - Outdoor Directions"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 - assertVisible:
     id: "menu-button"
 - tapOn:
@@ -25,29 +27,25 @@ name: "Feature 2 - Outdoor Directions"
 # check that my location button re-centers screen to user's location
 - assertVisible: "H"
 
-# test that providing a start point will take the user to the navigation screen
+# UPDATED: test that providing a start point will take the user to the navigation screen
+# test start point other than Current Location
+- tapOn: "MU"
+- tapOn: "Get Directions"
+- tapOn: "Set as Start"
+# select destination
+- scrollUntilVisible:
+    element: "LS"
+    direction: DOWN
 - tapOn: "LS"
 - tapOn: "Get Directions"
-# test start point other than Current Location
-- tapOn: "Start Address"
-- tapOn: "Choose start"
-# type building name
-- inputText:
-    text: "Henry F. Hall Building"
-    into: "Starting Point"
-# select start point
-- tapOn:
-    text: "Henry F. Hall Building"
-    index: 1
+- tapOn: "Set as Destination"
 # make sure that the navigation screen and relevant information renders
 - runFlow:
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "Start Navigation"
-- assertVisible: "Google Map"
-- assertVisible: "H"
+- assertVisible: "MU"
 - assertVisible: "LS"
 # switch start and destination
 - tapOn:
@@ -59,25 +57,44 @@ name: "Feature 2 - Outdoor Directions"
 - assertVisible: "Bus"
 - assertVisible: "Shuttle"
 - assertVisible: "Google Map"
+- assertVisible: "MU"
+- assertVisible: "LS"
 # leave navigation map
 - tapOn: "←"
 # close info popup
 - tapOn: ""
+- scrollUntilVisible:
+    element: "MU"
+    direction: UP
+- tapOn: "MU"
+- tapOn: "Get Directions"
+- tapOn: "Set as Start"
 # check that the campus toggle button and other components render
 - assertVisible:
     id: "campus-button"
 - assertVisible: "Google Map"
-- tapOn: "" #menu
+# go to menu
+- tapOn:
+    id: "menu-button"
 # test that Navigate button from sidebar works properly
 - tapOn: "🚶‍♂️ Navigate"
 - tapOn: "Destination Address"
+# select destination by scrolling to building name
+- scrollUntilVisible:
+    element:
+      text: "Grey Nuns Garden"
+    timeout: 50000
 - tapOn: "Grey Nuns Garden"
 # make sure that the navigation screen and relevant information renders
 - runFlow:
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"
 # check direction preview
+- assertVisible:
+    text: "Preview"
+    enabled: true
 - tapOn: "Preview"
 #[Deprecated]- assertVisible: "Directions"
 - assertVisible: "Turn Left"
@@ -87,9 +104,6 @@ name: "Feature 2 - Outdoor Directions"
 # check that start navigation works
 #[Deprecated]- assertVisible: "Start Navigation"
 #[Deprecated]- tapOn: "Start Navigation"
-- assertVisible:
-    text: "Preview"
-    enabled: true
 #[Deprecated]- assertVisible:
 #    text: "Exit"
 #    enabled: true
@@ -100,3 +114,9 @@ name: "Feature 2 - Outdoor Directions"
 #- setLocation:
 #    latitude: 45.497660
 #    longitude: -73.579162
+- tapOn:
+    id: "campus-button"
+- tapOn:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"

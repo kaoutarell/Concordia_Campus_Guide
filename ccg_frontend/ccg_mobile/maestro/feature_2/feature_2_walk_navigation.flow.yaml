@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Walk"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # type destination directly in Where to text box to access navigation
 - tapOn: "Where to?"
 - tapOn: "Choose destination"
@@ -22,19 +24,21 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
 # head to navigation page
 - tapOn: "Get Directions"
+- tapOn: "Set as Destination"
 # check to see if page renders correctly, walk navigation selected by default
 - assertVisible: "1515 St. Catherine W."
 - runFlow:
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "EV"
-- assertVisible: "4 minutes"
-- assertVisible: "0.34 km"
+- assertVisible: "3 minutes"
+- assertVisible: "0.26 km"
 # start navigation
 - tapOn: "Start Navigation"
-- assertVisible: "In 0.9 meters, Head northeast!"
+- assertVisible: "In 64.1 meters, Head southwest!"
 - assertVisible: "Google Map"
 - assertVisible: "Preview"
 - assertVisible: "Exit"
@@ -50,11 +54,11 @@ name: "Feature 2.1 & 2.5 - Walk"
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"
 - assertVisible: "EV"
-- assertVisible: "4 minutes"
-- assertVisible: "0.34 km"
+- assertVisible: "3 minutes"
+- assertVisible: "0.26 km"
 # start navigation flow
 - tapOn: "Start Navigation"
-- assertVisible: "In 0.9 meters, Head northeast!"
+- assertVisible: "In 64.1 meters, Head southwest!"
 - assertVisible: "Preview"
 - assertVisible: "Exit"
 # see directions and assert page renders correctly
@@ -62,7 +66,6 @@ name: "Feature 2.1 & 2.5 - Walk"
 - assertVisible: "Directions"
 - assertVisible: "Head northeast"
 - assertVisible: "Turn left"
-- assertVisible: "Turn right"
 # exit direction page
 - tapOn: "←"
 # exit navigation

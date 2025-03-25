@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 5: Outdoor Points of Interest"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # start test after feature 2 tests
 # check to see if page renders correctly
 - runFlow:
@@ -25,6 +27,7 @@ name: "Feature 5: Outdoor Points of Interest"
     id: "get-directions-button"
 - tapOn:
     id: "get-directions-button"
+- tapOn: "Set as Destination"
 # check to see if nav page renders correctly
 - runFlow:
     when:
@@ -76,6 +79,7 @@ name: "Feature 5: Outdoor Points of Interest"
     id: "get-directions-button"
 - tapOn:
     id: "get-directions-button"
+- tapOn: "Set as Destination"
 # check to see if page renders correctly
 - runFlow:
     when:

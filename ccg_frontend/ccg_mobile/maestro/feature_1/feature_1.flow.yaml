@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 1 - Show Both Campuses"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # Feature 1.1 - Show Both Campuses
 #- setLocation:
 #   latitude: 45.497660

@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Feature 4 - Indoor Directions"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # start test at mapview
 # 4.1: locate rooms on indoor maps
 - tapOn: "Indoor"
@@ -23,6 +25,7 @@ name: "Feature 4 - Indoor Directions"
 - tapOn:
     id: "start-button"
 # assert indoor navigation page
+- assertVisible: "H8"
 - runFlow:
     when:
       visible: "Get Direction"
