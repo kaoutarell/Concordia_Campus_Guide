@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 export const parseEventLocation = (location, buildings) => {
   // Expected format: "Campus Name - Building Name Rm RoomNumber"
-  const regex = /^([^-\r\n]+?)\s*-\s*([^-\r\n]+?)\s+Rm\s+(.+)$/i;
+  const regex = /^([^\s-][^-]*?)\s*-\s*([^\s-][^-]*?)\s+Rm\s+(\S+)$/i;
   const match = location.match(regex);
   if (!match) return null;
   const [, , buildingNameFromEvent, room] = match;
