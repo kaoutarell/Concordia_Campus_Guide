@@ -1,5 +1,5 @@
 import axios from "axios";
-console.log(process.env.EXPO_PUBLIC_BASE_URL);
+// Get the base URL from environment variables or default to localhost
 const baseURL = process.env.EXPO_PUBLIC_BASE_URL ? process.env.EXPO_PUBLIC_BASE_URL : "http://localhost:8000/api/";
 export const apiClient = axios.create({
   baseURL: baseURL,

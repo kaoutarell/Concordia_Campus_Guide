@@ -20,6 +20,10 @@ function Sidebar() {
           <Text style={styles.menuItem}>🏛 Explore All Buildings</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Calendar")}>
+          <Text style={styles.menuItem}>Google Calendar</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Navigation")}>
           <Text style={styles.menuItem}>🚶‍♂️ Navigate</Text>
         </TouchableOpacity>
