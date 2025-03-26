@@ -237,6 +237,7 @@ describe("CalendarScreen Component", () => {
   });
 
   it.skip("successfully restores previous sign in", async () => {
+    // Setup previous sign in
     const mockUserInfo = {
       data: {
         user: {
