@@ -1,4 +1,4 @@
-# flake8 noqa: F824
+# flake8: noqa: F824
 import json
 from collections import deque
 
