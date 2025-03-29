@@ -1,10 +1,13 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bus"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # starting state: map view - with markers visible
 - tapOn: "CL" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
+- tapOn: "Set as Destination"
 # choose destination
 - tapOn: "Destination Address"
 - tapOn: "Choose destination"
@@ -12,7 +15,7 @@ name: "Feature 2.1 & 2.5 - Bus"
 - inputText:
     text: "Jesuit"
     into: "Where to?"
-# assert that there are two buildings container Jesuis
+# assert that there are two buildings container
 - assertVisible: "Loyola Jesuit Hall and Conference Centre"
 - assertVisible:
     text: "7141 Sherbrooke W."
@@ -42,6 +45,7 @@ name: "Feature 2.1 & 2.5 - Bus"
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"    
 - assertVisible: "7141 Sherbrooke W."
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "RF"

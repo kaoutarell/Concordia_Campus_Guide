@@ -297,7 +297,7 @@ Once all dependencies are installed run :
 - Backend is running.
 - Frontend is running on an emulator.
 
-### Maestro Studio
+### Maestro Studio - Using Emulator
 
 To start the Maestro Studio webapp:
 
@@ -326,6 +326,57 @@ cd ccg_frontend/ccg_mobile/maestro
 
 maestro test --format junit --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/*
 ```
+
+### Maestro Studio - Using Physical Device (Android)
+
+Prerequisites:
+- Enable Developer Options ( Settings → About phone → Tap Build Number 7 times)
+- Install a Mock Location App (i.e., Fake GPS Location) and set location to H building. Note that this is the location set to run the end-to-end tests.
+- In your phone's Settings → Developer Options, find Select mock location app and choose the installed fake GPS app.
+- Connect your phone to your computer and in your phone's Settings → Developer Options, enable USB debugging.
+- Ensure that Android SDK is installed on you computer.
+- Download latest Android APK release build and make sure it is running on your phone.
+
+### Find Attached Device 
+
+Maestro will need your physical device ID to run tests with it. To find your device id run the following.
+
+```bash
+cd Android/Sdk/platform-tools
+adb devices
+```
+The output is a list of devices attached. You will need to copy the device id and include it in all maestro commands, see below.
+
+### Use Maestro Studio Webapp
+
+To start the Maestro Studio webapp:
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+maestro --device your_device_id studio
+```
+
+### Run Tests
+
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+ maestro --device your_device_id test --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/* feature_4/* feature_5/*
+```
+
+### Generate report:
+
+To run new tests, make sure that all test suite folders are included in .maestro/config.yaml and are also included in the command below.
+
+```bash
+cd ccg_frontend/ccg_mobile/maestro
+
+maestro --device your_device_id test --format junit --config .maestro/config.yaml launch/* app_startup/* feature_1/* feature_2/* feature_4/* feature_5/*
+```
+
 
 ### Prettier Formatting
 

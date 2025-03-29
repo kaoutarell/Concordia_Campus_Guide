@@ -8,8 +8,9 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
-import IndoorScreen from "../screens/IndoorScreen";
-import * as Clarity from "@microsoft/react-native-clarity";
+import CalendarScreen from "../components/calendar-screen-ui/CalendarScreen";
+import IndoorNavigationScreen from "../components/indoor-navigation-ui/IndoorNavigationScreen";
+//import * as Clarity from "@microsoft/react-native-clarity";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -19,8 +20,9 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Indoor" component={IndoorScreen} />
+      <Stack.Screen name="Indoor" component={IndoorNavigationScreen} />
       <Stack.Screen name="Map" component={MapScreen} />
+      <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Search" component={CustomNavSearch} />
     </Stack.Navigator>
@@ -28,7 +30,7 @@ const StackNavigator = () => {
 };
 
 const drawerContent = props => <Sidebar {...props} />;
-const projectID = process.env.EXPO_PUBLIC_CLARITY_PROJECT_ID;
+//const projectID = process.env.EXPO_PUBLIC_CLARITY_PROJECT_ID;
 
 // Main App Navigator (Drawer + Stack)
 export default function AppNavigator() {
@@ -40,12 +42,6 @@ export default function AppNavigator() {
       ref={navigationRef}
       onReady={() => {
         routeNameRef.current = navigationRef.getCurrentRoute().name;
-        const clarityConfig = {
-          logLevel: Clarity.LogLevel.Verbose,
-        };
-
-        Clarity.initialize(projectID, clarityConfig);
-        Clarity.setCurrentScreenName(routeNameRef.current);
       }}
       onStateChange={() => {
         const previousRouteName = routeNameRef.current;
@@ -53,7 +49,6 @@ export default function AppNavigator() {
 
         if (previousRouteName !== currentRouteName) {
           routeNameRef.current = currentRouteName;
-          Clarity.setCurrentScreenName(currentRouteName);
         }
       }}
     >

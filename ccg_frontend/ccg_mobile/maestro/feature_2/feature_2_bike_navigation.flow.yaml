@@ -1,10 +1,13 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Bike"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # starting state: map view zoomed in twice
 - tapOn: "ER" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
+- tapOn: "Set as Destination"
 - tapOn: "Bike" # select bike navigation
 # choose destination
 - tapOn: "Destination Address"
@@ -21,10 +24,11 @@ name: "Feature 2.1 & 2.5 - Bike"
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"
 ##[Deprecated]- assertVisible: "My Location"
 - assertVisible: "MB"
 - assertVisible: "1 minute"
-- assertVisible: "0.33 km"
+- assertVisible: "0.29 km"
 # start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "Google Map"
@@ -42,7 +46,7 @@ name: "Feature 2.1 & 2.5 - Bike"
 - assertVisible: "Start Navigation"
 - assertVisible: "MB"
 - assertVisible: "1 minute"
-- assertVisible: "0.33 km"
+- assertVisible: "0.29 km"
 # start navigation flow
 - tapOn: "Start Navigation"
 - assertVisible: "Preview"

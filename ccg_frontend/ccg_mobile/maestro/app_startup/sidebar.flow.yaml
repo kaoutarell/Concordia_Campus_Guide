@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Sidebar"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 - assertVisible:
     id: "menu-button"
 - tapOn:

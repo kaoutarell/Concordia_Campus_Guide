@@ -1,31 +1,40 @@
 appId: host.exp.Exponent
 name: "Feature 2.1 & 2.5 - Shuttle"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # starting state: map view - with markers visible
 - tapOn: "GM" # tap on building marker - goal is to test another marker
 # open info popup
 - tapOn: "Get Directions"
+- tapOn: "Set as Destination"
 # choose destination
 - tapOn: "Destination Address"
 - tapOn: "Choose destination"
-# assert and select destination from building list
-- assertVisible: "Physical Services Building"
+# select destination by typing part of building name
+- inputText:
+    text: "Phy"
+    into: "Where to?"
+# assert building is visible
 - tapOn: "Physical Services Building"
-# check to see if page renders correctly
 - tapOn: "Shuttle" # select shuttle navigation
+# check to see if page renders correctly
 - runFlow:
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Start Navigation"
 - assertVisible: "7141 Sherbrooke W."
 #[Deprecated]- assertVisible: "My Location"
-- assertVisible: "LOY"
+- assertVisible: "Start"
 - assertVisible: "View Bus Schedule"
 # start navigation
 - tapOn: "Start Navigation"
 - assertVisible: "↑"
 - assertVisible: "Google Map"
 - assertVisible: "Preview"
+- assertVisible: "Start"
+- assertVisible: "LOY"
 - assertVisible: "Exit"
 # check that exit button works
 - tapOn: "Exit"

@@ -1,6 +1,8 @@
 appId: host.exp.Exponent
 name: "Home Page"
 ---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
 # Home Page
 - extendedWaitUntil:
     visible: "Welcome to"

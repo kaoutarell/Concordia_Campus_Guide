@@ -5,12 +5,14 @@ import IndoorNavigationHeader from "./sections/IndoorNavigationHeader";
 import { getBuildings, getIndoorDirections } from "../../api/dataService";
 import IndoorNavigationFooter from "./sections/IndoorNavigationFooter";
 import FloorChangeButton from "./elements/FloorChangeButton";
+import PropTypes from "prop-types";
 
-const IndoorNavigationScreen = () => {
+const IndoorNavigationScreen = ({ route }) => {
+  const params = route.params || {};
   const [buildings, setBuildings] = useState([]);
-  const [selectedBuilding, setSelectedBuilding] = useState("");
-  const [startLocation, setStartLocation] = useState("");
-  const [destination, setDestination] = useState("");
+  const [selectedBuilding, setSelectedBuilding] = useState(params.building || "");
+  const [startLocation, setStartLocation] = useState(params.start || "");
+  const [destination, setDestination] = useState(params.destination || "");
   const [path, setPath] = useState(null);
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
@@ -116,6 +118,16 @@ const IndoorNavigationScreen = () => {
       />
     </View>
   );
+};
+
+IndoorNavigationScreen.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      building: PropTypes.string,
+      start: PropTypes.string,
+      destination: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, act, fireEvent, waitFor } from "@testing-library/react-native";
+import { act, fireEvent, render } from "@testing-library/react-native";
 import NavigationScreen from "../components/navigation-screen-ui/NavigationScreen";
 
 // Mock components with testID to make them identifiable in tests
@@ -18,7 +18,7 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationHeader", () => 
   const React = require("react");
   const View = require("react-native").View;
 
-  const NavigationHeader = props => {
+  return props => {
     const handleModeSelect = mode => {
       if (props.onSelectedMode) {
         props.onSelectedMode(mode);
@@ -45,8 +45,6 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationHeader", () => 
       ...props,
     });
   };
-
-  return NavigationHeader;
 });
 
 jest.mock("../components/navigation-screen-ui/sections/NavigationInfos", () => {
@@ -54,7 +52,7 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationInfos", () => {
   const View = require("react-native").View;
   const Button = require("react-native").Button;
 
-  const NavigationInfos = props => {
+  return props => {
     const handleExit = () => {
       if (props.onExit) {
         props.onExit();
@@ -86,8 +84,6 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationInfos", () => {
       ],
     });
   };
-
-  return NavigationInfos;
 });
 
 jest.mock("../components/navigation-screen-ui/sections/DirectionList", () => {
@@ -138,7 +134,7 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationFooter", () => 
   const View = require("react-native").View;
   const Button = require("react-native").Button;
 
-  const NavigationFooter = props => {
+  return props => {
     const handleStartNavigation = () => {
       if (props.onStartNavigation) {
         props.onStartNavigation();
@@ -170,8 +166,6 @@ jest.mock("../components/navigation-screen-ui/sections/NavigationFooter", () => 
       ],
     });
   };
-
-  return NavigationFooter;
 });
 
 jest.mock("../components/navigation-screen-ui/sections/BusNavigationInfo", () => {
@@ -179,7 +173,7 @@ jest.mock("../components/navigation-screen-ui/sections/BusNavigationInfo", () =>
   const View = require("react-native").View;
   const Button = require("react-native").Button;
 
-  const BusNavigationInfo = props => {
+  return props => {
     const handleStartNavigation = () => {
       if (props.onStartNavigation) {
         props.onStartNavigation();
@@ -199,8 +193,6 @@ jest.mock("../components/navigation-screen-ui/sections/BusNavigationInfo", () =>
       ],
     });
   };
-
-  return BusNavigationInfo;
 });
 
 // Mock location service
@@ -226,16 +218,19 @@ jest.mock("../services/LocationService", () => {
   };
 });
 
-// Mock bus location service
+// Mock bus location service with the observer pattern
 jest.mock("../services/BusLocationService", () => {
   let interval = null;
   const mockBusLocations = [
-    { id: "bus1", position: [45.497, -73.579] },
-    { id: "bus2", position: [45.494, -73.577] },
+    { id: "BUS1", latitude: 45.497, longitude: -73.579 },
+    { id: "BUS2", latitude: 45.494, longitude: -73.577 },
   ];
 
+  // Store observers for the mock implementation
+  const observers = new Set();
+
   return {
-    startTracking: jest.fn(intervalMs => {
+    startTracking: jest.fn(() => {
       if (interval) clearInterval(interval);
       interval = "mocked-interval-id";
     }),
@@ -243,18 +238,33 @@ jest.mock("../services/BusLocationService", () => {
       interval = null;
     }),
     getBusLocations: jest.fn(() => mockBusLocations),
+    attach: jest.fn(observer => {
+      if (typeof observer === "function") {
+        observers.add(observer);
+      }
+    }),
+    detach: jest.fn(observer => {
+      observers.delete(observer);
+    }),
+    notify: jest.fn(() => {
+      observers.forEach(observer => observer(mockBusLocations));
+    }),
+    // Helper method for tests to trigger observers
+    _notifyObservers: () => {
+      observers.forEach(observer => observer(mockBusLocations));
+    },
+    // Helper to check if an observer is attached
+    _hasObserver: observer => observers.has(observer),
+    // Helper to get observer count
+    _getObserverCount: () => observers.size,
+    // Reset all observers
+    _resetObservers: () => observers.clear(),
   };
 });
 
 // Mock utility functions
 const mockCurrentLocation = {
   name: "Current Location",
-  civic_address: "1455 De Maisonneuve Blvd W",
-  location: { latitude: 45.497, longitude: -73.579 },
-};
-
-const mockDefaultDestination = {
-  name: "Hall Building",
   civic_address: "1455 De Maisonneuve Blvd W",
   location: { latitude: 45.497, longitude: -73.579 },
 };
@@ -273,38 +283,6 @@ jest.mock("../utils/defaultLocations", () => ({
     location: { latitude: 45.497, longitude: -73.579 },
   })),
 }));
-
-// Mock API services with detailed responses
-const mockBuildings = [
-  { id: 1, name: "Hall Building", location: { latitude: 45.497, longitude: -73.579 }, campus: "SGW" },
-  { id: 2, name: "Library Building", location: { latitude: 45.496, longitude: -73.578 }, campus: "SGW" },
-  { id: 3, name: "CC Building", location: { latitude: 45.495, longitude: -73.577 }, campus: "LOY" },
-];
-
-const mockDirectionsResponse = {
-  bbox: [45.49, -73.585, 45.505, -73.57],
-  steps: [
-    {
-      points: [
-        [45.497, -73.579],
-        [45.498, -73.578],
-      ],
-      instruction: "Walk north",
-      distance: 100,
-      duration: 120,
-    },
-  ],
-  total_distance: 100,
-  total_duration: 120,
-  legs: [
-    {
-      points: [
-        [45.497, -73.579],
-        [45.498, -73.578],
-      ],
-    },
-  ],
-};
 
 jest.mock("../api/dataService", () => ({
   getBuildings: jest.fn(() =>
@@ -344,7 +322,7 @@ jest.mock("../api/dataService", () => ({
 
 // Mock the useRouteInstruction hook
 jest.mock("../hooks/useRouteInstruction", () => ({
-  useRouteInstruction: jest.fn((direction, userLocation) => {
+  useRouteInstruction: jest.fn(direction => {
     // Return different values based on if direction is provided
     if (direction && direction.steps && direction.steps.length > 0) {
       return { instruction: "Turn right in 50m", distance: 50 };
@@ -372,6 +350,10 @@ describe("NavigationScreen", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    // Reset bus location service observers before each test
+    const busLocationService = require("../services/BusLocationService");
+    busLocationService._resetObservers();
   });
 
   it("renders the loading state initially", async () => {
@@ -646,7 +628,7 @@ describe("NavigationScreen", () => {
     expect(mockGoBack).toHaveBeenCalled();
   });
 
-  it("starts tracking shuttle buses when shuttle mode is selected", async () => {
+  it("starts tracking shuttle buses and attaches observer when shuttle mode is selected", async () => {
     const busLocationService = require("../services/BusLocationService");
 
     const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
@@ -666,10 +648,85 @@ describe("NavigationScreen", () => {
     });
 
     // Should start shuttle tracking
-    expect(busLocationService.startTracking).toHaveBeenCalled();
+    expect(busLocationService.startTracking).toHaveBeenCalledWith(2000);
+
+    // Should have registered an observer
+    expect(busLocationService.attach).toHaveBeenCalled();
+    expect(busLocationService._getObserverCount()).toBe(1);
+
+    // Simulate bus location update via the observer pattern
+    await act(async () => {
+      busLocationService._notifyObservers();
+      jest.runAllTimers();
+    });
 
     // Should show BusNavigationInfo instead of NavigationFooter
     expect(getByTestId("bus-navigation-info")).toBeTruthy();
+  });
+
+  it("detaches observer and stops tracking when switching from shuttle to another mode", async () => {
+    const busLocationService = require("../services/BusLocationService");
+
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Find the NavigationHeader
+    const navHeader = getByTestId("navigation-header");
+
+    // First switch to shuttle mode
+    await act(async () => {
+      navHeader.props.onSelectedMode("concordia-shuttle");
+      jest.runAllTimers();
+    });
+
+    // Verify observer is attached
+    expect(busLocationService._getObserverCount()).toBe(1);
+    expect(busLocationService.startTracking).toHaveBeenCalled();
+
+    // Now switch to another mode
+    await act(async () => {
+      navHeader.props.onSelectedMode("foot-walking");
+      jest.runAllTimers();
+    });
+
+    // Should detach observer and stop tracking
+    expect(busLocationService.detach).toHaveBeenCalled();
+    expect(busLocationService.stopTracking).toHaveBeenCalled();
+    expect(busLocationService._getObserverCount()).toBe(0);
+  });
+
+  it("detaches observer and stops tracking when component unmounts in shuttle mode", async () => {
+    const busLocationService = require("../services/BusLocationService");
+
+    const { getByTestId, unmount } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Switch to shuttle mode
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onSelectedMode("concordia-shuttle");
+      jest.runAllTimers();
+    });
+
+    // Verify observer is attached
+    expect(busLocationService._getObserverCount()).toBe(1);
+
+    // Unmount the component
+    await act(async () => {
+      unmount();
+    });
+
+    // Should detach observer and stop tracking on unmount
+    expect(busLocationService.detach).toHaveBeenCalled();
+    expect(busLocationService.stopTracking).toHaveBeenCalled();
   });
 
   it("subscribes to location updates and unsubscribes on unmount", async () => {
@@ -939,5 +996,54 @@ describe("NavigationScreen", () => {
 
     // Mock that navigation is active
     expect(getByTestId("bus-navigation-info")).toBeTruthy();
+  });
+
+  it("updates shuttle locations on the map when observer is notified", async () => {
+    const busLocationService = require("../services/BusLocationService");
+    const mockBusLocations = [
+      { id: "BUS1", latitude: 45.497, longitude: -73.579 },
+      { id: "BUS2", latitude: 45.494, longitude: -73.577 },
+    ];
+
+    // Capture observer function for testing
+    let capturedObserver = null;
+    busLocationService.attach.mockImplementation(observer => {
+      capturedObserver = observer;
+      if (typeof observer === "function") {
+        busLocationService._hasObserver(observer);
+      }
+    });
+
+    const { getByTestId } = render(<NavigationScreen {...defaultProps} />);
+
+    // Wait for initial loading
+    await act(async () => {
+      jest.runAllTimers();
+    });
+
+    // Change to shuttle mode
+    const navHeader = getByTestId("navigation-header");
+    await act(async () => {
+      navHeader.props.onSelectedMode("concordia-shuttle");
+      jest.runAllTimers();
+    });
+
+    // Verify attach was called and we captured the observer
+    expect(busLocationService.attach).toHaveBeenCalled();
+    expect(capturedObserver).not.toBeNull();
+
+    // Get the NavigationMap and check initial state
+    const navMap = getByTestId("navigation-map");
+    expect(navMap.props.displayShuttle).toBe(true);
+
+    // Initially there might not be any shuttle locations
+    // Manually call the observer with updated locations
+    await act(async () => {
+      capturedObserver(mockBusLocations);
+      jest.runAllTimers();
+    });
+
+    // Check that the locations were passed to the map
+    expect(navMap.props.shuttleLocations).toEqual(mockBusLocations);
   });
 });

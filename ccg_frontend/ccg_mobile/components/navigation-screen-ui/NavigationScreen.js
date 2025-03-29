@@ -143,14 +143,16 @@ const NavigationScreen = ({ navigation, route }) => {
     }
   };
 
+  // Updated effect for shuttle mode using observer instead of setInterval polling.
   useEffect(() => {
     if (selectedMode === "concordia-shuttle") {
       busLocationService.startTracking(2000);
-      const intervalId = setInterval(() => {
-        setShuttleLocations(busLocationService.getBusLocations());
-      }, 2000);
+      const updateShuttleLocations = locations => {
+        setShuttleLocations(locations);
+      };
+      busLocationService.attach(updateShuttleLocations);
       return () => {
-        clearInterval(intervalId);
+        busLocationService.detach(updateShuttleLocations);
         busLocationService.stopTracking();
       };
     }
@@ -174,8 +176,6 @@ const NavigationScreen = ({ navigation, route }) => {
       }
       if (destinationPoint == null) {
         currentLocation = await getMyCurrentLocation();
-        console.log("curr", currentLocation);
-
         defaultDestination = getDefaultDestination();
         setDestinationPoint(defaultDestination);
         setSearchText(prev => ({

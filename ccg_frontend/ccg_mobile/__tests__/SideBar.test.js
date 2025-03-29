@@ -68,6 +68,15 @@ describe("Sidebar", () => {
     expect(mockNavigate).toHaveBeenCalledWith("Map");
   });
 
+  // Test to check if the Google Calendar button triggers the correct navigation
+  it("navigates to Calendar when Google Calendar button is pressed", () => {
+    const { getByText } = render(component);
+    const calendarButton = getByText("Google Calendar");
+
+    fireEvent.press(calendarButton);
+    expect(mockNavigate).toHaveBeenCalledWith("Calendar");
+  });
+
   // Test to check if the "Navigate" button triggers the correct navigation
   it("navigates to Navigation when Navigate button is pressed", () => {
     const { getByText } = render(component);
