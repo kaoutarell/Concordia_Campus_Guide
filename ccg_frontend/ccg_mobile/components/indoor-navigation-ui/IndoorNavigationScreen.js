@@ -15,6 +15,7 @@ const IndoorNavigationScreen = () => {
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
   const [showAccessibleRoute, setShowAccessibleRoute] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   //reset floorIndex when getting new directions
   useEffect(() => {
@@ -77,6 +78,7 @@ const IndoorNavigationScreen = () => {
       if (path != "") {
         setFloorIndexMax(pathData["floor_sequence"].length - 1);
       }
+      setIsSearching(true);
     } catch (error) {
       console.error("Error fetching path:", error);
     }
@@ -99,7 +101,12 @@ const IndoorNavigationScreen = () => {
         path={path} // path data to IndoorMap
         index={floorIndex}
       />
-      <FloorChangeButton currentFloor={floorIndex} maxFloor={floorIndexMax} setFloor={setFloorIndex} />
+      <FloorChangeButton
+        currentFloor={floorIndex}
+        maxFloor={floorIndexMax}
+        setFloor={setFloorIndex}
+        isSearching={isSearching}
+      />
       <IndoorNavigationFooter
         onShowDirections={handleShowDirections} // Handle Get Direction button press
         startAddress={startLocation}

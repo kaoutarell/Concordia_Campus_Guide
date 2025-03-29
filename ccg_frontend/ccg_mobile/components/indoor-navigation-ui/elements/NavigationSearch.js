@@ -26,7 +26,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
           testID="start-address-input"
           ref={startAddressRef}
           style={[styles.input, { zIndex: 100 }]}
-          placeholder="Start Address"
+          placeholder="Starting Room (ex: H867)"
           value={startAddress}
           onChangeText={text => onModifyAddress("start", text)} // Updates parent but does NOT trigger API
           onFocus={() => handlePress("start")}
@@ -39,7 +39,7 @@ const NavigationSearch = ({ startAddress, destinationAddress, onModifyAddress })
           testID="destination-address-input"
           ref={destinationAddressRef}
           style={styles.input}
-          placeholder="Destination Address"
+          placeholder="Destination Room (ex: MB1.125)"
           value={destinationAddress}
           onChangeText={text => onModifyAddress("destination", text)} // updates parent WITHOUT triggering API - avoid sending endless useless api calls
           onFocus={() => handlePress("destination")}
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
     position: "absolute", // to allow testIDs to become visible to maestro
     width: "100%",
     marginTop: "15%", // to allow testIDs to become visible to maestro
-    marginLeft: 15,
+    paddingTop: "50%",
+    marginLeft: 170,
     marginBottom: 10,
     zIndex: 1,
     alignItems: "center",

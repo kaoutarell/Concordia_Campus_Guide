@@ -61,8 +61,8 @@ const IndoorMap = ({ path, index }) => {
       <Text>ReactNativeZoomableView</Text>
       <View style={{ borderWidth: 5, height: 350, width: "100%", alignItems: "center", overflow: "hidden" }}>
         {path != null && (
-          <Text style={{ fontSize: 18 }} testID="title">
-            {path["floor_sequence"][index]}
+          <Text style={{ fontSize: 18, fontWeight: "bold" }} testID="title">
+            Current Floor: {path["floor_sequence"][index]}
           </Text>
         )}
         {path == null && (
@@ -155,7 +155,7 @@ IndoorMap.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "85%",
+    marginTop: "75%",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
