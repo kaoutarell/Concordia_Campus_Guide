@@ -8,12 +8,17 @@ import NavigationScreen from "../components/navigation-screen-ui/NavigationScree
 
 import Sidebar from "../components/map-screen-ui/sections/SideBar";
 import CustomNavSearch from "../components/navigation-screen-ui/CustomNavSearch";
-import CalendarScreen from "../components/calendar-screen-ui/CalendarScreen";
 import IndoorNavigationScreen from "../components/indoor-navigation-ui/IndoorNavigationScreen";
 
 let Clarity;
-if (process.env.EXPO_PUBLIC_USE_EXPO_GO == null) {
+let CalendarScreen = null;
+// Check if the environment variable is set to disable native modules. If not, require the native module.
+if (
+  process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES == null ||
+  process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES === "false"
+) {
   Clarity = require("@microsoft/react-native-clarity");
+  CalendarScreen = require("../components/calendar-screen-ui/CalendarScreen").default;
 }
 
 const Drawer = createDrawerNavigator();
@@ -26,7 +31,10 @@ const StackNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Indoor" component={IndoorNavigationScreen} />
       <Stack.Screen name="Map" component={MapScreen} />
-      <Stack.Screen name="Calendar" component={CalendarScreen} />
+      {(process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES == null ||
+        process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES === "false") && (
+        <Stack.Screen name="Calendar" component={CalendarScreen} />
+      )}
       <Stack.Screen name="Navigation" component={NavigationScreen} />
       <Stack.Screen name="Search" component={CustomNavSearch} />
     </Stack.Navigator>
