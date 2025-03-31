@@ -8,10 +8,9 @@ name: "Feature 2 - Outdoor Directions"
 - tapOn:
     id: "menu-button"
 - assertVisible: "ConU CG"
-# test home button
-- assertVisible: "🏠 Home"
-- tapOn: "🏠 Home"
-- tapOn: "Continue to map ➤"
+# note: removed test home button because it is redundant with sidebar test flow
+# go to map view
+- tapOn: "🏛 Explore All Buildings"
 #Feature 2.2 - Assert User's Current Location
 - assertVisible:
     id: "map-view"
@@ -116,6 +115,8 @@ name: "Feature 2 - Outdoor Directions"
 #    longitude: -73.579162
 - tapOn:
     id: "campus-button"
+- tapOn:
+    id: "campus-button" # go back to swg for next tests
 - tapOn:
     id: "zoom-in-button"
 - tapOn:
