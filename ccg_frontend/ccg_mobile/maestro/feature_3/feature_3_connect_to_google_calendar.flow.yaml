@@ -1,0 +1,35 @@
+appId: host.exp.Exponent
+name: "Feature 3 - Connect to Google Calendar"
+---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
+# starting state : map-view
+- tapOn:
+    id: "menu-button"
+- assertVisible: "Google Calendar"
+- tapOn: "Google Calendar"
+- assertVisible: "Class Schedule"
+- assertVisible: "Connected to Google Calendar!"
+- assertVisible: "SIGN OUT"
+- assertVisible: "Select Calendars"
+- assertVisible: "Events"
+- assertVisible: "Show Classes Only"
+- tapOn: "Test"
+- assertVisible: "SOEN 390"
+- assertVisible: "SOEN 345"
+- tapOn: "Show Classes Only"
+- assertVisible: "Show All Events"
+- tapOn: "Show All Events"
+# Feature 3.2 - select multiple calendars
+- tapOn: "Test 2"
+- assertVisible: "SOEN 390"
+- assertVisible: "SOEN 345"
+- assertVisible: "SOEN 363"
+- tapOn: "Test"
+- assertVisible: "SOEN 363"
+- tapOn: "Test 2"
+- assertVisible: "No events to display."
+# exit class schedule
+- swipe:
+    start: 95%, 50% # 95% of width, 50% of height
+    end: 50%, 50% # 50% of width, 50% of height

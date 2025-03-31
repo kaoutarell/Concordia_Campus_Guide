@@ -42,7 +42,7 @@ name: "Feature 2.1 & 2.5 - Car"
 - runFlow:
     when:
       visible: "Google Map"
-    file: ./subflows/assert_render_navigation_screen.yam
+    file: ./subflows/assert_render_navigation_screen.yaml
 - assertVisible: "7200 Sherbrooke St. W."
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "Start Navigation"

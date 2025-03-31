@@ -54,7 +54,7 @@ def get_indoor_directions_data(start, destination, disabled):
 
 
 def determine_path_sequence(i, floor_sequence, map_data, start, destination):
-    global last_used_stairs
+    # global last_used_stairs
     if len(floor_sequence) == 1:
         return get_node_sequence(map_data, start, destination), get_pins(
             map_data, start, destination
@@ -142,7 +142,7 @@ def get_node_sequence(map_data, start, destination):
 
 
 def get_class_stair_sequence(map_data, classroom):
-    global isDisabled
+    #global isDisabled
     global last_used_stairs
 
     if classroom not in map_data:

@@ -64,7 +64,7 @@ name: "Feature 2.1 & 2.5 - Walk"
 # see directions and assert page renders correctly
 - tapOn: "Preview"
 - assertVisible: "Directions"
-- assertVisible: "Head northeast"
+- assertVisible: "Head southwest"
 - assertVisible: "Turn left"
 # exit direction page
 - tapOn: "←"
