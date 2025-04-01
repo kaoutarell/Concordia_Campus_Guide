@@ -25,8 +25,7 @@ const MapViewComponentImpl = ({
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [mapKey, setMapKey] = useState(0);
-  const [targetRegion, setTargetRegion] = useState(region);
+  const [targetRegion, setTargetRegion] = useState(null);
   const [startLocation, setStartLocation] = useState(null);
 
   const handleRegionChange = region => {
@@ -129,7 +128,6 @@ const MapViewComponentImpl = ({
 
   useEffect(() => {
     if (target?.id) {
-      setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
         latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
@@ -140,10 +138,15 @@ const MapViewComponentImpl = ({
       setShowPopup(true);
     } else {
       setShowPopup(false);
-      setMapKey(prevKey => prevKey + 1);
-      setTargetRegion(region);
+      setTargetRegion(null);
     }
   }, [target]);
+
+  useEffect(() => {
+    if (mapRef.current && region) {
+      mapRef.current.animateToRegion(region, 1000);
+    }
+  }, [region]);
 
   return (
     <View style={styles.container}>
@@ -155,11 +158,11 @@ const MapViewComponentImpl = ({
       ) : (
         <View style={styles.mapContainer}>
           <MapView
-            key={mapKey}
+            // key={mapKey}
             ref={mapRef}
             testID="map-view"
             style={styles.map}
-            region={targetRegion}
+            {...(targetRegion ? { region: targetRegion } : { initialRegion: region })}
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
