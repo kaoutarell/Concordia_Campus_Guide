@@ -25,10 +25,16 @@
     "Outside":{
         "connections":[
             "H1",
-            "MB1"
+            "MB1",
+            "CC1"
         ]
     },
     "MB1":{
+        "connections":[
+            "Outside"
+        ]
+    },
+    "CC1":{
         "connections":[
             "Outside"
         ]
