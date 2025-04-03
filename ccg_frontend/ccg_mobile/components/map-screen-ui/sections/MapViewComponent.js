@@ -163,7 +163,7 @@ const MapViewComponentImpl = ({
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
-            zoomControlEnabled={false}
+            zoomControlEnabled={true}
             showsMyLocationButton={false}
             toolbarEnabled={false}
             onPress={() => setSelectedMarker(null)}
