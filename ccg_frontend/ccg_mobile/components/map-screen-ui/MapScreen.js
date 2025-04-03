@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, Dimensions, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { getBuildings, getPointOfInterests } from "../../api/dataService";
@@ -116,31 +116,68 @@ const MapScreen = () => {
   );
 };
 
+const { width, height } = Dimensions.get("window");
+const isSmallDevice = width < 360;
+
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  menuButton: { position: "absolute", top: 40, left: 20, zIndex: 1 },
-  menuText: { fontSize: 30 },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? 25 : 0, // Safe area for Android
+  },
+
+  menuButton: {
+    position: "absolute",
+    top: height * 0.05,
+    left: width * 0.05,
+    zIndex: 1,
+  },
+
+  menuText: {
+    fontSize: isSmallDevice ? 24 : 30,
+  },
+
   title: {
-    fontSize: 18,
+    fontSize: isSmallDevice ? 16 : 18,
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: 50,
+    marginTop: height * 0.05,
   },
+
   campusSelector: {
     backgroundColor: "#8B1D3B",
-    padding: 10,
+    paddingVertical: isSmallDevice ? 6 : 10,
+    paddingHorizontal: isSmallDevice ? 14 : 20,
     borderRadius: 10,
     alignSelf: "center",
     marginTop: 10,
   },
-  campusText: { color: "white", fontWeight: "bold" },
-  map: { flex: 1 },
+
+  campusText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: isSmallDevice ? 12 : 14,
+  },
+
+  map: {
+    flex: 1,
+    width: "100%",
+  },
+
   switchContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: isSmallDevice ? 8 : 16,
   },
-  switchButton: { padding: 10, backgroundColor: "#eee", borderRadius: 10 },
+
+  switchButton: {
+    paddingVertical: isSmallDevice ? 6 : 10,
+    paddingHorizontal: isSmallDevice ? 10 : 14,
+    backgroundColor: "#eee",
+    borderRadius: 10,
+  },
 });
+
 
 export default MapScreen;
