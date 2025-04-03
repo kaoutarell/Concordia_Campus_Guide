@@ -4,6 +4,7 @@ const floorImages = {
   H2: require("../assets/floors/H2.png"),
   H1: require("../assets/floors/H1.png"),
   MB1: require("../assets/floors/MB-1.png"),
+  CC1: require("../assets/floors/CC1.png"),
 };
 
 export const getFloorImage = floor => {
