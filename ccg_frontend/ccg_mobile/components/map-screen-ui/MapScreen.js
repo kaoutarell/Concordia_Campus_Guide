@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { getBuildings, getPointOfInterests } from "../../api/dataService";
@@ -89,7 +89,7 @@ const MapScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <HeaderBar
         setTargetLocation={setTargetLocation}
         selectedCampus={selectedCampus}
@@ -112,7 +112,7 @@ const MapScreen = () => {
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
-    </View>
+    </SafeAreaView >
   );
 };
 
