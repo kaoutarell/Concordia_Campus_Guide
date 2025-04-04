@@ -20,9 +20,12 @@ function Sidebar() {
           <Text style={styles.menuItem}>🏛 Explore All Buildings</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Calendar")}>
-          <Text style={styles.menuItem}>Google Calendar</Text>
-        </TouchableOpacity>
+        {(process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES == null ||
+          process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES === "false") && (
+          <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Calendar")}>
+            <Text style={styles.menuItem}>📅 Events</Text>
+          </TouchableOpacity>
+        )}
 
         <TouchableOpacity style={styles.menuButton} onPress={() => navigation.navigate("Navigation")}>
           <Text style={styles.menuItem}>🚶‍♂️ Navigate</Text>

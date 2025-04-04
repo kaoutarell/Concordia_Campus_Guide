@@ -70,11 +70,17 @@ describe("Sidebar", () => {
 
   // Test to check if the Google Calendar button triggers the correct navigation
   it("navigates to Calendar when Google Calendar button is pressed", () => {
+    // Mock environment variable
+    process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES = "false";
+
     const { getByText } = render(component);
-    const calendarButton = getByText("Google Calendar");
+    const calendarButton = getByText("📅 Events");
 
     fireEvent.press(calendarButton);
     expect(mockNavigate).toHaveBeenCalledWith("Calendar");
+
+    // Cleanup: Reset process.env after the test
+    delete process.env.EXPO_PUBLIC_DISABLE_NATIVE_MODULES;
   });
 
   // Test to check if the "Navigate" button triggers the correct navigation
