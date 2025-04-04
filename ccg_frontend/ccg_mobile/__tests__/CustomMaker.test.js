@@ -21,7 +21,7 @@ describe("CustomMarker Component", () => {
   // Test case 1: Check if the component renders properly with given data
   it("renders correctly with given value", () => {
     // Render the component with mock data and a dummy onPress function
-    const { getByText } = render(<CustomMarker value={mockValue} onPress={jest.fn()} />);
+    const { getByText } = render(<CustomMarker value={mockValue} onPress={jest.fn()} showMarker={false} />);
 
     // Check if the text "B123" (building code) is displayed
     expect(getByText("EV")).toBeTruthy();
@@ -32,7 +32,9 @@ describe("CustomMarker Component", () => {
     const mockOnPress = jest.fn(); // Create a mock function to track calls
 
     // Render the component with the mock function
-    const { getByTestId } = render(<CustomMarker value={mockValue} onPress={mockOnPress} />);
+    const { getByTestId } = render(
+      <CustomMarker value={mockValue} onPress={mockOnPress} destination={true} showMarker={true} />
+    );
 
     // Simulate a press event on the marker
     fireEvent.press(getByTestId("marker-container")); // Ensure testID exists in the component
