@@ -17,12 +17,25 @@ const CustomNavSearch = ({ navigation, route }) => {
   const handleSearch = text => {
     setSearchText(text);
 
+    let filtered = [];
+
     if (text.length > 0) {
-      const filtered = allBuildings.filter(
+      filtered = allBuildings.filter(
         loc =>
-          loc.name?.toLowerCase().includes(text.toLowerCase()) ||
-          loc.civic_address?.toLowerCase().includes(text.toLowerCase())
+
+          loc.building_code?.toLowerCase() === (text.toLowerCase().trim())
       );
+
+      if (filtered.length === 0) {
+
+        filtered = allBuildings.filter(
+          loc =>
+            loc.building_code?.toLowerCase().includes(text.toLowerCase()) ||
+            loc.name?.toLowerCase().includes(text.toLowerCase()) ||
+            loc.civic_address?.toLowerCase().includes(text.toLowerCase())
+        );
+
+      }
       setFilteredLocations(filtered);
     } else {
       setFilteredLocations([]);
