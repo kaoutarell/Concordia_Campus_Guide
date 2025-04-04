@@ -112,7 +112,7 @@ const MapScreen = () => {
       />
 
       <NavigationToggle isIndoor={isIndoor} setIsIndoor={setIsIndoor} />
-    </SafeAreaView >
+    </SafeAreaView>
   );
 };
 
@@ -178,6 +178,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 });
-
 
 export default MapScreen;
