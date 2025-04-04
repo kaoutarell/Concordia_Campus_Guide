@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ActivityIndicator, Text, Platform } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Text, Platform, Alert } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import locationService from "../../../services/LocationService";
 import CustomMarker from "../elements/CustomMarker.js";
@@ -28,6 +28,18 @@ const MapViewComponentImpl = ({
   const [mapKey, setMapKey] = useState(0);
   const [targetRegion, setTargetRegion] = useState(region);
   const [startLocation, setStartLocation] = useState(null);
+
+  const showConfirmationPopup = location => {
+    Alert.alert(
+      "Building Options",
+      `${location.building_code} is set as your starting point. What would you like to do?`,
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Remove Start Point ❌", onPress: () => setStartLocation(null), style: "destructive" },
+        { text: "View Details 🏢", onPress: () => handleMarkerPress(location) },
+      ]
+    );
+  };
 
   const handleRegionChange = region => {
     if (Platform.OS == "android") {
@@ -184,7 +196,14 @@ const MapViewComponentImpl = ({
             ) : (
               showMarkers !== (Platform.OS == "ios") &&
               locations.map(location => (
-                <CustomMarker key={location.id} value={location} onPress={() => handleMarkerPress(location)} />
+                <CustomMarker
+                  key={location.id}
+                  value={location}
+                  onPress={() =>
+                    location.id === startLocation?.id ? showConfirmationPopup(location) : handleMarkerPress(location)
+                  }
+                  isStartingPoint={location.id == startLocation?.id}
+                />
               ))
             )}
 
