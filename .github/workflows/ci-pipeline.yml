@@ -145,3 +145,9 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ccg_backend/coverage.xml, ccg_frontend/ccg_mobile/coverage/lcov.info
+          fail_ci_if_error: true
