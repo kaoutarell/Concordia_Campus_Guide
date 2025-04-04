@@ -1,0 +1,221 @@
+{
+    "Exit":{
+        "id": "Exit",
+		"type": "exit",
+		"pin":{
+			"x":18,
+			"y":66
+		},
+		"coords": {
+			"x": 16,
+			"y": 95
+		},
+		"connections":[
+			"C1",
+			"C2"
+		]
+    },
+    "CC119":{
+        "id": "CC119",
+		"type": "room",
+		"pin":{
+			"x":190,
+			"y":225
+		},
+		"coords": {
+			"x": 180,
+			"y": 180
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC117":{
+        "id": "CC117",
+		"type": "room",
+		"pin":{
+			"x":300,
+			"y":224
+		},
+		"coords": {
+			"x": 325,
+			"y": 179
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC115":{
+        "id": "CC115",
+		"type": "room",
+		"pin":{
+			"x":423,
+			"y":225
+		},
+		"coords": {
+			"x": 372,
+			"y": 179
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC111":{
+        "id": "CC111",
+		"type": "room",
+		"pin":{
+			"x":595,
+			"y":234
+		},
+		"coords": {
+			"x": 534,
+			"y": 177
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC101":{
+        "id": "CC101",
+		"type": "room",
+		"pin":{
+			"x":860,
+			"y":218
+		},
+		"coords": {
+			"x": 860,
+			"y": 175
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC106":{
+        "id": "CC106",
+		"type": "room",
+		"pin":{
+			"x":820,
+			"y":85
+		},
+		"coords": {
+			"x": 860,
+			"y": 140
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC112":{
+        "id": "CC112",
+		"type": "room",
+		"pin":{
+			"x":595,
+			"y":85
+		},
+		"coords": {
+			"x": 647,
+			"y": 140
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC116":{
+        "id": "CC116",
+		"type": "room",
+		"pin":{
+			"x":425,
+			"y":80
+		},
+		"coords": {
+			"x": 485,
+			"y": 140
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC120":{
+        "id": "CC120",
+		"type": "room",
+		"pin":{
+			"x":240,
+			"y":96
+		},
+		"coords": {
+			"x": 206,
+			"y": 142
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC122":{
+        "id": "CC122",
+		"type": "room",
+		"pin":{
+			"x":153,
+			"y":95
+		},
+		"coords": {
+			"x": 179,
+			"y": 137
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC124":{
+        "id": "CC124",
+		"type": "room",
+		"pin":{
+			"x":93,
+			"y":84
+		},
+		"coords": {
+			"x": 94,
+			"y": 133
+		},
+		"connections":[
+			"C2"
+		]
+    },
+	"CC104":{
+        "id": "CC104",
+		"type": "room",
+		"pin":{
+			"x":931,
+			"y":79
+		},
+		"coords": {
+			"x": 926,
+			"y": 117
+		},
+		"connections":[
+			"C2"
+		]
+    },
+    "C1":{
+        "id": "C1",
+		"type": "corner",
+		"coords":{
+			"x":16,
+			"y":160
+		},
+		"connections":[
+			"C2",
+			"Exit"
+		]
+    },
+    "C2":{
+        "id": "C2",
+		"type": "corner",
+		"coords":{
+			"x":935,
+			"y":160
+		},
+		"connections":[
+			"C1"
+		]
+    }
+}
