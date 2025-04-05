@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
-import { View } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
 // Mock dependencies
 jest.mock("../api/dataService", () => ({
@@ -84,11 +84,11 @@ describe("MapScreen", () => {
   test("renders with mocked components", () => {
     // Use a simplified test approach instead of rendering the full component
     const { getByTestId } = render(
-      <View>
+      <SafeAreaView>
         <View testID="header-bar" />
         <View testID="map-view-component" />
         <View testID="navigation-toggle" />
-      </View>
+      </SafeAreaView>
     );
 
     // Verify that our mocked components are rendered
