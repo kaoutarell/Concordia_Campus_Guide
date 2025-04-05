@@ -4,7 +4,7 @@ import { Marker } from "react-native-maps";
 import markerImage from "../../../assets/marker-1.png";
 import PropTypes from "prop-types";
 
-const CustomMarker = ({ value, onPress, destination = false, isStartingPoint = false }) => {
+const CustomMarker = ({ value, onPress, showMarker, isStartingPoint = false, destination = false }) => {
   return (
     <Marker
       coordinate={{
@@ -12,7 +12,8 @@ const CustomMarker = ({ value, onPress, destination = false, isStartingPoint = f
         longitude: value.location.longitude,
       }}
       title={value.building_code} //to allow end-to-end testing
-      onPress={() => {
+      opacity={showMarker ? 1 : 0}
+      onPress={e => {
         onPress();
       }}
     >
@@ -73,6 +74,7 @@ CustomMarker.propTypes = {
     building_code: PropTypes.string.isRequired,
   }).isRequired,
   onPress: PropTypes.func.isRequired,
+  showMarker: PropTypes.bool.isRequired,
   destination: PropTypes.bool,
   isStartingPoint: PropTypes.bool,
 };

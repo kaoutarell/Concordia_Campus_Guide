@@ -25,8 +25,7 @@ const MapViewComponentImpl = ({
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showMarkers, setShowMarkers] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [mapKey, setMapKey] = useState(0);
-  const [targetRegion, setTargetRegion] = useState(region);
+  const [targetRegion, setTargetRegion] = useState(null);
   const [startLocation, setStartLocation] = useState(null);
 
   const showConfirmationPopup = location => {
@@ -42,10 +41,8 @@ const MapViewComponentImpl = ({
   };
 
   const handleRegionChange = region => {
-    if (Platform.OS == "android") {
-      const zoomThreshold = 0.006;
-      setShowMarkers(region.latitudeDelta < zoomThreshold);
-    }
+    const zoomThreshold = 0.006;
+    setShowMarkers(region.latitudeDelta < zoomThreshold);
   };
 
   const handleMarkerPress = location => {
@@ -141,7 +138,6 @@ const MapViewComponentImpl = ({
 
   useEffect(() => {
     if (target?.id) {
-      setMapKey(prevKey => prevKey + 1);
       setTargetRegion({
         latitude: target.location.latitude + 0.0009,
         longitude: target.location.longitude,
@@ -152,10 +148,15 @@ const MapViewComponentImpl = ({
       setShowPopup(true);
     } else {
       setShowPopup(false);
-      setMapKey(prevKey => prevKey + 1);
-      setTargetRegion(region);
+      setTargetRegion(null);
     }
   }, [target]);
+
+  useEffect(() => {
+    if (mapRef.current && region) {
+      mapRef.current.animateToRegion(region, 1000);
+    }
+  }, [region]);
 
   return (
     <View style={styles.container}>
@@ -167,11 +168,10 @@ const MapViewComponentImpl = ({
       ) : (
         <View style={styles.mapContainer}>
           <MapView
-            key={mapKey}
             ref={mapRef}
             testID="map-view"
             style={styles.map}
-            region={targetRegion}
+            {...(targetRegion ? { region: targetRegion } : { initialRegion: region })}
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
@@ -192,9 +192,13 @@ const MapViewComponentImpl = ({
             })}
           >
             {target.id ? (
-              <CustomMarker key={target.id} value={target} onPress={() => handleMarkerPress(target)} />
+              <CustomMarker
+                key={target.id}
+                value={target}
+                onPress={() => handleMarkerPress(target)}
+                showMarker={true}
+              />
             ) : (
-              showMarkers !== (Platform.OS == "ios") &&
               locations.map(location => (
                 <CustomMarker
                   key={location.id}
@@ -202,8 +206,8 @@ const MapViewComponentImpl = ({
                   onPress={() =>
                     location.id === startLocation?.id ? showConfirmationPopup(location) : handleMarkerPress(location)
                   }
-                  isStartingPoint={location.id == startLocation?.id}
-                />
+                  showMarker={showMarkers}
+                  isStartingPoint={location.id == startLocation?.id}                />
               ))
             )}
 
@@ -220,7 +224,7 @@ const MapViewComponentImpl = ({
             )}
 
             {selectedPointOfInterest?.map(point => (
-              <CustomMarker key={point.id} value={point} onPress={() => handleMarkerPress(point)} />
+              <CustomMarker key={point.id} value={point} onPress={() => handleMarkerPress(point)} showMarker={true} />
             ))}
 
             <BuildingHighlight />
