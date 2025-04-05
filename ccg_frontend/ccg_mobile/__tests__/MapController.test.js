@@ -6,12 +6,13 @@ describe("MapController", () => {
   const mockOnCurrentLocation = jest.fn();
   const mockOnZoomIn = jest.fn();
   const mockOnZoomOut = jest.fn();
+  const mockOnResetStartPoint = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("should render correctly", () => {
+  it("should render correctly. Reset start point button should not be rendered", () => {
     const { getByTestId } = render(
       <MapController onCurrentLocation={mockOnCurrentLocation} onZoomIn={mockOnZoomIn} onZoomOut={mockOnZoomOut} />
     );
@@ -19,6 +20,24 @@ describe("MapController", () => {
     expect(getByTestId("locate-button")).toBeTruthy();
     expect(getByTestId("zoom-in-button")).toBeTruthy();
     expect(getByTestId("zoom-out-button")).toBeTruthy();
+    expect(() => getByTestId("reset-start-point-button")).toThrow();
+  });
+
+  it("should render correctly. Reset start point button should be rendered", () => {
+    const { getByTestId } = render(
+      <MapController
+        onCurrentLocation={mockOnCurrentLocation}
+        onZoomIn={mockOnZoomIn}
+        onZoomOut={mockOnZoomOut}
+        startLocation={{ id: 1 }}
+        onResetStartPoint={mockOnResetStartPoint}
+      />
+    );
+
+    expect(getByTestId("locate-button")).toBeTruthy();
+    expect(getByTestId("zoom-in-button")).toBeTruthy();
+    expect(getByTestId("zoom-out-button")).toBeTruthy();
+    expect(getByTestId("reset-start-point-button")).toBeTruthy();
   });
 
   it("should call onCurrentLocation when locate button is pressed", () => {
@@ -46,5 +65,20 @@ describe("MapController", () => {
 
     fireEvent.press(getByTestId("zoom-out-button"));
     expect(mockOnZoomOut).toHaveBeenCalled();
+  });
+
+  it("should call onResetStartPoint when reset button is pressed", () => {
+    const { getByTestId } = render(
+      <MapController
+        onCurrentLocation={mockOnCurrentLocation}
+        onZoomIn={mockOnZoomIn}
+        onZoomOut={mockOnZoomOut}
+        startLocation={{ id: 1 }}
+        onResetStartPoint={mockOnResetStartPoint}
+      />
+    );
+
+    fireEvent.press(getByTestId("reset-start-point-button"));
+    expect(mockOnResetStartPoint).toHaveBeenCalled();
   });
 });

@@ -1,15 +1,22 @@
-import { React, Image, View, TouchableOpacity, StyleSheet } from "react-native";
+import { React, Image, View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 const controllerIcons = {
   locate: require("../../../assets/locate.png"),
   zoomIn: require("../../../assets/zoom_in.png"),
   zoomOut: require("../../../assets/zoom_out.png"),
+  resetStartPoint: require("../../../assets/reset_start_point.png"),
 };
 
-const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut }) => {
+const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut, startLocation = null, onResetStartPoint = null }) => {
   return (
     <View style={styles.container}>
+      {startLocation?.id ? (
+        <TouchableOpacity style={styles.resetStartPoint} onPress={onResetStartPoint} testID="reset-start-point-button">
+          <Image source={controllerIcons.resetStartPoint} style={styles.icon} />
+        </TouchableOpacity>
+      ) : null}
       <TouchableOpacity style={styles.button} onPress={onCurrentLocation} testID="locate-button">
         <Image source={controllerIcons.locate} style={styles.icon} />
       </TouchableOpacity>
@@ -29,6 +36,8 @@ MapController.propsTypes = {
   onCurrentLocation: PropTypes.func.isRequired,
   onZoomIn: PropTypes.func.isRequired,
   onZoomOut: PropTypes.func.isRequired,
+  startLocation: PropTypes.object,
+  onResetStartPoint: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -58,6 +67,19 @@ const styles = StyleSheet.create({
     bottom: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+  resetStartPoint: {
+    backgroundColor: "#FF4C4C",
+    borderRadius: 25,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20, // Spacing between buttons
+  },
+  resetStartPointText: {
+    fontSize: 12,
+    marginTop: 5,
+    color: "white",
   },
   icon: {
     width: 30,

@@ -158,6 +158,10 @@ const MapViewComponentImpl = ({
     }
   }, [region]);
 
+  const onResetStartPoint = () => {
+    setStartLocation(null);
+  };
+
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -246,7 +250,13 @@ const MapViewComponentImpl = ({
       )}
 
       {/* Map Controller */}
-      <MapController onCurrentLocation={handleCurrentLocation} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
+      <MapController
+        onCurrentLocation={handleCurrentLocation}
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+        startLocation={startLocation}
+        onResetStartPoint={onResetStartPoint}
+      />
     </View>
   );
 };
