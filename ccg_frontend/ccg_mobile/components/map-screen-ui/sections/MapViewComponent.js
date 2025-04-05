@@ -206,8 +206,8 @@ const MapViewComponentImpl = ({
                   onPress={() =>
                     location.id === startLocation?.id ? showConfirmationPopup(location) : handleMarkerPress(location)
                   }
-                  showMarker={showMarkers}
-                  isStartingPoint={location.id == startLocation?.id}                />
+                  showMarker={(location.id === startLocation?.id)||(showMarkers)}
+                  isStartingPoint={location.id == startLocation?.id}/>
               ))
             )}
 
