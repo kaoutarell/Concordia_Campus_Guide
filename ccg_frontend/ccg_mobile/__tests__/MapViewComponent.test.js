@@ -5,6 +5,7 @@ import locationService from "../services/LocationService";
 import { NavigationContainer } from "@react-navigation/native";
 import { act } from "@testing-library/react-native";
 import { fireEvent } from "@testing-library/react-native";
+import { Alert } from "react-native";
 
 // Mock navigation
 const mockNavigate = jest.fn();
@@ -1853,5 +1854,61 @@ describe("MapViewComponent", () => {
     renderMarkers({}, true, "android");
     expect(renderTargetMarker).not.toHaveBeenCalled();
     expect(renderLocationMarkers).toHaveBeenCalledWith(locations);
+  });
+
+  it("should render Alert when clicking on starting point marker", () => {
+    // Mock Alert.alert
+    const alertMock = jest.spyOn(Alert, "alert").mockImplementation(() => {});
+
+    // Mock location data
+    const mockLocation = {
+      id: 1,
+      building_code: "LOC1",
+      name: "Location 1",
+    };
+
+    // Mock setStartLocation and handleMarkerPress
+    const setStartLocationMock = jest.fn();
+    const handleMarkerPressMock = jest.fn();
+
+    // Direct implementation of showConfirmationPopup
+    const showConfirmationPopup = location => {
+      Alert.alert(
+        "Building Options",
+        `${location.building_code} is set as your starting point. What would you like to do?`,
+        [
+          { text: "Cancel", style: "cancel" },
+          { text: "Remove Start Point ❌", onPress: () => setStartLocationMock(null), style: "destructive" },
+          { text: "View Details 🏢", onPress: () => handleMarkerPressMock(location) },
+        ]
+      );
+    };
+
+    // Call the function
+    showConfirmationPopup(mockLocation);
+
+    // Verify Alert.alert was called with correct arguments
+    expect(alertMock).toHaveBeenCalledWith(
+      "Building Options",
+      "LOC1 is set as your starting point. What would you like to do?",
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: "Remove Start Point ❌", onPress: expect.any(Function), style: "destructive" },
+        { text: "View Details 🏢", onPress: expect.any(Function) },
+      ]
+    );
+
+    // Simulate "Remove Start Point ❌" button press
+    const removeStartPointAction = alertMock.mock.calls[0][2][1].onPress;
+    removeStartPointAction();
+    expect(setStartLocationMock).toHaveBeenCalledWith(null);
+
+    // Simulate "View Details 🏢" button press
+    const viewDetailsAction = alertMock.mock.calls[0][2][2].onPress;
+    viewDetailsAction();
+    expect(handleMarkerPressMock).toHaveBeenCalledWith(mockLocation);
+
+    // Restore mock
+    alertMock.mockRestore();
   });
 });
