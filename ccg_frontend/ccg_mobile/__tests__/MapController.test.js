@@ -6,7 +6,8 @@ describe("MapController", () => {
   const mockOnCurrentLocation = jest.fn();
   const mockOnZoomIn = jest.fn();
   const mockOnZoomOut = jest.fn();
-  const mockOnResetStartPoint = jest.fn();
+  const mockStartLocation = { id: 1 };
+  const mockSetStartLocation = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -29,8 +30,8 @@ describe("MapController", () => {
         onCurrentLocation={mockOnCurrentLocation}
         onZoomIn={mockOnZoomIn}
         onZoomOut={mockOnZoomOut}
-        startLocation={{ id: 1 }}
-        onResetStartPoint={mockOnResetStartPoint}
+        startLocation={mockStartLocation}
+        setStartLocation={mockSetStartLocation}
       />
     );
 
@@ -73,12 +74,12 @@ describe("MapController", () => {
         onCurrentLocation={mockOnCurrentLocation}
         onZoomIn={mockOnZoomIn}
         onZoomOut={mockOnZoomOut}
-        startLocation={{ id: 1 }}
-        onResetStartPoint={mockOnResetStartPoint}
+        startLocation={mockStartLocation}
+        setStartLocation={mockSetStartLocation}
       />
     );
 
     fireEvent.press(getByTestId("reset-start-point-button"));
-    expect(mockOnResetStartPoint).toHaveBeenCalled();
+    expect(mockSetStartLocation).toHaveBeenCalled();
   });
 });

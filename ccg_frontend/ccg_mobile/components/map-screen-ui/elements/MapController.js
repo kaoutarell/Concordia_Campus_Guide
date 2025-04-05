@@ -9,7 +9,11 @@ const controllerIcons = {
   resetStartPoint: require("../../../assets/reset_start_point.png"),
 };
 
-const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut, startLocation = null, onResetStartPoint = null }) => {
+const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut, startLocation = null, setStartLocation = null }) => {
+  const onResetStartPoint = () => {
+    setStartLocation(null);
+  };
+
   return (
     <View style={styles.container}>
       {startLocation?.id ? (
@@ -37,7 +41,7 @@ MapController.propsTypes = {
   onZoomIn: PropTypes.func.isRequired,
   onZoomOut: PropTypes.func.isRequired,
   startLocation: PropTypes.object,
-  onResetStartPoint: PropTypes.func,
+  setStartLocation: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
