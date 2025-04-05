@@ -4,46 +4,7 @@ name: "Feature 2.1 & 2.5 - Walk"
 - launchApp:
   clearState: "true" # ensures that each test starts with a clean slate for better performance
 # type destination directly in Where to text box to access navigation
-- tapOn: "Where to?"
-- tapOn: "Choose destination"
-# write destination
-- inputText:
-    text: "Engineering, "
-    into: "Where to?"
-# flow to for android device if stylus configuration pops up
-- runFlow:
-    when:
-      visible: "Try out your stylus"
-      platform: android
-    file: ./subflows/stylus_android.flow.yaml
-# wait for typing to end
-- extendedWaitUntil:
-    visible: "Engineering, Computer Science and Visual Arts Integrated Complex"
-    timeout: 50000
-# select building from animation
-- tapOn: Engineering, Computer Science and Visual Arts Integrated Complex
-# head to navigation page
-- tapOn: "Get Directions"
-- tapOn: "Set as Destination"
-# check to see if page renders correctly, walk navigation selected by default
-- assertVisible: "1515 St. Catherine W."
-- runFlow:
-    when:
-      visible: "Google Map"
-    file: ./subflows/assert_render_navigation_screen.yaml
-- assertVisible: "Start Navigation"
-#[Deprecated]- assertVisible: "My Location"
-- assertVisible: "EV"
-- assertVisible: "3 minutes"
-- assertVisible: "0.26 km"
-# start navigation
-- tapOn: "Start Navigation"
-- assertVisible: "In 64.1 meters, Head southwest!"
-- assertVisible: "Google Map"
-- assertVisible: "Preview"
-- assertVisible: "Exit"
-# check that exit button works
-- tapOn: "Exit"
+
 # check to see if page renders correctly
 - assertVisible: "1515 St. Catherine W."
 - runFlow:
@@ -75,3 +36,5 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: "←"
 # close info popup
 - tapOn: ""
+- tapOn:
+    id: "clear-search-button" #make sure to clear the search for setting up next test

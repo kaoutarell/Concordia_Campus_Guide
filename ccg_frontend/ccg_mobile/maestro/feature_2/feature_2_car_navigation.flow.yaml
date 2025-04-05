@@ -67,3 +67,13 @@ name: "Feature 2.1 & 2.5 - Car"
 - tapOn: "←"
 # close info popup
 - tapOn: ""
+- tapOn:
+    id: "clear-search-button" #make sure to clear the search for setting up next test
+- assertVisible:
+    id: "map-view"
+- assertVisible:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
