@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites>
-  <testsuite name="Test Suite" device="39271FDJH004RE" tests="3" failures="0" time="1980">
+  <testsuite name="Test Suite" device="39271FDJH004RE" tests="14" failures="0" time="1980">
     <testcase id="Launch App" name="Launch App" classname="Launch App" time="1" status="SUCCESS"/>
     <testcase id="Home Page" name="Home Page" classname="Home Page" time="30" status="SUCCESS"/>
     <testcase id="Sidebar" name="Sidebar" classname="Sidebar" time="75" status="SUCCESS"/>

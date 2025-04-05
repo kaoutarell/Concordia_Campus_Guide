@@ -56,6 +56,8 @@ name: "Feature 2 - Outdoor Directions: Set Marker as Start Point"
 # check start point reset button is visible
 - assertVisible:
     id: "reset-start-point-button"
+- tapOn:
+    id: "zoom-in-button"
 # tap on LS to view popup
 - tapOn: "LS"
 - assertVisible: "Building Options"
@@ -65,7 +67,6 @@ name: "Feature 2 - Outdoor Directions: Set Marker as Start Point"
 - assertVisible: "CANCEL"
 # test cancel button
 - tapOn: "CANCEL"
-# check that the start point button is visible
 - assertVisible: "LS"
 # check start point reset button is visible
 - assertVisible:
