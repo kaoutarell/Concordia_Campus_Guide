@@ -1,0 +1,10 @@
+appId: host.exp.Exponent
+name: "Sign in to Google"
+---
+- assertVisible:
+    id: "googleSignInButton"
+- tapOn:
+    id: "googleSignInButton"
+- tapOn:
+    id: "com.google.android.gms:id/container"
+    index: 0

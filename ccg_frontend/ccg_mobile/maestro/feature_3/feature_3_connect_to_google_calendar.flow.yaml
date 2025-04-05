@@ -6,8 +6,12 @@ name: "Feature 3 - Connect to Google Calendar"
 # starting state : map-view
 - tapOn:
     id: "menu-button"
-- assertVisible: "Google Calendar"
-- tapOn: "Google Calendar"
+- assertVisible: "📅 Events"
+- tapOn: "📅 Events"
+- runFlow:
+    when:
+      visible: "Sign in with Google"
+    file: ./subflows/google_sign_in.flow.yaml
 - assertVisible: "Class Schedule"
 - assertVisible: "Connected to Google Calendar!"
 - assertVisible: "SIGN OUT"
