@@ -1,3 +1,4 @@
+# flake8: noqa: F824
 import json
 from collections import deque
 
@@ -142,7 +143,7 @@ def get_node_sequence(map_data, start, destination):
 
 
 def get_class_stair_sequence(map_data, classroom):
-    #global isDisabled
+    global isDisabled
     global last_used_stairs
 
     if classroom not in map_data:
@@ -157,12 +158,10 @@ def get_class_stair_sequence(map_data, classroom):
 
             if map_data[current_node]["type"] == "stairs":
                 last_used_stairs = map_data[current_node]["id"]
-                print(last_used_stairs)
                 return path
         else:
             if map_data[current_node]["type"] == "elevator":
                 last_used_stairs = map_data[current_node]["id"]
-                print(last_used_stairs)
                 return path
 
         if current_node not in visited:
