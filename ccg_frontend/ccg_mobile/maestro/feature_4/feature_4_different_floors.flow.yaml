@@ -22,6 +22,7 @@ name: "Feature 4 - Indoor Directions for Different Floors"
 - inputText:
     text: "H913"
     into: "Destination Address"
+- tapOn: "Back" # exiting keyboard
 - tapOn:
     id: "start-button"
 # assert indoor navigation page
