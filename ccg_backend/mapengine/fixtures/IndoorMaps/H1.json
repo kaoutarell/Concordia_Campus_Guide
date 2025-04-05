@@ -1,84 +1,190 @@
 {
-    "Exit":{
-        "id": "Exit",
-		"type": "exit",
-		"pin":{
-			"x":325,
-			"y":1000
-		},
-		"coords": {
-			"x": 325,
-			"y": 960
-		},
-		"connections":[
-			"C1",
-			"C2"
-		]
+  "Exit": {
+    "id": "Exit",
+    "type": "exit",
+    "pin": {
+      "x": 325,
+      "y": 1000
     },
-    "S1":{
-        "id": "S1",
-		"type": "stairs",
-		"pin":{
-			"x":185,
-			"y":185
-		},
-		"coords": {
-			"x": 150,
-			"y": 235
-		},
-		"connections":[
-			"C4",
-			"C3"
-		]
+    "coords": {
+      "x": 325,
+      "y": 960
     },
-    "C1":{
-        "id": "C1",
-		"type": "corner",
-		"coords":{
-			"x":100,
-			"y":900
-		},
-		"connections":[
-			"C2",
-            "Exit"
-		]
+    "connections": ["C1"]
+  },
+  "H110": {
+    "id": "H110",
+    "type": "room",
+    "pin": {
+      "x": 264,
+      "y": 794
     },
-    "C2":{
-        "id": "C2",
-		"type": "corner",
-		"coords": {
-			"x": 530,
-			"y": 900
-		},
-		"connections":[
-			"C1",
-			"C3",
-            "Exit"
-		]
+    "coords": {
+      "x": 295,
+      "y": 638
     },
-    "C3":{
-        "id": "C3",
-		"type": "corner",
-		"coords":{
-			"x":530,
-			"y":250
-		},
-		"connections":[
-			"C2",
-			"C4",
-            "S1"
-		]
+    "connections": ["C1"]
+  },
+  "C1": {
+    "id": "C1",
+    "type": "connection",
+    "coords": {
+      "x": 300,
+      "y": 920
     },
-    "C4":{
-        "id": "C4",
-		"type": "corner",
-		"coords":{
-			"x":100,
-			"y":250
-		},
-		"connections":[
-			"C3",
-			"S1"
-		]
-    }
+    "connections": ["C2", "H110", "Exit"]
+  },
+  "WC1": {
+    "id": "WC1",
+    "type": "water-closet",
+    "pin": {
+      "x": 522,
+      "y": 670
+    },
+    "coords": {
+      "x": 470,
+      "y": 672
+    },
+    "connections": ["C5"]
+  },
+  "WC2": {
+    "id": "WC2",
+    "type": "water-closet",
+    "pin": {
+      "x": 520,
+      "y": 645
+    },
+    "coords": {
+      "x": 488,
+      "y": 566
+    },
+    "connections": ["C5"]
+  },
+  "C5": {
+    "id": "C5",
+    "type": "connection",
+    "coords": {
+      "x": 528,
+      "y": 920
+    },
+    "connections": ["C2", "C4", "WC1", "WC2", "E1"]
+  },
+  "C2": {
+    "id": "C2",
+    "type": "connection",
+    "coords": {
+      "x": 528,
+      "y": 920
+    },
+    "connections": ["C1", "C3", "C5", "S2"]
+  },
+  "S1": {
+    "id": "S1",
+    "type": "stairs",
+    "pin": {
+      "x": 720,
+      "y": 965
+    },
+    "coords": {
+      "x": 775,
+      "y": 965
+    },
+    "connections": ["C3"]
+  },
+  "C3": {
+    "id": "C3",
+    "type": "connection",
+    "coords": {
+      "x": 834,
+      "y": 920
+    },
+    "connections": ["C2", "C4", "S2"]
+  },
+  "E1": {
+    "id": "E1",
+    "type": "elevator",
+    "pin": {
+      "x": 670,
+      "y": 727
+    },
+    "coords": {
+      "x": 775,
+      "y": 965
+    },
+    "connections": ["C4", "C5"]
+  },
+  "C4": {
+    "id": "C4",
+    "type": "connection",
+    "coords": {
+      "x": 823,
+      "y": 772
+    },
+    "connections": ["C5", "C3", "E1"]
+  },
+  "S2": {
+    "id": "S2",
+    "type": "stairs",
+    "pin": {
+      "x": 602,
+      "y": 847
+    },
+    "coords": {
+      "x": 605,
+      "y": 886
+    },
+    "connections": ["C2", "C3"]
+  },
+  "H118": {
+    "id": "H118",
+    "type": "room",
+    "pin": {
+      "x": 807,
+      "y": 678
+    },
+    "coords": {
+      "x": 812,
+      "y": 704
+    },
+    "connections": ["C4"]
+  },
+  "H102-3": {
+    "id": "H102-3",
+    "type": "room",
+    "pin": {
+      "x": 722,
+      "y": 795
+    },
+    "coords": {
+      "x": 728,
+      "y": 734
+    },
+    "connections": ["C4"]
+  },
+  "H102-2": {
+    "id": "H102-2",
+    "type": "room",
+    "pin": {
+      "x": 913,
+      "y": 791
+    },
+    "coords": {
+      "x": 863,
+      "y": 819
+    },
+    "connections": ["C3", "C4"]
+  },
+  "H196": {
+    "id": "H196",
+    "type": "room",
+    "pin": {
+      "x": 605,
+      "y": 775
+    },
+    "coords": {
+      "x": 620,
+      "y": 736
+    },
+    "connections": ["C4", "C5"]
+  }
 }
