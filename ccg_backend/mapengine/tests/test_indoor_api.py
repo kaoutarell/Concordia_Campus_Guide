@@ -494,7 +494,7 @@ def test_get_indoor_direction_data():
     assert data == {
         "floor_sequence": ["H8"],
         "path_data": {
-            "H8": "M160 200 L180 220 L180 220 L555 220 L555 800 L675 800 L675 820"
+            "H8": "M160 200 L180 220 L180 400 L180 800 L555 800 L675 800 L675 820"
         },
         "pin": {"H8": [[75, 105], [640, 900]]},
     }
