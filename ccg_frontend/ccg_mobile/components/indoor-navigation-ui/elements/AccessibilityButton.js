@@ -6,8 +6,11 @@ import wheelchair from "../../../assets/wheelchair.png";
 const AccessibleRouteButton = ({ showAccessibleRoute, setShowAccessibleRoute, onShowDirections, testID }) => {
   const onPress = () => {
     setShowAccessibleRoute(!showAccessibleRoute);
-    onShowDirections();
   };
+
+  React.useEffect(() => {
+    onShowDirections();
+  }, [showAccessibleRoute]);
 
   return (
     <View>
