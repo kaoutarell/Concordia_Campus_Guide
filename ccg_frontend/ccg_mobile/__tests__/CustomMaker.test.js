@@ -33,7 +33,13 @@ describe("CustomMarker Component", () => {
 
     // Render the component with the mock function
     const { getByTestId } = render(
-      <CustomMarker value={mockValue} onPress={mockOnPress} destination={true} showMarker={true} />
+      <CustomMarker
+        value={mockValue}
+        onPress={mockOnPress}
+        destination={true}
+        showMarker={true}
+        isStartingPoint={true}
+      />
     );
 
     // Simulate a press event on the marker
