@@ -142,7 +142,7 @@ const NavigationMap = ({
   }, [legs, displayShuttle]);
 
   return (
-    <MapView style={styles.map} showsUserLocation region={region} ref={mapRef}>
+    <MapView style={styles.map} showsUserLocation region={region} ref={mapRef} zoomControlEnabled={true}>
       <Marker coordinate={startMarker} title={startTitle} pinColor="blue" />
       <Marker coordinate={endMarker} title={endTitle} pinColor="red" />
 
