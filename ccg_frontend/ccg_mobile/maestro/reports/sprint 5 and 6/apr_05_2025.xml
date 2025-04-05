@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="39271FDJH004RE" tests="3" failures="0" time="1980">
+    <testcase id="Launch App" name="Launch App" classname="Launch App" time="1" status="SUCCESS"/>
+    <testcase id="Home Page" name="Home Page" classname="Home Page" time="30" status="SUCCESS"/>
+    <testcase id="Sidebar" name="Sidebar" classname="Sidebar" time="75" status="SUCCESS"/>
+    <testcase id="Feature 1 - Show Both Campuses" name="Feature 1 - Show Both Campuses" classname="Feature 1 - Show Both Campuses" time="79" status="SUCCESS"/>
+    <testcase id="Feature 2 - Outdoor Directions" name="Feature 2 - Outdoor Directions" classname="Feature 2 - Outdoor Directions" time="245" status="SUCCESS"/>
+     <testcase id="Feature 2.1 &amp; 2.5 - Bike" name="Feature 2.1 &amp; 2.5 - Bike" classname="Feature 2.1 &amp; 2.5 - Bike" time="154" status="SUCCESS">
+     <testcase id="Feature 2.1 &amp; 2.5 - Bus" name="Feature 2.1 &amp; 2.5 - Bus" classname="Feature 2.1 &amp; 2.5 - Bus" time="236" status="SUCCESS"/>
+     <testcase id="Feature 2.1 &amp; 2.5 - Car" name="Feature 2.1 &amp; 2.5 - Car" classname="Feature 2.1 &amp; 2.5 - Car" time="230" status="SUCCESS"/>
+     <testcase id="Feature 2.1 &amp; 2.5 - Shuttle" name="Feature 2.1 &amp; 2.5 - Shuttle" classname="Feature 2.1 &amp; 2.5 - Shuttle" time="250" status="SUCCESS">
+     <testcase id="Feature 2.1 &amp; 2.5 - Walk" name="Feature 2.1 &amp; 2.5 - Walk" classname="Feature 2.1 &amp; 2.5 - Walk" time="143" status="SUCCESS"/>
+     <testcase id="Feature 3 - Connect to Google Calendar" name="Feature 3 - Connect to Google Calendar" classname="Feature 3 - Connect to Google Calendar" time="108" status="SUCCESS"/>
+     <testcase id="Feature 4 - Indoor Directions for Different Floors" name="Feature 4 - Indoor Directions for Different Floors" classname="Feature 4 - Indoor Directions for Different Floors" time="119" status="SUCCESS"/>
+     <testcase id="Feature 4 - Indoor Directions" name="Feature 4 - Indoor Directions" classname="Feature 4 - Indoor Directions" time="115" status="SUCCESS"/>
+     <testcase id="Feature 5: Outdoor Points of Interest" name="Feature 5: Outdoor Points of Interest" classname="Feature 5: Outdoor Points of Interest" time="195" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
