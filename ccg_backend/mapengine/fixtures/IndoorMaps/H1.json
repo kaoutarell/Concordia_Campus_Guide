@@ -76,10 +76,10 @@
       "x": 528,
       "y": 920
     },
-    "connections": ["C1", "C3", "C5", "S2"]
+    "connections": ["C1", "C3", "C5", "S1"]
   },
-  "S1": {
-    "id": "S1",
+  "S2": {
+    "id": "S2",
     "type": "stairs",
     "pin": {
       "x": 720,
@@ -98,7 +98,7 @@
       "x": 834,
       "y": 920
     },
-    "connections": ["C2", "C4", "S2"]
+    "connections": ["C2", "C4", "S1"]
   },
   "E1": {
     "id": "E1",
@@ -122,8 +122,8 @@
     },
     "connections": ["C5", "C3", "E1"]
   },
-  "S2": {
-    "id": "S2",
+  "S1": {
+    "id": "S1",
     "type": "stairs",
     "pin": {
       "x": 602,
