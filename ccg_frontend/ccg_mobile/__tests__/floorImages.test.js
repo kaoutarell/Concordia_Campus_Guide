@@ -14,6 +14,6 @@ describe("Floor Images", () => {
 
   it("should get all floor images", () => {
     const images = getFloorImages();
-    expect(Object.keys(images)).toEqual(["H8", "H9", "H2", "H1", "MB1", "MB2", "CC1"]);
+    expect(Object.keys(images)).toEqual(["H8", "H9", "H2", "H1", "MB1", "MBS2", "CC1"]);
   });
 });
