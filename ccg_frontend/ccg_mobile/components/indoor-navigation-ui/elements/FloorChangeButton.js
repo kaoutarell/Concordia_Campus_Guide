@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   view: {
-    position: "relative",
-    marginTop: "70%",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
