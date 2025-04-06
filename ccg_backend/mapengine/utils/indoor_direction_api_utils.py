@@ -55,73 +55,58 @@ def get_indoor_directions_data(start, destination, disabled):
 
 
 def determine_path_sequence(i, floor_sequence, map_data, start, destination):
-    # Handle simple case first
+    # Base case: only one floor in the sequence
     if len(floor_sequence) == 1:
-        return get_node_sequence(map_data, start, destination), get_pins(
-            map_data, start, destination
+        return get_node_sequence(map_data, start, destination), get_pins(map_data, start, destination)
+
+    has_next = len(floor_sequence) > i + 1
+    next_is_outside = has_next and (floor_sequence[i + 1] == "Outside")
+    prev_is_outside = (i > 0) and (floor_sequence[i - 1] == "Outside")
+
+    # Case 1: Not going Outside next and wasn't just Outside before
+    if has_next and not next_is_outside and not prev_is_outside:
+        if last_used_stairs == "":
+            return (
+                get_class_stair_sequence(map_data, start),
+                get_pins(map_data, start, last_used_stairs)
+            )
+        return (
+            get_node_sequence(map_data, last_used_stairs, last_used_stairs),
+            get_pins(map_data, last_used_stairs, last_used_stairs)
         )
 
-    # Determine current situation
-    is_next_floor_outside = len(floor_sequence) > i + 1 and floor_sequence[i + 1] == "Outside"
-    was_prev_floor_outside = i > 0 and floor_sequence[i - 1] == "Outside"
-    is_first_floor = i == 0
-    is_last_floor = i == len(floor_sequence) - 1
+    # Case 2: Going Outside next
+    if has_next and next_is_outside:
+        if i == 0:
+            return (
+                get_node_sequence(map_data, start, "Exit"),
+                get_pins(map_data, start, "Exit")
+            )
+        return (
+            get_node_sequence(map_data, last_used_stairs, "Exit"),
+            get_pins(map_data, last_used_stairs, "Exit")
+        )
 
-    # Handle different navigation scenarios
-    return handle_navigation_scenario(
-        map_data, start, destination, last_used_stairs,
-        is_next_floor_outside, was_prev_floor_outside,
-        is_first_floor, is_last_floor
-    )
+    # Case 3: Previous floor was not Outside
+    if i > 0 and not prev_is_outside:
+        return (
+            get_node_sequence(map_data, last_used_stairs, destination),
+            get_pins(map_data, last_used_stairs, destination)
+        )
 
+    # Case 4: Previous floor was Outside
+    if i > 0 and prev_is_outside:
+        if i < len(floor_sequence) - 1:
+            return (
+                get_class_stair_sequence(map_data, "Exit"),
+                get_pins(map_data, "Exit", last_used_stairs)
+            )
+        return (
+            get_node_sequence(map_data, "Exit", destination),
+            get_pins(map_data, "Exit", destination)
+        )
 
-def handle_navigation_scenario(map_data, start, destination, last_used_stairs,
-                               is_next_floor_outside, was_prev_floor_outside,
-                               is_first_floor, is_last_floor):
-    # Scenario 1: Moving between floors (not involving outside)
-    if not is_next_floor_outside and not was_prev_floor_outside:
-        return handle_internal_floors(map_data, start, last_used_stairs)
-
-    # Scenario 2: Going outside after this floor
-    if is_next_floor_outside:
-        return handle_going_outside(map_data, start, last_used_stairs, is_first_floor)
-
-    # Scenario 3: Coming from outside
-    if was_prev_floor_outside:
-        return handle_coming_from_outside(map_data, destination, last_used_stairs, is_last_floor)
-
-    # Fallback case
     return None, None
-
-
-def handle_internal_floors(map_data, start, last_used_stairs):
-    if last_used_stairs == "":
-        sequence = get_class_stair_sequence(map_data, start)
-        pin_array = get_pins(map_data, start, last_used_stairs)
-    else:
-        sequence = get_node_sequence(map_data, last_used_stairs, last_used_stairs)
-        pin_array = get_pins(map_data, last_used_stairs, last_used_stairs)
-    return sequence, pin_array
-
-
-def handle_going_outside(map_data, start, last_used_stairs, is_first_floor):
-    if is_first_floor:
-        sequence = get_node_sequence(map_data, start, "Exit")
-        pin_array = get_pins(map_data, start, "Exit")
-    else:
-        sequence = get_node_sequence(map_data, last_used_stairs, "Exit")
-        pin_array = get_pins(map_data, last_used_stairs, "Exit")
-    return sequence, pin_array
-
-
-def handle_coming_from_outside(map_data, destination, last_used_stairs, is_last_floor):
-    if is_last_floor:
-        sequence = get_node_sequence(map_data, "Exit", destination)
-        pin_array = get_pins(map_data, "Exit", destination)
-    else:
-        sequence = get_class_stair_sequence(map_data, "Exit")
-        pin_array = get_pins(map_data, "Exit", last_used_stairs)
-    return sequence, pin_array
 
 
 # returns an array of pins for the start and destination
