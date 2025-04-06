@@ -37,8 +37,7 @@
     },
     "MBS2":{
         "connections":[
-            "MB1",
-            "Outside"
+            "MB1"
         ]
     },
     "CC1":{
