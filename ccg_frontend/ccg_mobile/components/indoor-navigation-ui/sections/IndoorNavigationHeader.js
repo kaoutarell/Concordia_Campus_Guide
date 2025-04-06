@@ -3,7 +3,6 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import NavigationSearch from "../elements/NavigationSearch";
 import CustomButton from "../elements/CustomButton";
-import IndoorDropdown from "../elements/IndoorDropdown";
 import PropTypes from "prop-types";
 
 const IndoorNavigationHeader = ({

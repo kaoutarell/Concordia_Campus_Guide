@@ -7,7 +7,7 @@ import { getCategoryIcon } from "../../utils/categoryIcons";
 const CustomNavSearch = ({ navigation, route }) => {
   const { type, onGoBack, searchableItems, allLocations } = route.params || {};
 
-  const [allBuildings, setAllBuildings] = useState(searchableItems || allLocations || []);
+  const [allBuildings] = useState(searchableItems || allLocations || []);
 
   const [searchText, setSearchText] = useState("");
   const [filteredLocations, setFilteredLocations] = useState(searchableItems || allLocations || []);

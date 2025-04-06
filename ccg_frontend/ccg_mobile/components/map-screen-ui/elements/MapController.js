@@ -1,6 +1,6 @@
-import { React, Image, View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import React from "react";
+import { Image, View, TouchableOpacity, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 
 const controllerIcons = {
   locate: require("../../../assets/locate.png"),
@@ -36,7 +36,7 @@ const MapController = ({ onCurrentLocation, onZoomIn, onZoomOut, startLocation =
   );
 };
 
-MapController.propsTypes = {
+MapController.propTypes = {
   onCurrentLocation: PropTypes.func.isRequired,
   onZoomIn: PropTypes.func.isRequired,
   onZoomOut: PropTypes.func.isRequired,

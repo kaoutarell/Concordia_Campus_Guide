@@ -54,7 +54,7 @@ const MapViewComponentImpl = ({
 
   const onGoToLocation = location => {
     navigation.navigate("Navigation", {
-      start: startLocation ? startLocation : currentLocation,
+      start: startLocation ?? currentLocation,
       destination: location,
       allLocations: [
         ...locations.map(item => ({ ...item, id: `school-${item.id}` })),
@@ -158,6 +158,13 @@ const MapViewComponentImpl = ({
     }
   }, [region]);
 
+  let regionProps = {};
+  if (targetRegion) {
+    regionProps = { region: targetRegion };
+  } else {
+    regionProps = { initialRegion: region };
+  }
+
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -171,7 +178,7 @@ const MapViewComponentImpl = ({
             ref={mapRef}
             testID="map-view"
             style={styles.map}
-            {...(targetRegion ? { region: targetRegion } : { initialRegion: region })}
+            {...regionProps}
             maxBounds={maxBounds}
             showsUserLocation={true}
             onRegionChangeComplete={handleRegionChange}
@@ -199,17 +206,26 @@ const MapViewComponentImpl = ({
                 showMarker={true}
               />
             ) : (
-              locations.map(location => (
-                <CustomMarker
-                  key={location.id}
-                  value={location}
-                  onPress={() =>
-                    location.id === startLocation?.id ? showConfirmationPopup(location) : handleMarkerPress(location)
+              locations.map(location => {
+                const isStartingPoint = location.id === startLocation?.id;
+                const handlePress = () => {
+                  if (isStartingPoint) {
+                    showConfirmationPopup(location);
+                  } else {
+                    handleMarkerPress(location);
                   }
-                  showMarker={location.id === startLocation?.id || showMarkers}
-                  isStartingPoint={location.id == startLocation?.id}
-                />
-              ))
+                };
+
+                return (
+                  <CustomMarker
+                    key={location.id}
+                    value={location}
+                    onPress={handlePress}
+                    showMarker={isStartingPoint || showMarkers}
+                    isStartingPoint={isStartingPoint}
+                  />
+                );
+              })
             )}
 
             {currentLocation?.coords && (
