@@ -45,7 +45,7 @@ name: "Feature 2.1 & 2.5 - Bus"
     when:
       visible: "Google Map"
     file: ./subflows/assert_render_navigation_screen.yaml
-- assertVisible: "Start Navigation"    
+- assertVisible: "Start Navigation"
 - assertVisible: "7141 Sherbrooke W."
 #[Deprecated]- assertVisible: "My Location"
 - assertVisible: "RF"
@@ -69,3 +69,13 @@ name: "Feature 2.1 & 2.5 - Bus"
 - tapOn: "←"
 # close info popup
 - tapOn: ""
+- tapOn:
+    id: "clear-search-button" #make sure to clear the search for setting up next test
+- assertVisible:
+    id: "map-view"
+- assertVisible:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"

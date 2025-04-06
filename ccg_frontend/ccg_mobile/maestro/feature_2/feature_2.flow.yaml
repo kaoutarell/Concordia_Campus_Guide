@@ -61,13 +61,9 @@ name: "Feature 2 - Outdoor Directions"
 # leave navigation map
 - tapOn: "←"
 # close info popup
-- tapOn: ""
-- scrollUntilVisible:
-    element: "MU"
-    direction: UP
-- tapOn: "MU"
-- tapOn: "Get Directions"
-- tapOn: "Set as Start"
+# remove MU as start point
+- tapOn:
+    id: "reset-start-point-button"
 # check that the campus toggle button and other components render
 - assertVisible:
     id: "campus-button"

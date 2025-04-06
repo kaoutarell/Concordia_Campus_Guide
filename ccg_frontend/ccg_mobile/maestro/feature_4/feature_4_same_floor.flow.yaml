@@ -13,19 +13,20 @@ name: "Feature 4 - Indoor Directions"
 # indoor navigation
 # 4.2: show shortest path directions
 # select starting point by typing room number
-- tapOn: "Start Address"
+- tapOn: "Starting Room (ex: H867)"
 - inputText:
     text: "H867"
     into: Start Address"
 # select destination room by typing room number
-- tapOn: "Destination Address"
+- tapOn: "Destination Room (ex: MB1.125)"
 - inputText:
     text: "H837"
     into: "Destination Address"
+- tapOn: "Back" # exiting keyboard
 - tapOn:
     id: "start-button"
 # assert indoor navigation page
-- assertVisible: "H8"
+- assertVisible: "Current Floor: H8"
 - runFlow:
     when:
       visible: "Get Direction"

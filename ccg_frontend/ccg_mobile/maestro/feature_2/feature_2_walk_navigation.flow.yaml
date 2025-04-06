@@ -75,3 +75,5 @@ name: "Feature 2.1 & 2.5 - Walk"
 - tapOn: "←"
 # close info popup
 - tapOn: ""
+- tapOn:
+    id: "clear-search-button" #make sure to clear the search for setting up next test

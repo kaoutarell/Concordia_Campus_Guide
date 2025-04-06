@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="39271FDJH004RE" tests="1" failures="0" time="170">
+    <testcase id="Feature 2 - Outdoor Directions: Set Marker as Start Point" name="Feature 2 - Outdoor Directions: Set Marker as Start Point" classname="Feature 2 - Outdoor Directions: Set Marker as Start Point" time="170" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

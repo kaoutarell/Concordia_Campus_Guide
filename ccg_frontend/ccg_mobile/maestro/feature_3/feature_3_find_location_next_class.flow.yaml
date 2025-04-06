@@ -1,5 +1,5 @@
 appId: host.exp.Exponent
-name: "Feature 3 - Connect to Google Calendar"
+name: "Feature 3 - Use Google Calendar to Navigate to Next Class"
 ---
 - launchApp:
   clearState: "true" # ensures that each test starts with a clean slate for better performance
@@ -18,22 +18,9 @@ name: "Feature 3 - Connect to Google Calendar"
 - assertVisible: "Select Calendars"
 - assertVisible: "Events"
 - assertVisible: "Show Classes Only"
-- tapOn: "Test"
-- assertVisible: "SOEN 390"
-- assertVisible: "SOEN 345"
+- tapOn: "jessica.beauchemin01@gmail.com" # add calendar name
 - tapOn: "Show Classes Only"
-- assertVisible: "Show All Events"
-- tapOn: "Show All Events"
-# Feature 3.2 - select multiple calendars
-- tapOn: "Test 2"
-- assertVisible: "SOEN 390"
-- assertVisible: "SOEN 345"
-- assertVisible: "SOEN 363"
-- tapOn: "Test"
-- assertVisible: "SOEN 363"
-- tapOn: "Test 2"
-- assertVisible: "No events to display."
-# exit class schedule
-- swipe:
-    start: 95%, 50% # 95% of width, 50% of height
-    end: 50%, 50% # 50% of width, 50% of height
+- assertVisible: "GO" # check that event has a navigate option
+- tapOn: "GO" # use navigation feature
+- assertNotVisible: "Class Schedule" #make sure that the calendar is not visible
+- assertVisible: "Get Direction" # make sure that we see the indoor navigation screen

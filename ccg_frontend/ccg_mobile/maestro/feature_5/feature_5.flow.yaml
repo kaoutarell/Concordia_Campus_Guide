@@ -25,7 +25,6 @@ name: "Feature 5: Outdoor Points of Interest"
 - assertVisible: "Campus: SGW"
 - assertVisible:
     id: "get-directions-button"
-- tapOn:
     id: "get-directions-button"
 - tapOn: "Set as Destination"
 # check to see if nav page renders correctly
@@ -55,7 +54,8 @@ name: "Feature 5: Outdoor Points of Interest"
 - tapOn: "←"
 # close popup
 - tapOn: ""
-
+- tapOn:
+    id: "clear-search-button"
 # switch campus
 - tapOn:
     id: "campus-button"
@@ -70,6 +70,11 @@ name: "Feature 5: Outdoor Points of Interest"
 - inputText:
     text: "Tim"
     into: "Choose destination"
+# select destination by scrolling to building name - to make sure the keyboard doesn't hide the element
+- scrollUntilVisible:
+    element:
+      text: "Tim Hortons, 6495 Rue Saint-Jacques, Montreal, QC H4B 1V1, Canada"
+    timeout: 50000
 - tapOn: "Tim Hortons, 6495 Rue Saint-Jacques, Montreal, QC H4B 1V1, Canada"
 # assert popup is visible
 - assertVisible: "Tim Hortons"

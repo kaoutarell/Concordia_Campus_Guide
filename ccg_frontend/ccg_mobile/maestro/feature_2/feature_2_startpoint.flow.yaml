@@ -1,0 +1,119 @@
+appId: host.exp.Exponent
+name: "Feature 2 - Outdoor Directions: Set Marker as Start Point"
+---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
+# test starts at screen home screen
+- assertVisible: "Continue to map ➤"
+- tapOn: "Continue to map ➤"
+- assertVisible:
+    id: "map-view"
+- assertVisible:
+    id: "zoom-in-button"
+- assertVisible:
+    id: "zoom-out-button"
+- tapOn:
+    id: "zoom-in-button"
+- tapOn:
+    id: "zoom-in-button"
+- assertVisible: "LS"
+- tapOn: "LS"
+- assertVisible: "Learning Square (LS Building)"
+- assertVisible:
+    id: "get-directions-button"
+- tapOn:
+    id: "get-directions-button"
+- assertVisible: "Set as Start"
+- tapOn: "Set as Start"
+- assertVisible:
+    id: "map-view"
+# check that the start point button is visible
+- assertVisible: "LS"
+- assertVisible:
+    id: "reset-start-point-button"
+- tapOn:
+    id: "zoom-out-button"
+- tapOn:
+    id: "zoom-out-button"
+# check that the start point button is visible (where all other markers are not)
+- assertVisible: "LS"
+# check start point reset button is visible
+- assertVisible:
+    id: "reset-start-point-button"
+# toggle to loyola campus
+- tapOn:
+    id: "campus-button"
+- assertVisible:
+    id: "map-view"
+# check start point reset button is visible
+- assertVisible:
+    id: "reset-start-point-button"
+# go back to swg campus
+- tapOn:
+    id: "campus-button"
+# check that the start point button is visible (where all other markers are not)
+- assertVisible: "LS"
+# check start point reset button is visible
+- assertVisible:
+    id: "reset-start-point-button"
+- tapOn:
+    id: "zoom-in-button"
+# tap on LS to view popup
+- tapOn: "LS"
+- assertVisible: "Building Options"
+- assertVisible: "LS is set as your starting point. What would you like to do?"
+- assertVisible: "VIEW DETAILS 🏢"
+- assertVisible: "REMOVE START POINT ❌"
+- assertVisible: "CANCEL"
+# test cancel button
+- tapOn: "CANCEL"
+- assertVisible: "LS"
+# check start point reset button is visible
+- assertVisible:
+    id: "reset-start-point-button"
+- tapOn: "LS"
+- assertVisible: "VIEW DETAILS 🏢"
+- tapOn: "VIEW DETAILS 🏢"
+# test view details button - info pop up
+- assertVisible: "Learning Square (LS Building)"
+- assertVisible: "1535 De Maisonneuve Blvd. W."
+- assertVisible: "Campus: SGW"
+- tapOn: ""
+# check that the start point button is visible (where all other markers are not)
+- assertVisible: "LS"
+# check start point reset button is visible
+- assertVisible:
+    id: "reset-start-point-button"
+- tapOn: "LS"
+# test remove start point button
+- tapOn: "REMOVE START POINT ❌"
+- assertNotVisible:
+    id: "reset-start-point-button"
+- assertVisible: "LS"
+# set LS as start point again to test removing the start point with "reset-start-point-button"
+- tapOn: "LS"
+- assertVisible: "Learning Square (LS Building)"
+- assertVisible:
+    id: "get-directions-button"
+- tapOn:
+    id: "get-directions-button"
+- assertVisible: "Set as Start"
+- tapOn: "Set as Start"
+- assertVisible:
+    id: "map-view"
+# check that the start point button is visible
+- assertVisible: "LS"
+- assertVisible:
+    id: "reset-start-point-button"
+- tapOn:
+    id: "zoom-out-button"
+- tapOn:
+    id: "zoom-out-button"
+- assertVisible: "LS"
+- assertVisible:
+    id: "reset-start-point-button"
+# remove start point as LS and check that the marker is not visible
+- tapOn:
+    id: "reset-start-point-button"
+- assertNotVisible:
+    id: "reset-start-point-button"

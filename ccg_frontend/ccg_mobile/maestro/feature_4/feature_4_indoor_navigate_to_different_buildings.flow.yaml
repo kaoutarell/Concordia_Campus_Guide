@@ -1,5 +1,11 @@
+###
+# this test is taken out of the test run due to perfomance issues
+# maestro + emulator/phone creates too much overhead causing the app to crash
+# testing of this feature will be manual
+# this test flow belongs in ~/maesto/feature_4 directory
+###
 appId: host.exp.Exponent
-name: "Feature 4 - Indoor Directions for Different Floors"
+name: "Feature 4 - Indoor Directions for Different Buildings"
 ---
 - launchApp:
   clearState: "true" # ensures that each test starts with a clean slate for better performance
@@ -15,39 +21,47 @@ name: "Feature 4 - Indoor Directions for Different Floors"
 # select starting point by typing room number
 - tapOn: "Starting Room (ex: H867)"
 - inputText:
-    text: "H867"
+    text: "MB1.210"
     into: Start Address"
 # select destination room by typing room number
 - tapOn: "Destination Room (ex: MB1.125)"
 - inputText:
-    text: "H913"
+    text: "H867"
     into: "Destination Address"
 - tapOn: "Back" # exiting keyboard
-# select accessibility navigation (4.3.1)
-- tapOn:
-    point: "74%,93%"
 - tapOn:
     id: "start-button"
 # assert indoor navigation page
-- assertVisible: "Current Floor: H8"
 - runFlow:
     when:
       visible: "Get Direction"
     file: ./subflows/assert_render_indoor_mapview.flow.yaml
+- assertVisible: "Current Floor: MB1"
+- assertVisible: "[Step 1/5]"
 # view next floor navigation map
 - tapOn:
     id: "next-button"
 # assert indoor navigation page
-- assertVisible: "Current Floor: H9"
-- runFlow:
-    when:
-      visible: "Get Direction"
-    file: ./subflows/assert_render_indoor_mapview.flow.yaml
-# check that going back to previous page works
+- assertVisible: "Move to Outside Navigation"
+- assertVisible: "[Step 2/5]"
+- tapOn: "Move to Outside Navigation"
+# leave navigation map
+- tapOn: "←"
+# view next floor navigation map
 - tapOn:
-    id: "prev-button"
-# assert indoor navigation page
+    id: "next-button"
+- assertVisible: "Current Floor: H1"
+- assertVisible: "[Step 3/5]"
+# view next floor navigation map
+- tapOn:
+    id: "next-button"
+- assertVisible: "Current Floor: H2"
+- assertVisible: "[Step 4/5]"
+# view next floor navigation map
+- tapOn:
+    id: "next-button"
 - assertVisible: "Current Floor: H8"
+- assertVisible: "[Step 5/5]"
 - runFlow:
     when:
       visible: "Get Direction"
