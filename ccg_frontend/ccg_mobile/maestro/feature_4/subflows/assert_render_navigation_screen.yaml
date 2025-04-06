@@ -1,0 +1,9 @@
+appId: host.exp.Exponent
+name: "Assert that navigation screen renders properly"
+---
+- assertVisible: "Walk"
+- assertVisible: "Bike"
+- assertVisible: "Car"
+- assertVisible: "Bus"
+- assertVisible: "Shuttle"
+- assertVisible: "Google Map"

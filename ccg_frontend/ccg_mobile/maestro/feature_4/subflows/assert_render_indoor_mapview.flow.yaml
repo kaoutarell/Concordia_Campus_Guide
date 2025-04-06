@@ -2,11 +2,9 @@ appId: host.exp.Exponent
 name: "Assert that indoor map view renders properly"
 ---
 - assertVisible:
-    id: "dropdown-input"
-- assertVisible:
     id: "path-svg"
-- assertVisible: "Start Address"
-- assertVisible: "Destination Address"
+- assertVisible: "Starting Room (ex: H867)"
+- assertVisible: "Destination Room (ex: MB1.125)"
 - assertVisible:
     id: "start-button"
 - assertVisible:
