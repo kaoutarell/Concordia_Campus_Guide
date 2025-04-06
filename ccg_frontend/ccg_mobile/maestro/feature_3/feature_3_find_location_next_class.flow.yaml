@@ -1,0 +1,27 @@
+appId: host.exp.Exponent
+name: "Feature 3 - Use Google Calendar to Navigate to Next Class"
+---
+- launchApp:
+  clearState: "true" # ensures that each test starts with a clean slate for better performance
+# starting state : map-view
+- tapOn:
+    id: "menu-button"
+- assertVisible: "📅 Events"
+- tapOn: "📅 Events"
+- runFlow:
+    when:
+      visible: "Sign in with Google"
+    file: ./subflows/google_sign_in.flow.yaml
+- assertVisible: "Class Schedule"
+- assertVisible: "Connected to Google Calendar!"
+- assertVisible: "SIGN OUT"
+- assertVisible: "Select Calendars"
+- assertVisible: "Events"
+- assertVisible: "Show Classes Only"
+- tapOn: "jessica.beauchemin01@gmail.com" # add calendar name
+- tapOn: "Show Classes Only"
+- assertVisible: "GO" # check that event has a navigate option
+- tapOn: "GO" # use navigation feature
+- assertNotVisible: "Class Schedule" #make sure that the calendar is not visible
+- assertVisible:
+    id: "indoor-navigation-header-container" # make sure that we see the indoor navigation screen
