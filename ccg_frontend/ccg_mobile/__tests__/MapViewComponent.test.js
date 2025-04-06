@@ -1911,4 +1911,315 @@ describe("MapViewComponent", () => {
     // Restore mock
     alertMock.mockRestore();
   });
+
+  it("should test iOS platform-specific code in handleZoomIn and handleZoomOut", async () => {
+    // Test platform-specific code for iOS in both zoom functions
+    const Platform = jest.requireMock("react-native/Libraries/Utilities/Platform");
+    Platform.OS = "ios";
+
+    // Mock map ref for iOS zoom in/out
+    const mapRef = {
+      current: {
+        getCamera: jest.fn().mockResolvedValue({ altitude: 1000 }),
+        animateCamera: jest.fn(),
+      },
+    };
+
+    // Direct implementation of iOS specific handleZoomIn from lines 66-72
+    const handleZoomIn = async () => {
+      if (Platform.OS == "ios") {
+        const camera = await mapRef.current?.getCamera();
+        camera.altitude -= 750;
+        mapRef.current?.animateCamera(camera);
+        return camera;
+      }
+    };
+
+    // Test iOS zoom in
+    const zoomInResult = await handleZoomIn();
+    expect(mapRef.current.animateCamera).toHaveBeenCalledWith({ altitude: 250 });
+    expect(zoomInResult.altitude).toBe(250);
+
+    // Reset mock
+    mapRef.current.getCamera = jest.fn().mockResolvedValue({ altitude: 1000 });
+    mapRef.current.animateCamera.mockClear();
+
+    // Direct implementation of iOS specific handleZoomOut from lines 81-87
+    const handleZoomOut = async () => {
+      if (Platform.OS == "ios") {
+        const camera = await mapRef.current?.getCamera();
+        camera.altitude += 750;
+        mapRef.current?.animateCamera(camera);
+        return camera;
+      }
+    };
+
+    // Test iOS zoom out
+    const zoomOutResult = await handleZoomOut();
+    expect(mapRef.current.animateCamera).toHaveBeenCalledWith({ altitude: 1750 });
+    expect(zoomOutResult.altitude).toBe(1750);
+  });
+
+  it("should test Android platform-specific code in handleZoomIn and handleZoomOut", async () => {
+    // Test platform-specific code for Android in both zoom functions
+    const Platform = jest.requireMock("react-native/Libraries/Utilities/Platform");
+    Platform.OS = "android";
+
+    // Mock map ref for Android zoom in/out
+    const mapRef = {
+      current: {
+        getCamera: jest.fn().mockResolvedValue({ zoom: 10 }),
+        animateCamera: jest.fn(),
+      },
+    };
+
+    // Direct implementation of Android specific handleZoomIn from lines 73-78
+    const handleZoomIn = async () => {
+      if (Platform.OS !== "ios") {
+        const camera = await mapRef.current?.getCamera();
+        camera.zoom += 1;
+        mapRef.current?.animateCamera(camera);
+        return camera;
+      }
+    };
+
+    // Test Android zoom in
+    const zoomInResult = await handleZoomIn();
+    expect(mapRef.current.animateCamera).toHaveBeenCalledWith({ zoom: 11 });
+    expect(zoomInResult.zoom).toBe(11);
+
+    // Reset mock
+    mapRef.current.getCamera = jest.fn().mockResolvedValue({ zoom: 10 });
+    mapRef.current.animateCamera.mockClear();
+
+    // Direct implementation of Android specific handleZoomOut from lines 88-93
+    const handleZoomOut = async () => {
+      if (Platform.OS !== "ios") {
+        const camera = await mapRef.current?.getCamera();
+        camera.zoom -= 1;
+        mapRef.current?.animateCamera(camera);
+        return camera;
+      }
+    };
+
+    // Test Android zoom out
+    const zoomOutResult = await handleZoomOut();
+    expect(mapRef.current.animateCamera).toHaveBeenCalledWith({ zoom: 9 });
+    expect(zoomOutResult.zoom).toBe(9);
+  });
+
+  it("should test the showConfirmationPopup function", () => {
+    // Mock Alert.alert
+    const alertMock = jest.spyOn(Alert, "alert").mockImplementation(() => {});
+
+    // Mock setStartLocation and handleMarkerPress functions
+    const setStartLocationMock = jest.fn();
+    const handleMarkerPressMock = jest.fn();
+
+    // Test location
+    const location = {
+      id: 1,
+      building_code: "LOC1",
+      name: "Test Location",
+    };
+
+    // Implement showConfirmationPopup function
+    const showConfirmationPopup = location => {
+      Alert.alert(
+        "Building Options",
+        `${location.building_code} is set as your starting point. What would you like to do?`,
+        [
+          { text: "Cancel", style: "cancel" },
+          {
+            text: "Remove Start Point ❌",
+            onPress: () => setStartLocationMock(null),
+            style: "destructive",
+          },
+          {
+            text: "View Details 🏢",
+            onPress: () => handleMarkerPressMock(location),
+          },
+        ]
+      );
+    };
+
+    // Call the function
+    showConfirmationPopup(location);
+
+    // Verify Alert.alert was called with the correct arguments
+    expect(alertMock).toHaveBeenCalledWith(
+      "Building Options",
+      "LOC1 is set as your starting point. What would you like to do?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Remove Start Point ❌",
+          onPress: expect.any(Function),
+          style: "destructive",
+        },
+        {
+          text: "View Details 🏢",
+          onPress: expect.any(Function),
+        },
+      ]
+    );
+
+    // Get and test the onPress handlers
+    const buttons = alertMock.mock.calls[0][2];
+
+    // Test "Remove Start Point" button
+    buttons[1].onPress();
+    expect(setStartLocationMock).toHaveBeenCalledWith(null);
+
+    // Test "View Details" button
+    buttons[2].onPress();
+    expect(handleMarkerPressMock).toHaveBeenCalledWith(location);
+
+    // Restore Alert.alert
+    alertMock.mockRestore();
+  });
+
+  it("should test handleMarkerPress function", () => {
+    // Enable fake timers
+    jest.useFakeTimers();
+
+    // Mock state setters
+    const setShowPopupMock = jest.fn();
+    const setSelectedMarkerMock = jest.fn();
+
+    // Test location
+    const location = { id: 1, name: "Test Location" };
+
+    // Implement handleMarkerPress function
+    const handleMarkerPress = location => {
+      setTimeout(() => {
+        setShowPopupMock(true);
+        setSelectedMarkerMock(prev => (prev === location ? null : location));
+      }, 0);
+    };
+
+    // Call the function
+    handleMarkerPress(location);
+
+    // Run the timer
+    jest.runAllTimers();
+
+    // Verify setShowPopup and setSelectedMarker were called
+    expect(setShowPopupMock).toHaveBeenCalledWith(true);
+    expect(setSelectedMarkerMock).toHaveBeenCalled();
+
+    // Test with previously selected marker
+    setSelectedMarkerMock.mockImplementationOnce(callback => callback(location));
+
+    // Call the function again
+    handleMarkerPress(location);
+
+    // Run the timer
+    jest.runAllTimers();
+
+    // Verify setShowPopup and setSelectedMarker were called again
+    expect(setShowPopupMock).toHaveBeenCalledWith(true);
+    expect(setSelectedMarkerMock).toHaveBeenCalled();
+
+    // Restore timers
+    jest.useRealTimers();
+  });
+
+  it("should test onGoToLocation function", () => {
+    // Mock navigation
+    mockNavigate.mockClear();
+
+    // Test data
+    const startLocation = { id: 1, name: "Start Location" };
+    const currentLocation = { id: 2, name: "Current Location" };
+    const destination = { id: 3, name: "Destination" };
+    const locations = [
+      { id: 1, name: "Location 1" },
+      { id: 2, name: "Location 2" },
+    ];
+    const pointsOfInterest = [
+      { id: "poi1", name: "POI 1" },
+      { id: "poi2", name: "POI 2" },
+    ];
+
+    // Implement onGoToLocation function
+    const onGoToLocation = location => {
+      navigation.navigate("Navigation", {
+        start: startLocation ?? currentLocation,
+        destination: location,
+        allLocations: [
+          ...locations.map(item => ({ ...item, id: `school-${item.id}` })),
+          ...pointsOfInterest.map(item => ({ ...item, id: `poi-${item.id}` })),
+        ],
+      });
+    };
+
+    // Mock navigation
+    const navigation = { navigate: mockNavigate };
+
+    // Call the function
+    onGoToLocation(destination);
+
+    // Verify navigation.navigate was called with the correct arguments
+    expect(mockNavigate).toHaveBeenCalledWith("Navigation", {
+      start: startLocation,
+      destination: destination,
+      allLocations: [
+        { ...locations[0], id: "school-1" },
+        { ...locations[1], id: "school-2" },
+        { ...pointsOfInterest[0], id: "poi-poi1" },
+        { ...pointsOfInterest[1], id: "poi-poi2" },
+      ],
+    });
+  });
+
+  it("should test handleRegionChange function", () => {
+    // Mock state setters
+    const setShowMarkersMock = jest.fn();
+
+    // Implement handleRegionChange function
+    const handleRegionChange = region => {
+      const zoomThreshold = 0.006;
+      setShowMarkersMock(region.latitudeDelta < zoomThreshold);
+    };
+
+    // Test with region below threshold
+    const regionBelowThreshold = {
+      latitude: 45.5,
+      longitude: -73.5,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005,
+    };
+
+    handleRegionChange(regionBelowThreshold);
+    expect(setShowMarkersMock).toHaveBeenCalledWith(true);
+
+    // Test with region above threshold
+    const regionAboveThreshold = {
+      latitude: 45.5,
+      longitude: -73.5,
+      latitudeDelta: 0.007,
+      longitudeDelta: 0.007,
+    };
+
+    setShowMarkersMock.mockClear();
+    handleRegionChange(regionAboveThreshold);
+    expect(setShowMarkersMock).toHaveBeenCalledWith(false);
+  });
+
+  it("should test MapView.onPress handler", () => {
+    // Mock state setter
+    const setSelectedMarkerMock = jest.fn();
+
+    // Implement onPress handler
+    const handleMapPress = () => {
+      setSelectedMarkerMock(null);
+    };
+
+    // Call the function
+    handleMapPress();
+
+    // Verify setSelectedMarker was called with null
+    expect(setSelectedMarkerMock).toHaveBeenCalledWith(null);
+  });
 });

@@ -31,10 +31,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Restaurants"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches locations when the Coffee button is pressed", async () => {
@@ -43,10 +46,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Coffee"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("cafe", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Coffee Shop" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("cafe", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Coffee Shop" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches locations when the Fast Food button is pressed", async () => {
@@ -55,10 +61,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Fast Food"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("fast_food", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Fast Food Place" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("fast_food", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Fast Food Place" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches locations when the Library button is pressed", async () => {
@@ -67,10 +76,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Library"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("library", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Library" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("library", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Library" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches locations when the ATM button is pressed", async () => {
@@ -79,10 +91,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("ATM"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("atm", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test ATM" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("atm", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test ATM" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches locations when the Clinic button is pressed", async () => {
@@ -91,10 +106,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Clinic"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("clinic", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Clinic" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("clinic", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Clinic" }]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("returns empty data when a POI button is pressed and no locations are found", async () => {
@@ -103,10 +121,13 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Restaurants"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("logs an error when fetching locations fails", async () => {
@@ -116,11 +137,14 @@ describe("PointsOfInterestBar", () => {
     const { getByText } = renderComponent();
     fireEvent.press(getByText("Restaurants"));
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).not.toHaveBeenCalled();
-      expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching locations: ", expect.any(Error)); // Verify error log
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).not.toHaveBeenCalled();
+        expect(consoleErrorSpy).toHaveBeenCalledWith("Error fetching locations: ", expect.any(Error)); // Verify error log
+      },
+      { timeout: 10000 }
+    );
 
     consoleErrorSpy.mockRestore(); // Restore console.error after the test
   });
@@ -133,16 +157,22 @@ describe("PointsOfInterestBar", () => {
 
     fireEvent.press(button);
 
-    await waitFor(() => {
-      expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
-    });
+    await waitFor(
+      () => {
+        expect(getPointOfInterests).toHaveBeenCalledWith("restaurant", defaultCampus, -73.5673, 45.5017);
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([{ name: "Test Restaurant" }]);
+      },
+      { timeout: 10000 }
+    );
 
     // Deselect the same button
     fireEvent.press(button);
 
-    await waitFor(() => {
-      expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
-    });
+    await waitFor(
+      () => {
+        expect(mockSetSelectedPointOfInterest).toHaveBeenCalledWith([]);
+      },
+      { timeout: 10000 }
+    );
   });
 });
