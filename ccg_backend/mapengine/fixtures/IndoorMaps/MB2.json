@@ -1,31 +1,3 @@
-S2.105
-S2.401
-S2.465,
-S2.455
-S2.445
-S2.435
-S2.115
-S2.148
-S2.145
-S2.440
-S2.210
-S2.470
-S2.330
-S2.245
-S2.285
-C1
-C2
-C3
-C4
-C5
-C6
-C7
-C8
-C9
-C10
-elevator
-entrance/exit
-
 {
 
     "C1":{
@@ -53,7 +25,7 @@ entrance/exit
 		},
 		"connections":[
 			"C1",
-            "C3"
+            "C3"]
     },
 
     "C3":{
@@ -65,7 +37,7 @@ entrance/exit
 		},
 		"connections":[
 			"C4",
-            "C2"
+            "C2"]
     },
 
     "C4":{
@@ -76,7 +48,7 @@ entrance/exit
 			"y":512
 		},
 		"connections":[
-			"C3"
+			"C3"]
     },
 
     "C5":{
@@ -88,7 +60,7 @@ entrance/exit
 		},
 		"connections":[
 			"C3",
-            "S2.145"
+            "S2.145"]
     },
 
     "C6":{
@@ -100,7 +72,7 @@ entrance/exit
 		},
 		"connections":[
 			"C5",
-            "C7"
+            "C7"]
     },
 
     "C7":{
@@ -112,7 +84,7 @@ entrance/exit
 		},
 		"connections":[
 			"C6", 
-            "Elevator"
+            "Elevator"]
     },
 
     "C8":{
@@ -126,7 +98,7 @@ entrance/exit
 			"C6",
             "s2.148",
             "s2.115",
-            "S2.440"
+            "S2.440"]
     },
 
     "C9":{
@@ -140,9 +112,9 @@ entrance/exit
 			"C8",
             "S2.445",
             "S2.470",
-            "S2.435".
-            "S2.455"
-            "S2.465"
+            "S2.435",
+            "S2.455",
+            "S2.465"]
     },
 
     "C10":{
@@ -155,7 +127,7 @@ entrance/exit
 		"connections":[
 			"C8",
             "S2.105",
-            "S2.401"
+            "S2.401"]
     },
 
     "S2.105":{
@@ -190,7 +162,7 @@ entrance/exit
 		"connections":[
 			"S2.105",
 			"S2.470",
-            "S2.465"
+            "S2.465",
 			"C10"
 		]
     },
@@ -470,7 +442,7 @@ entrance/exit
 			"C4",
 			"C3"
 		]
-    },
+    }
 
 
     
