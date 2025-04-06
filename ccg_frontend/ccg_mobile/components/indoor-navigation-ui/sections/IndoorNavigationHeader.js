@@ -38,21 +38,14 @@ const IndoorNavigationHeader = ({
     <View style={styles.container} testID="indoor-navigation-header-container">
       <View style={styles.rowContainer}>
         <CustomButton title="←" onPress={navigateToMapScreen} style={styles.button} testID="back-button" />
-        <IndoorDropdown
-          options={buildings}
-          selectedValue={selectedBuilding}
-          onValueChange={onBuildingChange}
-          placeholder="Select Building"
-          testID="indoor-dropdown"
+        <NavigationSearch
+          startAddress={startAddress}
+          destinationAddress={destinationAddress}
+          onModifyAddress={handleModifyAddress} // modified address handler
+          allLocations={buildings}
+          testID="navigation-search"
         />
       </View>
-      <NavigationSearch
-        startAddress={startAddress}
-        destinationAddress={destinationAddress}
-        onModifyAddress={handleModifyAddress} // modified address handler
-        allLocations={buildings}
-        testID="navigation-search"
-      />
     </View>
   );
 };
@@ -71,14 +64,11 @@ const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f8f8f8",
-    marginTop: "15%",
-    height: "50%",
+    paddingTop: "15%",
     width: "100%",
     paddingHorizontal: 10,
   },
   rowContainer: {
-    marginTop: "10%",
     flexDirection: "row",
     alignItems: "center",
     marginRight: 290,

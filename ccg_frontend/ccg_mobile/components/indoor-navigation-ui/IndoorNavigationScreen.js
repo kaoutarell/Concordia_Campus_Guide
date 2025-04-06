@@ -17,6 +17,7 @@ const IndoorNavigationScreen = ({ route }) => {
   const [floorIndex, setFloorIndex] = useState(0);
   const [floorIndexMax, setFloorIndexMax] = useState(1);
   const [showAccessibleRoute, setShowAccessibleRoute] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   //reset floorIndex when getting new directions
   useEffect(() => {
@@ -65,7 +66,7 @@ const IndoorNavigationScreen = ({ route }) => {
 
   const handleShowDirections = async (start, destination) => {
     if (!start || !destination) {
-      console.error("Start location and destination are required.");
+      //console.error("Start location and destination are required.");
       return;
     }
 
@@ -79,38 +80,42 @@ const IndoorNavigationScreen = ({ route }) => {
       if (path != "") {
         setFloorIndexMax(pathData["floor_sequence"].length - 1);
       }
+      setIsSearching(true);
     } catch (error) {
       console.error("Error fetching path:", error);
     }
   };
 
   return (
-    <View>
-      <View style={styles.container} testID="indoor-navigation-screen">
-        <IndoorNavigationHeader
-          buildings={buildings}
-          selectedBuilding={selectedBuilding}
-          onBuildingChange={handleBuildingChange}
-          startLocation={startLocation}
-          destination={destination}
-          onStartLocationChange={handleStartLocationChange}
-          onDestinationChange={handleDestinationChange}
-        />
-        <IndoorMap
-          startLocation={startLocation}
-          destination={destination}
-          path={path} // path data to IndoorMap
-          index={floorIndex}
-        />
-        <FloorChangeButton currentFloor={floorIndex} maxFloor={floorIndexMax} setFloor={setFloorIndex} />
-        <IndoorNavigationFooter
-          onShowDirections={handleShowDirections} // Handle Get Direction button press
-          startAddress={startLocation}
-          destinationAddress={destination}
-          showAccessibleRoute={showAccessibleRoute}
-          setShowAccessibleRoute={setShowAccessibleRoute}
-        />
-      </View>
+    <View style={styles.container} testID="indoor-navigation-screen">
+      <IndoorNavigationHeader
+        buildings={buildings}
+        selectedBuilding={selectedBuilding}
+        onBuildingChange={handleBuildingChange}
+        startLocation={startLocation}
+        destination={destination}
+        onStartLocationChange={handleStartLocationChange}
+        onDestinationChange={handleDestinationChange}
+      />
+      <IndoorMap
+        startLocation={startLocation}
+        destination={destination}
+        path={path} // path data to IndoorMap
+        index={floorIndex}
+      />
+      <FloorChangeButton
+        currentFloor={floorIndex}
+        maxFloor={floorIndexMax}
+        setFloor={setFloorIndex}
+        isSearching={isSearching}
+      />
+      <IndoorNavigationFooter
+        onShowDirections={handleShowDirections} // Handle Get Direction button press
+        startAddress={startLocation}
+        destinationAddress={destination}
+        showAccessibleRoute={showAccessibleRoute}
+        setShowAccessibleRoute={setShowAccessibleRoute}
+      />
     </View>
   );
 };

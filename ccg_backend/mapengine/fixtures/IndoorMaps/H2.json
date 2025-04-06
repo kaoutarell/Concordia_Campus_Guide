@@ -1,17 +1,234 @@
 {
-    "S1":{
-        "id": "S1",
-		"type": "stairs",
-		"pin":{
-			"x":220,
-			"y":385
-		},
-		"coords": {
-			"x": 195,
-			"y": 415
-		},
-		"connections":[
-			
-		]
-    }
+  "Exit": {
+    "id": "Exit",
+    "type": "exit",
+    "pin": {
+      "x": 837,
+      "y": 571
+    },
+    "coords": {
+      "x": 720,
+      "y": 570
+    },
+    "connections": ["C1"]
+  },
+  "C1": {
+    "id": "C1",
+    "type": "corner",
+    "coords": {
+      "x": 700,
+      "y": 550
+    },
+    "connections": ["C2"]
+  },
+  "C2": {
+    "id": "C2",
+    "type": "corner",
+    "coords": {
+      "x": 511,
+      "y": 547
+    },
+    "connections": ["C3", "C7"]
+  },
+  "C3": {
+    "id": "C3",
+    "type": "corner",
+    "coords": {
+      "x": 517,
+      "y": 290
+    },
+    "connections": ["C2", "C4"]
+  },
+  "C4": {
+    "id": "C4",
+    "type": "corner",
+    "coords": {
+      "x": 186,
+      "y": 290
+    },
+    "connections": ["C3", "C5"]
+  },
+  "C5": {
+    "id": "C5",
+    "type": "corner",
+    "coords": {
+      "x": 186,
+      "y": 453
+    },
+    "connections": ["C4", "C6"]
+  },
+  "C6": {
+    "id": "C6",
+    "type": "corner",
+    "coords": {
+      "x": 100,
+      "y": 453
+    },
+    "connections": ["C5", "C7"]
+  },
+  "C7": {
+    "id": "C7",
+    "type": "corner",
+    "coords": {
+      "x": 100,
+      "y": 542
+    },
+    "connections": ["C6", "C2"]
+  },
+  "S1": {
+    "id": "S1",
+    "type": "stairs",
+    "pin": {
+      "x": 470,
+      "y": 460
+    },
+    "coords": {
+      "x": 470,
+      "y": 500
+    },
+    "connections": ["C2"]
+  },
+  "S2": {
+    "id": "S2",
+    "type": "stairs",
+    "pin": {
+      "x": 424,
+      "y": 217
+    },
+    "coords": {
+      "x": 425,
+      "y": 825
+    },
+    "connections": ["C3", "C4"]
+  },
+  "S3": {
+    "id": "S3",
+    "type": "stairs",
+    "pin": {
+      "x": 280,
+      "y": 210
+    },
+    "coords": {
+      "x": 280,
+      "y": 272
+    },
+    "connections": ["C3", "C4"]
+  },
+  "S4": {
+    "id": "S4",
+    "type": "stairs",
+    "pin": {
+      "x": 114,
+      "y": 320
+    },
+    "coords": {
+      "x": 167,
+      "y": 281
+    },
+    "connections": ["C4"]
+  },
+  "S5": {
+    "id": "S5",
+    "type": "stairs",
+    "pin": {
+      "x": 94,
+      "y": 658
+    },
+    "coords": {
+      "x": 104,
+      "y": 560
+    },
+    "connections": ["C7"]
+  },
+  "H224": {
+    "id": "H224",
+    "type": "room",
+    "pin": {
+      "x": 564,
+      "y": 467
+    },
+    "coords": {
+      "x": 532,
+      "y": 438
+    },
+    "connections": ["C2", "C3"]
+  },
+  "H280": {
+    "id": "H280",
+    "type": "room",
+    "pin": {
+      "x": 132,
+      "y": 581
+    },
+    "coords": {
+      "x": 116,
+      "y": 559
+    },
+    "connections": ["C7", "C2"]
+  },
+  "H281": {
+    "id": "H281",
+    "type": "room",
+    "pin": {
+      "x": 157,
+      "y": 575
+    },
+    "coords": {
+      "x": 142,
+      "y": 560
+    },
+    "connections": ["C7", "C2"]
+  },
+  "H222": {
+    "id": "H282",
+    "type": "room",
+    "pin": {
+      "x": 250,
+      "y": 575
+    },
+    "coords": {
+      "x": 212,
+      "y": 556
+    },
+    "connections": ["C7", "C2"]
+  },
+  "H217": {
+    "id": "H223",
+    "type": "room",
+    "pin": {
+      "x": 345,
+      "y": 565
+    },
+    "coords": {
+      "x": 352,
+      "y": 550
+    },
+    "connections": ["C7", "C2"]
+  },
+  "H239": {
+    "id": "H239",
+    "type": "room",
+    "pin": {
+      "x": 500,
+      "y": 730
+    },
+    "coords": {
+      "x": 466,
+      "y": 602
+    },
+    "connections": ["C2"]
+  },
+  "H231": {
+    "id": "H231",
+    "type": "room",
+    "pin": {
+      "x": 608,
+      "y": 693
+    },
+    "coords": {
+      "x": 523,
+      "y": 615
+    },
+    "connections": ["C2"]
+  }
 }
