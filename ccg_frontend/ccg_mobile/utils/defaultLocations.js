@@ -17,6 +17,7 @@ export const getMyCurrentLocation = async () => {
       civic_address: "Current Location",
     };
   } catch (error) {
+    console.error("Error getting current location:", error);
     // Return a fallback location if unable to get current location
     return getDefaultDestination();
   }

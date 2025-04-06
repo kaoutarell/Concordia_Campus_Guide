@@ -4,15 +4,15 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import PropTypes from "prop-types";
 
 const IndoorDropdown = ({ options, selectedValue, onValueChange, placeholder }) => {
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const handleDropdownToggle = () => {
-    setDropdownVisible(!isDropdownVisible); // Toggle visibility
+    setIsDropdownVisible(!isDropdownVisible); // Toggle visibility
   };
 
   const handleSelectItem = item => {
     onValueChange(item.value); // Update the selected value
-    setDropdownVisible(false); // Hide dropdown after selection
+    setIsDropdownVisible(false); // Hide dropdown after selection
   };
 
   // Find the selected label from the options based on the selected value

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import PropTypes from "prop-types";
 
 const DirectionsButton = ({ handleSelect, value, startLocation }) => {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
-    setModalVisible(!isModalVisible);
+    setIsModalVisible(!isModalVisible);
   };
 
   const handleOptionSelect = option => {
     handleSelect(option);
-    setModalVisible(false);
+    setIsModalVisible(false);
   };
 
   return (
@@ -95,5 +96,11 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
   },
 });
+
+DirectionsButton.propTypes = {
+  handleSelect: PropTypes.func.isRequired,
+  value: PropTypes.object.isRequired,
+  startLocation: PropTypes.object,
+};
 
 export default DirectionsButton;

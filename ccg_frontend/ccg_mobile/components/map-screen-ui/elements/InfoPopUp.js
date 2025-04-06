@@ -88,10 +88,6 @@ const InfoPopup = ({ value, onClose, onGo, startLocation, setStartLocation }) =>
         )}
       </View>
 
-      {/* <TouchableOpacity onPress={() => onGo(value)} style={styles.directionsButton} testID="get-directions-button">
-        <FontAwesome5 name="directions" size={20} color="white" />
-        <Text style={styles.directionsText}>Get Directions</Text>
-      </TouchableOpacity> */}
       <DirectionsButton handleSelect={handleSelect} value={value} startLocation={startLocation} />
     </View>
   );
@@ -101,6 +97,8 @@ InfoPopup.propTypes = {
   value: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   onGo: PropTypes.func.isRequired,
+  startLocation: PropTypes.object,
+  setStartLocation: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

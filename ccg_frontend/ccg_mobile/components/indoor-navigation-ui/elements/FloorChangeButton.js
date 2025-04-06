@@ -24,13 +24,12 @@ const FloorChangeButton = ({ currentFloor, maxFloor, setFloor, isSearching }) =>
           <Text style={styles.text}>{"Next Step >"}</Text>
         </TouchableOpacity>
       </View>
-      {isSearching == true && (
+      {isSearching ? (
         <Text style={styles.stepText}>
           {"["}Step {currentFloor + 1}/{maxFloor + 1}
           {"]"}
         </Text>
-      )}
-      {isSearching == false && (
+      ) : (
         <Text style={styles.stepText}>
           {"["}Generate Directions to a Room{"]"}
         </Text>
