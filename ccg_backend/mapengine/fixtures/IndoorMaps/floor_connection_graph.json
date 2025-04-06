@@ -31,6 +31,13 @@
     },
     "MB1":{
         "connections":[
+            "Outside",
+            "MBS2"
+        ]
+    },
+    "MBS2":{
+        "connections":[
+            "MB1",
             "Outside"
         ]
     },
