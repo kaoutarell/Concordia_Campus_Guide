@@ -1,0 +1,34 @@
+appId: host.exp.Exponent
+name: "Feature 5: Show Nearest Outdoor Points of Interest"
+---
+# user story 5.1.1
+# start point map view zoomed out
+- assertVisible:
+    id: "map-view"
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 0
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 1
+- assertVisible:
+    id: "points-of-interest-button"
+    index: 2
+# select restaurant
+- tapOn:
+    id: "points-of-interest-button"
+    index: 0
+- assertVisible: "Map Marker" # make sure the markers appear
+# stop showing restaurant markers
+- tapOn:
+    id: "points-of-interest-button"
+    index: 0
+# select coffee
+- tapOn:
+    id: "points-of-interest-button"
+    index: 1
+- assertVisible: "Map Marker" # make sure the markers appear
+# stop showing restaurant markers
+- tapOn:
+    id: "points-of-interest-button"
+    index: 1

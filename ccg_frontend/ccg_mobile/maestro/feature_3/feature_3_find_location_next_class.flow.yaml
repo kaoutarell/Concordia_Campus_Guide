@@ -23,5 +23,4 @@ name: "Feature 3 - Use Google Calendar to Navigate to Next Class"
 - assertVisible: "GO" # check that event has a navigate option
 - tapOn: "GO" # use navigation feature
 - assertNotVisible: "Class Schedule" #make sure that the calendar is not visible
-- assertVisible:
-    id: "indoor-navigation-header-container" # make sure that we see the indoor navigation screen
+- assertVisible: "Get Direction" # make sure that we see the indoor navigation screen
