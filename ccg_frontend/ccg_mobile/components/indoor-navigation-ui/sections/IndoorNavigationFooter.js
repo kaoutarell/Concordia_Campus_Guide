@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     height: "12%",
     width: "100%",
-    marginTop: "40%",
   },
   container: {
     position: "absolute",

@@ -64,14 +64,11 @@ const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#f8f8f8",
-    marginTop: "15%",
-    height: "50%",
+    paddingTop: "15%",
     width: "100%",
     paddingHorizontal: 10,
   },
   rowContainer: {
-    marginTop: "10%",
     flexDirection: "row",
     alignItems: "center",
     marginRight: 290,

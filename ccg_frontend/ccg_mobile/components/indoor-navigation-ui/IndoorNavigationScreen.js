@@ -66,7 +66,7 @@ const IndoorNavigationScreen = ({ route }) => {
 
   const handleShowDirections = async (start, destination) => {
     if (!start || !destination) {
-      console.error("Start location and destination are required.");
+      //console.error("Start location and destination are required.");
       return;
     }
 
