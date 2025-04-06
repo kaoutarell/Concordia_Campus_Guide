@@ -25,6 +25,35 @@ name: "Feature 5: Outdoor Points of Interest"
 - assertVisible: "Campus: SGW"
 - assertVisible:
     id: "get-directions-button"
+    id: "get-directions-button"
+- tapOn: "Set as Destination"
+# check to see if nav page renders correctly
+- runFlow:
+    when:
+      visible: "Google Map"
+    file: ./subflows/assert_render_navigation_screen.yaml
+- assertVisible: "Preview"
+- tapOn: "Preview"
+- assertVisible: "Directions"
+- assertVisible: "Turn left"
+- assertVisible: "Turn right"
+# exit direction page
+- tapOn: "←"
+- tapOn: "Start Navigation"
+- assertVisible: "Preview"
+- assertVisible: "Exit"
+# see directions and assert page renders correctly
+- tapOn: "Preview"
+- assertVisible: "Directions"
+- assertVisible: "Turn left"
+- assertVisible: "Turn right"
+# exit direction page
+- tapOn: "←"
+# exit navigation
+- tapOn: "Exit"
+- tapOn: "←"
+# close popup
+- tapOn: ""
 - tapOn:
     id: "clear-search-button"
 # switch campus
