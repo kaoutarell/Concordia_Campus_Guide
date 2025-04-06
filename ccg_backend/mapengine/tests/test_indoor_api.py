@@ -500,7 +500,7 @@ def test_get_indoor_direction_data():
     }
     data = get_indoor_directions_data("H867", "H913", "false")
     assert data["floor_sequence"] == ["H8", "H9"]
-    data = get_indoor_directions_data("H913", "MB1.125", "false")
+    data = get_indoor_directions_data("H913", "MB1.210", "false")
     assert data == {
         "floor_sequence": ["H9", "H8", "H2", "H1", "Outside", "MB1"],
         "path_data": {
@@ -508,28 +508,28 @@ def test_get_indoor_direction_data():
             "H8": "M275 380",
             "H2": "M195 415",
             "H1": "M150 235 L150 250 L530 250 L530 900 L325 900 L325 960",
-            "MB1": "M541 929 L570 929 L570 605 L570 605 L585 530",
+            "MB1": "M505 145 L465 165 L465 165 L465 420 L348 431 L350 450",
         },
         "pin": {
             "H9": [[740, 125], [265, 340]],
             "H8": [[250, 320], [250, 320]],
             "H2": [[220, 385], [220, 385]],
             "H1": [[185, 185], [325, 1000]],
-            "MB1": [[511, 936], [650, 385]],
+            "MB1": [[430, 100], [345, 645]],
         },
     }
-    data = get_indoor_directions_data("MB1.125", "H913", "false")
+    data = get_indoor_directions_data("MB1.210", "H913", "false")
     assert data == {
         "floor_sequence": ["MB1", "Outside", "H1", "H2", "H8", "H9"],
         "path_data": {
-            "MB1": "M585 530 L570 605 L570 950 L570 929 L541 929",
+            "MB1": "M460 500 L276 439",
             "H1": "M325 960 L325 900 L530 900 L530 250 L150 250 L150 235",
             "H2": "M195 415",
             "H8": "M275 380",
             "H9": "M265 385 L265 405 L530 405 L530 225 L740 225 L740 200",
         },
         "pin": {
-            "MB1": [[650, 385], [511, 936]],
+            "MB1": [[345, 645], [430, 100]],
             "H1": [[325, 1000], [185, 185]],
             "H2": [[220, 385], [220, 385]],
             "H8": [[250, 320], [250, 320]],
