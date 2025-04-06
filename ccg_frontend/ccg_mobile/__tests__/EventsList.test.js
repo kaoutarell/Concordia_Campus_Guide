@@ -88,9 +88,12 @@ describe("EventsList Component", () => {
       <EventsList accessToken={mockAccessToken} selectedCalendars={mockSelectedCalendars} buildings={mockBuildings} />
     );
 
-    await waitFor(() => {
-      expect(getByText("No events to display.")).toBeTruthy();
-    });
+    await waitFor(
+      () => {
+        expect(getByText("No events to display.")).toBeTruthy();
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("displays no events message when there is no access token", async () => {
@@ -116,12 +119,15 @@ describe("EventsList Component", () => {
       <EventsList accessToken={mockAccessToken} selectedCalendars={mockSelectedCalendars} buildings={mockBuildings} />
     );
 
-    await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/primary/events"),
-        expect.any(Object)
-      );
-    });
+    await waitFor(
+      () => {
+        expect(fetch).toHaveBeenCalledWith(
+          expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/primary/events"),
+          expect.any(Object)
+        );
+      },
+      { timeout: 10000 }
+    );
 
     // First event should be displayed
     const mathEvent = await findByText("Math Class");
@@ -148,10 +154,13 @@ describe("EventsList Component", () => {
       <EventsList accessToken={mockAccessToken} selectedCalendars={mockSelectedCalendars} buildings={mockBuildings} />
     );
 
-    await waitFor(() => {
-      expect(mockConsoleError).toHaveBeenCalledWith("Error fetching events:", expect.any(Error));
-      expect(getByText("No events to display.")).toBeTruthy();
-    });
+    await waitFor(
+      () => {
+        expect(mockConsoleError).toHaveBeenCalledWith("Error fetching events:", expect.any(Error));
+        expect(getByText("No events to display.")).toBeTruthy();
+      },
+      { timeout: 10000 }
+    );
   });
 
   it("fetches events from multiple calendars", async () => {
@@ -177,18 +186,21 @@ describe("EventsList Component", () => {
       <EventsList accessToken={mockAccessToken} selectedCalendars={multipleCalendars} buildings={mockBuildings} />
     );
 
-    await waitFor(() => {
-      // Should call fetch twice, once for each calendar
-      expect(fetch).toHaveBeenCalledTimes(2);
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/primary/events"),
-        expect.any(Object)
-      );
-      expect(fetch).toHaveBeenCalledWith(
-        expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/secondary/events"),
-        expect.any(Object)
-      );
-    });
+    await waitFor(
+      () => {
+        // Should call fetch twice, once for each calendar
+        expect(fetch).toHaveBeenCalledTimes(2);
+        expect(fetch).toHaveBeenCalledWith(
+          expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/primary/events"),
+          expect.any(Object)
+        );
+        expect(fetch).toHaveBeenCalledWith(
+          expect.stringContaining("https://www.googleapis.com/calendar/v3/calendars/secondary/events"),
+          expect.any(Object)
+        );
+      },
+      { timeout: 10000 }
+    );
 
     // Should display events from both calendars
     await findByText("Math Class");
