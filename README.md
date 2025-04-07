@@ -10,8 +10,7 @@ This project is a full-stack map-based application with a Python backend and a R
 - [Frontend Setup](#frontend-setup)
 - [Running the project](#running-the-project)
 - [Unit Test Prerequisites](#unit-test-prerequisites)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributors](#contributors)
 
 ---
 
@@ -387,3 +386,17 @@ cd ccg_frontend/ccg_mobile/
 
 npm run format -- --write "**/*.js"
 ```
+
+### Contributors
+
+- Zeiad Badawy ([@iKozay](https://github.com/iKozay))
+- Anh Thien Nguyen [(@chrisanhthien](https://github.com/chrisanhthien))
+- Kaoutar El Azzab ([@kaoutarell](https://github.com/kaoutarell))
+- Beaudelaire Tsoungui Nzodoumkouo ([@Tsounguinzo](https://github.com/Tsounguinzo))
+- Jessica Beauchemin ([@JBeauche](https://github.com/JBeauche))
+- Syed Ayaan Jilani ([@CS-ION](https://github.com/CS-ION))
+- Miskat Mahmud ([@codedsami](https://github.com/codedsami))
+- Yassine Ibhir ([@Yibhir0](https://github.com/Yibhir0))
+- Mohamed Saidi ([@Mohadgb](https://github.com/Mohadgb))
+- Omar Hammodan ([@Vega32](https://github.com/Vega32))
+- Abdelhamid Saoud Messaoudi ([@saoudmessaoudi](https://github.com/saoudmessaoudi))
